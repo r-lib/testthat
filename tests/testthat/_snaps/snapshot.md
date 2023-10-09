@@ -193,66 +193,57 @@
     b
     c
 
-# can snapshot values
-
-    [
-      "a",
-      1.5,
-      1,
-      true
-    ]
-
----
-
-    {
-      "type": "list",
-      "attributes": {},
-      "value": [
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["a"]
-        },
-        {
-          "type": "double",
-          "attributes": {},
-          "value": [1.5]
-        },
-        {
-          "type": "integer",
-          "attributes": {},
-          "value": [1]
-        },
-        {
-          "type": "logical",
-          "attributes": {},
-          "value": [true]
-        }
-      ]
-    }
-
----
-
-    list("a", 1.5, 1L, TRUE)
-
----
-
-    WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
-    AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
-
-# can control snapshot value details
-
-    1.1
-
-# tolerance passed to check_roundtrip
-
-    0.9
-
 # `expect_snapshot()` does not inject
 
     Code
       x <- quote(!!foo)
       expect_equal(x, call("!", call("!", quote(foo))))
+
+# full condition message is printed with rlang
+
+    Code
+      foo <- error_cnd("foo", message = "Title parent.")
+      abort("Title.", parent = foo)
+    Condition
+      Error:
+      ! Title.
+      Caused by error:
+      ! Title parent.
+
+# can print with and without condition classes
+
+    Code
+      f()
+    Message <simpleMessage>
+      foo
+    Condition <simpleWarning>
+      Warning in `f()`:
+      bar
+    Condition <simpleError>
+      Error in `f()`:
+      ! baz
+
+---
+
+    Code
+      f()
+    Message
+      foo
+    Condition
+      Warning in `f()`:
+      bar
+      Error in `f()`:
+      ! baz
+
+# errors and warnings are folded
+
+    Code
+      f()
+    Condition
+      Warning in `f()`:
+      foo
+      Error in `f()`:
+      ! bar
 
 # hint is informative
 

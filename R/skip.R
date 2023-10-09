@@ -18,7 +18,8 @@
 #'   difficult to install.
 #'
 #' * `skip_if_offline()` skips if an internet connection is not available
-#'   (using [curl::nslookup()]) or if the test is run on CRAN.
+#'   (using [curl::nslookup()]) or if the test is run on CRAN. Requires
+#'   the curl packages to be installed.
 #'
 #' * `skip_if_translated("msg")` skips tests if the "msg" is translated.
 #'
@@ -123,7 +124,8 @@ package_version <- function(x) {
 #' @rdname skip
 skip_if_offline <- function(host = "r-project.org") {
   skip_on_cran()
-  skip_if_not_installed("curl")
+  check_installed("curl")
+
   skip_if_not(has_internet(host), "offline")
 }
 has_internet <- function(host) {
@@ -247,7 +249,7 @@ on_bioc <- function() {
   env_var_is_true("IS_BIOC_BUILD_MACHINE")
 }
 on_cran <- function() {
-  !is_interactive() && !env_var_is_true("NOT_CRAN")
+  !interactive() && !env_var_is_true("NOT_CRAN")
 }
 
 env_var_is_true <- function(x) {

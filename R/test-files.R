@@ -11,8 +11,8 @@
 #'
 #' @section Environments:
 #' Each test is run in a clean environment to keep tests as isolated as
-#' possible. For package tests, that environment that inherits from the
-#' package's namespace environment, so that tests can access internal functions
+#' possible. For package tests, that environment inherits from the package's
+#' namespace environment, so that tests can access internal functions
 #' and objects.
 #'
 #' @param path Path to directory containing tests.
@@ -73,7 +73,7 @@ test_dir <- function(path,
   }
 
   if (!is_missing(wrap)) {
-    lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
+    lifecycle::deprecate_stop("3.0.0", "test_dir(wrap = )")
   }
 
   want_parallel <- find_parallel(path, load_package, package)
@@ -97,7 +97,6 @@ test_dir <- function(path,
     env = env,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
-    wrap = wrap,
     load_package = load_package,
     parallel = parallel
   )
@@ -153,11 +152,8 @@ test_files <- function(test_dir,
                        parallel = FALSE,
                        error_call = caller_env()) {
 
-  if (is_missing(wrap)) {
-    wrap <- TRUE
-  }
   if (!isTRUE(wrap)) {
-    lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
+    lifecycle::deprecate_stop("3.0.0", "test_dir(wrap = )")
   }
 
   # Must keep these two blocks in sync
@@ -171,7 +167,6 @@ test_files <- function(test_dir,
       env = env,
       stop_on_failure = stop_on_failure,
       stop_on_warning = stop_on_warning,
-      wrap = wrap,
       load_package = load_package
     )
   } else {
@@ -185,7 +180,6 @@ test_files <- function(test_dir,
       stop_on_failure = stop_on_failure,
       stop_on_warning = stop_on_warning,
       desc = desc,
-      wrap = wrap,
       load_package = load_package,
       error_call = error_call
     )
@@ -219,7 +213,6 @@ test_files_serial <- function(test_dir,
       test_one_file,
       env = env,
       desc = desc,
-      wrap = wrap,
       error_call = error_call
     )
   )
@@ -328,7 +321,6 @@ test_files_check <- function(results, stop_on_failure = TRUE, stop_on_warning = 
 test_one_file <- function(path,
                           env = test_env(),
                           desc = NULL,
-                          wrap = TRUE,
                           error_call = caller_env()) {
   reporter <- get_reporter()
   on.exit(teardown_run(), add = TRUE)
@@ -337,7 +329,6 @@ test_one_file <- function(path,
   source_file(
     path,
     env = env(env),
-    wrap = wrap,
     desc = desc,
     error_call = error_call
   )

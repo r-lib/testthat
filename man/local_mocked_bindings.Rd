@@ -13,18 +13,17 @@ with_mocked_bindings(code, ..., .package = NULL)
 \item{...}{Name-value pairs providing functions to mock.}
 
 \item{.package}{The name of the package where mocked functions should be
-inserted. Generally, you should not need to supply this as it will be
-automatically detected when whole package tests are run or when there's
-one package under active development (i.e. loaded with
-\code{\link[pkgload:load_all]{pkgload::load_all()}}).}
+inserted. Generally, you should not supply this as it will be automatically
+detected when whole package tests are run or when there's one package
+under active development (i.e. loaded with \code{\link[pkgload:load_all]{pkgload::load_all()}}).
+We don't recommend using this to mock functions in other packages,
+as you should not modify namespaces that you don't own.}
 
 \item{.env}{Environment that defines effect scope. For expert use only.}
 
 \item{code}{Code to execute with specified bindings.}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 \code{with_mocked_bindings()} and \code{local_mocked_bindings()} provide tools for
 "mocking", temporarily redefining a function so that it behaves differently
 during tests. This is helpful for testing functions that depend on external
@@ -68,11 +67,20 @@ you mock it the same way:
 
 \subsection{Base functions}{
 
-Note that it's not possible to mock functions in the base namespace
-(i.e. functions that you can use without explicitly importing them)
-since currently we don't know of a way to to mock them without potentially
-affecting all running code. If you need to mock a base function, you'll
-need to create a wrapper, as described below.
+To mock a function in the base package, you need to make sure that you
+have a binding for this function in your package. It's easiest to do this
+by binding the value to \code{NULL}. For example, if you wanted to mock
+\code{interactive()} in your package, you'd need to include this code somewhere
+in your package:
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{interactive <- NULL
+}\if{html}{\out{</div>}}
+
+Why is this necessary? \code{with_mocked_bindings()} and \code{local_mocked_bindings()}
+work by temporarily modifying the bindings within your package's namespace.
+When these tests are running inside of \verb{R CMD check} the namespace is locked
+which means it's not possible to create new bindings so you need to make sure
+that the binding exists already.
 }
 
 \subsection{Namespaced calls}{
@@ -85,20 +93,12 @@ For example, take this minor variation:
 \}
 }\if{html}{\out{</div>}}
 
-To mock here, you'll need to modify \code{another_function()} inside the
+To mock this function, you'd need to modify \code{another_function()} inside the
 \code{anotherpackage} package. You \emph{can} do this by supplying the \code{.package}
-argument:
-
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{local_mocked_bindings(
-  another_function = function(...) "new_value",
-  .package = "anotherpackage"
-)
-}\if{html}{\out{</div>}}
-
-But it's not a great idea to mock a namespace that you don't own because
-it affects all code in that package, not just code in your package. Instead,
-it's safer to either import the function into your package, or make a wrapper
-that you can mock:
+argument to \code{local_mocked_bindings()} but we don't recommend it because
+it will affect all calls to \code{anotherpackage::another_function()}, not just
+the calls originating in your package. Instead, it's safer to either import
+the function into your package, or make a wrapper that you can mock:
 
 \if{html}{\out{<div class="sourceCode R">}}\preformatted{some_function <- function() \{
   my_wrapper()

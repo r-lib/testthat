@@ -73,33 +73,3 @@ local_edition <- function(x, .env = parent.frame()) {
 edition_get <- function() {
   the$edition %||% find_edition(".")
 }
-
-
-find_dep_version <- function(name, path, package = NULL) {
-  desc <- find_description(path, package)
-  if (is.null(desc)) {
-    return(NULL)
-  }
-
-  deps <- desc$get_deps()
-  i <- match(name, deps[["package"]])
-  if (is_na(i)) {
-    return(NULL)
-  }
-
-  dep <- deps[[i, "version"]]
-  dep <- strsplit(dep, " ")[[1]]
-  if (!is_character(dep, 2) && !is_string(dep[[1]], ">=")) {
-    return(NULL)
-  }
-
-  dep[[2]]
-}
-has_dep <- function(name, path, package = NULL) {
-  !is.null(find_dep_version(name, path, package = package))
-}
-
-use_rlang_1_0 <- function() {
-  rlang::is_true(peek_option("testthat:::rlang_dep")) &&
-    is_installed("rlang", version = "0.99.0.9001")
-}

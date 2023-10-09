@@ -125,13 +125,6 @@ snapshot_replay.condition <- function(x,
                                       ...,
                                       transform = NULL,
                                       cnd_class = FALSE) {
-  if (!use_rlang_1_0()) {
-    return(snapshot_replay_condition_legacy(
-      x,
-      state,
-      transform = transform
-    ))
-  }
 
   cnd_message <- env_get(ns_env("rlang"), "cnd_message")
 
@@ -151,27 +144,6 @@ snapshot_replay.condition <- function(x,
   }
 
   c(snap_header(state, type), snapshot_lines(msg, transform))
-}
-
-snapshot_replay_condition_legacy <- function(x, state = env(), transform = NULL) {
-  msg <- cnd_message(x)
-
-  if (inherits(x, "error")) {
-    state$error <- x
-    type <- "Error"
-    msg <- add_implicit_nl(msg)
-  } else if (inherits(x, "warning")) {
-    type <- "Warning"
-    msg <- paste0(msg, "\n")
-  } else if (inherits(x, "message")) {
-    type <- "Message"
-  } else {
-    type <- "Condition"
-  }
-
-  class <- paste0(type, " <", class(x)[[1]], ">")
-
-  c(snap_header(state, class), snapshot_lines(msg, transform))
 }
 
 snapshot_lines <- function(x, transform = NULL) {
@@ -283,86 +255,6 @@ expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, varian
     variant = variant,
     trace_env = caller_env()
   )
-}
-
-#' Snapshot testing for values
-#'
-#' Captures the result of function, flexibly serializing it into a text
-#' representation that's stored in a snapshot file. See [expect_snapshot()]
-#' for more details on snapshot testing.
-#'
-#' @param style Serialization style to use:
-#'   * `json` uses [jsonlite::fromJSON()] and [jsonlite::toJSON()]. This
-#'      produces the simplest output but only works for relatively simple
-#'      objects.
-#'   * `json2` uses [jsonlite::serializeJSON()] and [jsonlite::unserializeJSON()]
-#'     which are more verbose but work for a wider range of type.
-#'   * `deparse` uses [deparse()], which generates a depiction of the object
-#'     using R code.
-#'   * `serialize()` produces a binary serialization of the object using
-#'     [serialize()]. This is all but guaranteed to work for any R object,
-#'     but produces a completely opaque serialization.
-#' @param ... Passed on to [waldo::compare()] so you can control the details of
-#'   the comparison.
-#' @inheritParams expect_snapshot
-#' @inheritParams compare
-#' @export
-expect_snapshot_value <- function(x,
-                                  style = c("json", "json2", "deparse", "serialize"),
-                                  cran = FALSE,
-                                  tolerance = testthat_tolerance(),
-                                  ...,
-                                  variant = NULL) {
-  edition_require(3, "expect_snapshot_value()")
-  variant <- check_variant(variant)
-  lab <- quo_label(enquo(x))
-
-  style <- arg_match(style)
-
-  save <- switch(style,
-    json = function(x) jsonlite::toJSON(x, auto_unbox = TRUE, pretty = TRUE),
-    json2 = function(x) jsonlite::serializeJSON(x, pretty = TRUE),
-    deparse = function(x) paste0(deparse(x), collapse = "\n"),
-    serialize = function(x) jsonlite::base64_enc(serialize(x, NULL, version = 2))
-  )
-  load <- switch(style,
-    json = function(x) jsonlite::fromJSON(x, simplifyVector = FALSE),
-    json2 = function(x) jsonlite::unserializeJSON(x),
-    deparse = function(x) reparse(x),
-    serialize = function(x) unserialize(jsonlite::base64_dec(x))
-  )
-
-  with_is_snapshotting(force(x))
-  expect_snapshot_helper(lab, x,
-    save = save,
-    load = load,
-    cran = cran,
-    ...,
-    tolerance = tolerance,
-    variant = variant,
-    trace_env = caller_env()
-  )
-}
-
-# Safe environment for evaluating deparsed objects, based on inspection of
-# https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
-reparse <- function(x) {
-  env <- env(emptyenv(),
-    `-` = `-`,
-    c = c,
-    list = list,
-    quote = quote,
-    structure = structure,
-    expression = expression,
-    `function` = `function`,
-    new = methods::new,
-    getClass = methods::getClass,
-    pairlist = pairlist,
-    alist = alist,
-    as.pairlist = as.pairlist
-  )
-
-  eval(parse(text = x), env)
 }
 
 expect_snapshot_helper <- function(lab, val,

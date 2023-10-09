@@ -6,13 +6,13 @@ test_that("expect_snapshot_file works", {
     compare = compare_file_text
   )
 
-  path <- tempfile()
+  path <- withr::local_tempfile()
   png(path, width = 300, height = 300, type = "cairo")
   plot(1:10, xlab = "", ylab = "", pch = 20, cex = 5, axes = FALSE)
   dev.off()
   expect_snapshot_file(path, "foo.png")
 
-  path <- tempfile()
+  path <- withr::local_tempfile()
   mtcars2 <- mtcars
   # mtcars2$wt[10] <- NA
   write.csv(mtcars2, path)
@@ -154,6 +154,10 @@ test_that("split_path handles edge cases", {
 })
 
 test_that("snapshot_hint output differs in R CMD check", {
+  snapshot_review_hint <- function(...) {
+    testthat:::snapshot_review_hint(..., reset_output = FALSE)
+  }
+
   expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = FALSE, ci = FALSE)))
   expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = FALSE)))
   expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = TRUE)))

@@ -71,7 +71,8 @@ verify_exec <- function(expr, env = caller_env(), replay = output_replay) {
     exprs <- list(expr)
   }
 
-  withr::local_pdf(tempfile())
+  device_path <- withr::local_tempfile(pattern = "verify_exec_")
+  withr::local_pdf(device_path)
   grDevices::dev.control(displaylist = "enable")
 
   exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))

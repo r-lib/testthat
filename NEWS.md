@@ -1,12 +1,59 @@
 # testthat (development version)
 
+* Adds `recursive` parameter to `test_dir()` to allow the use of directories to
+  organize test files (@radbasa, #1605).
+
+# testthat 3.2.0
+
+## Lifecycle changes
+
+* `is_informative_error()` and the `wrap` argument to `test_dir()` and friends
+  are now defunct.
+
+* `expect_no_error()`, `expect_no_warning()`, `expect_no_message()`, 
+  `expect_no_condition()`, `local_mocked_bindings()`, and 
+  `with_mocked_bindings()` are now stable, not experimental.
+
+## New features
+
+* All packages, regardless of whether or not they use rlang 1.0.0, now
+  use the new snapshot display for errors, warnings, and messages (#1856).
+  This no longer shows the class name, instead focussing on a display that
+  more closely mimics what you'll see interactively, including showing the
+  error call.
+
 * testthat uses an improved algorithm for finding the srcref associated with
   an expectation/error/warning/skip. It now looks for the most recent call
   that has known source and is found inside the `test_that()` call. This
   generally gives more specific locations than the previous approach and
   gives much better locations if an error occurs in an exit handler.
 
-* Helpers should no longer be run twice.
+## Minor features and bug fixes
+
+* Helpers are no longer run twice.
+
+* `expect_setequal()` correctly displays results when only one of actual and
+  expected is missing elements (#1835).
+
+* `expect_snapshot()` and friends no longer create a temporary file on every
+  invocation.
+
+* `expect_snapshot_file()` now generates clickable links to review changes 
+  (#1821).
+
+* `expect_snapshot_value()` has an improved error if the object can't be
+  safely serialized using the specified `style` (#1771).
+
+* `options(rlang_interactive = TRUE)` no longer causes `skip_on_cran()` to
+  not run on CRAN (#1868).
+
+* `skip_if_offline()` now errors if you don't have curl installed (#1854).
+
+* `StopReporter` gains the ability to suppress praise when a test passes.
+
+* `ProgressReporter` now uses is a two characters wide skip column in order
+  to have a consistent width when 10 or more tests are skipped in a single file 
+  (@mgirlich, #1844).
 
 * `test_file()` gains a `desc` argument which allows you to run a single 
   test from a file (#1776).
@@ -53,9 +100,6 @@
 * `skip_on_cran()` no longer skips (errors) when run interactively.
 
 * `teardown_env()` works in more cases.
-
-* All packages, regardless of whether or not they use rlang, now
-  use the new snapshot display for errors, warnings, and messages.
 
 * testthat no longer truncates tracebacks and uses rlang's default tree
   display.

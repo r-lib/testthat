@@ -77,3 +77,7 @@ test_that("can't mock bindings that don't exist", {
   expect_snapshot(local_mocked_bindings(f = function() "x"), error = TRUE)
 })
 
+test_that("can mock base functions with in-package bindings", {
+  local_mocked_bindings(interactive = function() TRUE)
+  expect_equal(test_mock_base(), TRUE)
+})

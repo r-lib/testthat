@@ -154,7 +154,16 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   }
 }
 
-snapshot_review_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check()) {
+snapshot_review_hint <- function(test,
+                                 name,
+                                 ci = on_ci(),
+                                 check = in_rcmd_check(),
+                                 reset_output = TRUE) {
+  if (reset_output) {
+    local_reporter_output()
+  }
+
+
   path <- paste0("tests/testthat/_snaps/", test, "/", new_name(name))
 
   paste0(
@@ -162,7 +171,7 @@ snapshot_review_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check
     if (check && !ci) "* Locate check directory\n",
     if (check) paste0("* Copy '", path, "' to local test directory\n"),
     if (check) "* ",
-    paste0("Run `testthat::snapshot_review('", test, "/')` to review changes")
+    cli::format_inline("Run {.run testthat::snapshot_review('{test}/')} to review changes")
   )
 }
 
@@ -230,14 +239,14 @@ split_path <- function(path) {
   )
 }
 
-write_tmp_lines <- function(lines, ext = ".txt", eol = "\n") {
-  path <- tempfile(fileext = ext)
+write_tmp_lines <- function(lines, ext = ".txt", eol = "\n", envir = caller_env()) {
+  path <- withr::local_tempfile(fileext = ext, .local_envir = envir)
   brio::write_lines(lines, path, eol = eol)
   path
 }
 
 local_snap_dir <- function(paths, .env = parent.frame()) {
-  dir <- tempfile()
+  dir <- withr::local_tempfile(.local_envir = .env)
   withr::defer(unlink(paths), envir = .env)
 
   dirs <- file.path(dir, unique(dirname(paths)))

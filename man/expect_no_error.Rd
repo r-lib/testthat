@@ -26,7 +26,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \item{message, class}{The default, \verb{message = NULL, class = NULL},
 will fail if there is any error/warning/message/condition.
 
-If many cases, particularly when testing warnings and message, you will
+In many cases, particularly when testing warnings and messages, you will
 want to be more specific about the condition you are hoping \strong{not} to see,
 i.e. the condition that motivated you to write the test.  Similar to
 \code{expect_error()} and friends, you can specify the \code{message} (a regular
@@ -43,8 +43,6 @@ another package, either protect the test with \code{skip_on_cran()} or
 use \code{expect_snapshot()}.}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 These expectations are the opposite of \code{\link[=expect_error]{expect_error()}},
 \code{expect_warning()}, \code{expect_message()}, and \code{expect_condition()}. They
 assert the absence of an error, warning, or message, respectively.
