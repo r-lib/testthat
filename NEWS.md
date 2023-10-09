@@ -57,9 +57,6 @@
 * `test_file()` gains a `desc` argument which allows you to run a single 
   test from a file (#1776).
 
-* `expect_setequal()` correctly displays results when only one of actual and
-  expected is missing values (#1835).
-
 # testthat 3.1.10
 
 * Fix for upcoming R-devel release.
