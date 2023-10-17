@@ -54,6 +54,9 @@
 
 * `test_file()` gains a `desc` argument which allows you to run a single 
   test from a file (#1776).
+  
+* `JunitReporter()` now uses ensures numeric values are saved the xml file 
+  with `.` as decimal separator. (@maksymiuks, #1660)
 
 # testthat 3.1.10
 

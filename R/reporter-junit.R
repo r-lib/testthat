@@ -85,22 +85,27 @@ JunitReporter <- R6::R6Class("JunitReporter",
     },
 
     end_context = function(context) {
+      # Make sure that any options posed by particular tests environments
+      # will not interfere with how values are saved to the file
+      withr::local_options(list(OutDec = "."))
       xml2::xml_attr(self$suite, "tests") <- as.character(self$tests)
       xml2::xml_attr(self$suite, "skipped") <- as.character(self$skipped)
       xml2::xml_attr(self$suite, "failures") <- as.character(self$failures)
       xml2::xml_attr(self$suite, "errors") <- as.character(self$errors)
       #jenkins junit plugin requires time has at most 3 digits
       xml2::xml_attr(self$suite, "time") <- as.character(round(self$suite_time, 3))
-
+      
       self$reset_suite()
+  
     },
 
     add_result = function(context, test, result) {
+      withr::local_options(list(OutDec = "."))
       self$tests <- self$tests + 1
-
+      
       time <- self$elapsed_time()
       self$suite_time <- self$suite_time + time
-
+      
       # XML node for test case
       name <- test %||% "(unnamed)"
       testcase <- xml2::xml_add_child(
@@ -109,12 +114,12 @@ JunitReporter <- R6::R6Class("JunitReporter",
         classname = classnameOK(context),
         name = classnameOK(name)
       )
-
+      
       first_line <- function(x) {
         loc <- expectation_location(x, " (", ")")
         paste0(strsplit(x$message, split = "\n")[[1]][1], loc)
       }
-
+      
       # add an extra XML child node if not a success
       if (expectation_error(result)) {
         # "type" in Java is the exception class
