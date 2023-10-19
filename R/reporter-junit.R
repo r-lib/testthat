@@ -85,6 +85,8 @@ JunitReporter <- R6::R6Class("JunitReporter",
     },
 
     end_context = function(context) {
+      # Always uses . as decimal place in output regardless of options set in test
+      withr::local_options(list(OutDec = "."))
       xml2::xml_attr(self$suite, "tests") <- as.character(self$tests)
       xml2::xml_attr(self$suite, "skipped") <- as.character(self$skipped)
       xml2::xml_attr(self$suite, "failures") <- as.character(self$failures)
@@ -96,6 +98,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
     },
 
     add_result = function(context, test, result) {
+      withr::local_options(list(OutDec = "."))
       self$tests <- self$tests + 1
 
       time <- self$elapsed_time()
