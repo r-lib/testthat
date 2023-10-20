@@ -2,6 +2,9 @@
 
 * `test_dir()` gains a `recursive` argument which allows test files in nested directories (#1605).
 
+* `JunitReporter()` now uses ensures numeric values are saved the xml file 
+  with `.` as decimal separator. (@maksymiuks, #1660)
+
 # testthat 3.2.0
 
 ## Lifecycle changes
