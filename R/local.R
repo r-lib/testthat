@@ -134,10 +134,12 @@ local_reproducible_output <- function(width = 80,
   )
 
   if (isTRUE(capabilities("NLS"))) {
+    # FIXME: We need a new `locale` argument here, should be consistent
+    # with the `lang` argument to `local_reproducible_output()`
+    withr::local_envvar(c(LC_ALL = "en_GB"), .local_envir = .env)
     if (!(Sys.getenv("LANG") %in% c("C", "C.UTF-8"))) {
       withr::local_language(lang, .local_envir = .env)
     }
-    withr::local_envvar(c(LC_ALL = "en_GB"), .local_envir = .env)
   }
 
   withr::local_collate("C", .local_envir = .env)
