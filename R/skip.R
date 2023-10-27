@@ -122,14 +122,19 @@ package_version <- function(x) {
 
 #' @export
 #' @rdname skip
-skip_if_offline <- function(host = "r-project.org") {
+skip_if_offline <- function(host = c("r-project.org", "github.com", "captive.apple.com")) {
   skip_on_cran()
   check_installed("curl")
 
   skip_if_not(has_internet(host), "offline")
 }
 has_internet <- function(host) {
-  !is.null(curl::nslookup(host, error = FALSE))
+  for (h in host) {
+    if (!is.null(curl::nslookup(h, error = FALSE))) {
+      return(TRUE)
+    }
+  }
+  return(FALSE)
 }
 
 #' @export
