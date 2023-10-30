@@ -81,17 +81,6 @@ rstudio_tickle <- function() {
   rstudioapi::executeCommand("refreshFiles")
 }
 
-check_installed <- function(pkg, fun) {
-  if (is_installed(pkg)) {
-    return()
-  }
-
-  abort(c(
-    paste0("The ", pkg, " package must be installed in order to use `", fun, "`"),
-    i = paste0("Do you need to run `install.packages('", pkg, "')`?")
-  ))
-}
-
 first_upper <- function(x) {
   substr(x, 1, 1) <- toupper(substr(x, 1, 1))
   x
