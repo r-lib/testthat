@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `test_file(desc = )` will now find `describe()` tests as well as `testthat()`
+  tests (#1903).
+
 * `JunitReporter()` now uses ensures numeric values are saved the xml file 
   with `.` as decimal separator. (@maksymiuks, #1660)
 

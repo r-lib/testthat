@@ -54,7 +54,7 @@ test_that("can find only matching test", {
     f(),
     test_that("foo", {}),
     g(),
-    test_that("bar", {}),
+    describe("bar", {}),
     h()
   )
   expect_equal(filter_desc(code, "foo"), code[c(1, 2)])

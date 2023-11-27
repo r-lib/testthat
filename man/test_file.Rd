@@ -22,7 +22,7 @@ as a string (e.g. "summary") or as an R6 object
 See \link{Reporter} for more details and a list of built-in reporters.}
 
 \item{desc}{Optionally, supply a string here to run only a single
-test that has this \code{desc}ription.}
+test (\code{test_that()} or \code{describe()}) with this \code{desc}ription.}
 
 \item{package}{If these tests belong to a package, the name of the package.}
 
