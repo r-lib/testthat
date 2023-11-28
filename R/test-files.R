@@ -109,7 +109,7 @@ test_dir <- function(path,
 #' @param path Path to file.
 #' @param ... Additional parameters passed on to `test_dir()`
 #' @param desc Optionally, supply a string here to run only a single
-#'   test that has this `desc`ription.
+#'   test (`test_that()` or `describe()`) with this `desc`ription.
 #' @export
 #' @examples
 #' path <- testthat_example("success")
