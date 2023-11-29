@@ -89,7 +89,7 @@ protected:
     if (n == 1)
       Rprintf("%c", *s);
     else
-      Rprintf("%.*s", n, s);
+      Rprintf("%.*s", static_cast<int>(n), s);
 
     return n;
 
