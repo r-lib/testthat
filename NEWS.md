@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* Unexpected errors in `expect_snapshot()` now behave like regular errors;
+  i.e. they terminate evaluation of the entire test and get a traceback 
+  (#1906).
+
 * `test_file(desc = )` will now find `describe()` tests as well as `testthat()`
   tests (#1903).
 
