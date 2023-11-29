@@ -22,7 +22,7 @@ skip_if(condition, message = NULL)
 
 skip_if_not_installed(pkg, minimum_version = NULL)
 
-skip_if_offline(host = "r-project.org")
+skip_if_offline(host = "captive.apple.com")
 
 skip_on_cran()
 
