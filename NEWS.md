@@ -3,6 +3,10 @@
 * `local_mocked_bindings()` can now mock any object, not just functions 
   (#1896).
 
+* `skip_if_offline()` now uses `captive.apple.com` by default. This is the 
+  host that Apple devices use to check that they're online so should be 
+  a higher reliability host than `r-project.org` (@jdblischak, #1890).
+
 * `test_file(desc = )` will now find `describe()` tests as well as `testthat()`
   tests (#1903).
 

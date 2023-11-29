@@ -122,7 +122,7 @@ package_version <- function(x) {
 
 #' @export
 #' @rdname skip
-skip_if_offline <- function(host = "r-project.org") {
+skip_if_offline <- function(host = "captive.apple.com") {
   skip_on_cran()
   check_installed("curl")
 
