@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `local_mocked_bindings()` can now mock any object, not just functions 
+  (#1896).
+
 * `test_file(desc = )` will now find `describe()` tests as well as `testthat()`
   tests (#1903).
 
