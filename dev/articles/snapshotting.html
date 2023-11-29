@@ -327,9 +327,11 @@ output, a message, and a warning:</p>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; -- Error: you can't add a number and a letter ----------------------------------</span></span>
-<span><span class="co">#&gt; `1 + "a"` threw an unexpected error.</span></span>
-<span><span class="co">#&gt; Message: non-numeric argument to binary operator</span></span>
-<span><span class="co">#&gt; Class:   simpleError/error/condition</span></span>
+<span><span class="co">#&gt; Error in `1 + "a"`: non-numeric argument to binary operator</span></span>
+<span><span class="co">#&gt; Backtrace:</span></span>
+<span><span class="co">#&gt;     x</span></span>
+<span><span class="co">#&gt;  1. \-testthat::expect_snapshot(1 + "a")</span></span>
+<span><span class="co">#&gt;  2.   \-rlang::cnd_signal(state$error)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed</span></span></code></pre></div>
 <p>This is a safety valve that ensures that you don’t accidentally write
