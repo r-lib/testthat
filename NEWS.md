@@ -1,21 +1,23 @@
 # testthat (development version)
 
-* Unexpected errors in `expect_snapshot()` now behave like regular errors;
-  i.e. they terminate evaluation of the entire test and get a traceback 
-  (#1906).
+* Fix incorrect format string detected by latest R-devel. Fix thanks to 
+  Tomas Kalibera.
+
+* `expect_snapshot()` handles unexpected errors like errors outside of 
+  snapshots, i.e. they terminate the entire test and get a traceback (#1906).
+
+* `JunitReporter()` now uses ensures numeric values are saved the xml file 
+  with `.` as decimal separator. (@maksymiuks, #1660)
 
 * `local_mocked_bindings()` can now mock any object, not just functions 
   (#1896).
 
 * `skip_if_offline()` now uses `captive.apple.com` by default. This is the 
-  host that Apple devices use to check that they're online so should be 
-  a higher reliability host than `r-project.org` (@jdblischak, #1890).
+  hostname that Apple devices use to check that they're online so it should 
+  have a higher reliability than `r-project.org` (@jdblischak, #1890).
 
-* `test_file(desc = )` will now find `describe()` tests as well as `testthat()`
+* `test_file(desc = )` will now find `describe()` tests as well as `test_that()`
   tests (#1903).
-
-* `JunitReporter()` now uses ensures numeric values are saved the xml file 
-  with `.` as decimal separator. (@maksymiuks, #1660)
 
 # testthat 3.2.0
 
