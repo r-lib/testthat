@@ -56,7 +56,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
     },
 
     start_reporter = function() {
-      check_installed("xml2", "JunitReporter")
+      check_installed("xml2", "to use JunitReporter")
 
       self$timer <- private$proctime()
       self$doc <- xml2::xml_new_document()

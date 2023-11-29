@@ -255,7 +255,7 @@ expect_condition_matching <- function(base_class,
                                       info = NULL,
                                       label = NULL,
                                       trace_env = caller_env()) {
-  ellipsis::check_dots_used(action = warn)
+  check_dots_used(error = warning)
 
   matcher <- cnd_matcher(
     base_class,
