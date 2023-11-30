@@ -1,48 +1,68 @@
-# APCalign
+# miWQS
 
 <details>
 
-* Version: 0.1.3
-* GitHub: https://github.com/traitecoevo/APCalign
-* Source code: https://github.com/cran/APCalign
-* Date/Publication: 2023-11-16 22:43:53 UTC
-* Number of recursive dependencies: 97
+* Version: 0.4.4
+* GitHub: https://github.com/phargarten2/miWQS
+* Source code: https://github.com/cran/miWQS
+* Date/Publication: 2021-04-02 21:50:02 UTC
+* Number of recursive dependencies: 152
 
-Run `revdepcheck::cloud_details(, "APCalign")` for more info
+Run `revdepcheck::cloud_details(, "miWQS")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking re-building of vignette outputs ... ERROR
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/tests.html
-      > # * https://testthat.r-lib.org/reference/test_package.html#special-files
+    Error(s) in re-building vignettes:
+    --- re-building ‘README.Rmd’ using rmarkdown
+    tlmgr: package repository https://ctan.mirrors.hoobly.com/systems/texlive/tlnet (verified)
+    [1/1, ??:??/??:??] install: grffile [4k]
+    running mktexlsr ...
+    done running mktexlsr.
+    tlmgr: package log updated: /opt/TinyTeX/texmf-var/web2c/tlmgr.log
+    tlmgr: command log updated: /opt/TinyTeX/texmf-var/web2c/tlmgr-commands.log
+    tlmgr: package repository https://mirror.mwt.me/ctan/systems/texlive/tlnet (verified)
+    [1/2, ??:??/??:??] install: biblatex [249k]
     ...
-        6. │     └─dplyr:::check_nth_default(default, x = x)
-        7. │       └─vctrs::vec_init(x)
-        8. └─vctrs:::stop_scalar_type(`<fn>`(NULL), "x", `<fn>`(vec_init()))
-        9.   └─vctrs:::stop_vctrs(...)
-       10.     └─rlang::abort(message, class = c(class, "vctrs_error"), ..., call = call)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 85 ]
-      Error: Test failures
-      In addition: There were 18 warnings (use warnings() to see them)
-      Execution halted
+    Warning: (biblatex)                and rerun LaTeX afterwards.
+    Error: processing vignette 'README.Rmd' failed with diagnostics:
+    Failed to build the bibliography via biber
+    --- failed re-building ‘README.Rmd’
+    
+    SUMMARY: processing the following file failed:
+      ‘README.Rmd’
+    
+    Error: Vignette re-building failed.
+    Execution halted
     ```
 
-## In both
+## Newly fixed
 
-*   checking data for non-ASCII characters ... NOTE
+*   checking re-building of vignette outputs ... WARNING
     ```
-      Note: found 4 marked UTF-8 strings
+    Error(s) in re-building vignettes:
+      ...
+    --- re-building ‘README.Rmd’ using rmarkdown
+    
+    tlmgr: Remote database (rev 68993) seems to be older than local (rev 68995 of texlive-scripts); please use different mirror or  wait a day or so.
+    Warning in system2("tlmgr", args, ...) :
+      running command ''tlmgr' search --file --global '/grffile.sty'' had status 1
+    ! LaTeX Error: File `grffile.sty' not found.
+    
+    ! Emergency stop.
+    ...
+    
+    Error: processing vignette 'README.Rmd' failed with diagnostics:
+    LaTeX failed to compile /tmp/workdir/miWQS/old/miWQS.Rcheck/vign_test/miWQS/vignettes/README.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See README.log for more info.
+    --- failed re-building ‘README.Rmd’
+    
+    SUMMARY: processing the following file failed:
+      ‘README.Rmd’
+    
+    Error: Vignette re-building failed.
+    Execution halted
     ```
 
