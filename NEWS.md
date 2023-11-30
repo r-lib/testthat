@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.2.1
 
 * Fix incorrect format string detected by latest R-devel. Fix thanks to 
   Tomas Kalibera.
