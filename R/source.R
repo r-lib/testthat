@@ -71,7 +71,7 @@ filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
   for (i in seq_along(exprs)) {
     expr <- exprs[[i]]
 
-    if (!is_call(expr, "test_that", n = 2)) {
+    if (!is_call(expr, c("test_that", "describe"), n = 2)) {
       if (!found) {
         include[[i]] <- TRUE
       }

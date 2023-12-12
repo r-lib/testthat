@@ -1,6 +1,6 @@
 Package: testthat
 Title: Unit Testing for R
-Version: 3.2.0.9000
+Version: 3.2.1.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
     person("Posit Software, PBC", role = c("cph", "fnd")),
@@ -22,7 +22,6 @@ Imports:
     cli (>= 3.6.1),
     desc (>= 1.4.2),
     digest (>= 0.6.33),
-    ellipsis (>= 0.3.2),
     evaluate (>= 0.21),
     jsonlite (>= 1.8.7),
     lifecycle (>= 1.0.3),
