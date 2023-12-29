@@ -1,7 +1,7 @@
 #' Manage test reporting
 #'
 #' The job of a reporter is to aggregate the results from files, tests, and
-#' expectations and display them in an informative way. Every testtthat function
+#' expectations and display them in an informative way. Every testthat function
 #' that runs multiple tests provides a `reporter` argument which you can
 #' use to override the default (which is selected by [default_reporter()]).
 #'
