@@ -93,7 +93,8 @@
 #' )
 #' ```
 #' @export
-#' @param ... Name-value pairs providing functions to mock.
+#' @param ... Name-value pairs providing new values (typically functions) to
+#'   temporarily replace the named bindings.
 #' @param code Code to execute with specified bindings.
 #' @param .env Environment that defines effect scope. For expert use only.
 #' @param .package The name of the package where mocked functions should be
@@ -195,14 +196,6 @@ check_bindings <- function(x, error_call = caller_env()) {
       call = error_call
     )
   }
-
-  is_fun <- map_lgl(x, is.function)
-  if (!any(is_fun)) {
-    cli::cli_abort(
-      "All elements of {.arg ...} must be functions.",
-      call = error_call
-    )
-  }
 }
 
 # For testing -------------------------------------------------------------
@@ -243,6 +236,8 @@ show_bindings <- function(name, env = caller_env()) {
   lapply(has_binding, env_desc)
   invisible()
 }
+
+test_mock_value <- 10
 
 env_desc <- function(env) {
   cat(obj_address(env), ": ", env_name(env), "\n", sep = "")

@@ -25,3 +25,14 @@
     Message: dispatched!
     Class:   foobar/rlang_error/error/condition
 
+# unused arguments generate a warning
+
+    Code
+      expect_condition(stop("Hi!"), foo = "bar")
+    Condition
+      Warning in `expect_condition()`:
+      Arguments in `...` must be used.
+      x Problematic argument:
+      * foo = "bar"
+      i Did you misspell an argument name?
+

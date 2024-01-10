@@ -10,7 +10,8 @@ local_mocked_bindings(..., .package = NULL, .env = caller_env())
 with_mocked_bindings(code, ..., .package = NULL)
 }
 \arguments{
-\item{...}{Name-value pairs providing functions to mock.}
+\item{...}{Name-value pairs providing new values (typically functions) to
+temporarily replace the named bindings.}
 
 \item{.package}{The name of the package where mocked functions should be
 inserted. Generally, you should not supply this as it will be automatically

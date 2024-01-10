@@ -44,7 +44,6 @@ test_that("can make wrapper", {
 test_that("with_mocked_bindings() validates its inputs", {
   expect_snapshot(error = TRUE, {
     with_mocked_bindings(1 + 1, function() 2)
-    with_mocked_bindings(1 + 1, x = 2)
   })
 })
 
@@ -80,4 +79,9 @@ test_that("can't mock bindings that don't exist", {
 test_that("can mock base functions with in-package bindings", {
   local_mocked_bindings(interactive = function() TRUE)
   expect_equal(test_mock_base(), TRUE)
+})
+
+test_that("can mock values", {
+  local_mocked_bindings(test_mock_value = 100)
+  expect_equal(test_mock_value, 100)
 })

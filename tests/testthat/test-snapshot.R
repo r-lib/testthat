@@ -142,6 +142,18 @@ test_that("errors and warnings are folded", {
   expect_snapshot(error = TRUE, f())
 })
 
+# I don't know how to test this automatically; wrapping it in another
+# snapshot doesn't capture the behaviour I expected, presumably due to the
+# way that errors bubble up
+# test_that("errors in snapshots behave like regular errors", {
+#   f <- function() g()
+#   g <- function() h()
+#   h <- function() abort("!")
+#
+#   expect_snapshot(f())
+#   expect_snapshot(1 + 1)
+# })
+
 test_that("hint is informative", {
   local_reproducible_output(crayon = TRUE, hyperlinks = TRUE, rstudio = TRUE)
 

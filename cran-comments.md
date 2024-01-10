@@ -1,24 +1,3 @@
 ## revdepcheck results
 
-We checked 7822 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
-
- * We saw 0 new problems
- * We failed to check 13 packages
-
-Issues with CRAN packages are summarised below.
-
-### Failed to check
-
-* bayesdfa     (NA)
-* Boom         (NA)
-* CausalImpact (NA)
-* ctsem        (NA)
-* fdaPDE       (NA)
-* loon.ggplot  (NA)
-* loon.shiny   (NA)
-* loon.tourr   (NA)
-* Rborist      (NA)
-* rstanarm     (NA)
-* SSVS         (NA)
-* tidyfit      (NA)
-* vivid        (NA)
+We checked all reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package. Unfortunately something is up with our revdep test system and I failed to check ~1200 packages. I'm pretty confident these are bioconductor packages and unrelated to changes to testthat.

@@ -1,9 +1,26 @@
 # testthat (development version)
 
 * `test_dir()` gains a `recursive` argument which allows test files in nested directories (#1605).
+# testthat 3.2.1
+
+* Fix incorrect format string detected by latest R-devel. Fix thanks to 
+  Tomas Kalibera.
+
+* `expect_snapshot()` handles unexpected errors like errors outside of 
+  snapshots, i.e. they terminate the entire test and get a traceback (#1906).
 
 * `JunitReporter()` now uses ensures numeric values are saved the xml file 
   with `.` as decimal separator. (@maksymiuks, #1660)
+
+* `local_mocked_bindings()` can now mock any object, not just functions 
+  (#1896).
+
+* `skip_if_offline()` now uses `captive.apple.com` by default. This is the 
+  hostname that Apple devices use to check that they're online so it should 
+  have a higher reliability than `r-project.org` (@jdblischak, #1890).
+
+* `test_file(desc = )` will now find `describe()` tests as well as `test_that()`
+  tests (#1903).
 
 # testthat 3.2.0
 
