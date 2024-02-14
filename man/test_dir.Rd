@@ -15,6 +15,7 @@ test_dir(
   stop_on_warning = FALSE,
   wrap = lifecycle::deprecated(),
   package = NULL,
+  recursive = FALSE,
   load_package = c("none", "installed", "source")
 )
 }
@@ -45,6 +46,8 @@ warnings.}
 \item{wrap}{DEPRECATED}
 
 \item{package}{If these tests belong to a package, the name of the package.}
+
+\item{recursive}{If \code{TRUE} Test that will search for test files in the nested directories.}
 
 \item{load_package}{Strategy to use for load package code:
 \itemize{
