@@ -1,5 +1,11 @@
 # testthat (development version)
 
+* Add new error, warning, and message capturing expectations for conditions from
+  other packages.  `expect_error_forwarded()`, `expect_warning_forwarded()`, and
+  `expect_message_forwarded()` capture errors, warnings, and messages that come
+  from other code to match the message that is not in the control of the package
+  being tested (@billdenney, #1927).
+
 # testthat 3.2.1
 
 * Fix incorrect format string detected by latest R-devel. Fix thanks to 

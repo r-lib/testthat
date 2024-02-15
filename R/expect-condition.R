@@ -6,6 +6,10 @@
 #' or condition with a message that matches `regexp`, or a class that inherits
 #' from `class`. See below for more details.
 #'
+#' If you need to test that an error, warning, or message is the same as one
+#' given by another package, then see the [expect_error_forwarded()],
+#' [expect_warning_forwarded()], and [expect_message_forwarded()] functions.
+#'
 #' In the 3rd edition, these functions match (at most) a single condition. All
 #' additional and non-matching (if `regexp` or `class` are used) conditions
 #' will bubble up outside the expectation. If these additional conditions
