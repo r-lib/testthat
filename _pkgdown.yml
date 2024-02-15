@@ -38,6 +38,7 @@ reference:
   - expect_invisible
   - expect_output
   - expect_silent
+  - expect_error_forwarded
   - local_reproducible_output
 
 - title: Snapshot testing
