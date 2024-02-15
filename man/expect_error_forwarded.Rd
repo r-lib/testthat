@@ -6,13 +6,21 @@
 \alias{expect_message_forwarded}
 \title{Does code throw an error, warning, or message that is the same as another?}
 \usage{
-expect_error_forwarded(actual, expected, label = NULL)
+expect_error_forwarded(object, expected, label = NULL)
 
-expect_warning_forwarded(actual, expected, label = NULL)
+expect_warning_forwarded(object, expected, label = NULL)
 
-expect_message_forwarded(actual, expected, label = NULL)
+expect_message_forwarded(object, expected, label = NULL)
 }
 \arguments{
+\item{object}{Object to test.
+
+Supports limited unquoting to make it easier to generate readable failures
+within a function or for loop. See \link{quasi_label} for more details.}
+
+\item{expected}{A call that causes the expected error, warning, or message.
+It is usually a call to another package than the one being tested.}
+
 \item{label}{Used to customise failure messages. For expert use only.}
 }
 \value{
@@ -24,6 +32,19 @@ The value of the first argument
 message, or condition with a message that matches an \code{expected} value from an
 example.  These functions are useful to test that a condition matches one
 from another package that you do not control.
+}
+\examples{
+myfun <- function(x) {
+  stopifnot(length(x) == 1)
+}
+
+expect_error_forwarded(
+  myfun(x = 1:2),
+  {
+    x <- 1:2
+    stopifnot(length(x) == 1)
+  }
+)
 }
 \seealso{
 Other expectations: 

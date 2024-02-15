@@ -10,24 +10,38 @@
 #' @export
 #' @family expectations
 #' @inheritParams expect_that
+#' @param expected A call that causes the expected error, warning, or message.
+#'   It is usually a call to another package than the one being tested.
 #' @return The value of the first argument
-expect_error_forwarded <- function(actual, expected, label = NULL) {
+#' @examples
+#' myfun <- function(x) {
+#'   stopifnot(length(x) == 1)
+#' }
+#'
+#' expect_error_forwarded(
+#'   myfun(x = 1:2),
+#'   {
+#'     x <- 1:2
+#'     stopifnot(length(x) == 1)
+#'   }
+#' )
+expect_error_forwarded <- function(object, expected, label = NULL) {
   message <- error_message(expected)
-  expect_error({{ actual }}, regexp = message, fixed = TRUE, label = label)
+  expect_error({{ object }}, regexp = message, fixed = TRUE, label = label)
 }
 
 #' @export
 #' @rdname expect_error_forwarded
-expect_warning_forwarded <- function(actual, expected, label = NULL) {
+expect_warning_forwarded <- function(object, expected, label = NULL) {
   message <- warning_message(expected)
-  expect_warning({{ actual }}, regexp = message, fixed = TRUE, label = label)
+  expect_warning({{ object }}, regexp = message, fixed = TRUE, label = label)
 }
 
 #' @export
 #' @rdname expect_error_forwarded
-expect_message_forwarded <- function(actual, expected, label = NULL) {
+expect_message_forwarded <- function(object, expected, label = NULL) {
   message <- message_message(expected)
-  expect_message({{ actual }}, regexp = message, fixed = TRUE, label = label)
+  expect_message({{ object }}, regexp = message, fixed = TRUE, label = label)
 }
 
 error_message <- function(code) {
