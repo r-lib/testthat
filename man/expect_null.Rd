@@ -34,6 +34,7 @@ Other expectations:
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},
 \code{\link{expect_error}()},
+\code{\link{expect_error_forwarded}()},
 \code{\link{expect_length}()},
 \code{\link{expect_match}()},
 \code{\link{expect_named}()},

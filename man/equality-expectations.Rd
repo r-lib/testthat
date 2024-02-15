@@ -86,6 +86,7 @@ expect_equal(sqrt(2) ^ 2, 2)
 Other expectations: 
 \code{\link{comparison-expectations}},
 \code{\link{expect_error}()},
+\code{\link{expect_error_forwarded}()},
 \code{\link{expect_length}()},
 \code{\link{expect_match}()},
 \code{\link{expect_named}()},
