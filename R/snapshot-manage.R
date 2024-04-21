@@ -38,7 +38,11 @@ snapshot_review <- function(files = NULL, path = "tests/testthat") {
   }
 
   review_app(changed$name, changed$cur, changed$new)
-  rstudio_tickle()
+  
+  rs_avail <- rstudio_tickle()
+  if (rs_avai) {
+    executeCommand("activateBuild")
+  }
   invisible()
 }
 
