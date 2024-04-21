@@ -40,7 +40,7 @@ snapshot_review <- function(files = NULL, path = "tests/testthat") {
   review_app(changed$name, changed$cur, changed$new)
   
   rs_avail <- rstudio_tickle()
-  if (rs_avai) {
+  if (rs_avail) {
     executeCommand("activateBuild")
   }
   invisible()
