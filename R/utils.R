@@ -51,15 +51,16 @@ split_by_line <- function(x) {
 
 rstudio_tickle <- function() {
   if (!is_installed("rstudioapi")) {
-    return()
+    return(invisible(FALSE))
   }
 
   if (!rstudioapi::hasFun("executeCommand")) {
-    return()
+    return(invisible(FALSE))
   }
 
   rstudioapi::executeCommand("vcsRefresh")
   rstudioapi::executeCommand("refreshFiles")
+  invisible(TRUE)
 }
 
 first_upper <- function(x) {
