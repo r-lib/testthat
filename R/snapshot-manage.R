@@ -41,7 +41,7 @@ snapshot_review <- function(files = NULL, path = "tests/testthat") {
   
   rs_avail <- rstudio_tickle()
   if (rs_avail) {
-    executeCommand("activateBuild")
+    rstudioapi::executeCommand("activateBuild")
   }
   invisible()
 }
