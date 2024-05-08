@@ -27,7 +27,6 @@ test_that("ok", {
     TESTTHAT_PARALLEL = "TRUE",
     TESTTHAT_GHA_SUMMARY = "FALSE"
   ))
-  suppressMessages(ret <- test_local(
   capture.output(suppressMessages(ret <- test_local(
     test_path("test-parallel", "ok"),
     reporter = "summary",
