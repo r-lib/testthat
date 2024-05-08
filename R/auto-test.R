@@ -1,7 +1,7 @@
 #' Watches code and tests for changes, rerunning tests as appropriate.
 #'
 #' The idea behind `auto_test()` is that you just leave it running while
-#' you develop your code.  Everytime you save a file it will be automatically
+#' you develop your code.  Every time you save a file it will be automatically
 #' tested and you can easily see if your changes have caused any test
 #'  failures.
 #'

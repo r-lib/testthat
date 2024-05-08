@@ -2,10 +2,6 @@
 % Please edit documentation in R/snapshot.R
 \name{expect_snapshot}
 \alias{expect_snapshot}
-\alias{expect_snapshot_output}
-\alias{expect_snapshot_error}
-\alias{expect_snapshot_warning}
-\alias{expect_snapshot_value}
 \title{Snapshot testing}
 \usage{
 expect_snapshot(
@@ -15,21 +11,6 @@ expect_snapshot(
   transform = NULL,
   variant = NULL,
   cnd_class = FALSE
-)
-
-expect_snapshot_output(x, cran = FALSE, variant = NULL)
-
-expect_snapshot_error(x, class = "error", cran = FALSE, variant = NULL)
-
-expect_snapshot_warning(x, class = "warning", cran = FALSE, variant = NULL)
-
-expect_snapshot_value(
-  x,
-  style = c("json", "json2", "deparse", "serialize"),
-  cran = FALSE,
-  tolerance = testthat_tolerance(),
-  ...,
-  variant = NULL
 )
 }
 \arguments{
@@ -47,13 +28,11 @@ expected error is not thrown.}
 text from the output. Should take a character vector of lines as input
 and return a modified character vector as output.}
 
-\item{variant}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\item{variant}{If non-\code{NULL}, results will be saved in
+\verb{_snaps/\{variant\}/\{test.md\}}, so \code{variant} must be a single string
+suitable for use as a directory name.
 
-If not-\code{NULL}, results will be saved in \verb{_snaps/\{variant\}/\{test.md\}},
-so \code{variant} must be a single string of alphanumeric characters suitable
-for use as a directory name.
-
-You can variants to deal with cases where the snapshot output varies
+You can use variants to deal with cases where the snapshot output varies
 and you want to capture and test the variations. Common use cases include
 variations for operating system, R version, or version of key dependency.
 Variants are an advanced feature. When you use them, you'll need to
@@ -64,33 +43,6 @@ to get snapshot changes out of your CI system and back into the repo.}
 \item{cnd_class}{Whether to include the class of messages,
 warnings, and errors in the snapshot. Only the most specific
 class is included, i.e. the first element of \code{class(cnd)}.}
-
-\item{class}{Class of expected error or warning. The expectation will
-always fail (even on CRAN) if an error of this class isn't seen
-when executing \code{x}.}
-
-\item{style}{Serialization style to use:
-\itemize{
-\item \code{json} uses \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} and \code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}. This
-produces the simplest output but only works for relatively simple
-objects.
-\item \code{json2} uses \code{\link[jsonlite:serializeJSON]{jsonlite::serializeJSON()}} and \code{\link[jsonlite:serializeJSON]{jsonlite::unserializeJSON()}}
-which are more verbose but work for a wider range of type.
-\item \code{deparse} uses \code{\link[=deparse]{deparse()}}, which generates a depiction of the object
-using R code.
-\item \code{serialize()} produces a binary serialization of the object using
-\code{\link[=serialize]{serialize()}}. This is all but guaranteed to work for any R object,
-but produces a completely opaque serialization.
-}}
-
-\item{tolerance}{Numerical tolerance: any differences (in the sense of
-\code{\link[base:all.equal]{base::all.equal()}}) smaller than this value will be ignored.
-
-The default tolerance is \code{sqrt(.Machine$double.eps)}, unless long doubles
-are not available, in which case the test is skipped.}
-
-\item{...}{For \code{expect_snapshot_value()} only, passed on to
-\code{\link[waldo:compare]{waldo::compare()}} so you can control the details of the comparison.}
 }
 \description{
 Snapshot tests (aka golden tests) are similar to unit tests except that the
@@ -99,28 +51,19 @@ Snapshot tests are useful for when the expected value is large, or when
 the intent of the code is something that can only be verified by a human
 (e.g. this is a useful error message). Learn more in
 \code{vignette("snapshotting")}.
-\itemize{
-\item \code{expect_snapshot()} captures all messages, warnings, errors, and
-output from code.
-\item \code{expect_snapshot_output()} captures just output printed to the console.
-\item \code{expect_snapshot_error()} captures an error message and
-optionally checks its class.
-\item \code{expect_snapshot_warning()} captures a warning message and
-optionally checks its class.
-\item \code{expect_snapshot_value()} captures the return value.
-}
 
-(These functions supersede \code{\link[=verify_output]{verify_output()}}, \code{\link[=expect_known_output]{expect_known_output()}},
-\code{\link[=expect_known_value]{expect_known_value()}}, and \code{\link[=expect_known_hash]{expect_known_hash()}}.)
+\code{expect_snapshot()} runs code as if you had executed it at the console, and
+records the results, including output, messages, warnings, and errors.
+If you just want to compare the result, try \code{\link[=expect_snapshot_value]{expect_snapshot_value()}}.
 }
 \section{Workflow}{
 
 The first time that you run a snapshot expectation it will run \code{x},
-capture the results, and record in \verb{tests/testthat/snap/\{test\}.json}.
+capture the results, and record them in \verb{tests/testthat/_snaps/\{test\}.md}.
 Each test file gets its own snapshot file, e.g. \code{test-foo.R} will get
-\code{snap/foo.json}.
+\verb{_snaps/foo.md}.
 
-It's important to review the JSON files and commit them to git. They are
+It's important to review the Markdown files and commit them to git. They are
 designed to be human readable, and you should always review new additions
 to ensure that the salient information has been captured. They should also
 be carefully reviewed in pull requests, to make sure that snapshots have
@@ -128,7 +71,7 @@ updated in the expected way.
 
 On subsequent runs, the result of \code{x} will be compared to the value stored
 on disk. If it's different, the expectation will fail, and a new file
-\verb{snap/\{test\}.new.json} will be created. If the change was deliberate,
+\verb{_snaps/\{test\}.new.md} will be created. If the change was deliberate,
 you can approve the change with \code{\link[=snapshot_accept]{snapshot_accept()}} and then the tests will
 pass the next time you run them.
 

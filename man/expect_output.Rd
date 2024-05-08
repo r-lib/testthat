@@ -32,9 +32,9 @@ but doesn't check for a specific value.
   \describe{
     \item{\code{all}}{Should all elements of actual value match \code{regexp} (TRUE),
 or does only one need to match (FALSE).}
+    \item{\code{fixed}}{If \code{TRUE}, treats \code{regexp} as a string to be matched exactly
+(not a regular expressions). Overrides \code{perl}.}
     \item{\code{perl}}{logical.  Should Perl-compatible regexps be used?}
-    \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
-    matched as is.  Overrides all conflicting arguments.}
   }}
 
 \item{info}{Extra information to be included in the message. This argument
@@ -52,7 +52,7 @@ The first argument, invisibly.
 }
 \description{
 Test for output produced by \code{print()} or \code{cat()}. This is best used for
-very simple output; for more complex cases use \code{\link[=verify_output]{verify_output()}}.
+very simple output; for more complex cases use \code{\link[=expect_snapshot]{expect_snapshot()}}.
 }
 \examples{
 str(mtcars)

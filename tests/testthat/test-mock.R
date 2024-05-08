@@ -7,18 +7,18 @@ test_that("can change value of internal function", {
   local_edition(2)
 
   with_mock(
-    test_mock2 = function() 5,
-    expect_equal(test_mock1(), 5)
+    test_mock_internal2 = function() 5,
+    expect_equal(test_mock_internal(), 5)
   )
 
   # and value is restored on error
   expect_error(
     with_mock(
-      test_mock2 = function() 5,
+      test_mock_internal2 = function() 5,
       stop("!")
     )
   )
-  expect_equal(test_mock1(), 10)
+  expect_equal(test_mock_internal(), "y")
 })
 
 
@@ -27,8 +27,8 @@ test_that("mocks can access local variables", {
   x <- 5
 
   with_mock(
-    test_mock2 = function() x,
-    expect_equal(test_mock1(), 5)
+    test_mock_internal2 = function() x,
+    expect_equal(test_mock_internal(), 5)
   )
 })
 

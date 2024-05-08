@@ -16,10 +16,12 @@ StopReporter <- R6::R6Class("StopReporter",
     failures = NULL,
     n_fail = 0L,
     stop_reporter = TRUE,
+    praise = TRUE,
 
-    initialize = function(stop_reporter = TRUE) {
+    initialize = function(stop_reporter = TRUE, praise = TRUE) {
       super$initialize()
       self$failures <- Stack$new()
+      self$praise <- praise
       self$stop_reporter <- stop_reporter
     },
 
@@ -43,17 +45,19 @@ StopReporter <- R6::R6Class("StopReporter",
       self$local_user_output()
 
       failures <- self$failures$as_list()
-      if (length(failures) == 0) {
+      if (length(failures) == 0 && self$praise) {
         self$cat_line(colourise("Test passed", "success"), " ", praise_emoji())
         return()
       }
 
       messages <- vapply(failures, issue_summary, rule = TRUE, character(1))
-      self$cat_line(messages, "\n")
+      if (length(messages) > 0) {
+        self$cat_line(messages, "\n")
+      }
     },
     stop_if_needed = function() {
       if (self$stop_reporter && self$n_fail > 0) {
-        abort("Test failed")
+        abort("Test failed", call = NULL)
       }
     }
   )

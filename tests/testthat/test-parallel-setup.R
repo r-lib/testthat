@@ -6,10 +6,10 @@ test_that("error in parallel setup code", {
     TESTTHAT_GHA_SUMMARY = "FALSE"
   ))
   err <- tryCatch(
-    suppressMessages(testthat::test_local(
+    capture.output(suppressMessages(testthat::test_local(
       test_path("test-parallel", "setup"),
-      reporter = "silent"
-    )),
+      reporter = "summary"
+    ))),
     error = function(e) e
   )
   expect_s3_class(err, "testthat_process_error")

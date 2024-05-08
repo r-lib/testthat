@@ -18,7 +18,7 @@
     
     ##teamcity[testSuiteStarted name='Failure:2a']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='FALSE is not TRUE' details='|n`actual`:   FALSE|n`expected`: TRUE |nBacktrace:|n 1. f()|n      at reporters/tests.R:17:2|n 2. testthat::expect_true(FALSE)|n      at reporters/tests.R:16:7']
+    ##teamcity[testFailed name='expectation 1' message='FALSE is not TRUE' details='|n`actual`:   FALSE|n`expected`: TRUE |nBacktrace:|n    x|n 1. \-f()|n 2.   \-testthat::expect_true(FALSE)']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Failure:2a']
     
@@ -34,7 +34,7 @@
     
     ##teamcity[testSuiteStarted name='errors get tracebacks']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Error in `h()`: !' details='Backtrace:|n 1. f()|n      at reporters/tests.R:31:2|n 2. g()|n      at reporters/tests.R:27:7|n 3. h()|n      at reporters/tests.R:28:7']
+    ##teamcity[testFailed name='expectation 1' message='Error in `h()`: !' details='Backtrace:|n    x|n 1. \-f()|n 2.   \-g()|n 3.     \-h()']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='errors get tracebacks']
     

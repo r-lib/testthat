@@ -14,6 +14,8 @@ ListReporter <- R6::R6Class("ListReporter",
     current_start_time = NA,
     current_expectations = NULL,
     current_file = NULL,
+    current_context = NULL,
+    current_test = NULL,
     results = NULL,
 
     initialize = function() {
@@ -23,8 +25,13 @@ ListReporter <- R6::R6Class("ListReporter",
     },
 
     start_test = function(context, test) {
-      self$current_expectations <- Stack$new()
-      self$current_start_time <- proc.time()
+      if (!identical(self$current_context, context) ||
+          !identical(self$current_test, test)) {
+        self$current_context <- context
+        self$current_test <- test
+        self$current_expectations <- Stack$new()
+        self$current_start_time <- proc.time()
+      }
     },
 
     add_result = function(context, test, result) {

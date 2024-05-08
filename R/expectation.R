@@ -159,22 +159,15 @@ format.expectation_success <- function(x, ...) {
 }
 
 #' @export
-format.expectation <- function(x, simplify = "branch", ...) {
+format.expectation <- function(x, ...) {
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
   if (is.null(x[["trace"]]) || trace_length(x[["trace"]]) == 0L) {
     return(x$message)
   }
 
-  max_frames <- if (simplify == "branch") 20 else NULL
-
-  trace_lines <- format(
-    x$trace,
-    simplify = simplify,
-    ...,
-    max_frames = max_frames
-  )
-  lines <- c(x$message, crayon::bold("Backtrace:"), trace_lines)
+  trace_lines <- format(x$trace, ...)
+  lines <- c(x$message, cli::style_bold("Backtrace:"), trace_lines)
   paste(lines, collapse = "\n")
 }
 
@@ -256,20 +249,12 @@ single_letter_summary <- function(x) {
   )
 }
 
-expectation_location <- function(x) {
-  if (is.null(x$srcref)) {
-    "???"
-  } else {
-    srcfile <- attr(x$srcref, "srcfile")
-    filename <- srcfile$filename
-    if (identical(filename, "")) {
-      paste0("Line ", x$srcref[1])
-    } else {
-      cli::style_hyperlink(
-        paste0(basename(filename), ":", x$srcref[1], ":", x$srcref[2]),
-        paste0("file://", file.path(srcfile$wd, filename)),
-        params = c(line = x$srcref[1], col = x$srcref[2])
-      )
-    }
+expectation_location <- function(x, prefix = "", suffix = "") {
+  srcref <- x$srcref
+  if (!inherits(srcref, "srcref")) {
+    return("")
   }
+
+  filename <- attr(srcref, "srcfile")$filename
+  cli::format_inline("{prefix}{.file {filename}:{srcref[1]}:{srcref[2]}}{suffix}")
 }

@@ -96,12 +96,16 @@ capture_messages <- function(code) {
 
 #' @export
 #' @rdname capture_condition
-capture_warnings <- function(code) {
+capture_warnings <- function(code, ignore_deprecation = FALSE) {
   out <- Stack$new()
 
   withCallingHandlers(
     code,
     warning = function(condition) {
+      if (ignore_deprecation && is_deprecation(condition)) {
+        return()
+      }
+
       out$push(condition)
       maybe_restart("muffleWarning")
     }
@@ -125,7 +129,7 @@ get_messages <- function(x) {
 #' has been deprecated.
 #'
 #' @param x An error object.
-#' @inheritParams ellipsis::dots_empty
+#' @inheritParams rlang::args_dots_empty
 #'
 #' @details
 #' A few classes are hard-coded as uninformative:
@@ -137,25 +141,5 @@ get_messages <- function(x) {
 #' @keywords internal
 #' @export
 is_informative_error <- function(x, ...) {
-  lifecycle::deprecate_warn("3.0.0", "is_informative_error()")
-  ellipsis::check_dots_empty()
-
-  if (!inherits(x, "error")) {
-    return(TRUE)
-  }
-
-  if (inherits(x, c("simpleError", "Rcpp::eval_error", "Rcpp::exception"))) {
-    return(FALSE)
-  }
-
-  if (inherits_only(x, c("rlang_error", "error", "condition"))) {
-    return(FALSE)
-  }
-
-  UseMethod("is_informative_error")
-}
-
-#' @export
-is_informative_error.default <- function(x, ...) {
-  TRUE
+  lifecycle::deprecate_stop("3.0.0", "is_informative_error()")
 }

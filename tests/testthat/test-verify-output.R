@@ -83,3 +83,11 @@ test_that("verify_output() handles carriage return", {
     cat("\r\n")
   })
 })
+
+test_that("verify_exec() doesn't leave tempfiles around", {
+  before <- dir(tempdir())
+  verify_exec(quote(1 + 1))
+  after <- dir(tempdir())
+
+  expect_equal(before, after)
+})

@@ -5,10 +5,10 @@ test_that("error outside of test_that()", {
     TESTTHAT_GHA_SUMMARY = "FALSE"
   ))
   err <- tryCatch(
-    suppressMessages(testthat::test_local(
+    capture.output(suppressMessages(testthat::test_local(
       test_path("test-parallel", "outside"),
-      reporter = "silent"
-    )),
+      reporter = "summary"
+    ))),
     error = function(e) e
   )
 

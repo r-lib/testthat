@@ -23,6 +23,16 @@ test_that("error for non-vectors", {
   expect_error(expect_setequal(sum, sum), "be vectors")
 })
 
+test_that("useful message on failure", {
+  expect_snapshot_failure(expect_setequal(1:2, 2))
+  expect_snapshot_failure(expect_setequal(2, 2:3))
+  expect_snapshot_failure(expect_setequal(1:2, 2:3))
+})
+
+test_that("truncates long vectors", {
+  expect_snapshot_failure(expect_setequal(1:2, 1:50))
+})
+
 # mapequal ----------------------------------------------------------------
 
 test_that("ignores order", {
@@ -67,3 +77,39 @@ test_that("succeeds if comparing empty named and unnamed vectors", {
   expect_warning(expect_success(expect_mapequal(x2, x1)))
   expect_warning(expect_success(expect_mapequal(x2, x2)))
 })
+
+# contains ----------------------------------------------------------------
+
+test_that("expect_contains() succeeds when appropriate", {
+  expect_success(expect_contains(letters, "a"))
+  expect_success(expect_contains(letters, letters))
+  expect_success(expect_contains(letters, character()))
+})
+
+test_that("expect_contains() gives useful message on failure", {
+  x1 <- c("a", "b", "c")
+  x2 <- c("c", "d")
+  x3 <- c("d", "e")
+
+  expect_snapshot_failure(expect_contains(x1, x2))
+  expect_snapshot_failure(expect_contains(x1, x3))
+})
+
+
+# in ----------------------------------------------------------------
+
+test_that("expect_in() succeeds when appropriate", {
+  expect_success(expect_in("a", letters))
+  expect_success(expect_in(letters, letters))
+  expect_success(expect_in(character(), letters))
+})
+
+test_that("expect_in() gives useful message on failure", {
+  x1 <- c("a", "b")
+  x2 <- c("b", "c")
+  x3 <- c("d", "e")
+
+  expect_snapshot_failure(expect_in(x1, x2))
+  expect_snapshot_failure(expect_in(x1, x3))
+})
+

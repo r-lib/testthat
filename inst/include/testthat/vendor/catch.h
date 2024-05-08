@@ -7165,30 +7165,26 @@ namespace Catch {
 // #included from: catch_test_case_registry_impl.hpp
 #define TWOBLUECUBES_CATCH_TEST_CASE_REGISTRY_IMPL_HPP_INCLUDED
 
-#include <vector>
+#include <algorithm>
 #include <set>
 #include <sstream>
-#include <algorithm>
+#include <vector>
+
+#ifdef CATCH_CONFIG_CPP11_SHUFFLE
+#include <random>
+#endif
 
 namespace Catch {
 
     struct RandomNumberGenerator {
-        typedef std::ptrdiff_t result_type;
-
-        result_type operator()( result_type n ) const { return rand() % n; }
-
-#ifdef CATCH_CONFIG_CPP11_SHUFFLE
-        static constexpr result_type min() { return 0; }
-        static constexpr result_type max() { return 1000000; }
-        result_type operator()() const { return rand() % max(); }
-#endif
         template<typename V>
         static void shuffle( V& vector ) {
-            RandomNumberGenerator rng;
 #ifdef CATCH_CONFIG_CPP11_SHUFFLE
+            std::random_device device;
+            std::mt19937 rng( device() );
             std::shuffle( vector.begin(), vector.end(), rng );
 #else
-            random_shuffle( vector.begin(), vector.end(), rng );
+            std::random_shuffle( vector.begin(), vector.end() );
 #endif
         }
     };
@@ -9477,6 +9473,10 @@ Ptr<IStreamingReporter> addReporter( Ptr<IStreamingReporter> const& existingRepo
 // #included from: catch_reporter_bases.hpp
 #define TWOBLUECUBES_CATCH_REPORTER_BASES_HPP_INCLUDED
 
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+
 #include <cstring>
 #include <cfloat>
 #include <cstdio>
@@ -9485,24 +9485,10 @@ Ptr<IStreamingReporter> addReporter( Ptr<IStreamingReporter> const& existingRepo
 namespace Catch {
 
     namespace {
-        // Because formatting using c++ streams is stateful, drop down to C is required
-        // Alternatively we could use stringstream, but its performance is... not good.
         std::string getFormattedDuration( double duration ) {
-            // Max exponent + 1 is required to represent the whole part
-            // + 1 for decimal point
-            // + 3 for the 3 decimal places
-            // + 1 for null terminator
-            const size_t maxDoubleSize = DBL_MAX_10_EXP + 1 + 1 + 3 + 1;
-            char buffer[maxDoubleSize];
-
-            // Save previous errno, to prevent sprintf from overwriting it
-            ErrnoGuard guard;
-#ifdef _MSC_VER
-            sprintf_s(buffer, "%.3f", duration);
-#else
-            sprintf(buffer, "%.3f", duration);
-#endif
-            return std::string(buffer);
+            std::stringstream ss;
+            ss << std::setprecision(4) << duration;
+            return ss.str();
         }
     }
 

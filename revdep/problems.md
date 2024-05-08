@@ -1,45 +1,68 @@
-# batata
+# miWQS
 
 <details>
 
-* Version: 0.2.1
-* GitHub: https://github.com/feddelegrand7/batata
-* Source code: https://github.com/cran/batata
-* Date/Publication: 2021-03-08 09:50:02 UTC
-* Number of recursive dependencies: 58
+* Version: 0.4.4
+* GitHub: https://github.com/phargarten2/miWQS
+* Source code: https://github.com/cran/miWQS
+* Date/Publication: 2021-04-02 21:50:02 UTC
+* Number of recursive dependencies: 152
 
-Run `cloud_details(, "batata")` for more info
+Run `revdepcheck::cloud_details(, "miWQS")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking re-building of vignette outputs ... ERROR
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure (test-display_starred.R:8:3): display_starred() returns a character vector ──
-      `output` has type 'NULL', not 'character'.
-      ── Failure (test-display_starred.R:14:3): display_starred() returns a vector
-                of length superior than 0 ──
-      length(output) is not strictly more than 0. Difference: 0
-      ── Failure (test-display_starred.R:20:3): display_starred() returns a coherent length ──
-      length(output2) not equal to 10.
-      1/1 mismatches
-      [1] 0 - 10 == -10
-      
-      [ FAIL 3 | WARN 0 | SKIP 1 | PASS 38 ]
-      Error: Test failures
-      Execution halted
+    Error(s) in re-building vignettes:
+    --- re-building ‘README.Rmd’ using rmarkdown
+    tlmgr: package repository https://ctan.mirrors.hoobly.com/systems/texlive/tlnet (verified)
+    [1/1, ??:??/??:??] install: grffile [4k]
+    running mktexlsr ...
+    done running mktexlsr.
+    tlmgr: package log updated: /opt/TinyTeX/texmf-var/web2c/tlmgr.log
+    tlmgr: command log updated: /opt/TinyTeX/texmf-var/web2c/tlmgr-commands.log
+    tlmgr: package repository https://mirror.mwt.me/ctan/systems/texlive/tlnet (verified)
+    [1/2, ??:??/??:??] install: biblatex [249k]
+    ...
+    Warning: (biblatex)                and rerun LaTeX afterwards.
+    Error: processing vignette 'README.Rmd' failed with diagnostics:
+    Failed to build the bibliography via biber
+    --- failed re-building ‘README.Rmd’
+    
+    SUMMARY: processing the following file failed:
+      ‘README.Rmd’
+    
+    Error: Vignette re-building failed.
+    Execution halted
     ```
 
-## In both
+## Newly fixed
 
-*   checking LazyData ... NOTE
+*   checking re-building of vignette outputs ... WARNING
     ```
-      'LazyData' is specified without a 'data' directory
+    Error(s) in re-building vignettes:
+      ...
+    --- re-building ‘README.Rmd’ using rmarkdown
+    
+    tlmgr: Remote database (rev 68993) seems to be older than local (rev 68995 of texlive-scripts); please use different mirror or  wait a day or so.
+    Warning in system2("tlmgr", args, ...) :
+      running command ''tlmgr' search --file --global '/grffile.sty'' had status 1
+    ! LaTeX Error: File `grffile.sty' not found.
+    
+    ! Emergency stop.
+    ...
+    
+    Error: processing vignette 'README.Rmd' failed with diagnostics:
+    LaTeX failed to compile /tmp/workdir/miWQS/old/miWQS.Rcheck/vign_test/miWQS/vignettes/README.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See README.log for more info.
+    --- failed re-building ‘README.Rmd’
+    
+    SUMMARY: processing the following file failed:
+      ‘README.Rmd’
+    
+    Error: Vignette re-building failed.
+    Execution halted
     ```
 

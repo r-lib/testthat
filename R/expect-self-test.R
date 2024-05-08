@@ -47,9 +47,13 @@ expect_failure <- function(expr, message = NULL, ...) {
   invisible(NULL)
 }
 
-expect_skip <- function(code, regexp = NULL) {
-  expect_condition(code, regexp, class = "skip")
+expect_snapshot_skip <- function(x, cran = FALSE) {
+  expect_snapshot_error(x, class = "skip", cran = cran)
 }
+expect_no_skip <- function(code) {
+  expect_no_condition(code, class = "skip")
+}
+
 
 #' @export
 #' @rdname expect_success
@@ -57,7 +61,7 @@ show_failure <- function(expr) {
   exp <- capture_expectation(expr)
 
   if (!is.null(exp) && expectation_failure(exp)) {
-    cat(crayon::bold("Failed expectation:\n"))
+    cat(cli::style_bold("Failed expectation:\n"))
     cat(exp$message, "\n", sep = "")
   }
 
@@ -69,6 +73,7 @@ expect_snapshot_failure <- function(x) {
 }
 
 expect_snapshot_reporter <- function(reporter, paths = test_path("reporters/tests.R")) {
+  local_options(rlang_trace_format_srcrefs = FALSE)
   local_rng_version("3.3")
   set.seed(1014)
   # withr::local_seed(1014)

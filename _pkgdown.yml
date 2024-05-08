@@ -34,6 +34,7 @@ reference:
 - subtitle: Side-effects
   contents:
   - expect_error
+  - expect_no_error
   - expect_invisible
   - expect_output
   - expect_silent
@@ -41,7 +42,9 @@ reference:
 
 - title: Snapshot testing
   contents:
-  - starts_with("expect_snapshot_")
+  - expect_snapshot
+  - expect_snapshot_value
+  - expect_snapshot_file
   - starts_with("snapshot_")
 
 - title: Test helpers
@@ -49,6 +52,7 @@ reference:
   - is_testing
   - skip
   - teardown_env
+  - set_state_inspector
 
 - title: Run tests
   contents:
@@ -59,7 +63,12 @@ reference:
 
 - title: Reporters
   contents:
+  - Reporter
   - ends_with("Reporter")
+
+- title: Mocking
+  contents:
+  - with_mocked_bindings
 
 - title: Expectation internals
   contents:
@@ -68,6 +77,8 @@ reference:
 
 news:
   releases:
+  - text: "Version 3.2.0"
+    href: https://www.tidyverse.org/blog/2023/10/testthat-3-2-0/
   - text: "Version 3.1.0"
     href: https://www.tidyverse.org/blog/2021/10/testthat-3-1/
   - text: "Version 3.0.0"

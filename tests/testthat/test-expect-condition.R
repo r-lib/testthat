@@ -28,9 +28,17 @@ test_that("class = string matches class of error", {
   expect_error(expect_error(blah(), class = "blech"), class = "blah")
 })
 
+test_that("base_class must match when class is set", {
+  foo <- function() warn("foo", class = "bar")
+  expect_warning(expect_failure(expect_error(foo(), class = "bar")))
+  expect_success(expect_warning(foo(), class = "bar"))
+})
+
 test_that("check type of class and pattern", {
-  expect_error(expect_error(stop("!"), regexp = 1), "single string")
-  expect_error(expect_error(stop("!"), class = 1), "single string")
+  expect_snapshot(error = TRUE, {
+    expect_error(stop("!"), regexp = 1)
+    expect_error(stop("!"), class = 1)
+  })
 })
 
 test_that("... passed on to grepl", {
@@ -84,6 +92,30 @@ test_that("can silence warnings", {
   # signalled, it's just not printed
   # https://github.com/wch/r-source/blob/886ab4a0/src/main/errors.c#L388-L484
   withr::with_options(c(warn = -1), warning("foo"))
+})
+
+test_that("when checking for no warnings, exclude deprecation warnings", {
+  foo <- function() {
+    lifecycle::deprecate_warn("1.0.0", "foo()")
+  }
+  expect_warning(
+    expect_warning(foo(), NA),
+    class = "lifecycle_warning_deprecated"
+  )
+})
+
+test_that("when checking for no warnings, exclude deprecation warnings (2e)", {
+  local_edition(2)
+
+  foo <- function() {
+    options(lifecycle_verbosity = "warning")
+    lifecycle::deprecate_warn("1.0.0", "foo()")
+  }
+
+  expect_warning(
+    expect_warning(foo(), NA),
+    class = "lifecycle_warning_deprecated"
+  )
 })
 
 # expect_message ----------------------------------------------------------
@@ -178,6 +210,10 @@ test_that("can match parent conditions (#1493)", {
   # Can disable parent matching
   expect_error(expect_error(f(), class = "foo", inherit = FALSE))
   expect_error(expect_error(f(), "Parent message.", inherit = FALSE))
+})
+
+test_that("unused arguments generate a warning", {
+  expect_snapshot(expect_condition(stop("Hi!"), foo = "bar"))
 })
 
 

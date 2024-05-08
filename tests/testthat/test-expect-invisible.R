@@ -1,4 +1,4 @@
-test_that("basically principles of visibilty hold", {
+test_that("basic principles of visibility hold", {
   expect_success(expect_invisible(x <- 10))
   expect_failure(expect_invisible(x))
 

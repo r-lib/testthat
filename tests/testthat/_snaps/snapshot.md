@@ -96,6 +96,22 @@
 
     This is a warning
 
+# snapshot captures deprecations
+
+    Code
+      foo()
+    Condition
+      Warning:
+      `foo()` was deprecated in testthat 1.0.0.
+
+---
+
+    `foo()` was deprecated in testthat 1.0.0.
+
+---
+
+    `foo()` was deprecated in testthat 1.0.0.
+
 # can check error/warning classes
 
     Code
@@ -177,77 +193,68 @@
     b
     c
 
-# can snapshot values
-
-    [
-      "a",
-      1.5,
-      1,
-      true
-    ]
-
----
-
-    {
-      "type": "list",
-      "attributes": {},
-      "value": [
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["a"]
-        },
-        {
-          "type": "double",
-          "attributes": {},
-          "value": [1.5]
-        },
-        {
-          "type": "integer",
-          "attributes": {},
-          "value": [1]
-        },
-        {
-          "type": "logical",
-          "attributes": {},
-          "value": [true]
-        }
-      ]
-    }
-
----
-
-    list("a", 1.5, 1L, TRUE)
-
----
-
-    WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
-    AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
-
-# can control snapshot value details
-
-    1.1
-
-# tolerance passed to check_roundtrip
-
-    0.9
-
 # `expect_snapshot()` does not inject
 
     Code
       x <- quote(!!foo)
       expect_equal(x, call("!", call("!", quote(foo))))
 
+# full condition message is printed with rlang
+
+    Code
+      foo <- error_cnd("foo", message = "Title parent.")
+      abort("Title.", parent = foo)
+    Condition
+      Error:
+      ! Title.
+      Caused by error:
+      ! Title parent.
+
+# can print with and without condition classes
+
+    Code
+      f()
+    Message <simpleMessage>
+      foo
+    Condition <simpleWarning>
+      Warning in `f()`:
+      bar
+    Condition <simpleError>
+      Error in `f()`:
+      ! baz
+
+---
+
+    Code
+      f()
+    Message
+      foo
+    Condition
+      Warning in `f()`:
+      bar
+      Error in `f()`:
+      ! baz
+
+# errors and warnings are folded
+
+    Code
+      f()
+    Condition
+      Warning in `f()`:
+      foo
+      Error in `f()`:
+      ! bar
+
 # hint is informative
 
     Code
-      cat(snapshot_accept_hint("_default", "bar.R"))
+      cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
     Output
-      * Run `]8;;rstudio:run:testthat::snapshot_accept('bar.R')snapshot_accept('bar.R')]8;;` to accept the change
-      * Run `]8;;rstudio:run:testthat::snapshot_review('bar.R')snapshot_review('bar.R')]8;;` to interactively review the change
+      * Run ]8;;ide:run:testthat::snapshot_accept('bar.R')testthat::snapshot_accept('bar.R')]8;; to accept the change.
+      * Run ]8;;ide:run:testthat::snapshot_review('bar.R')testthat::snapshot_review('bar.R')]8;; to interactively review the change.
     Code
-      cat(snapshot_accept_hint("foo", "bar.R"))
+      cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
     Output
-      * Run `]8;;rstudio:run:testthat::snapshot_accept('foo/bar.R')snapshot_accept('foo/bar.R')]8;;` to accept the change
-      * Run `]8;;rstudio:run:testthat::snapshot_review('foo/bar.R')snapshot_review('foo/bar.R')]8;;` to interactively review the change
+      * Run ]8;;ide:run:testthat::snapshot_accept('foo/bar.R')testthat::snapshot_accept('foo/bar.R')]8;; to accept the change.
+      * Run ]8;;ide:run:testthat::snapshot_review('foo/bar.R')testthat::snapshot_review('foo/bar.R')]8;; to interactively review the change.
 
