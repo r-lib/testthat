@@ -172,7 +172,7 @@ inline std::ostream& cerr()
 extern "C" SEXP run_testthat_tests(SEXP use_xml_sxp) {
   bool use_xml = LOGICAL(use_xml_sxp)[0];
   bool success = testthat::run_tests(use_xml);
-  return ScalarLogical(success);
+  return Rf_ScalarLogical(success);
 }
 
 # endif // TESTTHAT_TEST_RUNNER
@@ -198,7 +198,7 @@ extern "C" SEXP run_testthat_tests(SEXP use_xml_sxp) {
 #  include <R.h>
 #  include <Rinternals.h>
 extern "C" SEXP run_testthat_tests() {
-  return ScalarLogical(true);
+  return Rf_ScalarLogical(true);
 }
 
 # endif // TESTTHAT_TEST_RUNNER
