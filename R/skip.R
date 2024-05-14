@@ -101,7 +101,7 @@ skip_if <- function(condition, message = NULL) {
 #' @rdname skip
 skip_if_not_installed <- function(pkg, minimum_version = NULL) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
-    skip(paste0(pkg, " cannot be loaded"))
+    skip(paste("Package", pkg, "cannot be loaded"))
   }
 
   if (!is.null(minimum_version)) {
