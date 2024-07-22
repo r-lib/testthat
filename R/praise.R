@@ -21,8 +21,8 @@ praise <- function() {
     "\U0001f9ff Your tests look perfect \U0001f9ff",
     "\U0001f3af Your tests hit the mark \U0001f3af",
     "\U0001f41d Your tests are the bee's knees \U0001f41d",
-    "\U0001f4a3 Your tests are da bomb \U0001f4a3",
-    "\U0001f525 Your tests are lit \U0001f525"
+    "\U0001f3b8 Your tests rock \U0001f3b8",
+    "\U0001f44f Your tests get an ovation \U0001f44f"
   )
 
   x <- if (cli::is_utf8_output()) c(plain, utf8) else plain
