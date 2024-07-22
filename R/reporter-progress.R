@@ -214,10 +214,11 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
           snapshotter$end_file()
         }
 
-        stop_reporter(c(
+        msg <- c(
           "Maximum number of failures exceeded; quitting at end of file.",
           i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
-        ))
+        )
+        stop_reporter(msg)
       }
     },
 
