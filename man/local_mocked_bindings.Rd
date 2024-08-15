@@ -70,11 +70,11 @@ you mock it the same way:
 
 To mock a function in the base package, you need to make sure that you
 have a binding for this function in your package. It's easiest to do this
-by binding the value to \code{NULL}. For example, if you wanted to mock
+by binding the name to the function. For example, if you wanted to mock
 \code{interactive()} in your package, you'd need to include this code somewhere
 in your package:
 
-\if{html}{\out{<div class="sourceCode R">}}\preformatted{interactive <- NULL
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{interactive <- interactive
 }\if{html}{\out{</div>}}
 
 Why is this necessary? \code{with_mocked_bindings()} and \code{local_mocked_bindings()}

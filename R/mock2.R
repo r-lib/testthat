@@ -48,12 +48,12 @@
 #'
 #' To mock a function in the base package, you need to make sure that you
 #' have a binding for this function in your package. It's easiest to do this
-#' by binding the value to `NULL`. For example, if you wanted to mock
+#' by binding the name to the function. For example, if you wanted to mock
 #' `interactive()` in your package, you'd need to include this code somewhere
 #' in your package:
 #'
 #' ```R
-#' interactive <- NULL
+#' interactive <- interactive
 #' ```
 #'
 #' Why is this necessary? `with_mocked_bindings()` and `local_mocked_bindings()`
