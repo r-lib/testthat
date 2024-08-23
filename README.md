@@ -9,7 +9,7 @@
 status](https://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
 [![R-CMD-check](https://github.com/r-lib/testthat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/testthat/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/r-lib/testthat/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/testthat?branch=main)
+coverage](https://codecov.io/gh/r-lib/testthat/graph/badge.svg)](https://app.codecov.io/gh/r-lib/testthat)
 <!-- badges: end -->
 
 ## Overview
