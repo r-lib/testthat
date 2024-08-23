@@ -46,6 +46,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
                              tolerance = testthat_tolerance(),
                              variant = NULL,
                              trace_env = NULL) {
+      check_string(self$test, allow_empty = FALSE)
       i <- self$new_snaps$append(self$test, variant, save(value))
 
       old_raw <- self$old_snaps$get(self$test, variant, i)

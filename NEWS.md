@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `test_that()` now emits an error if `expect_snapshot()` is invoked within
+  a `test_that()` case with an empty description (#1980; @kevinushey).
+
 # testthat 3.2.1
 
 * Fix incorrect format string detected by latest R-devel. Fix thanks to 
