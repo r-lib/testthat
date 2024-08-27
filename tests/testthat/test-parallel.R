@@ -23,9 +23,10 @@ test_that("detect number of cpus to use", {
 })
 
 test_that("ok", {
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
-  # we cannot run these with the silent reporter, because it is not
-  # parallel compatible, and they'll not run in parallel
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "TRUE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   capture.output(suppressMessages(ret <- test_local(
     test_path("test-parallel", "ok"),
     reporter = "summary",

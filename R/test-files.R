@@ -125,6 +125,8 @@ test_file <- function(path,
     stop("`path` does not exist", call. = FALSE)
   }
 
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "false")
+
   test_files(
     test_dir = dirname(path),
     test_package = package,
@@ -213,6 +215,8 @@ test_files_serial <- function(test_dir,
       error_call = error_call
     )
   )
+
+  create_gha_summary(reporters$list$get_results())
 
   test_files_check(reporters$list$get_results(),
     stop_on_failure = stop_on_failure,
