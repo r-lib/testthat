@@ -105,6 +105,10 @@ the captured condition.
 or condition with a message that matches \code{regexp}, or a class that inherits
 from \code{class}. See below for more details.
 
+If you need to test that an error, warning, or message is the same as one
+given by another package, then see the \code{\link[=expect_error_forwarded]{expect_error_forwarded()}},
+\code{\link[=expect_warning_forwarded]{expect_warning_forwarded()}}, and \code{\link[=expect_message_forwarded]{expect_message_forwarded()}} functions.
+
 In the 3rd edition, these functions match (at most) a single condition. All
 additional and non-matching (if \code{regexp} or \code{class} are used) conditions
 will bubble up outside the expectation. If these additional conditions
@@ -186,6 +190,7 @@ that code runs without errors/warnings/messages/conditions.
 Other expectations: 
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},
+\code{\link{expect_error_forwarded}()},
 \code{\link{expect_length}()},
 \code{\link{expect_match}()},
 \code{\link{expect_named}()},
