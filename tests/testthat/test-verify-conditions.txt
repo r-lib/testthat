@@ -3,10 +3,10 @@ Message: Message
 
 > # With calls
 > warning("Warning")
-Warning in eval(expr, envir, enclos): Warning
+Warning: Warning
 
 > stop("Error")
-Error in eval(expr, envir, enclos): Error
+Error: Error
 
 > # Without calls
 > warning("Warning", call. = FALSE)
