@@ -162,3 +162,11 @@ test_that("hint is informative", {
     cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
   })
 })
+
+test_that("expect_snapshot requires a non-empty test label", {
+
+  test_that("", {
+    expect_error(expect_snapshot(1 + 1))
+  })
+
+})
