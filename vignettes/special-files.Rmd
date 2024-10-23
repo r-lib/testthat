@@ -24,7 +24,7 @@ This vignette describes the various special files that testthat understands: tes
 ## Test files
 
 These are the bread and butter of testthat.
-Test files live in `tests/testthat/`, start with either `test-` or `test_`, and end with `.r` or `.R`.
+Public test files live in `tests/testthat/`, start with either `test-` or `test_`, and end with `.r` or `.R`. Additional developer tests use the same pattern but prefixed with `dev-`.
 We recommend organising your test files so that there's a one-to-one correspondence between the files in `R/` and the files in `tests/testthat/` so that (e.g.) `R/myfile.R` has a matching `tests/testthat/test-myfile.R`.
 This correspondence is maintained by functions like `usethis::use_r()` and `usethis::use_test()` and is taken advantage of by functions like `devtools::test_active_file()` and `devtools::test_coverage_active_file()`.
 

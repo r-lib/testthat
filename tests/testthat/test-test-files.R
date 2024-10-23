@@ -8,14 +8,21 @@ test_that("stops on failure", {
 })
 
 test_that("runs all tests and records output", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE", NOT_CRAN = "false", CI = "false")
   res <- test_dir(test_path("test_dir"), reporter = "silent", stop_on_failure = FALSE)
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
 
+  expect_equal(nrow(df), 17)
   local_reproducible_output(width = 200)
   local_edition(3) # set to 2 in ./test_dir
   expect_snapshot_output(print(df))
+})
+
+test_that("runs additional dev tests", {
+  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE", NOT_CRAN = "true")
+  res <- test_dir(test_path("test_dir"), reporter = "silent", stop_on_failure = FALSE)
+  expect_equal(nrow(as.data.frame(res)), 18)
 })
 
 test_that("complains if no files", {
