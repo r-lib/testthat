@@ -200,7 +200,7 @@ test_files_serial <- function(test_dir,
   # Because load_all() called by test_files_setup_env() will have already
   # loaded them. We don't want to rely on testthat's loading since that
   # only affects the test environment and we want to keep the helpers
-  # looded in the users session.
+  # loaded in the user's session.
   load_package <- arg_match(load_package)
   if (load_package == "source") {
     load_helpers <- FALSE
