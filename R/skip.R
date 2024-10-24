@@ -101,10 +101,10 @@ skip_if <- function(condition, message = NULL) {
 #' @rdname skip
 skip_if_not_installed <- function(pkg, minimum_version = NULL) {
   # most common case: it's not installed
-  res <- tryCatch(find.package(pkg), error = identity)
-  if (inherits(res, "error")) {
-    skip(paste0("{", pkg, "} is not installed"))
-  }
+  tryCatch(
+    find.package(pkg),
+    error = function(e) skip(paste0("{", pkg, "} is not installed"))
+  )
   # rarer: it's installed, but fails to load
   if (!requireNamespace(pkg, quietly = TRUE)) {
     skip(paste0("{", pkg, "} cannot be loaded"))
