@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `LANGUAGE` is now set to `"C"` in reprocucible environments (i.e.
+  `test_that()` blocks) to disable translations. This fixes warnings
+  about being unable to set the language to `"en"` (#1925).
+
 # testthat 3.2.1
 
 * Fix incorrect format string detected by latest R-devel. Fix thanks to 
