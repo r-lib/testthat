@@ -1,3 +1,5 @@
+* `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
+
 # testthat (development version)
 
 * Fixed an issue where `expect_no_error(1)` was failing (#2037).
