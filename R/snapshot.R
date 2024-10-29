@@ -272,7 +272,7 @@ expect_snapshot_helper <- function(lab, val,
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    snapshot_not_available(paste0("Current value:\n", save(val)))
+    snapshot_not_available("Current snapshot", save(val))
     return(invisible())
   }
 
@@ -322,12 +322,15 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
   )
 }
 
-snapshot_not_available <- function(message) {
+snapshot_not_available <- function(header, message) {
+  local_reporter_output()
+
   cli::cli_inform(c(
-    "{.strong Can't compare snapshot to reference when testing interactively.}",
-    i = "Run {.run devtools::test()} or {.code testthat::test_file()} to see changes."
+    i = "Can't create snapshot or compare to reference when testing interactively."
   ))
+  cat(cli::rule(header), "\n", sep = "")
   cat(message, "\n", sep = "")
+  cat(cli::rule(), "\n", sep = "")
 }
 
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
@@ -362,4 +365,3 @@ with_is_snapshotting <- function(code) {
   withr::local_envvar(TESTTHAT_IS_SNAPSHOT = "true")
   code
 }
-

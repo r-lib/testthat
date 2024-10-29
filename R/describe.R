@@ -76,13 +76,14 @@ describe <- function(description, code) {
 }
 
 describe_it <- function(description, code, env = parent.frame()) {
+  reporter <- get_reporter() %||% local_interactive_reporter()
   local_test_context()
 
   test_code(
     description,
     code,
     env = env,
-    default_reporter = local_interactive_reporter(),
+    reporter = reporter,
     skip_on_empty = FALSE
   )
 }
