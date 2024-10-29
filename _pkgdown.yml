@@ -20,12 +20,14 @@ reference:
 - subtitle: Objects
   contents:
   - expect_equal
+  - expect_null
   - expect_type
 
 - subtitle: Vectors
   contents:
   - expect_length
   - expect_gt
+  - expect_match
   - expect_named
   - expect_setequal
   - expect_true
@@ -49,6 +51,7 @@ reference:
 
 - title: Test helpers
   contents:
+  - local_edition
   - is_testing
   - skip
   - teardown_env
@@ -73,7 +76,9 @@ reference:
 - title: Expectation internals
   contents:
   - expect
+  - expectation
   - fail
+  - expect_success
 
 news:
   releases:

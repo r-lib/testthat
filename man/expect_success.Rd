@@ -24,4 +24,3 @@ Use these expectations to test other expectations.
 Use \code{show_failure()} in examples to print the failure message without
 throwing an error.
 }
-\keyword{internal}

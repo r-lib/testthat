@@ -30,6 +30,11 @@ test_that("empty lines are preserved", {
   expect_snapshot(f(), error = TRUE)
 })
 
+test_that("line-endings fixed before comparison", {
+  x <- "a\n\rb"
+  expect_snapshot(cat(x))
+})
+
 test_that("multiple outputs of same type are collapsed", {
   expect_snapshot({
     x <- 1
