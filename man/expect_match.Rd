@@ -101,4 +101,3 @@ Other expectations:
 \code{\link{logical-expectations}}
 }
 \concept{expectations}
-\keyword{internal}
