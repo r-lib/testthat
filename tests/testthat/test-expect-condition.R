@@ -149,6 +149,11 @@ test_that("captured condition is muffled", {
   expect_error(expect_condition(stop("Hi")), NA)
 })
 
+test_that("condition class is included in failure", {
+  f1 <- function() signal(class = "foo")
+  expect_snapshot_failure(expect_condition(f1(), class = "bar"))
+})
+
 test_that("only matching condition is captured, others bubble up", {
   f1 <- function() {
     message("Hi")

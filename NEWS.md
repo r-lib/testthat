@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_condition()` and friends now include the `class` of the expected condition in the failure mesage, if used (#1987).
 * `LANGUAGE` is now set to `"C"` in reprocucible environments (i.e.
   `test_that()` blocks) to disable translations. This fixes warnings
   about being unable to set the language to `"en"` (#1925).
