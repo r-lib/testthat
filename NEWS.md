@@ -1,8 +1,6 @@
 # testthat (development version)
 
-* `test_that()` now emits an error if `expect_snapshot()` is invoked within
-  a `test_that()` case with an empty description (#1980; @kevinushey).
-
+* `expect_snapshot()` now errors when called from a `test_that()` that has an empty description (@kevinushey, #1980).
 * `expect_condition()` and friends now include the `class` of the expected condition in the failure mesage, if used (#1987).
 * `LANGUAGE` is now set to `"C"` in reprocucible environments (i.e.
   `test_that()` blocks) to disable translations. This fixes warnings
