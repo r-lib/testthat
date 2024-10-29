@@ -278,7 +278,7 @@ expect_condition_matching <- function(base_class,
   )
 
   expected <- !identical(regexp, NA)
-  msg <- compare_condition_3e(base_class, act$cap, act$lab, expected)
+  msg <- compare_condition_3e(base_class, class, act$cap, act$lab, expected)
 
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
@@ -375,10 +375,14 @@ capture_matching_condition <- function(expr, matches) {
 
 # Helpers -----------------------------------------------------------------
 
-compare_condition_3e <- function(cond_type, cond, lab, expected) {
+compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
   if (expected) {
     if (is.null(cond)) {
-      sprintf("%s did not throw the expected %s.", lab, cond_type)
+      if (is.null(cond_class)) {
+        sprintf("%s did not throw the expected %s.", lab, cond_type)
+      } else {
+        sprintf("%s did not throw a %s with class <%s>.", lab, cond_type, cond_class)
+      }
     } else {
       NULL
     }
