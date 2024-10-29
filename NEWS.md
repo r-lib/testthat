@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `with_mock()` and `local_mock()` have been unconditionally deprecated as they will no longer work in future versions of R (#1999).
 * `expect_condition()` and friends now include the `class` of the expected condition in the failure mesage, if used (#1987).
 * `LANGUAGE` is now set to `"C"` in reprocucible environments (i.e.
   `test_that()` blocks) to disable translations. This fixes warnings
