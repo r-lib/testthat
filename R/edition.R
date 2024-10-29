@@ -60,7 +60,6 @@ edition_name <- function(x) {
 #' @export
 #' @param x Edition Should be a single integer.
 #' @param .env Environment that controls scope of changes. For expert use only.
-#' @keywords internal
 local_edition <- function(x, .env = parent.frame()) {
   stopifnot(is_zap(x) || (is.numeric(x) && length(x) == 1))
 

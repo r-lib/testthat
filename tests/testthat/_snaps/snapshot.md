@@ -44,6 +44,14 @@
       Error in `f()`:
       ! 4
 
+# line-endings fixed before comparison
+
+    Code
+      cat(x)
+    Output
+      a
+      b
+
 # multiple outputs of same type are collapsed
 
     Code

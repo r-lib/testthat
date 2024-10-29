@@ -19,7 +19,7 @@
 #'
 #' * `skip_if_offline()` skips if an internet connection is not available
 #'   (using [curl::nslookup()]) or if the test is run on CRAN. Requires
-#'   the curl packages to be installed.
+#'   \{curl\} to be installed and included in the dependencies of your package.
 #'
 #' * `skip_if_translated("msg")` skips tests if the "msg" is translated.
 #'

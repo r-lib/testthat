@@ -13,7 +13,7 @@ local_reproducible_output(
   unicode = FALSE,
   rstudio = FALSE,
   hyperlinks = FALSE,
-  lang = "en",
+  lang = "C",
   .env = parent.frame()
 )
 }
