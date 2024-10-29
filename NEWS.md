@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `skip_if_not_installed()` produces a clearer message (@MichaelChirico, #1959).
 * `expect_condition()` and friends now include the `class` of the expected condition in the failure mesage, if used (#1987).
 * `LANGUAGE` is now set to `"C"` in reprocucible environments (i.e.
   `test_that()` blocks) to disable translations. This fixes warnings
