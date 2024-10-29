@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_snapshot()` now strips line breaks in test descriptions (@LDSamson, #1900).
 * `expect_snapshot()` now errors when called from a `test_that()` that has an empty description (@kevinushey, #1980).
 * `skip_if_not_installed()` produces a clearer message (@MichaelChirico, #1959).
 * `with_mock()` and `local_mock()` have been unconditionally deprecated as they will no longer work in future versions of R (#1999).

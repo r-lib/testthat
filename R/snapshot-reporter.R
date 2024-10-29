@@ -35,7 +35,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     start_test = function(context, test) {
-      self$test <- test
+      self$test <- gsub("\n", "", test)
     },
 
     # Called by expectation
