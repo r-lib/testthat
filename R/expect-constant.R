@@ -50,7 +50,6 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' check for it either with `expect_equal(x, NULL)` or `expect_type(x, "NULL")`.
 #'
 #' @inheritParams expect_that
-#' @keywords internal
 #' @export
 #' @family expectations
 #' @examples
@@ -83,4 +82,3 @@ expect_waldo_constant <- function(act, constant, info) {
 
   invisible(act$val)
 }
-

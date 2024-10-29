@@ -98,7 +98,7 @@ local_reproducible_output <- function(width = 80,
                                       unicode = FALSE,
                                       rstudio = FALSE,
                                       hyperlinks = FALSE,
-                                      lang = "en",
+                                      lang = "C",
                                       .env = parent.frame()) {
 
   if (unicode) {
@@ -133,10 +133,7 @@ local_reproducible_output <- function(width = 80,
     .local_envir = .env
   )
 
-  if (isTRUE(capabilities("NLS")) && Sys.getenv("LANG") != "C") {
-    withr::local_language(lang, .local_envir = .env)
-  }
-
+  withr::local_language(lang, .local_envir = .env)
   withr::local_collate("C", .local_envir = .env)
 }
 

@@ -7,7 +7,6 @@
 #' @param expr Expression that evaluates a single expectation.
 #' @param message Check that the failure message matches this regexp.
 #' @param ... Other arguments passed on to [expect_match()].
-#' @keywords internal
 #' @export
 expect_success <- function(expr) {
   exp <- capture_expectation(expr)
@@ -114,4 +113,3 @@ local_output_override <- function(width = 80, crayon = TRUE, unicode = TRUE,
     reporter$unicode <- old_unicode
   }, .env)
 }
-
