@@ -1,6 +1,11 @@
 # testthat (development version)
 
 * `expect_visible()` and `expect_invisible()` have improved failure messages (#1966).
+* `expect_snapshot()` now strips line breaks in test descriptions (@LDSamson, #1900).
+* `expect_snapshot()` now errors when called from a `test_that()` that has an empty description (@kevinushey, #1980).
+* `skip_if_not_installed()` produces a clearer message (@MichaelChirico, #1959).
+* `with_mock()` and `local_mock()` have been unconditionally deprecated as they will no longer work in future versions of R (#1999).
+* `expect_condition()` and friends now include the `class` of the expected condition in the failure mesage, if used (#1987).
 * `LANGUAGE` is now set to `"C"` in reprocucible environments (i.e.
   `test_that()` blocks) to disable translations. This fixes warnings
   about being unable to set the language to `"en"` (#1925).

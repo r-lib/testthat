@@ -37,7 +37,6 @@
 #'     Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
 #'     ```
 #' @param wrap DEPRECATED
-#' @keywords internal
 #' @return A list (invisibly) containing data about the test results.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
