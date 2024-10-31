@@ -326,7 +326,7 @@ snapshot_not_available <- function(header, message) {
   local_reporter_output()
 
   cli::cli_inform(c(
-    i = "Can't create snapshot or compare to reference when testing interactively."
+    i = "Can't save snapshot or compare to reference when testing interactively."
   ))
   cat(cli::rule(header), "\n", sep = "")
   cat(message, "\n", sep = "")
