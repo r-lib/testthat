@@ -325,10 +325,10 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
 snapshot_not_available <- function(header, message) {
   local_reporter_output()
 
+  cat(cli::rule(header), "\n", sep = "")
   cli::cli_inform(c(
     i = "Can't save snapshot or compare to reference when testing interactively."
   ))
-  cat(cli::rule(header), "\n", sep = "")
   cat(message, "\n", sep = "")
   cat(cli::rule(), "\n", sep = "")
 }
