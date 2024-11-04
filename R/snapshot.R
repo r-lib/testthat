@@ -272,7 +272,7 @@ expect_snapshot_helper <- function(lab, val,
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    snapshot_not_available("Current snapshot", save(val))
+    snapshot_not_available(save(val))
     return(invisible())
   }
 
@@ -322,12 +322,12 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
   )
 }
 
-snapshot_not_available <- function(header, message) {
+snapshot_not_available <- function(message) {
   local_reporter_output()
 
-  cat(cli::rule(header), "\n", sep = "")
+  cat(cli::rule("Snapshot"), "\n", sep = "")
   cli::cli_inform(c(
-    i = "Can't save snapshot or compare to reference when testing interactively."
+    i = "Can't save or compare to reference when testing interactively."
   ))
   cat(message, "\n", sep = "")
   cat(cli::rule(), "\n", sep = "")

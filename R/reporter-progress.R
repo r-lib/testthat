@@ -534,7 +534,7 @@ issue_header <- function(x, pad = FALSE) {
 issue_summary <- function(x, rule = FALSE) {
   header <- cli::style_bold(issue_header(x))
   if (rule) {
-    header <- cli::rule(header, width = max(cli::ansi_nchar(header) + 6, 80))
+    header <- cli::rule(header)
   }
 
   paste0(header, "\n", format(x))
