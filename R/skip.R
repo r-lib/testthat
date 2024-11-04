@@ -19,7 +19,7 @@
 #'
 #' * `skip_if_offline()` skips if an internet connection is not available
 #'   (using [curl::nslookup()]) or if the test is run on CRAN. Requires
-#'   the curl packages to be installed.
+#'   \{curl\} to be installed and included in the dependencies of your package.
 #'
 #' * `skip_if_translated("msg")` skips tests if the "msg" is translated.
 #'
@@ -100,8 +100,14 @@ skip_if <- function(condition, message = NULL) {
 #' @param minimum_version Minimum required version for the package
 #' @rdname skip
 skip_if_not_installed <- function(pkg, minimum_version = NULL) {
+  # most common case: it's not installed
+  tryCatch(
+    find.package(pkg),
+    error = function(e) skip(paste0("{", pkg, "} is not installed"))
+  )
+  # rarer: it's installed, but fails to load
   if (!requireNamespace(pkg, quietly = TRUE)) {
-    skip(paste0(pkg, " cannot be loaded"))
+    skip(paste0("{", pkg, "} cannot be loaded"))
   }
 
   if (!is.null(minimum_version)) {

@@ -25,6 +25,10 @@
     Message: dispatched!
     Class:   foobar/rlang_error/error/condition
 
+# condition class is included in failure
+
+    `f1()` did not throw a condition with class <bar>.
+
 # unused arguments generate a warning
 
     Code

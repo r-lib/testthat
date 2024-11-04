@@ -79,7 +79,7 @@ need to check for them specifically, unless they are particularly
 difficult to install.
 \item \code{skip_if_offline()} skips if an internet connection is not available
 (using \code{\link[curl:nslookup]{curl::nslookup()}}) or if the test is run on CRAN. Requires
-the curl packages to be installed.
+\{curl\} to be installed and included in the dependencies of your package.
 \item \code{skip_if_translated("msg")} skips tests if the "msg" is translated.
 \item \code{skip_on_bioc()} skips on Bioconductor (using the \code{IS_BIOC_BUILD_MACHINE}
 env var).
