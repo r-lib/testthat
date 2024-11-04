@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_true()` and `expect_false()` give better errors if `actual` isn't a vector (#1996).
 * Require the latest version of waldo (0.6.0) in order to get the latest goodies (#1955).
 * `expect_visible()` and `expect_invisible()` have improved failure messages (#1966).
 * `expect_snapshot()` now strips line breaks in test descriptions (@LDSamson, #1900).
