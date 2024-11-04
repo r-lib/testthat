@@ -34,7 +34,7 @@ Imports:
     R6 (>= 2.5.1),
     rlang (>= 1.1.1),
     utils,
-    waldo (>= 0.5.1),
+    waldo (>= 0.6.0),
     withr (>= 3.0.2)
 Suggests:
     covr,

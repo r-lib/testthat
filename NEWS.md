@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* Require the latest version of waldo (0.6.0) in order to get the latest goodies (#1955).
 * `expect_visible()` and `expect_invisible()` have improved failure messages (#1966).
 * `expect_snapshot()` now strips line breaks in test descriptions (@LDSamson, #1900).
 * `expect_snapshot()` now errors when called from a `test_that()` that has an empty description (@kevinushey, #1980).
