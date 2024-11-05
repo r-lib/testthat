@@ -163,8 +163,7 @@ expect_warning <- function(object,
       ...,
       inherit = inherit,
       info = info,
-      label = label,
-      trace_env = caller_env()
+      label = label
     )
   } else {
     act <- quasi_capture(enquo(object), label, capture_warnings, ignore_deprecation = identical(regexp, NA))
@@ -196,8 +195,7 @@ expect_message <- function(object,
       ...,
       inherit = inherit,
       info = info,
-      label = label,
-      trace_env = caller_env()
+      label = label
     )
   } else {
     act <- quasi_capture(enquo(object), label, capture_messages)
@@ -225,8 +223,7 @@ expect_condition <- function(object,
       ...,
       inherit = inherit,
       info = info,
-      label = label,
-      trace_env = caller_env()
+      label = label
     )
   } else {
 
@@ -256,6 +253,7 @@ expect_condition_matching <- function(base_class,
                                       label = NULL,
                                       trace_env = caller_env(),
                                       error_call = caller_env()) {
+
   check_dots_used(error = function(cnd) {
     warn(conditionMessage(cnd), call = error_call)
   })
@@ -267,7 +265,7 @@ expect_condition_matching <- function(base_class,
     ...,
     inherit = inherit,
     ignore_deprecation = base_class == "warning" && identical(regexp, NA),
-    error_call = trace_env
+    error_call = error_call
   )
 
   act <- quasi_capture(

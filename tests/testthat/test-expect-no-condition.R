@@ -14,20 +14,13 @@ test_that("expect_no_* conditions behave as expected", {
 })
 
 test_that("expect_no_* don't emit success when they fail", {
+  expect_no_success(expect_no_error(stop("!")))
+})
 
-  catch_cnds <- function(code) {
-    cnds <- list()
-
-    withCallingHandlers(code, condition = function(cnd) {
-      cnds[[length(cnds) + 1]] <<- cnd
-      invokeRestart("continue_test")
-    })
-    cnds
-  }
-
-  cnds <- catch_cnds(expect_no_error(stop("!")))
-  expect_length(cnds, 1)
-  expect_s3_class(cnds[[1]], "expectation_failure")
+test_that("capture correct trace_env (#1994)", {
+  # This should fail, not error
+  expect_failure(expect_message({message("a"); warn("b")}) %>% expect_no_warning())
+  expect_failure(expect_no_message({message("a"); warn("b")}) %>% expect_warning())
 })
 
 test_that("unmatched conditions bubble up", {
