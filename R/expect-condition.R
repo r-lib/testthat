@@ -256,10 +256,6 @@ expect_condition_matching <- function(base_class,
                                       label = NULL,
                                       trace_env = caller_env(),
                                       error_call = caller_env()) {
-  check_dots_used(error = function(cnd) {
-    warn(conditionMessage(cnd), call = error_call)
-  })
-
   matcher <- cnd_matcher(
     base_class,
     class,
@@ -301,6 +297,13 @@ cnd_matcher <- function(base_class,
   check_string(class, allow_null = TRUE, call = error_call)
   check_string(pattern, allow_null = TRUE, allow_na = TRUE, call = error_call)
 
+  if (is.null(pattern) && dots_n(...) > 0) {
+    cli::cli_abort(
+      "{.arg ...} ignored when {.arg pattern} is not set.",
+      call = error_call
+    )
+  }
+
   function(cnd) {
     if (!inherit) {
       cnd$parent <- NULL
@@ -318,7 +321,17 @@ cnd_matcher <- function(base_class,
         return(FALSE)
       }
       if (!is.null(pattern) && !isNA(pattern)) {
-        grepl(pattern, conditionMessage(x), ...)
+        withCallingHandlers(
+          grepl(pattern, conditionMessage(x), ...),
+          error = function(e) {
+            cli::cli_abort(
+              "Failed to compare message to {.arg pattern}.",
+              parent = e,
+              call = error_call
+            )
+          }
+        )
+
       } else {
         TRUE
       }

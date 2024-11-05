@@ -29,14 +29,18 @@
 
     `f1()` did not throw a condition with class <bar>.
 
-# unused arguments generate a warning
+# unused arguments generate an error
 
     Code
       expect_condition(stop("Hi!"), foo = "bar")
     Condition
-      Warning in `expect_condition()`:
-      Arguments in `...` must be used.
-      x Problematic argument:
-      * foo = "bar"
-      i Did you misspell an argument name?
+      Error:
+      ! `...` ignored when `pattern` is not set.
+    Code
+      expect_condition(stop("Hi!"), "x", foo = "bar")
+    Condition
+      Error:
+      ! Failed to compare message to `pattern`.
+      Caused by error in `grepl()`:
+      ! unused argument (foo = "bar")
 
