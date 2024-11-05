@@ -24,6 +24,8 @@ test_that("error for non-vectors", {
 })
 
 test_that("useful message on failure", {
+  expect_snapshot_failure(expect_setequal("actual", "expected"))
+
   expect_snapshot_failure(expect_setequal(1:2, 2))
   expect_snapshot_failure(expect_setequal(2, 2:3))
   expect_snapshot_failure(expect_setequal(1:2, 2:3))
@@ -112,4 +114,3 @@ test_that("expect_in() gives useful message on failure", {
   expect_snapshot_failure(expect_in(x1, x2))
   expect_snapshot_failure(expect_in(x1, x3))
 })
-

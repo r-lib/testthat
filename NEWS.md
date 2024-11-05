@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_setequal()` correctly identifies what is missing where (#1962).
 * `expect_true()` and `expect_false()` give better errors if `actual` isn't a vector (#1996).
 * `expect_no_*()` expectations no longer incorrectly emit a passing test result if they in fact fail (#1997).
 * Require the latest version of waldo (0.6.0) in order to get the latest goodies (#1955).

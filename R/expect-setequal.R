@@ -42,9 +42,9 @@ expect_setequal <- function(object, expected) {
     fail(paste0(
       act$lab, " (`actual`) and ", exp$lab, " (`expected`) don't have the same values.\n",
       if (any(act_miss))
-        paste0("* Only in `expected`: ",  values(act$val[act_miss]), "\n"),
+        paste0("* Only in `actual`: ",  values(act$val[act_miss]), "\n"),
       if (any(exp_miss))
-        paste0("* Only in `actual`: ",  values(exp$val[exp_miss]), "\n")
+        paste0("* Only in `expected`: ",  values(exp$val[exp_miss]), "\n")
     ))
   } else {
     succeed()
