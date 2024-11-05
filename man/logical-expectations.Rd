@@ -26,8 +26,7 @@ alternatives in \link{quasi_label}.}
 These are fall-back expectations that you can use when none of the other
 more specific expectations apply. The disadvantage is that you may get
 a less informative error message.
-}
-\details{
+
 Attributes are ignored.
 }
 \examples{

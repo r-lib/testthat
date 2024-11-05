@@ -1,5 +1,6 @@
 #' Does code return `TRUE` or `FALSE`?
 #'
+#' @description
 #' These are fall-back expectations that you can use when none of the other
 #' more specific expectations apply. The disadvantage is that you may get
 #' a less informative error message.
@@ -30,18 +31,14 @@ NULL
 #' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
-  act$val <- as.vector(act$val)
-
-  expect_waldo_constant(act, TRUE, info = info)
+  expect_waldo_constant(act, TRUE, info = info, ignore_attr = TRUE)
 }
 
 #' @export
 #' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
-  act$val <- as.vector(act$val)
-
-  expect_waldo_constant(act, FALSE, info = info)
+  expect_waldo_constant(act, FALSE, info = info, ignore_attr = TRUE)
 }
 
 #' Does code return `NULL`?
@@ -66,11 +63,17 @@ expect_null <- function(object, info = NULL, label = NULL) {
 
 # helpers -----------------------------------------------------------------
 
-expect_waldo_constant <- function(act, constant, info) {
-  comp <- waldo_compare(act$val, constant, x_arg = "actual", y_arg = "expected")
+expect_waldo_constant <- function(act, constant, info, ...) {
+  comp <- waldo_compare(
+    act$val,
+    constant,
+    x_arg = "actual",
+    y_arg = "expected",
+    ...
+  )
 
   expect(
-    identical(act$val, constant),
+    length(comp) == 0,
     sprintf(
       "%s is not %s\n\n%s",
       act$lab, deparse(constant),
