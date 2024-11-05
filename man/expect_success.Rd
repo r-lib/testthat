@@ -15,7 +15,7 @@ expect_no_success(expr)
 
 expect_failure(expr, message = NULL, ...)
 
-expect_snapshot_failure(x)
+expect_snapshot_failure(expr)
 
 expect_no_failure(expr)
 

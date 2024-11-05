@@ -74,8 +74,8 @@ expect_failure <- function(expr, message = NULL, ...) {
 
 #' @export
 #' @rdname expect_success
-expect_snapshot_failure <- function(x) {
-  expect_snapshot_error(x, "expectation_failure")
+expect_snapshot_failure <- function(expr) {
+  expect_snapshot_error(expr, "expectation_failure")
 }
 
 #' @export
