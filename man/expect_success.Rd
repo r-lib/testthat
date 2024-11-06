@@ -30,12 +30,12 @@ show_failure(expr)
 }
 \description{
 \itemize{
-\item \code{expect_sucess()} and \code{expect_failure()} checks that there's at least
+\item \code{expect_sucess()} and \code{expect_failure()} check that there's at least
 one success or failure respectively.
 \item \code{expect_snapshot_failure()} records the failure message so that you can
 manually check that it is informative.
 \item \code{expect_no_success()} and \code{expect_no_failure()} check that are no
-failures or successes.
+successes or failures.
 }
 
 Use \code{show_failure()} in examples to print the failure message without
