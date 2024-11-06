@@ -10,13 +10,12 @@
 #'   size-0 (empty) generalised vector.
 #' @param size (Optional) Size to check for.
 #' @export
-#' @examples
-#' if (requireNamespace("vctrs") && packageVersion("vctrs") > "0.1.0.9002") {
+#' @examplesIf requireNamespace("vctrs")
 #' expect_vector(1:10, ptype = integer(), size = 10)
 #' show_failure(expect_vector(1:10, ptype = integer(), size = 5))
 #' show_failure(expect_vector(1:10, ptype = character(), size = 5))
-#' }
 expect_vector <- function(object, ptype = NULL, size = NULL) {
+  check_installed("vctrs")
   act <- quasi_label(enquo(object), arg = "object")
 
   message <- NULL
