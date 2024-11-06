@@ -19,12 +19,12 @@ new_capture("expectation_success")
 #' Tools for testing expectations
 #'
 #' @description
-#' * `expect_sucess()` and `expect_failure()` checks that there's at least
+#' * `expect_sucess()` and `expect_failure()` check that there's at least
 #'   one success or failure respectively.
 #' * `expect_snapshot_failure()` records the failure message so that you can
 #'   manually check that it is informative.
 #' * `expect_no_success()` and `expect_no_failure()` check that are no
-#'   failures or successes.
+#'   successes or failures.
 #'
 #' Use `show_failure()` in examples to print the failure message without
 #' throwing an error.
