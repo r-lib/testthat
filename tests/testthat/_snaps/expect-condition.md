@@ -35,7 +35,7 @@
       expect_condition(stop("Hi!"), foo = "bar")
     Condition
       Error in `expect_condition()`:
-      ! `...` ignored when `pattern` is not set.
+      ! Can't specify `...` without `pattern`.
     Code
       expect_condition(stop("Hi!"), "x", foo = "bar")
     Condition

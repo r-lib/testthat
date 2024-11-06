@@ -296,7 +296,7 @@ cnd_matcher <- function(base_class,
 
   if (is.null(pattern) && dots_n(...) > 0) {
     cli::cli_abort(
-      "{.arg ...} ignored when {.arg pattern} is not set.",
+      "Can't specify {.arg ...} without {.arg pattern}.",
       call = error_call
     )
   }
