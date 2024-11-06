@@ -4,6 +4,7 @@
 \alias{inheritance-expectations}
 \alias{expect_type}
 \alias{expect_s3_class}
+\alias{expect_s7_class}
 \alias{expect_s4_class}
 \title{Does code return an object inheriting from the expected base type, S3 class,
 or S4 class?}
@@ -11,6 +12,8 @@ or S4 class?}
 expect_type(object, type)
 
 expect_s3_class(object, class, exact = FALSE)
+
+expect_s7_class(object, class)
 
 expect_s4_class(object, class)
 }
@@ -37,10 +40,13 @@ the vocabulary used here.
 \item \code{expect_type(x, type)} checks that \code{typeof(x)} is \code{type}.
 \item \code{expect_s3_class(x, class)} checks that \code{x} is an S3 object that
 \code{\link[=inherits]{inherits()}} from \code{class}
-\item \code{expect_s3_class(x, NA)} checks that \code{x} isn't an S3 object.
+\item \code{expect_s3_class(x, NA)} checks that \code{x} is an S3 object.
 \item \code{expect_s4_class(x, class)} checks that \code{x} is an S4 object that
 \code{\link[=is]{is()}} \code{class}.
 \item \code{expect_s4_class(x, NA)} checks that \code{x} isn't an S4 object.
+\item \code{expect_s7_class(x, Class)} checks that \code{x} is an S7 object that
+\code{\link[S7:S7_inherits]{S7::S7_inherits()}} from \code{Class}
+\item \code{expect_s7_class(x, NA)} checks that \code{x} is an S7 object.
 }
 
 See \code{\link[=expect_vector]{expect_vector()}} for testing properties of objects created by vctrs.

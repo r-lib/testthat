@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* New `expect_s7_class()` for testing if an object is an S7 class (#1580).
 * `expect_setequal()` correctly identifies what is missing where (#1962).
 * `expect_true()` and `expect_false()` give better errors if `actual` isn't a vector (#1996).
 * `expect_no_*()` expectations no longer incorrectly emit a passing test result if they in fact fail (#1997).

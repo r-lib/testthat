@@ -56,8 +56,24 @@ test_that("test_s3_class can request exact match", {
   expect_success(expect_s3_class(x, c("a", "b"), exact = TRUE))
 })
 
-
 test_that("expect_s3_class allows unquoting of first argument", {
   f <- factor("a")
   expect_success(expect_s3_class(!! rlang::quo(f), "factor"))
+})
+
+
+# expect_s7_class --------------------------------------------------------
+
+test_that("checks its inputs", {
+  expect_snapshot(expect_s7_class(1, 1), error = TRUE)
+})
+
+test_that("can check with actual class", {
+  Foo <- S7::new_class("Foo")
+  Bar <- S7::new_class("Bar")
+  expect_success(expect_s7_class(Foo(), class = Foo))
+  expect_snapshot_failure(expect_s7_class(Foo(), class = Bar))
+
+  Baz <- S7::new_class("Baz", parent = Foo)
+  expect_snapshot_failure(expect_s7_class(Baz(), class = Bar))
 })
