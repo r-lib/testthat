@@ -2,6 +2,7 @@
 
 * New `expect_no_failure()`, `expect_no_success()` and `expect_snapshot_failure()` provide more options for testing expectations.
 * `expect_error()` and friends no longer give an uninformative error if they fail inside a magrittr pipe (#1994).
+* `expect_setequal()` correctly identifies what is missing where (#1962).
 * `expect_true()` and `expect_false()` give better errors if `actual` isn't a vector (#1996).
 * `expect_no_*()` expectations no longer incorrectly emit a passing test result if they in fact fail (#1997).
 * Require the latest version of waldo (0.6.0) in order to get the latest goodies (#1955).
