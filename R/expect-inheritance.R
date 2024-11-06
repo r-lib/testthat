@@ -8,7 +8,7 @@
 #' * `expect_type(x, type)` checks that `typeof(x)` is `type`.
 #' * `expect_s3_class(x, class)` checks that `x` is an S3 object that
 #'   [inherits()] from `class`
-#' * `expect_s3_class(x, NA)` checks that `x` is an S3 object.
+#' * `expect_s3_class(x, NA)` checks that `x` isn't an S3 object.
 #' * `expect_s4_class(x, class)` checks that `x` is an S4 object that
 #'   [is()] `class`.
 #' * `expect_s4_class(x, NA)` checks that `x` isn't an S4 object.
