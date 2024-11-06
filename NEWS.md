@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_error()` and friends now error if you supply `...` but not `pattern` (#1932).
 * New `expect_no_failure()`, `expect_no_success()` and `expect_snapshot_failure()` provide more options for testing expectations.
 * `expect_error()` and friends no longer give an uninformative error if they fail inside a magrittr pipe (#1994).
 * `expect_setequal()` correctly identifies what is missing where (#1962).
