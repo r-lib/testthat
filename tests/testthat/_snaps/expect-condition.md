@@ -34,12 +34,12 @@
     Code
       expect_condition(stop("Hi!"), foo = "bar")
     Condition
-      Error:
+      Error in `expect_condition()`:
       ! `...` ignored when `pattern` is not set.
     Code
       expect_condition(stop("Hi!"), "x", foo = "bar")
     Condition
-      Error:
+      Error in `expect_condition()`:
       ! Failed to compare message to `pattern`.
       Caused by error in `grepl()`:
       ! unused argument (foo = "bar")

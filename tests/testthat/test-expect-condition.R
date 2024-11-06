@@ -76,6 +76,12 @@ test_that("can capture Throwable conditions from rJava", {
   expect_error(throw("foo"), "foo", class = "Throwable")
 })
 
+test_that("capture correct trace_env (#1994)", {
+  # This should fail, not error
+  expect_failure(expect_error(stop("oops")) %>% expect_warning())
+  expect_failure(expect_warning(expect_error(stop("oops"))))
+})
+
 # expect_warning() ----------------------------------------------------------
 
 test_that("warnings are converted to errors when options('warn') >= 2", {

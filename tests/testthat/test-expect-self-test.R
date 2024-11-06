@@ -27,3 +27,19 @@ test_that("show_failure", {
   expect_null(show_failure(NULL))
   expect_output(show_failure(expect_true(FALSE)), "FALSE is not TRUE")
 })
+
+test_that("can test for presence and absense of failure", {
+  expect_success(expect_failure(fail()))
+  expect_success(expect_no_failure(succeed()))
+
+  expect_failure(expect_failure(succeed()))
+  expect_failure(expect_no_failure(fail()))
+})
+
+test_that("can test for presence and absense of success", {
+  expect_success(expect_success(succeed()))
+  expect_success(expect_no_success(fail()))
+
+  expect_failure(expect_success(fail()))
+  expect_failure(expect_no_success(succeed()))
+})
