@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* New `expect_s7_class()` for testing if an object is an S7 class (#1580).
 * `expect_error()` and friends now error if you supply `...` but not `pattern` (#1932).
 * New `expect_no_failure()`, `expect_no_success()` and `expect_snapshot_failure()` provide more options for testing expectations.
 * `expect_error()` and friends no longer give an uninformative error if they fail inside a magrittr pipe (#1994).

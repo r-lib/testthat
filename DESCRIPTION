@@ -43,6 +43,7 @@ Suggests:
     knitr,
     rmarkdown,
     rstudioapi,
+    S7,
     shiny,
     usethis,
     vctrs (>= 0.1.0),
