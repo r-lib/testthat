@@ -322,7 +322,7 @@ cnd_matcher <- function(base_class,
           grepl(pattern, conditionMessage(x), ...),
           error = function(e) {
             cli::cli_abort(
-              "Failed to compare message to {.arg pattern}.",
+              "Failed to compare {base_class} to {.arg pattern}.",
               parent = e,
               call = error_call
             )

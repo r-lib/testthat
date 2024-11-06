@@ -40,7 +40,7 @@
       expect_condition(stop("Hi!"), "x", foo = "bar")
     Condition
       Error in `expect_condition()`:
-      ! Failed to compare message to `pattern`.
+      ! Failed to compare condition to `pattern`.
       Caused by error in `grepl()`:
       ! unused argument (foo = "bar")
 
