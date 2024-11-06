@@ -113,7 +113,7 @@ expect_s7_class <- function(object, class) {
         "%s inherits from %s not <%s>.",
         act$lab,
         paste0("<", setdiff(base::class(object), "S7_object"), ">", collapse = "/"),
-        attr(class, "name")
+        attr(class, "name", TRUE)
       )
     )
   }
