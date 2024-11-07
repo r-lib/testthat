@@ -9,4 +9,4 @@ The plan is to remove these calls in the next release, but I wanted to deprecate
 
 ## revdepcheck results
 
-We checked all reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package. Unfortunately something is up with our revdep test system and I failed to check ~1200 packages. I'm pretty confident these are bioconductor packages and unrelated to changes to testthat.
+We checked all reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package. There were a few failures due to some new strictness and use of internal failures. I've tracked fixes for them at https://github.com/r-lib/testthat/issues/2021.
