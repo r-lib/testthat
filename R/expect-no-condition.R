@@ -96,10 +96,7 @@ expect_no_ <- function(base_class,
 
   capture <- function(code) {
     try_fetch(
-      {
-        code
-        succeed()
-      },
+      code,
       !!base_class := function(cnd) {
         if (!matcher(cnd)) {
           return(zap())
@@ -122,6 +119,9 @@ expect_no_ <- function(base_class,
   }
 
   act <- quasi_capture(enquo(object), NULL, capture)
+  if (is.null(act$cap)) {
+    succeed()
+  }
   invisible(act$val)
 }
 
