@@ -1,22 +1,47 @@
 # testthat (development version)
 
-* New `expect_s7_class()` for testing if an object is an S7 class (#1580).
-* `expect_error()` and friends now error if you supply `...` but not `pattern` (#1932).
-* New `expect_no_failure()`, `expect_no_success()` and `expect_snapshot_failure()` provide more options for testing expectations.
-* `expect_error()` and friends no longer give an uninformative error if they fail inside a magrittr pipe (#1994).
+## New expectations
+
+* `expect_s7_class()` tests if an object is an S7 class (#1580).
+
+* `expect_no_failure()`, `expect_no_success()` and `expect_snapshot_failure()`
+  provide more options for testing expectations.
+
+## Bug fixes and minor improvements
+
+* testthat now requires waldo 0.6.0 or later to access the latest features
+  (#1955).
+
+* `expect_condition()` and related functions now include the `class` of the
+  expected condition in the failure message, if provided (#1987).
+
+* `expect_error()` and friends now error if you supply `...` but not `pattern`
+  (#1932). They no longer give an uninformative error if they fail inside
+  a magrittr pipe (#1994).
+
+* `expect_no_*()` expectations no longer incorrectly emit a passing test result
+  if they in fact fail (#1997).
+
 * `expect_setequal()` correctly identifies what is missing where (#1962).
-* `expect_true()` and `expect_false()` give better errors if `actual` isn't a vector (#1996).
-* `expect_no_*()` expectations no longer incorrectly emit a passing test result if they in fact fail (#1997).
-* Require the latest version of waldo (0.6.0) in order to get the latest goodies (#1955).
-* `expect_visible()` and `expect_invisible()` have improved failure messages (#1966).
-* `expect_snapshot()` now strips line breaks in test descriptions (@LDSamson, #1900).
-* `expect_snapshot()` now errors when called from a `test_that()` that has an empty description (@kevinushey, #1980).
-* `skip_if_not_installed()` produces a clearer message (@MichaelChirico, #1959).
-* `with_mock()` and `local_mock()` have been unconditionally deprecated as they will no longer work in future versions of R (#1999).
-* `expect_condition()` and friends now include the `class` of the expected condition in the failure mesage, if used (#1987).
-* `LANGUAGE` is now set to `"C"` in reprocucible environments (i.e.
-  `test_that()` blocks) to disable translations. This fixes warnings
-  about being unable to set the language to `"en"` (#1925).
+
+* `expect_snapshot()` now strips line breaks in test descriptions
+  (@LDSamson, #1900), and errors when called from a `test_that()` that has an
+  empty description (@kevinushey, #1980).
+
+* `expect_true()` and `expect_false()` give better errors if `actual` isn't a
+  vector (#1996).
+
+* `expect_visible()` and `expect_invisible()` have clearer failure messages
+   (#1966).
+* `local_reproducible_output()` (used in `test_that()` blocks) now sets
+   `LANGUAGE` to `"C"` instead of `"en"` to disable translations,
+   avoiding warnings on some platforms (#1925).
+
+* `skip_if_not_installed()` generates a clearer message that sorts better
+   (@MichaelChirico, #1959).
+
+* `with_mock()` and `local_mock()` have been unconditionally deprecated as
+  they will no longer work in future versions of R (#1999).
 
 # testthat 3.2.1
 
