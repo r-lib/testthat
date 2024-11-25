@@ -24,6 +24,13 @@
     * Only in `expected`: 3
     
 
+---
+
+    c("a", "a") (`actual`) and c("b", "b", "b") (`expected`) don't have the same values.
+    * Only in `actual`: "a"
+    * Only in `expected`: "b"
+    
+
 # truncates long vectors
 
     1:2 (`actual`) and 1:50 (`expected`) don't have the same values.

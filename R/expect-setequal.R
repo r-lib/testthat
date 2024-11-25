@@ -35,8 +35,8 @@ expect_setequal <- function(object, expected) {
     warn("expect_setequal() ignores names")
   }
 
-  act_miss <- setdiff(act$val, exp$val)
-  exp_miss <- setdiff(exp$val, act$val)
+  act_miss <- unique(act$val[!act$val %in% exp$val])
+  exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
   if (length(exp_miss) || length(act_miss)) {
     fail(paste0(

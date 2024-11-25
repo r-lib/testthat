@@ -15,6 +15,12 @@ test_that("truncates long differences", {
   expect_match(cnd$message, "...")
 })
 
+test_that("can compare data frames", {
+  # this isn't really a legit use case but one package does it
+  df <- data.frame(x = 1:10, y = 10:1)
+  expect_success(expect_setequal(unname(df), unname(df)))
+})
+
 test_that("warns if both inputs are named", {
   expect_warning(expect_setequal(c(a = 1), c(b = 1)), "ignores names")
 })
@@ -29,6 +35,9 @@ test_that("useful message on failure", {
   expect_snapshot_failure(expect_setequal(1:2, 2))
   expect_snapshot_failure(expect_setequal(2, 2:3))
   expect_snapshot_failure(expect_setequal(1:2, 2:3))
+
+  # doesn't repeat values
+  expect_snapshot_failure(expect_setequal(c("a", "a"), c("b", "b", "b")))
 })
 
 test_that("truncates long vectors", {
