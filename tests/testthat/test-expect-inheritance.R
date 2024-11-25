@@ -69,11 +69,11 @@ test_that("checks its inputs", {
 })
 
 test_that("can check with actual class", {
-  Foo <- S7::new_class("Foo")
-  Bar <- S7::new_class("Bar")
+  Foo <- S7::new_class("Foo", package = NULL)
+  Bar <- S7::new_class("Bar", package = NULL)
   expect_success(expect_s7_class(Foo(), class = Foo))
   expect_snapshot_failure(expect_s7_class(Foo(), class = Bar))
 
-  Baz <- S7::new_class("Baz", parent = Foo)
+  Baz <- S7::new_class("Baz", parent = Foo, package = NULL)
   expect_snapshot_failure(expect_s7_class(Baz(), class = Bar))
 })
