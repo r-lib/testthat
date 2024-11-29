@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `test_dir()` gains a `recursive` argument which allows test files in nested directories (#1605).
+
 ## New expectations
 
 * `expect_s7_class()` tests if an object is an S7 class (#1580).

@@ -46,6 +46,17 @@ test_that("can control if warnings errors", {
   expect_error(test_warning(stop_on_warning = FALSE), NA)
 })
 
+test_that("runs all tests in nested directories and records output", {
+  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  res <- test_dir(test_path("test_dir_recursive"), reporter = "silent", stop_on_failure = FALSE, recursive = TRUE)
+  df <- as.data.frame(res)
+  df$user <- df$system <- df$real <- df$result <- NULL
+
+  local_reproducible_output(width = 200)
+  local_edition(3)
+  expect_snapshot_output(print(df))
+})
+
 # test_file ---------------------------------------------------------------
 
 test_that("can test single file", {
