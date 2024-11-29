@@ -24,20 +24,13 @@ For expert use only.}
 The result of the last unnamed parameter
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
-
-\code{with_mock()} and \code{local_mock()} are superseded in favour of
-\code{\link[=with_mocked_bindings]{with_mocked_bindings()}} and \code{\link[=local_mocked_bindings]{local_mocked_bindings()}}.
-
-These works by using some C code to temporarily modify the mocked function
-\emph{in place}. This is abusive of R's internals, which makes it dangerous, and
-no longer recommended.
-}
-\section{3rd edition}{
-
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
-\code{with_mock()} and \code{local_mock()} are deprecated in the third edition.
-}
+\code{with_mock()} and \code{local_mock()} are deprecated in favour of
+\code{\link[=with_mocked_bindings]{with_mocked_bindings()}} and \code{\link[=local_mocked_bindings]{local_mocked_bindings()}}.
 
+These functions worked by using some C code to temporarily modify the mocked
+function \emph{in place}. This was an abuse of R's internals and it is no longer
+permitted.
+}
 \keyword{internal}

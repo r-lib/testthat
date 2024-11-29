@@ -44,7 +44,7 @@ source_file <- function(path,
       test = NULL,
       code = exprs,
       env = env,
-      default_reporter = StopReporter$new()
+      reporter = get_reporter() %||% StopReporter$new()
     ))
   } else {
     withCallingHandlers(

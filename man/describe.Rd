@@ -15,10 +15,12 @@ it(description, code = NULL)
 \item{code}{test code containing the specs}
 }
 \description{
-A simple BDD DSL for writing tests. The language is similar to RSpec for
-Ruby or Mocha for JavaScript. BDD tests read like sentences and it should
-thus be easier to understand what the specification of a function/component
-is.
+A simple \href{https://en.wikipedia.org/wiki/Behavior-driven_development}{behavior-driven development (BDD)}
+\href{https://en.wikipedia.org/wiki/Domain-specific_language}{domain-specific language}
+for writing tests. The language is similar to \href{https://rspec.info/}{RSpec}
+for Ruby or \href{https://mochajs.org/}{Mocha} for JavaScript. BDD tests read
+like sentences and it should thus be easier to understand what the
+specification of a function/component is.
 }
 \details{
 Tests using the \code{describe} syntax not only verify the tested code, but

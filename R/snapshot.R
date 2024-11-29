@@ -89,7 +89,7 @@ expect_snapshot <- function(x,
   )
 
   # Use expect_error() machinery to confirm that error is as expected
-  msg <- compare_condition_3e("error", state$error, quo_label(x), error)
+  msg <- compare_condition_3e("error", NULL, state$error, quo_label(x), error)
   if (!is.null(msg)) {
     if (error) {
       expect(FALSE, msg, trace = state$error[["trace"]])
@@ -272,7 +272,7 @@ expect_snapshot_helper <- function(lab, val,
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    snapshot_not_available(paste0("Current value:\n", save(val)))
+    snapshot_not_available(save(val))
     return(invisible())
   }
 
@@ -323,11 +323,14 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
 }
 
 snapshot_not_available <- function(message) {
+  local_reporter_output()
+
+  cat(cli::rule("Snapshot"), "\n", sep = "")
   cli::cli_inform(c(
-    "{.strong Can't compare snapshot to reference when testing interactively.}",
-    i = "Run {.run devtools::test()} or {.code testthat::test_file()} to see changes."
+    i = "Can't save or compare to reference when testing interactively."
   ))
   cat(message, "\n", sep = "")
+  cat(cli::rule(), "\n", sep = "")
 }
 
 local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
@@ -362,4 +365,3 @@ with_is_snapshotting <- function(code) {
   withr::local_envvar(TESTTHAT_IS_SNAPSHOT = "true")
   code
 }
-

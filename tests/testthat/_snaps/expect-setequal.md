@@ -1,26 +1,40 @@
 # useful message on failure
 
+    "actual" (`actual`) and "expected" (`expected`) don't have the same values.
+    * Only in `actual`: "actual"
+    * Only in `expected`: "expected"
+    
+
+---
+
     1:2 (`actual`) and 2 (`expected`) don't have the same values.
-    * Only in `expected`: 1
+    * Only in `actual`: 1
     
 
 ---
 
     2 (`actual`) and 2:3 (`expected`) don't have the same values.
-    * Only in `actual`: 3
+    * Only in `expected`: 3
     
 
 ---
 
     1:2 (`actual`) and 2:3 (`expected`) don't have the same values.
-    * Only in `expected`: 1
-    * Only in `actual`: 3
+    * Only in `actual`: 1
+    * Only in `expected`: 3
+    
+
+---
+
+    c("a", "a") (`actual`) and c("b", "b", "b") (`expected`) don't have the same values.
+    * Only in `actual`: "a"
+    * Only in `expected`: "b"
     
 
 # truncates long vectors
 
     1:2 (`actual`) and 1:50 (`expected`) don't have the same values.
-    * Only in `actual`: 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
+    * Only in `expected`: 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
     
 
 # expect_contains() gives useful message on failure

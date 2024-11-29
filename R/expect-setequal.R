@@ -35,16 +35,16 @@ expect_setequal <- function(object, expected) {
     warn("expect_setequal() ignores names")
   }
 
-  act_miss <- !act$val %in% exp$val
-  exp_miss <- !exp$val %in% act$val
+  act_miss <- unique(act$val[!act$val %in% exp$val])
+  exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
-  if (any(exp_miss) || any(act_miss)) {
+  if (length(exp_miss) || length(act_miss)) {
     fail(paste0(
       act$lab, " (`actual`) and ", exp$lab, " (`expected`) don't have the same values.\n",
-      if (any(act_miss))
-        paste0("* Only in `expected`: ",  values(act$val[act_miss]), "\n"),
-      if (any(exp_miss))
-        paste0("* Only in `actual`: ",  values(exp$val[exp_miss]), "\n")
+      if (length(act_miss))
+        paste0("* Only in `actual`: ", values(act_miss), "\n"),
+      if (length(exp_miss))
+        paste0("* Only in `expected`: ", values(exp_miss), "\n")
     ))
   } else {
     succeed()

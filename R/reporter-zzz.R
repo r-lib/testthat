@@ -61,7 +61,7 @@ stop_reporter <- function(message) {
   cli::cli_abort(
     message,
     class = "testthat_abort_reporter",
-    error_call = NULL
+    call = NULL
   )
 }
 

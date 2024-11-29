@@ -38,7 +38,6 @@
 #'     Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
 #'     ```
 #' @param wrap DEPRECATED
-#' @keywords internal
 #' @return A list (invisibly) containing data about the test results.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
@@ -200,6 +199,15 @@ test_files_serial <- function(test_dir,
                        load_package = c("none", "installed", "source"),
                        error_call = caller_env()) {
 
+  # Because load_all() called by test_files_setup_env() will have already
+  # loaded them. We don't want to rely on testthat's loading since that
+  # only affects the test environment and we want to keep the helpers
+  # loaded in the user's session.
+  load_package <- arg_match(load_package)
+  if (load_package == "source") {
+    load_helpers <- FALSE
+  }
+
   env <- test_files_setup_env(test_package, test_dir, load_package, env)
   # record testing env for mocks
   local_testing_env(env)
@@ -247,7 +255,7 @@ test_files_setup_env <- function(test_package,
 }
 
 find_load_all_args <- function(path) {
-  default <- list(export_all = TRUE, helpers = FALSE)
+  default <- list(export_all = TRUE, helpers = TRUE)
 
   desc <- find_description(path)
   if (is.null(desc)) {

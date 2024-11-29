@@ -26,7 +26,7 @@ expect_invisible <- function(call, label = NULL) {
 
   expect(
     identical(vis$visible, FALSE),
-    sprintf("%s does not return invisibly", lab)
+    sprintf("%s returns visibly, not invisibly.", lab)
   )
   invisible(vis$value)
 }
@@ -39,7 +39,7 @@ expect_visible <- function(call, label = NULL) {
 
   expect(
     identical(vis$visible, TRUE),
-    sprintf("%s does not invisibly", lab)
+    sprintf("%s returns invisibly, not visibly.", lab)
   )
   invisible(vis$value)
 }

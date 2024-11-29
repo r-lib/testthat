@@ -89,7 +89,6 @@ expect <- function(ok, failure_message,
 #' @param message Message describing test failure
 #' @param srcref Optional `srcref` giving location of test.
 #' @inheritParams expect
-#' @keywords internal
 #' @export
 expectation <- function(type, message, srcref = NULL, trace = NULL) {
   new_expectation(type, message, srcref = srcref, trace = trace)

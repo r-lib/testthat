@@ -76,6 +76,12 @@ test_that("can capture Throwable conditions from rJava", {
   expect_error(throw("foo"), "foo", class = "Throwable")
 })
 
+test_that("capture correct trace_env (#1994)", {
+  # This should fail, not error
+  expect_failure(expect_error(stop("oops")) %>% expect_warning())
+  expect_failure(expect_warning(expect_error(stop("oops"))))
+})
+
 # expect_warning() ----------------------------------------------------------
 
 test_that("warnings are converted to errors when options('warn') >= 2", {
@@ -149,6 +155,11 @@ test_that("captured condition is muffled", {
   expect_error(expect_condition(stop("Hi")), NA)
 })
 
+test_that("condition class is included in failure", {
+  f1 <- function() signal(class = "foo")
+  expect_snapshot_failure(expect_condition(f1(), class = "bar"))
+})
+
 test_that("only matching condition is captured, others bubble up", {
   f1 <- function() {
     message("Hi")
@@ -212,8 +223,11 @@ test_that("can match parent conditions (#1493)", {
   expect_error(expect_error(f(), "Parent message.", inherit = FALSE))
 })
 
-test_that("unused arguments generate a warning", {
-  expect_snapshot(expect_condition(stop("Hi!"), foo = "bar"))
+test_that("unused arguments generate an error", {
+  expect_snapshot(error = TRUE, {
+    expect_condition(stop("Hi!"), foo = "bar")
+    expect_condition(stop("Hi!"), "x", foo = "bar")
+  })
 })
 
 

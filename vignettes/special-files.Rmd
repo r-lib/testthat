@@ -33,10 +33,10 @@ In principle, you should be able to be run your test files in any order or even 
 
 ## Helper files
 
-Helper files live in `tests/testtthat/`, start with `helper`, and end with `.r` or `.R`.
+Helper files live in `tests/testthat/`, start with `helper`, and end with `.r` or `.R`.
 They are sourced by `devtools::load_all()` (so they're available interactively when developing your packages) and by `test_check()` and friends (so that they're available no matter how your tests are executed).
 
-Helper files are a useful place for functions that you've extracted from repeated code in your tests, whether that be test fixtures (`vignette("test-fixtures")`), custom expectations (`vignette("custom-expectations")`), or skip helpers (`vignette("skipping")`).
+Helper files are a useful place for functions that you've extracted from repeated code in your tests, whether that be test fixtures (`vignette("test-fixtures")`), custom expectations (`vignette("custom-expectation")`), or skip helpers (`vignette("skipping")`).
 
 ## Setup files
 

@@ -91,3 +91,9 @@ test_that("verify_exec() doesn't leave tempfiles around", {
 
   expect_equal(before, after)
 })
+
+test_that("verify_exec() strips CR", {
+  act <- verify_exec(quote(cat("\r\n")))
+  exp <- verify_exec(quote(cat("\n")))
+  expect_equal(act[-1], exp[-1])
+})

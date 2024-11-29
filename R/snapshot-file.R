@@ -101,7 +101,7 @@ expect_snapshot_file <- function(path,
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    snapshot_not_available(paste0("New path: ", path))
+    snapshot_not_available(path)
     return(invisible())
   }
 

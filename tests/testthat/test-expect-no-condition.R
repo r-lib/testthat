@@ -10,7 +10,23 @@ test_that("expect_no_* conditions behave as expected", {
   expect_snapshot_failure(expect_no_error(abort("error")))
   expect_snapshot_failure(expect_no_warning(warn("warning")))
   expect_snapshot_failure(expect_no_message(inform("message")))
+})
 
+test_that("expect_no_* pass with pure code", {
+  expect_no_error(1)
+  expect_no_warning(1)
+  expect_no_message(1)
+  expect_no_condition(1)
+})
+
+test_that("expect_no_* don't emit success when they fail", {
+  expect_no_success(expect_no_error(stop("!")))
+})
+
+test_that("capture correct trace_env (#1994)", {
+  # This should fail, not error
+  expect_failure(expect_message({message("a"); warn("b")}) %>% expect_no_warning())
+  expect_failure(expect_no_message({message("a"); warn("b")}) %>% expect_warning())
 })
 
 test_that("unmatched conditions bubble up", {

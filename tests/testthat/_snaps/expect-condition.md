@@ -25,14 +25,22 @@
     Message: dispatched!
     Class:   foobar/rlang_error/error/condition
 
-# unused arguments generate a warning
+# condition class is included in failure
+
+    `f1()` did not throw a condition with class <bar>.
+
+# unused arguments generate an error
 
     Code
       expect_condition(stop("Hi!"), foo = "bar")
     Condition
-      Warning in `expect_condition()`:
-      Arguments in `...` must be used.
-      x Problematic argument:
-      * foo = "bar"
-      i Did you misspell an argument name?
+      Error in `expect_condition()`:
+      ! Can't specify `...` without `pattern`.
+    Code
+      expect_condition(stop("Hi!"), "x", foo = "bar")
+    Condition
+      Error in `expect_condition()`:
+      ! Failed to compare condition to `pattern`.
+      Caused by error in `grepl()`:
+      ! unused argument (foo = "bar")
 

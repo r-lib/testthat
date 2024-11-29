@@ -163,8 +163,7 @@ expect_warning <- function(object,
       ...,
       inherit = inherit,
       info = info,
-      label = label,
-      trace_env = caller_env()
+      label = label
     )
   } else {
     act <- quasi_capture(enquo(object), label, capture_warnings, ignore_deprecation = identical(regexp, NA))
@@ -196,8 +195,7 @@ expect_message <- function(object,
       ...,
       inherit = inherit,
       info = info,
-      label = label,
-      trace_env = caller_env()
+      label = label
     )
   } else {
     act <- quasi_capture(enquo(object), label, capture_messages)
@@ -225,8 +223,7 @@ expect_condition <- function(object,
       ...,
       inherit = inherit,
       info = info,
-      label = label,
-      trace_env = caller_env()
+      label = label
     )
   } else {
 
@@ -256,10 +253,6 @@ expect_condition_matching <- function(base_class,
                                       label = NULL,
                                       trace_env = caller_env(),
                                       error_call = caller_env()) {
-  check_dots_used(error = function(cnd) {
-    warn(conditionMessage(cnd), call = error_call)
-  })
-
   matcher <- cnd_matcher(
     base_class,
     class,
@@ -267,7 +260,7 @@ expect_condition_matching <- function(base_class,
     ...,
     inherit = inherit,
     ignore_deprecation = base_class == "warning" && identical(regexp, NA),
-    error_call = trace_env
+    error_call = error_call
   )
 
   act <- quasi_capture(
@@ -278,7 +271,7 @@ expect_condition_matching <- function(base_class,
   )
 
   expected <- !identical(regexp, NA)
-  msg <- compare_condition_3e(base_class, act$cap, act$lab, expected)
+  msg <- compare_condition_3e(base_class, class, act$cap, act$lab, expected)
 
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
@@ -301,6 +294,13 @@ cnd_matcher <- function(base_class,
   check_string(class, allow_null = TRUE, call = error_call)
   check_string(pattern, allow_null = TRUE, allow_na = TRUE, call = error_call)
 
+  if (is.null(pattern) && dots_n(...) > 0) {
+    cli::cli_abort(
+      "Can't specify {.arg ...} without {.arg pattern}.",
+      call = error_call
+    )
+  }
+
   function(cnd) {
     if (!inherit) {
       cnd$parent <- NULL
@@ -318,7 +318,17 @@ cnd_matcher <- function(base_class,
         return(FALSE)
       }
       if (!is.null(pattern) && !isNA(pattern)) {
-        grepl(pattern, conditionMessage(x), ...)
+        withCallingHandlers(
+          grepl(pattern, conditionMessage(x), ...),
+          error = function(e) {
+            cli::cli_abort(
+              "Failed to compare {base_class} to {.arg pattern}.",
+              parent = e,
+              call = error_call
+            )
+          }
+        )
+
       } else {
         TRUE
       }
@@ -375,10 +385,14 @@ capture_matching_condition <- function(expr, matches) {
 
 # Helpers -----------------------------------------------------------------
 
-compare_condition_3e <- function(cond_type, cond, lab, expected) {
+compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
   if (expected) {
     if (is.null(cond)) {
-      sprintf("%s did not throw the expected %s.", lab, cond_type)
+      if (is.null(cond_class)) {
+        sprintf("%s did not throw the expected %s.", lab, cond_type)
+      } else {
+        sprintf("%s did not throw a %s with class <%s>.", lab, cond_type, cond_class)
+      }
     } else {
       NULL
     }

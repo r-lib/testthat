@@ -21,7 +21,7 @@ test_that("local context is 'as promised' inside test_that()", {
   expect_equal(getOption("max.print"), 99999)
 
   expect_equal(Sys.getenv("RSTUDIO"), "")
-  expect_equal(Sys.getenv("LANGUAGE"), "en")
+  expect_equal(Sys.getenv("LANGUAGE"), "C")
 
   expect_equal(Sys.getlocale("LC_COLLATE"), "C")
 })

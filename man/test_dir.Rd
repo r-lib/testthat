@@ -81,4 +81,3 @@ namespace environment, so that tests can access internal functions
 and objects.
 }
 
-\keyword{internal}

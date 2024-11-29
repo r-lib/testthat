@@ -30,6 +30,11 @@ test_that("empty lines are preserved", {
   expect_snapshot(f(), error = TRUE)
 })
 
+test_that("line-endings fixed before comparison", {
+  x <- "a\n\rb"
+  expect_snapshot(cat(x))
+})
+
 test_that("multiple outputs of same type are collapsed", {
   expect_snapshot({
     x <- 1
@@ -161,4 +166,12 @@ test_that("hint is informative", {
     cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
     cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
   })
+})
+
+test_that("expect_snapshot requires a non-empty test label", {
+
+  test_that("", {
+    expect_error(expect_snapshot(1 + 1))
+  })
+
 })

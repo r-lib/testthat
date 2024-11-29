@@ -26,7 +26,7 @@
 
 # skip_if_not_installed() works as expected
 
-    Reason: doesntexist cannot be loaded
+    Reason: {doesntexist} is not installed
 
 ---
 

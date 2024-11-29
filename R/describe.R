@@ -1,9 +1,12 @@
 #' describe: a BDD testing language
 #'
-#' A simple BDD DSL for writing tests. The language is similar to RSpec for
-#' Ruby or Mocha for JavaScript. BDD tests read like sentences and it should
-#' thus be easier to understand what the specification of a function/component
-#' is.
+#' A simple [behavior-driven development
+#' (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development)
+#' [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language)
+#' for writing tests. The language is similar to [RSpec](https://rspec.info/)
+#' for Ruby or [Mocha](https://mochajs.org/) for JavaScript. BDD tests read
+#' like sentences and it should thus be easier to understand what the
+#' specification of a function/component is.
 #'
 #' Tests using the `describe` syntax not only verify the tested code, but
 #' also document its intended behaviour. Each `describe` block specifies a
@@ -11,7 +14,6 @@
 #' specification is defined by an `it` block. Each `it` block
 #' functions as a test and is evaluated in its own environment. You
 #' can also have nested `describe` blocks.
-#'
 #'
 #' This test syntax helps to test the intended behaviour of your code. For
 #' example: you want to write a new function for your package. Try to describe
@@ -74,13 +76,14 @@ describe <- function(description, code) {
 }
 
 describe_it <- function(description, code, env = parent.frame()) {
+  reporter <- get_reporter() %||% local_interactive_reporter()
   local_test_context()
 
   test_code(
     description,
     code,
     env = env,
-    default_reporter = local_interactive_reporter(),
+    reporter = reporter,
     skip_on_empty = FALSE
   )
 }

@@ -133,7 +133,7 @@ neat <- function(x, sig_digits) {
 
 Second, it works when called in the global environment. Since the global environment isn't perishable, like a test environment is, you have to call `deferred_run()` explicitly to execute the deferred events. You can also clear them, without running, with `deferred_clear()`.
 
-```{r}
+```{r, eval = FALSE}
 withr::defer(print("hi"))
 #> Setting deferred event(s) on global environment.
 #>   * Execute (and clear) with `deferred_run()`.

@@ -82,10 +82,10 @@ expect_no_condition <- function(object,
 
 
 expect_no_ <- function(base_class,
-                            object,
-                            regexp = NULL,
-                            class = NULL,
-                            error_call = caller_env()) {
+                       object,
+                       regexp = NULL,
+                       class = NULL,
+                       trace_env = caller_env()) {
 
   matcher <- cnd_matcher(
     base_class,
@@ -113,13 +113,15 @@ expect_no_ <- function(base_class,
           indent_lines(rlang::cnd_message(cnd))
         )
         message <- format_error_bullets(c(expected, i = actual))
-        fail(message, trace_env = error_call)
+        fail(message, trace_env = trace_env)
       }
     )
   }
 
   act <- quasi_capture(enquo(object), NULL, capture)
-  succeed()
+  if (is.null(act$cap)) {
+    succeed()
+  }
   invisible(act$val)
 }
 

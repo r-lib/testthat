@@ -65,7 +65,7 @@ test_example <- function(path, title = path) {
     test = title,
     code = parse(ex_path, encoding = "UTF-8"),
     env = env,
-    default_reporter = StopReporter$new(),
+    reporter = get_reporter() %||% StopReporter$new(),
     skip_on_empty = FALSE
   )
   if (ok) succeed(path)

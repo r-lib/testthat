@@ -12,6 +12,8 @@
 #' * `expect_s4_class(x, class)` checks that `x` is an S4 object that
 #'   [is()] `class`.
 #' * `expect_s4_class(x, NA)` checks that `x` isn't an S4 object.
+#' * `expect_s7_class(x, Class)` checks that `x` is an S7 object that
+#'   [S7::S7_inherits()] from `Class`
 #'
 #' See [expect_vector()] for testing properties of objects created by vctrs.
 #'
@@ -87,6 +89,33 @@ expect_s3_class <- function(object, class, exact = FALSE) {
     }
   } else {
     abort("`class` must be a NA or a character vector")
+  }
+
+  invisible(act$val)
+}
+
+#' @export
+#' @rdname inheritance-expectations
+expect_s7_class <- function(object, class) {
+  check_installed("S7")
+  if (!inherits(class, "S7_class")) {
+    stop_input_type(class, "an S7 class object")
+  }
+
+  act <- quasi_label(enquo(object), arg = "object")
+
+  if (!S7::S7_inherits(object)) {
+    fail(sprintf("%s is not an S7 object", act$lab))
+  } else {
+    expect(
+      S7::S7_inherits(object, class),
+      sprintf(
+        "%s inherits from %s not <%s>.",
+        act$lab,
+        paste0("<", setdiff(base::class(object), "S7_object"), ">", collapse = "/"),
+        attr(class, "name", TRUE)
+      )
+    )
   }
 
   invisible(act$val)
