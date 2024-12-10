@@ -1,6 +1,6 @@
 Package: testthat
 Title: Unit Testing for R
-Version: 3.2.2
+Version: 3.2.2.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
     person("Posit Software, PBC", role = c("cph", "fnd")),
