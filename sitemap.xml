@@ -1,348 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://testthat.r-lib.org/404.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/custom-expectation.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/parallel.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/skipping.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/snapshotting.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/special-files.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/test-fixtures.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/articles/third-edition.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/index.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/CheckReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/DebugReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/FailReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/JunitReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/ListReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/LocationReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/MinimalReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/MultiReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/ProgressReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/RStudioReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/Reporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/SilentReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/StopReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/SummaryReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/TapReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/TeamcityReporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/auto_test.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/auto_test_package.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/capture_condition.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/capture_output.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/compare.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/compare_state.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/comparison-expectations.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/context.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/context_start_file.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/default_reporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/describe.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/dir_state.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/equality-expectations.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/evaluate_promise.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_equivalent.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_error.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_invisible.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_is.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_known_output.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_length.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_less_than.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_match.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_named.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_no_error.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_null.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_output.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_output_file.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_reference.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_setequal.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_silent.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_snapshot.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_snapshot_file.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_snapshot_output.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_snapshot_value.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_success.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_that.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expect_vector.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/expectation.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/fail.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/find_reporter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/find_test_scripts.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/inheritance-expectations.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/is_informative_error.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/is_testing.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/local_edition.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/local_mocked_bindings.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/local_snapshotter.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/local_test_context.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/local_test_directory.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/logical-expectations.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/make_expectation.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/not.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/oldskool.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/quasi_label.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/reporter-accessors.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/run_cpp_tests.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/set_max_fails.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/set_state_inspector.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/skip.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/skip_on_travis.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/snapshot_accept.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/source_file.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/takes_less_than.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/teardown.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/teardown_env.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/test_dir.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/test_env.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/test_examples.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/test_file.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/test_package.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/test_path.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/test_that.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/testthat-package.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/testthat_examples.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/testthat_results.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/testthat_tolerance.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/try_again.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/use_catch.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/verify_output.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/watch.html</loc>
-  </url>
-  <url>
-    <loc>https://testthat.r-lib.org/reference/with_mock.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://testthat.r-lib.org/404.html</loc></url>
+<url><loc>https://testthat.r-lib.org/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://testthat.r-lib.org/LICENSE-text.html</loc></url>
+<url><loc>https://testthat.r-lib.org/LICENSE.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/custom-expectation.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/index.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/parallel.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/skipping.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/snapshotting.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/special-files.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/test-fixtures.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/third-edition.html</loc></url>
+<url><loc>https://testthat.r-lib.org/authors.html</loc></url>
+<url><loc>https://testthat.r-lib.org/index.html</loc></url>
+<url><loc>https://testthat.r-lib.org/news/index.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/CheckReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/DebugReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/FailReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/JunitReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/ListReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/LocationReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/MinimalReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/MultiReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/ProgressReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/RStudioReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/Reporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/SilentReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/StopReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/SummaryReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/TapReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/TeamcityReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/auto_test.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/auto_test_package.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/capture_condition.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/capture_output.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/compare.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/compare_state.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/comparison-expectations.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/context.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/context_start_file.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/default_reporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/describe.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/dir_state.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/equality-expectations.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/evaluate_promise.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_equivalent.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_error.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_invisible.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_is.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_known_output.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_length.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_less_than.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_match.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_named.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_no_error.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_null.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_output.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_output_file.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_reference.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_setequal.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_silent.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_snapshot.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_snapshot_file.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_snapshot_output.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_snapshot_value.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_success.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_that.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_vector.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expectation.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/fail.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/find_reporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/find_test_scripts.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/index.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/inheritance-expectations.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/is_informative_error.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/is_testing.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/local_edition.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/local_mocked_bindings.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/local_snapshotter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/local_test_context.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/local_test_directory.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/logical-expectations.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/make_expectation.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/not.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/oldskool.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/quasi_label.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/reexports.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/reporter-accessors.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/run_cpp_tests.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/set_max_fails.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/set_state_inspector.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/skip.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/skip_on_travis.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/snapshot_accept.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/source_file.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/takes_less_than.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/teardown.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/teardown_env.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/test_dir.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/test_env.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/test_examples.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/test_file.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/test_package.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/test_path.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/test_that.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/testthat-package.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/testthat_examples.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/testthat_results.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/testthat_tolerance.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/try_again.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/use_catch.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/verify_output.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/watch.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/with_mock.html</loc></url>
 </urlset>
+

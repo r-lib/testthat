@@ -1,5 +1,5 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   custom-expectation: custom-expectation.html
@@ -9,8 +9,7 @@ articles:
   special-files: special-files.html
   test-fixtures: test-fixtures.html
   third-edition: third-edition.html
-last_built: 2023-12-02T15:19Z
+last_built: 2024-12-10T23:33Z
 urls:
   reference: https://testthat.r-lib.org/reference
   article: https://testthat.r-lib.org/articles
-
