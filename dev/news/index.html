@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.2.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.2.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,13 +57,16 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="3.2.2" id="testthat-322">testthat 3.2.2<a class="anchor" aria-label="anchor" href="#testthat-322"></a></h2><p class="text-muted">CRAN release: 2024-12-10</p>
 <div class="section level3">
-<h3 id="new-expectations-development-version">New expectations<a class="anchor" aria-label="anchor" href="#new-expectations-development-version"></a></h3>
+<h3 id="new-expectations-3-2-2">New expectations<a class="anchor" aria-label="anchor" href="#new-expectations-3-2-2"></a></h3>
 <ul><li><p><code><a href="../reference/inheritance-expectations.html">expect_s7_class()</a></code> tests if an object is an S7 class (<a href="https://github.com/r-lib/testthat/issues/1580" class="external-link">#1580</a>).</p></li>
 <li><p><code><a href="../reference/expect_success.html">expect_no_failure()</a></code>, <code><a href="../reference/expect_success.html">expect_no_success()</a></code> and <code><a href="../reference/expect_success.html">expect_snapshot_failure()</a></code> provide more options for testing expectations.</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="bug-fixes-and-minor-improvements-development-version">Bug fixes and minor improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-minor-improvements-development-version"></a></h3>
+<h3 id="bug-fixes-and-minor-improvements-3-2-2">Bug fixes and minor improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-minor-improvements-3-2-2"></a></h3>
 <ul><li><p>testthat now requires waldo 0.6.0 or later to access the latest features (<a href="https://github.com/r-lib/testthat/issues/1955" class="external-link">#1955</a>).</p></li>
 <li><p><code><a href="../reference/expect_error.html">expect_condition()</a></code> and related functions now include the <code>class</code> of the expected condition in the failure message, if provided (<a href="https://github.com/r-lib/testthat/issues/1987" class="external-link">#1987</a>).</p></li>
 <li><p><code><a href="../reference/expect_error.html">expect_error()</a></code> and friends now error if you supply <code>...</code> but not <code>pattern</code> (<a href="https://github.com/r-lib/testthat/issues/1932" class="external-link">#1932</a>). They no longer give an uninformative error if they fail inside a magrittr pipe (<a href="https://github.com/r-lib/testthat/issues/1994" class="external-link">#1994</a>).</p></li>
