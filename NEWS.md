@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* Fixed an issue where calling `skip()` outside of a test could cause
+  an unexpected error (@kevinushey, #2038).
+
 # testthat 3.2.2
 
 ## New expectations

@@ -116,7 +116,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     add_result = function(context, test, result) {
-      if (is.null(self$test)) {
+      if (!length(self$test)) {
         return()
       }
 
