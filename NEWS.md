@@ -45,6 +45,9 @@
 * `with_mock()` and `local_mock()` have been unconditionally deprecated as
   they will no longer work in future versions of R (#1999).
 
+* `snapshot_accept()` now works also when the tested file contains dots in
+  the filename (@mcol #1669).
+
 # testthat 3.2.1
 
 * Fix incorrect format string detected by latest R-devel. Fix thanks to
