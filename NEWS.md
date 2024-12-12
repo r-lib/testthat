@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `test_dir()` gains a `recursive` argument which allows test files in nested directories (#1605).
+
 # testthat 3.2.2
 
 ## New expectations
