@@ -1,6 +1,8 @@
 # testthat (development version)
 
 * `test_dir()` gains a `recursive` argument which allows test files in nested directories (#1605).
+* Fixed an issue where calling `skip()` outside of an active test could
+  cause an unexpected error (@kevinushey, #2039).
 
 # testthat 3.2.2
 
