@@ -161,9 +161,11 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     files <- files[!is_dir]
 
     dirs <- substr(dirs, 1, nchar(dirs) - 1)
-    files <- ifelse(tools::file_ext(files) == "", paste0(files, ".md"), files)
+    files <- gsub("\\.md|\\.txt$", "", files)
 
-    out <- out[out$name %in% files | out$test %in% dirs, , drop = FALSE]
+    out_name_sans_ext <- tools::file_path_sans_ext(out$name)
+    out <- out[out_name_sans_ext %in% files |
+               out$test %in% dirs, , drop = FALSE]
   }
 
   out
