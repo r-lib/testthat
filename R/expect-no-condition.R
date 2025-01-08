@@ -96,7 +96,10 @@ expect_no_ <- function(base_class,
 
   capture <- function(code) {
     try_fetch(
-      code,
+      {
+        code
+        NULL
+      },
       !!base_class := function(cnd) {
         if (!matcher(cnd)) {
           return(zap())
