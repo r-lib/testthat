@@ -13,10 +13,12 @@ test_that("expect_no_* conditions behave as expected", {
 })
 
 test_that("expect_no_* pass with pure code", {
-  expect_no_error(1)
-  expect_no_warning(1)
-  expect_no_message(1)
-  expect_no_condition(1)
+  expect_success(out <- expect_no_error(1))
+  expect_equal(out, 1)
+  
+  expect_success(expect_no_warning(1))
+  expect_success(expect_no_message(1))
+  expect_success(expect_no_condition(1))
 })
 
 test_that("expect_no_* don't emit success when they fail", {
