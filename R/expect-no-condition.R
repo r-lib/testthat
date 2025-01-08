@@ -98,6 +98,8 @@ expect_no_ <- function(base_class,
     try_fetch(
       {
         code
+        # We can't call succeed() here because that generates a condition
+        # that causes `expect_no_condition()` to always fail
         NULL
       },
       !!base_class := function(cnd) {
