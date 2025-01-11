@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.2.3
 
 * Fixed an issue where `expect_no_error(1)` was failing (#2037).
 
