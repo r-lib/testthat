@@ -21,6 +21,15 @@ test_that("can accept specific files", {
   expect_snapshot(snapshot_accept("test/", path = path))
   expect_equal(dir(file.path(path, "_snaps"), recursive = TRUE), "test/a.txt")
 
+  ## file names with dots
+  path <- local_snapshot_dir(c("test/c.d.md", "test/c.d.new.md"))
+  expect_snapshot(snapshot_accept("test/c.d.md", path = path))
+  expect_equal(dir(file.path(path, "_snaps"), recursive = TRUE), "test/c.d.md")
+
+  path <- local_snapshot_dir(c("test/c.d.md", "test/c.d.new.md"))
+  expect_snapshot(snapshot_accept("test/c.d", path = path))
+  expect_equal(dir(file.path(path, "_snaps"), recursive = TRUE), "test/c.d.md")
+
 })
 
 test_that("can work with variants", {
