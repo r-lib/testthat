@@ -286,17 +286,29 @@ expect_condition_matching <- function(base_class,
 
 cnd_matcher <- function(base_class,
                         class = NULL,
-                        pattern = NULL,
+                        regexp = NULL,
                         ...,
                         inherit = TRUE,
                         ignore_deprecation = FALSE,
                         error_call = caller_env()) {
   check_string(class, allow_null = TRUE, call = error_call)
-  check_string(pattern, allow_null = TRUE, allow_na = TRUE, call = error_call)
+  check_string(regexp, allow_null = TRUE, allow_na = TRUE, call = error_call)
 
-  if (is.null(pattern) && dots_n(...) > 0) {
+  if (is.null(regexp) && dots_n(...) > 0) {
+    # pretty adversarial: expect_error(foo(), NULL, "error", 1)
+    # TODO(R>=4.1.0): ...names()
+    dots_names <- names(list(...))
+    if (is.null(dots_names) {
+      cli::cli_abort(
+        "Found unnamed arguments in {.arg ...} to be passed to {.fn grepl}, but no {.arg regexp}.",
+        call = error_call
+      )
+    }
     cli::cli_abort(
-      "Can't specify {.arg ...} without {.arg pattern}.",
+      c("Found arguments in {.arg ...} to be passed to {.fn grepl}, but no {.arg regexp}.",
+        "*" = "First problematic argument:",
+        "i" = dots_names[which(nzchar(dots_names))[1L]]
+      ),
       call = error_call
     )
   }
@@ -317,12 +329,12 @@ cnd_matcher <- function(base_class,
       if (!is.null(class) && !inherits(x, class)) {
         return(FALSE)
       }
-      if (!is.null(pattern) && !isNA(pattern)) {
+      if (!is.null(regexp) && !isNA(regexp)) {
         withCallingHandlers(
-          grepl(pattern, conditionMessage(x), ...),
+          grepl(regexp, conditionMessage(x), ...),
           error = function(e) {
             cli::cli_abort(
-              "Failed to compare {base_class} to {.arg pattern}.",
+              "Failed to compare {base_class} to {.arg regexp}.",
               parent = e,
               call = error_call
             )
