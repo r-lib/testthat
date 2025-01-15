@@ -286,17 +286,17 @@ expect_condition_matching <- function(base_class,
 
 cnd_matcher <- function(base_class,
                         class = NULL,
-                        pattern = NULL,
+                        regexp = NULL,
                         ...,
                         inherit = TRUE,
                         ignore_deprecation = FALSE,
                         error_call = caller_env()) {
   check_string(class, allow_null = TRUE, call = error_call)
-  check_string(pattern, allow_null = TRUE, allow_na = TRUE, call = error_call)
+  check_string(regexp, allow_null = TRUE, allow_na = TRUE, call = error_call)
 
-  if (is.null(pattern) && dots_n(...) > 0) {
+  if (is.null(regexp) && dots_n(...) > 0) {
     cli::cli_abort(
-      "Can't specify {.arg ...} without {.arg pattern}.",
+      "Can't specify {.arg ...} without {.arg regexp}.",
       call = error_call
     )
   }
@@ -317,12 +317,12 @@ cnd_matcher <- function(base_class,
       if (!is.null(class) && !inherits(x, class)) {
         return(FALSE)
       }
-      if (!is.null(pattern) && !isNA(pattern)) {
+      if (!is.null(regexp) && !isNA(regexp)) {
         withCallingHandlers(
-          grepl(pattern, conditionMessage(x), ...),
+          grepl(regexp, conditionMessage(x), ...),
           error = function(e) {
             cli::cli_abort(
-              "Failed to compare {base_class} to {.arg pattern}.",
+              "Failed to compare {base_class} to {.arg regexp}.",
               parent = e,
               call = error_call
             )
