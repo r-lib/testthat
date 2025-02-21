@@ -72,6 +72,7 @@ reference:
 - title: Mocking
   contents:
   - with_mocked_bindings
+  - starts_with("mock_")
 
 - title: Expectation internals
   contents:
