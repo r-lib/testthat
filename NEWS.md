@@ -1,3 +1,8 @@
+# testthat 3.2.3.9000
+
+* Fixed use of the deprecated C++20 function `std::uncaught_exception()` 
+  in the vendored Catch C++ unit testing library [@tylermorganwall, #2047]
+
 # testthat 3.2.3
 
 * Fixed an issue where `expect_no_error(1)` was failing (#2037).
