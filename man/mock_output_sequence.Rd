@@ -21,8 +21,9 @@ Specify multiple return values for mocking
 }
 \examples{
 # inside local_mocked_bindings()
-readline <- NULL
+\dontrun{
 local_mocked_bindings(readline = mock_output_sequence(c("3", "This is a note", "n")))
+}
 # for understanding
 mocked_sequence <- mock_output_sequence(c("3", "This is a note", "n"))
 mocked_sequence()
