@@ -30,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.2.2.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.2.3.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -236,7 +236,7 @@ test:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() produces expected outputs/messages/warnings"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  </span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── Snapshot ──────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; ── Snapshot ───────────────────────────────────────────────────────────</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Can't save or compare to reference when testing</span></span>
 <span><span class="co">#&gt; interactively.</span></span>
 <span><span class="co">#&gt; Code</span></span>
@@ -248,8 +248,8 @@ test:</p>
 <span><span class="co">#&gt;   Second warning</span></span>
 <span><span class="co">#&gt;   Warning in `f()`:</span></span>
 <span><span class="co">#&gt;   Third warning</span></span>
-<span><span class="co">#&gt; ──────────────────────────────────────────────────────────────────────────</span></span>
-<span><span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;">: f() produces expected outputs/messages/warnings</span> ─────────────────</span></span>
+<span><span class="co">#&gt; ───────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;">: f() produces expected outputs/messages/warnings</span> ──────────────</span></span>
 <span><span class="co">#&gt; Reason: empty test</span></span></code></pre></div>
 <p>The same principle also applies to <code><a href="../reference/expect_error.html">expect_message()</a></code>, but
 message handling has changed in a more radical way, as described
