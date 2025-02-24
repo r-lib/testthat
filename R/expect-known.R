@@ -215,5 +215,5 @@ expect_known_hash <- function(object, hash = NULL) {
 }
 
 all_utf8 <- function(x) {
-  ! any(is.na(iconv(x, "UTF-8", "UTF-8")))
+  !anyNA(iconv(x, "UTF-8", "UTF-8"))
 }
