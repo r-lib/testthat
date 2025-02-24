@@ -24,7 +24,7 @@ means that it used the vctrs of \code{ptype} (prototype) and \code{size}. See
 details in \url{https://vctrs.r-lib.org/articles/type-size.html}
 }
 \examples{
-\dontshow{if (requireNamespace("vctrs")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("vctrs")) withAutoprint(\{ # examplesIf}
 expect_vector(1:10, ptype = integer(), size = 10)
 show_failure(expect_vector(1:10, ptype = integer(), size = 5))
 show_failure(expect_vector(1:10, ptype = character(), size = 5))

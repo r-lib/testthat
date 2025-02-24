@@ -56,4 +56,4 @@ Config/testthat/parallel: true
 Config/testthat/start-first: watcher, parallel*
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.2.9000
