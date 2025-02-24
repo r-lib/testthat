@@ -41,7 +41,8 @@ mock_output_sequence <- function(values, recycle = FALSE) {
         i = "You can set {.arg recycle} to {.code TRUE}."
       ))
     }
-    value <- rep_len(values, length.out = i)[[i]]
+    index <- (i - 1) %% length(values) + 1
+    value <- rep_len(values, length.out = index)[[index]]
     i <<- i + 1
     value
   }
