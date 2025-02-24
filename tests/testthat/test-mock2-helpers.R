@@ -15,5 +15,7 @@ test_that("mock_output_sequence()'s recycling works", {
   expect_equal(mocked_sequence(), "This is a note")
   expect_equal(mocked_sequence(), "n")
   expect_equal(mocked_sequence(), "3")
+  expect_equal(mocked_sequence(), "This is a note")
+  expect_equal(mocked_sequence(), "n")
 })
 
