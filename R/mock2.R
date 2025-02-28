@@ -100,7 +100,7 @@
 #' or an user intput to `readline()`, you can use [mock_output_sequence()]
 #'
 #' ```R
-#' local_mocked_bindings(readline = mock_output_sequence(c("3", "This is a note", "n")))
+#' local_mocked_bindings(readline = mock_output_sequence("3", "This is a note", "n"))
 #' ```
 #'
 #' @export
