@@ -4,10 +4,10 @@
 \alias{mock_output_sequence}
 \title{Mock a sequence of output from a function}
 \usage{
-mock_output_sequence(values, recycle = FALSE)
+mock_output_sequence(..., recycle = FALSE)
 }
 \arguments{
-\item{values}{vector of values to return in sequence.}
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> Values to return in sequence.}
 
 \item{recycle}{whether to recycle. If \code{TRUE}, once all values have been returned,
 they will be returned again in sequence.}
@@ -22,16 +22,16 @@ Specify multiple return values for mocking
 \examples{
 # inside local_mocked_bindings()
 \dontrun{
-local_mocked_bindings(readline = mock_output_sequence(c("3", "This is a note", "n")))
+local_mocked_bindings(readline = mock_output_sequence("3", "This is a note", "n"))
 }
 # for understanding
-mocked_sequence <- mock_output_sequence(c("3", "This is a note", "n"))
+mocked_sequence <- mock_output_sequence("3", "This is a note", "n")
 mocked_sequence()
 mocked_sequence()
 mocked_sequence()
 try(mocked_sequence())
 recycled_mocked_sequence <- mock_output_sequence(
-  c("3", "This is a note", "n"),
+  "3", "This is a note", "n",
   recycle = TRUE
 )
 recycled_mocked_sequence()
