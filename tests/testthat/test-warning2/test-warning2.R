@@ -1,5 +1,5 @@
 test_that(
-  desc = "warning emitted",
+  desc = "no error",
   code = expect_no_error(
     {1 + 1}
   )
