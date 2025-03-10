@@ -46,6 +46,16 @@ test_that("can control if warnings errors", {
   expect_error(test_warning(stop_on_warning = FALSE), NA)
 })
 
+test_that("can control if warnings from code outside of `testthat()` generate errors", {
+  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  test_warning2 <- function(...) {
+    test_dir(test_path("test-warning2"), reporter = check_reporter(), ...)
+  }
+
+  expect_error(test_warning2(stop_on_warning = TRUE), "Tests generated warnings")
+  expect_error(test_warning2(stop_on_warning = FALSE), NA)
+})
+
 # test_file ---------------------------------------------------------------
 
 test_that("can test single file", {
