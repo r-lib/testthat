@@ -61,41 +61,55 @@ source_file <- function(path,
 }
 
 filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
-  if (is.null(desc)) {
-    return(exprs)
-  }
+  if (is.null(desc)) return(exprs)
 
-  found <- FALSE
-  include <- rep(FALSE, length(exprs))
+  desc_levels <- strsplit(desc, "&&&", fixed = TRUE)[[1]]
 
-  for (i in seq_along(exprs)) {
-    expr <- exprs[[i]]
+  find_matching_expr <- function(current_exprs, remaining_levels) {
+    match_count <- 0
+    include <- logical(length(current_exprs))
 
-    if (!is_call(expr, c("test_that", "describe"), n = 2)) {
-      if (!found) {
-        include[[i]] <- TRUE
+    for (i in seq_along(current_exprs)) {
+      current_expr <- current_exprs[[i]]
+
+      if (is_call(current_expr, c("test_that", "describe", "it"), n = 2)) {
+        expr_desc <- as.character(current_expr[[2]])
+
+        if (expr_desc == remaining_levels[1]) {
+          if (length(remaining_levels) == 1) {
+            match_count <- match_count + 1
+            include[i] <- TRUE
+          } else if (is_call(current_expr, "describe", n = 2)) {
+            body_of_expr <- as.list(current_expr[[3]])[-1]
+            nested_result <- find_matching_expr(body_of_expr, remaining_levels[-1])
+
+            if (nested_result$match_count > 0) {
+              new_body <- as.call(c(quote(`{`), nested_result$current_exprs[nested_result$include]))
+              current_expr[[3]] <- new_body
+              current_exprs[[i]] <- current_expr
+              match_count <- match_count + nested_result$match_count
+              include[i] <- TRUE
+            }
+          }
+        }
+      } else if (match_count == 0 && !is_call(current_expr, c("test_that", "describe"))) {
+        include[i] <- TRUE
       }
-    } else {
-      if (!is_string(expr[[2]]))
-        next
-
-      test_desc <- as.character(expr[[2]])
-      if (test_desc != desc)
-        next
-
-      if (found) {
-        abort("Found multiple tests with specified description", call = error_call)
-      }
-      include[[i]] <- TRUE
-      found <- TRUE
     }
+
+    list(current_exprs = current_exprs, include = include, match_count = match_count)
   }
 
-  if (!found) {
+  result <- find_matching_expr(exprs, desc_levels)
+
+  if (result$match_count == 0) {
     abort("Failed to find test with specified description", call = error_call)
   }
+  if (result$match_count > 1) {
+    abort("Found multiple tests with specified description", call = error_call)
+  }
 
-  exprs[include]
+  result$current_exprs[result$include]
 }
 
 #' @rdname source_file

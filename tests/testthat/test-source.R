@@ -82,3 +82,23 @@ test_that("errors if duplicate labels", {
 
   expect_snapshot(filter_desc(code, "baz"), error = TRUE)
 })
+
+test_that("filters nested tests with '&&&' syntax correctly", {
+  code <- exprs(
+    f(),
+    describe("level 0", {
+      it("level 1 A", {})
+      it("level 1 B", {})
+    }),
+    g()
+  )
+
+  expected <- exprs(
+    f(),
+    describe("level 0", {
+      it("level 1 A", {})
+    })
+  )
+
+  expect_equal(filter_desc(code, "level 0&&&level 1 A"), expected)
+})
