@@ -28,6 +28,7 @@ Other reporters:
 \code{\link{LocationReporter}},
 \code{\link{MinimalReporter}},
 \code{\link{MultiReporter}},
+\code{\link{OpenTelemetryReporter}},
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
 \code{\link{SilentReporter}},

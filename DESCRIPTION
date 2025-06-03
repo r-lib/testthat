@@ -41,6 +41,8 @@ Suggests:
     curl (>= 0.9.5),
     diffviewer (>= 0.1.0),
     knitr,
+    otel (>= 0.0.0.9000),
+    otelsdk (>= 0.0.0.9000),
     rmarkdown,
     rstudioapi,
     S7,
@@ -57,3 +59,6 @@ Config/testthat/start-first: watcher, parallel*
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
 RoxygenNote: 7.3.2.9000
+Remotes:  
+    r-lib/otel,
+    r-lib/otelsdk
