@@ -18,6 +18,7 @@ Other reporters:
 \code{\link{ListReporter}},
 \code{\link{LocationReporter}},
 \code{\link{MultiReporter}},
+\code{\link{OpenTelemetryReporter}},
 \code{\link{ProgressReporter}},
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
