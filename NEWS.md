@@ -2,6 +2,9 @@
 
 # testthat 3.2.3
 
+* Fixed an issue preventing compilation from succeeding due to
+  deprecation / removal of `std::uncaught_exception()`. (@kevinushey, #2047)
+
 * Fixed an issue where `expect_no_error(1)` was failing (#2037).
 
 * Fixed an issue where calling `skip()` outside of an active test could
