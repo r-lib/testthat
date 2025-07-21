@@ -128,12 +128,13 @@ package_version <- function(x) {
 
 #' @export
 #' @param spec A version specification like '>= 4.1.0' denoting that this test
-#'   should only be run on R versions 4.1.0 and later. If the comparison
-#'   operator is omitted, '>=' is assumed.
+#'   should only be run on R versions 4.1.0 and later.
 #' @rdname skip
 skip_unless_r <- function(spec) {
   parts <- unlist(strsplit(spec, " ", fixed = TRUE))
-  if (length(parts) == 1L) parts <- c(">=", parts)
+  if (length(parts) != 2L) {
+    abort("`spec` should be a comparison like '>=' and an R version.")
+  }
   comparator <- match.fun(parts[1L])
   required_version <- numeric_version(parts[2L])
 

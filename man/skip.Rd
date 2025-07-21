@@ -50,8 +50,7 @@ skip_if_translated(msgid = "'\%s' not found")
 \item{minimum_version}{Minimum required version for the package}
 
 \item{spec}{A version specification like '>= 4.1.0' denoting that this test
-should only be run on R versions 4.1.0 and later. If the comparison
-operator is omitted, '>=' is assumed.}
+should only be run on R versions 4.1.0 and later.}
 
 \item{host}{A string with a hostname to lookup}
 
