@@ -127,6 +127,27 @@ package_version <- function(x) {
 }
 
 #' @export
+#' @param spec A version specification like '>= 4.1.0' denoting that this test
+#'   should only be run on R versions 4.1.0 and later. If the comparison
+#'   operator is omitted, '>=' is assumed.
+#' @rdname skip
+skip_unless_r <- function(spec) {
+  parts <- unlist(strsplit(spec, " ", fixed = TRUE))
+  if (length(parts) == 1L) parts <- c(">=", parts)
+  comparator <- match.fun(parts[1L])
+  required_version <- numeric_version(parts[2L])
+
+  current_version <- getRversion()
+  skip_if_not(
+    comparator(current_version, required_version),
+    sprintf(
+      "Version requirement not satisfied: %s %s %s",
+      current_version, parts[1L], required_version
+    )
+  )
+}
+
+#' @export
 #' @rdname skip
 skip_if_offline <- function(host = "captive.apple.com") {
   skip_on_cran()
