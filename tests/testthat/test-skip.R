@@ -135,3 +135,13 @@ test_that("can refine os with arch", {
   expect_no_skip(skip_on_os("windows", "x86_64"))
   expect_no_skip(skip_on_os("linux", "i386"))
 })
+
+test_that("skip_unless_r works as expected", {
+  expect_no_skip(skip_unless_r(">= 0.0.0"))
+  expect_no_skip(skip_unless_r(paste("==", getRversion())))
+  expect_no_skip(skip_unless_r("<= 999.999.999"))
+
+  expect_skip(skip_unless_r(">= 999.999.999"))
+  expect_skip(skip_unless_r("== 0.0.0"))
+  expect_skip(skip_unless_r("<= 0.0.0"))
+})
