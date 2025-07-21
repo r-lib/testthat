@@ -7,6 +7,9 @@
 * Fixed an issue where calling `skip()` outside of an active test could
   cause an unexpected error (@kevinushey, #2039).
 
+* New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g.
+  `skip_unless_r(">= 4.1.0")` to skip tests that require `...names` (@MichaelChirico, #2022)
+
 # testthat 3.2.2
 
 ## New expectations
