@@ -178,10 +178,8 @@ class along with the expected OO system.</p></li>
 This was an overly clever API that I regretted even before the release
 of testthat 1.0.0.</p></li>
 <li><p><code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> has been deprecated since it is
-now equivalent (HA HA) to <code>expect_equal(ignore_attr = TRUE)</code>.
-The main difference is that it won’t ignore names; so you’ll need an
-explicit <code><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname()</a></code> if you deliberately want to ignore
-names.</p></li>
+now equivalent (HA HA) to
+<code>expect_equal(ignore_attr = TRUE)</code>.</p></li>
 <li><p><code><a href="../reference/teardown.html">setup()</a></code> and <code><a href="../reference/teardown.html">teardown()</a></code> are deprecated
 in favour of test fixtures. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code>
 for details.</p></li>

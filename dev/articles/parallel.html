@@ -215,18 +215,13 @@ stop at the end of a test file.</p></li>
 they support <em>parallel updates</em>. E.g.
 <code>ProgressReporter</code> does not update its display until a test
 file is complete.</p></li>
-<li>
-<p>The standard output and standard error,
+<li><p>The standard output and standard error,
 i.e. <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code>, <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code>, <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code>,
 etc. output from the test files are lost currently. If you want to use
 <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code> or <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code> for print-debugging test
 cases, then the best is to temporarily run tests sequentially, by
 changing the <code>Config</code> entry in <code>DESCRIPTION</code> or
-selecting a non-parallel reporter, e.g. the
-<code>CheckReporter</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">test</span><span class="op">(</span>filter <span class="op">=</span> <span class="st">"badtest"</span>, reporter <span class="op">=</span> <span class="st">"check"</span><span class="op">)</span></span></code></pre></div>
-</li>
+setting <code>Sys.setenv(TESTTHAT_PARALLEL = "false")</code>.</p></li>
 </ul>
 </div>
 <div class="section level3">
@@ -241,7 +236,7 @@ running in parallel, testthat does not provide location information
 <p>To support parallel tests, a reporter must set
 <code>self$capabilities$parallel_support</code> to <code>TRUE</code> in
 its <code>initialize()</code> method:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">...</span></span>
 <span><span class="va">initialize</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">super</span><span class="op">$</span><span class="fu">initialize</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
@@ -273,7 +268,7 @@ handle multiple test files concurrently.</p>
 <p>A reporter declares parallel update support by setting
 <code>self$capabilities$parallel_updates</code> to
 <code>TRUE</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">...</span></span>
 <span><span class="va">initialize</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">super</span><span class="op">$</span><span class="fu">initialize</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
