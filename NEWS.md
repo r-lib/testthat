@@ -1,5 +1,9 @@
 # testthat (development version)
 
+* `expect_s4_class()` now supports unquoting (@stibu81, #2064).
+* `it()` now finds the correct evaluation environment in more cases (@averissimo, #2085).
+* Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
+
 # testthat 3.2.3
 
 * Fixed an issue where `expect_no_error(1)` was failing (#2037).
