@@ -30,13 +30,54 @@ Run `revdepcheck::cloud_details(, "aws.comprehend")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-detect_syntax.R:27:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
       [ FAIL 13 | WARN 0 | SKIP 0 | PASS 10 ]
       Error: Test failures
       Execution halted
+    ```
+
+# bcRP
+
+<details>
+
+* Version: 1.0.1
+* GitHub: https://github.com/JulioCollazos64/bcRP
+* Source code: https://github.com/cran/bcRP
+* Date/Publication: 2025-07-22 12:10:12 UTC
+* Number of recursive dependencies: 47
+
+Run `revdepcheck::cloud_details(, "bcRP")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking examples ... ERROR
+    ```
+    Running examples in ‘bcRP-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: get_bcrp_data
+    > ### Title: Perform an API request to BCRPData
+    > ### Aliases: get_bcrp_data
+    > 
+    > ### ** Examples
+    > 
+    > codes <- c("PN00009MM", "PN00002MM", "PN01270PM", "PD39557DA")
+    ...
+    10 Mar.2024 -6059.647797      Cuentas monetarias de las sociedades creado… PN00…
+    # ℹ 82 more rows
+    > 
+    > # You can also provide the range of dates
+    > # through the `from` and `to` arguments.
+    > get_bcrp_data(codes = codes, from = "2015-01", to = "2020-01")
+    Error in perform_req_strategy(requests = list_of_requests, strategy = request_strategy) : 
+      Error(s) at: PN00002MM
+    Calls: get_bcrp_data -> perform_req_strategy
+    Execution halted
     ```
 
 # bindr
@@ -71,87 +112,13 @@ Run `revdepcheck::cloud_details(, "bindr")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-error.R:9:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 41 ]
       Error: Test failures
       Execution halted
-    ```
-
-# civis
-
-<details>
-
-* Version: 3.1.2
-* GitHub: https://github.com/civisanalytics/civis-r
-* Source code: https://github.com/cran/civis
-* Date/Publication: 2023-03-31 08:00:03 UTC
-* Number of recursive dependencies: 88
-
-Run `revdepcheck::cloud_details(, "civis")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(civis)
-      > 
-      > test_check("civis")
-      [ FAIL 139 | WARN 2 | SKIP 0 | PASS 370 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test_utils.R:53:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 139 | WARN 2 | SKIP 0 | PASS 370 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘civis_scripts.Rmd’
-      ...
-    
-    > knitr::opts_chunk$set(collapse = TRUE, comment = "#>", 
-    +     eval = FALSE)
-    
-    > script <- scripts_post_containers(required_resources = list(cpu = 1024, 
-    +     memory = 50, diskSpace = 15), docker_command = "cd /package_dir && Rs ..." ... [TRUNCATED] 
-    
-      When sourcing ‘civis_scripts.R’:
-    Error: could not find function "scripts_post_containers"
-    Execution halted
-    
-      ‘civis_ml.Rmd’ using ‘UTF-8’... OK
-      ‘civis_scripts.Rmd’ using ‘UTF-8’... failed
-      ‘concurrency.Rmd’ using ‘UTF-8’... OK
-      ‘data_import_and_export.Rmd’ using ‘UTF-8’... OK
-      ‘quick_start.Rmd’ using ‘UTF-8’... OK
-    ```
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  5.8Mb
-      sub-directories of 1Mb or more:
-        R      1.5Mb
-        help   3.6Mb
     ```
 
 # conflr
@@ -186,7 +153,7 @@ Run `revdepcheck::cloud_details(, "conflr")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-utils.R:93:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -240,7 +207,7 @@ Run `revdepcheck::cloud_details(, "countdown")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(requireNamespace = function(...) FALSE, expect_error(countdown_app())) at test-shiny.R:7:5
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -288,252 +255,11 @@ Run `revdepcheck::cloud_details(, "covr")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-utils.R:27:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
       [ FAIL 22 | WARN 0 | SKIP 10 | PASS 185 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# crossmap
-
-<details>
-
-* Version: 0.4.0
-* GitHub: https://github.com/rossellhayes/crossmap
-* Source code: https://github.com/cran/crossmap
-* Date/Publication: 2023-01-12 21:50:02 UTC
-* Number of recursive dependencies: 60
-
-Run `revdepcheck::cloud_details(, "crossmap")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(crossmap)
-      > 
-      > test_check("crossmap")
-      [ FAIL 4 | WARN 2 | SKIP 0 | PASS 379 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::local_mock(...) at test-errors.R:24:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "local_mock()", "local_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 4 | WARN 2 | SKIP 0 | PASS 379 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# crplyr
-
-<details>
-
-* Version: 0.4.0
-* GitHub: https://github.com/Crunch-io/crplyr
-* Source code: https://github.com/cran/crplyr
-* Date/Publication: 2023-03-21 21:50:02 UTC
-* Number of recursive dependencies: 87
-
-Run `revdepcheck::cloud_details(, "crplyr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(httptest)
-      Loading required package: testthat
-      > test_check("crplyr")
-      Loading required package: crplyr
-      Loading required package: crunch
-      
-    ...
-        8. │     └─base::eval(expr, p)
-        9. └─crplyr:::with_POST(...) at test-as-tibble.R:76:5
-       10.   └─testthat::with_mock(`crunch::crPOST` = function(...) resp, eval.parent(expr))
-       11.     └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       12.       └─lifecycle:::deprecate_stop0(msg)
-       13.         └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 1 | SKIP 1 | PASS 154 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# crunch
-
-<details>
-
-* Version: 1.30.4
-* GitHub: https://github.com/Crunch-io/rcrunch
-* Source code: https://github.com/cran/crunch
-* Date/Publication: 2024-01-17 09:00:02 UTC
-* Number of recursive dependencies: 124
-
-Run `revdepcheck::cloud_details(, "crunch")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(httptest)
-      Loading required package: testthat
-      > if (nchar(Sys.getenv("JENKINS_HOME"))) {
-      +     tt_read_lines <- function(path, n = -1L, encoding = "UTF-8") {
-      +         base::readLines(path, n = n, encoding = encoding, warn = FALSE)
-      +     }
-    ...
-      [90m  8. [39m│     └─base::eval(expr, p)
-      [90m  9. [39m└─[1mtestthat[22m::with_mock(...)[90m at test-share.R:90:5[39m
-      [90m 10. [39m  └─[1mlifecycle[22m::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-      [90m 11. [39m    └─lifecycle:::deprecate_stop0(msg)
-      [90m 12. [39m      └─[1mrlang[22m::cnd_signal(...)
-      
-      [ [38;5;214mFAIL[39m 21 | [35mWARN[39m 1 | [34mSKIP[39m 11 | PASS 3387 ]
-      Error: Test failures
-      Total teardown: Time difference of 4.053116e-05 secs
-      Execution halted
-    ```
-
-## In both
-
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘deck-cookbook.Rmd’
-      ...
-    +     library(crunch)
-    + })
-    
-    > options(crunch.show.progress = FALSE)
-    
-    > ds <- newExampleDataset()
-    
-    ...
-      ‘crunch.Rmd’ using ‘UTF-8’... OK
-      ‘deck-cookbook.Rmd’ using ‘UTF-8’... failed
-      ‘derive.Rmd’ using ‘UTF-8’... OK
-      ‘export.Rmd’ using ‘UTF-8’... OK
-      ‘filters.Rmd’ using ‘UTF-8’... OK
-      ‘fork-and-merge.Rmd’ using ‘UTF-8’... OK
-      ‘projects.Rmd’ using ‘UTF-8’... OK
-      ‘subtotals.Rmd’ using ‘UTF-8’... OK
-      ‘variable-order.Rmd’ using ‘UTF-8’... OK
-      ‘variables.Rmd’ using ‘UTF-8’... OK
-    ```
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.6Mb
-      sub-directories of 1Mb or more:
-        R      3.5Mb
-        doc    1.0Mb
-        help   1.6Mb
-    ```
-
-# crunchy
-
-<details>
-
-* Version: 0.3.3
-* GitHub: https://github.com/Crunch-io/crunchy
-* Source code: https://github.com/cran/crunchy
-* Date/Publication: 2021-01-13 21:20:06 UTC
-* Number of recursive dependencies: 76
-
-Run `revdepcheck::cloud_details(, "crunchy")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > test_check("crunchy")
-      Loading required package: crunchy
-      Loading required package: crunch
-      
-      Attaching package: 'crunch'
-    ...
-       1. ├─withr::with_options(...) at test-crunchy-server.R:5:1
-       2. │ └─base::force(code)
-       3. └─testthat::with_mock(...)
-       4.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       5.     └─lifecycle:::deprecate_stop0(msg)
-       6.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 2 | PASS 23 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# cyphr
-
-<details>
-
-* Version: 1.1.4
-* GitHub: https://github.com/ropensci/cyphr
-* Source code: https://github.com/cran/cyphr
-* Date/Publication: 2022-06-20 11:30:02 UTC
-* Number of recursive dependencies: 47
-
-Run `revdepcheck::cloud_details(, "cyphr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(cyphr)
-      > 
-      > test_check("cyphr")
-      [ FAIL 6 | WARN 0 | SKIP 4 | PASS 272 ]
-      
-      ══ Skipped tests (4) ═══════════════════════════════════════════════════════════
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test-zzz-data.R:216:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 6 | WARN 0 | SKIP 4 | PASS 272 ]
       Error: Test failures
       Execution halted
     ```
@@ -546,7 +272,7 @@ Run `revdepcheck::cloud_details(, "cyphr")` for more info
 * GitHub: NA
 * Source code: https://github.com/cran/datarobot
 * Date/Publication: 2024-03-13 20:40:02 UTC
-* Number of recursive dependencies: 99
+* Number of recursive dependencies: 94
 
 Run `revdepcheck::cloud_details(, "datarobot")` for more info
 
@@ -570,97 +296,13 @@ Run `revdepcheck::cloud_details(, "datarobot")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-StartAutopilot.R:461:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
       [ FAIL 9 | WARN 0 | SKIP 32 | PASS 98 ]
       Error: Test failures
       Execution halted
-    ```
-
-# dendextend
-
-<details>
-
-* Version: 1.19.0
-* GitHub: https://github.com/talgalili/dendextend
-* Source code: https://github.com/cran/dendextend
-* Date/Publication: 2024-11-15 10:40:06 UTC
-* Number of recursive dependencies: 130
-
-Run `revdepcheck::cloud_details(, "dendextend")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > 
-      > library(dendextend)
-      
-      ---------------------
-      Welcome to dendextend version 1.19.0
-      Type citation('dendextend') for how to cite the package.
-    ...
-        8. │   │     └─base::withVisible(code)
-        9. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-       10. └─testthat::with_mock(...)
-       11.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       12.     └─lifecycle:::deprecate_stop0(msg)
-       13.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 10 | WARN 1 | SKIP 0 | PASS 858 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘FAQ.Rmd’
-      ...
-    > dend <- dend %>% color_branches(k = 4) %>% color_labels
-    
-    > par(mar = rep(0, 4))
-    
-    > circlize_dendrogram(dend, labels_track_height = NA, 
-    +     dend_track_height = 0.3)
-    
-      When sourcing ‘FAQ.R’:
-    Error: not enough space for cells at track index '2'.
-    Execution halted
-    
-      ‘Cluster_Analysis.Rmd’ using ‘UTF-8’... OK
-      ‘FAQ.Rmd’ using ‘UTF-8’... failed
-      ‘Quick_Introduction.Rmd’ using ‘UTF-8’... OK
-      ‘dendextend.Rmd’ using ‘UTF-8’... OK
-    ```
-
-*   checking package dependencies ... NOTE
-    ```
-    Packages which this enhances but not available for checking:
-      'ggdendro', 'dendroextras', 'Hmisc', 'WGCNA', 'moduleColor',
-      'distory', 'phangorn', 'zoo'
-    ```
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.9Mb
-      sub-directories of 1Mb or more:
-        doc   5.8Mb
-    ```
-
-*   checking Rd cross-references ... NOTE
-    ```
-    Packages unavailable to check Rd xrefs: ‘WGCNA’, ‘dendroextras’, ‘moduleColor’, ‘distory’, ‘phangorn’, ‘ggdendro’, ‘zoo’
     ```
 
 # digitize
@@ -695,7 +337,7 @@ Run `revdepcheck::cloud_details(, "digitize")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-unit.r:9:13
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -736,7 +378,7 @@ Run `revdepcheck::cloud_details(, "distro")` for more info
        3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
        4. └─distro (local) with_mock_system_release(...)
        5.   └─testthat::with_mock(...) at test-system-release.R:2:3
-       6.     └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       6.     └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        7.       └─lifecycle:::deprecate_stop0(msg)
        8.         └─rlang::cnd_signal(...)
       
@@ -752,127 +394,27 @@ Run `revdepcheck::cloud_details(, "distro")` for more info
       'LazyData' is specified without a 'data' directory
     ```
 
-# dRiftDM
+# esci
 
 <details>
 
-* Version: 0.2.1
-* GitHub: https://github.com/bucky2177/dRiftDM
-* Source code: https://github.com/cran/dRiftDM
-* Date/Publication: 2025-01-08 16:30:05 UTC
-* Number of recursive dependencies: 70
+* Version: 1.0.7
+* GitHub: https://github.com/rcalinjageman/esci
+* Source code: https://github.com/cran/esci
+* Date/Publication: 2025-02-22 03:20:02 UTC
+* Number of recursive dependencies: 90
 
-Run `revdepcheck::cloud_details(, "dRiftDM")` for more info
+Run `revdepcheck::cloud_details(, "esci")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking installed package size ... NOTE
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-       7.         └─lifecycle:::deprecate_stop0(msg)
-       8.           └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 14 | PASS 670 ]
-      Deleting unused snapshots:
-      • plotting/cond-prms-hist.svg
-      • plotting/one-traces.svg
-      • plotting/plot-model.svg
-      Error: Test failures
-      Execution halted
-    ```
-
-# DSMolgenisArmadillo
-
-<details>
-
-* Version: 2.0.9
-* GitHub: https://github.com/molgenis/molgenis-r-datashield
-* Source code: https://github.com/cran/DSMolgenisArmadillo
-* Date/Publication: 2024-07-09 07:50:08 UTC
-* Number of recursive dependencies: 75
-
-Run `revdepcheck::cloud_details(, "DSMolgenisArmadillo")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(DSMolgenisArmadillo)
-      Loading required package: DSI
-      Loading required package: progress
-      Loading required package: R6
-      Loading required package: MolgenisAuth
-      > library(tibble)
-    ...
-        7. │   │ └─base::withVisible(code)
-        8. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-        9. └─testthat::with_mock(...)
-       10.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       11.     └─lifecycle:::deprecate_stop0(msg)
-       12.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 55 | WARN 0 | SKIP 1 | PASS 9 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# gbfs
-
-<details>
-
-* Version: 1.3.9
-* GitHub: https://github.com/simonpcouch/gbfs
-* Source code: https://github.com/cran/gbfs
-* Date/Publication: 2024-01-25 22:10:06 UTC
-* Number of recursive dependencies: 73
-
-Run `revdepcheck::cloud_details(, "gbfs")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(gbfs)
-      > 
-      > test_check("gbfs")
-      [ FAIL 1 | WARN 0 | SKIP 8 | PASS 5 ]
-      
-      ══ Skipped tests (8) ═══════════════════════════════════════════════════════════
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test-utils.R:105:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 8 | PASS 5 ]
-      Error: Test failures
-      Execution halted
+      installed size is  6.7Mb
+      sub-directories of 1Mb or more:
+        R   6.0Mb
     ```
 
 # gen3sis
@@ -883,7 +425,7 @@ Run `revdepcheck::cloud_details(, "gbfs")` for more info
 * GitHub: https://github.com/project-Gen3sis/R-package
 * Source code: https://github.com/cran/gen3sis
 * Date/Publication: 2023-11-22 15:20:06 UTC
-* Number of recursive dependencies: 58
+* Number of recursive dependencies: 59
 
 Run `revdepcheck::cloud_details(, "gen3sis")` for more info
 
@@ -907,7 +449,7 @@ Run `revdepcheck::cloud_details(, "gen3sis")` for more info
       Backtrace:
           ▆
        1. └─testthat::local_mock(...) at test-input_creation.R:16:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "local_mock()", "local_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "local_mock()", "local_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -918,31 +460,6 @@ Run `revdepcheck::cloud_details(, "gen3sis")` for more info
 
 ## In both
 
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘create_input_landscape.Rmd’
-      ...
-    > library(gen3sis)
-    
-    > library(raster)
-    Loading required package: sp
-    
-    > knitr::include_graphics("../inst/extdata/SouthAmerica/images/const_cost.png")
-    
-    ...
-    > knitr::include_graphics("../inst/logo/gen3sis_logo.png")
-    
-      When sourcing ‘introduction.R’:
-    Error: Cannot find the file(s): "../inst/logo/gen3sis_logo.png"
-    Execution halted
-    
-      ‘create_config.Rmd’ using ‘UTF-8’... OK
-      ‘create_input_landscape.Rmd’ using ‘UTF-8’... failed
-      ‘design_landscape.Rmd’ using ‘UTF-8’... failed
-      ‘introduction.Rmd’ using ‘UTF-8’... failed
-    ```
-
 *   checking installed package size ... NOTE
     ```
       installed size is  7.7Mb
@@ -950,6 +467,31 @@ Run `revdepcheck::cloud_details(, "gen3sis")` for more info
         doc       1.5Mb
         extdata   3.5Mb
         libs      2.3Mb
+    ```
+
+# geomorph
+
+<details>
+
+* Version: 4.0.10
+* GitHub: https://github.com/geomorphR/geomorph
+* Source code: https://github.com/cran/geomorph
+* Date/Publication: 2025-02-05 19:10:07 UTC
+* Number of recursive dependencies: 68
+
+Run `revdepcheck::cloud_details(, "geomorph")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  5.5Mb
+      sub-directories of 1Mb or more:
+        R      1.5Mb
+        data   2.0Mb
+        doc    1.5Mb
     ```
 
 # graphhopper
@@ -960,7 +502,7 @@ Run `revdepcheck::cloud_details(, "gen3sis")` for more info
 * GitHub: https://github.com/crazycapivara/graphhopper-r
 * Source code: https://github.com/cran/graphhopper
 * Date/Publication: 2021-02-06 16:50:02 UTC
-* Number of recursive dependencies: 71
+* Number of recursive dependencies: 68
 
 Run `revdepcheck::cloud_details(, "graphhopper")` for more info
 
@@ -984,7 +526,7 @@ Run `revdepcheck::cloud_details(, "graphhopper")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test_route.R:9:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1000,77 +542,17 @@ Run `revdepcheck::cloud_details(, "graphhopper")` for more info
       'LazyData' is specified without a 'data' directory
     ```
 
-# gwasrapidd
+# handwriterRF
 
 <details>
 
-* Version: 0.99.17
-* GitHub: https://github.com/ramiromagno/gwasrapidd
-* Source code: https://github.com/cran/gwasrapidd
-* Date/Publication: 2023-12-15 21:50:08 UTC
-* Number of recursive dependencies: 82
+* Version: 1.1.1
+* GitHub: https://github.com/CSAFE-ISU/handwriterRF
+* Source code: https://github.com/cran/handwriterRF
+* Date/Publication: 2025-01-29 00:20:01 UTC
+* Number of recursive dependencies: 123
 
-Run `revdepcheck::cloud_details(, "gwasrapidd")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(gwasrapidd)
-      > 
-      > test_check("gwasrapidd")
-      [ FAIL 34 | WARN 2 | SKIP 1 | PASS 649 ]
-      
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(`testthat::skip` = function(...) FALSE, expect_false(skip_if_testing_is_fast())) at test-tests.R:30:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 34 | WARN 2 | SKIP 1 | PASS 649 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘gwasrapidd.Rmd’
-      ...
-    
-    > knitr::include_graphics("../man/figures/get_fns.png")
-    
-      When sourcing ‘gwasrapidd.R’:
-    Error: Cannot find the file(s): "../man/figures/get_fns.png"
-    Execution halted
-    
-      ‘bmi_variants.Rmd’ using ‘UTF-8’... OK
-      ‘faq.Rmd’ using ‘UTF-8’... OK
-      ‘gwasrapidd.Rmd’ using ‘UTF-8’... failed
-    ```
-
-# hereR
-
-<details>
-
-* Version: 1.0.1
-* GitHub: https://github.com/munterfi/hereR
-* Source code: https://github.com/cran/hereR
-* Date/Publication: 2024-11-27 22:20:02 UTC
-* Number of recursive dependencies: 117
-
-Run `revdepcheck::cloud_details(, "hereR")` for more info
+Run `revdepcheck::cloud_details(, "handwriterRF")` for more info
 
 </details>
 
@@ -1081,24 +563,24 @@ Run `revdepcheck::cloud_details(, "hereR")` for more info
       Running ‘testthat.R’
     Running the tests in ‘tests/testthat.R’ failed.
     Complete output:
-      > library(testthat)
-      > library(hereR)
-      > 
-      > test_check("hereR")
-      [ FAIL 15 | WARN 0 | SKIP 0 | PASS 107 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
+      > # This file is part of the standard setup for testthat.
+      > # It is recommended that you do not modify it.
+      > #
+      > # Where should you do additional test configuration?
+      > # Learn more about the roles of various files in:
+      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
+      > # * https://testthat.r-lib.org/articles/special-files.html
     ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test-weather_observation.R:9:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 15 | WARN 0 | SKIP 0 | PASS 107 ]
-      Error: Test failures
-      Execution halted
+      Calculating similarity score...
+      Calculating distance between samples...
+      Calculating similarity score...
+      Calculating distance between samples...
+      Calculating similarity score...
+      Calculating SLR...
+      Calculating distance between samples...
+      Calculating similarity score...
+      Calculating SLR...
+      Killed
     ```
 
 # humanize
@@ -1133,7 +615,7 @@ Run `revdepcheck::cloud_details(, "humanize")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test_time.R:214:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1149,47 +631,6 @@ Run `revdepcheck::cloud_details(, "humanize")` for more info
       'LazyData' is specified without a 'data' directory
     ```
 
-# ieegio
-
-<details>
-
-* Version: 0.0.2
-* GitHub: https://github.com/dipterix/ieegio
-* Source code: https://github.com/cran/ieegio
-* Date/Publication: 2024-10-31 23:20:02 UTC
-* Number of recursive dependencies: 87
-
-Run `revdepcheck::cloud_details(, "ieegio")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘ieegio-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: imaging-volume
-    > ### Title: Read and write volume data
-    > ### Aliases: imaging-volume read_volume write_volume io_read_mgz
-    > ###   io_write_mgz io_write_mgz.ieegio_volume io_write_mgz.ieegio_mgh
-    > ###   io_write_mgz.nifti io_write_mgz.niftiImage
-    > ###   io_write_mgz.ants.core.ants_image.ANTsImage io_write_mgz.array
-    > ###   io_read_nii io_write_nii io_write_nii.ieegio_nifti
-    ...
-    + # clean up
-    + unlink(f)
-    + unlink(f2)
-    + 
-    + }
-    <simpleWarning in check_forbidden_install("Miniconda"): cannot install Miniconda during R CMD check>
-    Warning in check_forbidden_install("Conda Environments") :
-      cannot install Conda Environments during R CMD check
-    Error: Unable to find conda binary. Is Anaconda installed?
-    Execution halted
-    ```
-
 # ipaddress
 
 <details>
@@ -1198,7 +639,7 @@ Run `revdepcheck::cloud_details(, "ieegio")` for more info
 * GitHub: https://github.com/davidchall/ipaddress
 * Source code: https://github.com/cran/ipaddress
 * Date/Publication: 2023-12-01 23:10:02 UTC
-* Number of recursive dependencies: 65
+* Number of recursive dependencies: 64
 
 Run `revdepcheck::cloud_details(, "ipaddress")` for more info
 
@@ -1222,7 +663,7 @@ Run `revdepcheck::cloud_details(, "ipaddress")` for more info
       Backtrace:
           ▆
        1. └─testthat::local_mock(`ipaddress:::is_offline` = function() TRUE) at test-ip_to_hostname.R:49:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "local_mock()", "local_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "local_mock()", "local_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1240,126 +681,6 @@ Run `revdepcheck::cloud_details(, "ipaddress")` for more info
         libs  12.5Mb
     ```
 
-# isotracer
-
-<details>
-
-* Version: 1.1.7
-* GitHub: NA
-* Source code: https://github.com/cran/isotracer
-* Date/Publication: 2024-11-05 03:20:02 UTC
-* Number of recursive dependencies: 126
-
-Run `revdepcheck::cloud_details(, "isotracer")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(isotracer)
-      To automatically run isotracer in parallel on a multicore CPU, you can call:
-        options(mc.cores = parallel::detectCores())
-      
-      
-      Attaching package: 'isotracer'
-    ...
-       1. ├─testthat::expect_error(plot(p), NA) at test-integration.R:207:13
-       2. │ └─testthat:::quasi_capture(...)
-       3. │   ├─testthat (local) .capture(...)
-       4. │   │ └─base::withCallingHandlers(...)
-       5. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-       6. └─base::plot(p)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 581 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking whether package ‘isotracer’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: namespace ‘lubridate’ is not available and has been replaced
-    See ‘/tmp/workdir/isotracer/new/isotracer.Rcheck/00install.out’ for details.
-    ```
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 93.4Mb
-      sub-directories of 1Mb or more:
-        R      1.5Mb
-        data   4.0Mb
-        doc    2.3Mb
-        libs  85.1Mb
-    ```
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘rstantools’
-      All declared Imports should be used.
-    ```
-
-*   checking for GNU extensions in Makefiles ... NOTE
-    ```
-    GNU make is a SystemRequirements.
-    ```
-
-# JAGStree
-
-<details>
-
-* Version: 1.0.1
-* GitHub: https://github.com/malfly/JAGStree
-* Source code: https://github.com/cran/JAGStree
-* Date/Publication: 2024-11-11 12:00:13 UTC
-* Number of recursive dependencies: 131
-
-Run `revdepcheck::cloud_details(, "JAGStree")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-       2. │ └─testthat::quasi_label(enquo(object), arg = "object")
-       3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
-       4. └─testthat::with_mock(...)
-       5.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       6.     └─lifecycle:::deprecate_stop0(msg)
-       7.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘DiagrammeR’
-      All declared Imports should be used.
-    ```
-
 # leaflet.minicharts
 
 <details>
@@ -1368,7 +689,7 @@ Run `revdepcheck::cloud_details(, "JAGStree")` for more info
 * GitHub: NA
 * Source code: https://github.com/cran/leaflet.minicharts
 * Date/Publication: 2021-05-11 09:20:10 UTC
-* Number of recursive dependencies: 87
+* Number of recursive dependencies: 84
 
 Run `revdepcheck::cloud_details(, "leaflet.minicharts")` for more info
 
@@ -1392,7 +713,7 @@ Run `revdepcheck::cloud_details(, "leaflet.minicharts")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-minicharts.R:12:1
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1409,7 +730,7 @@ Run `revdepcheck::cloud_details(, "leaflet.minicharts")` for more info
 * GitHub: https://github.com/rstudio/learnr
 * Source code: https://github.com/cran/learnr
 * Date/Publication: 2023-09-28 05:00:02 UTC
-* Number of recursive dependencies: 85
+* Number of recursive dependencies: 87
 
 Run `revdepcheck::cloud_details(, "learnr")` for more info
 
@@ -1433,7 +754,7 @@ Run `revdepcheck::cloud_details(, "learnr")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-exercise.R:246:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1474,7 +795,7 @@ Run `revdepcheck::cloud_details(, "MakefileR")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-rule.R:30:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1498,7 +819,7 @@ Run `revdepcheck::cloud_details(, "MakefileR")` for more info
 * GitHub: https://github.com/rte-antares-rpackage/manipulateWidget
 * Source code: https://github.com/cran/manipulateWidget
 * Date/Publication: 2021-10-05 08:50:09 UTC
-* Number of recursive dependencies: 103
+* Number of recursive dependencies: 100
 
 Run `revdepcheck::cloud_details(, "manipulateWidget")` for more info
 
@@ -1522,7 +843,7 @@ Run `revdepcheck::cloud_details(, "manipulateWidget")` for more info
        1. ├─base::suppressWarnings(...) at test-on_done.R:24:5
        2. │ └─base::withCallingHandlers(...)
        3. └─testthat::with_mock(...) at test-on_done.R:24:23
-       4.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       4.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        5.     └─lifecycle:::deprecate_stop0(msg)
        6.       └─rlang::cnd_signal(...)
       
@@ -1532,6 +853,14 @@ Run `revdepcheck::cloud_details(, "manipulateWidget")` for more info
     ```
 
 ## In both
+
+*   checking Rd files ... NOTE
+    ```
+    checkRd: (-1) manipulateWidget.Rd:113-117: Lost braces in \itemize; meant \describe ?
+    checkRd: (-1) manipulateWidget.Rd:118-120: Lost braces in \itemize; meant \describe ?
+    checkRd: (-1) manipulateWidget.Rd:121-123: Lost braces in \itemize; meant \describe ?
+    checkRd: (-1) manipulateWidget.Rd:124-127: Lost braces in \itemize; meant \describe ?
+    ```
 
 *   checking data for non-ASCII characters ... NOTE
     ```
@@ -1546,7 +875,7 @@ Run `revdepcheck::cloud_details(, "manipulateWidget")` for more info
 * GitHub: https://github.com/certara/mbbe
 * Source code: https://github.com/cran/mbbe
 * Date/Publication: 2024-02-03 11:20:02 UTC
-* Number of recursive dependencies: 85
+* Number of recursive dependencies: 82
 
 Run `revdepcheck::cloud_details(, "mbbe")` for more info
 
@@ -1570,7 +899,7 @@ Run `revdepcheck::cloud_details(, "mbbe")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-check_requirements.R:39:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1611,7 +940,7 @@ Run `revdepcheck::cloud_details(, "metaDigitise")` for more info
        3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
        4. └─metaDigitise (local) point_extraction_tester_func(object = list(plot_type = "mean_error"))
        5.   └─testthat::with_mock(...) at test-point_extraction.R:9:9
-       6.     └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       6.     └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        7.       └─lifecycle:::deprecate_stop0(msg)
        8.         └─rlang::cnd_signal(...)
       
@@ -1659,7 +988,7 @@ Run `revdepcheck::cloud_details(, "mknapsack")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-packing.R:146:5
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1698,12 +1027,12 @@ Run `revdepcheck::cloud_details(, "mockery")` for more info
     > library(testthat)
     ...
     Error:
-    ! `with_mock()` was deprecated in testthat 3.3.0 and is now defunct.
+    ! `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
     ℹ Please use `with_mocked_bindings()` instead.
     Backtrace:
         ▆
      1. └─testthat::with_mock(summary = m, summary(iris))
-     2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+     2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
      3.     └─lifecycle:::deprecate_stop0(msg)
      4.       └─rlang::cnd_signal(...)
     Execution halted
@@ -1725,7 +1054,7 @@ Run `revdepcheck::cloud_details(, "mockery")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-mock-object.R:153:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1734,34 +1063,19 @@ Run `revdepcheck::cloud_details(, "mockery")` for more info
       Execution halted
     ```
 
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘mocks-and-testthat.Rmd’
-      ...
-    > f <- function(x) summary(x)
-    
-    > with_mock(f = m, {
-    +     expect_equal(f(iris), 1)
-    + })
-    
-      When sourcing ‘mocks-and-testthat.R’:
-    Error: `with_mock()` was deprecated in testthat 3.3.0 and is now defunct.
-    ℹ Please use `with_mocked_bindings()` instead.
-    Execution halted
-    
-      ‘mocks-and-testthat.Rmd’ using ‘UTF-8’... failed
-    ```
-
-*   checking re-building of vignette outputs ... NOTE
+*   checking re-building of vignette outputs ... ERROR
     ```
     Error(s) in re-building vignettes:
       ...
     --- re-building ‘mocks-and-testthat.Rmd’ using rmarkdown
     
-    Quitting from lines 137-144 [with_mock] (mocks-and-testthat.Rmd)
+    Quitting from mocks-and-testthat.Rmd:136-144 [with_mock]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    NULL
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
     Error: processing vignette 'mocks-and-testthat.Rmd' failed with diagnostics:
-    `with_mock()` was deprecated in testthat 3.3.0 and is now defunct.
+    `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
     ℹ Please use `with_mocked_bindings()` instead.
     --- failed re-building ‘mocks-and-testthat.Rmd’
     
@@ -1780,7 +1094,7 @@ Run `revdepcheck::cloud_details(, "mockery")` for more info
 * GitHub: https://github.com/x1o/moexer
 * Source code: https://github.com/cran/moexer
 * Date/Publication: 2024-03-12 12:30:03 UTC
-* Number of recursive dependencies: 86
+* Number of recursive dependencies: 83
 
 Run `revdepcheck::cloud_details(, "moexer")` for more info
 
@@ -1804,7 +1118,7 @@ Run `revdepcheck::cloud_details(, "moexer")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-iss.R:3:5
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1817,11 +1131,11 @@ Run `revdepcheck::cloud_details(, "moexer")` for more info
 
 <details>
 
-* Version: 2.7.0
+* Version: 2.9.1
 * GitHub: https://github.com/molgenis/molgenis-r-armadillo
 * Source code: https://github.com/cran/MolgenisArmadillo
-* Date/Publication: 2024-10-14 13:00:03 UTC
-* Number of recursive dependencies: 85
+* Date/Publication: 2025-06-13 13:10:02 UTC
+* Number of recursive dependencies: 83
 
 Run `revdepcheck::cloud_details(, "MolgenisArmadillo")` for more info
 
@@ -1840,57 +1154,16 @@ Run `revdepcheck::cloud_details(, "MolgenisArmadillo")` for more info
       > library(webmockr)
       > 
       > test_check("MolgenisArmadillo")
-      CrulAdapter enabled!
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-utils.R:11:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 24 | WARN 0 | SKIP 0 | PASS 130 ]
-      Error: Test failures
-      Execution halted
-      Ran 1/1 deferred expressions
-    ```
-
-# MolgenisAuth
-
-<details>
-
-* Version: 0.0.25
-* GitHub: https://github.com/molgenis/molgenis-r-auth
-* Source code: https://github.com/cran/MolgenisAuth
-* Date/Publication: 2023-02-20 11:00:09 UTC
-* Number of recursive dependencies: 34
-
-Run `revdepcheck::cloud_details(, "MolgenisAuth")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(MolgenisAuth)
-      > 
-      > test_check("MolgenisAuth")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 0 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
+      crul not installed, skipping enable
     ...
       Backtrace:
           ▆
-       1. └─testthat::with_mock(...) at test-auth.R:61:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       1. └─testthat::with_mock(...) at test-utils.R:11:3
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 0 ]
+      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 237 ]
       Error: Test failures
       Execution halted
     ```
@@ -1927,7 +1200,7 @@ Run `revdepcheck::cloud_details(, "NasdaqDataLink")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-search.r:4:1
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -1968,166 +1241,11 @@ Run `revdepcheck::cloud_details(, "nhlapi")` for more info
        2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
        3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
        4. └─testthat::with_mock(...)
-       5.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       5.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        6.     └─lifecycle:::deprecate_stop0(msg)
        7.       └─rlang::cnd_signal(...)
       
       [ FAIL 17 | WARN 0 | SKIP 38 | PASS 147 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘nhl_players_api.Rmd’
-      ...
-    17:08:21 | W | nhl_from_json https://statsapi.web.nhl.com/api/v1/people/8451101 error for attempt no: 2 cannot open the connection to 'https://statsapi.web.nhl.com/api/v1/people/8451101'
-    17:08:21 | E | The following 2 of 2 url retrievals errored:$ https://statsapi.web.nhl.com/api/v1/people/made up player$ https://statsapi.web.nhl.com/api/v1/people/8451101 
-    data frame with 0 columns and 0 rows
-    
-    > nhl_players(playerIds = playerIds) %>% select(fullName, 
-    +     nationality, shootsCatches, primaryPosition.code)
-    
-    ...
-    > roster_devils <- rosters %>% filter(name == "New Jersey Devils") %>% 
-    +     pull(roster.roster) %>% first()
-    
-      When sourcing ‘nhl_teams_api.R’:
-    Error: could not find function "%>%"
-    Execution halted
-    
-      ‘low_level_api.Rmd’ using ‘UTF-8’... OK
-      ‘nhl_players_api.Rmd’ using ‘UTF-8’... failed
-      ‘nhl_teams_api.Rmd’ using ‘UTF-8’... failed
-    ```
-
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# odin
-
-<details>
-
-* Version: 1.2.6
-* GitHub: https://github.com/mrc-ide/odin
-* Source code: https://github.com/cran/odin
-* Date/Publication: 2024-09-23 16:10:02 UTC
-* Number of recursive dependencies: 50
-
-Run `revdepcheck::cloud_details(, "odin")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(odin)
-      > 
-      > test_check("odin")
-      [ FAIL 1 | WARN 0 | SKIP 23 | PASS 1053 ]
-      
-      ══ Skipped tests (23) ══════════════════════════════════════════════════════════
-    ...
-       1. ├─withr::with_envvar(...) at test-util.R:148:3
-       2. │ └─base::force(code)
-       3. └─testthat::with_mock(...)
-       4.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       5.     └─lifecycle:::deprecate_stop0(msg)
-       6.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 23 | PASS 1053 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# opendatatoronto
-
-<details>
-
-* Version: 0.1.5
-* GitHub: https://github.com/sharlagelfand/opendatatoronto
-* Source code: https://github.com/cran/opendatatoronto
-* Date/Publication: 2022-04-13 11:30:05 UTC
-* Number of recursive dependencies: 107
-
-Run `revdepcheck::cloud_details(, "opendatatoronto")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(opendatatoronto)
-      > 
-      > test_check("opendatatoronto")
-      [ FAIL 7 | WARN 0 | SKIP 13 | PASS 44 ]
-      
-      ══ Skipped tests (13) ══════════════════════════════════════════════════════════
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test-utils.R:139:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 7 | WARN 0 | SKIP 13 | PASS 44 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# overture
-
-<details>
-
-* Version: 0.4-0
-* GitHub: https://github.com/kurtis-s/overture
-* Source code: https://github.com/cran/overture
-* Date/Publication: 2019-08-10 22:30:02 UTC
-* Number of recursive dependencies: 40
-
-Run `revdepcheck::cloud_details(, "overture")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(overture)
-      > 
-      > test_check("overture")
-      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 100 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-       6. └─testthat::with_mock(...)
-       7.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       8.     └─lifecycle:::deprecate_stop0(msg)
-       9.       └─rlang::cnd_signal(...)
-      ── Failure ('test-mcmc.R:403:5'): Error message given if backing file can't be removed ──
-      mock object has not been called 1 time
-      
-      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 100 ]
       Error: Test failures
       Execution halted
     ```
@@ -2147,7 +1265,7 @@ Run `revdepcheck::cloud_details(, "overture")` for more info
 * GitHub: https://github.com/crazycapivara/owmr
 * Source code: https://github.com/cran/owmr
 * Date/Publication: 2020-01-11 14:30:02 UTC
-* Number of recursive dependencies: 82
+* Number of recursive dependencies: 79
 
 Run `revdepcheck::cloud_details(, "owmr")` for more info
 
@@ -2171,7 +1289,7 @@ Run `revdepcheck::cloud_details(, "owmr")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test_forecast.R:8:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -2188,7 +1306,7 @@ Run `revdepcheck::cloud_details(, "owmr")` for more info
 * GitHub: NA
 * Source code: https://github.com/cran/oxcAAR
 * Date/Publication: 2021-07-05 17:20:02 UTC
-* Number of recursive dependencies: 65
+* Number of recursive dependencies: 62
 
 Run `revdepcheck::cloud_details(, "oxcAAR")` for more info
 
@@ -2212,7 +1330,7 @@ Run `revdepcheck::cloud_details(, "oxcAAR")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test_simulate.R:12:1
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -2223,33 +1341,20 @@ Run `revdepcheck::cloud_details(, "oxcAAR")` for more info
 
 ## In both
 
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘basic-usage.Rmd’
-      ...
-    Oxcal doesn't seem to be installed. Downloading it now:
-    trying URL 'https://c14.arch.ox.ac.uk/OxCalDistribution.zip'
-    Error Downloading OxCalDistribution.zip:
-    URL 'https://c14.arch.ox.ac.uk/OxCalDistribution.zip': Timeout of 60 seconds was reached
-    No internet connection or data source broken?
-    The Oxcal executable path could not be set:
-    
-      When sourcing ‘basic-usage.R’:
-    Error: No file at given location
-    Execution halted
-    
-      ‘basic-usage.Rmd’ using ‘UTF-8’... failed
-    ```
-
-*   checking re-building of vignette outputs ... NOTE
+*   checking re-building of vignette outputs ... ERROR
     ```
     Error(s) in re-building vignettes:
-      ...
     --- re-building ‘basic-usage.Rmd’ using rmarkdown
     trying URL 'https://c14.arch.ox.ac.uk/OxCalDistribution.zip'
     
-    Quitting from lines 24-31 [unnamed-chunk-1] (basic-usage.Rmd)
+    Quitting from basic-usage.Rmd:23-31 [unnamed-chunk-1]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <error/rlang_error>
+    Error in `invokeRestart()`:
+    ! no 'restart' 'muffleWarning' found
+    ---
+    ...
+    
     Error: processing vignette 'basic-usage.Rmd' failed with diagnostics:
     no 'restart' 'muffleWarning' found
     --- failed re-building ‘basic-usage.Rmd’
@@ -2261,6 +1366,30 @@ Run `revdepcheck::cloud_details(, "oxcAAR")` for more info
     Execution halted
     ```
 
+# parameters
+
+<details>
+
+* Version: 0.27.0
+* GitHub: https://github.com/easystats/parameters
+* Source code: https://github.com/cran/parameters
+* Date/Publication: 2025-07-09 09:30:05 UTC
+* Number of recursive dependencies: 477
+
+Run `revdepcheck::cloud_details(, "parameters")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  5.4Mb
+      sub-directories of 1Mb or more:
+        R      3.5Mb
+        help   1.7Mb
+    ```
+
 # passport
 
 <details>
@@ -2269,7 +1398,7 @@ Run `revdepcheck::cloud_details(, "oxcAAR")` for more info
 * GitHub: https://github.com/alistaire47/passport
 * Source code: https://github.com/cran/passport
 * Date/Publication: 2020-11-07 07:30:03 UTC
-* Number of recursive dependencies: 87
+* Number of recursive dependencies: 84
 
 Run `revdepcheck::cloud_details(, "passport")` for more info
 
@@ -2293,93 +1422,11 @@ Run `revdepcheck::cloud_details(, "passport")` for more info
        4. │   │ └─base::withCallingHandlers(...)
        5. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
        6. └─testthat::with_mock(...)
-       7.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       7.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        8.     └─lifecycle:::deprecate_stop0(msg)
        9.       └─rlang::cnd_signal(...)
       
       [ FAIL 1 | WARN 4 | SKIP 1 | PASS 37 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# patrick
-
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/google/patrick
-* Source code: https://github.com/cran/patrick
-* Date/Publication: 2022-10-13 18:20:02 UTC
-* Number of recursive dependencies: 34
-
-Run `revdepcheck::cloud_details(, "patrick")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # Copyright 2018 Google LLC
-      > #
-      > # Licensed under the Apache License, Version 2.0 (the "License");
-      > # you may not use this file except in compliance with the License.
-      > # You may obtain a copy of the License at
-      > #
-      > #     http://www.apache.org/licenses/LICENSE-2.0
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::local_mock(...) at test-with_parameters.R:100:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "local_mock()", "local_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 18 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# plumber
-
-<details>
-
-* Version: 1.2.2
-* GitHub: https://github.com/rstudio/plumber
-* Source code: https://github.com/cran/plumber
-* Date/Publication: 2024-03-26 00:00:06 UTC
-* Number of recursive dependencies: 103
-
-Run `revdepcheck::cloud_details(, "plumber")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(plumber)
-      > 
-      > test_check("plumber")
-      [ FAIL 2 | WARN 0 | SKIP 15 | PASS 1997 ]
-      
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test-plumber-run.R:105:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 15 | PASS 1997 ]
       Error: Test failures
       Execution halted
     ```
@@ -2392,7 +1439,7 @@ Run `revdepcheck::cloud_details(, "plumber")` for more info
 * GitHub: https://github.com/CorrelAid/pocketapi
 * Source code: https://github.com/cran/pocketapi
 * Date/Publication: 2020-11-20 10:20:02 UTC
-* Number of recursive dependencies: 87
+* Number of recursive dependencies: 84
 
 Run `revdepcheck::cloud_details(, "pocketapi")` for more info
 
@@ -2416,7 +1463,7 @@ Run `revdepcheck::cloud_details(, "pocketapi")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test_pocket_unfavorite.R:22:5
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -2446,7 +1493,7 @@ Run `revdepcheck::cloud_details(, "pocketapi")` for more info
 * GitHub: https://github.com/emilyriederer/projmgr
 * Source code: https://github.com/cran/projmgr
 * Date/Publication: 2024-01-24 05:10:02 UTC
-* Number of recursive dependencies: 85
+* Number of recursive dependencies: 82
 
 Run `revdepcheck::cloud_details(, "projmgr")` for more info
 
@@ -2470,13 +1517,83 @@ Run `revdepcheck::cloud_details(, "projmgr")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...)
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
       [ FAIL 4 | WARN 1 | SKIP 3 | PASS 106 ]
       Error: Test failures
       Execution halted
+    ```
+
+# PubChemR
+
+<details>
+
+* Version: 2.1.4
+* GitHub: https://github.com/selcukorkmaz/PubChemR
+* Source code: https://github.com/cran/PubChemR
+* Date/Publication: 2025-03-07 13:10:02 UTC
+* Number of recursive dependencies: 66
+
+Run `revdepcheck::cloud_details(, "PubChemR")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking examples ... ERROR
+    ```
+    Running examples in ‘PubChemR-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: get_all_sources
+    > ### Title: Retrieve All Sources from PubChem
+    > ### Aliases: get_all_sources
+    > 
+    > ### ** Examples
+    > 
+    > get_all_sources(
+    +   domain = 'substance'
+    + )
+    Error in value[[3L]](cond) : 
+      Failed to retrieve sources for the specified domain: c(Code = "PUGREST.ServerBusy", Message = "Too many requests or server too busy")
+    Calls: get_all_sources ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
+    Execution halted
+    ```
+
+## In both
+
+*   checking tests ... ERROR
+    ```
+      Running ‘testthat.R’
+    Running the tests in ‘tests/testthat.R’ failed.
+    Complete output:
+      > # This file is part of the standard setup for testthat.
+      > # It is recommended that you do not modify it.
+      > #
+      > # Where should you do additional test configuration?
+      > # Learn more about the roles of various files in:
+      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
+      > # * https://testthat.r-lib.org/articles/special-files.html
+    ...
+      ══ Failed tests ════════════════════════════════════════════════════════════════
+      ── Failure ('test-get_sids.R:20:5'): pulling sids via 'cid' is succesfull ──────
+      allSuccess(object) is not TRUE
+      
+      `actual`:   FALSE
+      `expected`: TRUE 
+      
+      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 169 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  5.0Mb
+      sub-directories of 1Mb or more:
+        doc   4.7Mb
     ```
 
 # Quandl
@@ -2511,13 +1628,38 @@ Run `revdepcheck::cloud_details(, "Quandl")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-search.r:4:1
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
       [ FAIL 6 | WARN 0 | SKIP 0 | PASS 4 ]
       Error: Test failures
       Execution halted
+    ```
+
+# REddyProc
+
+<details>
+
+* Version: 1.3.3
+* GitHub: https://github.com/bgctw/REddyProc
+* Source code: https://github.com/cran/REddyProc
+* Date/Publication: 2024-01-25 15:30:02 UTC
+* Number of recursive dependencies: 90
+
+Run `revdepcheck::cloud_details(, "REddyProc")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  5.9Mb
+      sub-directories of 1Mb or more:
+        R      1.5Mb
+        data   2.0Mb
+        libs   1.3Mb
     ```
 
 # regmedint
@@ -2552,7 +1694,7 @@ Run `revdepcheck::cloud_details(, "regmedint")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-05_calc_myreg.R:235:9
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -2567,123 +1709,6 @@ Run `revdepcheck::cloud_details(, "regmedint")` for more info
     ```
     Namespace in Imports field not imported from: ‘Deriv’
       All declared Imports should be used.
-    ```
-
-# rentrez
-
-<details>
-
-* Version: 1.2.3
-* GitHub: https://github.com/ropensci/rentrez
-* Source code: https://github.com/cran/rentrez
-* Date/Publication: 2020-11-10 21:10:02 UTC
-* Number of recursive dependencies: 47
-
-Run `revdepcheck::cloud_details(, "rentrez")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘rentrez_tutorial.Rmd’
-      ...
-    > all_the_links <- entrez_link(dbfrom = "gene", id = 351, 
-    +     db = "all")
-    Warning in check_xml_errors(x) :
-      NCBI C++ Exception:
-        Error: TXCLIENT(CException::eUnknown) "/pubmed_gen/rbuild/version/20240724/entrez/2.19/src/internal/txclient/TxClient.cpp", line 1045: ncbi::CTxRawClientImpl::readAll() --- Read failed: EOF (the other side has unexpectedly closed connection), peer: 130.14.22.29:8064
-    
-    
-      When sourcing ‘rentrez_tutorial.R’:
-    Error: subscript out of bounds
-    Execution halted
-    
-      ‘rentrez_tutorial.Rmd’ using ‘UTF-8’... failed
-    ```
-
-# reportr
-
-<details>
-
-* Version: 1.3.0
-* GitHub: https://github.com/jonclayden/reportr
-* Source code: https://github.com/cran/reportr
-* Date/Publication: 2018-10-26 15:20:03 UTC
-* Number of recursive dependencies: 25
-
-Run `revdepcheck::cloud_details(, "reportr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(reportr)
-      > 
-      > test_check("reportr")
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 17 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test-10-ask.R:7:5
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 17 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-# restez
-
-<details>
-
-* Version: 2.1.4
-* GitHub: https://github.com/ropensci/restez
-* Source code: https://github.com/cran/restez
-* Date/Publication: 2023-10-25 10:30:02 UTC
-* Number of recursive dependencies: 61
-
-Run `revdepcheck::cloud_details(, "restez")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘test-all.R’
-    Running the tests in ‘tests/test-all.R’ failed.
-    Complete output:
-      > library(testthat)
-      > test_check("restez")
-      Loading required package: restez
-      ... Creating 'test_db_fldr/restez'
-      ... Creating 'test_db_fldr/restez/downloads'
-      ... Creating 'test_db_fldr/restez'
-      ... Creating 'test_db_fldr/restez/downloads'
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test-rentrez-wrappers.R:28:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 5 | WARN 0 | SKIP 2 | PASS 128 ]
-      Error: Test failures
-      Execution halted
     ```
 
 # Rexperigen
@@ -2734,47 +1759,6 @@ Run `revdepcheck::cloud_details(, "Rexperigen")` for more info
       'LazyData' is specified without a 'data' directory
     ```
 
-# rnbp
-
-<details>
-
-* Version: 0.2.1
-* GitHub: https://github.com/szymanskir/rnbp
-* Source code: https://github.com/cran/rnbp
-* Date/Publication: 2021-06-07 07:30:02 UTC
-* Number of recursive dependencies: 71
-
-Run `revdepcheck::cloud_details(, "rnbp")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(rnbp)
-      > 
-      > test_check("rnbp")
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 25 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-       2. │ └─base::eval.parent(expr)
-       3. │   └─base::eval(expr, p)
-       4. └─testthat::with_mock(...) at test-endpoint_tables.R:11:3
-       5.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       6.     └─lifecycle:::deprecate_stop0(msg)
-       7.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 25 ]
-      Error: Test failures
-      Execution halted
-    ```
-
 # rosetteApi
 
 <details>
@@ -2807,7 +1791,7 @@ Run `revdepcheck::cloud_details(, "rosetteApi")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test_api.R:14:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -2848,7 +1832,7 @@ Run `revdepcheck::cloud_details(, "Rpolyhedra")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test_package_lib.R:22:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -2865,7 +1849,7 @@ Run `revdepcheck::cloud_details(, "Rpolyhedra")` for more info
 * GitHub: https://github.com/prestodb/RPresto
 * Source code: https://github.com/cran/RPresto
 * Date/Publication: 2025-01-08 05:40:17 UTC
-* Number of recursive dependencies: 70
+* Number of recursive dependencies: 69
 
 Run `revdepcheck::cloud_details(, "RPresto")` for more info
 
@@ -2889,40 +1873,13 @@ Run `revdepcheck::cloud_details(, "RPresto")` for more info
           ▆
        1. └─RPresto:::setup_mock_connection() at test-fetch.R:26:3
        2.   └─testthat::with_mock(...) at tests/testthat/helper-mock_connection.R:8:3
-       3.     └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       3.     └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        4.       └─lifecycle:::deprecate_stop0(msg)
        5.         └─rlang::cnd_signal(...)
       
       [ FAIL 30 | WARN 0 | SKIP 83 | PASS 36 ]
       Error: Test failures
       Execution halted
-    ```
-
-## In both
-
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘common-table-expressions.Rmd’
-      ...
-    > packageVersion("RPresto")
-    [1] ‘1.4.7’
-    
-    > con <- DBI::dbConnect(drv = RPresto::Presto(), host = "http://localhost", 
-    +     port = 8080, user = Sys.getenv("USER"), catalog = "memory", 
-    +      .... [TRUNCATED] 
-    
-    ...
-    +     port = 8080, user = Sys.getenv("USER"), catalog = "memory", 
-    +      .... [TRUNCATED] 
-    
-      When sourcing ‘primitive-types.R’:
-    Error: Couldn't connect to server [localhost]: Failed to connect to localhost port 8080 after 0 ms: Couldn't connect to server
-    Execution halted
-    
-      ‘common-table-expressions.Rmd’ using ‘UTF-8’... failed
-      ‘complex-types.Rmd’ using ‘UTF-8’... failed
-      ‘primitive-types.Rmd’ using ‘UTF-8’... failed
     ```
 
 # RTD
@@ -2933,7 +1890,7 @@ Run `revdepcheck::cloud_details(, "RPresto")` for more info
 * GitHub: https://github.com/treasure-data/RTD
 * Source code: https://github.com/cran/RTD
 * Date/Publication: 2020-07-26 23:10:22 UTC
-* Number of recursive dependencies: 115
+* Number of recursive dependencies: 114
 
 Run `revdepcheck::cloud_details(, "RTD")` for more info
 
@@ -2954,16 +1911,16 @@ Run `revdepcheck::cloud_details(, "RTD")` for more info
       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 10 ]
       
     ...
+      Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-td.R:32:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 10 ]
       Error: Test failures
       Execution halted
-      Ran 2/2 deferred expressions
     ```
 
 ## In both
@@ -3005,7 +1962,7 @@ Run `revdepcheck::cloud_details(, "Ryacas0")` for more info
        4. ├─utils::capture.output(...)
        5. │ └─base::withVisible(...elt(i))
        6. └─testthat::with_mock(...)
-       7.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       7.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        8.     └─lifecycle:::deprecate_stop0(msg)
        9.       └─rlang::cnd_signal(...)
       
@@ -3037,7 +1994,7 @@ Run `revdepcheck::cloud_details(, "Ryacas0")` for more info
 * GitHub: https://github.com/Appsilon/shiny.benchmark
 * Source code: https://github.com/cran/shiny.benchmark
 * Date/Publication: 2023-01-20 09:50:02 UTC
-* Number of recursive dependencies: 108
+* Number of recursive dependencies: 104
 
 Run `revdepcheck::cloud_details(, "shiny.benchmark")` for more info
 
@@ -3061,7 +2018,7 @@ Run `revdepcheck::cloud_details(, "shiny.benchmark")` for more info
        1. └─base::eval(...)
        2.   └─base::eval(...)
        3.     └─testthat::local_mock(menu = function(...) 2) at test-load_example.R:74:5
-       4.       └─lifecycle::deprecate_stop("3.3.0", "local_mock()", "local_mocked_bindings()")
+       4.       └─lifecycle::deprecate_stop("3.2.0", "local_mock()", "local_mocked_bindings()")
        5.         └─lifecycle:::deprecate_stop0(msg)
        6.           └─rlang::cnd_signal(...)
       
@@ -3102,7 +2059,7 @@ Run `revdepcheck::cloud_details(, "shinyShortcut")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-shinyShortcut.R:5:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -3126,7 +2083,7 @@ Run `revdepcheck::cloud_details(, "shinyShortcut")` for more info
 * GitHub: https://github.com/ropensci/skimr
 * Source code: https://github.com/cran/skimr
 * Date/Publication: 2022-12-23 11:10:02 UTC
-* Number of recursive dependencies: 82
+* Number of recursive dependencies: 81
 
 Run `revdepcheck::cloud_details(, "skimr")` for more info
 
@@ -3150,7 +2107,7 @@ Run `revdepcheck::cloud_details(, "skimr")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-skim_with.R:138:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -3167,7 +2124,7 @@ Run `revdepcheck::cloud_details(, "skimr")` for more info
 * GitHub: https://github.com/e3bo/spaero
 * Source code: https://github.com/cran/spaero
 * Date/Publication: 2020-09-26 23:50:03 UTC
-* Number of recursive dependencies: 104
+* Number of recursive dependencies: 68
 
 Run `revdepcheck::cloud_details(, "spaero")` for more info
 
@@ -3184,28 +2141,38 @@ Run `revdepcheck::cloud_details(, "spaero")` for more info
       > library(spaero)
       > 
       > test_check("spaero")
-      [ FAIL 1 | WARN 2 | SKIP 8 | PASS 41 ]
+      [ FAIL 1 | WARN 4 | SKIP 7 | PASS 47 ]
       
-      ══ Skipped tests (8) ═══════════════════════════════════════════════════════════
+      ══ Skipped tests (7) ═══════════════════════════════════════════════════════════
     ...
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-simulator.R:6:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
-      [ FAIL 1 | WARN 2 | SKIP 8 | PASS 41 ]
+      [ FAIL 1 | WARN 4 | SKIP 7 | PASS 47 ]
       Error: Test failures
       Execution halted
     ```
 
 ## In both
 
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘earlywarnings’
+    ```
+
 *   checking dependencies in R code ... NOTE
     ```
     Namespace in Imports field not imported from: ‘utils’
       All declared Imports should be used.
+    ```
+
+*   checking Rd cross-references ... NOTE
+    ```
+    Unknown package ‘earlywarnings’ in Rd xrefs
     ```
 
 *   checking LazyData ... NOTE
@@ -3221,7 +2188,7 @@ Run `revdepcheck::cloud_details(, "spaero")` for more info
 * GitHub: https://github.com/gadenbuie/starwarsdb
 * Source code: https://github.com/cran/starwarsdb
 * Date/Publication: 2020-11-02 23:50:02 UTC
-* Number of recursive dependencies: 50
+* Number of recursive dependencies: 49
 
 Run `revdepcheck::cloud_details(, "starwarsdb")` for more info
 
@@ -3245,7 +2212,7 @@ Run `revdepcheck::cloud_details(, "starwarsdb")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-dm.R:56:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -3261,45 +2228,45 @@ Run `revdepcheck::cloud_details(, "starwarsdb")` for more info
       Note: found 14 marked UTF-8 strings
     ```
 
-# taxonomizr
+# tangles
 
 <details>
 
-* Version: 0.10.7
-* GitHub: https://github.com/sherrillmix/taxonomizr
-* Source code: https://github.com/cran/taxonomizr
-* Date/Publication: 2025-01-08 16:50:02 UTC
-* Number of recursive dependencies: 55
+* Version: 2.0.1
+* GitHub: NA
+* Source code: https://github.com/cran/tangles
+* Date/Publication: 2025-06-02 07:50:02 UTC
+* Number of recursive dependencies: 54
 
-Run `revdepcheck::cloud_details(, "taxonomizr")` for more info
+Run `revdepcheck::cloud_details(, "tangles")` for more info
 
 </details>
 
 ## Newly broken
 
-*   checking tests ... ERROR
+*   checking re-building of vignette outputs ... ERROR
     ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(taxonomizr)
-      > library(data.table)
-      > library(RSQLite)
-      > test_check("taxonomizr")
-      
-      Download status: 0 done; 1 in progress (0 b/s). Total size: 359 b (100%)...
+    Error(s) in re-building vignettes:
+    --- re-building ‘deidentification.Rmd’ using rmarkdown
+    
+    Quitting from deidentification.Rmd:124-156 [tangling-together]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <error/rlang_error>
+    Error:
+    ! [cannot make matrix with  1396964956570098  rows] 
+    ---
+    Backtrace:
     ...
-       4. │   │ └─base::withCallingHandlers(...)
-       5. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-       6. └─testthat::with_mock(...)
-       7.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       8.     └─lifecycle:::deprecate_stop0(msg)
-       9.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 13 | WARN 0 | SKIP 0 | PASS 354 ]
-      Error: Test failures
-      Execution halted
+    
+    Error: processing vignette 'deidentification.Rmd' failed with diagnostics:
+    [cannot make matrix with  1396964956570098  rows] 
+    --- failed re-building ‘deidentification.Rmd’
+    
+    SUMMARY: processing the following file failed:
+      ‘deidentification.Rmd’
+    
+    Error: Vignette re-building failed.
+    Execution halted
     ```
 
 # texreg
@@ -3310,7 +2277,7 @@ Run `revdepcheck::cloud_details(, "taxonomizr")` for more info
 * GitHub: https://github.com/leifeld/texreg
 * Source code: https://github.com/cran/texreg
 * Date/Publication: 2024-07-24 12:20:01 UTC
-* Number of recursive dependencies: 108
+* Number of recursive dependencies: 109
 
 Run `revdepcheck::cloud_details(, "texreg")` for more info
 
@@ -3334,11 +2301,11 @@ Run `revdepcheck::cloud_details(, "texreg")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-texreg.R:319:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
-      [ FAIL 2 | WARN 1 | SKIP 34 | PASS 199 ]
+      [ FAIL 2 | WARN 1 | SKIP 33 | PASS 201 ]
       Error: Test failures
       Execution halted
     ```
@@ -3385,8 +2352,8 @@ Run `revdepcheck::cloud_details(, "texreg")` for more info
 
 *   checking Rd cross-references ... NOTE
     ```
-    Packages unavailable to check Rd xrefs: ‘h2o’, ‘spatialreg’, ‘eha’, ‘MuMIn’, ‘Bergm’, ‘mfx’, ‘betareg’, ‘bife’, ‘biglm’, ‘brglm’, ‘brms’, ‘btergm’, ‘ordinal’, ‘dynlm’, ‘ergm’, ‘latentnet’, ‘forecast’, ‘fGarch’, ‘alpaca’, ‘feisr’, ‘lfe’, ‘fixest’, ‘gamlss’, ‘gamlss.inf’, ‘gee’, ‘gmm’, ‘miceadds’, ‘glmmTMB’, ‘gnm’, ‘AER’, ‘robust’, ‘lqmm’, ‘maxLik’, ‘mhurdle’, ‘mlogit’, ‘oglmx’, ‘plm’, ‘pglm’, ‘relevent’, ‘remstimate’, ‘simex’, ‘speedglm’, ‘truncreg’, ‘VGAM’, ‘metaSEM’
-    Unknown package ‘rms’ in Rd xrefs
+    Packages unavailable to check Rd xrefs: ‘h2o’, ‘spatialreg’, ‘eha’, ‘MuMIn’, ‘Bergm’, ‘mfx’, ‘betareg’, ‘bife’, ‘biglm’, ‘brglm’, ‘brms’, ‘btergm’, ‘ordinal’, ‘dynlm’, ‘ergm’, ‘latentnet’, ‘forecast’, ‘fGarch’, ‘alpaca’, ‘feisr’, ‘lfe’, ‘fixest’, ‘gamlss’, ‘gamlss.inf’, ‘gee’, ‘gmm’, ‘miceadds’, ‘glmmTMB’, ‘gnm’, ‘AER’, ‘robust’, ‘lqmm’, ‘rms’, ‘maxLik’, ‘mhurdle’, ‘mlogit’, ‘plm’, ‘pglm’, ‘relevent’, ‘remstimate’, ‘simex’, ‘speedglm’, ‘truncreg’, ‘VGAM’, ‘metaSEM’
+    Unknown package ‘oglmx’ in Rd xrefs
     ```
 
 # ThankYouStars
@@ -3421,7 +2388,7 @@ Run `revdepcheck::cloud_details(, "ThankYouStars")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-starring.R:3:1
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -3469,7 +2436,7 @@ Run `revdepcheck::cloud_details(, "tinyProject")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-commandArgs.R:3:1
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -3510,7 +2477,7 @@ Run `revdepcheck::cloud_details(, "tryCatchLog")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test_platform_functions.R:37:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -3526,102 +2493,6 @@ Run `revdepcheck::cloud_details(, "tryCatchLog")` for more info
     There are ::: calls to the package's namespace in its code. A package
       almost never needs to use ::: for its own objects:
       ‘log2console’
-    ```
-
-# tuneRanger
-
-<details>
-
-* Version: 0.7
-* GitHub: NA
-* Source code: https://github.com/cran/tuneRanger
-* Date/Publication: 2024-03-20 22:20:02 UTC
-* Number of recursive dependencies: 64
-
-Run `revdepcheck::cloud_details(, "tuneRanger")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(tuneRanger)
-      Loading required package: ranger
-      Loading required package: mlrMBO
-      Loading required package: mlr
-      Loading required package: ParamHelpers
-      Loading required package: smoof
-    ...
-        6.   ├─base (local) fun3(do.call(trainLearner, pars))
-        7.   ├─base::do.call(trainLearner, pars)
-        8.   ├─mlr (local) `<fn>`(.learner = `<srv.tnMF>`, .task = `<SurvTask>`, .subset = NULL)
-        9.   └─tuneRanger:::trainLearner.surv.tuneMtryFast(...)
-       10.     └─tuneRanger::tuneMtryFast(...)
-       11.       └─ranger::ranger(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 6 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking Rd cross-references ... NOTE
-    ```
-    Package unavailable to check Rd xrefs: ‘randomForest’
-    ```
-
-# uptasticsearch
-
-<details>
-
-* Version: 0.4.0
-* GitHub: https://github.com/uptake/uptasticsearch
-* Source code: https://github.com/cran/uptasticsearch
-* Date/Publication: 2019-09-11 18:30:03 UTC
-* Number of recursive dependencies: 57
-
-Run `revdepcheck::cloud_details(, "uptasticsearch")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # Note that you would never run this file directly. This is used by tools::testInstallPackages()
-      > # and other packages like covr.
-      > # To actually run the tests, you need to set the working directory then run
-      > # devtools::test('r-pkg/uptasticsearch')
-      > 
-      > # This line ensures that R CMD check can run tests.
-      > # See https://github.com/hadley/testthat/issues/144
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test-get_fields.R:33:19
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 17 | PASS 288 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
     ```
 
 # WhatIf
@@ -3656,7 +2527,7 @@ Run `revdepcheck::cloud_details(, "WhatIf")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-whatif_convexhull.R:16:5
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
@@ -3697,80 +2568,12 @@ Run `revdepcheck::cloud_details(, "ZillowR")` for more info
       Backtrace:
           ▆
        1. └─testthat::with_mock(...) at test-GetZestimate.R:7:5
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
        3.     └─lifecycle:::deprecate_stop0(msg)
        4.       └─rlang::cnd_signal(...)
       
       [ FAIL 9 | WARN 0 | SKIP 0 | PASS 125 ]
       Error: Test failures
       Execution halted
-    ```
-
-# zoltr
-
-<details>
-
-* Version: 1.0.1
-* GitHub: https://github.com/reichlab/zoltr
-* Source code: https://github.com/cran/zoltr
-* Date/Publication: 2024-06-27 17:00:02 UTC
-* Number of recursive dependencies: 80
-
-Run `revdepcheck::cloud_details(, "zoltr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(zoltr)
-      > 
-      > test_check("zoltr")
-      [ FAIL 46 | WARN 0 | SKIP 0 | PASS 24 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      Backtrace:
-          ▆
-       1. └─testthat::with_mock(...) at test-project.R:500:3
-       2.   └─lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 46 | WARN 0 | SKIP 0 | PASS 24 ]
-      Error: Test failures
-      Execution halted
-    ```
-
-## In both
-
-*   checking running R code from vignettes ... ERROR
-    ```
-    Errors in running code in vignettes:
-    when running code in ‘getting-started.Rmd’
-      ...
-    
-    > zoltar_connection <- new_connection(host = Sys.getenv("Z_HOST"))
-    
-    > zoltar_authenticate(zoltar_connection, Sys.getenv("Z_USERNAME"), 
-    +     Sys.getenv("Z_PASSWORD"))
-    get_token(): POST: /api-token-auth/
-    
-    ...
-    > zoltar_authenticate(zoltar_connection, Sys.getenv("Z_USERNAME"), 
-    +     Sys.getenv("Z_PASSWORD"))
-    get_token(): POST: /api-token-auth/
-    
-      When sourcing ‘project-owners.R’:
-    Error: URL using bad/illegal format or missing URL: URL rejected: No host part in the URL
-    Execution halted
-    
-      ‘getting-started.Rmd’ using ‘UTF-8’... failed
-      ‘project-owners.Rmd’ using ‘UTF-8’... failed
     ```
 

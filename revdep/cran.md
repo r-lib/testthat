@@ -1,9 +1,9 @@
 ## revdepcheck results
 
-We checked 9017 reverse dependencies (8999 from CRAN + 18 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 9592 reverse dependencies (9588 from CRAN + 4 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 77 new problems
- * We failed to check 155 packages
+ * We saw 56 new problems
+ * We failed to check 30 packages
 
 Issues with CRAN packages are summarised below.
 
@@ -13,10 +13,10 @@ Issues with CRAN packages are summarised below.
 * aws.comprehend
   checking tests ... ERROR
 
-* bindr
-  checking tests ... ERROR
+* bcRP
+  checking examples ... ERROR
 
-* civis
+* bindr
   checking tests ... ERROR
 
 * conflr
@@ -28,25 +28,7 @@ Issues with CRAN packages are summarised below.
 * covr
   checking tests ... ERROR
 
-* crossmap
-  checking tests ... ERROR
-
-* crplyr
-  checking tests ... ERROR
-
-* crunch
-  checking tests ... ERROR
-
-* crunchy
-  checking tests ... ERROR
-
-* cyphr
-  checking tests ... ERROR
-
 * datarobot
-  checking tests ... ERROR
-
-* dendextend
   checking tests ... ERROR
 
 * digitize
@@ -55,40 +37,25 @@ Issues with CRAN packages are summarised below.
 * distro
   checking tests ... ERROR
 
-* dRiftDM
-  checking tests ... ERROR
-
-* DSMolgenisArmadillo
-  checking tests ... ERROR
-
-* gbfs
-  checking tests ... ERROR
+* esci
+  checking installed package size ... NOTE
 
 * gen3sis
   checking tests ... ERROR
 
+* geomorph
+  checking installed package size ... NOTE
+
 * graphhopper
   checking tests ... ERROR
 
-* gwasrapidd
-  checking tests ... ERROR
-
-* hereR
+* handwriterRF
   checking tests ... ERROR
 
 * humanize
   checking tests ... ERROR
 
-* ieegio
-  checking examples ... ERROR
-
 * ipaddress
-  checking tests ... ERROR
-
-* isotracer
-  checking tests ... ERROR
-
-* JAGStree
   checking tests ... ERROR
 
 * leaflet.minicharts
@@ -115,16 +82,12 @@ Issues with CRAN packages are summarised below.
 * mockery
   checking examples ... ERROR
   checking tests ... ERROR
-  checking running R code from vignettes ... ERROR
-  checking re-building of vignette outputs ... NOTE
+  checking re-building of vignette outputs ... ERROR
 
 * moexer
   checking tests ... ERROR
 
 * MolgenisArmadillo
-  checking tests ... ERROR
-
-* MolgenisAuth
   checking tests ... ERROR
 
 * NasdaqDataLink
@@ -133,28 +96,16 @@ Issues with CRAN packages are summarised below.
 * nhlapi
   checking tests ... ERROR
 
-* odin
-  checking tests ... ERROR
-
-* opendatatoronto
-  checking tests ... ERROR
-
-* overture
-  checking tests ... ERROR
-
 * owmr
   checking tests ... ERROR
 
 * oxcAAR
   checking tests ... ERROR
 
+* parameters
+  checking installed package size ... NOTE
+
 * passport
-  checking tests ... ERROR
-
-* patrick
-  checking tests ... ERROR
-
-* plumber
   checking tests ... ERROR
 
 * pocketapi
@@ -163,25 +114,19 @@ Issues with CRAN packages are summarised below.
 * projmgr
   checking tests ... ERROR
 
+* PubChemR
+  checking examples ... ERROR
+
 * Quandl
   checking tests ... ERROR
+
+* REddyProc
+  checking installed package size ... NOTE
 
 * regmedint
   checking tests ... ERROR
 
-* rentrez
-  checking running R code from vignettes ... ERROR
-
-* reportr
-  checking tests ... ERROR
-
-* restez
-  checking tests ... ERROR
-
 * Rexperigen
-  checking tests ... ERROR
-
-* rnbp
   checking tests ... ERROR
 
 * rosetteApi
@@ -214,8 +159,8 @@ Issues with CRAN packages are summarised below.
 * starwarsdb
   checking tests ... ERROR
 
-* taxonomizr
-  checking tests ... ERROR
+* tangles
+  checking re-building of vignette outputs ... ERROR
 
 * texreg
   checking tests ... ERROR
@@ -229,175 +174,41 @@ Issues with CRAN packages are summarised below.
 * tryCatchLog
   checking tests ... ERROR
 
-* tuneRanger
-  checking tests ... ERROR
-
-* uptasticsearch
-  checking tests ... ERROR
-
 * WhatIf
   checking tests ... ERROR
 
 * ZillowR
   checking tests ... ERROR
 
-* zoltr
-  checking tests ... ERROR
-
 ### Failed to check
 
-* adjustedCurves      (NA)
-* apollo              (NA)
 * arealDB             (NA)
-* assessor            (NA)
 * atom4R              (NA)
-* BANAM               (NA)
-* bayesCT             (NA)
-* bayesDP             (NA)
-* BayesFactor         (NA)
-* bbknnR              (NA)
-* BCClong             (NA)
-* BFpack              (NA)
-* BGGM                (NA)
-* bnnSurvival         (NA)
-* BSTZINB             (NA)
-* BuyseTest           (NA)
-* CACIMAR             (NA)
-* censored            (NA)
-* Certara.VPCResults  (NA)
-* CGPfunctions        (NA)
-* chipPCR             (NA)
-* COMBO               (NA)
-* contsurvplot        (NA)
-* counterfactuals     (NA)
-* CRMetrics           (NA)
+* bayesdfa            (NA)
 * ctsem               (NA)
-* dartR.base          (NA)
 * dataone             (NA)
 * datapack            (NA)
-* deeptrafo           (NA)
-* DepthProc           (NA)
-* drtmle              (NA)
-* dscoreMSM           (NA)
-* DWLS                (NA)
-* easybgm             (NA)
+* DSMolgenisArmadillo (NA)
+* dsTidyverse         (NA)
+* dsTidyverseClient   (NA)
 * EcoEnsemble         (NA)
-* ecolottery          (NA)
-* EdSurvey            (NA)
-* emplik              (NA)
-* EpiEstim            (NA)
-* epizootic           (NA)
-* erah                (NA)
-* evolqg              (NA)
-* ezECM               (NA)
+* FAfA                (NA)
 * FAIRmaterials       (NA)
-* FastJM              (NA)
 * fdaPDE              (NA)
-* ForecastComb        (NA)
-* FoReco              (NA)
-* frechet             (NA)
-* FREEtree            (NA)
-* gapfill             (NA)
-* genekitr            (NA)
-* GeneSelectR         (NA)
-* GeomComb            (NA)
+* fio                 (NA)
 * gllvm               (NA)
+* gpboost             (NA)
 * gpuR                (NA)
-* hettx               (NA)
-* Hmsc                (NA)
-* invivoPKfit         (NA)
-* iNZightPlots        (NA)
-* iNZightRegression   (NA)
-* IVCor               (NA)
-* JMH                 (NA)
-* joineRML            (NA)
-* jsmodule            (NA)
-* kmc                 (NA)
-* KMunicate           (NA)
-* Landmarking         (NA)
-* lavaSearch2         (NA)
-* lnmixsurv           (NA)
-* locpolExpectile     (NA)
 * loon.shiny          (NA)
 * loon.tourr          (NA)
-* lsirm12pl           (NA)
-* marlod              (NA)
-* mbsts               (NA)
 * metajam             (NA)
-* mHMMbayes           (NA)
-* midasr              (NA)
-* miWQS               (NA)
-* mixAR               (NA)
-* mlmts               (NA)
-* mlr                 (NA)
-* modeLLtest          (NA)
-* multilevelmediation (NA)
-* multilevelTools     (NA)
 * multinma            (NA)
-* NCA                 (NA)
-* netcmc              (NA)
-* newIMVC             (NA)
-* nlpred              (NA)
-* NMADiagT            (NA)
-* nse                 (NA)
-* OlinkAnalyze        (NA)
-* paleopop            (NA)
-* pammtools           (NA)
-* pathwayTMB          (NA)
-* pcvr                (NA)
-* poems               (NA)
-* popEpi              (NA)
-* popstudy            (NA)
-* powerly             (NA)
-* pre                 (NA)
-* pscore              (NA)
-* Publish             (NA)
-* qris                (NA)
-* QTOCen              (NA)
-* quantspec           (NA)
-* quid                (NA)
-* rddtools            (NA)
 * rdflib              (NA)
 * redland             (NA)
-* riskRegression      (NA)
-* rlme                (NA)
-* robber              (NA)
-* robmed              (NA)
-* RQdeltaCT           (NA)
 * rstanarm            (NA)
-* scAnnotate          (NA)
-* SCIntRuler          (NA)
-* scMappR             (NA)
-* scperturbR          (NA)
-* scpi                (NA)
-* SCpubr              (NA)
-* SCRIP               (NA)
-* SensMap             (NA)
-* Seurat              (NA)
-* shinyTempSignal     (NA)
-* Signac              (NA)
-* SimplyAgree         (NA)
-* SNPassoc            (NA)
-* snplinkage          (NA)
-* ssdGSA              (NA)
-* stabiliser          (NA)
-* statsr              (NA)
-* stR                 (NA)
-* survcompare         (NA)
-* survex              (NA)
-* survHE              (NA)
-* TDA                 (NA)
+* SQLFormatteR        (NA)
+* string2path         (NA)
 * TestAnaAPP          (NA)
-* tidyEdSurvey        (NA)
-* tidyseurat          (NA)
-* tidyvpc             (NA)
-* tinyarray           (NA)
-* tramicp             (NA)
-* tramvs              (NA)
-* treeclim            (NA)
 * TriDimRegression    (NA)
-* TSrepr              (NA)
-* vcfppR              (NA)
-* visa                (NA)
-* wally               (NA)
+* xactonomial         (NA)
 * zen4R               (NA)
