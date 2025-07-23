@@ -42,11 +42,8 @@ test_that("can control numeric tolerance", {
   expect_failure(expect_equal(x1, x2))
   expect_success(expect_equal(x1, x2, tolerance = 1e-5))
   expect_success(expect_equivalent(x1, x2, tolerance = 1e-5))
+  
   # with partial matching
-  # we work around https://github.com/r-lib/testthat/issues/1188
-  if (getRversion() < "3.6.0" && is.null(getOption("warnPartialMatchArgs"))) {
-    options(warnPartialMatchArgs = FALSE)
-  }
   withr::local_options(warnPartialMatchArgs = FALSE)
   expect_success(expect_equal(x1, x2, tol = 1e-5))
 

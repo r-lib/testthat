@@ -64,5 +64,5 @@ snapshot_expected <- function(
 }
 
 dir_contains <- function(paths, expected_files) {
-  map_lgl(paths, ~ any(file.exists(file.path(.x, expected_files))))
+  map_lgl(paths, \(path) any(file.exists(file.path(path, expected_files))))
 }

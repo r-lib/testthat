@@ -118,13 +118,13 @@ expect_warning(f(), "First")
 You can either add additional expectations to catch these warnings, or silence them all with `suppressWarnings()`:
 
 ```{r}
-f() %>% 
-  expect_warning("First") %>% 
-  expect_warning("Second") %>% 
+f() |> 
+  expect_warning("First") |> 
+  expect_warning("Second") |> 
   expect_warning("Third")
 
-f() %>% 
-  expect_warning("First") %>% 
+f() |> 
+  expect_warning("First") |> 
   suppressWarnings()
 ```
 
