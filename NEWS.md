@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
 
 # testthat 3.2.3
