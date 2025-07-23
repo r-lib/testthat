@@ -94,5 +94,5 @@ it <- function(description, code = NULL) {
   check_string(description, allow_empty = FALSE)
 
   code <- substitute(code)
-  describe_it(description, code)
+  describe_it(description, code, env = parent.frame())
 }

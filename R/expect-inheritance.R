@@ -125,7 +125,7 @@ expect_s7_class <- function(object, class) {
 #' @rdname inheritance-expectations
 expect_s4_class <- function(object, class) {
   act <- quasi_label(enquo(object), arg = "object")
-  act_val_lab <- format_class(methods::is(object))
+  act$class <- format_class(methods::is(act$val))
   exp_lab <- format_class(class)
 
   if (identical(class, NA)) {
@@ -139,7 +139,7 @@ expect_s4_class <- function(object, class) {
     } else {
       expect(
         methods::is(act$val, class),
-        sprintf("%s inherits from %s not %s.", act$lab, act_val_lab, exp_lab)
+        sprintf("%s inherits from %s not %s.", act$lab, act$class, exp_lab)
       )
     }
   } else {
