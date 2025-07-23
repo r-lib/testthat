@@ -75,6 +75,7 @@ test_that("checks its inputs", {
 })
 
 test_that("can check with actual class", {
+  skip_if_not_installed("S7")
   Foo <- S7::new_class("Foo", package = NULL)
   Bar <- S7::new_class("Bar", package = NULL)
   expect_success(expect_s7_class(Foo(), class = Foo))
