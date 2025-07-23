@@ -62,6 +62,12 @@ test_that("expect_s3_class allows unquoting of first argument", {
 })
 
 
+test_that("expect_s4_class allows unquoting of first argument", {
+  cls <- methods::setClass("new_class", slots = c("a" = "numeric"))
+  obj <- methods::new("new_class", a = 3)
+  expect_success(expect_s4_class(!! rlang::quo(obj), "new_class"))
+})
+
 # expect_s7_class --------------------------------------------------------
 
 test_that("checks its inputs", {

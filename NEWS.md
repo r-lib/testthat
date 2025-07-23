@@ -1,6 +1,7 @@
 # testthat (development version)
 
 * testthat now requires R 4.1.
+* `expect_s4_class()` now supports unquoting (@stibu81, #2064).
 * `it()` now finds the correct evaluation environment in more cases (@averissimo, #2085).
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
 
