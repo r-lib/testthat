@@ -1,9 +1,7 @@
-* `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
-
 # testthat (development version)
 
+* `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
 * Fixed an issue where `expect_no_error(1)` was failing (#2037).
-
 * Fixed an issue where calling `skip()` outside of an active test could
   cause an unexpected error (@kevinushey, #2039).
 
