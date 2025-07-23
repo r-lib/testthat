@@ -296,8 +296,7 @@ cnd_matcher <- function(base_class,
 
   if (is.null(regexp) && dots_n(...) > 0) {
     # pretty adversarial: expect_error(foo(), NULL, "error", 1)
-    # TODO(R>=4.1.0): ...names()
-    dots_names <- names(list(...))
+    dots_names <- ...names()
     if (is.null(dots_names) {
       cli::cli_abort(
         "Found unnamed arguments in {.arg ...} to be passed to {.fn grepl}, but no {.arg regexp}.",
