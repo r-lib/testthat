@@ -133,7 +133,7 @@ package_version <- function(x) {
 skip_unless_r <- function(spec) {
   parts <- unlist(strsplit(spec, " ", fixed = TRUE))
   if (length(parts) != 2L) {
-    abort("`spec` should be a comparison like '>=' and an R version.")
+    cli::cli_abort("{.arg spec} should be a comparison like '>=' and an R version separated by a space.")
   }
   comparator <- match.fun(parts[1L])
   required_version <- numeric_version(parts[2L])
