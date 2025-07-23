@@ -1,6 +1,10 @@
 # testthat (development version)
 
 * `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
+* Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
+
+# testthat 3.2.3
+
 * Fixed an issue where `expect_no_error(1)` was failing (#2037).
 * Fixed an issue where calling `skip()` outside of an active test could
   cause an unexpected error (@kevinushey, #2039).

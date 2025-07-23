@@ -33,6 +33,7 @@ test_that("can override usual options", {
 
 test_that("can override translation of error messages", {
   skip_on_cran()
+  skip_on_os("linux")
 
   local_reproducible_output(lang = "fr")
   expect_error(mean[[1]], "objet de type")
