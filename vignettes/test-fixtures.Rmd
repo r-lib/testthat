@@ -291,7 +291,7 @@ test_that("use_roxygen_md() adds DESCRIPTION fields", {
   use_roxygen_md()
   
   expect_true(uses_roxygen_md())
-  expect_equal(desc::desc_get("Roxygen", pkg)[[1]], "list(markdown = TRUE)"))
+  expect_equal(desc::desc_get("Roxygen", pkg)[[1]], "list(markdown = TRUE)")
   expect_true(desc::desc_has_fields("RoxygenNote", pkg))
 })
 ```

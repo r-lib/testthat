@@ -144,7 +144,7 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
     local_bindings_rebind(!!!bindings, .env = test_env, .frame = .env)
   }
 
-  if (any(!bindings_found)) {
+  if (!all(bindings_found)) {
     missing <- names(bindings)[!bindings_found]
     cli::cli_abort("Can't find binding for {.arg {missing}}")
   }
