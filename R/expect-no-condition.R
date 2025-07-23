@@ -96,7 +96,12 @@ expect_no_ <- function(base_class,
 
   capture <- function(code) {
     try_fetch(
-      code,
+      {
+        code
+        # We can't call succeed() here because that generates a condition
+        # that causes `expect_no_condition()` to always fail
+        NULL
+      },
       !!base_class := function(cnd) {
         if (!matcher(cnd)) {
           return(zap())
