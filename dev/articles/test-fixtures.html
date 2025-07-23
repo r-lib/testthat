@@ -466,14 +466,15 @@ indirectly. So it’s very convenient that
 <code>local_create_package()</code> creates a minimal package, with a
 valid <code>DESCRIPTION</code> file, for us to test against. And when
 the test is done — poof! — the package is gone.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"use_roxygen_md() adds DESCRIPTION fields"</span>, {</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  pkg <span class="ot">&lt;-</span> <span class="fu">local_create_package</span>()</span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">use_roxygen_md</span>()</span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  </span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>  <span class="fu">expect_true</span>(<span class="fu">uses_roxygen_md</span>())</span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>  <span class="fu">expect_equal</span>(desc<span class="sc">::</span><span class="fu">desc_get</span>(<span class="st">"Roxygen"</span>, pkg)[[<span class="dv">1</span>]], <span class="st">"list(markdown = TRUE)"</span>)<span class="er">)</span></span>
-<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>  <span class="fu">expect_true</span>(desc<span class="sc">::</span><span class="fu">desc_has_fields</span>(<span class="st">"RoxygenNote"</span>, pkg))</span>
-<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"use_roxygen_md() adds DESCRIPTION fields"</span>, <span class="op">{</span></span>
+<span>  <span class="va">pkg</span> <span class="op">&lt;-</span> <span class="fu">local_create_package</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu">use_roxygen_md</span><span class="op">(</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="fu">uses_roxygen_md</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">desc</span><span class="fu">::</span><span class="fu"><a href="https://desc.r-lib.org/reference/desc_get.html" class="external-link">desc_get</a></span><span class="op">(</span><span class="st">"Roxygen"</span>, <span class="va">pkg</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="st">"list(markdown = TRUE)"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="fu">desc</span><span class="fu">::</span><span class="fu"><a href="https://desc.r-lib.org/reference/desc_has_fields.html" class="external-link">desc_has_fields</a></span><span class="op">(</span><span class="st">"RoxygenNote"</span>, <span class="va">pkg</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
