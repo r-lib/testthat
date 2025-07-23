@@ -15,7 +15,7 @@ License: MIT + file LICENSE
 URL: https://testthat.r-lib.org, https://github.com/r-lib/testthat
 BugReports: https://github.com/r-lib/testthat/issues
 Depends:
-    R (>= 3.6.0)
+    R (>= 4.1.0)
 Imports:
     brio (>= 1.1.3),
     callr (>= 3.7.3),

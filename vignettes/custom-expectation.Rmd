@@ -62,9 +62,9 @@ Next you call `expect()`. This has two arguments:
 Expectation functions are called primarily for their side-effects (triggering a failure), so should invisibly return their input, `act$val`. This allows expectations to be chained:
 
 ```{r}
-mtcars %>%
-  expect_type("list") %>%
-  expect_s3_class("data.frame") %>% 
+mtcars |>
+  expect_type("list") |>
+  expect_s3_class("data.frame") |> 
   expect_length(11)
 ```
 
