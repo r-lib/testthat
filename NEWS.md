@@ -6,6 +6,7 @@
 # testthat 3.2.3
 
 * Fixed an issue where `expect_no_error(1)` was failing (#2037).
+
 * Fixed an issue where calling `skip()` outside of an active test could
   cause an unexpected error (@kevinushey, #2039).
 
