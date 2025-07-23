@@ -111,11 +111,7 @@ The other built-in reporters all support parallel tests, with some subtle differ
     `ProgressReporter` does not update its display until a test file is complete.
 
 -   The standard output and standard error, i.e. `print()`, `cat()`, `message()`, etc. output from the test files are lost currently.
-    If you want to use `cat()` or `message()` for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the `Config` entry in `DESCRIPTION` or selecting a non-parallel reporter, e.g. the `DebugReporter`:
-
-    ``` r
-    devtools::test(filter = "badtest", reporter = "debug")
-    ```
+    If you want to use `cat()` or `message()` for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the `Config` entry in `DESCRIPTION` or setting `Sys.setenv(TESTTHAT_PARALLEL = "false")`.
 
 ### Writing parallel reporters
 
