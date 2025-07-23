@@ -141,10 +141,14 @@ test_that("skip_unless_r works as expected", {
   expect_no_skip(skip_unless_r(paste("==", getRversion())))
   expect_no_skip(skip_unless_r("<= 999.999.999"))
 
-  expect_snapshot_skip(skip_unless_r(">= 999.999.999"))
-  expect_snapshot_skip(skip_unless_r("== 0.0.0"))
-
   expect_skip(skip_unless_r(">= 999.999.999"))
   expect_skip(skip_unless_r("== 0.0.0"))
   expect_skip(skip_unless_r("<= 0.0.0"))
+})
+
+test_that("skip_unless_r gives the expected output", {
+  local_mocked_bindings(getRversion = \() numeric_version("4.5.0"))
+
+  expect_snapshot_skip(skip_unless_r(">= 999.999.999"))
+  expect_snapshot_skip(skip_unless_r("== 0.0.0"))
 })
