@@ -147,6 +147,8 @@ skip_unless_r <- function(spec) {
     )
   )
 }
+# for mocking
+getRversion <- NULL
 
 #' @export
 #' @rdname skip
