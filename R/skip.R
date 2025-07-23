@@ -142,7 +142,7 @@ skip_unless_r <- function(spec) {
   skip_if_not(
     comparator(current_version, required_version),
     sprintf(
-      "Version requirement not satisfied: %s %s %s",
+      "R version requirement not satisfied: %s %s %s",
       current_version, parts[1L], required_version
     )
   )
