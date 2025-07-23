@@ -126,7 +126,7 @@ all_passed <- function(res) {
   }
 
   df <- as.data.frame.testthat_results(res)
-  sum(df$failed) == 0 && all(!df$error)
+  sum(df$failed) == 0 && !any(df$error)
 }
 
 any_warnings <- function(res) {
