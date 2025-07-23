@@ -3,7 +3,7 @@
 * `expect_s4_class()` now supports unquoting (@stibu81, #2064).
 * `it()` now finds the correct evaluation environment in more cases (@averissimo, #2085).
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
-* New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require `...names` (@MichaelChirico, #2022)
+* New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require, say, `...names` (@MichaelChirico, #2022)
 
 # testthat 3.2.3
 
