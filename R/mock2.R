@@ -92,6 +92,17 @@
 #'   my_wrapper = function(...) "new_value"
 #' )
 #' ```
+#'
+#' ## Multiple return values / sequence of outputs
+#'
+#' To mock a function that returns different values in sequence,
+#' for instance an API call whose status would be 502 then 200,
+#' or an user intput to `readline()`, you can use [mock_output_sequence()]
+#'
+#' ```R
+#' local_mocked_bindings(readline = mock_output_sequence("3", "This is a note", "n"))
+#' ```
+#'
 #' @export
 #' @param ... Name-value pairs providing new values (typically functions) to
 #'   temporarily replace the named bindings.
@@ -103,6 +114,7 @@
 #'   under active development (i.e. loaded with [pkgload::load_all()]).
 #'   We don't recommend using this to mock functions in other packages,
 #'   as you should not modify namespaces that you don't own.
+#' @family mocking
 local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   bindings <- list2(...)
   check_bindings(bindings)
@@ -132,7 +144,7 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
     local_bindings_rebind(!!!bindings, .env = test_env, .frame = .env)
   }
 
-  if (any(!bindings_found)) {
+  if (!all(bindings_found)) {
     missing <- names(bindings)[!bindings_found]
     cli::cli_abort("Can't find binding for {.arg {missing}}")
   }

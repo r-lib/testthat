@@ -379,6 +379,15 @@
 
 namespace Catch {
 
+    inline bool HasUncaughtException()
+    {
+#if __cplusplus >= 202002L
+        return std::uncaught_exceptions() > 0;
+#else
+        return std::uncaught_exception();
+#endif
+    }
+
     struct IConfig;
 
     struct CaseSensitive { enum Choice {
@@ -8379,7 +8388,7 @@ namespace Catch {
     {}
 
     ScopedMessage::~ScopedMessage() {
-        if ( !std::uncaught_exception() ){
+        if ( !HasUncaughtException() ){
             getResultCapture().popScopedMessage(m_info);
         }
     }
@@ -8702,7 +8711,7 @@ namespace Catch {
     Section::~Section() {
         if( m_sectionIncluded ) {
             SectionEndInfo endInfo( m_info, m_assertions, m_timer.getElapsedSeconds() );
-            if( std::uncaught_exception() )
+            if( HasUncaughtException() )
                 getResultCapture().sectionEndedEarly( endInfo );
             else
                 getResultCapture().sectionEnded( endInfo );
