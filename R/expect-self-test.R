@@ -134,8 +134,6 @@ local_rng_version <- function(version, .local_envir = parent.frame()) {
   suppressWarnings(RNGversion(version))
 }
 
-getRversion <- NULL # for mocking
-
 # Use specifically for testthat tests in order to override the
 # defaults found when starting the reporter
 local_output_override <- function(width = 80, crayon = TRUE, unicode = TRUE,
