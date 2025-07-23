@@ -24,11 +24,11 @@
 #' @return The result of the last unnamed parameter
 #' @export
 with_mock <- function(..., .env = topenv()) {
-  lifecycle::deprecate_stop("3.3.0", "with_mock()", "with_mocked_bindings()")
+  lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
 }
 
 #' @export
 #' @rdname with_mock
 local_mock <- function(..., .env = topenv(), .local_envir = parent.frame()) {
-  lifecycle::deprecate_stop("3.3.0", "local_mock()", "local_mocked_bindings()")
+  lifecycle::deprecate_stop("3.2.0", "local_mock()", "local_mocked_bindings()")
 }
