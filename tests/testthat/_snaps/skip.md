@@ -88,11 +88,11 @@
 
     Reason: On Windows i386
 
-# skip_unless_r works as expected
+# skip_unless_r gives the expected output
 
-    Reason: R version requirement not satisfied: 4.5.0 >= 999.999.999
+    Reason: Current R version (4.5.0) does not satisfy requirement (>= 999.999.999)
 
 ---
 
-    Reason: R version requirement not satisfied: 4.5.0 == 0.0.0
+    Reason: Current R version (4.5.0) does not satisfy requirement (== 0.0.0)
 
