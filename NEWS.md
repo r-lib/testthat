@@ -2,6 +2,7 @@
 
 * `it()` now finds the correct evaluation environment in more cases (@averissimo, #2085).
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
+* `snapshot_accept()` now works also when the tested file contains dots in the filename (@mcol, #1669).
 
 # testthat 3.2.3
 
@@ -9,9 +10,6 @@
 
 * Fixed an issue where calling `skip()` outside of an active test could
   cause an unexpected error (@kevinushey, #2039).
-
-* `snapshot_accept()` now works also when the tested file contains dots in
-  the filename (@mcol #1669).
 
 # testthat 3.2.2
 
