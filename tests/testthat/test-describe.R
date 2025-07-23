@@ -37,6 +37,12 @@ describe("describe", {
     expect_equal(1, someInternalVariable)
   })
 
+  # prefix is needed to test this use case
+  testthat::it("should be possible to use variables from outer environments with package prefix", {
+    expect_equal(1, someExternalVariable)
+    expect_equal(1, someInternalVariable)
+  })
+
   it("should not be possible to access variables from other specs (1)", {
     some_test_var <- 5
   })

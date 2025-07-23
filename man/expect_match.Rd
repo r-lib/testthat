@@ -43,7 +43,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \item{...}{
   Arguments passed on to \code{\link[base:grep]{base::grepl}}
   \describe{
-    \item{\code{ignore.case}}{if \code{FALSE}, the pattern matching is \emph{case
+    \item{\code{ignore.case}}{logical. if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}
     \item{\code{useBytes}}{logical.  If \code{TRUE} the matching is done
     byte-by-byte rather than character-by-character.  See
