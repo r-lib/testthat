@@ -219,13 +219,13 @@ one warning so the others will bubble up:</p>
 <p>You can either add additional expectations to catch these warnings,
 or silence them all with <code><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Second"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<code class="sourceCode R"><span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Second"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Third"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, you might want to capture them all in a snapshot
 test:</p>
