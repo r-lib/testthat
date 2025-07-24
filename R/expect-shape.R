@@ -11,7 +11,7 @@
 #' @seealso [expect_length()] to specifically make assertions about the
 #'   [length()] of a vector.
 #' @inheritParams expect_that
-#' @param shape Expected shape, an integer vector.
+#' @param shape Expected shape, a numeric vector.
 #' @param nrow Expected number of rows, numeric.
 #' @param ncol Expected number of columns, numeric.
 #' @family expectations

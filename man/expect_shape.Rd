@@ -12,7 +12,7 @@ expect_shape(object, shape, nrow, ncol)
   Supports limited unquoting to make it easier to generate readable failures
   within a function or for loop. See [quasi_label] for more details.}
 
-\item{shape}{Expected shape, an integer vector.}
+\item{shape}{Expected shape, a numeric vector.}
 \item{nrow}{Expected number of rows, numeric.}
 \item{ncol}{Expected number of columns, numeric.}
 }
