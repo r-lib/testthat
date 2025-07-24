@@ -15,13 +15,7 @@
 #' @export
 #' @examples
 expect_shape = function(object, ..., length, nrow, ncol, dim) {
-  # absent, not present, due to '!' operator precedence
-  n_absent <- missing(length) + missing(nrow) + missing(ncol) + missing(dim)
-  if (n_absent != 3L) {
-    cli::cli_abort(
-      "Exactly one of {.arg length}, {.arg nrow}, {.arg ncol}, or {.arg dim} must be provided."
-    )
-  }
+  rlang::check_exclusive(length, nrow, ncol, dim)
 
   # Re-use expect_length() to ensure they stay in sync.
   if (!missing(length)) {
