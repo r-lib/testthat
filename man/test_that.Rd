@@ -7,8 +7,9 @@
 test_that(desc, code)
 }
 \arguments{
-\item{desc}{Test name. Names should be brief, but evocative. They are
-only used by humans, so do you}
+\item{desc}{Test name. Names should be brief, but evocative. It's common to
+write the description so that it reads like a natural sentence, e.g.
+\code{test_that("multiplication works", { ... })}.}
 
 \item{code}{Test code containing expectations. Braces (\code{{}}) should always
 be used in order to get accurate location data for test failures.}
@@ -19,11 +20,16 @@ pass, otherwise throws an error.
 }
 \description{
 A test encapsulates a series of expectations about a small, self-contained
-set of functionality. Each test lives in a file and contains multiple
-expectations, like \code{\link[=expect_equal]{expect_equal()}} or \code{\link[=expect_error]{expect_error()}}.
+unit of functionality. Each test contains one or more expectations, such as
+\code{\link[=expect_equal]{expect_equal()}} or \code{\link[=expect_error]{expect_error()}}, and lives in a \verb{test/testhat/test*}
+file, often together with other tests that relate to the same function or set
+of functions.
 
-Tests are evaluated in their own environments, and should not affect
-global state.
+Each test has its own execution environment, so an object created in a test
+also dies with the test. Note that this cleanup does not happen automatically
+for other aspects of global state, such as session options or filesystem
+changes. Avoid changing global state, when possible, and reverse any changes
+that you do make.
 }
 \examples{
 test_that("trigonometric functions match identities", {

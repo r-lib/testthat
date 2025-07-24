@@ -16,3 +16,12 @@ test_that("multiple tests can roundtrip", {
   expect_equal(x, y)
 })
 
+test_that("snapshots always use \n", {
+  path <- withr::local_tempfile()
+  x <- list(foo = c("a","b"), bar = "d", baz = letters[1:3])
+  write_snaps(x, path)
+
+  snap <- brio::read_file(path)
+  has_cr <- grepl("\r", snap, fixed = TRUE)
+  expect_equal(has_cr, FALSE)
+})

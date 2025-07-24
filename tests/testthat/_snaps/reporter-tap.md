@@ -15,23 +15,26 @@
       `actual`:   FALSE
       `expected`: TRUE 
       Backtrace:
-       1. f() reporters/tests.R:17:2
-       2. testthat::expect_true(FALSE) reporters/tests.R:16:7
+          x
+       1. \-f()
+       2.   \-testthat::expect_true(FALSE)
     # Context Errors
     not ok 4 Error:1
       Error in `eval(code, test_env)`: stop
     not ok 5 errors get tracebacks
       Error in `h()`: !
       Backtrace:
-       1. f() reporters/tests.R:31:2
-       2. g() reporters/tests.R:27:7
-       3. h() reporters/tests.R:28:7
+          x
+       1. \-f()
+       2.   \-g()
+       3.     \-h()
     # Context Skips
     ok 6 # SKIP Reason: skip
     ok 7 # SKIP Reason: empty test
     # Context Warnings
     ok 8 # WARNING def
     Backtrace:
-     1. f() reporters/tests.R:49:2
+        x
+     1. \-f()
     ok 9 # SKIP Reason: empty test
 

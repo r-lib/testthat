@@ -12,6 +12,13 @@
     `actual`:   [32mTRUE[39m 
     `expected`: [32mFALSE[39m
 
+# can compare non-vectors
+
+    quote(x) is not TRUE
+    
+    `actual` is [32ma symbol[39m
+    `expected` is [32ma logical vector[39m (TRUE)
+
 # expect_null works
 
     1L is not NULL

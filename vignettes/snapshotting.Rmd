@@ -90,7 +90,7 @@ snapper$start_file("snapshotting.Rmd", "test")
 ```
 
 When we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it's correct.
-The output is automatically saved in `_snaps/{name}.R`.
+The output is automatically saved in `_snaps/{name}.md`.
 The name of the snapshot matches your test file name --- e.g. if your test is `test-pizza.R` then your snapshot will be saved in `test/testthat/_snaps/pizza.md`.
 As the file name suggests, this is a markdown file, which I'll explain shortly.
 
@@ -162,8 +162,11 @@ Since they can't automatically find the reference output, they instead just prin
 ## Other types of output
 
 So far we've focussed on snapshot tests for output printed to the console.
-But `expect_snapshot()` also captures messages, errors, and warnings.
+But `expect_snapshot()` also captures messages, errors, and warnings[^1].
 The following function generates a some output, a message, and a warning:
+
+[^1]: We no longer recommend `expect_snapshot_output()`, `expect_snapshot_warning()`, or `expect_snapshot_error()`.
+    Just use `expect_snapshot()`.
 
 ```{r}
 f <- function() {
@@ -176,7 +179,7 @@ f <- function() {
 And `expect_snapshot()` captures them all:
 
 ```{r}
-test_that("f() makes lots of noice", {
+test_that("f() makes lots of noise", {
   expect_snapshot(f())
 })
 ```
@@ -201,7 +204,7 @@ test_that("you can't add a number and a letter", {
 When the code gets longer, I like to put `error = TRUE` up front so it's a little more obvious:
 
 ```{r}
-test_that("you can't add weird thngs", {
+test_that("you can't add weird things", {
   expect_snapshot(error = TRUE, {
     1 + "a"
     mtcars + iris
@@ -210,17 +213,22 @@ test_that("you can't add weird thngs", {
 })
 ```
 
-## Other types of snapshot
+## Snapshotting values
 
 `expect_snapshot()` is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors.
-But sometimes you just want to capture the output or errors in which you might want to use `expect_snapshot_output()` or `expect_snapshot_error()`.
+If you care about the return value rather than any side-effects, you may might to use `expect_snapshot_value()` instead.
+It offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.
 
-Or rather than caring about side-effects, you may want to check that the value of an R object stays the same.
-In this case, you can use `expect_snapshot_value()` which offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.
+```{r}
+test_that("can snapshot a simple list", {
+  x <- list(a = list(1, 5, 10), b = list("elephant", "banana"))
+  expect_snapshot_value(x)
+})
+```
 
 ## Whole file snapshotting
 
-`expect_snapshot()`, `expect_snapshot_output()`, `expect_snapshot_error()`, and `expect_snapshot_value()` all store their snapshots in a single file per test.
+`expect_snapshot()`, `expect_snapshot_output()`, `expect_snapshot_error()`, and `expect_snapshot_value()` use one snapshot file per test file.
 But that doesn't work for all file types --- for example, what happens if you want to snapshot an image?
 `expect_snapshot_file()` provides an alternative workflow that generates one snapshot per expectation, rather than one file per test.
 Assuming you're in `test-burger.R` then the snapshot created by `expect_snapshot_file(code_that_returns_path_to_file(), "toppings.png")` would be saved in `tests/testthat/_snaps/burger/toppings.png`.
@@ -230,7 +238,23 @@ Unlike `expect_snapshot()` and friends, `expect_snapshot_file()` can't provide a
 Instead you'll need to call `snapshot_review()`.
 This launches a Shiny app that allows you to visually review each change and approve it if it's deliberate:
 
-![](review-image.png) ![](review-text.png)
+```{r}
+#| echo: false
+#| fig-alt: Screenshot of the Shiny app for reviewing snapshot
+#|     changes to images. It shows the changes to a png file of 
+#|     a plot created in a snapshot test. There is a button 
+#|     to accept the changed snapshot, or to skip it.
+knitr::include_graphics("review-image.png")
+```
+
+```{r}
+#| echo: false
+#| fig-alt: Screenshot of the Shiny app for reviewing snapshot
+#|     changes to text files. It shows the changes to a .R file 
+#|     created in a snapshot test, where a line has been removed. 
+#|     There is a button to accept the changed snapshot, or to skip it.
+knitr::include_graphics("review-text.png")
+```
 
 The display varies based on the file type (currently text files, common image files, and csv files are supported).
 
@@ -249,7 +273,7 @@ This section describes some of the previous attempts and why we believe the new 
 -   `verify_output()` has three main drawbacks:
 
     -   You have to supply a path where the output will be saved.
-        This seems like a small issue, but thinking of a good name, and managing the difference between interactive and test-time paths introduces a suprising amount of friction.
+        This seems like a small issue, but thinking of a good name, and managing the difference between interactive and test-time paths introduces a surprising amount of friction.
 
     -   It always overwrites the previous result; automatically assuming that the changes are correct.
         That means you have to use it with git and it's easy to accidentally accept unwanted changes.

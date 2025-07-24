@@ -13,7 +13,9 @@ test_that("basic workflow", {
   snapper <- local_snapshotter(path)
   snapper$start_file("snapshot-2")
   # output if not active (because test not set here)
-  expect_message(expect_snapshot_output("x"), "Can't compare")
+  expect_snapshot_output("x") |>
+    expect_message("Can't save") |>
+    expect_output("[1] \"x\"", fixed = TRUE)
 
   # warns on first creation
   snapper$start_file("snapshot-2", "test")
@@ -37,6 +39,64 @@ test_that("basic workflow", {
   expect_true(file.exists(file.path(path, "snapshot-2.new.md")))
 })
 
+test_that("only create new files for changed variants", {
+  snapper <- local_snapshotter()
+  snapper$start_file("variants", "test")
+  expect_warning(expect_snapshot_output("x"), "Adding new")
+  expect_warning(expect_snapshot_output("x", variant = "a"), "Adding new")
+  expect_warning(expect_snapshot_output("x", variant = "b"), "Adding new")
+  snapper$end_file()
+  expect_setequal(
+    snapper$snap_files(),
+    c("variants.md", "a/variants.md", "b/variants.md")
+  )
+
+  # failure in default
+  snapper$start_file("variants", "test")
+  expect_failure(expect_snapshot_output("y"))
+  expect_success(expect_snapshot_output("x", variant = "a"))
+  expect_success(expect_snapshot_output("x", variant = "b"))
+  snapper$end_file()
+  expect_setequal(
+    snapper$snap_files(),
+    c("variants.md", "variants.new.md", "a/variants.md", "b/variants.md")
+  )
+  unlink(file.path(snapper$snap_dir, "variants.new.md"))
+
+  # failure in variant
+  snapper$start_file("variants", "test")
+  expect_success(expect_snapshot_output("x"))
+  expect_success(expect_snapshot_output("x", variant = "a"))
+  expect_failure(expect_snapshot_output("y", variant = "b"))
+  snapper$end_file()
+  expect_setequal(
+    snapper$snap_files(),
+    c("variants.md", "a/variants.md", "b/variants.md", "b/variants.new.md")
+  )
+})
+
+test_that("only reverting change in variant deletes .new", {
+  snapper <- local_snapshotter()
+  snapper$start_file("v", "test")
+  expect_warning(expect_snapshot_output("x", variant = "a"), "Adding new")
+  expect_warning(expect_snapshot_output("x", variant = "b"), "Adding new")
+  snapper$end_file()
+  expect_setequal(snapper$snap_files(), c("a/v.md", "b/v.md"))
+
+  # failure
+  snapper$start_file("v", "test")
+  expect_failure(expect_snapshot_output("y", variant = "a"))
+  snapper$end_file()
+  expect_setequal(snapper$snap_files(), c("a/v.md", "b/v.md", "a/v.new.md"))
+
+  # success
+  snapper$start_file("v", "test")
+  expect_success(expect_snapshot_output("x", variant = "a"))
+  snapper$end_file()
+  expect_setequal(snapper$snap_files(), c("a/v.md", "b/v.md"))
+})
+
+
 test_that("removing tests removes snap file", {
   path <- withr::local_tempdir()
   snapper <- local_snapshotter(path)
@@ -48,13 +108,6 @@ test_that("removing tests removes snap file", {
   snapper$start_file("snapshot-3", "test")
   snapper$end_file()
   expect_false(file.exists(file.path(path, "snapshot-3.md")))
-})
-
-test_that("errors if can't roundtrip", {
-  snapper <- local_snapshotter()
-  snapper$start_file("snapshot-4", "test")
-
-  expect_error(expect_snapshot_value(NULL), "not symmetric")
 })
 
 test_that("errors in test doesn't change snapshot", {
@@ -102,7 +155,7 @@ test_that("skips and unexpected errors reset snapshots", {
   path <- "test-snapshot/_snaps/snapshot.md"
   stopifnot(file.exists(path))
 
-  snaps <- snap_from_md(read_lines(path))
+  snaps <- snap_from_md(brio::read_lines(path))
   titles <- c("errors reset snapshots", "skips reset snapshots")
   expect_true(all(titles %in% names(snaps)))
 })

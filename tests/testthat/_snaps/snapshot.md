@@ -20,12 +20,37 @@
       f()
     Output
       [1] "1"
-    Message <simpleMessage>
+    Message
       2
-    Warning <warning>
+    Condition
+      Warning in `f()`:
       3
-    Error <rlang_error>
-      4
+      Error in `f()`:
+      ! 4
+
+# empty lines are preserved
+
+    Code
+      f()
+    Output
+      1
+      
+    Message
+      2
+      
+    Condition
+      Warning in `f()`:
+      3
+      Error in `f()`:
+      ! 4
+
+# line-endings fixed before comparison
+
+    Code
+      cat(x)
+    Output
+      a
+      b
 
 # multiple outputs of same type are collapsed
 
@@ -36,16 +61,18 @@
         message("a")
         message("b")
       }
-    Message <simpleMessage>
+    Message
       a
       b
     Code
       {
-        warn("a")
-        warn("b")
+        warning("a")
+        warning("b")
       }
-    Warning <warning>
+    Condition
+      Warning:
       a
+      Warning:
       b
 
 # can scrub output/messages/warnings/errors
@@ -54,12 +81,13 @@
       secret()
     Output
       [1] "<redacted>"
-    Message <simpleMessage>
+    Message
       <redacted>
-    Warning <warning>
+    Condition
+      Warning in `<redacted>()`:
       <redacted>
-    Error <rlang_error>
-      <redacted>
+      Error in `<redacted>()`:
+      ! <redacted>
 
 ---
 
@@ -67,6 +95,62 @@
       print("secret")
     Output
       [1] "****"
+
+# can capture error/warning messages
+
+    This is an error
+
+---
+
+    This is a warning
+
+# snapshot captures deprecations
+
+    Code
+      foo()
+    Condition
+      Warning:
+      `foo()` was deprecated in testthat 1.0.0.
+
+---
+
+    `foo()` was deprecated in testthat 1.0.0.
+
+---
+
+    `foo()` was deprecated in testthat 1.0.0.
+
+# can check error/warning classes
+
+    Code
+      expect_snapshot_error(1)
+    Condition
+      Error:
+      ! 1 did not generate error
+
+---
+
+    Code
+      expect_snapshot_error(1, class = "myerror")
+    Condition
+      Error:
+      ! 1 did not generate error with class 'myerror'
+
+---
+
+    Code
+      expect_snapshot_warning(1)
+    Condition
+      Error:
+      ! 1 did not generate warning
+
+---
+
+    Code
+      expect_snapshot_warning(1, class = "mywarning")
+    Condition
+      Error:
+      ! 1 did not generate warning with class 'mywarning'
 
 # snapshot handles multi-line input
 
@@ -97,12 +181,13 @@
 
     Code
       f()
-    Message <testthat_greeting>
+    Message
       Hello
-    Warning <testthat_farewell>
+    Condition
+      Warning:
       Goodbye
-    Error <testthat_scream>
-      Eeek!
+      Error in `f()`:
+      ! Eeek!
 
 # even with multiple lines
 
@@ -116,58 +201,68 @@
     b
     c
 
-# can snapshot values
+# `expect_snapshot()` does not inject
 
-    [
-      "a",
-      1.5,
-      1,
-      true
-    ]
+    Code
+      x <- quote(!!foo)
+      expect_equal(x, call("!", call("!", quote(foo))))
 
----
+# full condition message is printed with rlang
 
-    {
-      "type": "list",
-      "attributes": {},
-      "value": [
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["a"]
-        },
-        {
-          "type": "double",
-          "attributes": {},
-          "value": [1.5]
-        },
-        {
-          "type": "integer",
-          "attributes": {},
-          "value": [1]
-        },
-        {
-          "type": "logical",
-          "attributes": {},
-          "value": [true]
-        }
-      ]
-    }
+    Code
+      foo <- error_cnd("foo", message = "Title parent.")
+      abort("Title.", parent = foo)
+    Condition
+      Error:
+      ! Title.
+      Caused by error:
+      ! Title parent.
+
+# can print with and without condition classes
+
+    Code
+      f()
+    Message <simpleMessage>
+      foo
+    Condition <simpleWarning>
+      Warning in `f()`:
+      bar
+    Condition <simpleError>
+      Error in `f()`:
+      ! baz
 
 ---
 
-    list("a", 1.5, 1L, TRUE)
+    Code
+      f()
+    Message
+      foo
+    Condition
+      Warning in `f()`:
+      bar
+      Error in `f()`:
+      ! baz
 
----
+# errors and warnings are folded
 
-    WAoAAAACAAMGAwACAwAAAAATAAAABAAAABAAAAABAAQACQAAAAFhAAAADgAAAAE/+AAAAAAA
-    AAAAAA0AAAABAAAAAQAAAAoAAAABAAAAAQ==
+    Code
+      f()
+    Condition
+      Warning in `f()`:
+      foo
+      Error in `f()`:
+      ! bar
 
-# can control snapshot value details
+# hint is informative
 
-    1.1
-
-# tolerance passed to check_roundtrip
-
-    0.9
+    Code
+      cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
+    Output
+      * Run ]8;;ide:run:testthat::snapshot_accept('bar.R')testthat::snapshot_accept('bar.R')]8;; to accept the change.
+      * Run ]8;;ide:run:testthat::snapshot_review('bar.R')testthat::snapshot_review('bar.R')]8;; to interactively review the change.
+    Code
+      cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
+    Output
+      * Run ]8;;ide:run:testthat::snapshot_accept('foo/bar.R')testthat::snapshot_accept('foo/bar.R')]8;; to accept the change.
+      * Run ]8;;ide:run:testthat::snapshot_review('foo/bar.R')testthat::snapshot_review('foo/bar.R')]8;; to interactively review the change.
 

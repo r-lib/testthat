@@ -1,7 +1,7 @@
 #' Manage test reporting
 #'
 #' The job of a reporter is to aggregate the results from files, tests, and
-#' expectations and display them in an informative way. Every testtthat function
+#' expectations and display them in an informative way. Every testthat function
 #' that runs multiple tests provides a `reporter` argument which you can
 #' use to override the default (which is selected by [default_reporter()]).
 #'
@@ -41,6 +41,8 @@ Reporter <- R6::R6Class("Reporter",
     width = 80,
     unicode = TRUE,
     crayon = TRUE,
+    rstudio = TRUE,
+    hyperlinks = TRUE,
 
     out = NULL,
 
@@ -57,7 +59,9 @@ Reporter <- R6::R6Class("Reporter",
       # Capture at init so not affected by test settings
       self$width <- cli::console_width()
       self$unicode <- cli::is_utf8_output()
-      self$crayon <- crayon::has_color()
+      self$crayon <- cli::num_ansi_colors() > 1
+      self$rstudio <- Sys.getenv("RSTUDIO") == "1"
+      self$hyperlinks <- cli::ansi_hyperlink_types()[["run"]]
     },
 
     # To be used when the reporter needs to produce output inside of an active
@@ -66,9 +70,13 @@ Reporter <- R6::R6Class("Reporter",
       local_reproducible_output(
         width = self$width,
         crayon = self$crayon,
-        unicode = self$unicode,
+        rstudio = self$rstudio,
+        hyperlinks = self$hyperlinks,
         .env = .env
       )
+      # Can't set unicode with local_reproducible_output() because it can
+      # generate a skip if you're temporarily using a non-UTF-8 locale
+      withr::local_options(cli.unicode = self$unicode, .local_envir = .env)
     },
 
     cat_tight = function(...) {

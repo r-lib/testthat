@@ -12,7 +12,8 @@ expect_snapshot_file(
   name = basename(path),
   binary = lifecycle::deprecated(),
   cran = FALSE,
-  compare = compare_file_binary,
+  compare = NULL,
+  transform = NULL,
   variant = NULL
 )
 
@@ -35,10 +36,19 @@ compare_file_text(old, new)
 they are not, because snapshot tests tend to be fragile because they
 often rely on minor details of dependencies.}
 
-\item{compare}{A function used for comparison taking \code{old} and
-\code{new} arguments. By default this is \code{compare_file_binary}. Set it
-to \code{compare_file_text} to compare files line-by-line, ignoring
+\item{compare}{A function used to compare the snapshot files. It should take
+two inputs, the paths to the \code{old} and \code{new} snapshot, and return either
+\code{TRUE} or \code{FALSE}. This defaults to \code{compare_file_text} if \code{name} has
+extension \code{.r}, \code{.R}, \code{.Rmd}, \code{.md}, or \code{.txt}, and otherwise uses
+\code{compare_file_binary}.
+
+\code{compare_file_binary()} compares byte-by-byte and
+\code{compare_file_text()} compares lines-by-line, ignoring
 the difference between Windows and Mac/Linux line endings.}
+
+\item{transform}{Optionally, a function to scrub sensitive or stochastic
+text from the output. Should take a character vector of lines as input
+and return a modified character vector as output.}
 
 \item{variant}{If not-\code{NULL}, results will be saved in
 \verb{_snaps/\{variant\}/\{test\}/\{name\}.\{ext\}}. This allows you to create

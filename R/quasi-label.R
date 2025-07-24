@@ -96,7 +96,12 @@ is_call_infix <- function(x) {
     return(FALSE)
   }
 
-  name <- as.character(x[[1]])
+  fn <- x[[1]]
+  if (!is_symbol(fn)) {
+    return(FALSE)
+  }
+
+  name <- as_string(fn)
   base <- c(
     ":", "::", ":::", "$", "@", "^", "*", "/", "+", "-", ">", ">=",
     "<", "<=", "==", "!=", "!", "&", "&&", "|", "||", "~", "<-", "<<-"

@@ -1,43 +1,27 @@
 #' Mock functions in a package.
 #'
 #' @description
-#' `r lifecycle::badge("superseded")`
-#'
-#' `with_mock()` and `local_mock()` are superseded in favour of the more
-#' rigorous techniques found in the [mockr](https://krlmlr.github.io/mockr/)
-#' and [mockery](https://github.com/r-lib/mockery#mockery) packages.
-#'
-#' Mocking allows you to temporary replace the implementation of functions
-#' within a package, which useful for testing code that relies on functions
-#' that are slow, have unintended side effects or access resources that may
-#' not be available when testing.
-#'
-#' This works by using some C code to temporarily modify the mocked function
-#' _in place_. On exit, all functions are restored to their previous state.
-#' This is somewhat abusive of R's internals so use with care. In particular,
-#' functions in base packages cannot be mocked; to work aroud you'll need to
-#' make a wrapper function in your own package..
-#'
-#' @section 3rd edition:
 #' `r lifecycle::badge("deprecated")`
 #'
-#' `with_mock()` and `local_mock()` are deprecated in the third edition.
+#' `with_mock()` and `local_mock()` are deprecated in favour of
+#' [with_mocked_bindings()] and [local_mocked_bindings()].
+#'
+#' These functions worked by using some C code to temporarily modify the mocked
+#' function _in place_. This was an abuse of R's internals and it is no longer
+#' permitted.
 #'
 #' @param ... named parameters redefine mocked functions, unnamed parameters
 #'   will be evaluated after mocking the functions
 #' @param .env the environment in which to patch the functions,
 #'   defaults to the top-level environment.  A character is interpreted as
 #'   package name.
-#' @param .local_env Environment in which to add exit hander.
+#' @param .local_envir Environment in which to add exit handler.
 #'   For expert use only.
 #' @keywords internal
 #' @return The result of the last unnamed parameter
-#' @references Suraj Gupta (2012): \href{http://blog.obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/}{How R Searches And Finds Stuff}
 #' @export
 with_mock <- function(..., .env = topenv()) {
-  edition_deprecate(3, "with_mock()",
-    "Please use mockr or mockery packages instead"
-  )
+  lifecycle::deprecate_warn("3.3.0", "with_mock()", "with_mocked_bindings()")
 
   dots <- eval(substitute(alist(...)))
   mock_qual_names <- names(dots)
@@ -72,9 +56,7 @@ with_mock <- function(..., .env = topenv()) {
 #' @export
 #' @rdname with_mock
 local_mock <- function(..., .env = topenv(), .local_envir = parent.frame()) {
-  edition_deprecate(3, "local_mock()",
-    "Please use mockr or mockery packages instead"
-  )
+  lifecycle::deprecate_warn("3.3.0", "local_mock()", "local_mocked_bindings()")
 
   mocks <- extract_mocks(list(...), .env = .env)
   on_exit <- bquote(
@@ -152,8 +134,3 @@ reset_mock <- function(mock) {
 is_base_pkg <- function(x) {
   x %in% rownames(utils::installed.packages(priority = "base"))
 }
-
-test_mock1 <- function() {
-  test_mock2()
-}
-test_mock2 <- function() 10

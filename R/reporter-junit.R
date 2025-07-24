@@ -56,7 +56,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
     },
 
     start_reporter = function() {
-      check_installed("xml2", "JunitReporter")
+      check_installed("xml2", "to use JunitReporter")
 
       self$timer <- private$proctime()
       self$doc <- xml2::xml_new_document()
@@ -85,6 +85,8 @@ JunitReporter <- R6::R6Class("JunitReporter",
     },
 
     end_context = function(context) {
+      # Always uses . as decimal place in output regardless of options set in test
+      withr::local_options(list(OutDec = "."))
       xml2::xml_attr(self$suite, "tests") <- as.character(self$tests)
       xml2::xml_attr(self$suite, "skipped") <- as.character(self$skipped)
       xml2::xml_attr(self$suite, "failures") <- as.character(self$failures)
@@ -96,6 +98,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
     },
 
     add_result = function(context, test, result) {
+      withr::local_options(list(OutDec = "."))
       self$tests <- self$tests + 1
 
       time <- self$elapsed_time()
@@ -111,23 +114,23 @@ JunitReporter <- R6::R6Class("JunitReporter",
       )
 
       first_line <- function(x) {
-        loc <- expectation_location(x)
-        paste0(strsplit(x$message, split = "\n")[[1]][1], " (", loc, ")")
+        loc <- expectation_location(x, " (", ")")
+        paste0(strsplit(x$message, split = "\n")[[1]][1], loc)
       }
 
       # add an extra XML child node if not a success
       if (expectation_error(result)) {
         # "type" in Java is the exception class
         error <- xml2::xml_add_child(testcase, "error", type = "error", message = first_line(result))
-        xml2::xml_text(error) <- crayon::strip_style(format(result))
+        xml2::xml_text(error) <- cli::ansi_strip(format(result))
         self$errors <- self$errors + 1
       } else if (expectation_failure(result)) {
         # "type" in Java is the type of assertion that failed
         failure <- xml2::xml_add_child(testcase, "failure", type = "failure", message = first_line(result))
-        xml2::xml_text(failure) <- crayon::strip_style(format(result))
+        xml2::xml_text(failure) <- cli::ansi_strip(format(result))
         self$failures <- self$failures + 1
       } else if (expectation_skip(result)) {
-        xml2::xml_add_child(testcase, "skipped")
+        xml2::xml_add_child(testcase, "skipped", message = first_line(result))
         self$skipped <- self$skipped + 1
       }
     },
@@ -136,9 +139,9 @@ JunitReporter <- R6::R6Class("JunitReporter",
       if (is.character(self$out)) {
         xml2::write_xml(self$doc, self$out, format = TRUE)
       } else if (inherits(self$out, "connection")) {
-        file <- tempfile()
+        file <- withr::local_tempfile()
         xml2::write_xml(self$doc, file, format = TRUE)
-        write_lines(read_lines(file), self$out)
+        cat(brio::read_file(file), file = self$out)
       } else {
         stop("unsupported output type: ", toString(self$out))
       }

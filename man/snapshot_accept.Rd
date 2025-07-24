@@ -10,9 +10,9 @@ snapshot_accept(files = NULL, path = "tests/testthat")
 snapshot_review(files = NULL, path = "tests/testthat")
 }
 \arguments{
-\item{files}{Optionally, filter affects to snapshots from specified test
-files. Can be full path to test (\code{tests/testthat/test-foo.R}), file name
-(\code{test-foo.R}), or test name (\code{foo}).}
+\item{files}{Optionally, filter effects to snapshots from specified files.
+This can be a snapshot name (e.g. \code{foo} or \code{foo.md}), a snapshot file name
+(e.g. \code{testfile/foo.txt}), or a snapshot file directory (e.g. \verb{testfile/}).}
 
 \item{path}{Path to tests.}
 }

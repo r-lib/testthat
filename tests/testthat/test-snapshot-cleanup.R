@@ -6,6 +6,16 @@ test_that("snapshot cleanup makes nice message if needed", {
   })
 })
 
+test_that("deletes empty dirs", {
+  dir <- local_snap_dir(character())
+  dir.create(file.path(dir, "a", "b", "c"), recursive = TRUE)
+  dir.create(file.path(dir, "b"), recursive = TRUE)
+  dir.create(file.path(dir, "c"), recursive = TRUE)
+
+  snapshot_cleanup(dir)
+  expect_equal(dir(dir), character())
+})
+
 test_that("detects outdated snapshots", {
   dir <- local_snap_dir(c("a.md", "b.md", "b.new.md"))
   expect_equal(snapshot_outdated(dir, c("a", "b")), character())
@@ -17,6 +27,10 @@ test_that("detects outdated snapshots", {
 test_that("preserves variants", {
   dir <- local_snap_dir(c("a.md", "windows/a.md", "windows/b.md"))
   expect_equal(snapshot_outdated(dir, "a"), "windows/b.md")
+
+  # Doesn't delete new files in variants
+  dir <- local_snap_dir(c("a.md", "windows/a.md", "windows/a.new.md"))
+  expect_equal(snapshot_outdated(dir, "a"), character())
 })
 
 test_that("detects outdated snapshot files", {

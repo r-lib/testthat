@@ -33,7 +33,7 @@ snap_from_md <- function(lines) {
 
 read_snaps <- function(path) {
   if (file.exists(path)) {
-    lines <- read_lines(path)
+    lines <- brio::read_lines(path)
     snap_from_md(lines)
   } else {
     list()
@@ -50,9 +50,7 @@ write_snaps <- function(snaps, path, delete = FALSE) {
   }
 
   out <- snap_to_md(snaps)
-  # trim off last line since write_lines() adds one
-  out <- gsub("\n$", "", out)
-  write_lines(out, path)
+  brio::write_file(out, path)
 }
 
 # Helpers -----------------------------------------------------------------

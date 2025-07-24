@@ -21,9 +21,14 @@
 #' @param name Snapshot name, taken from `path` by default.
 #' @param binary `r lifecycle::badge("deprecated")` Please use the
 #'   `compare` argument instead.
-#' @param compare A function used for comparison taking `old` and
-#'   `new` arguments. By default this is `compare_file_binary`. Set it
-#'   to `compare_file_text` to compare files line-by-line, ignoring
+#' @param compare A function used to compare the snapshot files. It should take
+#'   two inputs, the paths to the `old` and `new` snapshot, and return either
+#'   `TRUE` or `FALSE`. This defaults to `compare_file_text` if `name` has
+#'   extension `.r`, `.R`, `.Rmd`, `.md`, or `.txt`, and otherwise uses
+#'   `compare_file_binary`.
+#'
+#'   `compare_file_binary()` compares byte-by-byte and
+#'   `compare_file_text()` compares lines-by-line, ignoring
 #'   the difference between Windows and Mac/Linux line endings.
 #' @param variant If not-`NULL`, results will be saved in
 #'   `_snaps/{variant}/{test}/{name}.{ext}`. This allows you to create
@@ -84,7 +89,8 @@ expect_snapshot_file <- function(path,
                                  name = basename(path),
                                  binary = lifecycle::deprecated(),
                                  cran = FALSE,
-                                 compare =  compare_file_binary,
+                                 compare = NULL,
+                                 transform = NULL,
                                  variant = NULL) {
   edition_require(3, "expect_snapshot_file()")
   if (!cran && !interactive() && on_cran()) {
@@ -95,7 +101,7 @@ expect_snapshot_file <- function(path,
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
-    snapshot_not_available(paste0("New path: ", path))
+    snapshot_not_available(path)
     return(invisible())
   }
 
@@ -107,10 +113,25 @@ expect_snapshot_file <- function(path,
     )
     compare <- if (binary) compare_file_binary else compare_file_text
   }
+  if (is.null(compare)) {
+    ext <- tools::file_ext(name)
+    is_text <- ext %in% c("r", "R", "txt", "md", "Rmd")
+    compare <- if (is_text) compare_file_text else compare_file_binary
+  }
+
+  if (!is.null(transform)) {
+    lines <- brio::read_lines(path)
+    lines <- transform(lines)
+    brio::write_lines(lines, path)
+  }
 
   lab <- quo_label(enquo(path))
-  equal <- snapshotter$take_file_snapshot(name, path, compare, variant = variant)
-  hint <- snapshot_hint(snapshotter$file, name)
+  equal <- snapshotter$take_file_snapshot(name, path,
+    file_equal = compare,
+    variant = variant,
+    trace_env = caller_env()
+  )
+  hint <- snapshot_review_hint(snapshotter$file, name)
 
   expect(
     equal,
@@ -133,7 +154,16 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   }
 }
 
-snapshot_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check()) {
+snapshot_review_hint <- function(test,
+                                 name,
+                                 ci = on_ci(),
+                                 check = in_rcmd_check(),
+                                 reset_output = TRUE) {
+  if (reset_output) {
+    local_reporter_output()
+  }
+
+
   path <- paste0("tests/testthat/_snaps/", test, "/", new_name(name))
 
   paste0(
@@ -141,11 +171,15 @@ snapshot_hint <- function(test, name, ci = on_ci(), check = in_rcmd_check()) {
     if (check && !ci) "* Locate check directory\n",
     if (check) paste0("* Copy '", path, "' to local test directory\n"),
     if (check) "* ",
-    paste0("Run `testthat::snapshot_review('", test, "')` to review changes")
+    cli::format_inline("Run {.run testthat::snapshot_review('{test}/')} to review changes")
   )
 }
 
-snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = compare_file_binary) {
+snapshot_file_equal <- function(snap_test_dir, snap_name, snap_variant, path, file_equal = compare_file_binary, fail_on_new = FALSE, trace_env = NULL) {
+  if (!file.exists(path)) {
+    abort(paste0("`", path, "` not found"))
+  }
+
   cur_path <- file.path(snap_test_dir, snap_name)
   new_path <- new_name(cur_path)
 
@@ -161,7 +195,18 @@ snapshot_file_equal <- function(snap_test_dir, snap_name, path, file_equal = com
   } else {
     dir.create(snap_test_dir, showWarnings = FALSE, recursive = TRUE)
     file.copy(path, cur_path)
-    testthat_warn(paste0("Adding new file snapshot: '", cur_path, "'"))
+
+    message <- paste0(
+      "Adding new file snapshot: 'tests/testthat/_snaps/",
+      snap_variant, if (!is.null(snap_variant)) "/",
+      snap_name, "'"
+    )
+    if (fail_on_new) {
+      fail(message, trace_env = trace_env)
+    } else {
+      testthat_warn(message)
+    }
+
     TRUE
   }
 }
@@ -194,14 +239,14 @@ split_path <- function(path) {
   )
 }
 
-write_tmp_lines <- function(lines, ext = ".txt", eol = "\n") {
-  path <- tempfile(fileext = ext)
+write_tmp_lines <- function(lines, ext = ".txt", eol = "\n", envir = caller_env()) {
+  path <- withr::local_tempfile(fileext = ext, .local_envir = envir)
   brio::write_lines(lines, path, eol = eol)
   path
 }
 
 local_snap_dir <- function(paths, .env = parent.frame()) {
-  dir <- tempfile()
+  dir <- withr::local_tempfile(.local_envir = .env)
   withr::defer(unlink(paths), envir = .env)
 
   dirs <- file.path(dir, unique(dirname(paths)))

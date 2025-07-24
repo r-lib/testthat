@@ -5,18 +5,17 @@
 \alias{skip_if_not}
 \alias{skip_if}
 \alias{skip_if_not_installed}
+\alias{skip_unless_r}
 \alias{skip_if_offline}
 \alias{skip_on_cran}
 \alias{skip_on_os}
-\alias{skip_on_travis}
-\alias{skip_on_appveyor}
 \alias{skip_on_ci}
 \alias{skip_on_covr}
 \alias{skip_on_bioc}
 \alias{skip_if_translated}
 \title{Skip a test}
 \usage{
-skip(message)
+skip(message = "Skipping")
 
 skip_if_not(condition, message = NULL)
 
@@ -24,15 +23,13 @@ skip_if(condition, message = NULL)
 
 skip_if_not_installed(pkg, minimum_version = NULL)
 
-skip_if_offline(host = "r-project.org")
+skip_unless_r(spec)
+
+skip_if_offline(host = "captive.apple.com")
 
 skip_on_cran()
 
 skip_on_os(os, arch = NULL)
-
-skip_on_travis()
-
-skip_on_appveyor()
 
 skip_on_ci()
 
@@ -51,6 +48,9 @@ skip_if_translated(msgid = "'\%s' not found")
 \item{pkg}{Name of package to check for}
 
 \item{minimum_version}{Minimum required version for the package}
+
+\item{spec}{A version specification like '>= 4.1.0' denoting that this test
+should only be run on R versions 4.1.0 and later.}
 
 \item{host}{A string with a hostname to lookup}
 
@@ -84,22 +84,23 @@ you can assume that suggested packages are installed, and you do not
 need to check for them specifically, unless they are particularly
 difficult to install.
 \item \code{skip_if_offline()} skips if an internet connection is not available
-(using \code{\link[curl:nslookup]{curl::nslookup()}}).
+(using \code{\link[curl:nslookup]{curl::nslookup()}}) or if the test is run on CRAN. Requires
+\{curl\} to be installed and included in the dependencies of your package.
 \item \code{skip_if_translated("msg")} skips tests if the "msg" is translated.
-\item \code{skip_on_bioc()} skips on Bioconductor (using the \code{BBS_HOME} env var).
+\item \code{skip_on_bioc()} skips on Bioconductor (using the \code{IS_BIOC_BUILD_MACHINE}
+env var).
 \item \code{skip_on_cran()} skips on CRAN (using the \code{NOT_CRAN} env var set by
 devtools and friends).
 \item \code{skip_on_covr()} skips when covr is running (using the \code{R_COVR} env var).
 \item \code{skip_on_ci()} skips on continuous integration systems like GitHub Actions,
-travis, and appveyor (using the \code{CI} env var). It supersedes the older
-\code{skip_on_travis()} and \code{skip_on_appveyor()} functions.
+travis, and appveyor (using the \code{CI} env var).
 \item \code{skip_on_os()} skips on the specified operating system(s) ("windows",
 "mac", "linux", or "solaris").
 }
 }
 
 \examples{
-if (FALSE) skip("No internet connection")
+if (FALSE) skip("Some Important Requirement is not available")
 
 test_that("skip example", {
   expect_equal(1, 1L)    # this expectation runs

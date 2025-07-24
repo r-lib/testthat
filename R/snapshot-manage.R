@@ -5,9 +5,10 @@
 #'    modified snapshot. This is particularly useful for whole file snapshots
 #'    created by `expect_snapshot_file()`.
 #'
-#' @param files Optionally, filter affects to snapshots from specified test
-#'   files. Can be full path to test (`tests/testthat/test-foo.R`), file name
-#'   (`test-foo.R`), or test name (`foo`).
+#' @param files Optionally, filter effects to snapshots from specified files.
+#'   This can be a snapshot name (e.g. `foo` or `foo.md`), a snapshot file name
+#'   (e.g. `testfile/foo.txt`), or a snapshot file directory (e.g. `testfile/`).
+#'
 #' @param path Path to tests.
 #' @export
 snapshot_accept <- function(files = NULL, path = "tests/testthat") {
@@ -17,7 +18,7 @@ snapshot_accept <- function(files = NULL, path = "tests/testthat") {
     return(invisible())
   }
 
-  inform(c("Updating snapshots:", basename(changed$cur)))
+  inform(c("Updating snapshots:", changed$name))
   unlink(changed$cur)
   file.rename(changed$new, changed$cur)
 
@@ -28,8 +29,7 @@ snapshot_accept <- function(files = NULL, path = "tests/testthat") {
 #' @rdname snapshot_accept
 #' @export
 snapshot_review <- function(files = NULL, path = "tests/testthat") {
-  check_installed("shiny", "snapshot_review()")
-  check_installed("diffviewer", "snapshot_review()")
+  check_installed(c("shiny", "diffviewer"), "to use snapshot_review()")
 
   changed <- snapshot_meta(files, path)
   if (nrow(changed) == 0) {
@@ -132,12 +132,6 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
 
   snap_file <- basename(dirname(cur)) != "_snaps"
   snap_test <- ifelse(snap_file, basename(dirname(cur)), gsub("\\.md$", "", basename(cur)))
-  if (!is.null(files)) {
-    selected <- snap_test %in% context_name(basename(files))
-    cur <- cur[selected]
-    snap_file <- snap_file[selected]
-    snap_test <- snap_test[selected]
-  }
 
   if (length(cur) == 0) {
     new <- character()
@@ -160,5 +154,17 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
   out <- out[!is.na(out$new), , drop = FALSE]
   out <- out[order(out$test, out$cur), , drop = FALSE]
   rownames(out) <- NULL
+
+  if (!is.null(files)) {
+    is_dir <- substr(files, nchar(files), nchar(files)) == "/"
+    dirs <- files[is_dir]
+    files <- files[!is_dir]
+
+    dirs <- substr(dirs, 1, nchar(dirs) - 1)
+    files <- ifelse(tools::file_ext(files) == "", paste0(files, ".md"), files)
+
+    out <- out[out$name %in% files | out$test %in% dirs, , drop = FALSE]
+  }
+
   out
 }

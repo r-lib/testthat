@@ -69,7 +69,7 @@ test_that("can round trip cur to old snaps", {
 
 test_that("snaps delete default variant if no snaps", {
   snaps <- FileSnaps$new(withr::local_tempdir(), "file", "cur")
-  write_lines("x", snaps$path())
+  brio::write_lines("x", snaps$path())
 
   snaps$write()
   expect_false(file.exists(snaps$path()))

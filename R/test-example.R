@@ -53,7 +53,7 @@ test_rd <- function(rd, title = attr(rd, "Rdfile")) {
 #' @export
 #' @rdname test_examples
 test_example <- function(path, title = path) {
-  ex_path <- tempfile(fileext = ".R")
+  ex_path <- withr::local_tempfile(pattern = "test_example-", fileext = ".R")
   tools::Rd2ex(path, ex_path)
   if (!file.exists(ex_path)) {
     return(invisible(FALSE))
@@ -61,9 +61,11 @@ test_example <- function(path, title = path) {
 
   env <- new.env(parent = globalenv())
 
-  ok <- test_code(title,
-    parse(ex_path, encoding = "UTF-8"),
+  ok <- test_code(
+    test = title,
+    code = parse(ex_path, encoding = "UTF-8"),
     env = env,
+    reporter = get_reporter() %||% StopReporter$new(),
     skip_on_empty = FALSE
   )
   if (ok) succeed(path)

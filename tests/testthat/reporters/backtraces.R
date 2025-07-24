@@ -36,7 +36,7 @@ test_that("failed expect_error() prints a backtrace", {
 })
 
 test_that("Errors are inspected with `conditionMessage()`", {
-  rlang::scoped_bindings(
+  rlang::local_bindings(
     .env = globalenv(),
     conditionMessage.foobar = function(...) "dispatched"
   )
@@ -51,7 +51,7 @@ test_that("also get backtraces for warnings", {
   expect_true(TRUE)
 })
 
-test_that("deep stacks are trimmed", {
+test_that("deep stacks are shown", {
   f <- function(x) {
     if (x > 0) f(x - 1) else stop("This is deep")
   }

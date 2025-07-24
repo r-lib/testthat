@@ -1,26 +1,33 @@
 url: https://testthat.r-lib.org
 
+development:
+  mode: auto
+
+template:
+  package: tidytemplate
+  bootstrap: 5
+
+  includes:
+    in_header: |
+      <script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 home:
-  strip_header: true
   links:
   - text: Learn more
     href: http://r-pkgs.org/tests.html
-
-template:
-  params:
-    ganalytics: UA-115082821-1
 
 reference:
 - title: Expectations
 - subtitle: Objects
   contents:
   - expect_equal
+  - expect_null
   - expect_type
 
 - subtitle: Vectors
   contents:
   - expect_length
   - expect_gt
+  - expect_match
   - expect_named
   - expect_setequal
   - expect_true
@@ -29,6 +36,7 @@ reference:
 - subtitle: Side-effects
   contents:
   - expect_error
+  - expect_no_error
   - expect_invisible
   - expect_output
   - expect_silent
@@ -36,14 +44,18 @@ reference:
 
 - title: Snapshot testing
   contents:
-  - starts_with("expect_snapshot_")
+  - expect_snapshot
+  - expect_snapshot_value
+  - expect_snapshot_file
   - starts_with("snapshot_")
 
 - title: Test helpers
   contents:
+  - local_edition
   - is_testing
   - skip
   - teardown_env
+  - set_state_inspector
 
 - title: Run tests
   contents:
@@ -54,15 +66,25 @@ reference:
 
 - title: Reporters
   contents:
+  - Reporter
   - ends_with("Reporter")
+
+- title: Mocking
+  contents:
+  - with_mocked_bindings
+  - starts_with("mock_")
 
 - title: Expectation internals
   contents:
   - expect
+  - expectation
   - fail
+  - expect_success
 
 news:
   releases:
+  - text: "Version 3.2.0"
+    href: https://www.tidyverse.org/blog/2023/10/testthat-3-2-0/
   - text: "Version 3.1.0"
     href: https://www.tidyverse.org/blog/2021/10/testthat-3-1/
   - text: "Version 3.0.0"

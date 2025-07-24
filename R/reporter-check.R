@@ -28,18 +28,24 @@ CheckReporter <- R6::R6Class("CheckReporter",
       } else if (expectation_warning(result)) {
         self$warnings$push(result)
       } else if (expectation_skip(result)) {
-        self$skips$push(result$message)
+        self$skips$push(result)
       } else {
         self$n_ok <- self$n_ok + 1L
       }
     },
 
     end_reporter = function() {
-      if (self$skips$size() > 0) {
-        self$rule("Skipped tests", line = 2)
-        self$cat_line(skip_bullets(self$skips$as_list()))
+      if (self$skips$size() || self$warnings$size() || self$problems$size()) {
+        self$cat_line(summary_line(
+          n_fail = self$problems$size(),
+          n_warn = self$warnings$size(),
+          n_skip = self$skips$size(),
+          n_pass = self$n_ok
+        ))
         self$cat_line()
       }
+
+      skip_report(self, line = 2)
 
       # Don't show warnings in revdep checks in order to focus on failures
       if (self$warnings$size() > 0 && !on_cran()) {
@@ -55,7 +61,7 @@ CheckReporter <- R6::R6Class("CheckReporter",
         saveRDS(problems, "testthat-problems.rds", version = 2)
 
         self$rule("Failed tests", line = 2)
-        self$cat_line(map_chr(problems, issue_summary, rule = TRUE, simplify = "none"))
+        self$cat_line(map_chr(problems, issue_summary, rule = TRUE))
         self$cat_line()
       } else {
         # clean up
