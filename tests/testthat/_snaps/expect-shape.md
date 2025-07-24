@@ -4,11 +4,11 @@
 
 # dim compared correctly
 
-    matrix(nrow = 6, ncol = 3) has shape (6, 3), not (6, 2).
+    matrix(nrow = 6, ncol = 3) has dim (6, 3), not (6, 2).
 
 ---
 
-    matrix(nrow = 6, ncol = 3) has shape (6, 3), not (7, 3).
+    matrix(nrow = 6, ncol = 3) has dim (6, 3), not (7, 3).
 
 ---
 
@@ -48,7 +48,7 @@
 
 ---
 
-    `x` has shape (NA, 10), not (10, NA).
+    `x` has dim (NA, 10), not (10, NA).
 
 # at least one argument is required
 
