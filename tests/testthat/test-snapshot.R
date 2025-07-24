@@ -55,7 +55,7 @@ test_that("can scrub output/messages/warnings/errors", {
   expect_snapshot(secret(), transform = redact, error = TRUE)
 
   # Or with an inline fun
-  expect_snapshot(print("secret"), transform = ~ gsub("secret", "****", .x))
+  expect_snapshot(print("secret"), transform = \(x) gsub("secret", "****", x))
 })
 
 test_that("always checks error status", {

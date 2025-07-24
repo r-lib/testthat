@@ -19,7 +19,7 @@ new_capture("expectation_success")
 #' Tools for testing expectations
 #'
 #' @description
-#' * `expect_sucess()` and `expect_failure()` check that there's at least
+#' * `expect_success()` and `expect_failure()` check that there's at least
 #'   one success or failure respectively.
 #' * `expect_snapshot_failure()` records the failure message so that you can
 #'   manually check that it is informative.
@@ -93,6 +93,9 @@ expect_no_failure <- function(expr) {
 
 expect_snapshot_skip <- function(x, cran = FALSE) {
   expect_snapshot_error(x, class = "skip", cran = cran)
+}
+expect_skip <- function(code) {
+  expect_condition(code, class = "skip")
 }
 expect_no_skip <- function(code) {
   expect_no_condition(code, class = "skip")

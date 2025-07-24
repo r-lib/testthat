@@ -127,6 +127,30 @@ package_version <- function(x) {
 }
 
 #' @export
+#' @param spec A version specification like '>= 4.1.0' denoting that this test
+#'   should only be run on R versions 4.1.0 and later.
+#' @rdname skip
+skip_unless_r <- function(spec) {
+  parts <- unlist(strsplit(spec, " ", fixed = TRUE))
+  if (length(parts) != 2L) {
+    cli::cli_abort("{.arg spec} should be a comparison like '>=' and an R version separated by a space.")
+  }
+  comparator <- match.fun(parts[1L])
+  required_version <- numeric_version(parts[2L])
+
+  current_version <- getRversion()
+  skip_if_not(
+    comparator(current_version, required_version),
+    sprintf(
+      "Current R version (%s) does not satisfy requirement (%s %s)",
+      current_version, parts[1L], required_version
+    )
+  )
+}
+# for mocking
+getRversion <- NULL
+
+#' @export
 #' @rdname skip
 skip_if_offline <- function(host = "captive.apple.com") {
   skip_on_cran()

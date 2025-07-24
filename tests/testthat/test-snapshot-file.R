@@ -1,5 +1,4 @@
 test_that("expect_snapshot_file works", {
-  skip_if_not(getRversion() >= "3.6.0")
   expect_snapshot_file(
     write_tmp_lines(letters),
     "foo.r",
@@ -33,7 +32,6 @@ test_that("expect_snapshot_file works", {
 
 
 test_that("expect_snapshot_file works in a different directory", {
-  skip_if_not(getRversion() >= "3.6.0")
   path <- withr::local_tempdir()
   withr::local_dir(path)
 
