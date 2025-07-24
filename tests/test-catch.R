@@ -1,7 +1,7 @@
 library(testthat)
 
 local({
-  if (!is_installed("usethis", quietly = TRUE)) {
+  if (!requireNamespace("usethis", quietly = TRUE)) {
     return()
   }
 
@@ -47,6 +47,7 @@ local({
     )
 
     if (!catchEnabled) {
+      isWindows <- Sys.info()[["sysname"]] == "Windows"
       makevarsPath <- file.path(
         pkgPath,
         "src",
