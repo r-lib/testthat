@@ -29,7 +29,7 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
   dim_object <- base::dim(object)
 
   if (is.null(dim_object)) {
-    return(fail(sprintf("%s has no dimensions.", act$lab)))
+    fail(sprintf("%s has no dimensions.", act$lab))
   }
 
   if (!missing(nrow)) {
@@ -41,7 +41,7 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     )
   } else if (!missing(ncol)) {
     if (length(dim_object) == 1L) {
-      return(fail(sprintf("%s has only one dimension.", act$lab)))
+      fail(sprintf("%s has only one dimension.", act$lab))
     }
   
     act$ncol <- dim_object[2L]
@@ -54,7 +54,7 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     act$dim <- dim_object
 
     if (length(act$dim) != length(dim)) {
-      return(fail(sprintf("%s has %i dimensions, not %i", act$lab, length(act$dim), length(dim))))
+      fail(sprintf("%s has %i dimensions, not %i", act$lab, length(act$dim), length(dim)))
     }
 
     expect(
