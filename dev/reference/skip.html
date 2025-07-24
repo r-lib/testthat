@@ -85,6 +85,8 @@ or it requires a specific version of a package).</p>
 <span></span>
 <span><span class="fu">skip_if_not_installed</span><span class="op">(</span><span class="va">pkg</span>, minimum_version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
+<span><span class="fu">skip_unless_r</span><span class="op">(</span><span class="va">spec</span><span class="op">)</span></span>
+<span></span>
 <span><span class="fu">skip_if_offline</span><span class="op">(</span>host <span class="op">=</span> <span class="st">"captive.apple.com"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">skip_on_cran</span><span class="op">(</span><span class="op">)</span></span>
@@ -119,6 +121,11 @@ or it requires a specific version of a package).</p>
 
 <dt id="arg-minimum-version">minimum_version<a class="anchor" aria-label="anchor" href="#arg-minimum-version"></a></dt>
 <dd><p>Minimum required version for the package</p></dd>
+
+
+<dt id="arg-spec">spec<a class="anchor" aria-label="anchor" href="#arg-spec"></a></dt>
+<dd><p>A version specification like '&gt;= 4.1.0' denoting that this test
+should only be run on R versions 4.1.0 and later.</p></dd>
 
 
 <dt id="arg-host">host<a class="anchor" aria-label="anchor" href="#arg-host"></a></dt>
