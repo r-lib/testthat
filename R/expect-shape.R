@@ -61,7 +61,7 @@ expect_shape = function(object, shape, nrow, ncol) {
       act$nrow == nrow,
       sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
     )
-  } else {
+  } else { # !missing(nrow) && !missing(ncol)
     # testing both nrow & ncol (useful, e.g., for testing dim(.)[1:2] for arrays
     act$nrow <- dim_object[1L]
     act$ncol <- dim_object[2L]
