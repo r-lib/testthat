@@ -22,9 +22,16 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     return(expect_length(object, length))
   }
 
+  # need base:: qualification or we might trigger an error for missing(length)
+  length <- base::length
+
   act <- quasi_label(enquo(object), arg = "object")
-  # need base:: qualification or we might trigger an error for missing(dim)
   dim_object <- base::dim(object)
+
+  expect(
+    !is.null(dim_object),
+    sprintf("%s has no dimensions.", act$lab)
+  )
 
   if (!missing(nrow)) {
     act$nrow <- dim_object[1L]
@@ -34,6 +41,11 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
       sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
     )
   } else if (!missing(ncol)) {
+    expect(
+      length(dim_object) >= 2L,
+      sprintf("%s has only one dimension.", act$lab)
+    )
+
     act$ncol <- dim_object[2L]
 
     expect(
@@ -44,7 +56,12 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     act$dim <- dim_object
 
     expect(
-      isTRUE(all.equal(act$dim, dim)),
+      length(act$dim) == length(dim),
+      sprintf("%s has %i dimensions, not %i", act$lab, length(act$dim), length(dim))
+    )
+
+    expect(
+      isTRUE(all(act$dim == dim)),
       sprintf("%s has shape (%s), not (%s).", act$lab, toString(act$dim), toString(dim))
     )
   }

@@ -16,11 +16,13 @@ test_that("shape computed correctly", {
   expect_success(expect_shape(matrix(nrow = 5, ncol = 4), nrow = 5L))
   expect_snapshot_failure(expect_shape(matrix(nrow = 5, ncol = 5), nrow = 6L))
   expect_success(expect_shape(data.frame(1:10, 11:20), nrow = 10L))
+  expect_snapshot_failure(expect_shape(1, nrow = 1))
 
   # testing ncol=
   expect_success(expect_shape(matrix(nrow = 5, ncol = 4), ncol = 4L))
   expect_snapshot_failure(expect_shape(matrix(nrow = 5, ncol = 5), ncol = 7L))
   expect_success(expect_shape(data.frame(1:10, 11:20), ncol = 2L))
+  expect_snapshot_failure(expect_shape(array(1), ncol = 1))
 })
 
 test_that("uses S4 dim method", {

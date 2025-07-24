@@ -16,7 +16,15 @@
 
 ---
 
+    1 has no dimensions.
+
+---
+
     matrix(nrow = 5, ncol = 5) has 5 columns, not 7.
+
+---
+
+    array(1) has only one dimension.
 
 # at least one argument is required
 
@@ -24,7 +32,7 @@
       expect_shape(1:10)
     Condition
       Error in `expect_shape()`:
-      ! Exactly one of `length`, `nrow`, `ncol`, or `dim` must be provided.
+      ! One of `length`, `nrow`, `ncol`, or `dim` must be supplied.
 
 ---
 
@@ -32,7 +40,7 @@
       expect_shape(1:10, 2)
     Condition
       Error in `expect_shape()`:
-      ! Exactly one of `length`, `nrow`, `ncol`, or `dim` must be provided.
+      ! One of `length`, `nrow`, `ncol`, or `dim` must be supplied.
 
 ---
 
@@ -40,5 +48,6 @@
       expect_shape(1:10, nrow = 1L, ncol = 2L)
     Condition
       Error in `expect_shape()`:
-      ! Exactly one of `length`, `nrow`, `ncol`, or `dim` must be provided.
+      ! Exactly one of `length`, `nrow`, `ncol`, or `dim` must be supplied.
+      x `nrow` and `ncol` were supplied together.
 
