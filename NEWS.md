@@ -6,6 +6,7 @@
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
 * New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require, say, `...names` (@MichaelChirico, #2022)
 * New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`, `nrow()` and/or `ncol()`, or `dim()`, all in one place (#1423, @michaelchirico).
+* `skip_on_os()` gains an option `"emscripten"` of the `os` argument to skip tests on Emscripten (@eitsupi, #2103).
 
 # testthat 3.2.3
 
