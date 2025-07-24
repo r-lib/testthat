@@ -5,6 +5,7 @@
 \alias{skip_if_not}
 \alias{skip_if}
 \alias{skip_if_not_installed}
+\alias{skip_unless_r}
 \alias{skip_if_offline}
 \alias{skip_on_cran}
 \alias{skip_on_os}
@@ -21,6 +22,8 @@ skip_if_not(condition, message = NULL)
 skip_if(condition, message = NULL)
 
 skip_if_not_installed(pkg, minimum_version = NULL)
+
+skip_unless_r(spec)
 
 skip_if_offline(host = "captive.apple.com")
 
@@ -45,6 +48,9 @@ skip_if_translated(msgid = "'\%s' not found")
 \item{pkg}{Name of package to check for}
 
 \item{minimum_version}{Minimum required version for the package}
+
+\item{spec}{A version specification like '>= 4.1.0' denoting that this test
+should only be run on R versions 4.1.0 and later.}
 
 \item{host}{A string with a hostname to lookup}
 

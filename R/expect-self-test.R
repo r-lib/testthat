@@ -94,6 +94,9 @@ expect_no_failure <- function(expr) {
 expect_snapshot_skip <- function(x, cran = FALSE) {
   expect_snapshot_error(x, class = "skip", cran = cran)
 }
+expect_skip <- function(code) {
+  expect_condition(code, class = "skip")
+}
 expect_no_skip <- function(code) {
   expect_no_condition(code, class = "skip")
 }
