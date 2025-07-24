@@ -10,24 +10,17 @@ expect_shape(object, shape, nrow, ncol)
 \item{object}{Object to test.
 
   Supports limited unquoting to make it easier to generate readable failures
-  within a function or for loop. See [quasi_label] for more details.}
+  within a function or for loop. See \code{\link{quasi_label}} for more details.}
 
-\item{shape}{Expected shape, a numeric vector.}
-\item{nrow}{Expected number of rows, numeric.}
-\item{ncol}{Expected number of columns, numeric.}
-}
-\description{
-By "shape", we mean an object's [dim()], or, for one-dimensional objects,
-  it's [length()]. Thus this is an extension of [expect_length()] to more
-  general objects like [data.frame()], [matrix()], and [array()].
-To wit, first, the object's `dim()` is checked. If non-`NULL`, it is compared
-  to `shape` (or one/both of `nrow`, `ncol`, if they are supplied, in which
-  case they take precedence). If `dim(object)` is `NULL`, `length(object)`
-  is compared to `shape`.
+\item{...}{Ignored.}
+\item{length}{Expected \code{\link{length}()} of \code{object}.}
+\item{nrow}{Expected \code{\link{nrow}()} of \code{object}.}
+\item{ncol}{Expected \code{\link{ncol}()} of \code{object}.}
+\item{dim}{Expected \code{\link{dim}()} of \code{object}.}
 }
 \seealso{
-[expect_length()] to specifically make assertions about the
-  [length()] of a vector.
+\code{\link{expect_length}()} to specifically make assertions about the
+  \code{\link{length}()} of a vector.
 
 Other expectations: 
 \code{\link{comparison-expectations}},
