@@ -55,7 +55,8 @@ should only be run on R versions 4.1.0 and later.}
 \item{host}{A string with a hostname to lookup}
 
 \item{os}{Character vector of one or more operating systems to skip on.
-Supported values are \code{"windows"}, \code{"mac"}, \code{"linux"}, and \code{"solaris"}.}
+Supported values are \code{"windows"}, \code{"mac"}, \code{"linux"}, \code{"solaris"},
+and \code{"emscripten"}.}
 
 \item{arch}{Character vector of one or more architectures to skip on.
 Common values include \code{"i386"} (32 bit), \code{"x86_64"} (64 bit), and

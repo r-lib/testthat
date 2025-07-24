@@ -170,7 +170,8 @@ skip_on_cran <- function() {
 
 #' @export
 #' @param os Character vector of one or more operating systems to skip on.
-#'   Supported values are `"windows"`, `"mac"`, `"linux"`, and `"solaris"`.
+#'   Supported values are `"windows"`, `"mac"`, `"linux"`, `"solaris"`,
+#'   and `"emscripten"`.
 #' @param arch Character vector of one or more architectures to skip on.
 #'   Common values include `"i386"` (32 bit), `"x86_64"` (64 bit), and
 #'   `"aarch64"` (M1 mac). Supplying `arch` makes the test stricter; i.e. both
@@ -179,7 +180,7 @@ skip_on_cran <- function() {
 skip_on_os <- function(os, arch = NULL) {
   os <- match.arg(
     os,
-    choices = c("windows", "mac", "linux", "solaris"),
+    choices = c("windows", "mac", "linux", "solaris", "emscripten"),
     several.ok = TRUE
   )
 
@@ -187,7 +188,8 @@ skip_on_os <- function(os, arch = NULL) {
     windows = if ("windows" %in% os) "On Windows",
     darwin =  if ("mac" %in% os) "On Mac",
     linux =   if ("linux" %in% os) "On Linux",
-    sunos =   if ("solaris" %in% os) "On Solaris"
+    sunos =   if ("solaris" %in% os) "On Solaris",
+    emscripten = if ("emscripten" %in% os) "On Emscripten"
   )
 
   if (!is.null(arch) && !is.null(msg)) {

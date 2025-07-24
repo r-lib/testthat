@@ -122,6 +122,7 @@ test_that("can skip on multiple oses", {
   expect_snapshot_skip(skip_on_os(c("windows", "linux")))
   expect_no_skip(skip_on_os("linux"))
   expect_no_skip(skip_on_os("mac"))
+  expect_no_skip(skip_on_os("emscripten"))
 })
 
 test_that("can refine os with arch", {
