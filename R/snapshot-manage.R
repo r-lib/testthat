@@ -129,6 +129,7 @@ review_app <- function(name, old_path, new_path) {
 snapshot_meta <- function(files = NULL, path = "tests/testthat") {
   all <- dir(file.path(path, "_snaps"), recursive = TRUE, full.names = TRUE)
   cur <- all[!grepl("\\.new\\.", all)]
+  ext <- unique(tools::file_ext(cur))
 
   snap_file <- basename(dirname(cur)) != "_snaps"
   snap_test <- ifelse(snap_file, basename(dirname(cur)), gsub("\\.md$", "", basename(cur)))
@@ -161,7 +162,7 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     files <- files[!is_dir]
 
     dirs <- substr(dirs, 1, nchar(dirs) - 1)
-    files <- gsub("\\.md|\\.txt$", "", files)
+    files <- gsub(paste0("\\.", ext), "", files)
 
     out_name_sans_ext <- tools::file_path_sans_ext(out$name)
     out <- out[out_name_sans_ext %in% files |
