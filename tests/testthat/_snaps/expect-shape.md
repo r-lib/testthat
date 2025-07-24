@@ -1,6 +1,6 @@
 # length compared correctly
 
-    `object` has length 1, not length 2.
+    1 has length 1, not length 2.
 
 # dim compared correctly
 

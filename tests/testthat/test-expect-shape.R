@@ -4,6 +4,10 @@ test_that("length compared correctly", {
   expect_success(expect_shape(1:10, length = 10))
   expect_success(expect_shape(letters[1:5], length = 5))
   expect_success(expect_shape(integer(), length = 0))
+
+  x <- list(1:10, letters)
+  out <- expect_shape(x, length = 2)
+  expect_identical(out, x)
 })
 
 test_that("dim compared correctly", {
@@ -17,6 +21,10 @@ test_that("dim compared correctly", {
   expect_success(expect_shape(array(integer()), dim = 0L))
   dd <- c(0L, 0L, 0L, 5L, 0L, 0L, 0L)
   expect_success(expect_shape(array(dim = dd), dim = dd))
+
+  x <- cbind(1:2, 3:4)
+  out <- expect_shape(x, dim = c(2L, 2L))
+  expect_identical(out, x)
 })
 
 test_that("nrow compared correctly", {
@@ -27,6 +35,10 @@ test_that("nrow compared correctly", {
   expect_success(expect_shape(array(integer()), nrow = 0L))
   dd <- c(0L, 0L, 0L, 5L, 0L, 0L, 0L)
   expect_success(expect_shape(array(dim = dd), nrow = 0L))
+
+  x <- cbind(1:2, 3:4)
+  out <- expect_shape(x, dim = c(2L, 2L))
+  expect_identical(out, x)
 })
 
 test_that("ncol compared correctly", {
@@ -37,6 +49,10 @@ test_that("ncol compared correctly", {
   expect_snapshot_failure(expect_shape(array(integer()), ncol = 0L))
   dd <- c(0L, 0L, 0L, 5L, 0L, 0L, 0L)
   expect_success(expect_shape(array(dim = dd), ncol = 0L))
+
+  x <- cbind(1:2, 3:4)
+  out <- expect_shape(x, dim = c(2L, 2L))
+  expect_identical(out, x)
 })
 
 test_that("uses S3 dim method", {
@@ -67,12 +83,6 @@ test_that("uses S4 dim method", {
   A <- setClass("ExpectShapeA", slots = c(x = "numeric", y = "numeric"))
   setMethod("dim", "ExpectShapeA", function(x) 8:10)
   expect_success(expect_shape(A(x = 1:9, y = 3), dim = 8:10))
-})
-
-test_that("returns input", {
-  x <- list(1:10, letters)
-  out <- expect_shape(x, length = 2)
-  expect_identical(out, x)
 })
 
 test_that("at least one argument is required", {

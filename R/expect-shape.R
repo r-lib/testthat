@@ -17,15 +17,16 @@
 expect_shape = function(object, ..., length, nrow, ncol, dim) {
   rlang::check_exclusive(length, nrow, ncol, dim)
 
+  act <- quasi_label(enquo(object), arg = "object")
+
   # Re-use expect_length() to ensure they stay in sync.
   if (!missing(length)) {
-    return(expect_length(object, length))
+    return(expect_length_impl_(act, length))
   }
 
   # need base:: qualification or we might trigger an error for missing(length)
   length <- base::length
 
-  act <- quasi_label(enquo(object), arg = "object")
   dim_object <- base::dim(object)
 
   if (is.null(dim_object)) {
@@ -62,4 +63,6 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
       sprintf("%s has dim (%s), not (%s).", act$lab, toString(act$dim), toString(dim))
     )
   }
+
+  invisible(act$val)
 }
