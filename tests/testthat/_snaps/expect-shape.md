@@ -36,7 +36,7 @@
 
 ---
 
-    array() has only one dimension.
+    array(integer()) has only one dimension.
 
 # NA handling (e.g. dbplyr)
 

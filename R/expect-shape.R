@@ -28,10 +28,9 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
   act <- quasi_label(enquo(object), arg = "object")
   dim_object <- base::dim(object)
 
-  expect(
-    !is.null(dim_object),
-    sprintf("%s has no dimensions.", act$lab)
-  )
+  if (is.null(dim_object)) {
+    return(fail(sprintf("%s has no dimensions.", act$lab)))
+  }
 
   if (!missing(nrow)) {
     act$nrow <- dim_object[1L]
@@ -41,11 +40,10 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
       sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
     )
   } else if (!missing(ncol)) {
-    expect(
-      length(dim_object) >= 2L,
-      sprintf("%s has only one dimension.", act$lab)
-    )
-
+    if (length(dim_object) == 1L) {
+      return(fail(sprintf("%s has only one dimension.", act$lab)))
+    }
+  
     act$ncol <- dim_object[2L]
 
     expect(
@@ -55,14 +53,13 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
   } else { # !missing(dim)
     act$dim <- dim_object
 
-    expect(
-      length(act$dim) == length(dim),
-      sprintf("%s has %i dimensions, not %i", act$lab, length(act$dim), length(dim))
-    )
+    if (length(act$dim) != length(dim)) {
+      return(fail(sprintf("%s has %i dimensions, not %i", act$lab, length(act$dim), length(dim))))
+    }
 
     expect(
       identical(as.integer(act$dim), as.integer(dim)),
-      sprintf("%s has shape (%s), not (%s).", act$lab, toString(act$dim), toString(dim))
+      sprintf("%s has dim (%s), not (%s).", act$lab, toString(act$dim), toString(dim))
     )
   }
 }
