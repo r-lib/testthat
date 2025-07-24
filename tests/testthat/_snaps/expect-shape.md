@@ -34,6 +34,10 @@
 
     array(1) has only one dimension.
 
+---
+
+    array() has only one dimension.
+
 # at least one argument is required
 
     Code

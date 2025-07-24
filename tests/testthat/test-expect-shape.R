@@ -13,6 +13,9 @@ test_that("dim compared correctly", {
   expect_success(expect_shape(array(dim = 1:3), dim = 1:3))
   expect_snapshot_failure(expect_shape(array(dim = 1:3), dim = 1:2))
   expect_snapshot_failure(expect_shape(array(dim = 1:3), dim = 1:4))
+  expect_success(expect_shape(array(), dim = 0L))
+  dd <- c(0L, 0L, 0L, 5L, 0L, 0L, 0L)
+  expect_success(expect_shape(array(dim = dd), dim = dd))
 })
 
 test_that("nrow compared correctly", {
@@ -20,6 +23,9 @@ test_that("nrow compared correctly", {
   expect_snapshot_failure(expect_shape(matrix(nrow = 5, ncol = 5), nrow = 6L))
   expect_success(expect_shape(data.frame(1:10, 11:20), nrow = 10L))
   expect_snapshot_failure(expect_shape(1, nrow = 1))
+  expect_success(expect_shape(array(), nrow = 0L))
+  dd <- c(0L, 0L, 0L, 5L, 0L, 0L, 0L)
+  expect_success(expect_shape(array(dim = dd), nrow = 0L))
 })
 
 test_that("ncol compared correctly", {
@@ -27,6 +33,9 @@ test_that("ncol compared correctly", {
   expect_snapshot_failure(expect_shape(matrix(nrow = 5, ncol = 5), ncol = 7L))
   expect_success(expect_shape(data.frame(1:10, 11:20), ncol = 2L))
   expect_snapshot_failure(expect_shape(array(1), ncol = 1))
+  expect_snapshot_failure(expect_shape(array(), ncol = 0L))
+  dd <- c(0L, 0L, 0L, 5L, 0L, 0L, 0L)
+  expect_success(expect_shape(array(dim = dd), ncol = 0L))
 })
 
 test_that("uses S4 dim method", {
