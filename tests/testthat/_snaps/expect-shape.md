@@ -1,3 +1,23 @@
+# shape computed correctly
+
+    `object` has length 1, not length 2.
+
+---
+
+    matrix(nrow = 6, ncol = 3) has shape (6, 3), not (6, 2).
+
+---
+
+    matrix(nrow = 6, ncol = 3) has shape (6, 3), not (7, 3).
+
+---
+
+    matrix(nrow = 5, ncol = 5) has 5 rows, not 6.
+
+---
+
+    matrix(nrow = 5, ncol = 5) has 5 columns, not 7.
+
 # at least one argument is required
 
     Code
