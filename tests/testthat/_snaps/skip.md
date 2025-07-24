@@ -70,7 +70,7 @@
       skip_on_os("amiga")
     Condition
       Error in `match.arg()`:
-      ! 'arg' should be one of "windows", "mac", "linux", "solaris"
+      ! 'arg' should be one of "windows", "mac", "linux", "solaris", "emscripten"
 
 # can skip on multiple oses
 
