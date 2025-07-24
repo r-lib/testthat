@@ -4,7 +4,7 @@
 \alias{expect_shape}
 \title{Does code return an object with the specified shape?}
 \usage{
-expect_shape(object, shape, nrow, ncol)
+expect_shape(object, ..., length, nrow, ncol, dim)
 }
 \arguments{
 \item{object}{Object to test.
