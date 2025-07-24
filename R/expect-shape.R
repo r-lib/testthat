@@ -1,5 +1,8 @@
 #' Does code return an object with the specified shape?
 #'
+#' This is a generalization of [expect_length()] to test the "shape" of
+#'   more general objects like data.frames, matrices, and arrays.
+#'
 #' @seealso [expect_length()] to specifically make assertions about the
 #'   [length()] of a vector.
 #' @inheritParams expect_that

@@ -3,6 +3,10 @@
 \name{expect_shape}
 \alias{expect_shape}
 \title{Does code return an object with the specified shape?}
+\description{
+This is a generalization of \code{\link{expect_length}()} to test the "shape" of
+  more general objects like data.frames, matrices, and arrays.
+}
 \usage{
 expect_shape(object, ..., length, nrow, ncol, dim)
 }
