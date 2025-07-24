@@ -191,6 +191,7 @@ expect_equal_to_reference <- function(..., update = FALSE) {
 #' @param hash Known hash value. Leave empty and you'll be informed what
 #'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
+  check_installed("digest")
   edition_deprecate(3, "expect_known_hash()",
     "Please use `expect_snapshot_value()` instead"
   )

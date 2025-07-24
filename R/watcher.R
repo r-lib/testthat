@@ -44,7 +44,7 @@ safe_digest <- function(path) {
   if (is_directory(path)) return(NA_character_)
   if (!is_readable(path)) return(NA_character_)
 
-  digest::digest(path, file = TRUE)
+  rlang::hash_file(path)
 }
 
 #' Capture the state of a directory.
