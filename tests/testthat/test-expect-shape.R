@@ -43,7 +43,24 @@ test_that("uses S3 dim method", {
   dim.testthat_expect_shape <- function(x) 1:2
   x <- integer()
   class(x) <- "testthat_expect_shape"
+  registerS3method("dim", "testthat_expect_shape", dim.testthat_expect_shape)
+
   expect_success(expect_shape(x, dim = 1:2))
+})
+
+test_that("NA handling (e.g. dbplyr)", {
+  dim.testthat_expect_shape_missing <- function(x) c(NA_integer_, 10L)
+  x <- integer()
+  class(x) <- "testthat_expect_shape_missing"
+  registerS3method("dim", "testthat_expect_shape_missing", dim.testthat_expect_shape_missing)
+
+  expect_success(expect_shape(x, nrow = NA_integer_))
+  expect_success(expect_shape(x, ncol = 10L))
+  expect_success(expect_shape(x, dim = c(NA_integer_, 10L)))
+
+  expect_snapshot_failure(expect_shape(x, nrow = 10L))
+  expect_snapshot_failure(expect_shape(x, ncol = NA_integer_))
+  expect_snapshot_failure(expect_shape(x, dim = c(10L, NA_integer_)))
 })
 
 test_that("uses S4 dim method", {

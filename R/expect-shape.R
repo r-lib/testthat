@@ -37,7 +37,7 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     act$nrow <- dim_object[1L]
 
     expect(
-      act$nrow == nrow,
+      identical(as.integer(act$nrow), as.integer(nrow)),
       sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
     )
   } else if (!missing(ncol)) {
@@ -49,7 +49,7 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     act$ncol <- dim_object[2L]
 
     expect(
-      act$ncol == ncol,
+      identical(as.integer(act$ncol), as.integer(ncol)),
       sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
     )
   } else { # !missing(dim)
@@ -61,7 +61,7 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     )
 
     expect(
-      isTRUE(all(act$dim == dim)),
+      identical(as.integer(act$dim), as.integer(dim)),
       sprintf("%s has shape (%s), not (%s).", act$lab, toString(act$dim), toString(dim))
     )
   }

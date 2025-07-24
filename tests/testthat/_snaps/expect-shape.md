@@ -38,6 +38,18 @@
 
     array() has only one dimension.
 
+# NA handling (e.g. dbplyr)
+
+    `x` has NA rows, not 10.
+
+---
+
+    `x` has 10 columns, not NA.
+
+---
+
+    `x` has shape (NA, 10), not (10, NA).
+
 # at least one argument is required
 
     Code
