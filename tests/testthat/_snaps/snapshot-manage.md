@@ -49,6 +49,14 @@
 ---
 
     Code
+      snapshot_accept("b.txt", path = path)
+    Message
+      Updating snapshots:
+      * b.txt
+
+---
+
+    Code
       snapshot_accept("test/", path = path)
     Message
       Updating snapshots:
