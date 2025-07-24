@@ -37,7 +37,7 @@ test_that("returns input", {
 
 test_that("at least one argument is required", {
   err_msg <- "Exactly one of `length`, `nrow`, `ncol`, or `dim` must be provided."
-  expect_error(expect_shape(1:10), err_msg, fixed = TRUE) # no args
-  expect_error(expect_shape(1:10, 2), err_msg, fixed = TRUE) # no named args
-  expect_error(expect_shape(1:10, nrow = 1L, ncol = 2L), err_msg, fixed = TRUE) # multiple named args
+  expect_snapshot(expect_shape(1:10), error = TRUE) # no args
+  expect_snapshot(expect_shape(1:10, 2), error = TRUE) # no named args
+  expect_snapshot(expect_shape(1:10, nrow = 1L, ncol = 2L), error = TRUE) # multiple named args
 })
