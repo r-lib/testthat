@@ -1,24 +1,28 @@
-test_that("shape computed correctly", {
-  # equivalent to expect_length
+test_that("length compared correctly", {
   expect_success(expect_shape(1, length = 1))
   expect_snapshot_failure(expect_shape(1, length = 2))
   expect_success(expect_shape(1:10, length = 10))
   expect_success(expect_shape(letters[1:5], length = 5))
+})
 
-  # testing dim()
+test_that("dim compared correctly", {
   expect_success(expect_shape(matrix(nrow = 5, ncol = 4), dim = c(5L, 4L)))
   expect_snapshot_failure(expect_shape(matrix(nrow = 6, ncol = 3), dim = c(6L, 2L)))
   expect_snapshot_failure(expect_shape(matrix(nrow = 6, ncol = 3), dim = c(7L, 3L)))
   expect_success(expect_shape(data.frame(1:10, 11:20), dim = c(10, 2)))
   expect_success(expect_shape(array(dim = 1:3), dim = 1:3))
+  expect_snapshot_failure(expect_shape(array(dim = 1:3), dim = 1:2))
+  expect_snapshot_failure(expect_shape(array(dim = 1:3), dim = 1:4))
+})
 
-  # testing nrow=
+test_that("nrow compared correctly", {
   expect_success(expect_shape(matrix(nrow = 5, ncol = 4), nrow = 5L))
   expect_snapshot_failure(expect_shape(matrix(nrow = 5, ncol = 5), nrow = 6L))
   expect_success(expect_shape(data.frame(1:10, 11:20), nrow = 10L))
   expect_snapshot_failure(expect_shape(1, nrow = 1))
+})
 
-  # testing ncol=
+test_that("ncol compared correctly", {
   expect_success(expect_shape(matrix(nrow = 5, ncol = 4), ncol = 4L))
   expect_snapshot_failure(expect_shape(matrix(nrow = 5, ncol = 5), ncol = 7L))
   expect_success(expect_shape(data.frame(1:10, 11:20), ncol = 2L))
