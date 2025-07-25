@@ -70,10 +70,7 @@ test_that("basic workflow", {
 
   # warns on first run
   snapper$start_file("snapshot-6", "test")
-  expect_warning(
-    expect_snapshot_file(write_tmp_lines(letters), "letters.txt"),
-    "Adding new"
-  )
+  expect_warning(expect_snapshot_file(write_tmp_lines(letters), "letters.txt"), "Adding new")
   snapper$end_file()
 
   # succeeds if unchanged
@@ -83,10 +80,7 @@ test_that("basic workflow", {
 
   # fails if changed
   snapper$start_file("snapshot-6", "test")
-  expect_failure(expect_snapshot_file(
-    write_tmp_lines(letters[-1]),
-    "letters.txt"
-  ))
+  expect_failure(expect_snapshot_file(write_tmp_lines(letters[-1]), "letters.txt"))
   snapper$end_file()
 })
 
@@ -118,12 +112,7 @@ test_that("warns on first creation", {
 
   # Errors on non-existing file
   expect_error(
-    expect_true(snapshot_file_equal(
-      tempdir(),
-      "test.txt",
-      NULL,
-      "doesnt-exist.txt"
-    )),
+    expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, "doesnt-exist.txt")),
     "`doesnt-exist.txt` not found"
   )
 
@@ -178,22 +167,7 @@ test_that("snapshot_hint output differs in R CMD check", {
     testthat:::snapshot_review_hint(..., reset_output = FALSE)
   }
 
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = FALSE,
-    ci = FALSE
-  )))
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = TRUE,
-    ci = FALSE
-  )))
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = TRUE,
-    ci = TRUE
-  )))
+  expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = FALSE, ci = FALSE)))
+  expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = FALSE)))
+  expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = TRUE)))
 })

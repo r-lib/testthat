@@ -300,6 +300,7 @@
 
 * Test results show hyperlinks to failed expectation when supported (#1544).
 
+
 # testthat 3.1.2
 
 * testthat now uses brio for all reading and writing (#1120). This
