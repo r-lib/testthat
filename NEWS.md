@@ -10,7 +10,6 @@
 * New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`, `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
 * `expect_snapshot_file(name=)` must have a unique file path. If a snapshot file attempts to be saved with a duplicate `name`, an error will be thrown. (#1592)
 
-
 # testthat 3.2.3
 
 * Fixed an issue where `expect_no_error(1)` was failing (#2037).

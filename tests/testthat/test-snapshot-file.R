@@ -116,6 +116,7 @@ test_that("warns on first creation", {
     "`doesnt-exist.txt` not found"
   )
 
+
   # Unchanged returns TRUE
   expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
