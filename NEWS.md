@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `local_edition()` now gives a useful error for bad values (#1547).
 * testthat now requires R 4.1.
 * `expect_s4_class()` now supports unquoting (@stibu81, #2064).
 * `it()` now finds the correct evaluation environment in more cases (@averissimo, #2085).

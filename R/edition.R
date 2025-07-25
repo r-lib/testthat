@@ -51,14 +51,6 @@ edition_name <- function(x) {
   }
 }
 
-is_valid_edition <- function(x) {
-  if (is_zap(x)) {
-    TRUE
-  } else {
-    is.numeric(x) && length(x) == 1 && x %in% c(2, 3)
-  }
-}
-
 #' Temporarily change the active testthat edition
 #'
 #' `local_edition()` allows you to temporarily (within a single test or
@@ -69,10 +61,7 @@ is_valid_edition <- function(x) {
 #' @param x Edition Should be a single integer.
 #' @param .env Environment that controls scope of changes. For expert use only.
 local_edition <- function(x, .env = parent.frame()) {
-  if (!is_valid_edition(x)) {
-    stop("Available editions are 2 and 3", call. = FALSE)
-  }
-
+  check_number_whole(x, min = 2, max = 3)
   local_bindings(edition = x, .env = the, .frame = .env)
 }
 

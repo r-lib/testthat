@@ -6,15 +6,11 @@ test_that("can locally override edition", {
   expect_equal(edition_get(), 2)
 })
 
-test_that("only existing editions can be set", {
-  expect_error(
-    local_edition(5),
-    regexp = "Available editions are 2 and 3"
-  )
-  expect_error(
-    local_edition(-1),
-    regexp = "Available editions are 2 and 3"
-  )
+test_that("checks its inputs", {
+  expect_snapshot(error = TRUE, {
+    local_edition("x")
+    local_edition(5)
+  })
 })
 
 test_that("deprecation only fired for newer edition", {
@@ -45,7 +41,8 @@ test_that("edition for non-package dir is 2", {
 })
 
 test_that("can set the edition via an environment variable", {
-  local_edition(zap())
+  local_bindings(edition = zap(), .env = the)
+  
   withr::local_envvar(TESTTHAT_EDITION = 2)
   expect_equal(edition_get(), 2)
 
