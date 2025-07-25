@@ -1,13 +1,15 @@
-
 new_capture <- function(class) {
   exiting_handlers <- rep_named(class, list(identity))
 
-  calling_handlers <- rep_named(class, alist(function(cnd) {
-    if (can_entrace(cnd)) {
-      cnd <- cnd_entrace(cnd)
-    }
-    return_from(env, cnd)
-  }))
+  calling_handlers <- rep_named(
+    class,
+    alist(function(cnd) {
+      if (can_entrace(cnd)) {
+        cnd <- cnd_entrace(cnd)
+      }
+      return_from(env, cnd)
+    })
+  )
 
   formals <- pairlist2(code = , entrace = FALSE)
 
@@ -16,11 +18,23 @@ new_capture <- function(class) {
 
   body <- expr({
     if (!entrace) {
-      return(tryCatch({ code; NULL }, !!!exiting_handlers))
+      return(tryCatch(
+        {
+          code
+          NULL
+        },
+        !!!exiting_handlers
+      ))
     }
 
     env <- environment()
-    withCallingHandlers({ code; NULL }, !!!calling_handlers)
+    withCallingHandlers(
+      {
+        code
+        NULL
+      },
+      !!!calling_handlers
+    )
   })
 
   new_function(formals, body, ns_env("testthat"))

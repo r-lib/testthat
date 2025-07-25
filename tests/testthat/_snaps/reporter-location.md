@@ -29,8 +29,8 @@
     End test: empty tests are implicitly skipped
     
     Start test: warnings get backtraces
-      'reporters/tests.R:47:5' [warning]
-      'reporters/tests.R:45:1' [skip]
+      'reporters/tests.R:46:5' [warning]
+      'reporters/tests.R:44:1' [skip]
     End test: warnings get backtraces
     
 

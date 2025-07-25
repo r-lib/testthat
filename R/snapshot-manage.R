@@ -52,12 +52,17 @@ review_app <- function(name, old_path, new_path) {
   case_index <- stats::setNames(seq_along(name), name)
   handled <- rep(FALSE, n)
 
-  ui <- shiny::fluidPage(style = "margin: 0.5em",
-    shiny::fluidRow(style = "display: flex",
-      shiny::div(style = "flex: 1 1",
+  ui <- shiny::fluidPage(
+    style = "margin: 0.5em",
+    shiny::fluidRow(
+      style = "display: flex",
+      shiny::div(
+        style = "flex: 1 1",
         shiny::selectInput("cases", NULL, case_index, width = "100%")
       ),
-      shiny::div(class = "btn-group", style = "margin-left: 1em; flex: 0 0 auto",
+      shiny::div(
+        class = "btn-group",
+        style = "margin-left: 1em; flex: 0 0 auto",
         shiny::actionButton("skip", "Skip"),
         shiny::actionButton("accept", "Accept", class = "btn-success"),
       )
@@ -93,7 +98,9 @@ review_app <- function(name, old_path, new_path) {
       handled[[i()]] <<- TRUE
       i <- next_case()
 
-      shiny::updateSelectInput(session, "cases",
+      shiny::updateSelectInput(
+        session,
+        "cases",
         choices = case_index[!handled],
         selected = i
       )
@@ -108,7 +115,11 @@ review_app <- function(name, old_path, new_path) {
       # Find next case;
       remaining <- case_index[!handled]
       next_cases <- which(remaining > i())
-      if (length(next_cases) == 0) remaining[[1]] else remaining[[next_cases[[1]]]]
+      if (length(next_cases) == 0) {
+        remaining[[1]]
+      } else {
+        remaining[[next_cases[[1]]]]
+      }
     }
   }
 
@@ -131,7 +142,11 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
   cur <- all[!grepl("\\.new\\.", all)]
 
   snap_file <- basename(dirname(cur)) != "_snaps"
-  snap_test <- ifelse(snap_file, basename(dirname(cur)), gsub("\\.md$", "", basename(cur)))
+  snap_test <- ifelse(
+    snap_file,
+    basename(dirname(cur)),
+    gsub("\\.md$", "", basename(cur))
+  )
 
   if (length(cur) == 0) {
     new <- character()
@@ -140,7 +155,8 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     new[!file.exists(new)] <- NA
   }
 
-  snap_name <- ifelse(snap_file,
+  snap_name <- ifelse(
+    snap_file,
     file.path(snap_test, basename(cur)),
     basename(cur)
   )

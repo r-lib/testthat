@@ -49,26 +49,37 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     if (length(dim_object) == 1L) {
       fail(sprintf("%s has only one dimension.", act$lab))
     }
-  
+
     act$ncol <- dim_object[2L]
 
     expect(
       identical(as.integer(act$ncol), as.integer(ncol)),
       sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
     )
-  } else { # !missing(dim)
+  } else {
+    # !missing(dim)
     if (!is.numeric(dim) && !is.integer(dim)) {
       stop_input_type(dim, "a numeric vector")
     }
     act$dim <- dim_object
 
     if (length(act$dim) != length(dim)) {
-      fail(sprintf("%s has %i dimensions, not %i.", act$lab, length(act$dim), length(dim)))
+      fail(sprintf(
+        "%s has %i dimensions, not %i.",
+        act$lab,
+        length(act$dim),
+        length(dim)
+      ))
     }
 
     expect(
       identical(as.integer(act$dim), as.integer(dim)),
-      sprintf("%s has dim (%s), not (%s).", act$lab, toString(act$dim), toString(dim))
+      sprintf(
+        "%s has dim (%s), not (%s).",
+        act$lab,
+        toString(act$dim),
+        toString(dim)
+      )
     )
   }
 

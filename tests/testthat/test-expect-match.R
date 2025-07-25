@@ -4,8 +4,14 @@ test_that("extra arguments to matches passed onto grepl", {
 })
 
 test_that("special regex characters are escaped in output", {
-  error <- tryCatch(expect_match("f() test", "f() test"), expectation = function(e) e$message)
-  expect_equal(error, "\"f\\(\\) test\" does not match \"f() test\".\nActual value: \"f\\(\\) test\"")
+  error <- tryCatch(
+    expect_match("f() test", "f() test"),
+    expectation = function(e) e$message
+  )
+  expect_equal(
+    error,
+    "\"f\\(\\) test\" does not match \"f() test\".\nActual value: \"f\\(\\) test\""
+  )
 })
 
 test_that("correct reporting of expected label", {
@@ -33,6 +39,9 @@ test_that("prints multiple unmatched values", {
 test_that("expect_no_match works", {
   expect_success(expect_no_match("[a]", "[b]"))
   expect_success(expect_no_match("[a]", "[b]", fixed = TRUE))
-  expect_failure(expect_no_match("te*st", "e*", fixed = TRUE), escape_regex("te*st"))
+  expect_failure(
+    expect_no_match("te*st", "e*", fixed = TRUE),
+    escape_regex("te*st")
+  )
   expect_failure(expect_no_match("test", "TEST", ignore.case = TRUE), "test")
 })

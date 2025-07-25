@@ -39,8 +39,14 @@ test_that("multiple outputs of same type are collapsed", {
   expect_snapshot({
     x <- 1
     y <- 1
-    {message("a"); message("b")}
-    {warning("a"); warning("b")}
+    {
+      message("a")
+      message("b")
+    }
+    {
+      warning("a")
+      warning("b")
+    }
   })
 })
 
@@ -169,9 +175,7 @@ test_that("hint is informative", {
 })
 
 test_that("expect_snapshot requires a non-empty test label", {
-
   test_that("", {
     expect_error(expect_snapshot(1 + 1))
   })
-
 })

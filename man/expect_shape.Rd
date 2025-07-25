@@ -16,15 +16,20 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{length}{Expected \code{\link[=length]{length()}} of \code{object}.}
 
-\item{nrow}{Expected \code{\link[=nrow]{nrow()}} of \code{object}.}
-
-\item{ncol}{Expected \code{\link[=ncol]{ncol()}} of \code{object}.}
+\item{nrow, nrow}{Expected \code{\link[=nrow]{nrow()}}/\code{\link[=ncol]{ncol()}} of \code{object}.}
 
 \item{dim}{Expected \code{\link[=dim]{dim()}} of \code{object}.}
 }
 \description{
 This is a generalization of \code{\link[=expect_length]{expect_length()}} to test the "shape" of
 more general objects like data.frames, matrices, and arrays.
+}
+\examples{
+x <- matrix(1:9, nrow = 3)
+expect_shape(x, length = 9)
+expect_shape(x, nrow = 3)
+expect_shape(x, ncol = 3)
+expect_shape(x, dim = c(3, 3))
 }
 \seealso{
 \code{\link[=expect_length]{expect_length()}} to specifically make assertions about the
