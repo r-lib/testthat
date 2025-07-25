@@ -61,8 +61,7 @@ edition_name <- function(x) {
 #' @param x Edition Should be a single integer.
 #' @param .env Environment that controls scope of changes. For expert use only.
 local_edition <- function(x, .env = parent.frame()) {
-  stopifnot(is_zap(x) || (is.numeric(x) && length(x) == 1))
-
+  check_number_whole(x, min = 2, max = 3)
   local_bindings(edition = x, .env = the, .frame = .env)
 }
 
