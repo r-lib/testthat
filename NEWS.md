@@ -7,6 +7,8 @@
 * New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require, say, `...names` (@MichaelChirico, #2022)
 * `skip_on_os()` gains an option `"emscripten"` of the `os` argument to skip tests on Emscripten (@eitsupi, #2103).
 * New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`, `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
+* `expect_snapshot_file(name=)` must have a unique file path. If a snapshot file attempts to be saved with a duplicate `name`, an error will be thrown. (#1592)
+
 
 # testthat 3.2.3
 
@@ -296,9 +298,6 @@
     rlang 1.0.0 for more about this.
 
 * Test results show hyperlinks to failed expectation when supported (#1544).
-
-* `expect_snapshot_file(name=)` must have a unique file path. If a snapshot file attempts to be
-  saved with a duplicate `name`, an error will be thrown. (#1592)
 
 # testthat 3.1.2
 
