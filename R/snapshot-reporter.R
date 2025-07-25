@@ -106,12 +106,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
 
       save_path <- file.path(snap_dir, name)
       if (save_path %in% self$snap_file_saved) {
-        fail(
-          paste0(
-            "Snapshot file '", name, "' has already been saved.",
-            " Please provide a unique snapshot file name"
-          ),
-          trace_env = trace_env
+        cli::cli_abort(
+          "Snapshot file {.arg name} has already been saved. Please provide a unique snapshot file name."
         )
       }
       self$snap_file_saved <- c(self$snap_file_saved, save_path)
