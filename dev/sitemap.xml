@@ -59,6 +59,7 @@
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_output_file.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_reference.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_setequal.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/reference/expect_shape.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_silent.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_snapshot.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_snapshot_file.html</loc></url>
