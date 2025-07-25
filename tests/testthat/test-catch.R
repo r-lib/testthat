@@ -7,4 +7,5 @@ test_that("get_routine() fails when no routine exists", {
   expect_error(get_routine("utils", "no_such_routine"))
 })
 
+skip_if_not_installed("xml2")
 run_cpp_tests("testthat")

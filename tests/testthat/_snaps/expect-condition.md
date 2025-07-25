@@ -12,7 +12,7 @@
       expect_error(stop("!"), regexp = 1)
     Condition
       Error in `expect_error()`:
-      ! `pattern` must be a single string, `NA`, or `NULL`, not the number 1.
+      ! `regexp` must be a single string, `NA`, or `NULL`, not the number 1.
     Code
       expect_error(stop("!"), class = 1)
     Condition
@@ -35,12 +35,14 @@
       expect_condition(stop("Hi!"), foo = "bar")
     Condition
       Error in `expect_condition()`:
-      ! Can't specify `...` without `pattern`.
+      ! Found arguments in `...` to be passed to `grepl()`, but no `regexp`.
+      * First problematic argument:
+      i foo
     Code
       expect_condition(stop("Hi!"), "x", foo = "bar")
     Condition
       Error in `expect_condition()`:
-      ! Failed to compare condition to `pattern`.
+      ! Failed to compare condition to `regexp`.
       Caused by error in `grepl()`:
       ! unused argument (foo = "bar")
 

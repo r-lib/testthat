@@ -1,4 +1,5 @@
 test_that("reporter doesn't change without warning", {
+  skip_if_not_installed("xml2")
   expect_snapshot_reporter(JunitReporterMock$new())
 })
 
