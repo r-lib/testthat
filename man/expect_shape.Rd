@@ -16,7 +16,7 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{length}{Expected \code{\link[=length]{length()}} of \code{object}.}
 
-\item{nrow, nrow}{Expected \code{\link[=nrow]{nrow()}}/\code{\link[=ncol]{ncol()}} of \code{object}.}
+\item{nrow, ncol}{Expected \code{\link[=nrow]{nrow()}}/\code{\link[=ncol]{ncol()}} of \code{object}.}
 
 \item{dim}{Expected \code{\link[=dim]{dim()}} of \code{object}.}
 }
