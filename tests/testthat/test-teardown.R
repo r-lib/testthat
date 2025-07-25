@@ -1,6 +1,6 @@
 test_that("teardown adds to queue", {
   local_edition(2)
-  on.exit(teardown_reset())
+  withr::defer({teardown_reset()})
 
   expect_length(file_teardown_env$queue, 0)
 
@@ -13,7 +13,7 @@ test_that("teardown adds to queue", {
 
 test_that("teardowns runs in order", {
   local_edition(2)
-  on.exit(teardown_reset())
+  withr::defer(teardown_reset())
 
   a <- 1
   teardown(a <<- 2)

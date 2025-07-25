@@ -10,9 +10,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  # Since after is not available prior to 3.5
-  eval = getRversion() >= "3.5"
+  comment = "#>"
 )
 ```
 
@@ -135,7 +133,7 @@ neat <- function(x, sig_digits) {
 
 Second, it works when called in the global environment. Since the global environment isn't perishable, like a test environment is, you have to call `deferred_run()` explicitly to execute the deferred events. You can also clear them, without running, with `deferred_clear()`.
 
-```{r}
+```{r, eval = FALSE}
 withr::defer(print("hi"))
 #> Setting deferred event(s) on global environment.
 #>   * Execute (and clear) with `deferred_run()`.
@@ -163,7 +161,7 @@ neater <- function(x, sig_digits) {
 neater(pi)
 ```
 
-This code doesn't work because the cleanup happens too soon, when `local_digits()` exists, not when `neat()` finishes.
+This code doesn't work because the cleanup happens too soon, when `local_digits()` exits, not when `neat()` finishes.
 
 Fortunately, `withr::defer()` allows us to solve this problem by providing an `envir` argument that allows you to control when cleanup occurs. The exact details of how this works are rather complicated, but fortunately there's a common pattern you can use without understanding all the details. Your helper function should always have an `env` argument that defaults to `parent.frame()`, which you pass to the second argument of `defer()`:
 
@@ -293,7 +291,7 @@ test_that("use_roxygen_md() adds DESCRIPTION fields", {
   use_roxygen_md()
   
   expect_true(uses_roxygen_md())
-  expect_equal(desc::desc_get("Roxygen", pkg)[[1]], "list(markdown = TRUE)"))
+  expect_equal(desc::desc_get("Roxygen", pkg)[[1]], "list(markdown = TRUE)")
   expect_true(desc::desc_has_fields("RoxygenNote", pkg))
 })
 ```
@@ -308,13 +306,13 @@ If you move the `local_()` call outside of a `test_that()` block, it will affect
 
 -   If you would otherwise have called the fixture in every test, you've saved yourself a bunch of work and duplicate code.
 
--   But on the downside, if you a test fails and you want to recreate the failure in an interactive environment so you can debug, you need to remember to run all the setup code at the top of the file first.
+-   On the downside, if your test fails and you want to recreate the failure in an interactive environment so you can debug, you need to remember to run all the setup code at the top of the file first.
 
 Generally, I think it's better to copy and paste test fixtures across many tests --- sure, it adds some duplication to your code, but it makes debugging test failures so much easier.
 
 ### Package
 
-To run code before any test is run, you can create a file called `test/testthat/setup.R`. If the code in this file needs clean up, you can use the special `teardown_env()`:
+To run code before any test is run, you can create a file called `tests/testthat/setup.R`. If the code in this file needs clean up, you can use the special `teardown_env()`:
 
 ```{r, eval = FALSE}
 # Run before any test

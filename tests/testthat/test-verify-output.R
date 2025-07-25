@@ -13,7 +13,7 @@ test_that("can record all types of output", {
 })
 
 test_that("can record all types of output", {
-  scoped_bindings(
+  local_bindings(
     .env = global_env(),
     conditionMessage.foobar = function(cnd) {
       paste("Dispatched!", cnd$message)
@@ -82,4 +82,18 @@ test_that("verify_output() handles carriage return", {
   verify_output(test_path("test-verify-conditions-cr.txt"), {
     cat("\r\n")
   })
+})
+
+test_that("verify_exec() doesn't leave tempfiles around", {
+  before <- dir(tempdir())
+  verify_exec(quote(1 + 1))
+  after <- dir(tempdir())
+
+  expect_equal(before, after)
+})
+
+test_that("verify_exec() strips CR", {
+  act <- verify_exec(quote(cat("\r\n")))
+  exp <- verify_exec(quote(cat("\n")))
+  expect_equal(act[-1], exp[-1])
 })

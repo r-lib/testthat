@@ -1,13 +1,13 @@
 # produces consistent output
 
     1: expect_true(FALSE)
-    2: expect_waldo_constant(act, TRUE, info = info)
-    3: expect(identical(act$val, constant), sprintf("%s is not %s\n\n%s", act$lab,
+    2: expect_waldo_constant(act, TRUE, info = info, ignore_attr = TRUE)
+    3: expect(length(comp) == 0, sprintf("%s is not %s\n\n%s", act$lab, deparse(co
     
     1: f()
     2: expect_true(FALSE)
-    3: expect_waldo_constant(act, TRUE, info = info)
-    4: expect(identical(act$val, constant), sprintf("%s is not %s\n\n%s", act$lab,
+    3: expect_waldo_constant(act, TRUE, info = info, ignore_attr = TRUE)
+    4: expect(length(comp) == 0, sprintf("%s is not %s\n\n%s", act$lab, deparse(co
     
     1: stop("stop")
     

@@ -1,5 +1,5 @@
 test_that("compare state works correctly", {
-  loc <- tempfile("watcher")
+  loc <- withr::local_tempfile(pattern = "watcher")
   dir.create(loc)
 
   empty <- dir_state(loc)
@@ -45,7 +45,7 @@ test_that("watcher works correctly", {
     skip("touch (or which) not available")
   }
 
-  loc <- tempfile("watcher")
+  loc <- withr::local_tempfile(pattern = "watcher")
   dir.create(loc)
 
   code_path <- file.path(loc, "R")

@@ -35,8 +35,7 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 
 \item{...}{Additional arguments passed to \code{\link[=grepl]{grepl()}} to control filtering.}
 
-\item{load_helpers}{Source helper files before running the tests?
-See \code{\link[=source_test_helpers]{source_test_helpers()}} for more details.}
+\item{load_helpers}{Source helper files before running the tests?}
 
 \item{stop_on_failure}{If \code{TRUE}, throw an error if any tests fail.}
 
@@ -52,6 +51,11 @@ warnings.}
 \item "none", the default, doesn't load the package.
 \item "installed", uses \code{\link[=library]{library()}} to load an installed package.
 \item "source", uses \code{\link[pkgload:load_all]{pkgload::load_all()}} to a source package.
+To configure the arguments passed to \code{load_all()}, add this
+field in your DESCRIPTION file:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
+}\if{html}{\out{</div>}}
 }}
 }
 \value{
@@ -62,38 +66,15 @@ This function is the low-level workhorse that powers \code{\link[=test_local]{te
 \code{\link[=test_package]{test_package()}}. Generally, you should not call this function directly.
 In particular, you are responsible for ensuring that the functions to test
 are available in the test \code{env} (e.g. via \code{load_package}).
-}
-\section{Special files}{
 
-There are two types of \code{.R} file that have special behaviour:
-\itemize{
-\item Test files start with \code{test} and are executed in alphabetical order.
-\item Setup files start with \code{setup} and are executed before tests. If
-clean up is needed after all tests have been run, you can use
-\code{withr::defer(clean_up(), teardown_env())}. See \code{vignette("test-fixtures")}
-for more details.
+See \code{vignette("special-files")} to learn more about the conventions for test,
+helper, and setup files that testthat uses, and what you might use each for.
 }
-
-There are two other types of special file that we no longer recommend using:
-\itemize{
-\item Helper files start with \code{helper} and are executed before tests are
-run. They're also loaded by \code{devtools::load_all()}, so there's no
-real point to them and you should just put your helper code in \verb{R/}.
-\item Teardown files start with \code{teardown} and are executed after the tests
-are run. Now we recommend interleave setup and cleanup code in \verb{setup-}
-files, making it easier to check that you automatically clean up every
-mess that you make.
-}
-
-All other files are ignored by testthat.
-}
-
 \section{Environments}{
 
 Each test is run in a clean environment to keep tests as isolated as
-possible. For package tests, that environment that inherits from the
-package's namespace environment, so that tests can access internal functions
+possible. For package tests, that environment inherits from the package's
+namespace environment, so that tests can access internal functions
 and objects.
 }
 
-\keyword{internal}

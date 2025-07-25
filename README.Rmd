@@ -12,12 +12,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# testthat <img src="man/figures/logo.png" align="right" />
+# testthat <a href="https://testthat.r-lib.org"><img src="man/figures/logo.png" align="right" height="138" alt="" /></a>
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/testthat)](https://cran.r-project.org/package=testthat)
-[![R-CMD-check](https://github.com/r-lib/testthat/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/testthat/actions)
-[![Codecov test coverage](https://codecov.io/gh/r-lib/testthat/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/testthat?branch=main)
+[![R-CMD-check](https://github.com/r-lib/testthat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/testthat/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/r-lib/testthat/graph/badge.svg)](https://app.codecov.io/gh/r-lib/testthat)
 <!-- badges: end -->
 
 ## Overview
@@ -31,14 +31,14 @@ Testing your code can be painful and tedious, but it greatly increases the quali
   on the command line, building test suites, or using R CMD check.
 
 * Displays test progress visually, showing a pass, fail, or error for every
-  expectation. If you're using the terminal or a recent version of RStudio, 
+  expectation. If you're using the terminal or a recent version of RStudio,
   it'll even colour the output.
 
-testthat draws inspiration from the xUnit family of testing packages, as well as from many of the innovative ruby testing libraries, like [rspec](https://rspec.info/), [testy](https://github.com/ahoward/testy), [bacon](https://github.com/leahneukirchen/bacon) and [cucumber](https://cucumber.io). 
+testthat draws inspiration from the xUnit family of testing packages, as well as from many of the innovative ruby testing libraries, like [rspec](https://rspec.info/), [testy](https://github.com/ahoward/testy), [bacon](https://github.com/leahneukirchen/bacon) and [cucumber](https://cucumber.io).
 
-testthat is the most popular unit testing package for R and is used by thousands of CRAN packages. 
+testthat is the most popular unit testing package for R and is used by thousands of CRAN packages.
 
-If you're not familiar with testthat, the [testing chapter](https://r-pkgs.org/tests.html) in [R packages](https://r-pkgs.org) gives a good overview, along with workflow advice and concrete examples.
+If you're not familiar with testthat, the [testing chapter](https://r-pkgs.org/testing-basics.html) in [R packages](https://r-pkgs.org) gives a good overview, along with workflow advice and concrete examples.
 
 ## Installation
 
@@ -47,8 +47,8 @@ If you're not familiar with testthat, the [testing chapter](https://r-pkgs.org/t
 install.packages("testthat")
 
 # Or the development version from GitHub:
-# install.packages("devtools")
-devtools::install_github("r-lib/testthat")
+# install.packages("pak")
+pak::pak("r-lib/testthat")
 ```
 
 ## Usage

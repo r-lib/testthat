@@ -21,7 +21,7 @@ test_that("local context is 'as promised' inside test_that()", {
   expect_equal(getOption("max.print"), 99999)
 
   expect_equal(Sys.getenv("RSTUDIO"), "")
-  expect_equal(Sys.getenv("LANGUAGE"), "en")
+  expect_equal(Sys.getenv("LANGUAGE"), "C")
 
   expect_equal(Sys.getlocale("LC_COLLATE"), "C")
 })
@@ -33,9 +33,21 @@ test_that("can override usual options", {
 
 test_that("can override translation of error messages", {
   skip_on_cran()
+  skip_on_os("linux")
 
   local_reproducible_output(lang = "fr")
   expect_error(mean[[1]], "objet de type")
   local_reproducible_output(lang = "es")
   expect_error(mean[[1]], "objeto de tipo")
+})
+
+test_that("can force cli to display RStudio style hyperlinks", {
+  expect_snapshot({
+    str(cli::ansi_hyperlink_types())
+  })
+
+  local_reproducible_output(crayon = TRUE, hyperlinks = TRUE, rstudio = TRUE)
+  expect_snapshot({
+    str(cli::ansi_hyperlink_types())
+  })
 })

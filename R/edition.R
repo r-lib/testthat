@@ -68,53 +68,17 @@ is_valid_edition <- function(x) {
 #' @export
 #' @param x Edition Should be a single integer.
 #' @param .env Environment that controls scope of changes. For expert use only.
-#' @keywords internal
 local_edition <- function(x, .env = parent.frame()) {
   if (!is_valid_edition(x)) {
     stop("Available editions are 2 and 3", call. = FALSE)
   }
-  old <- edition_set(x)
-  withr::defer(edition_set(old), envir = .env)
-}
 
-edition_set <- function(x) {
-  env_poke(testthat_env, "edition", x)
+  local_bindings(edition = x, .env = the, .frame = .env)
 }
 
 
 #' @export
 #' @rdname local_edition
 edition_get <- function() {
-  if (env_has(testthat_env, "edition")) {
-    env_get(testthat_env, "edition", default = 2L)
-  } else {
-    find_edition(".")
-  }
-}
-
-
-find_dep_version <- function(name, path, package = NULL) {
-  desc <- find_description(path, package)
-  if (is.null(desc)) {
-    return(NULL)
-  }
-
-  deps <- desc$get_deps()
-  i <- match(name, deps[["package"]])
-  if (is_na(i)) {
-    return(NULL)
-  }
-
-  dep <- deps[[i, "version"]]
-  dep <- strsplit(dep, " ")[[1]]
-  if (!is_character(dep, 2) && !is_string(dep[[1]], ">=")) {
-    return(NULL)
-  }
-
-  dep[[2]]
-}
-
-use_rlang_1_0 <- function() {
-  ver <- peek_option("testthat:::rlang_dep")
-  is_string(ver) && package_version(ver) >= "0.99.0.9001"
+  the$edition %||% find_edition(".")
 }

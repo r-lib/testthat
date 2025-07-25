@@ -1,9 +1,12 @@
 #' describe: a BDD testing language
 #'
-#' A simple BDD DSL for writing tests. The language is similiar to RSpec for
-#' Ruby or Mocha for JavaScript. BDD tests read like sentences and it should
-#' thus be easier to understand what the specification of a function/component
-#' is.
+#' A simple [behavior-driven development
+#' (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development)
+#' [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language)
+#' for writing tests. The language is similar to [RSpec](https://rspec.info/)
+#' for Ruby or [Mocha](https://mochajs.org/) for JavaScript. BDD tests read
+#' like sentences and it should thus be easier to understand what the
+#' specification of a function/component is.
 #'
 #' Tests using the `describe` syntax not only verify the tested code, but
 #' also document its intended behaviour. Each `describe` block specifies a
@@ -11,7 +14,6 @@
 #' specification is defined by an `it` block. Each `it` block
 #' functions as a test and is evaluated in its own environment. You
 #' can also have nested `describe` blocks.
-#'
 #'
 #' This test syntax helps to test the intended behaviour of your code. For
 #' example: you want to write a new function for your package. Try to describe
@@ -56,32 +58,41 @@
 #' })
 
 describe <- function(description, code) {
-  is_invalid_description <- function(description) {
-    !is.character(description) || length(description) != 1 ||
-      nchar(description) == 0
-  }
-
-  if (is_invalid_description(description)) {
-    stop("description must be a string of at least length 1")
-  }
+  check_string(description, allow_empty = FALSE)
+  describe_description <- description
 
   # prepares a new environment for each it-block
   describe_environment <- new.env(parent = parent.frame())
-  describe_environment$it <- function(it_description, it_code = NULL) {
-    if (is_invalid_description(it_description)) {
-      stop("it-description must be a string of at least length 1")
-    }
-    if (missing(it_code)) return()
+  describe_environment$it <- function(description, code = NULL) {
+    check_string(description, allow_empty = FALSE)
+    code <- substitute(code)
 
-    test_description <- paste0(description, ": ", it_description)
-    test_code(
-      test_description,
-      substitute(it_code),
-      env = describe_environment,
-      skip_on_empty = FALSE
-    )
+    description <- paste0(describe_description, ": ", description)
+    describe_it(description, code, describe_environment)
   }
 
   eval(substitute(code), describe_environment)
   invisible()
+}
+
+describe_it <- function(description, code, env = parent.frame()) {
+  reporter <- get_reporter() %||% local_interactive_reporter()
+  local_test_context()
+
+  test_code(
+    description,
+    code,
+    env = env,
+    reporter = reporter,
+    skip_on_empty = FALSE
+  )
+}
+
+#' @export
+#' @rdname describe
+it <- function(description, code = NULL) {
+  check_string(description, allow_empty = FALSE)
+
+  code <- substitute(code)
+  describe_it(description, code, env = parent.frame())
 }

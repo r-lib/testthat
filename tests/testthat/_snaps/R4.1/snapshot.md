@@ -1,7 +1,7 @@
-# can access nickname
+# variants save different values
 
     Code
-      version$nickname
+      r_version()
     Output
-      [1] "Bird Hippie"
+      [1] "R4.1"
 

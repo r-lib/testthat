@@ -39,18 +39,12 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
   }
 }
 
-#' Compute a digest of a filename, returning NA if the file doesn't
-#' exist.
-#'
-#' @param filename filename to compute digest on
-#' @return a digest of the file, or NA if it doesn't exist.
-#' @keywords internal
 safe_digest <- function(path) {
   if (!file.exists(path)) return(NA_character_)
   if (is_directory(path)) return(NA_character_)
   if (!is_readable(path)) return(NA_character_)
 
-  digest::digest(path, file = TRUE)
+  rlang::hash_file(path)
 }
 
 #' Capture the state of a directory.

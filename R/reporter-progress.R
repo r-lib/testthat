@@ -19,15 +19,15 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
   inherit = Reporter,
   public = list(
     show_praise = TRUE,
-    min_time = 0.1,
+    min_time = 1,
     start_time = NULL,
     last_update = NULL,
     update_interval = NULL,
 
     skips = NULL,
+    problems = NULL,
 
     max_fail = NULL,
-    verbose_skips = NULL,
     n_ok = 0,
     n_skip = 0,
     n_warn = 0,
@@ -48,19 +48,18 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     initialize = function(show_praise = TRUE,
                           max_failures = testthat_max_fails(),
-                          min_time = 0.1,
+                          min_time = 1,
                           update_interval = 0.1,
-                          verbose_skips = getOption("testthat.progress.verbose_skips", TRUE),
                           ...) {
       super$initialize(...)
       self$capabilities$parallel_support <- TRUE
       self$show_praise <- show_praise
       self$max_fail <- max_failures
-      self$verbose_skips <- !rlang::is_false(verbose_skips)
       self$min_time <- min_time
       self$update_interval <- update_interval
 
       self$skips <- Stack$new()
+      self$problems <- Stack$new()
       self$ctxt_issues <- Stack$new()
 
       # Capture at init so not affected by test settings
@@ -104,7 +103,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         colourise(cli::symbol$tick, "success"), " | ",
         colourise("F", "failure"), " ",
         colourise("W", "warning"), " ",
-        colourise("S", "skip"), " ",
+        colourise(" S", "skip"), " ",
         colourise(" OK", "success"),
         " | ", "Context"
       )
@@ -125,9 +124,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       data <- self$status_data()
       if (complete) {
         if (data$n_fail > 0) {
-          status <- crayon::red(cli::symbol$cross)
+          status <- cli::col_red(cli::symbol$cross)
         } else {
-          status <- crayon::green(cli::symbol$tick)
+          status <- cli::col_green(cli::symbol$tick)
         }
       } else {
         # Do not print if not enough time has passed since we last printed.
@@ -144,9 +143,18 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
       col_format <- function(n, type) {
         if (n == 0) {
-          " "
+          if (type == "skip") {
+            "  "
+          } else {
+            " "
+          }
         } else {
-          colourise(n, type)
+          if (type == "skip") {
+            colourise(sprintf("%2d", n), type)
+          } else {
+            colourise(n, type)
+          }
+
         }
       }
 
@@ -168,7 +176,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
       if (pad) {
         message <- strpad(message, self$width)
-        message <- crayon::col_substr(message, 1, self$width)
+        message <- cli::ansi_substr(message, 1, self$width)
       }
 
       if (!complete) {
@@ -206,9 +214,9 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
           snapshotter$end_file()
         }
 
-        stop_reporter(paste0(
-          "Maximum number of failures exceeded; quitting at end of file.\n",
-          "Increase this number with (e.g.) `Sys.setenv('TESTTHAT_MAX_FAILS' = Inf)`"
+        stop_reporter(c(
+          "Maximum number of failures exceeded; quitting at end of file.",
+          i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
         ))
       }
     },
@@ -220,13 +228,11 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$n_fail <- self$n_fail + 1
         self$ctxt_n_fail <- self$ctxt_n_fail + 1
         self$ctxt_issues$push(result)
+        self$problems$push(result)
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$ctxt_n_skip <- self$ctxt_n_skip + 1
-        if (self$verbose_skips) {
-          self$ctxt_issues$push(result)
-        }
-        self$skips$push(result$message)
+        self$skips$push(result)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
         self$ctxt_n_warn <- self$ctxt_n_warn + 1
@@ -246,17 +252,22 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         colourise(n, if (n == 0) "success" else type)
       }
 
-      self$rule(crayon::bold("Results"), line = 2)
+      self$rule(cli::style_bold("Results"), line = 2)
       time <- proc.time() - self$start_time
       if (time[[3]] > self$min_time) {
         self$cat_line("Duration: ", sprintf("%.1f s", time[[3]]), col = "cyan")
         self$cat_line()
       }
 
-      if (self$n_skip > 0) {
-        self$rule("Skipped tests ", line = 1)
-        self$cat_line(skip_bullets(self$skips$as_list()))
-        self$cat_line()
+      skip_report(self)
+
+      if (self$problems$size() > 0) {
+        problems <- self$problems$as_list()
+        self$rule("Failed tests", line = 1)
+        for (problem in problems) {
+          self$cat_line(issue_summary(problem))
+          self$cat_line()
+        }
       }
 
       status <- summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok)
@@ -266,7 +277,7 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
         self$rule("Terminated early", line = 2)
       }
 
-      if (!self$show_praise || runif(1) > 0.1) {
+      if (!self$show_praise || stats::runif(1) > 0.1) {
         return()
       }
 
@@ -325,11 +336,7 @@ testthat_max_fails <- function() {
 CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
   inherit = ProgressReporter,
   public = list(
-    # Is this being run by RStudio's test file button?
-    rstudio = FALSE,
-
-    initialize = function(rstudio = FALSE, min_time = Inf, ...) {
-      self$rstudio <- rstudio
+    initialize = function(min_time = Inf, ...) {
       super$initialize(min_time = min_time, ...)
     },
 
@@ -359,17 +366,26 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
       self$cat_tight(paste(summary, collapse = "\n\n"))
 
       self$cat_line()
-      self$cat_line()
     },
 
     end_reporter = function() {
-      if (self$n_fail > 0 || self$n_warn > 0 || self$n_skip > 0) {
+      had_feedback <- self$n_fail > 0 || self$n_warn > 0
+
+      if (self$n_skip > 0) {
+        if (!had_feedback) {
+          self$cat_line()
+        }
+        self$cat_line()
+        skip_report(self)
+      }
+
+      if (had_feedback) {
         self$show_status()
         self$cat_line()
       } else if (self$is_full()) {
         self$cat_line(" Terminated early")
-      } else if (!self$rstudio) {
-        self$cat_line(crayon::bold(" Done!"))
+      } else if (self$n_skip == 0 && !self$rstudio) {
+        self$cat_line(cli::style_bold(" Done!"))
       }
     },
 
@@ -462,13 +478,11 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
         self$n_fail <- self$n_fail + 1
         self$files[[file]]$n_fail <- self$files[[file]]$n_fail + 1L
         self$files[[file]]$issues$push(result)
+        self$problems$push(result)
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
         self$files[[file]]$n_skip <- self$files[[file]]$n_skip + 1L
-        if (self$verbose_skips) {
-          self$files[[file]]$issues$push(result)
-        }
-        self$skips$push(result$message)
+        self$skips$push(result)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
         self$files[[file]]$n_warn <- self$files[[file]]$n_warn + 1L
@@ -491,7 +505,7 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
         paste(context_name(names(self$files)), collapse = ", ")
       )
       message <- strpad(message, self$width)
-      message <- crayon::col_substr(message, 1, self$width)
+      message <- cli::ansi_substr(message, 1, self$width)
       self$cat_tight(self$cr(), message)
     }
   )
@@ -514,29 +528,63 @@ issue_header <- function(x, pad = FALSE) {
    type <- strpad(type, 7)
   }
 
-  loc <- expectation_location(x)
-  paste0(type, " (", loc, "): ", x$test)
+  paste0(type, expectation_location(x, " (", ")"), ": ", x$test)
 }
 
-issue_summary <- function(x, rule = FALSE, simplify = "branch") {
-  header <- crayon::bold(issue_header(x))
+issue_summary <- function(x, rule = FALSE) {
+  header <- cli::style_bold(issue_header(x))
   if (rule) {
-    header <- cli::rule(header, width = max(nchar(header) + 6, 80))
+    # Don't truncate long test names
+    width <- max(cli::ansi_nchar(header) + 6, getOption("width"))
+    header <- cli::rule(header, width = width)
   }
 
-  paste0(header, "\n", format(x, simplify = simplify))
+  paste0(header, "\n", format(x))
 }
 
 strpad <- function(x, width = cli::console_width()) {
-  n <- pmax(0, width - crayon::col_nchar(x))
+  n <- pmax(0, width - cli::ansi_nchar(x))
   paste0(x, strrep(" ", n))
 }
 
-skip_bullets <- function(skips) {
-  skips <- unlist(skips)
-  skips <- gsub("Reason: ", "", skips)
-  skips <- gsub(":?\n(\n|.)+", "", skips) # only show first line
+skip_report <- function(reporter, line = 1) {
+  n <- reporter$skips$size()
+  if (n == 0) {
+    return()
+  }
 
-  tbl <- table(skips)
-  paste0(cli::symbol$bullet, " ", names(tbl), " (", tbl, ")")
+  reporter$rule(paste0("Skipped tests (", n, ")"), line = line)
+  reporter$cat_line(skip_bullets(reporter$skips$as_list()))
+  reporter$cat_line()
+}
+
+
+skip_bullets <- function(skips) {
+  message <- map_chr(skips, "[[", "message")
+  message <- gsub("Reason: ", "", message)
+  message <- gsub(":?\n(\n|.)+", "", message) # only show first line
+
+  locs <- map_chr(skips, expectation_location)
+  locs_by_skip <- split(locs, message)
+  n <- lengths(locs_by_skip)
+  skip_summary <- map_chr(locs_by_skip, paste, collapse = ", ")
+
+  bullets <- paste0(
+    cli::symbol$bullet, " ", names(locs_by_skip), " (", n, "): ", skip_summary
+  )
+  cli::ansi_strwrap(bullets, exdent = 2)
+}
+
+
+
+#' Set maximum number of test failures allowed before aborting the run
+#'
+#' This sets the `TESTTHAT_MAX_FAILS` env var which will affect both the
+#' current R process and any processes launched from it.
+#'
+#' @param n Maximum number of failures allowed.
+#' @export
+#' @keywords internal
+set_max_fails <- function(n) {
+  Sys.setenv('TESTTHAT_MAX_FAILS' = n)
 }

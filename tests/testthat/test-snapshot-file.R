@@ -1,18 +1,17 @@
 test_that("expect_snapshot_file works", {
-  skip_if_not(getRversion() >= "3.6.0")
   expect_snapshot_file(
     write_tmp_lines(letters),
     "foo.r",
     compare = compare_file_text
   )
 
-  path <- tempfile()
+  path <- withr::local_tempfile()
   png(path, width = 300, height = 300, type = "cairo")
   plot(1:10, xlab = "", ylab = "", pch = 20, cex = 5, axes = FALSE)
   dev.off()
   expect_snapshot_file(path, "foo.png")
 
-  path <- tempfile()
+  path <- withr::local_tempfile()
   mtcars2 <- mtcars
   # mtcars2$wt[10] <- NA
   write.csv(mtcars2, path)
@@ -33,7 +32,6 @@ test_that("expect_snapshot_file works", {
 
 
 test_that("expect_snapshot_file works in a different directory", {
-  skip_if_not(getRversion() >= "3.6.0")
   path <- withr::local_tempdir()
   withr::local_dir(path)
 
@@ -48,8 +46,8 @@ test_that("expect_snapshot_file works in a different directory", {
 
 test_that("expect_snapshot_file works with variant", {
   expect_snapshot_file(
-    write_tmp_lines(version$nickname),
-    "nickname.txt",
+    write_tmp_lines(r_version()),
+    "version.txt",
     compare = compare_file_text,
     variant = r_version()
   )
@@ -96,35 +94,35 @@ test_that("warns on first creation", {
 
   # Warns on first run
   expect_warning(
-    expect_true(snapshot_file_equal(tempdir(), "test.txt", path)),
+    expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path)),
     "new file snapshot"
   )
 
   # Errors on non-existing file
   expect_error(
-    expect_true(snapshot_file_equal(tempdir(), "test.txt", "doesnt-exist.txt")),
+    expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, "doesnt-exist.txt")),
     "`doesnt-exist.txt` not found"
   )
 
 
   # Unchanged returns TRUE
-  expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
+  expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
 
   # Changed returns FALSE
   path2 <- write_tmp_lines("b")
-  expect_false(snapshot_file_equal(tempdir(), "test.txt", path2))
+  expect_false(snapshot_file_equal(tempdir(), "test.txt", NULL, path2))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_true(file.exists(file.path(tempdir(), "test.new.txt")))
 
   # Changing again overwrites
   path2 <- write_tmp_lines("c")
-  expect_false(snapshot_file_equal(tempdir(), "test.txt", path2))
+  expect_false(snapshot_file_equal(tempdir(), "test.txt", NULL, path2))
   expect_equal(brio::read_lines(file.path(tempdir(), "test.new.txt")), "c")
 
   # Unchanged cleans up
-  expect_true(snapshot_file_equal(tempdir(), "test.txt", path))
+  expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path))
   expect_true(file.exists(file.path(tempdir(), "test.txt")))
   expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
 })
@@ -154,6 +152,10 @@ test_that("split_path handles edge cases", {
 })
 
 test_that("snapshot_hint output differs in R CMD check", {
+  snapshot_review_hint <- function(...) {
+    testthat:::snapshot_review_hint(..., reset_output = FALSE)
+  }
+
   expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = FALSE, ci = FALSE)))
   expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = FALSE)))
   expect_snapshot(cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = TRUE)))

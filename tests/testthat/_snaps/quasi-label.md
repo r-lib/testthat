@@ -26,6 +26,7 @@
 
     Code
       expect_equal()
-    Error <simpleError>
-      argument `object` is missing, with no default.
+    Condition
+      Error:
+      ! argument `object` is missing, with no default.
 

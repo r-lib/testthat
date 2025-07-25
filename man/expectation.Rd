@@ -51,4 +51,3 @@ details.
 Create an expectation with \code{expectation()} or \code{new_expectation()}
 and signal it with \code{exp_signal()}.
 }
-\keyword{internal}

@@ -18,11 +18,13 @@
 #'   difficult to install.
 #'
 #' * `skip_if_offline()` skips if an internet connection is not available
-#'   (using [curl::nslookup()]) or if the test is run on CRAN.
+#'   (using [curl::nslookup()]) or if the test is run on CRAN. Requires
+#'   \{curl\} to be installed and included in the dependencies of your package.
 #'
 #' * `skip_if_translated("msg")` skips tests if the "msg" is translated.
 #'
-#' * `skip_on_bioc()` skips on Bioconductor (using the `BBS_HOME` env var).
+#' * `skip_on_bioc()` skips on Bioconductor (using the `IS_BIOC_BUILD_MACHINE`
+#'    env var).
 #'
 #' * `skip_on_cran()` skips on CRAN (using the `NOT_CRAN` env var set by
 #'    devtools and friends).
@@ -30,8 +32,7 @@
 #' * `skip_on_covr()` skips when covr is running (using the `R_COVR` env var).
 #'
 #' * `skip_on_ci()` skips on continuous integration systems like GitHub Actions,
-#'    travis, and appveyor (using the `CI` env var). It supersedes the older
-#'    `skip_on_travis()` and `skip_on_appveyor()` functions.
+#'    travis, and appveyor (using the `CI` env var).
 #'
 #' * `skip_on_os()` skips on the specified operating system(s) ("windows",
 #'   "mac", "linux", or "solaris").
@@ -40,7 +41,7 @@
 #' @param host A string with a hostname to lookup
 #' @export
 #' @examples
-#' if (FALSE) skip("No internet connection")
+#' if (FALSE) skip("Some Important Requirement is not available")
 #'
 #' test_that("skip example", {
 #'   expect_equal(1, 1L)    # this expectation runs
@@ -48,7 +49,7 @@
 #'   expect_equal(1, 2)     # this one skipped
 #'   expect_equal(1, 3)     # this one is also skipped
 #' })
-skip <- function(message) {
+skip <- function(message = "Skipping") {
   message <- paste0(message, collapse = "\n")
   cond <- structure(
     list(message = paste0("Reason: ", message)),
@@ -76,6 +77,8 @@ skip_if_not <- function(condition, message = NULL) {
   }
   if (!isTRUE(condition)) {
     skip(message)
+  } else {
+    invisible()
   }
 }
 
@@ -87,6 +90,8 @@ skip_if <- function(condition, message = NULL) {
   }
   if (isTRUE(condition)) {
     skip(message)
+  } else {
+    invisible()
   }
 }
 
@@ -95,12 +100,18 @@ skip_if <- function(condition, message = NULL) {
 #' @param minimum_version Minimum required version for the package
 #' @rdname skip
 skip_if_not_installed <- function(pkg, minimum_version = NULL) {
+  # most common case: it's not installed
+  tryCatch(
+    find.package(pkg),
+    error = function(e) skip(paste0("{", pkg, "} is not installed"))
+  )
+  # rarer: it's installed, but fails to load
   if (!requireNamespace(pkg, quietly = TRUE)) {
-    skip(paste0(pkg, " cannot be loaded"))
+    skip(paste0("{", pkg, "} cannot be loaded"))
   }
 
   if (!is.null(minimum_version)) {
-    installed_version <- utils::packageVersion(pkg)
+    installed_version <- package_version(pkg)
     if (installed_version < minimum_version) {
       skip(paste0(
         "Installed ", pkg, " is version ", installed_version, "; ",
@@ -109,18 +120,46 @@ skip_if_not_installed <- function(pkg, minimum_version = NULL) {
     }
   }
 
-  return(invisible(TRUE))
+  invisible()
+}
+package_version <- function(x) {
+  utils::packageVersion(x)
 }
 
 #' @export
+#' @param spec A version specification like '>= 4.1.0' denoting that this test
+#'   should only be run on R versions 4.1.0 and later.
 #' @rdname skip
-skip_if_offline <- function(host = "r-project.org") {
-  skip_on_cran()
-  skip_if_not_installed("curl")
-  has_internet <- !is.null(curl::nslookup(host, error = FALSE))
-  if (!has_internet) {
-    skip("offline")
+skip_unless_r <- function(spec) {
+  parts <- unlist(strsplit(spec, " ", fixed = TRUE))
+  if (length(parts) != 2L) {
+    cli::cli_abort("{.arg spec} should be a comparison like '>=' and an R version separated by a space.")
   }
+  comparator <- match.fun(parts[1L])
+  required_version <- numeric_version(parts[2L])
+
+  current_version <- getRversion()
+  skip_if_not(
+    comparator(current_version, required_version),
+    sprintf(
+      "Current R version (%s) does not satisfy requirement (%s %s)",
+      current_version, parts[1L], required_version
+    )
+  )
+}
+# for mocking
+getRversion <- NULL
+
+#' @export
+#' @rdname skip
+skip_if_offline <- function(host = "captive.apple.com") {
+  skip_on_cran()
+  check_installed("curl")
+
+  skip_if_not(has_internet(host), "offline")
+}
+has_internet <- function(host) {
+  !is.null(curl::nslookup(host, error = FALSE))
 }
 
 #' @export
@@ -129,11 +168,10 @@ skip_on_cran <- function() {
   skip_if(on_cran(), "On CRAN")
 }
 
-on_cran <- function() !identical(Sys.getenv("NOT_CRAN"), "true")
-
 #' @export
 #' @param os Character vector of one or more operating systems to skip on.
-#'   Supported values are `"windows"`, `"mac"`, `"linux"`, and `"solaris"`.
+#'   Supported values are `"windows"`, `"mac"`, `"linux"`, `"solaris"`,
+#'   and `"emscripten"`.
 #' @param arch Character vector of one or more architectures to skip on.
 #'   Common values include `"i386"` (32 bit), `"x86_64"` (64 bit), and
 #'   `"aarch64"` (M1 mac). Supplying `arch` makes the test stricter; i.e. both
@@ -142,7 +180,7 @@ on_cran <- function() !identical(Sys.getenv("NOT_CRAN"), "true")
 skip_on_os <- function(os, arch = NULL) {
   os <- match.arg(
     os,
-    choices = c("windows", "mac", "linux", "solaris"),
+    choices = c("windows", "mac", "linux", "solaris", "emscripten"),
     several.ok = TRUE
   )
 
@@ -150,7 +188,8 @@ skip_on_os <- function(os, arch = NULL) {
     windows = if ("windows" %in% os) "On Windows",
     darwin =  if ("mac" %in% os) "On Mac",
     linux =   if ("linux" %in% os) "On Linux",
-    sunos =   if ("solaris" %in% os) "On Solaris"
+    sunos =   if ("solaris" %in% os) "On Solaris",
+    emscripten = if ("emscripten" %in% os) "On Emscripten"
   )
 
   if (!is.null(arch) && !is.null(msg)) {
@@ -177,60 +216,20 @@ system_arch <- function() R.version$arch
 
 #' @export
 #' @rdname skip
-skip_on_travis <- function() {
-  if (!identical(Sys.getenv("TRAVIS"), "true")) {
-    return(invisible(TRUE))
-  }
-
-  skip("On Travis")
-}
-
-#' @export
-#' @rdname skip
-skip_on_appveyor <- function() {
-  if (!identical(Sys.getenv("APPVEYOR"), "True")) {
-    return()
-  }
-
-  skip("On Appveyor")
-}
-
-#' @export
-#' @rdname skip
 skip_on_ci <- function() {
-  if (!on_ci()) {
-    return(invisible(TRUE))
-  }
-
-  skip("On CI")
-}
-
-on_ci <- function() {
- isTRUE(as.logical(Sys.getenv("CI")))
-}
-
-in_covr <- function() {
-  identical(Sys.getenv("R_COVR"), "true")
+  skip_if(on_ci(), "On CI")
 }
 
 #' @export
 #' @rdname skip
 skip_on_covr <- function() {
-  if (! in_covr()) {
-    return(invisible(TRUE))
-  }
-
-  skip("On covr")
+  skip_if(in_covr(), "On covr")
 }
 
 #' @export
 #' @rdname skip
 skip_on_bioc <- function() {
-  if (identical(Sys.getenv("BBS_HOME"), "")) {
-    return(invisible(TRUE))
-  }
-
-  skip("On Bioconductor")
+  skip_if(on_bioc(), "On Bioconductor")
 }
 
 #' @export
@@ -239,9 +238,52 @@ skip_on_bioc <- function() {
 #'   [`R-base.pot`](https://github.com/wch/r-source/blob/master/src/library/base/po/R-base.pot).
 #' @rdname skip
 skip_if_translated <- function(msgid = "'%s' not found") {
-  if (gettext(msgid, domain = "R") == msgid) {
-    return(invisible(TRUE))
-  }
+  skip_if(
+    gettext(msgid) != msgid,
+    paste0("\"", msgid, "\" is translated")
+  )
+}
 
-  skip(paste0("\"", msgid, "\" is translated"))
+gettext <- function(msgid, domain = "R") {
+  base::gettext(msgid, domain = domain)
+}
+
+
+#' Superseded skip functions
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' * `skip_on_travis()` and `skip_on_appveyor()` have been superseded by
+#'   [skip_on_ci()].
+#'
+#' @export
+#' @keywords internal
+skip_on_travis <- function() {
+  skip_if(env_var_is_true("TRAVIS"), "On Travis")
+}
+
+#' @export
+#' @rdname skip_on_travis
+skip_on_appveyor <- function() {
+  skip_if(env_var_is_true("APPVEYOR"), "On Appveyor")
+}
+
+# helpers -----------------------------------------------------------------
+
+on_ci <- function() {
+ env_var_is_true("CI")
+}
+in_covr <- function() {
+  env_var_is_true("R_COVR")
+}
+on_bioc <- function() {
+  env_var_is_true("IS_BIOC_BUILD_MACHINE")
+}
+on_cran <- function() {
+  !interactive() && !env_var_is_true("NOT_CRAN")
+}
+
+env_var_is_true <- function(x) {
+  isTRUE(as.logical(Sys.getenv(x, "false")))
 }

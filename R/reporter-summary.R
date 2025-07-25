@@ -89,10 +89,10 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
 
       self$rule("DONE", line = 2)
       if (self$show_praise) {
-        if (length(failures) == 0 && runif(1) < 0.1) {
+        if (length(failures) == 0 && stats::runif(1) < 0.1) {
           self$cat_line(colourise(praise(), "success"))
         }
-        if (length(failures) > 0 && runif(1) < 0.25) {
+        if (length(failures) > 0 && stats::runif(1) < 0.25) {
           self$cat_line(colourise(encourage(), "error"))
         }
       }
@@ -147,7 +147,7 @@ skip_summary <- function(x, label) {
   header <- paste0(label, ". ", x$test)
 
   paste0(
-    colourise(header, "skip"), " (", expectation_location(x), ") - ", x$message
+    colourise(header, "skip"), expectation_location(x, " (", ")"), " - ", x$message
   )
 }
 

@@ -2,17 +2,27 @@
 % Please edit documentation in R/test-path.R
 \name{test_path}
 \alias{test_path}
-\title{Locate file in testing directory.}
+\title{Locate a file in the testing directory}
 \usage{
 test_path(...)
 }
 \arguments{
-\item{...}{Character vectors giving path component.}
+\item{...}{Character vectors giving path components.}
 }
 \value{
 A character vector giving the path.
 }
 \description{
-This function is designed to work both interactively and during tests,
-locating files in the \code{tests/testthat} directory
+Many tests require some external file (e.g. a \code{.csv} if you're testing a
+data import function) but the working directory varies depending on the way
+that you're running the test (e.g. interactively, with \code{devtools::test()},
+or with \verb{R CMD check}). \code{test_path()} understands these variations and
+automatically generates a path relative to \code{tests/testthat}, regardless of
+where that directory might reside relative to the current working directory.
+}
+\examples{
+\dontrun{
+test_path("foo.csv")
+test_path("data", "foo.csv")
+}
 }

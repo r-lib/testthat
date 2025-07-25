@@ -47,15 +47,18 @@ eval_with_output <- function(code, print = FALSE, width = 80) {
   if (!is.null(width)) {
     local_width(width)
   }
+
   result <- withr::with_output_sink(path, withVisible(code))
   if (result$visible && print) {
     withr::with_output_sink(path, testthat_print(result$value), append = TRUE)
   }
 
+  # A sink() will always write in the native encoding, so we read with
+  # base::readLines() then convert to UTF-8
   list(
     val = result$value,
     vis = result$visible,
-    out = brio::read_lines(path)
+    out = enc2utf8(base::readLines(path, warn = FALSE))
   )
 }
 

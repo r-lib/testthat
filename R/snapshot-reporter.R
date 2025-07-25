@@ -8,13 +8,15 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     test_file_seen = character(),
     snap_file_seen = character(),
     variants_changed = FALSE,
+    fail_on_new = FALSE,
 
     old_snaps = NULL,
     cur_snaps = NULL,
     new_snaps = NULL,
 
-    initialize = function(snap_dir = "_snaps") {
+    initialize = function(snap_dir = "_snaps", fail_on_new = FALSE) {
       self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
+      self$fail_on_new <- fail_on_new
     },
 
     start_file = function(path, test = NULL) {
@@ -33,7 +35,9 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     start_test = function(context, test) {
-      self$test <- test
+      if (is.character(test)) {
+        self$test <- gsub("\n", "", test)
+      }
     },
 
     # Called by expectation
@@ -42,7 +46,9 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
                              load = identity,
                              ...,
                              tolerance = testthat_tolerance(),
-                             variant = NULL) {
+                             variant = NULL,
+                             trace_env = NULL) {
+      check_string(self$test, allow_empty = FALSE)
       i <- self$new_snaps$append(self$test, variant, save(value))
 
       old_raw <- self$old_snaps$get(self$test, variant, i)
@@ -54,7 +60,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
           x = old,   x_arg = "old",
           y = value, y_arg = "new",
           ...,
-          tolerance = tolerance
+          tolerance = tolerance,
+          quote_strings = FALSE
         )
 
         if (length(comp) > 0L) {
@@ -67,20 +74,26 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         comp
       } else {
         value_enc <- save(value)
-        check_roundtrip(value, load(value_enc), ..., tolerance = tolerance)
 
         self$cur_snaps$append(self$test, variant, value_enc)
-        testthat_warn(paste0(
+
+        message <- paste0(
           "Adding new snapshot",
-          if (variant != "_default") paste0(" to variant '", variant, "'"),
+          if (variant != "_default") paste0(" for variant '", variant, "'"),
+          if (self$fail_on_new) " in CI",
           ":\n",
           value_enc
-        ))
+        )
+        if (self$fail_on_new) {
+          fail(message, trace_env = trace_env)
+        } else {
+          testthat_warn(message)
+        }
         character()
       }
     },
 
-    take_file_snapshot = function(name, path, file_equal, variant = NULL) {
+    take_file_snapshot = function(name, path, file_equal, variant = NULL, trace_env = NULL) {
       self$announce_file_snapshot(name)
 
       if (is.null(variant)) {
@@ -88,8 +101,17 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       } else {
         snap_dir <- file.path(self$snap_dir, variant, self$file)
       }
-      snapshot_file_equal(snap_dir, name, path, file_equal)
+      snapshot_file_equal(
+        snap_test_dir = snap_dir,
+        snap_name = name,
+        snap_variant = variant,
+        path = path,
+        file_equal = file_equal,
+        fail_on_new = self$fail_on_new,
+        trace_env = trace_env
+      )
     },
+
     # Also called from announce_snapshot_file()
     announce_file_snapshot = function(name) {
       self$snap_file_seen <- c(self$snap_file_seen, file.path(self$file, name))
@@ -122,7 +144,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     end_reporter = function() {
       # clean up if we've seen all files
       tests <- context_name(find_test_scripts(".", full.names = FALSE))
-      if (all(tests %in% self$test_file_seen)) {
+      if (!on_ci() && all(tests %in% self$test_file_seen)) {
         snapshot_cleanup(self$snap_dir,
           test_files_seen = self$test_file_seen,
           snap_files_seen = self$snap_file_seen
@@ -139,17 +161,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     }
   )
 )
-
-
-check_roundtrip <- function(x, y, ..., tolerance = testthat_tolerance()) {
-  check <- waldo_compare(x, y, x_arg = "value", y_arg = "roundtrip", ..., tolerance = tolerance)
-  if (length(check) > 0) {
-    abort(c(
-      paste0("Serialization round-trip is not symmetric.\n\n", check, "\n"),
-      i = "You may need to consider serialization `style`")
-    )
-  }
-}
 
 # set/get active snapshot reporter ----------------------------------------
 
@@ -173,9 +184,9 @@ get_snapshotter <- function() {
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, .env = parent.frame()) {
+local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, fail_on_new = FALSE, .env = parent.frame()) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
-  reporter <- SnapshotReporter$new(snap_dir = snap_dir)
+  reporter <- SnapshotReporter$new(snap_dir = snap_dir, fail_on_new = fail_on_new)
   if (!identical(cleanup, FALSE)) {
     warn("`cleanup` is deprecated")
   }
