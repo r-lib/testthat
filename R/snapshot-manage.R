@@ -29,8 +29,7 @@ snapshot_accept <- function(files = NULL, path = "tests/testthat") {
 #' @rdname snapshot_accept
 #' @export
 snapshot_review <- function(files = NULL, path = "tests/testthat") {
-  check_installed("shiny", "snapshot_review()")
-  check_installed("diffviewer", "snapshot_review()")
+  check_installed(c("shiny", "diffviewer"), "to use snapshot_review()")
 
   changed <- snapshot_meta(files, path)
   if (nrow(changed) == 0) {

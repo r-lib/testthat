@@ -191,6 +191,7 @@ expect_equal_to_reference <- function(..., update = FALSE) {
 #' @param hash Known hash value. Leave empty and you'll be informed what
 #'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
+  check_installed("digest")
   edition_deprecate(3, "expect_known_hash()",
     "Please use `expect_snapshot_value()` instead"
   )
@@ -215,5 +216,5 @@ expect_known_hash <- function(object, hash = NULL) {
 }
 
 all_utf8 <- function(x) {
-  ! any(is.na(iconv(x, "UTF-8", "UTF-8")))
+  !anyNA(iconv(x, "UTF-8", "UTF-8"))
 }

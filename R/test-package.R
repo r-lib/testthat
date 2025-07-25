@@ -5,7 +5,8 @@
 #' * `test_package()` tests an installed package.
 #' * `test_check()` checks a package during `R CMD check`.
 #'
-#' Tests live in `tests/testthat`.
+#' See `vignette("special-files")` to learn about the various files that
+#' testthat works with.
 #'
 #' @section `R CMD check`:
 #' To run testthat automatically from `R CMD check`, make sure you have
@@ -19,7 +20,6 @@
 #' ```
 #'
 #' @inherit test_dir return params
-#' @inheritSection test_dir Special files
 #' @inheritSection test_dir Environments
 #' @param ... Additional arguments passed to [test_dir()]
 #' @export
@@ -44,6 +44,10 @@ test_package <- function(package, reporter = check_reporter(), ...) {
 #' @rdname test_package
 test_check <- function(package, reporter = check_reporter(), ...) {
   require(package, character.only = TRUE)
+  options(cli.hyperlink = FALSE)
+
+  withr::local_envvar(TESTTHAT_IS_CHECKING = "true")
+
   test_dir(
     "testthat",
     package = package,
@@ -55,7 +59,7 @@ test_check <- function(package, reporter = check_reporter(), ...) {
 
 #' @export
 #' @rdname test_package
-test_local <- function(path = ".", reporter = NULL, ...) {
+test_local <- function(path = ".", reporter = NULL, ..., load_package = "source") {
   package <- pkgload::pkg_name(path)
   test_path <- file.path(pkgload::pkg_path(path), "tests", "testthat")
 
@@ -65,6 +69,6 @@ test_local <- function(path = ".", reporter = NULL, ...) {
     package = package,
     reporter = reporter,
     ...,
-    load_package = if (package != "testthat") "source" else "none"
+    load_package = load_package
   )
 }

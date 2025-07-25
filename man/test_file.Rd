@@ -2,9 +2,15 @@
 % Please edit documentation in R/test-files.R
 \name{test_file}
 \alias{test_file}
-\title{Run all tests in a single file}
+\title{Run tests in a single file}
 \usage{
-test_file(path, reporter = default_compact_reporter(), package = NULL, ...)
+test_file(
+  path,
+  reporter = default_compact_reporter(),
+  desc = NULL,
+  package = NULL,
+  ...
+)
 }
 \arguments{
 \item{path}{Path to file.}
@@ -15,6 +21,9 @@ as a string (e.g. "summary") or as an R6 object
 
 See \link{Reporter} for more details and a list of built-in reporters.}
 
+\item{desc}{Optionally, supply a string here to run only a single
+test (\code{test_that()} or \code{describe()}) with this \code{desc}ription.}
+
 \item{package}{If these tests belong to a package, the name of the package.}
 
 \item{...}{Additional parameters passed on to \code{test_dir()}}
@@ -24,43 +33,19 @@ A list (invisibly) containing data about the test results.
 }
 \description{
 Helper, setup, and teardown files located in the same directory as the
-test will also be run.
+test will also be run. See \code{vignette("special-files")} for details.
 }
-\section{Special files}{
-
-There are two types of \code{.R} file that have special behaviour:
-\itemize{
-\item Test files start with \code{test} and are executed in alphabetical order.
-\item Setup files start with \code{setup} and are executed before tests. If
-clean up is needed after all tests have been run, you can use
-\code{withr::defer(clean_up(), teardown_env())}. See \code{vignette("test-fixtures")}
-for more details.
-}
-
-There are two other types of special file that we no longer recommend using:
-\itemize{
-\item Helper files start with \code{helper} and are executed before tests are
-run. They're also loaded by \code{devtools::load_all()}, so there's no
-real point to them and you should just put your helper code in \verb{R/}.
-\item Teardown files start with \code{teardown} and are executed after the tests
-are run. Now we recommend interleave setup and cleanup code in \verb{setup-}
-files, making it easier to check that you automatically clean up every
-mess that you make.
-}
-
-All other files are ignored by testthat.
-}
-
 \section{Environments}{
 
 Each test is run in a clean environment to keep tests as isolated as
-possible. For package tests, that environment that inherits from the
-package's namespace environment, so that tests can access internal functions
+possible. For package tests, that environment inherits from the package's
+namespace environment, so that tests can access internal functions
 and objects.
 }
 
 \examples{
 path <- testthat_example("success")
 test_file(path)
+test_file(path, desc = "some tests have warnings")
 test_file(path, reporter = "minimal")
 }

@@ -37,7 +37,9 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     start_test = function(context, test) {
-      self$test <- test
+      if (is.character(test)) {
+        self$test <- gsub("\n", "", test)
+      }
     },
 
     # Called by expectation
@@ -48,6 +50,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
                              tolerance = testthat_tolerance(),
                              variant = NULL,
                              trace_env = NULL) {
+      check_string(self$test, allow_empty = FALSE)
       i <- self$new_snaps$append(self$test, variant, save(value))
 
       old_raw <- self$old_snaps$get(self$test, variant, i)
@@ -59,7 +62,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
           x = old,   x_arg = "old",
           y = value, y_arg = "new",
           ...,
-          tolerance = tolerance
+          tolerance = tolerance,
+          quote_strings = FALSE
         )
 
         if (length(comp) > 0L) {
@@ -72,7 +76,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         comp
       } else {
         value_enc <- save(value)
-        check_roundtrip(value, load(value_enc), ..., tolerance = tolerance)
 
         self$cur_snaps$append(self$test, variant, value_enc)
 
@@ -116,6 +119,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       snapshot_file_equal(
         snap_test_dir = snap_dir,
         snap_name = name,
+        snap_variant = variant,
         path = path,
         file_equal = file_equal,
         fail_on_new = self$fail_on_new,
@@ -172,17 +176,6 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     }
   )
 )
-
-
-check_roundtrip <- function(x, y, ..., tolerance = testthat_tolerance()) {
-  check <- waldo_compare(x, y, x_arg = "value", y_arg = "roundtrip", ..., tolerance = tolerance)
-  if (length(check) > 0) {
-    abort(c(
-      paste0("Serialization round-trip is not symmetric.\n\n", check, "\n"),
-      i = "You may need to consider serialization `style`")
-    )
-  }
-}
 
 # set/get active snapshot reporter ----------------------------------------
 

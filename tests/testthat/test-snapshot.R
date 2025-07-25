@@ -1,4 +1,4 @@
-test_that("can access nickname", {
+test_that("variants save different values", {
   expect_snapshot(r_version(), variant = r_version())
 })
 
@@ -30,12 +30,23 @@ test_that("empty lines are preserved", {
   expect_snapshot(f(), error = TRUE)
 })
 
+test_that("line-endings fixed before comparison", {
+  x <- "a\n\rb"
+  expect_snapshot(cat(x))
+})
+
 test_that("multiple outputs of same type are collapsed", {
   expect_snapshot({
     x <- 1
     y <- 1
-    {message("a"); message("b")}
-    {warning("a"); warning("b")}
+    {
+      message("a")
+      message("b")
+    }
+    {
+      warning("a")
+      warning("b")
+    }
   })
 })
 
@@ -50,7 +61,7 @@ test_that("can scrub output/messages/warnings/errors", {
   expect_snapshot(secret(), transform = redact, error = TRUE)
 
   # Or with an inline fun
-  expect_snapshot(print("secret"), transform = ~ gsub("secret", "****", .x))
+  expect_snapshot(print("secret"), transform = \(x) gsub("secret", "****", x))
 })
 
 test_that("always checks error status", {
@@ -61,6 +72,16 @@ test_that("always checks error status", {
 test_that("can capture error/warning messages", {
   expect_snapshot_error(stop("This is an error"))
   expect_snapshot_warning(warning("This is a warning"))
+})
+
+test_that("snapshot captures deprecations", {
+  foo <- function() {
+    lifecycle::deprecate_warn("1.0.0", "foo()")
+  }
+
+  expect_snapshot(foo())
+  expect_snapshot_warning(foo())
+  expect_snapshot_warning(foo(), class = "lifecycle_warning_deprecated")
 })
 
 test_that("can check error/warning classes", {
@@ -100,33 +121,6 @@ test_that("even with multiple lines", {
   expect_snapshot_output(cat("a\nb\nc\n"))
 })
 
-test_that("can snapshot values", {
-  x <- list("a", 1.5, 1L, TRUE)
-  expect_snapshot_value(x, style = "json")
-  expect_snapshot_value(x, style = "json2")
-  expect_snapshot_value(x, style = "deparse")
-  expect_snapshot_value(x, style = "serialize")
-})
-
-test_that("can control snapshot value details", {
-  expect_snapshot_value(1.2, tolerance = 0.1)
-})
-
-test_that("tolerance passed to check_roundtrip", {
-  expect_snapshot_value(0.900000000000001, style = "json")
-})
-
-test_that("reparse handles common cases", {
-  roundtrip <- function(x) reparse(deparse(x))
-  expect_equal(roundtrip(-1), -1)
-  expect_equal(roundtrip(c(1, 2, 3)), c(1, 2, 3))
-  expect_equal(roundtrip(list(1, 2, 3)), list(1, 2, 3))
-  expect_equal(roundtrip(mtcars), mtcars)
-
-  f <- function(x) x + 1
-  expect_equal(roundtrip(f), f, ignore_function_env = TRUE)
-})
-
 test_that("`expect_snapshot()` does not inject", {
   expect_snapshot({
     x <- quote(!!foo)
@@ -135,57 +129,53 @@ test_that("`expect_snapshot()` does not inject", {
 })
 
 test_that("full condition message is printed with rlang", {
-  local_use_rlang_1_0()
-
-  expect_snapshot(
-    error = TRUE,
-    variant = rlang_version(),
-    {
-      foo <- error_cnd("foo", message = "Title parent.")
-      abort("Title.", parent = foo)
-    }
-  )
+  expect_snapshot(error = TRUE, {
+    foo <- error_cnd("foo", message = "Title parent.")
+    abort("Title.", parent = foo)
+  })
 })
 
 test_that("can print with and without condition classes", {
-  local_use_rlang_1_0()
-
   f <- function() {
     message("foo")
     warning("bar")
     stop("baz")
   }
-  expect_snapshot(
-    error = TRUE,
-    cnd_class = TRUE,
-    variant = rlang_version(),
-    f()
-  )
-  expect_snapshot(
-    error = TRUE,
-    cnd_class = FALSE,
-    variant = rlang_version(),
-    f()
-  )
+  expect_snapshot(error = TRUE, cnd_class = TRUE, f())
+  expect_snapshot(error = TRUE, cnd_class = FALSE, f())
 })
 
 test_that("errors and warnings are folded", {
-  local_use_rlang_1_0()
-
   f <- function() {
     warning("foo")
     stop("bar")
   }
-  expect_snapshot(
-    error = TRUE,
-    variant = rlang_version(),
-    f()
-  )
+  expect_snapshot(error = TRUE, f())
 })
 
+# I don't know how to test this automatically; wrapping it in another
+# snapshot doesn't capture the behaviour I expected, presumably due to the
+# way that errors bubble up
+# test_that("errors in snapshots behave like regular errors", {
+#   f <- function() g()
+#   g <- function() h()
+#   h <- function() abort("!")
+#
+#   expect_snapshot(f())
+#   expect_snapshot(1 + 1)
+# })
+
 test_that("hint is informative", {
+  local_reproducible_output(crayon = TRUE, hyperlinks = TRUE, rstudio = TRUE)
+
   expect_snapshot({
-    cat(snapshot_accept_hint("_default", "bar.R"))
-    cat(snapshot_accept_hint("foo", "bar.R"))
+    cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
+    cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
+  })
+})
+
+test_that("expect_snapshot requires a non-empty test label", {
+  test_that("", {
+    expect_error(expect_snapshot(1 + 1))
   })
 })

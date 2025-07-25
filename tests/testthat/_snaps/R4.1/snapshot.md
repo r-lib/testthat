@@ -1,4 +1,4 @@
-# can access nickname
+# variants save different values
 
     Code
       r_version()

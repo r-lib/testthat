@@ -2,14 +2,20 @@
 #'
 #' @description
 #' A test encapsulates a series of expectations about a small, self-contained
-#' set of functionality. Each test lives in a file and contains multiple
-#' expectations, like [expect_equal()] or [expect_error()].
+#' unit of functionality. Each test contains one or more expectations, such as
+#' [expect_equal()] or [expect_error()], and lives in a `test/testhat/test*`
+#' file, often together with other tests that relate to the same function or set
+#' of functions.
 #'
-#' Tests are evaluated in their own environments, and should not affect
-#' global state.
+#' Each test has its own execution environment, so an object created in a test
+#' also dies with the test. Note that this cleanup does not happen automatically
+#' for other aspects of global state, such as session options or filesystem
+#' changes. Avoid changing global state, when possible, and reverse any changes
+#' that you do make.
 #'
-#' @param desc Test name. Names should be brief, but evocative. They are
-#'   only used by humans, so do you
+#' @param desc Test name. Names should be brief, but evocative. It's common to
+#'   write the description so that it reads like a natural sentence, e.g.
+#'   `test_that("multiplication works", { ... })`.
 #' @param code Test code containing expectations. Braces (`{}`) should always
 #'   be used in order to get accurate location data for test failures.
 #' @return When run interactively, returns `invisible(TRUE)` if all tests
@@ -28,19 +34,9 @@
 #' })
 #' }
 test_that <- function(desc, code) {
-  if (!is.character(desc) || length(desc) != 1) {
-    abort("`desc` must be a string")
-  }
-
-  reporter <- get_reporter()
-  if (is.null(reporter)) {
-    reporter <- local_interactive_reporter()
-  }
-
-  local_test_context()
+  check_string(desc)
 
   code <- substitute(code)
-
   if (edition_get() >= 3) {
     if (!is_call(code, "{")) {
       warn(
@@ -50,14 +46,25 @@ test_that <- function(desc, code) {
     }
   }
 
-  test_code(desc, code, env = parent.frame(), reporter = reporter)
+  # Must initialise interactive reporter before local_test_context()
+  reporter <- get_reporter() %||% local_interactive_reporter()
+  local_test_context()
+
+  test_code(
+    desc,
+    code,
+    env = parent.frame(),
+    reporter = reporter
+  )
 }
 
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
-test_code <- function(test, code, env = test_env(), reporter = get_reporter(), skip_on_empty = TRUE) {
-  reporter <- reporter %||% StopReporter$new()
-  if (!is.null(test) && !is.null(reporter)) {
+test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
+
+  frame <- caller_env()
+
+  if (!is.null(test)) {
     reporter$start_test(context = reporter$.context, test = test)
     on.exit(reporter$end_test(context = reporter$.context, test = test))
   }
@@ -67,14 +74,12 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
   # @param debug_end How many frames should be skipped to find the
   #   last relevant frame call. Only useful for the DebugReporter.
   register_expectation <- function(e, debug_end) {
-    # Find test environment on the stack
-    start <- eval_bare(quote(base::sys.nframe()), test_env) + 1L
-
-    srcref <- e[["srcref"]] %||% find_first_srcref(start)
+    srcref <- e[["srcref"]] %||% find_expectation_srcref(frame)
     e <- as.expectation(e, srcref = srcref)
 
     # Data for the DebugReporter
     if (debug_end >= 0) {
+      start <- eval_bare(quote(base::sys.nframe()), test_env) + 1L
       e$start_frame <- start
       e$end_frame <- sys.nframe() - debug_end - 1L
     }
@@ -85,7 +90,6 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
     reporter$add_result(context = reporter$.context, test = test, result = e)
   }
 
-  frame <- sys.nframe()
   # Any error will be assigned to this variable first
   # In case of stack overflow, no further processing (not even a call to
   # signalCondition() ) might be possible
@@ -169,15 +173,7 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
   handle_skip <- function(e) {
     handled <<- TRUE
 
-    if (inherits(e, "skip_empty")) {
-      # If we get here, `code` has already finished its evaluation.
-      # Find the srcref in the `test_that()` frame above.
-      e$srcref <- find_first_srcref(frame - 1)
-      debug_end <- -1
-    } else {
-      debug_end <- 2
-    }
-
+    debug_end <- if (inherits(e, "skip_empty")) -1 else 2
     register_expectation(e, debug_end)
     signalCondition(e)
   }
@@ -188,6 +184,7 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
 
   withr::local_options(testthat_topenv = test_env)
 
+  before <- inspect_state()
   tryCatch(
     withCallingHandlers(
       {
@@ -207,7 +204,14 @@ test_code <- function(test, code, env = test_env(), reporter = get_reporter(), s
     # skip silently terminate code
     skip  = function(e) {}
   )
+  after <- inspect_state()
 
+  if (!is.null(test)) {
+    cnd <- testthat_state_condition(before, after, call = sys.call(-1))
+    if (!is.null(cnd)) {
+      register_expectation(cnd, 0)
+    }
+  }
 
   invisible(ok)
 }

@@ -1,7 +1,7 @@
 #' Does code return a number greater/less than the expected value?
 #'
 #' @inheritParams expect_equal
-#' @param expected Single numeric value to compare.
+#' @param object,expected A value to compare and its expected bound.
 #' @family expectations
 #' @examples
 #' a <- 9

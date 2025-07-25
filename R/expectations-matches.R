@@ -11,9 +11,10 @@
 #' @param regexp Regular expression to test against.
 #' @param all Should all elements of actual value match `regexp` (TRUE),
 #'   or does only one need to match (FALSE).
+#' @param fixed If `TRUE`, treats `regexp` as a string to be matched exactly
+#'   (not a regular expressions). Overrides `perl`.
 #' @inheritDotParams base::grepl -pattern -x -perl -fixed
 #' @family expectations
-#' @keywords internal
 #' @export
 #' @examples
 #' expect_match("Testing is fun", "fun")

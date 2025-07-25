@@ -17,18 +17,9 @@ expect_gt(object, expected, label = NULL, expected.label = NULL)
 expect_gte(object, expected, label = NULL, expected.label = NULL)
 }
 \arguments{
-\item{object}{Computation and value to compare it to.
+\item{object, expected}{A value to compare and its expected bound.}
 
-Both arguments supports limited unquoting to make it easier to generate
-readable failures within a function or for loop. See \link{quasi_label} for
-more details.}
-
-\item{expected}{Single numeric value to compare.}
-
-\item{label}{Used to customise failure messages. For expert
-use only.}
-
-\item{expected.label}{Used to customise failure messages. For expert
+\item{label, expected.label}{Used to customise failure messages. For expert
 use only.}
 }
 \description{
@@ -58,6 +49,7 @@ Other expectations:
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
 \code{\link{expect_reference}()},
+\code{\link{expect_shape}()},
 \code{\link{expect_silent}()},
 \code{\link{inheritance-expectations}},
 \code{\link{logical-expectations}}

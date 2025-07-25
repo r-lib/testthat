@@ -26,7 +26,8 @@ expect_length(1:10, 1)
 }
 }
 \seealso{
-\code{\link[=expect_vector]{expect_vector()}} to make assertions about the "size" of a vector
+\code{\link[=expect_vector]{expect_vector()}} to make assertions about the "size" of a vector,
+\code{\link[=expect_shape]{expect_shape()}} for more general assertions about object "shape".
 
 Other expectations: 
 \code{\link{comparison-expectations}},
@@ -37,6 +38,7 @@ Other expectations:
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
 \code{\link{expect_reference}()},
+\code{\link{expect_shape}()},
 \code{\link{expect_silent}()},
 \code{\link{inheritance-expectations}},
 \code{\link{logical-expectations}}

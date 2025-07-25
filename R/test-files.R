@@ -1,37 +1,18 @@
 #' Run all tests in a directory
 #'
+#' @description
 #' This function is the low-level workhorse that powers [test_local()] and
 #' [test_package()]. Generally, you should not call this function directly.
 #' In particular, you are responsible for ensuring that the functions to test
 #' are available in the test `env` (e.g. via `load_package`).
 #'
-#' @section Special files:
-#' There are two types of `.R` file that have special behaviour:
-#'
-#' * Test files start with `test` and are executed in alphabetical order.
-#'
-#' * Setup files start with `setup` and are executed before tests. If
-#'   clean up is needed after all tests have been run, you can use
-#'   `withr::defer(clean_up(), teardown_env())`. See `vignette("test-fixtures")`
-#'   for more details.
-#'
-#' There are two other types of special file that we no longer recommend using:
-#'
-#' * Helper files start with `helper` and are executed before tests are
-#'   run. They're also loaded by `devtools::load_all()`, so there's no
-#'   real point to them and you should just put your helper code in `R/`.
-#'
-#' * Teardown files start with `teardown` and are executed after the tests
-#'   are run. Now we recommend interleave setup and cleanup code in `setup-`
-#'   files, making it easier to check that you automatically clean up every
-#'   mess that you make.
-#'
-#' All other files are ignored by testthat.
+#' See `vignette("special-files")` to learn more about the conventions for test,
+#' helper, and setup files that testthat uses, and what you might use each for.
 #'
 #' @section Environments:
 #' Each test is run in a clean environment to keep tests as isolated as
-#' possible. For package tests, that environment that inherits from the
-#' package's namespace environment, so that tests can access internal functions
+#' possible. For package tests, that environment inherits from the package's
+#' namespace environment, so that tests can access internal functions
 #' and objects.
 #'
 #' @param path Path to directory containing tests.
@@ -42,7 +23,6 @@
 #' @param env Environment in which to execute the tests. Expert use only.
 #' @param ... Additional arguments passed to [grepl()] to control filtering.
 #' @param load_helpers Source helper files before running the tests?
-#'   See [source_test_helpers()] for more details.
 #' @param stop_on_failure If `TRUE`, throw an error if any tests fail.
 #' @param stop_on_warning If `TRUE`, throw an error if any tests generate
 #'   warnings.
@@ -50,8 +30,13 @@
 #'   * "none", the default, doesn't load the package.
 #'   * "installed", uses [library()] to load an installed package.
 #'   * "source", uses [pkgload::load_all()] to a source package.
+#'     To configure the arguments passed to `load_all()`, add this
+#'     field in your DESCRIPTION file:
+#'
+#'     ```
+#'     Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
+#'     ```
 #' @param wrap DEPRECATED
-#' @keywords internal
 #' @return A list (invisibly) containing data about the test results.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
@@ -84,7 +69,7 @@ test_dir <- function(path,
   }
 
   if (!is_missing(wrap)) {
-    lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
+    lifecycle::deprecate_stop("3.0.0", "test_dir(wrap = )")
   }
 
   want_parallel <- find_parallel(path, load_package, package)
@@ -108,28 +93,33 @@ test_dir <- function(path,
     env = env,
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
-    wrap = wrap,
     load_package = load_package,
     parallel = parallel
   )
 }
 
-#' Run all tests in a single file
+#' Run tests in a single file
 #'
 #' Helper, setup, and teardown files located in the same directory as the
-#' test will also be run.
+#' test will also be run. See `vignette("special-files")` for details.
 #'
 #' @inherit test_dir return params
-#' @inheritSection test_dir Special files
 #' @inheritSection test_dir Environments
 #' @param path Path to file.
 #' @param ... Additional parameters passed on to `test_dir()`
+#' @param desc Optionally, supply a string here to run only a single
+#'   test (`test_that()` or `describe()`) with this `desc`ription.
 #' @export
 #' @examples
 #' path <- testthat_example("success")
 #' test_file(path)
+#' test_file(path, desc = "some tests have warnings")
 #' test_file(path, reporter = "minimal")
-test_file <- function(path, reporter = default_compact_reporter(), package = NULL, ...) {
+test_file <- function(path,
+                      reporter = default_compact_reporter(),
+                      desc = NULL,
+                      package = NULL,
+                      ...) {
   if (!file.exists(path)) {
     stop("`path` does not exist", call. = FALSE)
   }
@@ -139,6 +129,7 @@ test_file <- function(path, reporter = default_compact_reporter(), package = NUL
     test_package = package,
     test_paths = basename(path),
     reporter = reporter,
+    desc = desc,
     ...
   )
 }
@@ -151,35 +142,45 @@ test_files <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
+                       desc = NULL,
                        wrap = TRUE,
                        load_package = c("none", "installed", "source"),
-                       parallel = FALSE) {
+                       parallel = FALSE,
+                       error_call = caller_env()) {
 
-  if (is_missing(wrap)) {
-    wrap <- TRUE
-  }
   if (!isTRUE(wrap)) {
-    lifecycle::deprecate_warn("3.0.0", "test_dir(wrap = )")
+    lifecycle::deprecate_stop("3.0.0", "test_dir(wrap = )")
   }
 
+  # Must keep these two blocks in sync
   if (parallel) {
-    test_files <- test_files_parallel
+    test_files_parallel(
+      test_dir = test_dir,
+      test_package = test_package,
+      test_paths = test_paths,
+      load_helpers = load_helpers,
+      reporter = reporter,
+      env = env,
+      stop_on_failure = stop_on_failure,
+      stop_on_warning = stop_on_warning,
+      load_package = load_package
+    )
   } else {
-    test_files <- test_files_serial
+    test_files_serial(
+      test_dir = test_dir,
+      test_package = test_package,
+      test_paths = test_paths,
+      load_helpers = load_helpers,
+      reporter = reporter,
+      env = env,
+      stop_on_failure = stop_on_failure,
+      stop_on_warning = stop_on_warning,
+      desc = desc,
+      load_package = load_package,
+      error_call = error_call
+    )
   }
 
-  test_files(
-    test_dir = test_dir,
-    test_package = test_package,
-    test_paths = test_paths,
-    load_helpers = load_helpers,
-    reporter = reporter,
-    env = env,
-    stop_on_failure = stop_on_failure,
-    stop_on_warning = stop_on_warning,
-    wrap = wrap,
-    load_package = load_package
-  )
 }
 
 test_files_serial <- function(test_dir,
@@ -190,15 +191,35 @@ test_files_serial <- function(test_dir,
                        env = NULL,
                        stop_on_failure = FALSE,
                        stop_on_warning = FALSE,
+                       desc = NULL,
                        wrap = TRUE,
-                       load_package = c("none", "installed", "source")) {
+                       load_package = c("none", "installed", "source"),
+                       error_call = caller_env()) {
+
+  # Because load_all() called by test_files_setup_env() will have already
+  # loaded them. We don't want to rely on testthat's loading since that
+  # only affects the test environment and we want to keep the helpers
+  # loaded in the user's session.
+  load_package <- arg_match(load_package)
+  if (load_package == "source") {
+    load_helpers <- FALSE
+  }
 
   env <- test_files_setup_env(test_package, test_dir, load_package, env)
+  # record testing env for mocks
+  local_testing_env(env)
+
   test_files_setup_state(test_dir, test_package, load_helpers, env)
   reporters <- test_files_reporter(reporter)
 
   with_reporter(reporters$multi,
-    lapply(test_paths, test_one_file, env = env, wrap = wrap)
+    lapply(
+      test_paths,
+      test_one_file,
+      env = env,
+      desc = desc,
+      error_call = error_call
+    )
   )
 
   test_files_check(reporters$list$get_results(),
@@ -214,32 +235,68 @@ test_files_setup_env <- function(test_package,
   library(testthat)
 
   load_package <- arg_match(load_package)
-  switch(load_package,
-    none = {},
-    installed = library(test_package, character.only = TRUE),
-    source = pkgload::load_all(test_dir, helpers = FALSE, quiet = TRUE)
-  )
+  if (load_package == "installed") {
+    library(test_package, character.only = TRUE)
+  } else if (load_package == "source") {
+    # Allow configuring what we export to the search path (#1636)
+    args <- find_load_all_args(test_dir)
+    pkgload::load_all(
+      test_dir,
+      export_all = args[["export_all"]],
+      helpers = args[["helpers"]],
+      quiet = TRUE
+    )
+  }
 
   env %||% test_env(test_package)
 }
 
-test_files_setup_state <- function(test_dir, test_package, load_helpers, env, .env = parent.frame()) {
+find_load_all_args <- function(path) {
+  default <- list(export_all = TRUE, helpers = TRUE)
 
+  desc <- find_description(path)
+  if (is.null(desc)) {
+    return(default)
+  }
+
+  args <- desc$get_field("Config/testthat/load-all", default = NULL)
+  if (is.null(args)) {
+    return(default)
+  }
+
+  args <- parse_expr(args)
+  if (!is_call(args, "list")) {
+    abort("`Config/testthat/load-all` must be a list.", call = NULL)
+  }
+
+  args <- as.list(args[-1])
+  list(
+    export_all = args[["export_all"]] %||% default[["export_all"]],
+    helpers = args[["helpers"]] %||% default[["helpers"]]
+  )
+}
+
+test_files_setup_state <- function(
+    test_dir,
+    test_package,
+    load_helpers,
+    env,
+    frame = parent.frame()
+) {
   # Define testing environment
-  local_test_directory(test_dir, test_package, .env = .env)
+  local_test_directory(test_dir, test_package, .env = frame)
   withr::local_options(
     topLevelEnvironment = env_parent(env),
-    .local_envir = .env
+    .local_envir = frame
   )
 
   # Load helpers, setup, and teardown (on exit)
-  local_teardown_env(.env)
+  local_teardown_env(frame)
   if (load_helpers) {
     source_test_helpers(".", env)
   }
   source_test_setup(".", env)
-  withr::defer(withr::deferred_run(teardown_env()), .env) # new school
-  withr::defer(source_test_teardown(".", env), .env)      # old school
+  withr::defer(source_test_teardown(".", env), frame)      # old school
 }
 
 test_files_reporter <- function(reporter, .env = parent.frame()) {
@@ -247,7 +304,7 @@ test_files_reporter <- function(reporter, .env = parent.frame()) {
   reporters <- list(
     find_reporter(reporter),
     lister, # track data
-    local_snapshotter("_snaps", fail_on_new = FALSE, .env = .env) # for snapshots
+    local_snapshotter("_snaps", fail_on_new = FALSE, .env = .env)
   )
   list(
     multi = MultiReporter$new(reporters = compact(reporters)),
@@ -266,12 +323,20 @@ test_files_check <- function(results, stop_on_failure = TRUE, stop_on_warning = 
   invisible(results)
 }
 
-test_one_file <- function(path, env = test_env(), wrap = TRUE) {
+test_one_file <- function(path,
+                          env = test_env(),
+                          desc = NULL,
+                          error_call = caller_env()) {
   reporter <- get_reporter()
   on.exit(teardown_run(), add = TRUE)
 
   reporter$start_file(path)
-  source_file(path, child_env(env), wrap = wrap)
+  source_file(
+    path,
+    env = env(env),
+    desc = desc,
+    error_call = error_call
+  )
   reporter$end_context_if_started()
   reporter$end_file()
 }
@@ -287,15 +352,15 @@ test_one_file <- function(path, env = test_env(), wrap = TRUE) {
 #'
 #' @export
 teardown_env <- function() {
-  testthat_env$teardown_env
+  if (is.null(the$teardown_env)) {
+    abort("`teardown_env()` has not been initialized", .internal = TRUE)
+  }
+
+  the$teardown_env
 }
 
-local_teardown_env <- function(env = parent.frame()) {
-  old <- testthat_env$teardown_env
-  testthat_env$teardown_env <- child_env(emptyenv())
-  withr::defer(testthat_env$teardown_env <- old, env)
-
-  invisible()
+local_teardown_env <- function(frame = parent.frame()) {
+  local_bindings(teardown_env = frame, .env = the, .frame = frame)
 }
 
 #' Find test files

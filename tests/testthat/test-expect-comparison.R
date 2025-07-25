@@ -48,7 +48,7 @@ test_that("comparison must yield a single logical", {
   expect_error(expect_lt(1:10, 5), "single logical")
 })
 
-test_that("wordly versions are deprecated", {
+test_that("wordy versions are deprecated", {
   expect_warning(expect_less_than(1, 2), "Deprecated")
   expect_warning(expect_more_than(2, 1), "Deprecated")
 })

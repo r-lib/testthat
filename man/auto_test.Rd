@@ -26,7 +26,7 @@ modification time stamps, but those are faster for large files.}
 }
 \description{
 The idea behind \code{auto_test()} is that you just leave it running while
-you develop your code.  Everytime you save a file it will be automatically
+you develop your code.  Every time you save a file it will be automatically
 tested and you can easily see if your changes have caused any test
 failures.
 }

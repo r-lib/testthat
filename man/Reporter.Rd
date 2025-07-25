@@ -5,7 +5,7 @@
 \title{Manage test reporting}
 \description{
 The job of a reporter is to aggregate the results from files, tests, and
-expectations and display them in an informative way. Every testtthat function
+expectations and display them in an informative way. Every testthat function
 that runs multiple tests provides a \code{reporter} argument which you can
 use to override the default (which is selected by \code{\link[=default_reporter]{default_reporter()}}).
 }

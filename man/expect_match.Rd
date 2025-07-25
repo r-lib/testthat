@@ -37,13 +37,13 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{perl}{logical.  Should Perl-compatible regexps be used?}
 
-\item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
-    matched as is.  Overrides all conflicting arguments.}
+\item{fixed}{If \code{TRUE}, treats \code{regexp} as a string to be matched exactly
+(not a regular expressions). Overrides \code{perl}.}
 
 \item{...}{
   Arguments passed on to \code{\link[base:grep]{base::grepl}}
   \describe{
-    \item{\code{ignore.case}}{if \code{FALSE}, the pattern matching is \emph{case
+    \item{\code{ignore.case}}{logical. if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}
     \item{\code{useBytes}}{logical.  If \code{TRUE} the matching is done
     byte-by-byte rather than character-by-character.  See
@@ -70,10 +70,10 @@ expression.
 }
 \section{Functions}{
 \itemize{
-\item \code{expect_no_match}: Check that a string doesn't match a regular
+\item \code{expect_no_match()}: Check that a string doesn't match a regular
 expression.
-}}
 
+}}
 \examples{
 expect_match("Testing is fun", "fun")
 expect_match("Testing is fun", "f.n")
@@ -96,9 +96,9 @@ Other expectations:
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
 \code{\link{expect_reference}()},
+\code{\link{expect_shape}()},
 \code{\link{expect_silent}()},
 \code{\link{inheritance-expectations}},
 \code{\link{logical-expectations}}
 }
 \concept{expectations}
-\keyword{internal}

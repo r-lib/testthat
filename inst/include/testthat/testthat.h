@@ -12,16 +12,9 @@
  * Force 'testthat' to be disabled by defining TESTTHAT_DISABLED.
  * TESTTHAT_DISABLED takes precedence.
  * 'testthat' is disabled on Solaris by default.
- *
- * Hide symbols containing static members on gcc, to work around issues
- * with DLL unload due to static members in inline functions.
- * https://github.com/r-lib/devtools/issues/1832
  */
 #if defined(__GNUC__) || defined(__clang__)
 # define TESTTHAT_ENABLED
-# define TESTTHAT_ATTRIBUTE_HIDDEN __attribute__ ((visibility("hidden")))
-#else
-# define TESTTHAT_ATTRIBUTE_HIDDEN
 #endif
 
 #if defined(__SUNPRO_C) || defined(__SUNPRO_CC) || defined(__sun) || defined(__SVR4)
@@ -30,6 +23,20 @@
 
 #ifndef TESTTHAT_ENABLED
 # define TESTTHAT_DISABLED
+#endif
+
+/*
+ * Hide symbols containing static members on gcc, to work around issues
+ * with DLL unload due to static members in inline functions. This seems to only
+ * affect Linux. We never define this attribute on Windows, as MinGW has a known
+ * issue with this visibility attribute and ignores it with a warning.
+ * https://github.com/r-lib/devtools/issues/1832
+ * https://github.com/r-lib/testthat/issues/1672
+ */
+#if (defined(__GNUC__) && !defined(__MINGW32__)) || defined(__clang__)
+# define TESTTHAT_ATTRIBUTE_HIDDEN __attribute__ ((visibility("hidden")))
+#else
+# define TESTTHAT_ATTRIBUTE_HIDDEN
 #endif
 
 #ifndef TESTTHAT_DISABLED
@@ -82,7 +89,7 @@ protected:
     if (n == 1)
       Rprintf("%c", *s);
     else
-      Rprintf("%.*s", n, s);
+      Rprintf("%.*s", static_cast<int>(n), s);
 
     return n;
 
@@ -165,7 +172,7 @@ inline std::ostream& cerr()
 extern "C" SEXP run_testthat_tests(SEXP use_xml_sxp) {
   bool use_xml = LOGICAL(use_xml_sxp)[0];
   bool success = testthat::run_tests(use_xml);
-  return ScalarLogical(success);
+  return Rf_ScalarLogical(success);
 }
 
 # endif // TESTTHAT_TEST_RUNNER
@@ -191,7 +198,7 @@ extern "C" SEXP run_testthat_tests(SEXP use_xml_sxp) {
 #  include <R.h>
 #  include <Rinternals.h>
 extern "C" SEXP run_testthat_tests() {
-  return ScalarLogical(true);
+  return Rf_ScalarLogical(true);
 }
 
 # endif // TESTTHAT_TEST_RUNNER

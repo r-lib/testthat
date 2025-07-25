@@ -11,7 +11,7 @@ test_that("uses specified width", {
 })
 
 test_that("creates file on first run", {
-  file <- tempfile()
+  file <- withr::local_tempfile()
   expect_success(
     expect_warning(
       expect_known_output(cat("ok!\n"), file),
@@ -22,8 +22,8 @@ test_that("creates file on first run", {
   expect_true(file.exists(file))
 })
 
-test_that("igores incomplete last line", {
-  file <- tempfile()
+test_that("ignores incomplete last line", {
+  file <- withr::local_tempfile()
   writeLines("Hi!", file)
   expect_success(expect_known_output(cat("Hi!"), file))
   expect_success(expect_known_output(cat("Hi!\n"), file))
@@ -32,7 +32,7 @@ test_that("igores incomplete last line", {
 })
 
 test_that("updates by default", {
-  file <- tempfile()
+  file <- withr::local_tempfile()
   writeLines("Hi!", file)
   expect_failure(expect_known_output(cat("oops"), file, update = FALSE))
 
@@ -105,7 +105,6 @@ test_that("equal_to_ref does not overwrite existing", {
 })
 
 test_that("serializes to version 2 by default", {
-  skip_if(getRversion() < 3.5)
   tmp_rds <- tempfile(fileext = ".rds")
   on.exit(unlink(tmp_rds))
 
@@ -118,7 +117,6 @@ test_that("serializes to version 2 by default", {
 })
 
 test_that("version 3 is possible", {
-  skip_if(getRversion() < 3.5)
   tmp_rds <- tempfile(fileext = ".rds")
   on.exit(unlink(tmp_rds))
 

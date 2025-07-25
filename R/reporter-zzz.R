@@ -22,15 +22,15 @@ NULL
 #' @rdname reporter-accessors
 #' @export
 set_reporter <- function(reporter) {
-  old <- testthat_env$reporter
-  testthat_env$reporter <- reporter
+  old <- the$reporter
+  the$reporter <- reporter
   invisible(old)
 }
 
 #' @rdname reporter-accessors
 #' @export
 get_reporter <- function() {
-  testthat_env$reporter
+  the$reporter
 }
 
 #' @rdname reporter-accessors
@@ -58,8 +58,11 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
 }
 
 stop_reporter <- function(message) {
-  signal(message, "testthat_abort_reporter")
-  abort(message)
+  cli::cli_abort(
+    message,
+    class = "testthat_abort_reporter",
+    call = NULL
+  )
 }
 
 #' Find reporter object given name or object.

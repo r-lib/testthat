@@ -41,7 +41,7 @@
 #' @param code Code to execute. This will usually be a multiline expression
 #'   contained within `{}` (similarly to `test_that()` calls).
 #' @param width Width of console output
-#' @param crayon Enable crayon package colouring?
+#' @param crayon Enable cli/crayon package colouring?
 #' @param unicode Enable cli package UTF-8 symbols? If you set this to
 #'   `TRUE`, call `skip_if(!cli::is_utf8_output())` to disable the
 #'   test on your CI platforms that don't support UTF-8 (e.g. Windows).
@@ -71,7 +71,8 @@ verify_exec <- function(expr, env = caller_env(), replay = output_replay) {
     exprs <- list(expr)
   }
 
-  withr::local_pdf(tempfile())
+  device_path <- withr::local_tempfile(pattern = "verify_exec_")
+  withr::local_pdf(device_path)
   grDevices::dev.control(displaylist = "enable")
 
   exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))

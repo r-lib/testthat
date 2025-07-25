@@ -13,7 +13,9 @@ test_that("basic workflow", {
   snapper <- local_snapshotter(path)
   snapper$start_file("snapshot-2")
   # output if not active (because test not set here)
-  expect_message(expect_snapshot_output("x"), "Can't compare")
+  expect_snapshot_output("x") |>
+    expect_message("Can't save") |>
+    expect_output("[1] \"x\"", fixed = TRUE)
 
   # warns on first creation
   snapper$start_file("snapshot-2", "test")
@@ -106,13 +108,6 @@ test_that("removing tests removes snap file", {
   snapper$start_file("snapshot-3", "test")
   snapper$end_file()
   expect_false(file.exists(file.path(path, "snapshot-3.md")))
-})
-
-test_that("errors if can't roundtrip", {
-  snapper <- local_snapshotter()
-  snapper$start_file("snapshot-4", "test")
-
-  expect_error(expect_snapshot_value(NULL), "not symmetric")
 })
 
 test_that("errors in test doesn't change snapshot", {
