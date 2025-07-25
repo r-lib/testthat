@@ -12,11 +12,11 @@
 
 ---
 
-    array(dim = 1:3) has 3 dimensions, not 2
+    array(dim = 1:3) has 3 dimensions, not 2.
 
 ---
 
-    array(dim = 1:3) has 3 dimensions, not 4
+    array(dim = 1:3) has 3 dimensions, not 4.
 
 # nrow compared correctly
 
@@ -50,28 +50,40 @@
 
     `x` has dim (NA, 10), not (10, NA).
 
-# at least one argument is required
+# checks inputs arguments, 
 
     Code
       expect_shape(1:10)
     Condition
       Error in `expect_shape()`:
       ! One of `length`, `nrow`, `ncol`, or `dim` must be supplied.
-
----
-
-    Code
-      expect_shape(1:10, 2)
-    Condition
-      Error in `expect_shape()`:
-      ! One of `length`, `nrow`, `ncol`, or `dim` must be supplied.
-
----
-
     Code
       expect_shape(1:10, nrow = 1L, ncol = 2L)
     Condition
       Error in `expect_shape()`:
       ! Exactly one of `length`, `nrow`, `ncol`, or `dim` must be supplied.
       x `nrow` and `ncol` were supplied together.
+    Code
+      expect_shape(1:10, 2)
+    Condition
+      Error in `expect_shape()`:
+      ! `...` must be empty.
+      x Problematic argument:
+      * ..1 = 2
+      i Did you forget to name an argument?
+    Code
+      expect_shape(array(1), nrow = "x")
+    Condition
+      Error in `expect_shape()`:
+      ! `nrow` must be a whole number or `NA`, not the string "x".
+    Code
+      expect_shape(array(1), ncol = "x")
+    Condition
+      Error in `expect_shape()`:
+      ! `ncol` must be a whole number or `NA`, not the string "x".
+    Code
+      expect_shape(array(1), dim = "x")
+    Condition
+      Error in `expect_shape()`:
+      ! `dim` must be a numeric vector, not the string "x".
 

@@ -12,8 +12,14 @@ test_that("length compared correctly", {
 
 test_that("dim compared correctly", {
   expect_success(expect_shape(matrix(nrow = 5, ncol = 4), dim = c(5L, 4L)))
-  expect_snapshot_failure(expect_shape(matrix(nrow = 6, ncol = 3), dim = c(6L, 2L)))
-  expect_snapshot_failure(expect_shape(matrix(nrow = 6, ncol = 3), dim = c(7L, 3L)))
+  expect_snapshot_failure(expect_shape(
+    matrix(nrow = 6, ncol = 3),
+    dim = c(6L, 2L)
+  ))
+  expect_snapshot_failure(expect_shape(
+    matrix(nrow = 6, ncol = 3),
+    dim = c(7L, 3L)
+  ))
   expect_success(expect_shape(data.frame(1:10, 11:20), dim = c(10, 2)))
   expect_success(expect_shape(array(dim = 1:3), dim = 1:3))
   expect_snapshot_failure(expect_shape(array(dim = 1:3), dim = 1:2))
@@ -56,19 +62,20 @@ test_that("ncol compared correctly", {
 })
 
 test_that("uses S3 dim method", {
-  dim.testthat_expect_shape <- function(x) 1:2
-  x <- integer()
-  class(x) <- "testthat_expect_shape"
-  registerS3method("dim", "testthat_expect_shape", dim.testthat_expect_shape)
-
+  local_bindings(
+    dim.testthat_expect_shape = function(x) 1:2,
+    .env = globalenv()
+  )
+  x <- structure(integer(), class = "testthat_expect_shape")
   expect_success(expect_shape(x, dim = 1:2))
 })
 
 test_that("NA handling (e.g. dbplyr)", {
-  dim.testthat_expect_shape_missing <- function(x) c(NA_integer_, 10L)
-  x <- integer()
-  class(x) <- "testthat_expect_shape_missing"
-  registerS3method("dim", "testthat_expect_shape_missing", dim.testthat_expect_shape_missing)
+  local_bindings(
+    dim.testthat_expect_shape_missing = function(x) c(NA_integer_, 10L),
+    .env = globalenv()
+  )
+  x <- structure(integer(), class = "testthat_expect_shape_missing")
 
   expect_success(expect_shape(x, nrow = NA_integer_))
   expect_success(expect_shape(x, ncol = 10L))
@@ -85,9 +92,13 @@ test_that("uses S4 dim method", {
   expect_success(expect_shape(A(x = 1:9, y = 3), dim = 8:10))
 })
 
-test_that("at least one argument is required", {
-  err_msg <- "Exactly one of `length`, `nrow`, `ncol`, or `dim` must be provided."
-  expect_snapshot(expect_shape(1:10), error = TRUE) # no args
-  expect_snapshot(expect_shape(1:10, 2), error = TRUE) # no named args
-  expect_snapshot(expect_shape(1:10, nrow = 1L, ncol = 2L), error = TRUE) # multiple named args
+test_that("checks inputs arguments, ", {
+  expect_snapshot(error = TRUE, {
+    expect_shape(1:10)
+    expect_shape(1:10, nrow = 1L, ncol = 2L)
+    expect_shape(1:10, 2)
+    expect_shape(array(1), nrow = "x")
+    expect_shape(array(1), ncol = "x")
+    expect_shape(array(1), dim = "x")
+  })
 })
