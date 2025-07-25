@@ -8,7 +8,7 @@
 #' @inheritParams expect_that
 #' @param ... Ignored.
 #' @param length Expected [length()] of `object`.
-#' @param nrow,nrow Expected [nrow()]/[ncol()] of `object`.
+#' @param nrow,ncol Expected [nrow()]/[ncol()] of `object`.
 #' @param dim Expected [dim()] of `object`.
 #' @family expectations
 #' @export
