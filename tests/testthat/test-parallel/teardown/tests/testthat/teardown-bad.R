@@ -1,2 +1,1 @@
-
 stop("Error in teardown")

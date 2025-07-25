@@ -6,7 +6,8 @@
 #'
 #' @export
 #' @family reporters
-FailReporter <- R6::R6Class("FailReporter",
+FailReporter <- R6::R6Class(
+  "FailReporter",
   inherit = Reporter,
   public = list(
     failed = FALSE,

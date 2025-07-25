@@ -114,8 +114,14 @@ skip_if_not_installed <- function(pkg, minimum_version = NULL) {
     installed_version <- package_version(pkg)
     if (installed_version < minimum_version) {
       skip(paste0(
-        "Installed ", pkg, " is version ", installed_version, "; ",
-        "but ", minimum_version, " is required"
+        "Installed ",
+        pkg,
+        " is version ",
+        installed_version,
+        "; ",
+        "but ",
+        minimum_version,
+        " is required"
       ))
     }
   }
@@ -133,7 +139,9 @@ package_version <- function(x) {
 skip_unless_r <- function(spec) {
   parts <- unlist(strsplit(spec, " ", fixed = TRUE))
   if (length(parts) != 2L) {
-    cli::cli_abort("{.arg spec} should be a comparison like '>=' and an R version separated by a space.")
+    cli::cli_abort(
+      "{.arg spec} should be a comparison like '>=' and an R version separated by a space."
+    )
   }
   comparator <- match.fun(parts[1L])
   required_version <- numeric_version(parts[2L])
@@ -143,7 +151,9 @@ skip_unless_r <- function(spec) {
     comparator(current_version, required_version),
     sprintf(
       "Current R version (%s) does not satisfy requirement (%s %s)",
-      current_version, parts[1L], required_version
+      current_version,
+      parts[1L],
+      required_version
     )
   )
 }
@@ -184,11 +194,12 @@ skip_on_os <- function(os, arch = NULL) {
     several.ok = TRUE
   )
 
-  msg <- switch(system_os(),
+  msg <- switch(
+    system_os(),
     windows = if ("windows" %in% os) "On Windows",
-    darwin =  if ("mac" %in% os) "On Mac",
-    linux =   if ("linux" %in% os) "On Linux",
-    sunos =   if ("solaris" %in% os) "On Solaris",
+    darwin = if ("mac" %in% os) "On Mac",
+    linux = if ("linux" %in% os) "On Linux",
+    sunos = if ("solaris" %in% os) "On Solaris",
     emscripten = if ("emscripten" %in% os) "On Emscripten"
   )
 
@@ -272,7 +283,7 @@ skip_on_appveyor <- function() {
 # helpers -----------------------------------------------------------------
 
 on_ci <- function() {
- env_var_is_true("CI")
+  env_var_is_true("CI")
 }
 in_covr <- function() {
   env_var_is_true("R_COVR")

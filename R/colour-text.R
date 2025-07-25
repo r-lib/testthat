@@ -1,4 +1,7 @@
-colourise <- function(text, as = c("success", "skip", "warning", "failure", "error")) {
+colourise <- function(
+  text,
+  as = c("success", "skip", "warning", "failure", "error")
+) {
   if (has_colour()) {
     unclass(cli::make_ansi_style(testthat_style(as))(text))
   } else {
@@ -11,7 +14,9 @@ has_colour <- function() {
     cli::num_ansi_colors() > 1
 }
 
-testthat_style <- function(type = c("success", "skip", "warning", "failure", "error")) {
+testthat_style <- function(
+  type = c("success", "skip", "warning", "failure", "error")
+) {
   type <- match.arg(type)
 
   c(

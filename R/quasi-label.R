@@ -51,7 +51,10 @@ quasi_label <- function(quo, label = NULL, arg = "quo") {
 quasi_capture <- function(.quo, .label, .capture, ...) {
   act <- list()
   act$lab <- .label %||% quo_label(.quo)
-  act$cap <- .capture(act$val <- eval_bare(quo_get_expr(.quo), quo_get_env(.quo)), ...)
+  act$cap <- .capture(
+    act$val <- eval_bare(quo_get_expr(.quo), quo_get_env(.quo)),
+    ...
+  )
 
   act
 }
@@ -103,8 +106,30 @@ is_call_infix <- function(x) {
 
   name <- as_string(fn)
   base <- c(
-    ":", "::", ":::", "$", "@", "^", "*", "/", "+", "-", ">", ">=",
-    "<", "<=", "==", "!=", "!", "&", "&&", "|", "||", "~", "<-", "<<-"
+    ":",
+    "::",
+    ":::",
+    "$",
+    "@",
+    "^",
+    "*",
+    "/",
+    "+",
+    "-",
+    ">",
+    ">=",
+    "<",
+    "<=",
+    "==",
+    "!=",
+    "!",
+    "&",
+    "&&",
+    "|",
+    "||",
+    "~",
+    "<-",
+    "<<-"
   )
   name %in% base || grepl("^%.*%$", name)
 }

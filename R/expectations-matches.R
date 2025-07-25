@@ -27,8 +27,16 @@
 #' # Zero-length inputs always fail
 #' expect_match(character(), ".")
 #' }
-expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
-                         info = NULL, label = NULL) {
+expect_match <- function(
+  object,
+  regexp,
+  perl = FALSE,
+  fixed = FALSE,
+  ...,
+  all = TRUE,
+  info = NULL,
+  label = NULL
+) {
   # Capture here to avoid environment-related messiness
   act <- quasi_label(enquo(object), label, arg = "object")
   stopifnot(is.character(regexp), length(regexp) == 1)
@@ -54,8 +62,16 @@ expect_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all =
 #' @describeIn expect_match Check that a string doesn't match a regular
 #'   expression.
 #' @export
-expect_no_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
-                            info = NULL, label = NULL) {
+expect_no_match <- function(
+  object,
+  regexp,
+  perl = FALSE,
+  fixed = FALSE,
+  ...,
+  all = TRUE,
+  info = NULL,
+  label = NULL
+) {
   # Capture here to avoid environment-related messiness
   act <- quasi_label(enquo(object), label, arg = "object")
   stopifnot(is.character(regexp), length(regexp) == 1)
@@ -78,9 +94,17 @@ expect_no_match <- function(object, regexp, perl = FALSE, fixed = FALSE, ..., al
   )
 }
 
-expect_match_ <- function(act, regexp, perl = FALSE, fixed = FALSE, ..., all = TRUE,
-                         info = NULL, label = NULL, negate = FALSE) {
-
+expect_match_ <- function(
+  act,
+  regexp,
+  perl = FALSE,
+  fixed = FALSE,
+  ...,
+  all = TRUE,
+  info = NULL,
+  label = NULL,
+  negate = FALSE
+) {
   matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
   condition <- if (negate) !matches else matches
   escape <- if (fixed) identity else escape_regex

@@ -1,4 +1,3 @@
-
 stop("Error outside of test_that()")
 
 test_that("this fails", {

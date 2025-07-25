@@ -3,7 +3,11 @@ test_that("produces consistent output", {
   local_edition(2)
   local_mocked_bindings(
     show_menu = function(choices, title = NULL) {
-      cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
+      cat(
+        paste0(format(seq_along(choices)), ": ", choices, sep = "\n"),
+        "\n",
+        sep = ""
+      )
       0L
     },
     sink_number = function() 0L
@@ -35,7 +39,9 @@ get_frame_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
     sink_number = function() 0L,
     with_reporter(
       "debug",
-      test_that("debug_reporter_test", { fun() })
+      test_that("debug_reporter_test", {
+        fun()
+      })
     )
   )
 

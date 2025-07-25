@@ -1,5 +1,5 @@
-
-MainprocessSnapshotReporter <- R6::R6Class("MainprocessSnapshotReporter",
+MainprocessSnapshotReporter <- R6::R6Class(
+  "MainprocessSnapshotReporter",
   inherit = SnapshotReporter,
   public = list(
     end_file = function() {
@@ -8,7 +8,8 @@ MainprocessSnapshotReporter <- R6::R6Class("MainprocessSnapshotReporter",
   )
 )
 
-SubprocessSnapshotReporter <- R6::R6Class("SubprocessSnapshotReporter",
+SubprocessSnapshotReporter <- R6::R6Class(
+  "SubprocessSnapshotReporter",
   inherit = SnapshotReporter,
   public = list(
     start_file = function(path, test = NULL) {

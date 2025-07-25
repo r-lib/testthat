@@ -42,8 +42,8 @@ Stack <- R6Class(
   ),
 
   private = list(
-    stack = NULL,   # A list that holds the items
-    count = 0L,     # Current number of items in the stack
-    init = 20L      # Initial and minimum size of the stack
+    stack = NULL, # A list that holds the items
+    count = 0L, # Current number of items in the stack
+    init = 20L # Initial and minimum size of the stack
   )
 )

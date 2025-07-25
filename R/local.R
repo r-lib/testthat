@@ -65,7 +65,11 @@
 #'   cat("\n")
 #' })
 local_test_context <- function(.env = parent.frame()) {
-  withr::local_envvar("_R_CHECK_BROWSER_NONINTERACTIVE_" = "true", TESTTHAT = "true", .local_envir = .env)
+  withr::local_envvar(
+    "_R_CHECK_BROWSER_NONINTERACTIVE_" = "true",
+    TESTTHAT = "true",
+    .local_envir = .env
+  )
   if (edition_get() >= 3) {
     local_reproducible_output(.env = .env)
   }
@@ -93,14 +97,15 @@ local_test_context <- function(.env = parent.frame()) {
 #'   local_reproducible_output(unicode = TRUE)
 #'   expect_equal(cli::symbol$ellipsis, "\u2026")
 #' })
-local_reproducible_output <- function(width = 80,
-                                      crayon = FALSE,
-                                      unicode = FALSE,
-                                      rstudio = FALSE,
-                                      hyperlinks = FALSE,
-                                      lang = "C",
-                                      .env = parent.frame()) {
-
+local_reproducible_output <- function(
+  width = 80,
+  crayon = FALSE,
+  unicode = FALSE,
+  rstudio = FALSE,
+  hyperlinks = FALSE,
+  lang = "C",
+  .env = parent.frame()
+) {
   if (unicode) {
     # If you force unicode display, you _must_ skip the test on non-utf8
     # locales; otherwise it's guaranteed to fail
@@ -150,7 +155,7 @@ waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
   # up through calling handlers, which are run before on.exit()
   local_reporter_output()
 
-  waldo::compare(x, y,..., x_arg = x_arg, y_arg = y_arg)
+  waldo::compare(x, y, ..., x_arg = x_arg, y_arg = y_arg)
 }
 
 local_width <- function(width = 80, .env = parent.frame()) {

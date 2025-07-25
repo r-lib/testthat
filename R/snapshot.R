@@ -60,12 +60,14 @@
 #'   warnings, and errors in the snapshot. Only the most specific
 #'   class is included, i.e. the first element of `class(cnd)`.
 #' @export
-expect_snapshot <- function(x,
-                            cran = FALSE,
-                            error = FALSE,
-                            transform = NULL,
-                            variant = NULL,
-                            cnd_class = FALSE) {
+expect_snapshot <- function(
+  x,
+  cran = FALSE,
+  error = FALSE,
+  transform = NULL,
+  variant = NULL,
+  cnd_class = FALSE
+) {
   edition_require(3, "expect_snapshot()")
   variant <- check_variant(variant)
   if (!is.null(transform)) {
@@ -99,7 +101,9 @@ expect_snapshot <- function(x,
     return()
   }
 
-  expect_snapshot_helper("code", out,
+  expect_snapshot_helper(
+    "code",
+    out,
     cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]],
@@ -120,12 +124,13 @@ snapshot_replay.source <- function(x, state, ..., transform = NULL) {
   c(snap_header(state, "Code"), snapshot_lines(x$src))
 }
 #' @export
-snapshot_replay.condition <- function(x,
-                                      state,
-                                      ...,
-                                      transform = NULL,
-                                      cnd_class = FALSE) {
-
+snapshot_replay.condition <- function(
+  x,
+  state,
+  ...,
+  transform = NULL,
+  cnd_class = FALSE
+) {
   cnd_message <- env_get(ns_env("rlang"), "cnd_message")
 
   if (inherits(x, "message")) {
@@ -197,7 +202,9 @@ expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
     val <- capture_output_lines(x, print = TRUE, width = NULL)
   )
 
-  expect_snapshot_helper(lab, val,
+  expect_snapshot_helper(
+    lab,
+    val,
     cran = cran,
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]],
@@ -211,10 +218,16 @@ expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
 #'   when executing `x`.
 #' @export
 #' @rdname expect_snapshot_output
-expect_snapshot_error <- function(x, class = "error", cran = FALSE, variant = NULL) {
+expect_snapshot_error <- function(
+  x,
+  class = "error",
+  cran = FALSE,
+  variant = NULL
+) {
   edition_require(3, "expect_snapshot_error()")
   expect_snapshot_condition(
-    "error", {{x}},
+    "error",
+    {{ x }},
     class = class,
     cran = cran,
     variant = variant
@@ -223,17 +236,29 @@ expect_snapshot_error <- function(x, class = "error", cran = FALSE, variant = NU
 
 #' @export
 #' @rdname expect_snapshot_output
-expect_snapshot_warning <- function(x, class = "warning", cran = FALSE, variant = NULL) {
+expect_snapshot_warning <- function(
+  x,
+  class = "warning",
+  cran = FALSE,
+  variant = NULL
+) {
   edition_require(3, "expect_snapshot_warning()")
   expect_snapshot_condition(
-    "warning", {{x}},
+    "warning",
+    {{ x }},
     class = class,
     cran = cran,
     variant = variant
   )
 }
 
-expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, variant = NULL) {
+expect_snapshot_condition <- function(
+  base_class,
+  x,
+  class,
+  cran = FALSE,
+  variant = NULL
+) {
   variant <- check_variant(variant)
 
   lab <- quo_label(enquo(x))
@@ -244,7 +269,12 @@ expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, varian
     if (base_class == class) {
       fail(sprintf("%s did not generate %s", lab, base_class))
     } else {
-      fail(sprintf("%s did not generate %s with class '%s'", lab, base_class, class))
+      fail(sprintf(
+        "%s did not generate %s with class '%s'",
+        lab,
+        base_class,
+        class
+      ))
     }
   }
 
@@ -257,15 +287,17 @@ expect_snapshot_condition <- function(base_class, x, class, cran = FALSE, varian
   )
 }
 
-expect_snapshot_helper <- function(lab, val,
-                                   cran = FALSE,
-                                   save = identity,
-                                   load = identity,
-                                   ...,
-                                   tolerance = testthat_tolerance(),
-                                   variant = NULL,
-                                   trace_env = caller_env()
-                                   ) {
+expect_snapshot_helper <- function(
+  lab,
+  val,
+  cran = FALSE,
+  save = identity,
+  load = identity,
+  ...,
+  tolerance = testthat_tolerance(),
+  variant = NULL,
+  trace_env = caller_env()
+) {
   if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
   }
@@ -276,7 +308,8 @@ expect_snapshot_helper <- function(lab, val,
     return(invisible())
   }
 
-  comp <- snapshotter$take_snapshot(val,
+  comp <- snapshotter$take_snapshot(
+    val,
     save = save,
     load = load,
     ...,
@@ -317,8 +350,13 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
   }
 
   paste0(
-    cli::format_inline("* Run {.run testthat::snapshot_accept('{name}')} to accept the change."), "\n",
-    cli::format_inline("* Run {.run testthat::snapshot_review('{name}')} to interactively review the change.")
+    cli::format_inline(
+      "* Run {.run testthat::snapshot_accept('{name}')} to accept the change."
+    ),
+    "\n",
+    cli::format_inline(
+      "* Run {.run testthat::snapshot_review('{name}')} to interactively review the change."
+    )
   )
 }
 
@@ -339,7 +377,11 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
 
   dirs <- setdiff(unique(dirname(snap_names)), ".")
   for (dir in dirs) {
-    dir.create(file.path(path, "_snaps", dir), recursive = TRUE, showWarnings = FALSE)
+    dir.create(
+      file.path(path, "_snaps", dir),
+      recursive = TRUE,
+      showWarnings = FALSE
+    )
   }
 
   snap_paths <- file.path(path, "_snaps", snap_names)

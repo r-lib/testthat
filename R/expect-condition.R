@@ -105,16 +105,19 @@
 #' expect_message(f(-1))
 #' expect_message(f(-1), "already negative")
 #' expect_message(f(1), NA)
-expect_error <- function(object,
-                         regexp = NULL,
-                         class = NULL,
-                         ...,
-                         inherit = TRUE,
-                         info = NULL,
-                         label = NULL) {
-
+expect_error <- function(
+  object,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  inherit = TRUE,
+  info = NULL,
+  label = NULL
+) {
   if (edition_get() >= 3) {
-    expect_condition_matching("error", {{ object }},
+    expect_condition_matching(
+      "error",
+      {{ object }},
       regexp = regexp,
       class = class,
       ...,
@@ -143,21 +146,24 @@ expect_error <- function(object,
 
 #' @export
 #' @rdname expect_error
-expect_warning <- function(object,
-                           regexp = NULL,
-                           class = NULL,
-                           ...,
-                           inherit = TRUE,
-                           all = FALSE,
-                           info = NULL,
-                           label = NULL) {
-
+expect_warning <- function(
+  object,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  inherit = TRUE,
+  all = FALSE,
+  info = NULL,
+  label = NULL
+) {
   if (edition_get() >= 3) {
     if (!missing(all)) {
       warn("The `all` argument is deprecated")
     }
 
-    expect_condition_matching("warning", {{ object }},
+    expect_condition_matching(
+      "warning",
+      {{ object }},
       regexp = regexp,
       class = class,
       ...,
@@ -166,9 +172,18 @@ expect_warning <- function(object,
       label = label
     )
   } else {
-    act <- quasi_capture(enquo(object), label, capture_warnings, ignore_deprecation = identical(regexp, NA))
+    act <- quasi_capture(
+      enquo(object),
+      label,
+      capture_warnings,
+      ignore_deprecation = identical(regexp, NA)
+    )
     msg <- compare_messages(
-      act$cap, act$lab, regexp = regexp, all = all, ...,
+      act$cap,
+      act$lab,
+      regexp = regexp,
+      all = all,
+      ...,
       cond_type = "warnings"
     )
     expect(is.null(msg), msg, info = info)
@@ -179,17 +194,20 @@ expect_warning <- function(object,
 
 #' @export
 #' @rdname expect_error
-expect_message <- function(object,
-                           regexp = NULL,
-                           class = NULL,
-                           ...,
-                           inherit = TRUE,
-                           all = FALSE,
-                           info = NULL,
-                           label = NULL) {
-
+expect_message <- function(
+  object,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  inherit = TRUE,
+  all = FALSE,
+  info = NULL,
+  label = NULL
+) {
   if (edition_get() >= 3) {
-    expect_condition_matching("message", {{ object }},
+    expect_condition_matching(
+      "message",
+      {{ object }},
       regexp = regexp,
       class = class,
       ...,
@@ -208,16 +226,19 @@ expect_message <- function(object,
 
 #' @export
 #' @rdname expect_error
-expect_condition <- function(object,
-                             regexp = NULL,
-                             class = NULL,
-                             ...,
-                             inherit = TRUE,
-                             info = NULL,
-                             label = NULL) {
-
+expect_condition <- function(
+  object,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  inherit = TRUE,
+  info = NULL,
+  label = NULL
+) {
   if (edition_get() >= 3) {
-    expect_condition_matching("condition", {{ object }},
+    expect_condition_matching(
+      "condition",
+      {{ object }},
       regexp = regexp,
       class = class,
       ...,
@@ -226,8 +247,12 @@ expect_condition <- function(object,
       label = label
     )
   } else {
-
-    act <- quasi_capture(enquo(object), label, capture_condition, entrace = TRUE)
+    act <- quasi_capture(
+      enquo(object),
+      label,
+      capture_condition,
+      entrace = TRUE
+    )
     msg <- compare_condition_2e(
       act$cap,
       act$lab,
@@ -243,16 +268,18 @@ expect_condition <- function(object,
   }
 }
 
-expect_condition_matching <- function(base_class,
-                                      object,
-                                      regexp = NULL,
-                                      class = NULL,
-                                      ...,
-                                      inherit = TRUE,
-                                      info = NULL,
-                                      label = NULL,
-                                      trace_env = caller_env(),
-                                      error_call = caller_env()) {
+expect_condition_matching <- function(
+  base_class,
+  object,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  inherit = TRUE,
+  info = NULL,
+  label = NULL,
+  trace_env = caller_env(),
+  error_call = caller_env()
+) {
   matcher <- cnd_matcher(
     base_class,
     class,
@@ -275,7 +302,13 @@ expect_condition_matching <- function(base_class,
 
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
-  expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]], trace_env = trace_env)
+  expect(
+    is.null(msg),
+    msg,
+    info = info,
+    trace = act$cap[["trace"]],
+    trace_env = trace_env
+  )
 
   # If a condition was expected, return it. Otherwise return the value
   # of the expression.
@@ -284,13 +317,15 @@ expect_condition_matching <- function(base_class,
 
 # -------------------------------------------------------------------------
 
-cnd_matcher <- function(base_class,
-                        class = NULL,
-                        pattern = NULL,
-                        ...,
-                        inherit = TRUE,
-                        ignore_deprecation = FALSE,
-                        error_call = caller_env()) {
+cnd_matcher <- function(
+  base_class,
+  class = NULL,
+  pattern = NULL,
+  ...,
+  inherit = TRUE,
+  ignore_deprecation = FALSE,
+  error_call = caller_env()
+) {
   check_string(class, allow_null = TRUE, call = error_call)
   check_string(pattern, allow_null = TRUE, allow_na = TRUE, call = error_call)
 
@@ -328,7 +363,6 @@ cnd_matcher <- function(base_class,
             )
           }
         )
-
       } else {
         TRUE
       }
@@ -391,7 +425,12 @@ compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
       if (is.null(cond_class)) {
         sprintf("%s did not throw the expected %s.", lab, cond_type)
       } else {
-        sprintf("%s did not throw a %s with class <%s>.", lab, cond_type, cond_class)
+        sprintf(
+          "%s did not throw a %s with class <%s>.",
+          lab,
+          cond_type,
+          cond_class
+        )
       }
     } else {
       NULL
@@ -411,14 +450,15 @@ compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
   }
 }
 
-compare_condition_2e <- function(cond,
-                                 lab,
-                                 regexp = NULL,
-                                 class = NULL,
-                                 ...,
-                                 inherit = TRUE,
-                                 cond_type = "error") {
-
+compare_condition_2e <- function(
+  cond,
+  lab,
+  regexp = NULL,
+  class = NULL,
+  ...,
+  inherit = TRUE,
+  cond_type = "error"
+) {
   # Expecting no condition
   if (identical(regexp, NA)) {
     if (!is.null(cond)) {
@@ -484,19 +524,23 @@ cnd_matches_2e <- function(cnd, class, regexp, inherit, ...) {
   }
 
   ok_class <- is.null(class) || cnd_inherits(cnd, class)
-  ok_msg <- is.null(regexp) || cnd_some(cnd, function(x) {
-    any(grepl(regexp, cnd_message(x), ...))
-  })
+  ok_msg <- is.null(regexp) ||
+    cnd_some(cnd, function(x) {
+      any(grepl(regexp, cnd_message(x), ...))
+    })
 
   c(class = ok_class, msg = ok_msg)
 }
 
 
-compare_messages <- function(messages,
-                             lab,
-                             regexp = NA, ...,
-                             all = FALSE,
-                             cond_type = "messages") {
+compare_messages <- function(
+  messages,
+  lab,
+  regexp = NA,
+  ...,
+  all = FALSE,
+  cond_type = "messages"
+) {
   bullets <- paste0("* ", messages, collapse = "\n")
   # Expecting no messages
   if (identical(regexp, NA)) {

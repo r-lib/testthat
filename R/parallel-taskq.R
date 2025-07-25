@@ -1,4 +1,3 @@
-
 # See https://www.tidyverse.org/blog/2019/09/callr-task-q/
 # for a detailed explanation on how the task queue works.
 #
@@ -10,12 +9,12 @@
 # * We do not need a pop() method, because poll() will just return
 #   every message.
 
-PROCESS_DONE    <- 200L
+PROCESS_DONE <- 200L
 PROCESS_STARTED <- 201L
-PROCESS_MSG     <- 301L
-PROCESS_EXITED  <- 500L
+PROCESS_MSG <- 301L
+PROCESS_EXITED <- 500L
 PROCESS_CRASHED <- 501L
-PROCESS_CLOSED  <- 502L
+PROCESS_CLOSED <- 502L
 PROCESS_FAILURES <- c(PROCESS_EXITED, PROCESS_CRASHED, PROCESS_CLOSED)
 
 task_q <- R6::R6Class(
@@ -26,20 +25,32 @@ task_q <- R6::R6Class(
       invisible(self)
     },
     list_tasks = function() private$tasks,
-    get_num_waiting = function()
-      sum(!private$tasks$idle & private$tasks$state == "waiting"),
-    get_num_running = function()
-      sum(!private$tasks$idle & private$tasks$state == "running"),
+    get_num_waiting = function() {
+      sum(!private$tasks$idle & private$tasks$state == "waiting")
+    },
+    get_num_running = function() {
+      sum(!private$tasks$idle & private$tasks$state == "running")
+    },
     get_num_done = function() sum(private$tasks$state == "done"),
     is_idle = function() sum(!private$tasks$idle) == 0,
 
     push = function(fun, args = list(), id = NULL) {
-      if (is.null(id)) id <- private$get_next_id()
-      if (id %in% private$tasks$id) stop("Duplicate task id")
+      if (is.null(id)) {
+        id <- private$get_next_id()
+      }
+      if (id %in% private$tasks$id) {
+        stop("Duplicate task id")
+      }
       before <- which(private$tasks$idle)[1]
-      private$tasks <- df_add_row(private$tasks, .before = before,
-        id = id, idle = FALSE, state = "waiting", fun = I(list(fun)),
-        args = I(list(args)), worker = I(list(NULL))
+      private$tasks <- df_add_row(
+        private$tasks,
+        .before = before,
+        id = id,
+        idle = FALSE,
+        state = "waiting",
+        fun = I(list(fun)),
+        args = I(list(args)),
+        worker = I(list(NULL))
       )
       private$schedule()
       invisible(id)
@@ -47,13 +58,15 @@ task_q <- R6::R6Class(
 
     poll = function(timeout = 0) {
       limit <- Sys.time() + timeout
-      as_ms <- function(x)
-        if (x==Inf) -1 else as.integer(as.double(x, "secs") * 1000)
-      repeat{
+      as_ms <- function(x) {
+        if (x == Inf) -1 else as.integer(as.double(x, "secs") * 1000)
+      }
+      repeat {
         topoll <- which(private$tasks$state == "running")
         conns <- lapply(
           private$tasks$worker[topoll],
-          function(x) x$get_poll_connection())
+          function(x) x$get_poll_connection()
+        )
         pr <- processx::poll(conns, as_ms(timeout))
         ready <- topoll[pr == "ready"]
         results <- lapply(ready, function(i) {
@@ -71,8 +84,12 @@ task_q <- R6::R6Class(
           } else {
             file <- private$tasks$args[[i]][[1]]
             errmsg <- paste0(
-              "unknown message from testthat subprocess: ", msg$code, ", ",
-              "in file `", file, "`"
+              "unknown message from testthat subprocess: ",
+              msg$code,
+              ", ",
+              "in file `",
+              file,
+              "`"
             )
             abort(
               errmsg,
@@ -82,11 +99,13 @@ task_q <- R6::R6Class(
           }
           msg
         })
-        results <- results[! vapply(results, is.null, logical(1))]
+        results <- results[!vapply(results, is.null, logical(1))]
 
         private$schedule()
-        if (is.finite(timeout)) timeout <- limit - Sys.time()
-        if (length(results) || timeout < 0) break;
+        if (is.finite(timeout)) {
+          timeout <- limit - Sys.time()
+        }
+        if (length(results) || timeout < 0) break
       }
       results
     }
@@ -110,7 +129,8 @@ task_q <- R6::R6Class(
         state = "running",
         fun = nl,
         args = nl,
-        worker = nl)
+        worker = nl
+      )
       rsopts <- callr::r_session_options(...)
       for (i in seq_len(concurrency)) {
         rs <- callr::r_session$new(rsopts, wait = FALSE)
@@ -120,23 +140,29 @@ task_q <- R6::R6Class(
 
     schedule = function() {
       ready <- which(private$tasks$state == "ready")
-      if (!length(ready)) return()
+      if (!length(ready)) {
+        return()
+      }
       rss <- private$tasks$worker[ready]
 
       private$tasks$worker[ready] <- replicate(length(ready), NULL)
       private$tasks$state[ready] <-
         ifelse(private$tasks$idle[ready], "waiting", "done")
       done <- which(private$tasks$state == "done")
-      if (any(done)) private$tasks <- private$tasks[-done, ]
+      if (any(done)) {
+        private$tasks <- private$tasks[-done, ]
+      }
 
       waiting <- which(private$tasks$state == "waiting")[1:length(ready)]
       private$tasks$worker[waiting] <- rss
       private$tasks$state[waiting] <-
         ifelse(private$tasks$idle[waiting], "ready", "running")
       lapply(waiting, function(i) {
-        if (! private$tasks$idle[i]) {
-          private$tasks$worker[[i]]$call(private$tasks$fun[[i]],
-                                         private$tasks$args[[i]])
+        if (!private$tasks$idle[i]) {
+          private$tasks$worker[[i]]$call(
+            private$tasks$fun[[i]],
+            private$tasks$args[[i]]
+          )
         }
       })
     },
@@ -177,7 +203,7 @@ df_add_row <- function(df, ..., .before = NULL) {
   } else if (before <= 1L) {
     rbind(row, df)
   } else {
-    rbind(df[1:(before-1), ], row, df[before:nrow(df), ])
+    rbind(df[1:(before - 1), ], row, df[before:nrow(df), ])
   }
 }
 

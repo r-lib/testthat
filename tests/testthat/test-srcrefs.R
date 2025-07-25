@@ -10,16 +10,18 @@ srcref_line <- function(code) {
 
 test_that("line numbers captured for expectations and warnings", {
   f <- function() warning("Uh oh")
+  # fmt: skip
   lines <- srcref_line({
     test_that("simple", {        # line 1
       expect_true(FALSE)         # line 2
       f()                        # line 3
     })
-  })
+})
   expect_equal(lines, c(2, 3))
 })
 
 test_that("line numbers captured when called indirectly", {
+  # fmt: skip
   lines <- srcref_line({
     test_that("simple", {                # line 1
       f <- function() g()                # line 2
@@ -31,6 +33,7 @@ test_that("line numbers captured when called indirectly", {
   })
   expect_equal(lines, 4)
 
+  # fmt: skip
   lines <- srcref_line({
     f <- function() g()                  # line 1
     g <- function() h()                  # line 2
@@ -43,6 +46,7 @@ test_that("line numbers captured when called indirectly", {
 })
 
 test_that("line numbers captured inside a loop", {
+  # fmt: skip
   lines <- srcref_line({
     test_that("simple", {               # line 1
       for (i in 1:4) expect_true(TRUE)  # line 2
@@ -52,6 +56,7 @@ test_that("line numbers captured inside a loop", {
 })
 
 test_that("line numbers captured for skip()s and stops()", {
+  # fmt: skip
   lines <- srcref_line({
     test_that("simple", {             # line 1
       skip("Not this time")           # line 2
@@ -59,16 +64,17 @@ test_that("line numbers captured for skip()s and stops()", {
   })
   expect_equal(lines, 2)
 
+  # fmt: skip
   lines <- srcref_line({
     test_that("simple", {             # line 1
       stop("Not this time")           # line 2
     })                                # line 3
   })
   expect_equal(lines, 2)
-
 })
 
 test_that("line numbers captured for on.exit()", {
+  # fmt: skip
   lines <- srcref_line({
     test_that("simple", {             # line 1
       on.exit({stop("Error")})        # line 2
@@ -77,6 +83,7 @@ test_that("line numbers captured for on.exit()", {
   expect_equal(lines, 2)
 
   # Falls back to test if no srcrf
+  # fmt: skip
   lines <- srcref_line({
     test_that("simple", {             # line 1
       on.exit(stop("Error"))          # line 2

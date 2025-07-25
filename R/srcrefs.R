@@ -1,4 +1,7 @@
-find_expectation_srcref <- function(test_code_frame = NULL, top = caller_env()) {
+find_expectation_srcref <- function(
+  test_code_frame = NULL,
+  top = caller_env()
+) {
   # It's not possible to give useful srcrefs interactively so don't even try
   path <- getOption("testthat_path")
   if (is.null(path)) {
@@ -26,10 +29,7 @@ find_expectation_srcref <- function(test_code_frame = NULL, top = caller_env()) 
   call_srcref %||% testthat_srcref
 }
 
-find_srcref <- function(bottom = NULL,
-                        top = caller_env(),
-                        container = NULL) {
-
+find_srcref <- function(bottom = NULL, top = caller_env(), container = NULL) {
   idx <- sys_index(bottom, top)
   calls <- sys.calls()[rev(idx)]
 

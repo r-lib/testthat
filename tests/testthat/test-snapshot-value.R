@@ -10,7 +10,7 @@ test_that("can control snapshot value details", {
   expect_snapshot_value(1.2, tolerance = 0.1)
 
   # including through ...
-  f <- ~ 1
+  f <- ~1
   expect_snapshot_value(f, style = "serialize", ignore_formula_env = TRUE)
 })
 
@@ -41,5 +41,8 @@ test_that("check_roundtrip() gives nice error", {
   local_bindings(crayon = FALSE, .env = get_reporter())
 
   wrapper <- function(...) check_roundtrip(...)
-  expect_snapshot(wrapper(NULL, list(), label = "foo", style = "json"), error = TRUE)
+  expect_snapshot(
+    wrapper(NULL, list(), label = "foo", style = "json"),
+    error = TRUE
+  )
 })

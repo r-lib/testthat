@@ -3,8 +3,17 @@ test_that("can record all types of output", {
     "Output"
     1 + 2
     invisible(1:10)
-    12345678 + 12345678 + 12345678 + 12345678 + 12345678 + 12345678 +
-      12345678 + 12345678 + 12345678 + 12345678 + 12345678
+    12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678
 
     "# Header"
     "Other output"
@@ -75,7 +84,8 @@ test_that("verify_output() doesn't use cli unicode by default", {
     unicode = TRUE,
     {
       cat(cli::symbol$info, cli::symbol$cross, "\n")
-    })
+    }
+  )
 })
 
 test_that("verify_output() handles carriage return", {

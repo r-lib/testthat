@@ -28,9 +28,13 @@
 #' @param hash Passed on to [watch()]. When FALSE, uses less accurate
 #'   modification time stamps, but those are faster for large files.
 #' @keywords debugging
-auto_test <- function(code_path, test_path, reporter = default_reporter(),
-                      env = test_env(),
-                      hash = TRUE) {
+auto_test <- function(
+  code_path,
+  test_path,
+  reporter = default_reporter(),
+  env = test_env(),
+  hash = TRUE
+) {
   reporter <- find_reporter(reporter)
   code_path <- normalizePath(code_path)
   test_path <- normalizePath(test_path)
@@ -72,7 +76,11 @@ auto_test <- function(code_path, test_path, reporter = default_reporter(),
 #'   modification time stamps, but those are faster for large files.
 #' @keywords debugging
 #' @seealso [auto_test()] for details on how method works
-auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = TRUE) {
+auto_test_package <- function(
+  pkg = ".",
+  reporter = default_reporter(),
+  hash = TRUE
+) {
   reporter <- find_reporter(reporter)
 
   path <- pkgload::pkg_path(pkg)
@@ -86,7 +94,12 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
   # Start by loading all code and running all tests
   withr::local_envvar("NOT_CRAN" = "true")
   pkgload::load_all(path)
-  test_dir(test_path, package = package, reporter = reporter$clone(deep = TRUE), stop_on_failure = FALSE)
+  test_dir(
+    test_path,
+    package = package,
+    reporter = reporter$clone(deep = TRUE),
+    stop_on_failure = FALSE
+  )
 
   # Next set up watcher to monitor changes
   watcher <- function(added, deleted, modified) {
@@ -106,7 +119,11 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
       cat("Changed code: ", paste0(basename(code), collapse = ", "), "\n")
       cat("Rerunning all tests\n")
       pkgload::load_all(path, quiet = TRUE)
-      test_dir(test_path, package = package, reporter = reporter$clone(deep = TRUE))
+      test_dir(
+        test_path,
+        package = package,
+        reporter = reporter$clone(deep = TRUE)
+      )
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
@@ -115,7 +132,7 @@ auto_test_package <- function(pkg = ".", reporter = default_reporter(), hash = T
         test_dir = test_path,
         test_package = package,
         test_paths = tests,
-        env = env, 
+        env = env,
         reporter = reporter$clone(deep = TRUE)
       )
     }

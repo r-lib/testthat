@@ -16,7 +16,9 @@ test_that("mock_output_sequence() works -- list", {
 
 test_that("mock_output_sequence()'s recycling works", {
   mocked_sequence <- mock_output_sequence(
-    "3", "This is a note", "n",
+    "3",
+    "This is a note",
+    "n",
     recycle = TRUE
   )
   expect_equal(mocked_sequence(), "3")
@@ -26,4 +28,3 @@ test_that("mock_output_sequence()'s recycling works", {
   expect_equal(mocked_sequence(), "This is a note")
   expect_equal(mocked_sequence(), "n")
 })
-

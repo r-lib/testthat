@@ -6,7 +6,8 @@
 #'
 #' @export
 #' @family reporters
-TeamcityReporter <- R6::R6Class("TeamcityReporter",
+TeamcityReporter <- R6::R6Class(
+  "TeamcityReporter",
   inherit = Reporter,
   public = list(
     i = NA_integer_,
@@ -51,7 +52,9 @@ TeamcityReporter <- R6::R6Class("TeamcityReporter",
         lines <- strsplit(format(result), "\n")[[1]]
 
         private$report_event(
-          "testFailed", testName, message = lines[1],
+          "testFailed",
+          testName,
+          message = lines[1],
           details = paste(lines[-1], collapse = "\n")
         )
       }

@@ -75,7 +75,9 @@ stop_reporter <- function(message) {
 #' @param reporter name of reporter(s), or reporter object(s)
 #' @keywords internal
 find_reporter <- function(reporter) {
-  if (is.null(reporter)) return(NULL)
+  if (is.null(reporter)) {
+    return(NULL)
+  }
 
   if (inherits(reporter, "R6ClassGenerator")) {
     reporter$new()

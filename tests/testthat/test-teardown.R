@@ -1,6 +1,8 @@
 test_that("teardown adds to queue", {
   local_edition(2)
-  withr::defer({teardown_reset()})
+  withr::defer({
+    teardown_reset()
+  })
 
   expect_length(file_teardown_env$queue, 0)
 

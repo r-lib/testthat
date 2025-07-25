@@ -7,7 +7,8 @@
 #'
 #' @export
 #' @family reporters
-MinimalReporter <- R6::R6Class("MinimalReporter",
+MinimalReporter <- R6::R6Class(
+  "MinimalReporter",
   inherit = Reporter,
   public = list(
     initialize = function(...) {

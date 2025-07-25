@@ -53,7 +53,12 @@ expect_type <- function(object, type) {
 
   expect(
     identical(act_type, type),
-    sprintf("%s has type %s, not %s.", act$lab, format_class(act_type), format_class(type))
+    sprintf(
+      "%s has type %s, not %s.",
+      act$lab,
+      format_class(act_type),
+      format_class(type)
+    )
   )
   invisible(act$val)
 }
@@ -112,7 +117,12 @@ expect_s7_class <- function(object, class) {
       sprintf(
         "%s inherits from %s not <%s>.",
         act$lab,
-        paste0("<", setdiff(base::class(object), "S7_object"), ">", collapse = "/"),
+        paste0(
+          "<",
+          setdiff(base::class(object), "S7_object"),
+          ">",
+          collapse = "/"
+        ),
         attr(class, "name", TRUE)
       )
     )
@@ -171,10 +181,11 @@ isS3 <- function(x) is.object(x) && !isS4(x)
 #' @export
 expect_is <- function(object, class, info = NULL, label = NULL) {
   stopifnot(is.character(class))
-  edition_deprecate(3, "expect_is()",
+  edition_deprecate(
+    3,
+    "expect_is()",
     "Use `expect_type()`, `expect_s3_class()`, or `expect_s4_class()` instead"
   )
-
 
   act <- quasi_label(enquo(object), label, arg = "object")
   act$class <- format_class(class(act$val))

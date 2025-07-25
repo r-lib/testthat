@@ -24,9 +24,9 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   op <- match.fun(operator)
 
   msg <- c(
-    "<" =  "not strictly less than",
+    "<" = "not strictly less than",
     "<=" = "not less than",
-    ">"  = "not strictly more than",
+    ">" = "not strictly more than",
     ">=" = "not more than"
   )[[operator]]
 
@@ -36,7 +36,13 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   }
   expect(
     if (!is.na(cmp)) cmp else FALSE,
-    sprintf("%s is %s %s. Difference: %.3g", act$lab, msg, exp$lab, act$val - exp$val),
+    sprintf(
+      "%s is %s %s. Difference: %.3g",
+      act$lab,
+      msg,
+      exp$lab,
+      act$val - exp$val
+    ),
     trace_env = caller_env()
   )
   invisible(act$val)

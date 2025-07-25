@@ -34,7 +34,9 @@ edition_deprecate <- function(in_edition, what, instead = NULL) {
 }
 
 edition_require <- function(in_edition, what) {
-  if (edition_get() >= in_edition || isTRUE(getOption("testthat.edition_ignore"))) {
+  if (
+    edition_get() >= in_edition || isTRUE(getOption("testthat.edition_ignore"))
+  ) {
     return()
   }
 

@@ -22,13 +22,14 @@
 #' # You can use the arguments of grepl to control the matching
 #' expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
 #' expect_output(str(mtcars), "$ mpg", fixed = TRUE)
-expect_output <- function(object,
-                          regexp = NULL,
-                          ...,
-                          info = NULL,
-                          label = NULL,
-                          width = 80
-                          ) {
+expect_output <- function(
+  object,
+  regexp = NULL,
+  ...,
+  info = NULL,
+  label = NULL,
+  width = 80
+) {
   act <- quasi_capture(enquo(object), label, capture_output, width = width)
 
   if (identical(regexp, NA)) {
@@ -49,4 +50,3 @@ expect_output <- function(object,
 
   invisible(act$val)
 }
-

@@ -6,6 +6,6 @@
     'reporters/tests.R:29:8' [error] errors get tracebacks. Error in `h()`: !
     'reporters/tests.R:37:3' [skip] explicit skips are reported. Reason: skip
     'reporters/tests.R:40:1' [skip] empty tests are implicitly skipped. Reason: empty test
-    'reporters/tests.R:47:5' [warning] warnings get backtraces. def
-    'reporters/tests.R:45:1' [skip] warnings get backtraces. Reason: empty test
+    'reporters/tests.R:46:5' [warning] warnings get backtraces. def
+    'reporters/tests.R:44:1' [skip] warnings get backtraces. Reason: empty test
 
