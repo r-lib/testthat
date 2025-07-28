@@ -58,7 +58,12 @@ is_false <- function() {
 #' @rdname oldskool
 has_names <- function(expected, ignore.order = FALSE, ignore.case = FALSE) {
   function(x) {
-    expect_named(x, expected = expected, ignore.order = ignore.order, ignore.case = ignore.case)
+    expect_named(
+      x,
+      expected = expected,
+      ignore.order = ignore.order,
+      ignore.case = ignore.case
+    )
   }
 }
 

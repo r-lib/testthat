@@ -23,20 +23,21 @@
 #' test_file(path)
 #' # Override the default by supplying the name of a reporter
 #' test_file(path, reporter = "minimal")
-Reporter <- R6::R6Class("Reporter",
+Reporter <- R6::R6Class(
+  "Reporter",
   public = list(
     capabilities = list(parallel_support = FALSE, parallel_updates = FALSE),
     start_reporter = function() {},
-    start_context =  function(context) {},
-    start_test =     function(context, test) {},
-    start_file =     function(filename) {},
-    add_result =     function(context, test, result) {},
-    end_test =       function(context, test) {},
-    end_context =    function(context) {},
-    end_reporter =   function() {},
-    end_file =       function() {},
-    is_full =        function() FALSE,
-    update =         function() {},
+    start_context = function(context) {},
+    start_test = function(context, test) {},
+    start_file = function(filename) {},
+    add_result = function(context, test, result) {},
+    end_test = function(context, test) {},
+    end_context = function(context) {},
+    end_reporter = function() {},
+    end_file = function() {},
+    is_full = function() FALSE,
+    update = function() {},
 
     width = 80,
     unicode = TRUE,

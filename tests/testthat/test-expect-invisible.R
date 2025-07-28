@@ -7,10 +7,8 @@ test_that("basic principles of visibility hold", {
 })
 
 test_that("generates useful failure messages", {
-
   expect_snapshot_failure(expect_visible(invisible(1)))
   expect_snapshot_failure(expect_invisible(1))
-
 })
 
 test_that("invisibly returns evaluated value", {
