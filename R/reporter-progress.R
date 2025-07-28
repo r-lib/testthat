@@ -15,7 +15,8 @@
 #'
 #' @export
 #' @family reporters
-ProgressReporter <- R6::R6Class("ProgressReporter",
+ProgressReporter <- R6::R6Class(
+  "ProgressReporter",
   inherit = Reporter,
   public = list(
     show_praise = TRUE,
@@ -46,11 +47,13 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
     ctxt_name = "",
     file_name = "",
 
-    initialize = function(show_praise = TRUE,
-                          max_failures = testthat_max_fails(),
-                          min_time = 1,
-                          update_interval = 0.1,
-                          ...) {
+    initialize = function(
+      show_praise = TRUE,
+      max_failures = testthat_max_fails(),
+      min_time = 1,
+      update_interval = 0.1,
+      ...
+    ) {
       super$initialize(...)
       self$capabilities$parallel_support <- TRUE
       self$show_praise <- show_praise
@@ -100,12 +103,17 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
 
     show_header = function() {
       self$cat_line(
-        colourise(cli::symbol$tick, "success"), " | ",
-        colourise("F", "failure"), " ",
-        colourise("W", "warning"), " ",
-        colourise(" S", "skip"), " ",
+        colourise(cli::symbol$tick, "success"),
+        " | ",
+        colourise("F", "failure"),
+        " ",
+        colourise("W", "warning"),
+        " ",
+        colourise(" S", "skip"),
+        " ",
         colourise(" OK", "success"),
-        " | ", "Context"
+        " | ",
+        "Context"
       )
     },
 
@@ -154,17 +162,21 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
           } else {
             colourise(n, type)
           }
-
         }
       }
 
       message <- paste0(
-        status, " | ",
-        col_format(data$n_fail, "fail"), " ",
-        col_format(data$n_warn, "warn"), " ",
-        col_format(data$n_skip, "skip"), " ",
+        status,
+        " | ",
+        col_format(data$n_fail, "fail"),
+        " ",
+        col_format(data$n_warn, "warn"),
+        " ",
+        col_format(data$n_skip, "skip"),
+        " ",
         sprintf("%3d", data$n_ok),
-        " | ", data$name
+        " | ",
+        data$name
       )
 
       if (complete && time > self$min_time) {
@@ -311,8 +323,10 @@ ProgressReporter <- R6::R6Class("ProgressReporter",
       }
 
       time <- proc.time()[[3]]
-      if (!is.null(self$last_update) &&
-        (time - self$last_update) < self$update_interval) {
+      if (
+        !is.null(self$last_update) &&
+          (time - self$last_update) < self$update_interval
+      ) {
         return(FALSE)
       }
       self$last_update <- time
@@ -333,7 +347,8 @@ testthat_max_fails <- function() {
 
 #' @export
 #' @rdname ProgressReporter
-CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
+CompactProgressReporter <- R6::R6Class(
+  "CompactProgressReporter",
   inherit = ProgressReporter,
   public = list(
     initialize = function(min_time = Inf, ...) {
@@ -348,8 +363,7 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
       super$start_file(name)
     },
 
-    start_reporter = function(context) {
-    },
+    start_reporter = function(context) {},
 
     end_context = function(context) {
       if (self$ctxt_issues$size() == 0) {
@@ -360,7 +374,10 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
       self$cat_line()
 
       issues <- self$ctxt_issues$as_list()
-      summary <- vapply(issues, issue_summary, rule = TRUE,
+      summary <- vapply(
+        issues,
+        issue_summary,
+        rule = TRUE,
         FUN.VALUE = character(1)
       )
       self$cat_tight(paste(summary, collapse = "\n\n"))
@@ -394,7 +411,6 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
       status <- summary_line(self$n_fail, self$n_warn, self$n_skip, self$n_ok)
       self$cat_tight(self$cr(), status)
     }
-
   )
 )
 
@@ -403,10 +419,10 @@ CompactProgressReporter <- R6::R6Class("CompactProgressReporter",
 #' @export
 #' @rdname ProgressReporter
 
-ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
+ParallelProgressReporter <- R6::R6Class(
+  "ParallelProgressReporter",
   inherit = ProgressReporter,
   public = list(
-
     files = list(),
     spin_frame = 0L,
     is_rstudio = FALSE,
@@ -419,8 +435,8 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
       self$is_rstudio <- Sys.getenv("RSTUDIO", "") == "1"
     },
 
-    start_file = function(file)  {
-      if (! file %in% names(self$files)) {
+    start_file = function(file) {
+      if (!file %in% names(self$files)) {
         self$files[[file]] <- list(
           issues = Stack$new(),
           n_fail = 0L,
@@ -494,7 +510,9 @@ ParallelProgressReporter <- R6::R6Class("ParallelProgressReporter",
     },
 
     update = function(force = FALSE) {
-      if (!force && !self$should_update()) return()
+      if (!force && !self$should_update()) {
+        return()
+      }
       self$spin_frame <- self$spin_frame + 1L
       status <- spinner(self$frames, self$spin_frame)
 
@@ -525,7 +543,7 @@ issue_header <- function(x, pad = FALSE) {
     type <- first_upper(type)
   }
   if (pad) {
-   type <- strpad(type, 7)
+    type <- strpad(type, 7)
   }
 
   paste0(type, expectation_location(x, " (", ")"), ": ", x$test)
@@ -570,11 +588,16 @@ skip_bullets <- function(skips) {
   skip_summary <- map_chr(locs_by_skip, paste, collapse = ", ")
 
   bullets <- paste0(
-    cli::symbol$bullet, " ", names(locs_by_skip), " (", n, "): ", skip_summary
+    cli::symbol$bullet,
+    " ",
+    names(locs_by_skip),
+    " (",
+    n,
+    "): ",
+    skip_summary
   )
   cli::ansi_strwrap(bullets, exdent = 2)
 }
-
 
 
 #' Set maximum number of test failures allowed before aborting the run

@@ -1,14 +1,15 @@
-
 test_that("old school logical works", {
   local_edition(2L)
 
   expect_warning(
     expect_success(expect_that(TRUE, is_true())),
-    "deprecated")
+    "deprecated"
+  )
 
   expect_warning(
     expect_success(expect_that(FALSE, is_false())),
-    "deprecated")
+    "deprecated"
+  )
 })
 
 test_that("old school types still work", {

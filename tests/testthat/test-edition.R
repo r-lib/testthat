@@ -42,7 +42,7 @@ test_that("edition for non-package dir is 2", {
 
 test_that("can set the edition via an environment variable", {
   local_bindings(edition = zap(), .env = the)
-  
+
   withr::local_envvar(TESTTHAT_EDITION = 2)
   expect_equal(edition_get(), 2)
 

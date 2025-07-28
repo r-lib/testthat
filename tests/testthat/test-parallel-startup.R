@@ -1,4 +1,3 @@
-
 test_that("startup error", {
   skip_on_covr()
   withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")

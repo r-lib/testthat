@@ -61,7 +61,6 @@ test_that <- function(desc, code) {
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
 test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
-
   frame <- caller_env()
 
   if (!is.null(test)) {
@@ -167,7 +166,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
   }
   handle_message <- function(e) {
     if (edition_get() < 3) {
-     maybe_restart("muffleMessage")
+      maybe_restart("muffleMessage")
     }
   }
   handle_skip <- function(e) {
@@ -194,15 +193,15 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
         }
       },
       expectation = handle_expectation,
-      skip =        handle_skip,
-      warning =     handle_warning,
-      message =     handle_message,
-      error =       handle_error
+      skip = handle_skip,
+      warning = handle_warning,
+      message = handle_message,
+      error = handle_error
     ),
     # some errors may need handling here, e.g., stack overflow
     error = handle_fatal,
     # skip silently terminate code
-    skip  = function(e) {}
+    skip = function(e) {}
   )
   after <- inspect_state()
 

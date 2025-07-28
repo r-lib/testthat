@@ -1,4 +1,3 @@
-
 test_that("can establish local snapshotter for testing", {
   snapper <- local_snapshotter()
 
