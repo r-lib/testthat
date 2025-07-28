@@ -19,3 +19,15 @@ test_that("expected_named optionally ignores order", {
     ignore.order = TRUE
   ))
 })
+
+test_that("provide useful feedback on failure", {
+  expect_snapshot_error(
+    expect_named(c(a = 1), c("a", "b"), ignore.order = TRUE)
+  )
+  expect_snapshot_error(
+    expect_named(c(a = 1, b = 1), c("a"), ignore.order = TRUE)
+  )
+  expect_snapshot_error(
+    expect_named(c(a = 1), c("b"), ignore.order = TRUE)
+  )
+})
