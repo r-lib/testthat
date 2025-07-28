@@ -49,23 +49,23 @@ capture_success_failure <- function(expr) {
 expect_success <- function(expr) {
   status <- capture_success_failure(expr)
 
-  if (status$n_success == 1 && status$n_failure == 0) {
-    succeed()
-  } else if (status$n_success == 0) {
+  if (status$n_success == 0) {
     fail("Expectation did not succeed")
   } else if (status$n_success > 1) {
     fail(sprintf(
       "Expectation succeeded %i times, instead of once",
       status$n_success
     ))
-  } else if (status$n_failure > 0) {
+  }
+
+  if (status$n_failure > 0) {
     fail(sprintf(
       "Expectation failed %i times, instead of zero",
       status$n_failure
     ))
   }
 
-  invisible(NULL)
+  pass(NULL)
 }
 
 #' @export
@@ -73,24 +73,24 @@ expect_success <- function(expr) {
 expect_failure <- function(expr, message = NULL, ...) {
   status <- capture_success_failure(expr)
 
-  if (status$n_failure == 1 && status$n_success == 0) {
-    if (!is.null(message)) {
-      return(expect_match(status$last_failure$message, message, ...))
-    }
-    succeed()
-  } else if (status$n_failure == 0) {
+  if (status$n_failure == 0) {
     fail("Expectation did not fail")
   } else if (status$n_failure > 1) {
     # This should be impossible, but including for completeness
     fail("Expectation failed more than once")
-  } else if (status$n_success != 0) {
+  }
+
+  if (status$n_success != 0) {
     fail(sprintf(
       "Expectation succeeded %i times, instead of never",
       status$n_success
     ))
   }
 
-  invisible(NULL)
+  if (!is.null(message)) {
+    return(expect_match(status$last_failure$message, message, ...))
+  }
+  pass(NULL)
 }
 
 #' @export
