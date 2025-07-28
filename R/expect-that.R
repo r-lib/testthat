@@ -53,15 +53,28 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 fail <- function(
   message = "Failure has been forced",
   info = NULL,
-  trace_env = caller_env()
+  srcref = NULL,
+  trace_env = caller_env(),
+  trace = NULL
 ) {
-  expect(FALSE, message, info = info, trace_env = trace_env)
+  if (is.null(trace)) {
+    trace <- trace_back(top = getOption("testthat_topenv"), bottom = trace_env)
+  }
+  # Only show if there's at least one function apart from the expectation
+  if (trace_length(trace) <= 1) {
+    trace <- NULL
+  }
+
+  message <- paste(c(message, info), collapse = "\n")
+  expectation("failure", message, srcref = srcref, trace = trace)
 }
 
 #' @rdname fail
 #' @export
 succeed <- function(message = "Success has been forced", info = NULL) {
-  expect(TRUE, message, info = info)
+  message <- paste(c(message, info), collapse = "\n")
+
+  expectation("success", message)
 }
 
 #' Negate an expectation

@@ -43,49 +43,28 @@ expect <- function(
   trace = NULL,
   trace_env = caller_env()
 ) {
-  type <- if (ok) "success" else "failure"
-
-  # Preserve existing API which appear to be used in package test code
-  # Can remove in next major release
-  if (missing(failure_message)) {
-    warn("`failure_message` is missing, with no default.")
-    message <- "unknown failure"
+  if (ok) {
+    succeed(failure_message)
   } else {
-    # A few packages include code in info that errors on evaluation
-    if (ok) {
-      message <- paste(failure_message, collapse = "\n")
-    } else {
-      message <- paste(c(failure_message, info), collapse = "\n")
-    }
+    fail(
+      failure_message,
+      info,
+      srcref = srcref,
+      trace = trace,
+      trace_env = trace_env
+    )
   }
-
-  if (!ok) {
-    if (is.null(trace)) {
-      trace <- trace_back(
-        top = getOption("testthat_topenv"),
-        bottom = trace_env
-      )
-    }
-
-    # Only show if there's at least one function apart from the expectation
-    if (trace_length(trace) <= 1) {
-      trace <- NULL
-    }
-  }
-
-  exp <- expectation(type, message, srcref = srcref, trace = trace)
-  exp_signal(exp)
 }
-
 
 #' Construct an expectation object
 #'
+#' @description
 #' For advanced use only. If you are creating your own expectation, you should
 #' call [expect()] instead. See `vignette("custom-expectation")` for more
 #' details.
 #'
-#' Create an expectation with `expectation()` or `new_expectation()`
-#' and signal it with `exp_signal()`.
+#' `new_expectation()` creates an expectation object and `exp_signal()` signals
+#' it. `expectation()` does both.
 #'
 #' @param type Expectation type. Must be one of "success", "failure", "error",
 #'   "skip", "warning".
@@ -94,7 +73,8 @@ expect <- function(
 #' @inheritParams expect
 #' @export
 expectation <- function(type, message, srcref = NULL, trace = NULL) {
-  new_expectation(type, message, srcref = srcref, trace = trace)
+  exp <- new_expectation(type, message, srcref = srcref, trace = trace)
+  exp_signal(exp)
 }
 #' @rdname expectation
 #' @param ... Additional attributes for the expectation object.
@@ -207,7 +187,7 @@ as.expectation.error <- function(x, srcref = NULL) {
     cnd_message(x)
   )
 
-  expectation("error", msg, srcref, trace = x[["trace"]])
+  new_expectation("error", msg, srcref = srcref, trace = x[["trace"]])
 }
 
 
@@ -217,12 +197,17 @@ is_simple_error <- function(x) {
 
 #' @export
 as.expectation.warning <- function(x, srcref = NULL) {
-  expectation("warning", cnd_message(x), srcref, trace = x[["trace"]])
+  new_expectation(
+    "warning",
+    cnd_message(x),
+    srcref = srcref,
+    trace = x[["trace"]]
+  )
 }
 
 #' @export
 as.expectation.skip <- function(x, ..., srcref = NULL) {
-  expectation("skip", cnd_message(x), srcref, trace = x[["trace"]])
+  new_expectation("skip", cnd_message(x), srcref = srcref, trace = x[["trace"]])
 }
 
 #' @export

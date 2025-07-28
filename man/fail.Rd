@@ -8,7 +8,9 @@
 fail(
   message = "Failure has been forced",
   info = NULL,
-  trace_env = caller_env()
+  srcref = NULL,
+  trace_env = caller_env(),
+  trace = NULL
 )
 
 succeed(message = "Success has been forced", info = NULL)
@@ -19,10 +21,16 @@ succeed(message = "Success has been forced", info = NULL)
 \item{info}{Character vector continuing additional information. Included
 for backward compatibility only and new expectations should not use it.}
 
+\item{srcref}{Location of the failure. Should only needed to be explicitly
+supplied when you need to forward a srcref captured elsewhere.}
+
 \item{trace_env}{If \code{is.null(trace)}, this is used to automatically
 generate a traceback running from \code{test_code()}/\code{test_file()} to
 \code{trace_env}. You'll generally only need to set this if you're wrapping
 an expectation inside another function.}
+
+\item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
+When supplied, the expectation is displayed with the backtrace.}
 }
 \description{
 These allow you to manually trigger success or failure. Failure is

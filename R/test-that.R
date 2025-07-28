@@ -141,7 +141,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
   }
   handle_expectation <- function(e) {
     handled <<- TRUE
-    register_expectation(e, 6)
+    register_expectation(e, 7)
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
