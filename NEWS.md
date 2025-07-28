@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* New `pass()` function to use in place of `succeed()` (#2113).
+* `expectation()` is now a combination of `new_expectation()` and `exp_signal()` (#2125).
 * `is_null()`/`matches()` deprecated in 2.0.0 (2017-12-19) and `is_true()`/`is_false()` deprecated in 2.1.0 (2019-04-23) have been removed (#2109).
 * `local_edition()` now gives a useful error for bad values (#1547).
 * testthat now requires R 4.1.

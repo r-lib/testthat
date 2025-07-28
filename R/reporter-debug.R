@@ -59,7 +59,7 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
 
   calls <- calls[start_frame:from]
 
-  if (rlang::is_false(peek_option("testthat_format_srcrefs"))) {
+  if (is_false(peek_option("testthat_format_srcrefs"))) {
     calls <- lapply(calls, zap_srcref)
   }
   calls <- utils::limitedLabels(calls)
