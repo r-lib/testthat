@@ -16,42 +16,8 @@ NULL
 
 #' @export
 #' @rdname oldskool
-is_null <- function() {
-  warning(
-    "`is_null()` is deprecated. Please use `expect_null()` instead.",
-    call. = FALSE
-  )
-  function(x) expect_null(x)
-}
-
-#' @export
-#' @rdname oldskool
 is_a <- function(class) {
   function(x) expect_is(x, class)
-}
-
-#' @export
-#' @rdname oldskool
-is_true <- function() {
-  function(x) {
-    warning(
-      "`is_true()` is deprecated. Please use `expect_true()` instead.",
-      call. = FALSE
-    )
-    expect_true(x)
-  }
-}
-
-#' @export
-#' @rdname oldskool
-is_false <- function() {
-  function(x) {
-    warning(
-      "`is_false()` is deprecated. Please use `expect_false()` instead.",
-      call. = FALSE
-    )
-    expect_false(x)
-  }
 }
 
 #' @export
@@ -126,17 +92,6 @@ prints_text <- function(regexp = NULL, ...) {
 throws_error <- function(regexp = NULL, ...) {
   function(x) expect_error(x, regexp, ...)
 }
-
-#' @export
-#' @rdname oldskool
-matches <- function(regexp, all = TRUE, ...) {
-  warning(
-    "`matches()` is deprecated. Please use `expect_match()` instead.",
-    call. = FALSE
-  )
-  function(x) expect_match(x, regexp, all = all, ...)
-}
-
 
 #' Does code take less than the expected amount of time to run?
 #'
