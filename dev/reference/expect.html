@@ -111,21 +111,9 @@ an expectation inside another function.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An expectation object. Signals the expectation condition
+    <p>An expectation object from either <code><a href="succeed.html">succeed()</a></code> or <code><a href="fail.html">fail()</a></code>.
 with a <code>continue_test</code> restart.</p>
     </div>
-    <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>While <code>expect()</code> creates and signals an expectation in one go,
-<code><a href="expectation.html">exp_signal()</a></code> separately signals an expectation that you
-have manually created with <code><a href="expectation.html">new_expectation()</a></code>. Expectations are
-signalled with the following protocol:</p><ul><li><p>If the expectation is a failure or an error, it is signalled with
-<code><a href="https://rdrr.io/r/base/stop.html" class="external-link">base::stop()</a></code>. Otherwise, it is signalled with
-<code><a href="https://rdrr.io/r/base/conditions.html" class="external-link">base::signalCondition()</a></code>.</p></li>
-<li><p>The <code>continue_test</code> restart is registered. When invoked, failing
-expectations are ignored and normal control flow is resumed to
-run the other tests.</p></li>
-</ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="expectation.html">exp_signal()</a></code></p></div>

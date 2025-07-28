@@ -96,6 +96,7 @@
 <url><loc>https://testthat.r-lib.org/dev/reference/skip_on_travis.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/snapshot_accept.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/source_file.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/reference/succeed.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/takes_less_than.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/teardown.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/teardown_env.html</loc></url>

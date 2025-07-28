@@ -57,7 +57,10 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-<ul><li>
+<ul><li>New <code><a href="../reference/fail.html">pass()</a></code> function to use in place of <code><a href="../reference/succeed.html">succeed()</a></code> (<a href="https://github.com/r-lib/testthat/issues/2113" class="external-link">#2113</a>).</li>
+<li>
+<code><a href="../reference/expectation.html">expectation()</a></code> is now a combination of <code><a href="../reference/expectation.html">new_expectation()</a></code> and <code><a href="../reference/expectation.html">exp_signal()</a></code> (<a href="https://github.com/r-lib/testthat/issues/2125" class="external-link">#2125</a>).</li>
+<li>
 <code>is_null()</code>/<code>matches()</code> deprecated in 2.0.0 (2017-12-19) and <code>is_true()</code>/<code>is_false()</code> deprecated in 2.1.0 (2019-04-23) have been removed (<a href="https://github.com/r-lib/testthat/issues/2109" class="external-link">#2109</a>).</li>
 <li>
 <code><a href="../reference/local_edition.html">local_edition()</a></code> now gives a useful error for bad values (<a href="https://github.com/r-lib/testthat/issues/1547" class="external-link">#1547</a>).</li>
@@ -437,7 +440,7 @@
 <li><p><code><a href="../reference/auto_test_package.html">auto_test_package()</a></code> now correctly handles helper files (<code>tests/testthat/helper-*.R</code>), automatically reloading all code and rerunning all tests (<a href="https://github.com/CorradoLanera" class="external-link">@CorradoLanera</a>, <a href="https://github.com/r-lib/testthat/issues/376" class="external-link">#376</a>, <a href="https://github.com/r-lib/testthat/issues/896" class="external-link">#896</a>).</p></li>
 <li><p><code><a href="../reference/expect_match.html">expect_match()</a></code> now displays <code>info</code> even when match length is 0 (<a href="https://github.com/r-lib/testthat/issues/867" class="external-link">#867</a>).</p></li>
 <li><p><code><a href="../reference/inheritance-expectations.html">expect_s3_class()</a></code> gains new <code>exact</code> argument that allows you to check for an exact class match, not just inheritance (<a href="https://github.com/r-lib/testthat/issues/885" class="external-link">#885</a>).</p></li>
-<li><p><code><a href="../reference/fail.html">fail()</a></code> and <code><a href="../reference/fail.html">succeed()</a></code> gain <code>info</code> argument, which is passed along to <code><a href="../reference/expect.html">expect()</a></code>.</p></li>
+<li><p><code><a href="../reference/fail.html">fail()</a></code> and <code><a href="../reference/succeed.html">succeed()</a></code> gain <code>info</code> argument, which is passed along to <code><a href="../reference/expect.html">expect()</a></code>.</p></li>
 <li><p><code><a href="../reference/test_examples.html">test_examples()</a></code> gets some minor fixes: it now returns the results invisibly, doesn’t assume that examples should contain tests, and documents that you shouldn’t be using it routinely (<a href="https://github.com/r-lib/testthat/issues/841" class="external-link">#841</a>).</p></li>
 <li><p><code><a href="../reference/test_file.html">test_file()</a></code> only calls <code>Reporter$end_context()</code> if a context was started, fixing an error in <code>TeamcityReporter</code> (<a href="https://github.com/atheriel" class="external-link">@atheriel</a>, <a href="https://github.com/r-lib/testthat/issues/883" class="external-link">#883</a>).</p></li>
 <li><p><code><a href="../reference/skip.html">skip()</a></code> now reports reason for skipping as: <code>Reason: {skip condition}</code> (<a href="https://github.com/patr1ckm" class="external-link">@patr1ckm</a>, <a href="https://github.com/r-lib/testthat/issues/868" class="external-link">#868</a>).</p></li>
@@ -773,7 +776,7 @@
 <li><p><code>expect_that(a, equals(b))</code> style of testing has been soft-deprecated. It will keep working, but it’s no longer demonstrated any where, and new expectations will only be available in <code>expect_equal(a, b)</code> style. (<a href="https://github.com/r-lib/testthat/issues/172" class="external-link">#172</a>)</p></li>
 <li><p>Once again, testthat suppresses messages and warnings in tests (<a href="https://github.com/r-lib/testthat/issues/189" class="external-link">#189</a>)</p></li>
 <li><p>New <code><a href="../reference/test_examples.html">test_examples()</a></code> lets you run package examples as tests. Each example counts as one expectation and it succeeds if the code runs without errors (<a href="https://github.com/r-lib/testthat/issues/204" class="external-link">#204</a>).</p></li>
-<li><p>New <code><a href="../reference/fail.html">succeed()</a></code> expectation always succeeds.</p></li>
+<li><p>New <code><a href="../reference/succeed.html">succeed()</a></code> expectation always succeeds.</p></li>
 <li><p><code><a href="../reference/skip_on_travis.html">skip_on_travis()</a></code> allows you to skip tests when run on Travis CI. (Thanks to <a href="https://github.com/mllg" class="external-link">@mllg</a>)</p></li>
 <li><p><code>colourise()</code> was removed. (Colour is still supported, via the <code>crayon</code> package.)</p></li>
 <li><p>Mocks can now access values local to the call of <code>with_mock</code> (<a href="https://github.com/r-lib/testthat/issues/193" class="external-link">#193</a>, <a href="https://github.com/krlmlr" class="external-link">@krlmlr</a>).</p></li>
