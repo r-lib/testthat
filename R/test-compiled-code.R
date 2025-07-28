@@ -60,7 +60,7 @@ run_cpp_tests <- function(package) {
       reporter$add_result(
         context = "Catch",
         test = "Catch",
-        result = expectation("failure", e$message)
+        result = new_expectation("failure", e$message)
       )
       reporter$end_test(context = "Catch", test = "Catch")
     }
@@ -89,7 +89,7 @@ run_cpp_tests <- function(package) {
       get_reporter()$start_test(context = context_name, test = test_name)
 
       for (i in seq_len(successes)) {
-        exp <- expectation("success", "")
+        exp <- new_expectation("success", "")
         exp$test <- test_name
         get_reporter()$add_result(
           context = context_name,
@@ -122,7 +122,7 @@ run_cpp_tests <- function(package) {
           c(line, line, 1, 1)
         )
 
-        exp <- expectation("failure", org_text, srcref = failure_srcref)
+        exp <- new_expectation("failure", org_text, srcref = failure_srcref)
         exp$test <- test_name
 
         get_reporter()$add_result(
@@ -143,7 +143,7 @@ run_cpp_tests <- function(package) {
           c(line, line, 1, 1)
         )
 
-        exp <- expectation("error", exception_text, srcref = exception_srcref)
+        exp <- new_expectation("error", exception_text, srcref = exception_srcref)
         exp$test <- test_name
 
         get_reporter()$add_result(

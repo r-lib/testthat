@@ -16,42 +16,8 @@ NULL
 
 #' @export
 #' @rdname oldskool
-is_null <- function() {
-  warning(
-    "`is_null()` is deprecated. Please use `expect_null()` instead.",
-    call. = FALSE
-  )
-  function(x) expect_null(x)
-}
-
-#' @export
-#' @rdname oldskool
 is_a <- function(class) {
   function(x) expect_is(x, class)
-}
-
-#' @export
-#' @rdname oldskool
-is_true <- function() {
-  function(x) {
-    warning(
-      "`is_true()` is deprecated. Please use `expect_true()` instead.",
-      call. = FALSE
-    )
-    expect_true(x)
-  }
-}
-
-#' @export
-#' @rdname oldskool
-is_false <- function() {
-  function(x) {
-    warning(
-      "`is_false()` is deprecated. Please use `expect_false()` instead.",
-      call. = FALSE
-    )
-    expect_false(x)
-  }
 }
 
 #' @export
@@ -127,17 +93,6 @@ throws_error <- function(regexp = NULL, ...) {
   function(x) expect_error(x, regexp, ...)
 }
 
-#' @export
-#' @rdname oldskool
-matches <- function(regexp, all = TRUE, ...) {
-  warning(
-    "`matches()` is deprecated. Please use `expect_match()` instead.",
-    call. = FALSE
-  )
-  function(x) expect_match(x, regexp, all = all, ...)
-}
-
-
 #' Does code take less than the expected amount of time to run?
 #'
 #' This is useful for performance regression testing.
@@ -158,5 +113,31 @@ takes_less_than <- function(amount) {
       duration < amount,
       paste0("took ", duration, " seconds, which is more than ", amount)
     )
+  }
+}
+
+#' Negate an expectation
+#'
+#' This negates an expectation, making it possible to express that you
+#' want the opposite of a standard expectation. This function is deprecated
+#' and will be removed in a future version.
+#'
+#' @param f an existing expectation function
+#' @keywords internal
+#' @export
+not <- function(f) {
+  warning("`not()` is deprecated.", call. = FALSE)
+  stopifnot(is.function(f))
+
+  negate <- function(expt) {
+    expect(
+      !expectation_success(expt),
+      failure_message = paste0("NOT(", expt$message, ")"),
+      srcref = expt$srcref
+    )
+  }
+
+  function(...) {
+    negate(capture_expectation(f(...)))
   }
 }
