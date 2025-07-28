@@ -7,7 +7,6 @@
 #'
 #' Attributes are ignored.
 #'
-#' @seealso [is_false()] for complement
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
