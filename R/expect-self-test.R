@@ -24,7 +24,11 @@ capture_success_failure <- function(expr) {
     failed = function() {}
   )
 
-  list(n_success = n_success, n_failure = n_failure, last_failure = last_failure)
+  list(
+    n_success = n_success,
+    n_failure = n_failure,
+    last_failure = last_failure
+  )
 }
 
 #' Tools for testing expectations
@@ -50,9 +54,15 @@ expect_success <- function(expr) {
   } else if (status$n_success == 0) {
     fail("Expectation did not succeed")
   } else if (status$n_success > 1) {
-    fail(sprintf("Expectation succeeded %i times, instead of once", status$n_success))
+    fail(sprintf(
+      "Expectation succeeded %i times, instead of once",
+      status$n_success
+    ))
   } else if (status$n_failure > 0) {
-    fail(sprintf("Expectation failed %i times, instead of zero", status$n_failure))
+    fail(sprintf(
+      "Expectation failed %i times, instead of zero",
+      status$n_failure
+    ))
   }
 
   invisible(NULL)
@@ -73,7 +83,10 @@ expect_failure <- function(expr, message = NULL, ...) {
     # This should be impossible, but including for completeness
     fail("Expectation failed more than once")
   } else if (status$n_success != 0) {
-    fail(sprintf("Expectation succeeded %i times, instead of never", status$n_success))
+    fail(sprintf(
+      "Expectation succeeded %i times, instead of never",
+      status$n_success
+    ))
   }
 
   succeed()
@@ -87,14 +100,14 @@ expect_snapshot_failure <- function(expr) {
 }
 
 #' Test for absence of success or failure
-#' 
+#'
 #' @description
 #' `r lifecycle::badge("deprecated")`
-#' 
-#' These functions are deprecated because [expect_success()] and 
+#'
+#' These functions are deprecated because [expect_success()] and
 #' [expect_failure()] now test for exactly one success or no failures, and
 #' exactly one failure and no successes.
-#' 
+#'
 #' @keywords internal
 #' @export
 expect_no_success <- function(expr) {

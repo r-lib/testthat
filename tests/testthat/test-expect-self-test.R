@@ -3,7 +3,10 @@ test_that("expect_failure() requires 1 failure and zero successes", {
 
   expect_failure(expect_failure({}))
   expect_failure(expect_failure(succeed()))
-  expect_failure(expect_failure({succeed(); fail()}))
+  expect_failure(expect_failure({
+    succeed()
+    fail()
+  }))
 })
 
 test_that("expect_failure() can optionally match message", {
@@ -13,11 +16,17 @@ test_that("expect_failure() can optionally match message", {
 
 test_that("expect_success() requires 1 success and zero failures", {
   expect_success(expect_success(succeed()))
-  
+
   expect_failure(expect_success({}))
   expect_failure(expect_success(fail()))
-  expect_failure(expect_success({succeed(); fail()}))
-  expect_failure(expect_success({succeed(); succeed()}))
+  expect_failure(expect_success({
+    succeed()
+    fail()
+  }))
+  expect_failure(expect_success({
+    succeed()
+    succeed()
+  }))
 })
 
 test_that("errors in expect_success bubble up", {
