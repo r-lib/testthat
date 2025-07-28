@@ -146,7 +146,7 @@ expect_snapshot_file <- function(
     )
     fail(msg)
   }
-  succeed()
+  pass(NULL)
 }
 
 #' @rdname expect_snapshot_file

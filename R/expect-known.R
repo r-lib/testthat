@@ -77,8 +77,7 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
   if (!file.exists(path)) {
     warning("Creating reference output", call. = FALSE)
     brio::write_lines(lines, path)
-    succeed()
-    return()
+    return(pass(NULL))
   }
 
   old_lines <- brio::read_lines(path)
@@ -107,7 +106,7 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
     )
     fail(msg, info = info, trace_env = caller_env())
   }
-  succeed()
+  pass(NULL)
 }
 
 #' Expectations: is the output or the value equal to a known good value?
@@ -170,7 +169,6 @@ expect_known_value <- function(
   if (!file.exists(file)) {
     warning("Creating reference value", call. = FALSE)
     saveRDS(object, file, version = version)
-    succeed()
   } else {
     ref_val <- readRDS(file)
     comp <- compare(act$val, ref_val, ...)
@@ -187,10 +185,9 @@ expect_known_value <- function(
       )
       fail(msg, info = info)
     }
-    succeed()
   }
 
-  invisible(act$value)
+  pass(act$value)
 }
 
 #' @export
@@ -225,16 +222,14 @@ expect_known_hash <- function(object, hash = NULL) {
 
   if (is.null(hash)) {
     warning(paste0("No recorded hash: use ", substr(act_hash, 1, 10)))
-    succeed()
   } else {
     if (hash != act_hash) {
       msg <- sprintf("Value hashes to %s, not %s", act_hash, hash)
       fail(msg)
     }
-    succeed()
   }
 
-  invisible(act$value)
+  pass(act$value)
 }
 
 all_utf8 <- function(x) {

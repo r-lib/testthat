@@ -144,11 +144,9 @@ expect_contains <- function(object, expected) {
       paste0("* Missing from `actual`: ", values(exp$val[exp_miss]), "\n"),
       paste0("* Present in `actual`:   ", values(act$val), "\n")
     ))
-  } else {
-    succeed()
   }
 
-  invisible(act$val)
+  pass(act$val)
 }
 
 #' @export
@@ -172,9 +170,7 @@ expect_in <- function(object, expected) {
       paste0("* Missing from `expected`: ", values(act$val[act_miss]), "\n"),
       paste0("* Present in `expected`:   ", values(exp$val), "\n")
     ))
-  } else {
-    succeed()
   }
 
-  invisible(act$val)
+  pass(act$val)
 }

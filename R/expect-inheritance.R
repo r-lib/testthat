@@ -116,22 +116,21 @@ expect_s7_class <- function(object, class) {
 
   if (!S7::S7_inherits(object)) {
     fail(sprintf("%s is not an S7 object", act$lab))
-  } else {
-    if (!S7::S7_inherits(object, class)) {
-      obj_class <- setdiff(base::class(object), "S7_object")
-      class_desc <- paste0("<", obj_class, ">", collapse = "/")
-      msg <- sprintf(
-        "%s inherits from %s not <%s>.",
-        act$lab,
-        class_desc,
-        attr(class, "name", TRUE)
-      )
-      fail(msg)
-    }
-    succeed()
   }
 
-  invisible(act$val)
+  if (!S7::S7_inherits(object, class)) {
+    obj_class <- setdiff(base::class(object), "S7_object")
+    class_desc <- paste0("<", obj_class, ">", collapse = "/")
+    msg <- sprintf(
+      "%s inherits from %s not <%s>.",
+      act$lab,
+      class_desc,
+      attr(class, "name", TRUE)
+    )
+    fail(msg)
+  }
+
+  pass(act$val)
 }
 
 #' @export
@@ -146,7 +145,6 @@ expect_s4_class <- function(object, class) {
       msg <- sprintf("%s is an S4 object", act$lab)
       fail(msg)
     }
-    succeed()
   } else if (is.character(class)) {
     if (!isS4(act$val)) {
       fail(sprintf("%s is not an S4 object", act$lab))
@@ -160,13 +158,12 @@ expect_s4_class <- function(object, class) {
         )
         fail(msg)
       }
-      succeed()
     }
   } else {
     abort("`class` must be a NA or a character vector")
   }
 
-  invisible(act$val)
+  pass(act$val)
 }
 
 isS3 <- function(x) is.object(x) && !isS4(x)

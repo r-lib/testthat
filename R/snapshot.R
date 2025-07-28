@@ -335,7 +335,8 @@ expect_snapshot_helper <- function(
     )
     fail(msg, trace_env = trace_env)
   }
-  succeed()
+
+  pass(NULL)
 }
 
 snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {

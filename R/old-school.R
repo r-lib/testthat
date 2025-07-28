@@ -113,7 +113,7 @@ takes_less_than <- function(amount) {
       msg <- paste0("took ", duration, " seconds, which is more than ", amount)
       fail(msg)
     }
-    succeed()
+    pass(expr)
   }
 }
 
@@ -135,7 +135,7 @@ not <- function(f) {
       msg <- paste0("NOT(", expt$message, ")")
       fail(msg, srcref = expt$srcref)
     }
-    succeed()
+    pass(NULL)
   }
 
   function(...) {
