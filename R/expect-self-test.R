@@ -77,6 +77,7 @@ expect_failure <- function(expr, message = NULL, ...) {
     if (!is.null(message)) {
       return(expect_match(status$last_failure$message, message, ...))
     }
+    succeed()
   } else if (status$n_failure == 0) {
     fail("Expectation did not fail")
   } else if (status$n_failure > 1) {
@@ -89,7 +90,6 @@ expect_failure <- function(expr, message = NULL, ...) {
     ))
   }
 
-  succeed()
   invisible(NULL)
 }
 
