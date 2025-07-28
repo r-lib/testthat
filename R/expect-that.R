@@ -71,6 +71,8 @@ fail <- function(
 }
 
 #' @rdname fail
+#' @param value Value to return, typically the result of evaluating the
+#'   `object` argument to the expectation.
 #' @export
 pass <- function(value) {
   expectation("success", "success")

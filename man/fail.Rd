@@ -31,6 +31,9 @@ an expectation inside another function.}
 
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
 When supplied, the expectation is displayed with the backtrace.}
+
+\item{value}{Value to return, typically the result of evaluating the
+\code{object} argument to the expectation.}
 }
 \description{
 These are the primitives that you can use to implement your own expectations.
