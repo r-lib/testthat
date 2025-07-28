@@ -120,7 +120,7 @@ expect_snapshot_reporter <- function(
   paths = test_path("reporters/tests.R")
 ) {
   local_options(rlang_trace_format_srcrefs = FALSE)
-  local_rng_version("3.3")
+  withr::local_rng_version("3.3")
   set.seed(1014)
   # withr::local_seed(1014)
 
@@ -131,12 +131,6 @@ expect_snapshot_reporter <- function(
       }
     })
   )
-}
-
-# to work around https://github.com/r-lib/withr/issues/167
-local_rng_version <- function(version, .local_envir = parent.frame()) {
-  withr::defer(RNGversion(as.character(getRversion())), envir = .local_envir)
-  suppressWarnings(RNGversion(version))
 }
 
 # Use specifically for testthat tests in order to override the
