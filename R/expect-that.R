@@ -44,7 +44,16 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
 #' `fail()`; learn more in `vignette("custom-expectation")`.
 #'
 #' @param message a string to display.
-#' @inheritParams expect
+#' @param info Character vector continuing additional information. Included
+#'   for backward compatibility only and new expectations should not use it.
+#' @param srcref Location of the failure. Should only needed to be explicitly
+#'   supplied when you need to forward a srcref captured elsewhere.
+#' @param trace An optional backtrace created by [rlang::trace_back()].
+#'   When supplied, the expectation is displayed with the backtrace.
+#' @param trace_env If `is.null(trace)`, this is used to automatically
+#'   generate a traceback running from `test_code()`/`test_file()` to
+#'   `trace_env`. You'll generally only need to set this if you're wrapping
+#'   an expectation inside another function.
 #' @export
 #' @examples
 #' \dontrun{

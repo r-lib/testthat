@@ -5,16 +5,7 @@
 #'
 #' @param ok `TRUE` or `FALSE` indicating if the expectation was successful.
 #' @param failure_message Message to show if the expectation failed.
-#' @param info Character vector continuing additional information. Included
-#'   for backward compatibility only and new expectations should not use it.
-#' @param srcref Location of the failure. Should only needed to be explicitly
-#'   supplied when you need to forward a srcref captured elsewhere.
-#' @param trace An optional backtrace created by [rlang::trace_back()].
-#'   When supplied, the expectation is displayed with the backtrace.
-#' @param trace_env If `is.null(trace)`, this is used to automatically
-#'   generate a traceback running from `test_code()`/`test_file()` to
-#'   `trace_env`. You'll generally only need to set this if you're wrapping
-#'   an expectation inside another function.
+#' @inheritParams fail
 #' @return An expectation object from either `succeed()` or `fail()`.
 #'   with a `continue_test` restart.
 #' @seealso [exp_signal()]
