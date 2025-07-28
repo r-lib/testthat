@@ -53,7 +53,10 @@ test_that("ignores order", {
 test_that("error if any names are duplicated", {
   expect_error(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
   expect_error(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
-  expect_error(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 3, b = 2, a = 1)))
+  expect_error(expect_mapequal(
+    list(a = 1, b = 2, b = 3),
+    list(b = 3, b = 2, a = 1)
+  ))
 })
 
 test_that("handling NULLs", {

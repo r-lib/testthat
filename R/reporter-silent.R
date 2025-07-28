@@ -7,7 +7,8 @@
 #'
 #' @export
 #' @family reporters
-SilentReporter <- R6::R6Class("SilentReporter",
+SilentReporter <- R6::R6Class(
+  "SilentReporter",
   inherit = Reporter,
   public = list(
     .expectations = NULL,

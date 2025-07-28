@@ -1,4 +1,3 @@
-
 test_that("error in parallel setup code", {
   skip_on_covr()
   withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")

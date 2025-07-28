@@ -54,11 +54,15 @@ NULL
 
 #' @export
 #' @rdname equality-expectations
-expect_equal <- function(object, expected, ...,
-                         tolerance = if (edition_get() >= 3) testthat_tolerance(),
-                         info = NULL, label = NULL,
-                         expected.label = NULL) {
-
+expect_equal <- function(
+  object,
+  expected,
+  ...,
+  tolerance = if (edition_get() >= 3) testthat_tolerance(),
+  info = NULL,
+  label = NULL,
+  expected.label = NULL
+) {
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
@@ -82,8 +86,14 @@ expect_equal <- function(object, expected, ...,
 
 #' @export
 #' @rdname equality-expectations
-expect_identical <- function(object, expected, info = NULL, label = NULL,
-                             expected.label = NULL, ...) {
+expect_identical <- function(
+  object,
+  expected,
+  info = NULL,
+  label = NULL,
+  expected.label = NULL,
+  ...
+) {
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
@@ -112,14 +122,22 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
 }
 
 expect_waldo_equal <- function(type, act, exp, info, ...) {
-  comp <- waldo_compare(act$val, exp$val, ..., x_arg = "actual", y_arg = "expected")
+  comp <- waldo_compare(
+    act$val,
+    exp$val,
+    ...,
+    x_arg = "actual",
+    y_arg = "expected"
+  )
   expect(
     length(comp) == 0,
     sprintf(
       "%s (%s) not %s to %s (%s).\n\n%s",
-      act$lab, "`actual`",
+      act$lab,
+      "`actual`",
       type,
-      exp$lab, "`expected`",
+      exp$lab,
+      "`expected`",
       paste0(comp, collapse = "\n\n")
     ),
     info = info,
@@ -152,12 +170,20 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
 #' expect_equal(a, b)
 #' }
 #' expect_equivalent(a, b)
-expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
-                              expected.label = NULL) {
+expect_equivalent <- function(
+  object,
+  expected,
+  ...,
+  info = NULL,
+  label = NULL,
+  expected.label = NULL
+) {
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  edition_deprecate(3, "expect_equivalent()",
+  edition_deprecate(
+    3,
+    "expect_equivalent()",
     "Use expect_equal(ignore_attr = TRUE)"
   )
 
@@ -187,9 +213,13 @@ expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
 #' @family expectations
 #' @keywords internal
 #' @export
-expect_reference <- function(object, expected, info = NULL, label = NULL,
-                             expected.label = NULL) {
-
+expect_reference <- function(
+  object,
+  expected,
+  info = NULL,
+  label = NULL,
+  expected.label = NULL
+) {
   edition_deprecate(3, "expect_reference()")
 
   act <- quasi_label(enquo(object), label, arg = "object")
