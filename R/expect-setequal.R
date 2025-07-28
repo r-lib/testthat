@@ -107,11 +107,11 @@ expect_mapequal <- function(object, expected) {
       vals <- paste0(encodeString(exp_miss, quote = '"'), ", ")
       fail(paste0("Names absent from `expected`: ", vals))
     }
+
+    pass(act$val)
   } else {
     expect_equal(act$val[exp_nms], exp$val)
   }
-
-  invisible(act$val)
 }
 
 check_names_ok <- function(x, label) {

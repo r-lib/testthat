@@ -37,20 +37,14 @@ expect_output <- function(
       msg <- sprintf("%s produced output.\n%s", act$lab, encodeString(act$cap))
       fail(msg, info = info)
     }
+    pass(act$val)
   } else if (is.null(regexp) || identical(act$cap, "")) {
     if (identical(act$cap, "")) {
       msg <- sprintf("%s produced no output", act$lab)
       fail(msg, info = info)
     }
+    pass(act$val)
   } else {
-    return(expect_match(
-      act$cap,
-      enc2native(regexp),
-      ...,
-      info = info,
-      label = act$lab
-    ))
+    expect_match(act$cap, enc2native(regexp), ..., info = info, label = act$lab)
   }
-
-  pass(act$val)
 }
