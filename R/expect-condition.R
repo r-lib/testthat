@@ -141,8 +141,7 @@ expect_error <- function(
     if (!is.null(msg)) {
       fail(msg, info = info, trace = act$cap[["trace"]])
     }
-    succeed()
-    invisible(act$val %||% act$cap)
+    pass(act$val %||% act$cap)
   }
 }
 
@@ -192,9 +191,7 @@ expect_warning <- function(
     if (!is.null(msg)) {
       fail(msg, info = info)
     }
-    succeed()
-
-    invisible(act$val)
+    pass(act$val)
   }
 }
 
@@ -227,9 +224,7 @@ expect_message <- function(
     if (!is.null(msg)) {
       fail(msg, info = info)
     }
-    succeed()
-
-    invisible(act$val)
+    pass(act$val)
   }
 }
 
@@ -274,9 +269,7 @@ expect_condition <- function(
     if (!is.null(msg)) {
       fail(msg, info = info, trace = act$cap[["trace"]])
     }
-    succeed()
-
-    invisible(act$val %||% act$cap)
+    pass(act$val %||% act$cap)
   }
 }
 
@@ -317,11 +310,9 @@ expect_condition_matching <- function(
   if (!is.null(msg)) {
     fail(msg, info = info, trace = act$cap[["trace"]], trace_env = trace_env)
   }
-  succeed()
-
   # If a condition was expected, return it. Otherwise return the value
   # of the expression.
-  invisible(if (expected) act$cap else act$val)
+  pass(if (expected) act$cap else act$val)
 }
 
 # -------------------------------------------------------------------------

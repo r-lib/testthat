@@ -51,11 +51,8 @@ expect_setequal <- function(object, expected) {
         paste0("* Only in `expected`: ", values(exp_miss), "\n")
       }
     ))
-  } else {
-    succeed()
   }
-
-  invisible(act$val)
+  pass(act$val)
 }
 
 values <- function(x) {
@@ -89,8 +86,7 @@ expect_mapequal <- function(object, expected) {
   # Length-0 vectors are OK whether named or unnamed.
   if (length(act$val) == 0 && length(exp$val) == 0) {
     warn("`object` and `expected` are empty lists")
-    succeed()
-    return(invisible(act$val))
+    return(pass(act$val))
   }
 
   act_nms <- names(act$val)

@@ -83,6 +83,5 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     }
   }
 
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }

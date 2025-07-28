@@ -54,8 +54,7 @@ expect_named <- function(
       fail(msg, info = info)
     }
   }
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }
 
 normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {

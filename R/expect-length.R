@@ -27,7 +27,5 @@ expect_length_impl_ <- function(act, n) {
     msg <- sprintf("%s has length %i, not length %i.", act$lab, act$n, n)
     fail(msg, trace_env = parent.frame())
   }
-  succeed()
-
-  invisible(act$val)
+  pass(act$val)
 }

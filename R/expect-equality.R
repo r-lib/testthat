@@ -79,8 +79,7 @@ expect_equal <- function(
       msg <- sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message)
       fail(msg, info = info)
     }
-    succeed()
-    invisible(act$val)
+    pass(act$val)
   }
 }
 
@@ -116,8 +115,7 @@ expect_identical <- function(
       msg <- sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg)
       fail(msg, info = info)
     }
-    succeed()
-    invisible(act$val)
+    pass(act$val)
   }
 }
 
@@ -141,9 +139,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
     )
     fail(msg, info = info, trace_env = caller_env())
   }
-  succeed()
-
-  invisible(act$val)
+  pass(act$val)
 }
 
 #' Is an object equal to the expected value, ignoring attributes?
@@ -196,8 +192,7 @@ expect_equivalent <- function(
     )
     fail(msg, info = info)
   }
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }
 
 
@@ -233,8 +228,7 @@ expect_reference <- function(
     msg <- sprintf("%s not a reference to %s.", act$lab, exp$lab)
     fail(msg, info = info)
   }
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }
 
 # expect_reference() needs dev version of rlang

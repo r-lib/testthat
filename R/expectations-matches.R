@@ -126,6 +126,5 @@ expect_match_ <- function(
     )
     fail(msg, info = info)
   }
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }

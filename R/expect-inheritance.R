@@ -60,8 +60,7 @@ expect_type <- function(object, type) {
     )
     fail(msg)
   }
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }
 
 #' @export
@@ -102,8 +101,7 @@ expect_s3_class <- function(object, class, exact = FALSE) {
     abort("`class` must be a NA or a character vector")
   }
 
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }
 
 #' @export
@@ -212,8 +210,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
     )
     fail(msg, info = info)
   }
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }
 
 

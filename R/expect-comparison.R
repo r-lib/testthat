@@ -44,8 +44,7 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
     )
     fail(msg, trace_env = caller_env())
   }
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }
 #' @export
 #' @rdname comparison-expectations
