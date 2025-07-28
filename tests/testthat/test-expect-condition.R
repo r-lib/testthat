@@ -186,14 +186,29 @@ test_that("cnd expectations consistently return condition (#1371)", {
   expect_s3_class(expect_error(f(NULL, stop(""))), "simpleError")
 
   # Used to behave differently with non-`NULL` values
-  expect_s3_class(expect_message(f("return value", message(""))), "simpleMessage")
-  expect_s3_class(expect_warning(f("return value", warning(""))), "simpleWarning")
+  expect_s3_class(
+    expect_message(f("return value", message(""))),
+    "simpleMessage"
+  )
+  expect_s3_class(
+    expect_warning(f("return value", warning(""))),
+    "simpleWarning"
+  )
   expect_s3_class(expect_error(f("return value", stop(""))), "simpleError")
 
   # If there is no condition expected we return the value
-  expect_equal(expect_message(f("return value", NULL), regexp = NA), "return value")
-  expect_equal(expect_warning(f("return value", NULL), regexp = NA), "return value")
-  expect_equal(expect_error(f("return value", NULL), regexp = NA), "return value")
+  expect_equal(
+    expect_message(f("return value", NULL), regexp = NA),
+    "return value"
+  )
+  expect_equal(
+    expect_warning(f("return value", NULL), regexp = NA),
+    "return value"
+  )
+  expect_equal(
+    expect_error(f("return value", NULL), regexp = NA),
+    "return value"
+  )
 })
 
 test_that("cli width wrapping doesn't affect text matching", {
@@ -203,7 +218,9 @@ test_that("cli width wrapping doesn't affect text matching", {
   local_use_cli()
 
   expect_error(
-    abort("foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz"),
+    abort(
+      "foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz"
+    ),
     "foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz"
   )
 })
@@ -237,7 +254,8 @@ test_that("other conditions are swallowed", {
   f <- function(...) {
     conds <- c(...)
     for (cond in conds) {
-      switch(cond,
+      switch(
+        cond,
         message = message("message"),
         warning = warning("warning"),
         error = stop("error"),

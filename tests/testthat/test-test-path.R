@@ -1,4 +1,4 @@
-test_that("always returns a path",{
+test_that("always returns a path", {
   withr::local_envvar(TESTTHAT = "true")
   withr::local_options(testthat_interactive = FALSE)
 

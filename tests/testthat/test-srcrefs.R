@@ -65,7 +65,6 @@ test_that("line numbers captured for skip()s and stops()", {
     })                                # line 3
   })
   expect_equal(lines, 2)
-
 })
 
 test_that("line numbers captured for on.exit()", {

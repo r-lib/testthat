@@ -11,17 +11,24 @@
 #'   that all expectations are reported, even if outside a test block.
 #' @export
 #' @keywords internal
-source_file <- function(path,
-                        env = test_env(),
-                        chdir = TRUE,
-                        desc = NULL,
-                        wrap = TRUE,
-                        error_call = caller_env()) {
+source_file <- function(
+  path,
+  env = test_env(),
+  chdir = TRUE,
+  desc = NULL,
+  wrap = TRUE,
+  error_call = caller_env()
+) {
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
 
   lines <- brio::read_lines(path)
-  srcfile <- srcfilecopy(path, lines, file.info(path)[1, "mtime"], isFile = TRUE)
+  srcfile <- srcfilecopy(
+    path,
+    lines,
+    file.info(path)[1, "mtime"],
+    isFile = TRUE
+  )
 
   ## We need to parse from a connection, because parse() has a bug,
   ## and converts the input to the native encoding, if the text arg is used
@@ -31,7 +38,9 @@ source_file <- function(path,
   exprs <- filter_desc(exprs, desc, error_call = error_call)
 
   n <- length(exprs)
-  if (n == 0L) return(invisible())
+  if (n == 0L) {
+    return(invisible())
+  }
 
   if (chdir) {
     old_dir <- setwd(dirname(path))
@@ -76,15 +85,20 @@ filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
         include[[i]] <- TRUE
       }
     } else {
-      if (!is_string(expr[[2]]))
+      if (!is_string(expr[[2]])) {
         next
+      }
 
       test_desc <- as.character(expr[[2]])
-      if (test_desc != desc)
+      if (test_desc != desc) {
         next
+      }
 
       if (found) {
-        abort("Found multiple tests with specified description", call = error_call)
+        abort(
+          "Found multiple tests with specified description",
+          call = error_call
+        )
       }
       include[[i]] <- TRUE
       found <- TRUE
@@ -100,8 +114,13 @@ filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
 
 #' @rdname source_file
 #' @export
-source_dir <- function(path, pattern = "\\.[rR]$", env = test_env(),
-                       chdir = TRUE, wrap = TRUE) {
+source_dir <- function(
+  path,
+  pattern = "\\.[rR]$",
+  env = test_env(),
+  chdir = TRUE,
+  wrap = TRUE
+) {
   files <- normalizePath(sort(dir(path, pattern, full.names = TRUE)))
   lapply(files, function(path) {
     source_file(path, env = env, chdir = chdir, wrap = wrap)

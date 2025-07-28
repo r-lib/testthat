@@ -3,11 +3,11 @@
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
     
     == Skipped tests (3) ===========================================================
-    * empty test (2): 'reporters/tests.R:40:1', 'reporters/tests.R:45:1'
+    * empty test (2): 'reporters/tests.R:40:1', 'reporters/tests.R:44:1'
     * skip (1): 'reporters/tests.R:37:3'
     
     == Warnings ====================================================================
-    -- Warning ('reporters/tests.R:47:5'): warnings get backtraces -----------------
+    -- Warning ('reporters/tests.R:46:5'): warnings get backtraces -----------------
     def
     Backtrace:
         x
@@ -59,11 +59,11 @@
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
     
     == Skipped tests (3) ===========================================================
-    * empty test (2): 'reporters/tests.R:40:1', 'reporters/tests.R:45:1'
+    * empty test (2): 'reporters/tests.R:40:1', 'reporters/tests.R:44:1'
     * skip (1): 'reporters/tests.R:37:3'
     
     == Warnings ====================================================================
-    -- Warning ('reporters/tests.R:47:5'): warnings get backtraces -----------------
+    -- Warning ('reporters/tests.R:46:5'): warnings get backtraces -----------------
     def
     Backtrace:
         x
