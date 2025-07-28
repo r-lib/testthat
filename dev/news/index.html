@@ -58,6 +58,8 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
 <ul><li>
+<code>is_null()</code>/<code>matches()</code> deprecated in 2.0.0 (2017-12-19) and <code>is_true()</code>/<code>is_false()</code> deprecated in 2.1.0 (2019-04-23) have been removed (<a href="https://github.com/r-lib/testthat/issues/2109" class="external-link">#2109</a>).</li>
+<li>
 <code><a href="../reference/local_edition.html">local_edition()</a></code> now gives a useful error for bad values (<a href="https://github.com/r-lib/testthat/issues/1547" class="external-link">#1547</a>).</li>
 <li>testthat now requires R 4.1.</li>
 <li>
@@ -467,7 +469,7 @@
 <li><p><code><a href="../reference/comparison-expectations.html">expect_lt()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_lte()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_gt()</a></code> <code><a href="../reference/comparison-expectations.html">expect_gte()</a></code> now handle <code>Inf</code> and <code>NA</code> arguments appropriately (<a href="https://github.com/r-lib/testthat/issues/732" class="external-link">#732</a>), and no longer require the inputs to be numeric.</p></li>
 <li><p><code><a href="../reference/expect_output.html">expect_output()</a></code> gains a <code>width</code> argument, allowing you to control the output width. This does not inherit from <code>getOption("width")</code>, ensuring that tests return the same results regardless of environment (<a href="https://github.com/r-lib/testthat/issues/805" class="external-link">#805</a>).</p></li>
 <li><p><code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> now works with more vector types (including lists), because it uses <code>%in%</code>, rather than <code><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort()</a></code>. It also warns if the inputs are named, as this suggests that your mental model of how <code><a href="../reference/expect_setequal.html">expect_setequal()</a></code> works is wrong (<a href="https://github.com/r-lib/testthat/issues/750" class="external-link">#750</a>).</p></li>
-<li><p><code><a href="../reference/oldskool.html">is_true()</a></code> and <code><a href="../reference/oldskool.html">is_false()</a></code> have been deprecated because they conflict with other functions in the tidyverse.</p></li>
+<li><p><code>is_true()</code> and <code>is_false()</code> have been deprecated because they conflict with other functions in the tidyverse.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="reporters-2-1-0">Reporters<a class="anchor" aria-label="anchor" href="#reporters-2-1-0"></a></h3>
@@ -615,7 +617,7 @@
 <div class="section level3">
 <h3 id="deprecated-functions-2-0-0">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions-2-0-0"></a></h3>
 <ul><li>
-<code><a href="../reference/oldskool.html">is_null()</a></code> and <code><a href="../reference/oldskool.html">matches()</a></code> have been deprecated because they conflict with other functions in the tidyverse (<a href="https://github.com/r-lib/testthat/issues/523" class="external-link">#523</a>).</li>
+<code>is_null()</code> and <code>matches()</code> have been deprecated because they conflict with other functions in the tidyverse (<a href="https://github.com/r-lib/testthat/issues/523" class="external-link">#523</a>).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-bug-fixes-2-0-0">Minor improvements and bug fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-bug-fixes-2-0-0"></a></h3>
