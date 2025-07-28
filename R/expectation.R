@@ -15,24 +15,8 @@
 #'   generate a traceback running from `test_code()`/`test_file()` to
 #'   `trace_env`. You'll generally only need to set this if you're wrapping
 #'   an expectation inside another function.
-#' @return An expectation object. Signals the expectation condition
+#' @return An expectation object from either `succeed()` or `fail()`.
 #'   with a `continue_test` restart.
-#'
-#' @details
-#'
-#' While `expect()` creates and signals an expectation in one go,
-#' `exp_signal()` separately signals an expectation that you
-#' have manually created with [new_expectation()]. Expectations are
-#' signalled with the following protocol:
-#'
-#' * If the expectation is a failure or an error, it is signalled with
-#'   [base::stop()]. Otherwise, it is signalled with
-#'   [base::signalCondition()].
-#'
-#' * The `continue_test` restart is registered. When invoked, failing
-#'   expectations are ignored and normal control flow is resumed to
-#'   run the other tests.
-#'
 #' @seealso [exp_signal()]
 #' @export
 expect <- function(
@@ -60,7 +44,7 @@ expect <- function(
 #'
 #' @description
 #' For advanced use only. If you are creating your own expectation, you should
-#' call [expect()] instead. See `vignette("custom-expectation")` for more
+#' call [pass()] or [fail()]. See `vignette("custom-expectation")` for more
 #' details.
 #'
 #' `new_expectation()` creates an expectation object and `exp_signal()` signals
@@ -70,6 +54,7 @@ expect <- function(
 #'   "skip", "warning".
 #' @param message Message describing test failure
 #' @param srcref Optional `srcref` giving location of test.
+#' @keywords internal
 #' @inheritParams expect
 #' @export
 expectation <- function(type, message, srcref = NULL, trace = NULL) {

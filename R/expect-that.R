@@ -36,11 +36,12 @@ expect_that <- function(object, condition, info = NULL, label = NULL) {
   condition(object)
 }
 
-#' Default expectations that always succeed or fail.
+#' `pass()` or `fail()` a test
 #'
-#' These allow you to manually trigger success or failure. Failure is
-#' particularly useful to a pre-condition or mark a test as not yet
-#' implemented.
+#' @description
+#' These are the primitives that you can use to implement your own expectations.
+#' Every branch of code inside an expectation must call either `pass()` or
+#' `fail()`; learn more in `vignette("custom-expectation")`.
 #'
 #' @param message a string to display.
 #' @inheritParams expect
@@ -71,6 +72,19 @@ fail <- function(
 
 #' @rdname fail
 #' @export
+pass <- function(value) {
+  expectation("success", "success")
+  invisible(value)
+}
+
+#' Mark a test as successful
+#'
+#' This is an older version of [pass()] that exists for backwards compatibility.
+#' You should now use `pass()` instead`
+#'
+#' @export
+#' @inheritParams fail
+#' @keywords internal
 succeed <- function(message = "Success has been forced", info = NULL) {
   message <- paste(c(message, info), collapse = "\n")
 

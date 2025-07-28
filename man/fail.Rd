@@ -2,8 +2,8 @@
 % Please edit documentation in R/expect-that.R
 \name{fail}
 \alias{fail}
-\alias{succeed}
-\title{Default expectations that always succeed or fail.}
+\alias{pass}
+\title{\code{pass()} or \code{fail()} a test}
 \usage{
 fail(
   message = "Failure has been forced",
@@ -13,7 +13,7 @@ fail(
   trace = NULL
 )
 
-succeed(message = "Success has been forced", info = NULL)
+pass(value)
 }
 \arguments{
 \item{message}{a string to display.}
@@ -33,9 +33,9 @@ an expectation inside another function.}
 When supplied, the expectation is displayed with the backtrace.}
 }
 \description{
-These allow you to manually trigger success or failure. Failure is
-particularly useful to a pre-condition or mark a test as not yet
-implemented.
+These are the primitives that you can use to implement your own expectations.
+Every branch of code inside an expectation must call either \code{pass()} or
+\code{fail()}; learn more in \code{vignette("custom-expectation")}.
 }
 \examples{
 \dontrun{
