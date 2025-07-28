@@ -117,15 +117,15 @@ expect_match_ <- function(
       paste0("* ", escape(encodeString(act$val)), collapse = "\n")
     )
   }
-  expect(
-    if (all) all(condition) else any(condition),
-    sprintf(
+  if (if (all) !all(condition) else !any(condition)) {
+    msg <- sprintf(
       if (negate) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
       escape(act$lab),
       encodeString(regexp, quote = '"'),
       values
-    ),
-    info = info
-  )
+    )
+    fail(msg, info = info)
+  }
+  succeed()
   invisible(act$val)
 }

@@ -22,7 +22,11 @@ expect_cpp_tests_pass <- function(package) {
   # Drop first line of output (it's jut a '####' delimiter)
   info <- paste(output[-1], collapse = "\n")
 
-  expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
+  if (!tests_passed) {
+    msg <- paste("C++ unit tests:", info, sep = "\n")
+    fail(msg)
+  }
+  succeed()
 }
 
 #' Do C++ tests past?
@@ -143,7 +147,11 @@ run_cpp_tests <- function(package) {
           c(line, line, 1, 1)
         )
 
-        exp <- new_expectation("error", exception_text, srcref = exception_srcref)
+        exp <- new_expectation(
+          "error",
+          exception_text,
+          srcref = exception_srcref
+        )
         exp$test <- test_name
 
         get_reporter()$add_result(

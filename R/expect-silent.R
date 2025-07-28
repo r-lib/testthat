@@ -26,10 +26,11 @@ expect_silent <- function(object) {
     if (length(act$cap$messages) > 0) "messages"
   )
 
-  expect(
-    length(outputs) == 0,
-    sprintf("%s produced %s.", act$lab, paste(outputs, collapse = ", "))
-  )
+  if (length(outputs) != 0) {
+    msg <- sprintf("%s produced %s.", act$lab, paste(outputs, collapse = ", "))
+    fail(msg)
+  }
+  succeed()
 
   invisible(act$cap$result)
 }

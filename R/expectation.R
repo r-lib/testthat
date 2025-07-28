@@ -1,6 +1,7 @@
-#' The building block of all `expect_` functions
+#' The previous building block of all `expect_` functions
 #'
-#' Call `expect()` when writing your own expectations. See
+#' Previously, we recommended using `expect()` when writing your own
+#' expectations. Now we instead recommend [pass()] and [fail()]. See
 #' `vignette("custom-expectation")` for details.
 #'
 #' @param ok `TRUE` or `FALSE` indicating if the expectation was successful.
@@ -9,6 +10,7 @@
 #' @return An expectation object from either `succeed()` or `fail()`.
 #'   with a `continue_test` restart.
 #' @seealso [exp_signal()]
+#' @keywords internal
 #' @export
 expect <- function(
   ok,

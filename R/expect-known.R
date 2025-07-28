@@ -99,16 +99,15 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
     y_arg = "new",
     ...
   )
-  expect(
-    length(comp) == 0,
-    sprintf(
+  if (length(comp) != 0) {
+    msg <- sprintf(
       "Results have changed from known value recorded in %s.\n\n%s",
       encodeString(path, quote = "'"),
       paste0(comp, collapse = "\n\n")
-    ),
-    info = info,
-    trace_env = caller_env()
-  )
+    )
+    fail(msg, info = info, trace_env = caller_env())
+  }
+  succeed()
 }
 
 #' Expectations: is the output or the value equal to a known good value?
@@ -179,16 +178,16 @@ expect_known_value <- function(
       saveRDS(act$val, file, version = version)
     }
 
-    expect(
-      comp$equal,
-      sprintf(
+    if (!comp$equal) {
+      msg <- sprintf(
         "%s has changed from known value recorded in %s.\n%s",
         act$lab,
         encodeString(file, quote = "'"),
         comp$message
-      ),
-      info = info
-    )
+      )
+      fail(msg, info = info)
+    }
+    succeed()
   }
 
   invisible(act$value)
@@ -228,10 +227,11 @@ expect_known_hash <- function(object, hash = NULL) {
     warning(paste0("No recorded hash: use ", substr(act_hash, 1, 10)))
     succeed()
   } else {
-    expect(
-      hash == act_hash,
-      sprintf("Value hashes to %s, not %s", act_hash, hash)
-    )
+    if (hash != act_hash) {
+      msg <- sprintf("Value hashes to %s, not %s", act_hash, hash)
+      fail(msg)
+    }
+    succeed()
   }
 
   invisible(act$value)

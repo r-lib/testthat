@@ -23,11 +23,11 @@ expect_length <- function(object, n) {
 expect_length_impl_ <- function(act, n) {
   act$n <- length(act$val)
 
-  expect(
-    act$n == n,
-    sprintf("%s has length %i, not length %i.", act$lab, act$n, n),
-    trace_env = parent.frame()
-  )
+  if (act$n != n) {
+    msg <- sprintf("%s has length %i, not length %i.", act$lab, act$n, n)
+    fail(msg, trace_env = parent.frame())
+  }
+  succeed()
 
   invisible(act$val)
 }

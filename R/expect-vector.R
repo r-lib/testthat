@@ -26,5 +26,8 @@ expect_vector <- function(object, ptype = NULL, size = NULL) {
     }
   )
 
-  expect(is.null(message), message)
+  if (!is.null(message)) {
+    fail(message)
+  }
+  succeed()
 }

@@ -24,10 +24,11 @@ expect_invisible <- function(call, label = NULL) {
   lab <- label %||% expr_label(enexpr(call))
   vis <- withVisible(call)
 
-  expect(
-    identical(vis$visible, FALSE),
-    sprintf("%s returns visibly, not invisibly.", lab)
-  )
+  if (!identical(vis$visible, FALSE)) {
+    msg <- sprintf("%s returns visibly, not invisibly.", lab)
+    fail(msg)
+  }
+  succeed()
   invisible(vis$value)
 }
 
@@ -37,9 +38,10 @@ expect_visible <- function(call, label = NULL) {
   lab <- label %||% expr_label(enexpr(call))
   vis <- withVisible(call)
 
-  expect(
-    identical(vis$visible, TRUE),
-    sprintf("%s returns invisibly, not visibly.", lab)
-  )
+  if (!identical(vis$visible, TRUE)) {
+    msg <- sprintf("%s returns invisibly, not visibly.", lab)
+    fail(msg)
+  }
+  succeed()
   invisible(vis$value)
 }

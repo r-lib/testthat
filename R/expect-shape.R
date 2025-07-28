@@ -39,10 +39,10 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     check_number_whole(nrow, allow_na = TRUE)
     act$nrow <- dim_object[1L]
 
-    expect(
-      identical(as.integer(act$nrow), as.integer(nrow)),
-      sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
-    )
+    if (!identical(as.integer(act$nrow), as.integer(nrow))) {
+      msg <- sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
+      fail(msg)
+    }
   } else if (!missing(ncol)) {
     check_number_whole(ncol, allow_na = TRUE)
 
@@ -52,10 +52,10 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
 
     act$ncol <- dim_object[2L]
 
-    expect(
-      identical(as.integer(act$ncol), as.integer(ncol)),
-      sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
-    )
+    if (!identical(as.integer(act$ncol), as.integer(ncol))) {
+      msg <- sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
+      fail(msg)
+    }
   } else {
     # !missing(dim)
     if (!is.numeric(dim) && !is.integer(dim)) {
@@ -72,16 +72,17 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
       ))
     }
 
-    expect(
-      identical(as.integer(act$dim), as.integer(dim)),
-      sprintf(
+    if (!identical(as.integer(act$dim), as.integer(dim))) {
+      msg <- sprintf(
         "%s has dim (%s), not (%s).",
         act$lab,
         toString(act$dim),
         toString(dim)
       )
-    )
+      fail(msg)
+    }
   }
 
+  succeed()
   invisible(act$val)
 }
