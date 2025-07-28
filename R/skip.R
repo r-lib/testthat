@@ -27,7 +27,8 @@
 #'    env var).
 #'
 #' * `skip_on_cran()` skips on CRAN (using the `NOT_CRAN` env var set by
-#'    devtools and friends).
+#'    devtools and friends). `local_on_cran()` gives you the ability to
+#'    easily simulate what will happen on CRAN.
 #'
 #' * `skip_on_covr()` skips when covr is running (using the `R_COVR` env var).
 #'
@@ -179,6 +180,13 @@ skip_on_cran <- function() {
 }
 
 #' @export
+#' @rdname skip
+local_on_cran <- function(on_cran, frame = caller_env()) {
+  check_bool(on_cran)
+  withr::local_envvar(NOT_CRAN = tolower(!on_cran), .local_envir = frame)
+}
+
+#' @export
 #' @param os Character vector of one or more operating systems to skip on.
 #'   Supported values are `"windows"`, `"mac"`, `"linux"`, `"solaris"`,
 #'   and `"emscripten"`.
@@ -292,7 +300,12 @@ on_bioc <- function() {
   env_var_is_true("IS_BIOC_BUILD_MACHINE")
 }
 on_cran <- function() {
-  !interactive() && !env_var_is_true("NOT_CRAN")
+  env <- Sys.getenv("NOT_CRAN")
+  if (identical(env, "")) {
+    !interactive()
+  } else {
+    !isTRUE(as.logical(env))
+  }
 }
 
 env_var_is_true <- function(x) {

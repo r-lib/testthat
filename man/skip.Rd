@@ -8,6 +8,7 @@
 \alias{skip_unless_r}
 \alias{skip_if_offline}
 \alias{skip_on_cran}
+\alias{local_on_cran}
 \alias{skip_on_os}
 \alias{skip_on_ci}
 \alias{skip_on_covr}
@@ -28,6 +29,8 @@ skip_unless_r(spec)
 skip_if_offline(host = "captive.apple.com")
 
 skip_on_cran()
+
+local_on_cran(on_cran, frame = caller_env())
 
 skip_on_os(os, arch = NULL)
 

@@ -95,7 +95,7 @@ expect_snapshot_file <- function(
   variant = NULL
 ) {
   edition_require(3, "expect_snapshot_file()")
-  if (!cran && !interactive() && on_cran()) {
+  if (!cran && on_cran()) {
     skip("On CRAN")
   }
 
