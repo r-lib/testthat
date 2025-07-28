@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_no_failures()` and `expect_no_succeses()` are now deprecated as `expect_success()` now test for no failures and `expect_failure()` tests for no successes (#)
 * `local_edition()` now gives a useful error for bad values (#1547).
 * testthat now requires R 4.1.
 * `expect_s4_class()` now supports unquoting (@stibu81, #2064).

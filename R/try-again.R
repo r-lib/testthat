@@ -42,5 +42,5 @@ try_again <- function(times, code) {
     times <- times - 1L
   }
 
-  stop(e)
+  exp_signal(e)
 }
