@@ -54,6 +54,7 @@
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_match.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_named.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_no_error.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/reference/expect_no_success.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_null.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_output.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_output_file.html</loc></url>
