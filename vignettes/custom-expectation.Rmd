@@ -10,6 +10,10 @@ vignette: >
 ```{r setup, include = FALSE}
 library(testthat)
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+
+# Pretend we're snapsotting
+snapper <- local_snapshotter()
+snapper$start_file("snapshotting.Rmd", "test")
 ```
 
 This vignette shows you how to write your expectations that work identically to the built-in `expect_` functions. 
@@ -77,4 +81,22 @@ mtcars |>
   expect_type("list") |>
   expect_s3_class("data.frame") |> 
   expect_length(11)
+```
+
+## Testing your expectations
+
+testthat comes with three expectations designed specifically to test expectations: `expect_success()` and `expect_failure()`:
+
+* `expect_success()` checks that your expectation emits exactly one success and zero failures.
+* `expect_failure()` checks that your expectation emits exactly one failure and zero successes. 
+* `expect_failure_snapshot()` captures the failure message in a snapshot, making it easier to review if it's useful or not.
+
+```{r}
+test_that("expect_length works as expected", {
+  x <- 1:10
+  expect_success(expect_length(x, 10))
+  expect_failure(expect_length(x, 11))
+
+  expect_snapshot_failure(expect_length(x, 11))
+})
 ```

@@ -20,7 +20,7 @@ test_that("expect_no_* pass with pure code", {
 })
 
 test_that("expect_no_* don't emit success when they fail", {
-  expect_no_success(expect_no_error(stop("!")))
+  expect_failure(expect_no_error(stop("!")))
 })
 
 test_that("capture correct trace_env (#1994)", {
