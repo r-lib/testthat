@@ -1,7 +1,3 @@
-# length compared correctly
-
-    1 has length 1, not length 2.
-
 # dim compared correctly
 
     matrix(nrow = 6, ncol = 3) has dim (6, 3), not (6, 2).
@@ -56,12 +52,12 @@
       expect_shape(1:10)
     Condition
       Error in `expect_shape()`:
-      ! One of `length`, `nrow`, `ncol`, or `dim` must be supplied.
+      ! One of `nrow`, `ncol`, or `dim` must be supplied.
     Code
       expect_shape(1:10, nrow = 1L, ncol = 2L)
     Condition
       Error in `expect_shape()`:
-      ! Exactly one of `length`, `nrow`, `ncol`, or `dim` must be supplied.
+      ! Exactly one of `nrow`, `ncol`, or `dim` must be supplied.
       x `nrow` and `ncol` were supplied together.
     Code
       expect_shape(1:10, 2)

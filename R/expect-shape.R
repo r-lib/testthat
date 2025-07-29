@@ -7,28 +7,19 @@
 #'   [length()] of a vector.
 #' @inheritParams expect_that
 #' @param ... Ignored.
-#' @param length Expected [length()] of `object`.
 #' @param nrow,ncol Expected [nrow()]/[ncol()] of `object`.
 #' @param dim Expected [dim()] of `object`.
 #' @family expectations
 #' @export
 #' @examples
 #' x <- matrix(1:9, nrow = 3)
-#' expect_shape(x, length = 9)
 #' expect_shape(x, nrow = 3)
 #' expect_shape(x, ncol = 3)
 #' expect_shape(x, dim = c(3, 3))
-expect_shape = function(object, ..., length, nrow, ncol, dim) {
+expect_shape = function(object, ..., nrow, ncol, dim) {
   check_dots_empty()
-  check_exclusive(length, nrow, ncol, dim)
+  check_exclusive(nrow, ncol, dim)
   act <- quasi_label(enquo(object), arg = "object")
-
-  # Re-use expect_length() to ensure they stay in sync.
-  if (!missing(length)) {
-    return(expect_length_impl_(act, length))
-  }
-  # now that we've handled the length argument, revert to usual base function
-  length <- base::length
 
   dim_object <- base::dim(object)
   if (is.null(dim_object)) {
