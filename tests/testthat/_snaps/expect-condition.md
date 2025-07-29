@@ -36,21 +36,21 @@
     Condition
       Error in `expect_condition()`:
       ! Can't supply `...` unless `regexp` is set.
-      * Unusued arguments: `foo`.
+      * Unused arguments: `foo`.
       i `...` is passed to `grepl()` if and only if the `regexp` argument is used.
     Code
       expect_condition(stop("Hi!"), , , "bar")
     Condition
       Error in `expect_condition()`:
       ! Can't supply `...` unless `regexp` is set.
-      * Unusued arguments: `..1`.
+      * Unused arguments: `..1`.
       i `...` is passed to `grepl()` if and only if the `regexp` argument is used.
     Code
-      expect_condition(stop("Hi!"), , , "bar", foo = "bar")
+      expect_condition(stop("Hi!"), , , "bar", fixed = TRUE)
     Condition
       Error in `expect_condition()`:
       ! Can't supply `...` unless `regexp` is set.
-      * Unusued arguments: `..1` and `foo`.
+      * Unused arguments: `..1` and `fixed`.
       i `...` is passed to `grepl()` if and only if the `regexp` argument is used.
     Code
       expect_condition(stop("Hi!"), "x", foo = "bar")
@@ -59,4 +59,11 @@
       ! Failed to compare condition to `regexp`.
       Caused by error in `grepl()`:
       ! unused argument (foo = "bar")
+    Code
+      expect_condition(stop("Hi!"), pattern = "bar", fixed = TRUE)
+    Condition
+      Error in `expect_condition()`:
+      ! Can't supply `...` unless `regexp` is set.
+      * Unused arguments: `pattern` and `fixed`.
+      i `...` is passed to `grepl()` if and only if the `regexp` argument is used.
 

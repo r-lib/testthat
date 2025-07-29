@@ -246,6 +246,7 @@ test_that("unused arguments generate an error", {
     expect_condition(stop("Hi!"), , , "bar")
     expect_condition(stop("Hi!"), , , "bar", fixed = TRUE)
     expect_condition(stop("Hi!"), "x", foo = "bar")
+    expect_condition(stop("Hi!"), pattern = "bar", fixed = TRUE)
   })
 })
 
