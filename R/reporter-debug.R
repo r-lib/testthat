@@ -5,7 +5,8 @@
 #'
 #' @export
 #' @family reporters
-DebugReporter <- R6::R6Class("DebugReporter",
+DebugReporter <- R6::R6Class(
+  "DebugReporter",
   inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
@@ -58,7 +59,7 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
 
   calls <- calls[start_frame:from]
 
-  if (rlang::is_false(peek_option("testthat_format_srcrefs"))) {
+  if (is_false(peek_option("testthat_format_srcrefs"))) {
     calls <- lapply(calls, zap_srcref)
   }
   calls <- utils::limitedLabels(calls)
@@ -68,8 +69,7 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
     if (which) {
       frame <- sys.frame(start_frame - 2 + which)
       browse_frame(frame, skip = 7 - which)
-    }
-    else {
+    } else {
       break
     }
   }

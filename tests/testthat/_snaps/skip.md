@@ -70,7 +70,7 @@
       skip_on_os("amiga")
     Condition
       Error in `match.arg()`:
-      ! 'arg' should be one of "windows", "mac", "linux", "solaris"
+      ! 'arg' should be one of "windows", "mac", "linux", "solaris", "emscripten"
 
 # can skip on multiple oses
 
@@ -87,4 +87,12 @@
 ---
 
     Reason: On Windows i386
+
+# skip_unless_r gives the expected output
+
+    Reason: Current R version (4.5.0) does not satisfy requirement (>= 999.999.999)
+
+---
+
+    Reason: Current R version (4.5.0) does not satisfy requirement (== 0.0.0)
 

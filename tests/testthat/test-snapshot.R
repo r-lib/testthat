@@ -39,8 +39,14 @@ test_that("multiple outputs of same type are collapsed", {
   expect_snapshot({
     x <- 1
     y <- 1
-    {message("a"); message("b")}
-    {warning("a"); warning("b")}
+    {
+      message("a")
+      message("b")
+    }
+    {
+      warning("a")
+      warning("b")
+    }
   })
 })
 
@@ -55,7 +61,7 @@ test_that("can scrub output/messages/warnings/errors", {
   expect_snapshot(secret(), transform = redact, error = TRUE)
 
   # Or with an inline fun
-  expect_snapshot(print("secret"), transform = ~ gsub("secret", "****", .x))
+  expect_snapshot(print("secret"), transform = \(x) gsub("secret", "****", x))
 })
 
 test_that("always checks error status", {
@@ -169,9 +175,7 @@ test_that("hint is informative", {
 })
 
 test_that("expect_snapshot requires a non-empty test label", {
-
   test_that("", {
     expect_error(expect_snapshot(1 + 1))
   })
-
 })

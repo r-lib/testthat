@@ -38,10 +38,7 @@
 #'
 #' # warning does match so causes a failure:
 #' try(expect_no_warning(foo(), message = "problem"))
-expect_no_error <- function(object,
-                            ...,
-                            message = NULL,
-                            class = NULL) {
+expect_no_error <- function(object, ..., message = NULL, class = NULL) {
   check_dots_empty()
   expect_no_("error", {{ object }}, regexp = message, class = class)
 }
@@ -49,49 +46,40 @@ expect_no_error <- function(object,
 
 #' @export
 #' @rdname expect_no_error
-expect_no_warning <- function(object,
-                              ...,
-                              message = NULL,
-                              class = NULL
-                              ) {
+expect_no_warning <- function(object, ..., message = NULL, class = NULL) {
   check_dots_empty()
   expect_no_("warning", {{ object }}, regexp = message, class = class)
 }
 
 #' @export
 #' @rdname expect_no_error
-expect_no_message <- function(object,
-                              ...,
-                              message = NULL,
-                              class = NULL
-                              ) {
+expect_no_message <- function(object, ..., message = NULL, class = NULL) {
   check_dots_empty()
   expect_no_("message", {{ object }}, regexp = message, class = class)
 }
 
 #' @export
 #' @rdname expect_no_error
-expect_no_condition <- function(object,
-                                ...,
-                                message = NULL,
-                                class = NULL
-                                ) {
+expect_no_condition <- function(object, ..., message = NULL, class = NULL) {
   check_dots_empty()
   expect_no_("condition", {{ object }}, regexp = message, class = class)
 }
 
 
-expect_no_ <- function(base_class,
-                       object,
-                       regexp = NULL,
-                       class = NULL,
-                       trace_env = caller_env()) {
-
+expect_no_ <- function(
+  base_class,
+  object,
+  regexp = NULL,
+  class = NULL,
+  trace_env = caller_env()
+) {
   matcher <- cnd_matcher(
     base_class,
     class,
     regexp = regexp,
-    ignore_deprecation = base_class == "warning" && is.null(regexp) && is.null(class)
+    ignore_deprecation = base_class == "warning" &&
+      is.null(regexp) &&
+      is.null(class)
   )
 
   capture <- function(code) {
@@ -108,13 +96,19 @@ expect_no_ <- function(base_class,
         }
 
         expected <- paste0(
-          "Expected ", quo_label(enquo(object)), " to run without any ", base_class, "s",
+          "Expected ",
+          quo_label(enquo(object)),
+          " to run without any ",
+          base_class,
+          "s",
           if (!is.null(class)) paste0(" of class '", class, "'"),
           if (!is.null(regexp)) paste0(" matching pattern '", regexp, "'"),
           "."
         )
         actual <- paste0(
-          "Actually got a <", class(cnd)[[1]], "> with text:\n",
+          "Actually got a <",
+          class(cnd)[[1]],
+          "> with text:\n",
           indent_lines(rlang::cnd_message(cnd))
         )
         message <- format_error_bullets(c(expected, i = actual))

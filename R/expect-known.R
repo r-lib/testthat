@@ -48,15 +48,19 @@
 #' # This will fail
 #' expect_known_output(mtcars[1:9, ], tmp, print = TRUE)
 #' }
-expect_known_output <- function(object, file,
-                                update = TRUE,
-                                ...,
-                                info = NULL,
-                                label = NULL,
-                                print = FALSE,
-                                width = 80) {
-
-  edition_deprecate(3, "expect_known_output()",
+expect_known_output <- function(
+  object,
+  file,
+  update = TRUE,
+  ...,
+  info = NULL,
+  label = NULL,
+  print = FALSE,
+  width = 80
+) {
+  edition_deprecate(
+    3,
+    "expect_known_output()",
     "Please use `expect_snapshot_output()` instead"
   )
 
@@ -89,15 +93,18 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
   }
 
   comp <- waldo_compare(
-    x = old_lines, x_arg = "old",
-    y = lines, y_arg = "new",
+    x = old_lines,
+    x_arg = "old",
+    y = lines,
+    y_arg = "new",
     ...
   )
   expect(
     length(comp) == 0,
     sprintf(
       "Results have changed from known value recorded in %s.\n\n%s",
-      encodeString(path, quote = "'"), paste0(comp, collapse = "\n\n")
+      encodeString(path, quote = "'"),
+      paste0(comp, collapse = "\n\n")
     ),
     info = info,
     trace_env = caller_env()
@@ -116,17 +123,21 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
 #'
 #' @export
 #' @keywords internal
-expect_output_file <- function(object, file,
-                               update = TRUE,
-                               ...,
-                               info = NULL,
-                               label = NULL,
-                               print = FALSE,
-                               width = 80) {
-
+expect_output_file <- function(
+  object,
+  file,
+  update = TRUE,
+  ...,
+  info = NULL,
+  label = NULL,
+  print = FALSE,
+  width = 80
+) {
   # Code is a copy of expect_known_output()
-  edition_deprecate(3, "expect_output_file()",
-                    "Please use `expect_snapshot_output()` instead"
+  edition_deprecate(
+    3,
+    "expect_output_file()",
+    "Please use `expect_snapshot_output()` instead"
   )
 
   act <- list()
@@ -140,13 +151,18 @@ expect_output_file <- function(object, file,
 
 #' @export
 #' @rdname expect_known_output
-expect_known_value <- function(object, file,
-                               update = TRUE,
-                               ...,
-                               info = NULL,
-                               label = NULL,
-                               version = 2) {
-  edition_deprecate(3, "expect_known_value()",
+expect_known_value <- function(
+  object,
+  file,
+  update = TRUE,
+  ...,
+  info = NULL,
+  label = NULL,
+  version = 2
+) {
+  edition_deprecate(
+    3,
+    "expect_known_value()",
     "Please use `expect_snapshot_value()` instead"
   )
 
@@ -167,7 +183,9 @@ expect_known_value <- function(object, file,
       comp$equal,
       sprintf(
         "%s has changed from known value recorded in %s.\n%s",
-        act$lab, encodeString(file, quote = "'"), comp$message
+        act$lab,
+        encodeString(file, quote = "'"),
+        comp$message
       ),
       info = info
     )
@@ -180,7 +198,9 @@ expect_known_value <- function(object, file,
 #' @rdname expect_known_output
 #' @usage NULL
 expect_equal_to_reference <- function(..., update = FALSE) {
-  edition_deprecate(3, "expect_equal_to_reference()",
+  edition_deprecate(
+    3,
+    "expect_equal_to_reference()",
     "Please use `expect_snapshot_value()` instead"
   )
   expect_known_value(..., update = update)
@@ -191,7 +211,10 @@ expect_equal_to_reference <- function(..., update = FALSE) {
 #' @param hash Known hash value. Leave empty and you'll be informed what
 #'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
-  edition_deprecate(3, "expect_known_hash()",
+  check_installed("digest")
+  edition_deprecate(
+    3,
+    "expect_known_hash()",
     "Please use `expect_snapshot_value()` instead"
   )
 

@@ -9,13 +9,19 @@ test_that("basic report works", {
 test_that("doesn't truncate long lines", {
   on.exit(unlink(test_path("testthat-problems.rds")))
 
-  expect_snapshot_reporter(CheckReporter$new(), test_path("reporters/long-test.R"))
+  expect_snapshot_reporter(
+    CheckReporter$new(),
+    test_path("reporters/long-test.R")
+  )
 })
 
 test_that("always shows summary", {
   file.create(test_path("testthat-problems.rds"))
 
-  expect_snapshot_reporter(CheckReporter$new(), test_path("reporters/successes.R"))
+  expect_snapshot_reporter(
+    CheckReporter$new(),
+    test_path("reporters/successes.R")
+  )
   # and cleans up testthat-problems
   expect_false(file.exists(test_path("testthat-problems.rds")))
 })

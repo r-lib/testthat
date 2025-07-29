@@ -7,7 +7,6 @@
 #'
 #' Attributes are ignored.
 #'
-#' @seealso [is_false()] for complement
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
@@ -76,7 +75,8 @@ expect_waldo_constant <- function(act, constant, info, ...) {
     length(comp) == 0,
     sprintf(
       "%s is not %s\n\n%s",
-      act$lab, deparse(constant),
+      act$lab,
+      deparse(constant),
       paste0(comp, collapse = "\n\n")
     ),
     info = info,

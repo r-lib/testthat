@@ -1,8 +1,16 @@
 # testthat (development version)
 
+* New `pass()` function to use in place of `succeed()` (#2113).
+* `expectation()` is now a combination of `new_expectation()` and `exp_signal()` (#2125).
+* `is_null()`/`matches()` deprecated in 2.0.0 (2017-12-19) and `is_true()`/`is_false()` deprecated in 2.1.0 (2019-04-23) have been removed (#2109).
+* `local_edition()` now gives a useful error for bad values (#1547).
+* testthat now requires R 4.1.
 * `expect_s4_class()` now supports unquoting (@stibu81, #2064).
 * `it()` now finds the correct evaluation environment in more cases (@averissimo, #2085).
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
+* New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require, say, `...names` (@MichaelChirico, #2022)
+* `skip_on_os()` gains an option `"emscripten"` of the `os` argument to skip tests on Emscripten (@eitsupi, #2103).
+* New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`, `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
 
 # testthat 3.2.3
 

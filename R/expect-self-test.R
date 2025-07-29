@@ -94,6 +94,9 @@ expect_no_failure <- function(expr) {
 expect_snapshot_skip <- function(x, cran = FALSE) {
   expect_snapshot_error(x, class = "skip", cran = cran)
 }
+expect_skip <- function(code) {
+  expect_condition(code, class = "skip")
+}
 expect_no_skip <- function(code) {
   expect_no_condition(code, class = "skip")
 }
@@ -112,29 +115,32 @@ show_failure <- function(expr) {
   invisible()
 }
 
-expect_snapshot_reporter <- function(reporter, paths = test_path("reporters/tests.R")) {
+expect_snapshot_reporter <- function(
+  reporter,
+  paths = test_path("reporters/tests.R")
+) {
   local_options(rlang_trace_format_srcrefs = FALSE)
-  local_rng_version("3.3")
+  withr::local_rng_version("3.3")
   set.seed(1014)
   # withr::local_seed(1014)
 
   expect_snapshot_output(
     with_reporter(reporter, {
-      for (path in paths) test_one_file(path)
+      for (path in paths) {
+        test_one_file(path)
+      }
     })
   )
 }
 
-# to work around https://github.com/r-lib/withr/issues/167
-local_rng_version <- function(version, .local_envir = parent.frame()) {
-  withr::defer(RNGversion(as.character(getRversion())), envir = .local_envir)
-  suppressWarnings(RNGversion(version))
-}
-
 # Use specifically for testthat tests in order to override the
 # defaults found when starting the reporter
-local_output_override <- function(width = 80, crayon = TRUE, unicode = TRUE,
-                                  .env = parent.frame()) {
+local_output_override <- function(
+  width = 80,
+  crayon = TRUE,
+  unicode = TRUE,
+  .env = parent.frame()
+) {
   reporter <- get_reporter()
   if (is.null(reporter)) {
     return()
@@ -148,9 +154,12 @@ local_output_override <- function(width = 80, crayon = TRUE, unicode = TRUE,
   reporter$crayon <- crayon
   reporter$unicode <- unicode
 
-  withr::defer({
-    reporter$width <- old_width
-    reporter$crayon <- old_crayon
-    reporter$unicode <- old_unicode
-  }, .env)
+  withr::defer(
+    {
+      reporter$width <- old_width
+      reporter$crayon <- old_crayon
+      reporter$unicode <- old_unicode
+    },
+    .env
+  )
 }

@@ -26,6 +26,7 @@ reference:
 - subtitle: Vectors
   contents:
   - expect_length
+  - expect_shape
   - expect_gt
   - expect_match
   - expect_named
@@ -77,7 +78,6 @@ reference:
 - title: Expectation internals
   contents:
   - expect
-  - expectation
   - fail
   - expect_success
 

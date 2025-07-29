@@ -41,19 +41,19 @@
 #' @inheritParams with_reporter
 #' @inheritParams source_file
 #' @export
-test_dir <- function(path,
-                     filter = NULL,
-                     reporter = NULL,
-                     env = NULL,
-                     ...,
-                     load_helpers = TRUE,
-                     stop_on_failure = TRUE,
-                     stop_on_warning = FALSE,
-                     wrap = lifecycle::deprecated(),
-                     package = NULL,
-                     load_package = c("none", "installed", "source")
-                     ) {
-
+test_dir <- function(
+  path,
+  filter = NULL,
+  reporter = NULL,
+  env = NULL,
+  ...,
+  load_helpers = TRUE,
+  stop_on_failure = TRUE,
+  stop_on_warning = FALSE,
+  wrap = lifecycle::deprecated(),
+  package = NULL,
+  load_package = c("none", "installed", "source")
+) {
   load_package <- arg_match(load_package)
 
   start_first <- find_test_start_first(path, load_package, package)
@@ -115,11 +115,13 @@ test_dir <- function(path,
 #' test_file(path)
 #' test_file(path, desc = "some tests have warnings")
 #' test_file(path, reporter = "minimal")
-test_file <- function(path,
-                      reporter = default_compact_reporter(),
-                      desc = NULL,
-                      package = NULL,
-                      ...) {
+test_file <- function(
+  path,
+  reporter = default_compact_reporter(),
+  desc = NULL,
+  package = NULL,
+  ...
+) {
   if (!file.exists(path)) {
     stop("`path` does not exist", call. = FALSE)
   }
@@ -134,20 +136,21 @@ test_file <- function(path,
   )
 }
 
-test_files <- function(test_dir,
-                       test_package,
-                       test_paths,
-                       load_helpers = TRUE,
-                       reporter = default_reporter(),
-                       env = NULL,
-                       stop_on_failure = FALSE,
-                       stop_on_warning = FALSE,
-                       desc = NULL,
-                       wrap = TRUE,
-                       load_package = c("none", "installed", "source"),
-                       parallel = FALSE,
-                       error_call = caller_env()) {
-
+test_files <- function(
+  test_dir,
+  test_package,
+  test_paths,
+  load_helpers = TRUE,
+  reporter = default_reporter(),
+  env = NULL,
+  stop_on_failure = FALSE,
+  stop_on_warning = FALSE,
+  desc = NULL,
+  wrap = TRUE,
+  load_package = c("none", "installed", "source"),
+  parallel = FALSE,
+  error_call = caller_env()
+) {
   if (!isTRUE(wrap)) {
     lifecycle::deprecate_stop("3.0.0", "test_dir(wrap = )")
   }
@@ -180,22 +183,22 @@ test_files <- function(test_dir,
       error_call = error_call
     )
   }
-
 }
 
-test_files_serial <- function(test_dir,
-                       test_package,
-                       test_paths,
-                       load_helpers = TRUE,
-                       reporter = default_reporter(),
-                       env = NULL,
-                       stop_on_failure = FALSE,
-                       stop_on_warning = FALSE,
-                       desc = NULL,
-                       wrap = TRUE,
-                       load_package = c("none", "installed", "source"),
-                       error_call = caller_env()) {
-
+test_files_serial <- function(
+  test_dir,
+  test_package,
+  test_paths,
+  load_helpers = TRUE,
+  reporter = default_reporter(),
+  env = NULL,
+  stop_on_failure = FALSE,
+  stop_on_warning = FALSE,
+  desc = NULL,
+  wrap = TRUE,
+  load_package = c("none", "installed", "source"),
+  error_call = caller_env()
+) {
   # Because load_all() called by test_files_setup_env() will have already
   # loaded them. We don't want to rely on testthat's loading since that
   # only affects the test environment and we want to keep the helpers
@@ -212,7 +215,8 @@ test_files_serial <- function(test_dir,
   test_files_setup_state(test_dir, test_package, load_helpers, env)
   reporters <- test_files_reporter(reporter)
 
-  with_reporter(reporters$multi,
+  with_reporter(
+    reporters$multi,
     lapply(
       test_paths,
       test_one_file,
@@ -222,16 +226,19 @@ test_files_serial <- function(test_dir,
     )
   )
 
-  test_files_check(reporters$list$get_results(),
+  test_files_check(
+    reporters$list$get_results(),
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning
   )
 }
 
-test_files_setup_env <- function(test_package,
-                                 test_dir,
-                                 load_package = c("none", "installed", "source"),
-                                 env = NULL) {
+test_files_setup_env <- function(
+  test_package,
+  test_dir,
+  load_package = c("none", "installed", "source"),
+  env = NULL
+) {
   library(testthat)
 
   load_package <- arg_match(load_package)
@@ -277,11 +284,11 @@ find_load_all_args <- function(path) {
 }
 
 test_files_setup_state <- function(
-    test_dir,
-    test_package,
-    load_helpers,
-    env,
-    frame = parent.frame()
+  test_dir,
+  test_package,
+  load_helpers,
+  env,
+  frame = parent.frame()
 ) {
   # Define testing environment
   local_test_directory(test_dir, test_package, .env = frame)
@@ -296,7 +303,7 @@ test_files_setup_state <- function(
     source_test_helpers(".", env)
   }
   source_test_setup(".", env)
-  withr::defer(source_test_teardown(".", env), frame)      # old school
+  withr::defer(source_test_teardown(".", env), frame) # old school
 }
 
 test_files_reporter <- function(reporter, .env = parent.frame()) {
@@ -312,7 +319,11 @@ test_files_reporter <- function(reporter, .env = parent.frame()) {
   )
 }
 
-test_files_check <- function(results, stop_on_failure = TRUE, stop_on_warning = FALSE) {
+test_files_check <- function(
+  results,
+  stop_on_failure = TRUE,
+  stop_on_warning = FALSE
+) {
   if (stop_on_failure && !all_passed(results)) {
     stop("Test failures", call. = FALSE)
   }
@@ -323,10 +334,12 @@ test_files_check <- function(results, stop_on_failure = TRUE, stop_on_warning = 
   invisible(results)
 }
 
-test_one_file <- function(path,
-                          env = test_env(),
-                          desc = NULL,
-                          error_call = caller_env()) {
+test_one_file <- function(
+  path,
+  env = test_env(),
+  desc = NULL,
+  error_call = caller_env()
+) {
   reporter <- get_reporter()
   on.exit(teardown_run(), add = TRUE)
 
@@ -379,7 +392,14 @@ local_teardown_env <- function(frame = parent.frame()) {
 #' @return A character vector of paths
 #' @keywords internal
 #' @export
-find_test_scripts <- function(path, filter = NULL, invert = FALSE, ..., full.names = TRUE, start_first = NULL) {
+find_test_scripts <- function(
+  path,
+  filter = NULL,
+  invert = FALSE,
+  ...,
+  full.names = TRUE,
+  start_first = NULL
+) {
   files <- dir(path, "^test.*\\.[rR]$", full.names = full.names)
   files <- filter_test_scripts(files, filter, invert, ...)
   order_test_scripts(files, start_first)
@@ -399,7 +419,9 @@ filter_test_scripts <- function(files, filter = NULL, invert = FALSE, ...) {
 
 find_test_start_first <- function(path, load_package, package) {
   # Make sure we get the local package package if not "installed"
-  if (load_package != "installed") package <- NULL
+  if (load_package != "installed") {
+    package <- NULL
+  }
   desc <- find_description(path, package)
   if (is.null(desc)) {
     return(NULL)
@@ -414,7 +436,9 @@ find_test_start_first <- function(path, load_package, package) {
 }
 
 order_test_scripts <- function(paths, start_first) {
-  if (is.null(start_first)) return(paths)
+  if (is.null(start_first)) {
+    return(paths)
+  }
   filemap <- data.frame(
     stringsAsFactors = FALSE,
     base = sub("\\.[rR]$", "", sub("^test[-_\\.]?", "", basename(paths))),

@@ -24,9 +24,14 @@
 #' # Can also check for the absence of names with NULL
 #' z <- 1:4
 #' expect_named(z, NULL)
-expect_named <- function(object, expected, ignore.order = FALSE,
-                         ignore.case = FALSE, info = NULL,
-                         label = NULL) {
+expect_named <- function(
+  object,
+  expected,
+  ignore.order = FALSE,
+  ignore.case = FALSE,
+  info = NULL,
+  label = NULL
+) {
   act <- quasi_label(enquo(object), label, arg = "object")
   act$names <- names(act$val)
 
@@ -54,10 +59,16 @@ expect_named <- function(object, expected, ignore.order = FALSE,
 }
 
 normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
-  if (is.null(x)) return()
+  if (is.null(x)) {
+    return()
+  }
 
-  if (ignore.order) x <- sort(x)
-  if (ignore.case) x <- tolower(x)
+  if (ignore.order) {
+    x <- sort(x)
+  }
+  if (ignore.case) {
+    x <- tolower(x)
+  }
 
   x
 }

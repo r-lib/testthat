@@ -85,13 +85,15 @@
 #'   path <- save_png(code)
 #'   expect_snapshot_file(path, name)
 #' }
-expect_snapshot_file <- function(path,
-                                 name = basename(path),
-                                 binary = lifecycle::deprecated(),
-                                 cran = FALSE,
-                                 compare = NULL,
-                                 transform = NULL,
-                                 variant = NULL) {
+expect_snapshot_file <- function(
+  path,
+  name = basename(path),
+  binary = lifecycle::deprecated(),
+  cran = FALSE,
+  compare = NULL,
+  transform = NULL,
+  variant = NULL
+) {
   edition_require(3, "expect_snapshot_file()")
   if (!cran && !interactive() && on_cran()) {
     skip("On CRAN")
@@ -126,7 +128,9 @@ expect_snapshot_file <- function(path,
   }
 
   lab <- quo_label(enquo(path))
-  equal <- snapshotter$take_file_snapshot(name, path,
+  equal <- snapshotter$take_file_snapshot(
+    name,
+    path,
     file_equal = compare,
     variant = variant,
     trace_env = caller_env()
@@ -137,7 +141,8 @@ expect_snapshot_file <- function(path,
     equal,
     sprintf(
       "Snapshot of %s to '%s' has changed\n%s",
-      lab, paste0(snapshotter$file, "/", name),
+      lab,
+      paste0(snapshotter$file, "/", name),
       hint
     )
   )
@@ -154,15 +159,16 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   }
 }
 
-snapshot_review_hint <- function(test,
-                                 name,
-                                 ci = on_ci(),
-                                 check = in_rcmd_check(),
-                                 reset_output = TRUE) {
+snapshot_review_hint <- function(
+  test,
+  name,
+  ci = on_ci(),
+  check = in_rcmd_check(),
+  reset_output = TRUE
+) {
   if (reset_output) {
     local_reporter_output()
   }
-
 
   path <- paste0("tests/testthat/_snaps/", test, "/", new_name(name))
 
@@ -171,11 +177,21 @@ snapshot_review_hint <- function(test,
     if (check && !ci) "* Locate check directory\n",
     if (check) paste0("* Copy '", path, "' to local test directory\n"),
     if (check) "* ",
-    cli::format_inline("Run {.run testthat::snapshot_review('{test}/')} to review changes")
+    cli::format_inline(
+      "Run {.run testthat::snapshot_review('{test}/')} to review changes"
+    )
   )
 }
 
-snapshot_file_equal <- function(snap_test_dir, snap_name, snap_variant, path, file_equal = compare_file_binary, fail_on_new = FALSE, trace_env = NULL) {
+snapshot_file_equal <- function(
+  snap_test_dir,
+  snap_name,
+  snap_variant,
+  path,
+  file_equal = compare_file_binary,
+  fail_on_new = FALSE,
+  trace_env = NULL
+) {
   if (!file.exists(path)) {
     abort(paste0("`", path, "` not found"))
   }
@@ -198,8 +214,10 @@ snapshot_file_equal <- function(snap_test_dir, snap_name, snap_variant, path, fi
 
     message <- paste0(
       "Adding new file snapshot: 'tests/testthat/_snaps/",
-      snap_variant, if (!is.null(snap_variant)) "/",
-      snap_name, "'"
+      snap_variant,
+      if (!is.null(snap_variant)) "/",
+      snap_name,
+      "'"
     )
     if (fail_on_new) {
       fail(message, trace_env = trace_env)
@@ -216,8 +234,11 @@ snapshot_file_equal <- function(snap_test_dir, snap_name, snap_variant, path, fi
 new_name <- function(x) {
   pieces <- split_path(x)
   paste0(
-    pieces$dir, ifelse(pieces$dir == "", "", "/"),
-    pieces$name, ".new.", pieces$ext
+    pieces$dir,
+    ifelse(pieces$dir == "", "", "/"),
+    pieces$name,
+    ".new.",
+    pieces$ext
   )
 }
 
@@ -239,7 +260,12 @@ split_path <- function(path) {
   )
 }
 
-write_tmp_lines <- function(lines, ext = ".txt", eol = "\n", envir = caller_env()) {
+write_tmp_lines <- function(
+  lines,
+  ext = ".txt",
+  eol = "\n",
+  envir = caller_env()
+) {
   path <- withr::local_tempfile(fileext = ext, .local_envir = envir)
   brio::write_lines(lines, path, eol = eol)
   path
