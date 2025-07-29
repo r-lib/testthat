@@ -76,7 +76,7 @@ expect_no_ <- function(
   matcher <- cnd_matcher(
     base_class,
     class,
-    pattern = regexp,
+    regexp = regexp,
     ignore_deprecation = base_class == "warning" &&
       is.null(regexp) &&
       is.null(class)

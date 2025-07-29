@@ -252,7 +252,10 @@ test_that("can match parent conditions (#1493)", {
 test_that("unused arguments generate an error", {
   expect_snapshot(error = TRUE, {
     expect_condition(stop("Hi!"), foo = "bar")
+    expect_condition(stop("Hi!"), , , "bar")
+    expect_condition(stop("Hi!"), , , "bar", fixed = TRUE)
     expect_condition(stop("Hi!"), "x", foo = "bar")
+    expect_condition(stop("Hi!"), pattern = "bar", fixed = TRUE)
   })
 })
 

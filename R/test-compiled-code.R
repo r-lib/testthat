@@ -143,7 +143,11 @@ run_cpp_tests <- function(package) {
           c(line, line, 1, 1)
         )
 
-        exp <- new_expectation("error", exception_text, srcref = exception_srcref)
+        exp <- new_expectation(
+          "error",
+          exception_text,
+          srcref = exception_srcref
+        )
         exp$test <- test_name
 
         get_reporter()$add_result(
