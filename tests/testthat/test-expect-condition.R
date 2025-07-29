@@ -78,8 +78,17 @@ test_that("can capture Throwable conditions from rJava", {
 
 test_that("capture correct trace_env (#1994)", {
   # This should fail, not error
-  expect_failure(expect_error(stop("oops")) |> expect_warning())
-  expect_failure(expect_warning(expect_error(stop("oops"))))
+  status <- capture_success_failure({
+    stop("oops") |> expect_error() |> expect_warning()
+  })
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
+
+  status <- capture_success_failure({
+    stop("oops") %>% expect_error() %>% expect_warning()
+  })
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
 })
 
 # expect_warning() ----------------------------------------------------------
