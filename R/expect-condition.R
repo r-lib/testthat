@@ -586,19 +586,18 @@ check_condition_dots <- function(
     return()
   }
 
-  # pretty adversarial: expect_error(foo(), NULL, "error", 1)
-  dots_names <- ...names()
-  if (is.null(dots_names)) {
-    cli::cli_abort(
-      "Found unnamed arguments in {.arg ...} to be passed to {.fn grepl}, but no {.arg regexp}.",
-      call = error_call
-    )
+  dot_names <- ...names()
+  if (is.null(dot_names)) {
+    dot_names <- rep("", ...length())
   }
+  unnamed <- dot_names == ""
+  dot_names[unnamed] <- paste0("..", seq_along(dot_names)[unnamed])
+
   cli::cli_abort(
     c(
-      "Found arguments in {.arg ...} to be passed to {.fn grepl}, but no {.arg regexp}.",
-      "*" = "First problematic argument:",
-      "i" = dots_names[which(nzchar(dots_names))[1L]]
+      "Can't supply {.arg ...} unless {.arg regexp} is set.",
+      "*" = "Unusued arguments: {.arg {dot_names}}.",
+      i = "{.arg ...} is passed to {.fn grepl} if and only if the {.arg regexp} argument is used."
     ),
     call = error_call
   )
