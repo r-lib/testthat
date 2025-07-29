@@ -78,10 +78,7 @@ expect_waldo_constant <- function(act, constant, info, ...) {
       paste0(comp, collapse = "\n\n")
     )
     fail(msg, info = info, trace_env = caller_env())
-  } else {
-    # TODO figure out why an error return doesn't work with fail() above
-    succeed()
   }
 
-  invisible(act$val)
+  pass(act$val)
 }
