@@ -280,6 +280,7 @@ expect_condition_matching <- function(
   trace_env = caller_env(),
   error_call = caller_env()
 ) {
+  check_condition_dots(regexp, ..., error_call = error_call)
   matcher <- cnd_matcher(
     base_class,
     class,
@@ -328,25 +329,6 @@ cnd_matcher <- function(
 ) {
   check_string(class, allow_null = TRUE, call = error_call)
   check_string(regexp, allow_null = TRUE, allow_na = TRUE, call = error_call)
-
-  if (is.null(regexp) && dots_n(...) > 0) {
-    # pretty adversarial: expect_error(foo(), NULL, "error", 1)
-    dots_names <- ...names()
-    if (is.null(dots_names)) {
-      cli::cli_abort(
-        "Found unnamed arguments in {.arg ...} to be passed to {.fn grepl}, but no {.arg regexp}.",
-        call = error_call
-      )
-    }
-    cli::cli_abort(
-      c(
-        "Found arguments in {.arg ...} to be passed to {.fn grepl}, but no {.arg regexp}.",
-        "*" = "First problematic argument:",
-        "i" = dots_names[which(nzchar(dots_names))[1L]]
-      ),
-      call = error_call
-    )
-  }
 
   function(cnd) {
     if (!inherit) {
@@ -593,4 +575,31 @@ compare_messages <- function(
 cnd_message <- function(x) {
   withr::local_options(rlang_backtrace_on_error = "none")
   conditionMessage(x)
+}
+
+check_condition_dots <- function(
+  regexp = NULL,
+  ...,
+  error_call = caller_env()
+) {
+  if (!is.null(regexp) || missing(...)) {
+    return()
+  }
+
+  # pretty adversarial: expect_error(foo(), NULL, "error", 1)
+  dots_names <- ...names()
+  if (is.null(dots_names)) {
+    cli::cli_abort(
+      "Found unnamed arguments in {.arg ...} to be passed to {.fn grepl}, but no {.arg regexp}.",
+      call = error_call
+    )
+  }
+  cli::cli_abort(
+    c(
+      "Found arguments in {.arg ...} to be passed to {.fn grepl}, but no {.arg regexp}.",
+      "*" = "First problematic argument:",
+      "i" = dots_names[which(nzchar(dots_names))[1L]]
+    ),
+    call = error_call
+  )
 }
