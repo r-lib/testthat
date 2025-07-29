@@ -33,7 +33,7 @@ expect_length <- function(object, n) {
   act_n <- length(act$val)
   if (act_n != n) {
     msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
-    fail(msg)
+    return(fail(msg))
   }
   
   # 3. Pass
@@ -59,13 +59,13 @@ expect_vector_length <- function(object, n) {
 
   if (!is.atomic(act$val) || !is.list(act$val)) {
     msg <- sprintf("%s is a %s, not a vector", act$lab, typeof(act$val))
-    fail(msg)
+    return(fail(msg))
   }
 
   act_n <- length(act$val)
   if (act$n != n) {
     msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
-    fail(msg)
+    return(fail(msg))
   }
   
   pass(act$val)
