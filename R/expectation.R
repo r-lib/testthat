@@ -20,9 +20,7 @@ expect <- function(
   trace = NULL,
   trace_env = caller_env()
 ) {
-  if (ok) {
-    succeed(failure_message)
-  } else {
+  if (!ok) {
     return(fail(
       failure_message,
       info,
@@ -31,6 +29,7 @@ expect <- function(
       trace_env = trace_env
     ))
   }
+  succeed(failure_message)
 }
 
 #' Construct an expectation object
