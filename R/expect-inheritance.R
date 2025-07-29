@@ -141,7 +141,7 @@ expect_s4_class <- function(object, class) {
   exp_lab <- format_class(class)
 
   if (identical(class, NA)) {
-    if (!(isS4(object) == !is.na(class))) {
+    if (isS4(object)) {
       msg <- sprintf("%s is an S4 object", act$lab)
       return(fail(msg))
     }
