@@ -149,7 +149,7 @@ takes_less_than <- function(amount) {
 
     if (duration >= amount) {
       msg <- paste0("took ", duration, " seconds, which is more than ", amount)
-      fail(msg)
+      return(fail(msg))
     }
     pass(expr)
   }
@@ -171,7 +171,7 @@ not <- function(f) {
   negate <- function(expt) {
     if (expectation_success(expt)) {
       msg <- paste0("NOT(", expt$message, ")")
-      fail(msg, srcref = expt$srcref)
+      return(fail(msg, srcref = expt$srcref))
     }
     pass(NULL)
   }

@@ -38,7 +38,7 @@ expect_named <- function(
   if (missing(expected)) {
     if (identical(act$names, NULL)) {
       msg <- sprintf("%s does not have names.", act$lab)
-      fail(msg)
+      return(fail(msg))
     }
   } else {
     exp_names <- normalise_names(expected, ignore.order, ignore.case)
@@ -51,7 +51,7 @@ expect_named <- function(
         paste0("'", act$names, "'", collapse = ", "),
         paste0("'", exp_names, "'", collapse = ", ")
       )
-      fail(msg, info = info)
+      return(fail(msg, info = info))
     }
   }
   pass(act$val)

@@ -32,7 +32,7 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
 
   dim_object <- base::dim(object)
   if (is.null(dim_object)) {
-    fail(sprintf("%s has no dimensions.", act$lab))
+    return(fail(sprintf("%s has no dimensions.", act$lab)))
   }
 
   if (!missing(nrow)) {
@@ -41,20 +41,20 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
 
     if (!identical(as.integer(act$nrow), as.integer(nrow))) {
       msg <- sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
-      fail(msg)
+      return(fail(msg))
     }
   } else if (!missing(ncol)) {
     check_number_whole(ncol, allow_na = TRUE)
 
     if (length(dim_object) == 1L) {
-      fail(sprintf("%s has only one dimension.", act$lab))
+      return(fail(sprintf("%s has only one dimension.", act$lab)))
     }
 
     act$ncol <- dim_object[2L]
 
     if (!identical(as.integer(act$ncol), as.integer(ncol))) {
       msg <- sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
-      fail(msg)
+      return(fail(msg))
     }
   } else {
     # !missing(dim)
@@ -64,12 +64,12 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     act$dim <- dim_object
 
     if (length(act$dim) != length(dim)) {
-      fail(sprintf(
+      return(fail(sprintf(
         "%s has %i dimensions, not %i.",
         act$lab,
         length(act$dim),
         length(dim)
-      ))
+      )))
     }
 
     if (!identical(as.integer(act$dim), as.integer(dim))) {
@@ -79,7 +79,7 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
         toString(act$dim),
         toString(dim)
       )
-      fail(msg)
+      return(fail(msg))
     }
   }
 

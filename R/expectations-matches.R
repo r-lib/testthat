@@ -43,7 +43,7 @@ expect_match <- function(
 
   stopifnot(is.character(act$val))
   if (length(object) == 0) {
-    fail(sprintf("%s is empty.", act$lab), info = info)
+    return(fail(sprintf("%s is empty.", act$lab), info = info))
   }
 
   expect_match_(
@@ -78,7 +78,7 @@ expect_no_match <- function(
 
   stopifnot(is.character(act$val))
   if (length(object) == 0) {
-    fail(sprintf("%s is empty.", act$lab), info = info)
+    return(fail(sprintf("%s is empty.", act$lab), info = info))
   }
 
   expect_match_(
@@ -124,7 +124,7 @@ expect_match_ <- function(
       encodeString(regexp, quote = '"'),
       values
     )
-    fail(msg, info = info)
+    return(fail(msg, info = info))
   }
   pass(act$val)
 }

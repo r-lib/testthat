@@ -139,7 +139,7 @@ expect_error <- function(
     # Access error fields with `[[` rather than `$` because the
     # `$.Throwable` from the rJava package throws with unknown fields
     if (!is.null(msg)) {
-      fail(msg, info = info, trace = act$cap[["trace"]])
+      return(fail(msg, info = info, trace = act$cap[["trace"]]))
     }
     pass(act$val %||% act$cap)
   }
@@ -189,7 +189,7 @@ expect_warning <- function(
       cond_type = "warnings"
     )
     if (!is.null(msg)) {
-      fail(msg, info = info)
+      return(fail(msg, info = info))
     }
     pass(act$val)
   }
@@ -222,7 +222,7 @@ expect_message <- function(
     act <- quasi_capture(enquo(object), label, capture_messages)
     msg <- compare_messages(act$cap, act$lab, regexp = regexp, all = all, ...)
     if (!is.null(msg)) {
-      fail(msg, info = info)
+      return(fail(msg, info = info))
     }
     pass(act$val)
   }
@@ -267,7 +267,7 @@ expect_condition <- function(
       cond_type = "condition"
     )
     if (!is.null(msg)) {
-      fail(msg, info = info, trace = act$cap[["trace"]])
+      return(fail(msg, info = info, trace = act$cap[["trace"]]))
     }
     pass(act$val %||% act$cap)
   }
@@ -308,7 +308,7 @@ expect_condition_matching <- function(
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
   if (!is.null(msg)) {
-    fail(msg, info = info, trace = act$cap[["trace"]], trace_env = trace_env)
+    return(fail(msg, info = info, trace = act$cap[["trace"]], trace_env = trace_env))
   }
   # If a condition was expected, return it. Otherwise return the value
   # of the expression.

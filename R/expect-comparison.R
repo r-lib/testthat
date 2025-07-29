@@ -42,7 +42,7 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
       exp$lab,
       act$val - exp$val
     )
-    fail(msg, trace_env = caller_env())
+    return(fail(msg, trace_env = caller_env()))
   }
   pass(act$val)
 }

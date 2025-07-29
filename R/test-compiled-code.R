@@ -24,7 +24,7 @@ expect_cpp_tests_pass <- function(package) {
 
   if (!tests_passed) {
     msg <- paste("C++ unit tests:", info, sep = "\n")
-    fail(msg)
+    return(fail(msg))
   }
   pass(NULL)
 }

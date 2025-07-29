@@ -23,13 +23,13 @@ expect <- function(
   if (ok) {
     succeed(failure_message)
   } else {
-    fail(
+    return(fail(
       failure_message,
       info,
       srcref = srcref,
       trace = trace,
       trace_env = trace_env
-    )
+    ))
   }
 }
 

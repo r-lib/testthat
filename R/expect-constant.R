@@ -77,7 +77,7 @@ expect_waldo_constant <- function(act, constant, info, ...) {
       deparse(constant),
       paste0(comp, collapse = "\n\n")
     )
-    fail(msg, info = info, trace_env = caller_env())
+    return(fail(msg, info = info, trace_env = caller_env()))
   }
 
   pass(act$val)

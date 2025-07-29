@@ -144,7 +144,7 @@ expect_snapshot_file <- function(
       paste0(snapshotter$file, "/", name),
       hint
     )
-    fail(msg)
+    return(fail(msg))
   }
   pass(NULL)
 }
@@ -221,7 +221,7 @@ snapshot_file_equal <- function(
       "'"
     )
     if (fail_on_new) {
-      fail(message, trace_env = trace_env)
+      return(fail(message, trace_env = trace_env))
     } else {
       testthat_warn(message)
     }

@@ -27,7 +27,7 @@ expect_vector <- function(object, ptype = NULL, size = NULL) {
   )
 
   if (!is.null(message)) {
-    fail(message)
+    return(fail(message))
   }
   pass(act$val)
 }

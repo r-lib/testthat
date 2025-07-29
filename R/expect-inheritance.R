@@ -58,7 +58,7 @@ expect_type <- function(object, type) {
       format_class(act_type),
       format_class(type)
     )
-    fail(msg)
+    return(fail(msg))
   }
   pass(act$val)
 }
@@ -76,15 +76,15 @@ expect_s3_class <- function(object, class, exact = FALSE) {
   if (identical(class, NA)) {
     if (isS3(object)) {
       msg <- sprintf("%s is an S3 object", act$lab)
-      fail(msg)
+      return(fail(msg))
     }
   } else if (is.character(class)) {
     if (!isS3(act$val)) {
-      fail(sprintf("%s is not an S3 object", act$lab))
+      return(fail(sprintf("%s is not an S3 object", act$lab)))
     } else if (exact) {
       if (!identical(class(act$val), class)) {
         msg <- sprintf("%s has class %s, not %s.", act$lab, act$class, exp_lab)
-        fail(msg)
+        return(fail(msg))
       }
     } else {
       if (!inherits(act$val, class)) {
@@ -94,7 +94,7 @@ expect_s3_class <- function(object, class, exact = FALSE) {
           act$class,
           exp_lab
         )
-        fail(msg)
+        return(fail(msg))
       }
     }
   } else {
@@ -115,7 +115,7 @@ expect_s7_class <- function(object, class) {
   act <- quasi_label(enquo(object), arg = "object")
 
   if (!S7::S7_inherits(object)) {
-    fail(sprintf("%s is not an S7 object", act$lab))
+    return(fail(sprintf("%s is not an S7 object", act$lab)))
   }
 
   if (!S7::S7_inherits(object, class)) {
@@ -127,7 +127,7 @@ expect_s7_class <- function(object, class) {
       class_desc,
       attr(class, "name", TRUE)
     )
-    fail(msg)
+    return(fail(msg))
   }
 
   pass(act$val)
@@ -143,11 +143,11 @@ expect_s4_class <- function(object, class) {
   if (identical(class, NA)) {
     if (!(isS4(object) == !is.na(class))) {
       msg <- sprintf("%s is an S4 object", act$lab)
-      fail(msg)
+      return(fail(msg))
     }
   } else if (is.character(class)) {
     if (!isS4(act$val)) {
-      fail(sprintf("%s is not an S4 object", act$lab))
+      return(fail(sprintf("%s is not an S4 object", act$lab)))
     } else {
       if (!methods::is(act$val, class)) {
         msg <- sprintf(
@@ -156,7 +156,7 @@ expect_s4_class <- function(object, class) {
           act$class,
           exp_lab
         )
-        fail(msg)
+        return(fail(msg))
       }
     }
   } else {
@@ -205,7 +205,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
       act$class,
       exp_lab
     )
-    fail(msg, info = info)
+    return(fail(msg, info = info))
   }
   pass(act$val)
 }

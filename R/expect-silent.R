@@ -28,7 +28,7 @@ expect_silent <- function(object) {
 
   if (length(outputs) != 0) {
     msg <- sprintf("%s produced %s.", act$lab, paste(outputs, collapse = ", "))
-    fail(msg)
+    return(fail(msg))
   }
   pass(act$cap$result)
 }

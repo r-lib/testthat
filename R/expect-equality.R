@@ -77,7 +77,7 @@ expect_equal <- function(
 
     if (!comp$equal) {
       msg <- sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message)
-      fail(msg, info = info)
+      return(fail(msg, info = info))
     }
     pass(act$val)
   }
@@ -113,7 +113,7 @@ expect_identical <- function(
 
     if (!ident) {
       msg <- sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg)
-      fail(msg, info = info)
+      return(fail(msg, info = info))
     }
     pass(act$val)
   }
@@ -137,7 +137,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
       "`expected`",
       paste0(comp, collapse = "\n\n")
     )
-    fail(msg, info = info, trace_env = caller_env())
+    return(fail(msg, info = info, trace_env = caller_env()))
   }
   pass(act$val)
 }
@@ -190,7 +190,7 @@ expect_equivalent <- function(
       exp$lab,
       comp$message
     )
-    fail(msg, info = info)
+    return(fail(msg, info = info))
   }
   pass(act$val)
 }
@@ -226,7 +226,7 @@ expect_reference <- function(
 
   if (!is_reference(act$val, exp$val)) {
     msg <- sprintf("%s not a reference to %s.", act$lab, exp$lab)
-    fail(msg, info = info)
+    return(fail(msg, info = info))
   }
   pass(act$val)
 }

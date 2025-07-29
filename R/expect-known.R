@@ -104,7 +104,7 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
       encodeString(path, quote = "'"),
       paste0(comp, collapse = "\n\n")
     )
-    fail(msg, info = info, trace_env = caller_env())
+    return(fail(msg, info = info, trace_env = caller_env()))
   }
   pass(NULL)
 }
@@ -183,7 +183,7 @@ expect_known_value <- function(
         encodeString(file, quote = "'"),
         comp$message
       )
-      fail(msg, info = info)
+      return(fail(msg, info = info))
     }
   }
 
@@ -225,7 +225,7 @@ expect_known_hash <- function(object, hash = NULL) {
   } else {
     if (hash != act_hash) {
       msg <- sprintf("Value hashes to %s, not %s", act_hash, hash)
-      fail(msg)
+      return(fail(msg))
     }
   }
 
