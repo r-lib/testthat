@@ -7,6 +7,13 @@ test_that("expect_failure() requires 1 failure and zero successes", {
     succeed()
     fail()
   }))
+
+  expect_success(expect_failure({
+    fail()
+    # Following succeed/fail are never reached
+    succeed()
+    fail()
+  }))
 })
 
 test_that("expect_failure() can optionally match message", {
