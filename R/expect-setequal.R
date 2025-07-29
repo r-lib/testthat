@@ -95,23 +95,23 @@ expect_mapequal <- function(object, expected) {
   check_names_ok(act_nms, "object")
   check_names_ok(exp_nms, "expected")
 
-  if (!setequal(act_nms, exp_nms)) {
-    act_miss <- setdiff(exp_nms, act_nms)
-    if (length(act_miss) > 0) {
-      vals <- paste0(encodeString(act_miss, quote = '"'), ", ")
-      return(fail(paste0("Names absent from `object`: ", vals)))
-    }
-
-    exp_miss <- setdiff(act_nms, exp_nms)
-    if (length(exp_miss) > 0) {
-      vals <- paste0(encodeString(exp_miss, quote = '"'), ", ")
-      return(fail(paste0("Names absent from `expected`: ", vals)))
-    }
-
-    pass(act$val)
-  } else {
-    expect_equal(act$val[exp_nms], exp$val)
+  if (setequal(act_nms, exp_nms)) {
+    return(expect_equal(act$val[exp_nms], exp$val))
   }
+
+  act_miss <- setdiff(exp_nms, act_nms)
+  if (length(act_miss) > 0) {
+    vals <- paste0(encodeString(act_miss, quote = '"'), ", ")
+    return(fail(paste0("Names absent from `object`: ", vals)))
+  }
+
+  exp_miss <- setdiff(act_nms, exp_nms)
+  if (length(exp_miss) > 0) {
+    vals <- paste0(encodeString(exp_miss, quote = '"'), ", ")
+    return(fail(paste0("Names absent from `expected`: ", vals)))
+  }
+
+  pass(act$val)
 }
 
 check_names_ok <- function(x, label) {
