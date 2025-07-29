@@ -49,7 +49,7 @@ By convention, the first argument to every `expect_` function is called `object`
 
 ### Verify the expectation
 
-Now we can check if our expectation is met and call `fail()` if not. The most challenging job here is typically generating the error message because you want it to be as self-contained as possible. This means it should typically give both the expected and actual value, along with the name of the object passed to the expectation. testthat expectations use `sprintf()`, but if you're familiar with {glue}, you might want to use that instead.
+Now we can check if our expectation is met and return `fail()` if not. The most challenging job here is typically generating the error message because you want it to be as self-contained as possible. This means it should typically give both the expected and actual value, along with the name of the object passed to the expectation. testthat expectations use `sprintf()`, but if you're familiar with {glue}, you might want to use that instead.
 
 More complicated expectations will have more `if` statements. For example, we might want to make our `expect_length()` function include an assertion that `object` is a vector:
 
@@ -71,6 +71,8 @@ expect_vector_length <- function(object, n) {
   pass(act$val)
 }
 ```
+
+Note that it's really important to `return(fail())` here. You wont see the problem when interactively testing your function because when run outside of `test_that()`, `fail()` throws an error, causing the function to terminate early. When running inside of `test_that()` however, `fail()` does not stop execution because we want to collect all failures in a given test.
 
 ### Pass the test
 
