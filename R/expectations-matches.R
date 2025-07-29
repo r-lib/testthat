@@ -124,7 +124,7 @@ expect_match_ <- function(
       encodeString(regexp, quote = '"'),
       values
     )
-    return(fail(msg, info = info))
+    return(fail(msg, info = info, trace_env = caller_env()))
   }
   pass(act$val)
 }
