@@ -181,6 +181,8 @@ skip_on_cran <- function() {
 
 #' @export
 #' @rdname skip
+#' @param on_cran Pretend we're on CRAN (`TRUE`) or not (`FALSE`).
+#' @param frame Calling frame to tie change to; expect use only.
 local_on_cran <- function(on_cran, frame = caller_env()) {
   check_bool(on_cran)
   withr::local_envvar(NOT_CRAN = tolower(!on_cran), .local_envir = frame)
