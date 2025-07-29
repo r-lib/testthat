@@ -596,7 +596,7 @@ check_condition_dots <- function(
   cli::cli_abort(
     c(
       "Can't supply {.arg ...} unless {.arg regexp} is set.",
-      "*" = "Unusued arguments: {.arg {dot_names}}.",
+      "*" = "Unused arguments: {.arg {dot_names}}.",
       i = "{.arg ...} is passed to {.fn grepl} if and only if the {.arg regexp} argument is used."
     ),
     call = error_call
