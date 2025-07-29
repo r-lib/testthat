@@ -597,7 +597,7 @@ check_condition_dots <- function(
     c(
       "Can't supply {.arg ...} unless {.arg regexp} is set.",
       "*" = "Unused arguments: {.arg {dot_names}}.",
-      i = "{.arg ...} is passed to {.fn grepl} if and only if the {.arg regexp} argument is used."
+      i = "Did you mean to use {.arg regexp} so {.arg ...} is passed to {.fn grepl}?"
     ),
     call = error_call
   )
