@@ -11,6 +11,17 @@
       Error:
       ! error
 
+# show_failure
+
+    Code
+      show_failure(expect_true(FALSE))
+    Output
+      Failed expectation:
+      FALSE (`actual`) is not equal to TRUE (`expected`).
+      
+      `actual`:   FALSE
+      `expected`: TRUE 
+
 # expect_no are deprecated
 
     Code

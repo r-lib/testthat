@@ -1,7 +1,7 @@
 # reporter basics works
 
-    'reporters/tests.R:12:3' [failure] Failure:1. FALSE is not TRUE
-    'reporters/tests.R:16:8' [failure] Failure:2a. FALSE is not TRUE
+    'reporters/tests.R:12:3' [failure] Failure:1. FALSE (`actual`) is not equal to TRUE (`expected`).
+    'reporters/tests.R:16:8' [failure] Failure:2a. FALSE (`actual`) is not equal to TRUE (`expected`).
     'reporters/tests.R:23:3' [error] Error:1. Error in `eval(code, test_env)`: stop
     'reporters/tests.R:29:8' [error] errors get tracebacks. Error in `h()`: !
     'reporters/tests.R:37:3' [skip] explicit skips are reported. Reason: skip

@@ -44,7 +44,7 @@ test_that("errors in expect_success bubble up", {
 
 test_that("show_failure", {
   expect_null(show_failure(NULL))
-  expect_output(show_failure(expect_true(FALSE)), "FALSE is not TRUE")
+  expect_snapshot(show_failure(expect_true(FALSE)))
 })
 
 test_that("can count successes and failures", {
