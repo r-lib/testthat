@@ -78,8 +78,17 @@ test_that("can capture Throwable conditions from rJava", {
 
 test_that("capture correct trace_env (#1994)", {
   # This should fail, not error
-  expect_failure(expect_error(stop("oops")) |> expect_warning())
-  expect_failure(expect_warning(expect_error(stop("oops"))))
+  status <- capture_success_failure({
+    stop("oops") |> expect_error() |> expect_warning()
+  })
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
+
+  status <- capture_success_failure({
+    stop("oops") %>% expect_error() %>% expect_warning()
+  })
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
 })
 
 # expect_warning() ----------------------------------------------------------
@@ -243,7 +252,10 @@ test_that("can match parent conditions (#1493)", {
 test_that("unused arguments generate an error", {
   expect_snapshot(error = TRUE, {
     expect_condition(stop("Hi!"), foo = "bar")
+    expect_condition(stop("Hi!"), , , "bar")
+    expect_condition(stop("Hi!"), , , "bar", fixed = TRUE)
     expect_condition(stop("Hi!"), "x", foo = "bar")
+    expect_condition(stop("Hi!"), pattern = "bar", fixed = TRUE)
   })
 })
 

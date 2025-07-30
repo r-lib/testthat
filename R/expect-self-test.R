@@ -1,30 +1,40 @@
-capture_failure <- new_capture("expectation_failure")
-capture_success <- function(expr) {
+capture_success_failure <- function(expr) {
   cnd <- NULL
+
+  n_success <- 0
+  n_failure <- 0
+
+  last_failure <- NULL
 
   withCallingHandlers(
     expr,
     expectation_failure = function(cnd) {
+      last_failure <<- cnd
+      n_failure <<- n_failure + 1
+      # Don't bubble up to any other handlers
       invokeRestart("continue_test")
     },
     expectation_success = function(cnd) {
-      cnd <<- cnd
+      n_success <<- n_success + 1
+      # Don't bubble up to any other handlers
+      invokeRestart("continue_test")
     }
   )
-  cnd
-}
 
-new_capture("expectation_success")
+  list(
+    n_success = n_success,
+    n_failure = n_failure,
+    last_failure = last_failure
+  )
+}
 
 #' Tools for testing expectations
 #'
 #' @description
-#' * `expect_success()` and `expect_failure()` check that there's at least
-#'   one success or failure respectively.
-#' * `expect_snapshot_failure()` records the failure message so that you can
-#'   manually check that it is informative.
-#' * `expect_no_success()` and `expect_no_failure()` check that are no
-#'   successes or failures.
+#' `expect_success()` checks that there's exactly one success and no failures;
+#' `expect_failure()` checks that there's exactly one failure and no successes.
+#' `expect_snapshot_failure()` records the failure message so that you can
+#' manually check that it is informative.
 #'
 #' Use `show_failure()` in examples to print the failure message without
 #' throwing an error.
@@ -34,38 +44,76 @@ new_capture("expectation_success")
 #' @param ... Other arguments passed on to [expect_match()].
 #' @export
 expect_success <- function(expr) {
-  exp <- capture_success(expr)
+  status <- capture_success_failure(expr)
 
-  if (is.null(exp)) {
-    fail("Expectation did not succeed")
-  } else {
-    succeed()
+  if (status$n_success == 0) {
+    return(fail("Expectation did not succeed"))
+  } else if (status$n_success > 1) {
+    return(fail(sprintf(
+      "Expectation succeeded %i times, instead of once",
+      status$n_success
+    )))
   }
-  invisible(NULL)
-}
 
-#' @export
-#' @rdname expect_success
-expect_no_success <- function(expr) {
-  exp <- capture_success(expr)
-
-  if (!is.null(exp)) {
-    fail("Expectation succeeded")
-  } else {
-    succeed()
+  if (status$n_failure > 0) {
+    return(fail(sprintf(
+      "Expectation failed %i times, instead of zero",
+      status$n_failure
+    )))
   }
-  invisible(NULL)
+
+  pass(NULL)
 }
 
 #' @export
 #' @rdname expect_success
 expect_failure <- function(expr, message = NULL, ...) {
-  exp <- capture_failure(expr)
+  status <- capture_success_failure(expr)
 
-  if (is.null(exp)) {
-    fail("Expectation did not fail")
-  } else if (!is.null(message)) {
-    expect_match(exp$message, message, ...)
+  if (status$n_failure == 0) {
+    return(fail("Expectation did not fail"))
+  } else if (status$n_failure > 1) {
+    # This should be impossible, but including for completeness
+    return(fail("Expectation failed more than once"))
+  }
+
+  if (status$n_success != 0) {
+    return(fail(sprintf(
+      "Expectation succeeded %i times, instead of never",
+      status$n_success
+    )))
+  }
+
+  if (!is.null(message)) {
+    act <- new_actual(status$last_failure$message, "Failure message")
+    return(expect_match_(act, message, ...))
+  }
+  pass(NULL)
+}
+
+#' @export
+#' @rdname expect_success
+expect_snapshot_failure <- function(expr) {
+  expect_snapshot_condition_("expectation_failure", expr)
+}
+
+#' Test for absence of success or failure
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' These functions are deprecated because [expect_success()] and
+#' [expect_failure()] now test for exactly one success or no failures, and
+#' exactly one failure and no successes.
+#'
+#' @keywords internal
+#' @export
+expect_no_success <- function(expr) {
+  lifecycle::deprecate_warn("3.3.0", "expect_no_success()", "expect_failure()")
+  status <- capture_success_failure(expr)
+
+  if (status$n_success > 0) {
+    return(fail("Expectation succeeded"))
   } else {
     succeed()
   }
@@ -73,18 +121,13 @@ expect_failure <- function(expr, message = NULL, ...) {
 }
 
 #' @export
-#' @rdname expect_success
-expect_snapshot_failure <- function(expr) {
-  expect_snapshot_error(expr, "expectation_failure")
-}
-
-#' @export
-#' @rdname expect_success
+#' @rdname expect_no_success
 expect_no_failure <- function(expr) {
-  exp <- capture_failure(expr)
+  lifecycle::deprecate_warn("3.3.0", "expect_no_failure()", "expect_success()")
+  status <- capture_success_failure(expr)
 
-  if (!is.null(exp)) {
-    fail("Expectation failed")
+  if (status$n_failure > 0) {
+    return(fail("Expectation failed"))
   } else {
     succeed()
   }
@@ -92,13 +135,13 @@ expect_no_failure <- function(expr) {
 }
 
 expect_snapshot_skip <- function(x, cran = FALSE) {
-  expect_snapshot_error(x, class = "skip", cran = cran)
+  expect_snapshot_condition_("skip", x)
 }
 expect_skip <- function(code) {
-  expect_condition(code, class = "skip")
+  expect_condition_matching_("skip", code)
 }
 expect_no_skip <- function(code) {
-  expect_no_condition(code, class = "skip")
+  expect_no_("skip", code)
 }
 
 

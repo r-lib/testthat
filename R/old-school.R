@@ -147,10 +147,11 @@ takes_less_than <- function(amount) {
   function(expr) {
     duration <- system.time(force(expr))["elapsed"]
 
-    expect(
-      duration < amount,
-      paste0("took ", duration, " seconds, which is more than ", amount)
-    )
+    if (duration >= amount) {
+      msg <- paste0("took ", duration, " seconds, which is more than ", amount)
+      return(fail(msg))
+    }
+    pass(expr)
   }
 }
 
@@ -168,11 +169,11 @@ not <- function(f) {
   stopifnot(is.function(f))
 
   negate <- function(expt) {
-    expect(
-      !expectation_success(expt),
-      failure_message = paste0("NOT(", expt$message, ")"),
-      srcref = expt$srcref
-    )
+    if (expectation_success(expt)) {
+      msg <- paste0("NOT(", expt$message, ")")
+      return(fail(msg, srcref = expt$srcref))
+    }
+    pass(NULL)
   }
 
   function(...) {

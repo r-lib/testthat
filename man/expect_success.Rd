@@ -2,22 +2,16 @@
 % Please edit documentation in R/expect-self-test.R
 \name{expect_success}
 \alias{expect_success}
-\alias{expect_no_success}
 \alias{expect_failure}
 \alias{expect_snapshot_failure}
-\alias{expect_no_failure}
 \alias{show_failure}
 \title{Tools for testing expectations}
 \usage{
 expect_success(expr)
 
-expect_no_success(expr)
-
 expect_failure(expr, message = NULL, ...)
 
 expect_snapshot_failure(expr)
-
-expect_no_failure(expr)
 
 show_failure(expr)
 }
@@ -29,14 +23,10 @@ show_failure(expr)
 \item{...}{Other arguments passed on to \code{\link[=expect_match]{expect_match()}}.}
 }
 \description{
-\itemize{
-\item \code{expect_success()} and \code{expect_failure()} check that there's at least
-one success or failure respectively.
-\item \code{expect_snapshot_failure()} records the failure message so that you can
+\code{expect_success()} checks that there's exactly one success and no failures;
+\code{expect_failure()} checks that there's exactly one failure and no successes.
+\code{expect_snapshot_failure()} records the failure message so that you can
 manually check that it is informative.
-\item \code{expect_no_success()} and \code{expect_no_failure()} check that are no
-successes or failures.
-}
 
 Use \code{show_failure()} in examples to print the failure message without
 throwing an error.

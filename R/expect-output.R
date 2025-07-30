@@ -33,20 +33,19 @@ expect_output <- function(
   act <- quasi_capture(enquo(object), label, capture_output, width = width)
 
   if (identical(regexp, NA)) {
-    expect(
-      identical(act$cap, ""),
-      sprintf("%s produced output.\n%s", act$lab, encodeString(act$cap)),
-      info = info
-    )
+    if (!identical(act$cap, "")) {
+      msg <- sprintf("%s produced output.\n%s", act$lab, encodeString(act$cap))
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   } else if (is.null(regexp) || identical(act$cap, "")) {
-    expect(
-      !identical(act$cap, ""),
-      sprintf("%s produced no output", act$lab),
-      info = info
-    )
+    if (identical(act$cap, "")) {
+      msg <- sprintf("%s produced no output", act$lab)
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   } else {
-    expect_match(act$cap, enc2native(regexp), ..., info = info, label = act$lab)
+    act <- new_actual(act$cap, act$lab)
+    expect_match_(act, enc2native(regexp), ...)
   }
-
-  invisible(act$val)
 }

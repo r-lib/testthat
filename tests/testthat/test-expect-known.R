@@ -12,12 +12,9 @@ test_that("uses specified width", {
 
 test_that("creates file on first run", {
   file <- withr::local_tempfile()
-  expect_success(
-    expect_warning(
-      expect_known_output(cat("ok!\n"), file),
-      "Creating reference"
-    )
-  )
+  expect_known_output(cat("ok!\n"), file) |>
+    expect_success() |>
+    expect_warning("Creating reference")
 
   expect_true(file.exists(file))
 })
@@ -76,12 +73,9 @@ test_that("correctly matches to a file", {
 })
 
 test_that("first run is successful", {
-  expect_success(
-    expect_warning(
-      expect_known_value(2, "two.rds"),
-      "Creating reference"
-    )
-  )
+  expect_known_value(2, "two.rds") |>
+    expect_success() |>
+    expect_warning("Creating reference")
   unlink("two.rds")
 })
 
@@ -130,12 +124,9 @@ test_that("version 3 is possible", {
 # expect_known_hash -------------------------------------------------------
 
 test_that("empty hash succeeds with warning", {
-  expect_success(
-    expect_warning(
-      expect_known_hash(1:10),
-      "No recorded hash"
-    )
-  )
+  expect_known_hash(1:10) |>
+    expect_success() |>
+    expect_warning("No recorded hash")
 })
 
 test_that("only succeeds if hash is correct", {

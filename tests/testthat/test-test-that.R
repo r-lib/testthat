@@ -79,7 +79,7 @@ test_that("return value from test_that", {
   with_reporter(
     "",
     success <- test_that("success", {
-      expect(TRUE, "Yes!")
+      succeed("Yes!")
     })
   )
   expect_true(success)
@@ -109,7 +109,7 @@ test_that("return value from test_that", {
   with_reporter(
     "",
     success <- test_that("failure", {
-      expect(FALSE, "No!")
+      fail()
     })
   )
   expect_false(success)

@@ -43,7 +43,7 @@ expect_match <- function(
 
   stopifnot(is.character(act$val))
   if (length(object) == 0) {
-    fail(sprintf("%s is empty.", act$lab), info = info)
+    return(fail(sprintf("%s is empty.", act$lab), info = info))
   }
 
   expect_match_(
@@ -78,7 +78,7 @@ expect_no_match <- function(
 
   stopifnot(is.character(act$val))
   if (length(object) == 0) {
-    fail(sprintf("%s is empty.", act$lab), info = info)
+    return(fail(sprintf("%s is empty.", act$lab), info = info))
   }
 
   expect_match_(
@@ -103,10 +103,17 @@ expect_match_ <- function(
   all = TRUE,
   info = NULL,
   label = NULL,
-  negate = FALSE
+  negate = FALSE,
+  trace_env = caller_env()
 ) {
   matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
   condition <- if (negate) !matches else matches
+  ok <- if (all) all(condition) else any(condition)
+
+  if (ok) {
+    return(pass(act$val))
+  }
+
   escape <- if (fixed) identity else escape_regex
 
   if (length(act$val) == 1) {
@@ -117,15 +124,12 @@ expect_match_ <- function(
       paste0("* ", escape(encodeString(act$val)), collapse = "\n")
     )
   }
-  expect(
-    if (all) all(condition) else any(condition),
-    sprintf(
-      if (negate) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
-      escape(act$lab),
-      encodeString(regexp, quote = '"'),
-      values
-    ),
-    info = info
+
+  msg <- sprintf(
+    if (negate) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
+    escape(act$lab),
+    encodeString(regexp, quote = '"'),
+    values
   )
-  invisible(act$val)
+  return(fail(msg, info = info, trace_env = trace_env))
 }

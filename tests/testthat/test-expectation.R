@@ -4,7 +4,7 @@ test_that("expectation contains failure message even when successful", {
 })
 
 test_that("info only evaluated on failure", {
-  expect_error(expect(TRUE, "fail", info = stop("!")), NA)
+  expect_no_error(expect(TRUE, "fail", info = stop("!")))
 })
 
 test_that("can subclass expectation", {
@@ -22,14 +22,11 @@ test_that("can subclass expectation", {
 })
 
 test_that("`expect()` and `exp_signal()` signal expectations", {
-  expect_error(expect(TRUE, ""), regexp = NA)
-  expect_error(expect(FALSE, ""), class = "expectation_failure")
+  expect_success(expect(TRUE, ""))
+  expect_failure(expect(FALSE, ""))
 
-  expect_error(exp_signal(new_expectation("success", "")), regexp = NA)
-  expect_error(
-    exp_signal(new_expectation("failure", "")),
-    class = "expectation_failure"
-  )
+  expect_success(exp_signal(new_expectation("success", "")))
+  expect_failure(exp_signal(new_expectation("failure", "")))
 })
 
 test_that("conditionMessage() is called during conversion", {

@@ -115,7 +115,7 @@ expect_error <- function(
   label = NULL
 ) {
   if (edition_get() >= 3) {
-    expect_condition_matching(
+    expect_condition_matching_(
       "error",
       {{ object }},
       regexp = regexp,
@@ -138,8 +138,10 @@ expect_error <- function(
 
     # Access error fields with `[[` rather than `$` because the
     # `$.Throwable` from the rJava package throws with unknown fields
-    expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
-    invisible(act$val %||% act$cap)
+    if (!is.null(msg)) {
+      return(fail(msg, info = info, trace = act$cap[["trace"]]))
+    }
+    pass(act$val %||% act$cap)
   }
 }
 
@@ -161,7 +163,7 @@ expect_warning <- function(
       warn("The `all` argument is deprecated")
     }
 
-    expect_condition_matching(
+    expect_condition_matching_(
       "warning",
       {{ object }},
       regexp = regexp,
@@ -186,9 +188,10 @@ expect_warning <- function(
       ...,
       cond_type = "warnings"
     )
-    expect(is.null(msg), msg, info = info)
-
-    invisible(act$val)
+    if (!is.null(msg)) {
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   }
 }
 
@@ -205,7 +208,7 @@ expect_message <- function(
   label = NULL
 ) {
   if (edition_get() >= 3) {
-    expect_condition_matching(
+    expect_condition_matching_(
       "message",
       {{ object }},
       regexp = regexp,
@@ -218,9 +221,10 @@ expect_message <- function(
   } else {
     act <- quasi_capture(enquo(object), label, capture_messages)
     msg <- compare_messages(act$cap, act$lab, regexp = regexp, all = all, ...)
-    expect(is.null(msg), msg, info = info)
-
-    invisible(act$val)
+    if (!is.null(msg)) {
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   }
 }
 
@@ -236,7 +240,7 @@ expect_condition <- function(
   label = NULL
 ) {
   if (edition_get() >= 3) {
-    expect_condition_matching(
+    expect_condition_matching_(
       "condition",
       {{ object }},
       regexp = regexp,
@@ -262,13 +266,14 @@ expect_condition <- function(
       inherit = inherit,
       cond_type = "condition"
     )
-    expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
-
-    invisible(act$val %||% act$cap)
+    if (!is.null(msg)) {
+      return(fail(msg, info = info, trace = act$cap[["trace"]]))
+    }
+    pass(act$val %||% act$cap)
   }
 }
 
-expect_condition_matching <- function(
+expect_condition_matching_ <- function(
   base_class,
   object,
   regexp = NULL,
@@ -280,6 +285,7 @@ expect_condition_matching <- function(
   trace_env = caller_env(),
   error_call = caller_env()
 ) {
+  check_condition_dots(regexp, ..., error_call = error_call)
   matcher <- cnd_matcher(
     base_class,
     class,
@@ -302,17 +308,17 @@ expect_condition_matching <- function(
 
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
-  expect(
-    is.null(msg),
-    msg,
-    info = info,
-    trace = act$cap[["trace"]],
-    trace_env = trace_env
-  )
-
+  if (!is.null(msg)) {
+    return(fail(
+      msg,
+      info = info,
+      trace = act$cap[["trace"]],
+      trace_env = trace_env
+    ))
+  }
   # If a condition was expected, return it. Otherwise return the value
   # of the expression.
-  invisible(if (expected) act$cap else act$val)
+  pass(if (expected) act$cap else act$val)
 }
 
 # -------------------------------------------------------------------------
@@ -320,21 +326,14 @@ expect_condition_matching <- function(
 cnd_matcher <- function(
   base_class,
   class = NULL,
-  pattern = NULL,
+  regexp = NULL,
   ...,
   inherit = TRUE,
   ignore_deprecation = FALSE,
   error_call = caller_env()
 ) {
   check_string(class, allow_null = TRUE, call = error_call)
-  check_string(pattern, allow_null = TRUE, allow_na = TRUE, call = error_call)
-
-  if (is.null(pattern) && dots_n(...) > 0) {
-    cli::cli_abort(
-      "Can't specify {.arg ...} without {.arg pattern}.",
-      call = error_call
-    )
-  }
+  check_string(regexp, allow_null = TRUE, allow_na = TRUE, call = error_call)
 
   function(cnd) {
     if (!inherit) {
@@ -352,12 +351,12 @@ cnd_matcher <- function(
       if (!is.null(class) && !inherits(x, class)) {
         return(FALSE)
       }
-      if (!is.null(pattern) && !isNA(pattern)) {
+      if (!is.null(regexp) && !isNA(regexp)) {
         withCallingHandlers(
-          grepl(pattern, conditionMessage(x), ...),
+          grepl(regexp, conditionMessage(x), ...),
           error = function(e) {
             cli::cli_abort(
-              "Failed to compare {base_class} to {.arg pattern}.",
+              "Failed to compare {base_class} to {.arg regexp}.",
               parent = e,
               call = error_call
             )
@@ -581,4 +580,30 @@ compare_messages <- function(
 cnd_message <- function(x) {
   withr::local_options(rlang_backtrace_on_error = "none")
   conditionMessage(x)
+}
+
+check_condition_dots <- function(
+  regexp = NULL,
+  ...,
+  error_call = caller_env()
+) {
+  if (!is.null(regexp) || missing(...)) {
+    return()
+  }
+
+  dot_names <- ...names()
+  if (is.null(dot_names)) {
+    dot_names <- rep("", ...length())
+  }
+  unnamed <- dot_names == ""
+  dot_names[unnamed] <- paste0("..", seq_along(dot_names)[unnamed])
+
+  cli::cli_abort(
+    c(
+      "Can't supply {.arg ...} unless {.arg regexp} is set.",
+      "*" = "Unused arguments: {.arg {dot_names}}.",
+      i = "Did you mean to use {.arg regexp} so {.arg ...} is passed to {.fn grepl}?"
+    ),
+    call = error_call
+  )
 }

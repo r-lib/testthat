@@ -94,7 +94,7 @@ expect_snapshot <- function(
   msg <- compare_condition_3e("error", NULL, state$error, quo_label(x), error)
   if (!is.null(msg)) {
     if (error) {
-      expect(FALSE, msg, trace = state$error[["trace"]])
+      return(fail(msg, trace = state$error[["trace"]]))
     } else {
       cnd_signal(state$error)
     }
@@ -225,7 +225,7 @@ expect_snapshot_error <- function(
   variant = NULL
 ) {
   edition_require(3, "expect_snapshot_error()")
-  expect_snapshot_condition(
+  expect_snapshot_condition_(
     "error",
     {{ x }},
     class = class,
@@ -243,7 +243,7 @@ expect_snapshot_warning <- function(
   variant = NULL
 ) {
   edition_require(3, "expect_snapshot_warning()")
-  expect_snapshot_condition(
+  expect_snapshot_condition_(
     "warning",
     {{ x }},
     class = class,
@@ -252,12 +252,13 @@ expect_snapshot_warning <- function(
   )
 }
 
-expect_snapshot_condition <- function(
+expect_snapshot_condition_ <- function(
   base_class,
   x,
-  class,
+  class = base_class,
   cran = FALSE,
-  variant = NULL
+  variant = NULL,
+  trace_env = caller_env()
 ) {
   variant <- check_variant(variant)
 
@@ -267,13 +268,19 @@ expect_snapshot_condition <- function(
   )
   if (is.null(val)) {
     if (base_class == class) {
-      fail(sprintf("%s did not generate %s", lab, base_class))
+      return(fail(
+        sprintf("%s did not generate %s", lab, base_class),
+        trace_env = trace_env
+      ))
     } else {
-      fail(sprintf(
-        "%s did not generate %s with class '%s'",
-        lab,
-        base_class,
-        class
+      return(fail(
+        sprintf(
+          "%s did not generate %s with class '%s'",
+          lab,
+          base_class,
+          class
+        ),
+        trace_env = trace_env
       ))
     }
   }
@@ -283,7 +290,7 @@ expect_snapshot_condition <- function(
     conditionMessage(val),
     cran = cran,
     variant = variant,
-    trace_env = caller_env()
+    trace_env = trace_env
   )
 }
 
@@ -325,17 +332,18 @@ expect_snapshot_helper <- function(
   }
   hint <- snapshot_accept_hint(variant, snapshotter$file)
 
-  expect(
-    length(comp) == 0,
-    sprintf(
+  if (length(comp) != 0) {
+    msg <- sprintf(
       "Snapshot of %s has changed%s:\n%s\n\n%s",
       lab,
       variant_lab,
       paste0(comp, collapse = "\n\n"),
       hint
-    ),
-    trace_env = trace_env
-  )
+    )
+    return(fail(msg, trace_env = trace_env))
+  }
+
+  pass(NULL)
 }
 
 snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
