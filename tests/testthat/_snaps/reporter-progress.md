@@ -31,7 +31,7 @@
     
     [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
     
-    I believe in you!
+    No one gets it right on their first try
 
 # gracefully handles multiple contexts
 
@@ -45,7 +45,7 @@
     == Results =====================================================================
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
     
-    You rock!
+    Way to go!
 
 # fails after max_fail tests
 
@@ -205,7 +205,7 @@
     [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ]
     == Terminated early ============================================================
     
-    I believe in you!
+    No one gets it right on their first try
 
 # can fully suppress incremental updates
 
@@ -224,7 +224,7 @@
     == Results =====================================================================
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
     
-    You rock!
+    Way to go!
 
 ---
 
@@ -235,7 +235,7 @@
     == Results =====================================================================
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
     
-    You rock!
+    Way to go!
 
 # reports backtraces
 
@@ -509,7 +509,7 @@
     
     [ FAIL 9 | WARN 1 | SKIP 0 | PASS 1 ]
     
-    I believe in you!
+    No one gets it right on their first try
 
 # records skips
 
@@ -527,7 +527,7 @@
     
     [ FAIL 0 | WARN 0 | SKIP 2 | PASS 0 ]
     
-    You rock!
+    Way to go!
 
 # compact display is informative
 
