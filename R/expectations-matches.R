@@ -43,7 +43,7 @@ expect_match <- function(
 
   stopifnot(is.character(act$val))
   if (length(object) == 0) {
-    fail(sprintf("%s is empty.", act$lab), info = info)
+    return(fail(sprintf("%s is empty.", act$lab), info = info))
   }
 
   expect_match_(
@@ -78,7 +78,7 @@ expect_no_match <- function(
 
   stopifnot(is.character(act$val))
   if (length(object) == 0) {
-    fail(sprintf("%s is empty.", act$lab), info = info)
+    return(fail(sprintf("%s is empty.", act$lab), info = info))
   }
 
   expect_match_(
@@ -117,15 +117,14 @@ expect_match_ <- function(
       paste0("* ", escape(encodeString(act$val)), collapse = "\n")
     )
   }
-  expect(
-    if (all) all(condition) else any(condition),
-    sprintf(
+  if (if (all) !all(condition) else !any(condition)) {
+    msg <- sprintf(
       if (negate) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
       escape(act$lab),
       encodeString(regexp, quote = '"'),
       values
-    ),
-    info = info
-  )
-  invisible(act$val)
+    )
+    return(fail(msg, info = info, trace_env = caller_env()))
+  }
+  pass(act$val)
 }

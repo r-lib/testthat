@@ -17,17 +17,11 @@ expect_length <- function(object, n) {
   stopifnot(is.numeric(n), length(n) == 1)
 
   act <- quasi_label(enquo(object), arg = "object")
-  expect_length_impl_(act, n)
-}
-
-expect_length_impl_ <- function(act, n) {
   act$n <- length(act$val)
 
-  expect(
-    act$n == n,
-    sprintf("%s has length %i, not length %i.", act$lab, act$n, n),
-    trace_env = parent.frame()
-  )
-
-  invisible(act$val)
+  if (act$n != n) {
+    msg <- sprintf("%s has length %i, not length %i.", act$lab, act$n, n)
+    return(fail(msg, trace_env = parent.frame()))
+  }
+  pass(act$val)
 }

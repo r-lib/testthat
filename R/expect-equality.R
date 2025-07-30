@@ -75,12 +75,11 @@ expect_equal <- function(
       comp <- compare(act$val, exp$val, ...)
     }
 
-    expect(
-      comp$equal,
-      sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message),
-      info = info
-    )
-    invisible(act$val)
+    if (!comp$equal) {
+      msg <- sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message)
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   }
 }
 
@@ -112,12 +111,11 @@ expect_identical <- function(
       }
     }
 
-    expect(
-      ident,
-      sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg),
-      info = info
-    )
-    invisible(act$val)
+    if (!ident) {
+      msg <- sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg)
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   }
 }
 
@@ -129,9 +127,8 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
     x_arg = "actual",
     y_arg = "expected"
   )
-  expect(
-    length(comp) == 0,
-    sprintf(
+  if (length(comp) != 0) {
+    msg <- sprintf(
       "%s (%s) not %s to %s (%s).\n\n%s",
       act$lab,
       "`actual`",
@@ -139,12 +136,10 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
       exp$lab,
       "`expected`",
       paste0(comp, collapse = "\n\n")
-    ),
-    info = info,
-    trace_env = caller_env()
-  )
-
-  invisible(act$val)
+    )
+    return(fail(msg, info = info, trace_env = caller_env()))
+  }
+  pass(act$val)
 }
 
 #' Is an object equal to the expected value, ignoring attributes?
@@ -188,12 +183,16 @@ expect_equivalent <- function(
   )
 
   comp <- compare(act$val, exp$val, ..., check.attributes = FALSE)
-  expect(
-    comp$equal,
-    sprintf("%s not equivalent to %s.\n%s", act$lab, exp$lab, comp$message),
-    info = info
-  )
-  invisible(act$val)
+  if (!comp$equal) {
+    msg <- sprintf(
+      "%s not equivalent to %s.\n%s",
+      act$lab,
+      exp$lab,
+      comp$message
+    )
+    return(fail(msg, info = info))
+  }
+  pass(act$val)
 }
 
 
@@ -225,12 +224,11 @@ expect_reference <- function(
   act <- quasi_label(enquo(object), label, arg = "object")
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
-  expect(
-    is_reference(act$val, exp$val),
-    sprintf("%s not a reference to %s.", act$lab, exp$lab),
-    info = info
-  )
-  invisible(act$val)
+  if (!is_reference(act$val, exp$val)) {
+    msg <- sprintf("%s not a reference to %s.", act$lab, exp$lab)
+    return(fail(msg, info = info))
+  }
+  pass(act$val)
 }
 
 # expect_reference() needs dev version of rlang

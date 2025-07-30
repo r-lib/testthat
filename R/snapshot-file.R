@@ -137,15 +137,16 @@ expect_snapshot_file <- function(
   )
   hint <- snapshot_review_hint(snapshotter$file, name)
 
-  expect(
-    equal,
-    sprintf(
+  if (!equal) {
+    msg <- sprintf(
       "Snapshot of %s to '%s' has changed\n%s",
       lab,
       paste0(snapshotter$file, "/", name),
       hint
     )
-  )
+    return(fail(msg))
+  }
+  pass(NULL)
 }
 
 #' @rdname expect_snapshot_file
@@ -220,7 +221,7 @@ snapshot_file_equal <- function(
       "'"
     )
     if (fail_on_new) {
-      fail(message, trace_env = trace_env)
+      return(fail(message, trace_env = trace_env))
     } else {
       testthat_warn(message)
     }

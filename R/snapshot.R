@@ -94,7 +94,7 @@ expect_snapshot <- function(
   msg <- compare_condition_3e("error", NULL, state$error, quo_label(x), error)
   if (!is.null(msg)) {
     if (error) {
-      expect(FALSE, msg, trace = state$error[["trace"]])
+      return(fail(msg, trace = state$error[["trace"]]))
     } else {
       cnd_signal(state$error)
     }
@@ -267,14 +267,14 @@ expect_snapshot_condition <- function(
   )
   if (is.null(val)) {
     if (base_class == class) {
-      fail(sprintf("%s did not generate %s", lab, base_class))
+      return(fail(sprintf("%s did not generate %s", lab, base_class)))
     } else {
-      fail(sprintf(
+      return(fail(sprintf(
         "%s did not generate %s with class '%s'",
         lab,
         base_class,
         class
-      ))
+      )))
     }
   }
 
@@ -325,17 +325,18 @@ expect_snapshot_helper <- function(
   }
   hint <- snapshot_accept_hint(variant, snapshotter$file)
 
-  expect(
-    length(comp) == 0,
-    sprintf(
+  if (length(comp) != 0) {
+    msg <- sprintf(
       "Snapshot of %s has changed%s:\n%s\n\n%s",
       lab,
       variant_lab,
       paste0(comp, collapse = "\n\n"),
       hint
-    ),
-    trace_env = trace_env
-  )
+    )
+    return(fail(msg, trace_env = trace_env))
+  }
+
+  pass(NULL)
 }
 
 snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {

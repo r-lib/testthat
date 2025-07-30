@@ -34,18 +34,17 @@ expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
   if (length(cmp) != 1 || !is.logical(cmp)) {
     abort("Result of comparison must be a single logical value")
   }
-  expect(
-    if (!is.na(cmp)) cmp else FALSE,
-    sprintf(
+  if (!isTRUE(cmp)) {
+    msg <- sprintf(
       "%s is %s %s. Difference: %.3g",
       act$lab,
       msg,
       exp$lab,
       act$val - exp$val
-    ),
-    trace_env = caller_env()
-  )
-  invisible(act$val)
+    )
+    return(fail(msg, trace_env = caller_env()))
+  }
+  pass(act$val)
 }
 #' @export
 #' @rdname comparison-expectations

@@ -2,7 +2,7 @@
 % Please edit documentation in R/expectation.R
 \name{expect}
 \alias{expect}
-\title{The building block of all \code{expect_} functions}
+\title{The previous building block of all \code{expect_} functions}
 \usage{
 expect(
   ok,
@@ -37,9 +37,11 @@ An expectation object from either \code{succeed()} or \code{fail()}.
 with a \code{continue_test} restart.
 }
 \description{
-Call \code{expect()} when writing your own expectations. See
+Previously, we recommended using \code{expect()} when writing your own
+expectations. Now we instead recommend \code{\link[=pass]{pass()}} and \code{\link[=fail]{fail()}}. See
 \code{vignette("custom-expectation")} for details.
 }
 \seealso{
 \code{\link[=exp_signal]{exp_signal()}}
 }
+\keyword{internal}

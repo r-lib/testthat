@@ -22,7 +22,11 @@ expect_cpp_tests_pass <- function(package) {
   # Drop first line of output (it's jut a '####' delimiter)
   info <- paste(output[-1], collapse = "\n")
 
-  expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
+  if (!tests_passed) {
+    msg <- paste("C++ unit tests:", info, sep = "\n")
+    return(fail(msg))
+  }
+  pass(NULL)
 }
 
 #' Do C++ tests past?

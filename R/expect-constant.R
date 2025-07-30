@@ -56,7 +56,6 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' show_failure(expect_null(y))
 expect_null <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
-
   expect_waldo_constant(act, NULL, info = info)
 }
 
@@ -71,17 +70,15 @@ expect_waldo_constant <- function(act, constant, info, ...) {
     ...
   )
 
-  expect(
-    length(comp) == 0,
-    sprintf(
+  if (length(comp) != 0) {
+    msg <- sprintf(
       "%s is not %s\n\n%s",
       act$lab,
       deparse(constant),
       paste0(comp, collapse = "\n\n")
-    ),
-    info = info,
-    trace_env = caller_env()
-  )
+    )
+    return(fail(msg, info = info, trace_env = caller_env()))
+  }
 
-  invisible(act$val)
+  pass(act$val)
 }

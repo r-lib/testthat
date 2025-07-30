@@ -112,7 +112,7 @@ expect_no_ <- function(
           indent_lines(rlang::cnd_message(cnd))
         )
         message <- format_error_bullets(c(expected, i = actual))
-        fail(message, trace_env = trace_env)
+        return(fail(message, trace_env = trace_env))
       }
     )
   }
