@@ -91,6 +91,8 @@ or it requires a specific version of a package).</p>
 <span></span>
 <span><span class="fu">skip_on_cran</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
+<span><span class="fu">local_on_cran</span><span class="op">(</span><span class="va">on_cran</span>, frame <span class="op">=</span> <span class="fu">caller_env</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
 <span><span class="fu">skip_on_os</span><span class="op">(</span><span class="va">os</span>, arch <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">skip_on_ci</span><span class="op">(</span><span class="op">)</span></span>
@@ -132,6 +134,14 @@ should only be run on R versions 4.1.0 and later.</p></dd>
 <dd><p>A string with a hostname to lookup</p></dd>
 
 
+<dt id="arg-on-cran">on_cran<a class="anchor" aria-label="anchor" href="#arg-on-cran"></a></dt>
+<dd><p>Pretend we're on CRAN (<code>TRUE</code>) or not (<code>FALSE</code>).</p></dd>
+
+
+<dt id="arg-frame">frame<a class="anchor" aria-label="anchor" href="#arg-frame"></a></dt>
+<dd><p>Calling frame to tie change to; expect use only.</p></dd>
+
+
 <dt id="arg-os">os<a class="anchor" aria-label="anchor" href="#arg-os"></a></dt>
 <dd><p>Character vector of one or more operating systems to skip on.
 Supported values are <code>"windows"</code>, <code>"mac"</code>, <code>"linux"</code>, <code>"solaris"</code>,
@@ -167,7 +177,8 @@ difficult to install.</p></li>
 <li><p><code>skip_on_bioc()</code> skips on Bioconductor (using the <code>IS_BIOC_BUILD_MACHINE</code>
 env var).</p></li>
 <li><p><code>skip_on_cran()</code> skips on CRAN (using the <code>NOT_CRAN</code> env var set by
-devtools and friends).</p></li>
+devtools and friends). <code>local_on_cran()</code> gives you the ability to
+easily simulate what will happen on CRAN.</p></li>
 <li><p><code>skip_on_covr()</code> skips when covr is running (using the <code>R_COVR</code> env var).</p></li>
 <li><p><code>skip_on_ci()</code> skips on continuous integration systems like GitHub Actions,
 travis, and appveyor (using the <code>CI</code> env var).</p></li>
