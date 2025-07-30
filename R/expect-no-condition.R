@@ -128,8 +128,7 @@ expect_no_ <- function(
     return(fail(message, trace_env = trace_env))
   }
 
-  succeed()
-  invisible(act$val)
+  pass(act$val)
 }
 
 indent_lines <- function(x) {
