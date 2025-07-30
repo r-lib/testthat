@@ -163,9 +163,7 @@ expect_snapshot_reporter <- function(
   paths = test_path("reporters/tests.R")
 ) {
   local_options(rlang_trace_format_srcrefs = FALSE)
-  withr::local_rng_version("3.3")
-  set.seed(1014)
-  # withr::local_seed(1014)
+  withr::local_seed(1014)
 
   expect_snapshot_output(
     with_reporter(reporter, {

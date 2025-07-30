@@ -20,14 +20,14 @@ evaluate_promise <- function(code, print = FALSE) {
   handle_warning <- function(condition) {
     if (!is_deprecation(condition)) {
       warnings$push(condition)
-      maybe_restart("muffleWarning")
+      tryInvokeRestart("muffleWarning")
     }
   }
 
   messages <- Stack$new()
   handle_message <- function(condition) {
     messages$push(condition)
-    maybe_restart("muffleMessage")
+    tryInvokeRestart("muffleMessage")
   }
 
   path <- withr::local_tempfile()
