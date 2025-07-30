@@ -2,8 +2,6 @@
 #' @export
 magrittr::`%>%`
 
-null <- function(...) invisible()
-
 escape_regex <- function(x) {
   chars <- c(
     "*",
