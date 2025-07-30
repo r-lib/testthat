@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_no_*()` now executes the entire code block, rather than stopping at the first message or warning (#1991).
 * `expect_no_failures()` and `expect_no_successes()` are now deprecated as `expect_success()` now test for no failures and `expect_failure()` tests for no successes (#)
 * New `pass()` function to use in place of `succeed()` (#2113).
 * `expectation()` is now a combination of `new_expectation()` and `exp_signal()` (#2125).
