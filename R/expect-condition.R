@@ -351,7 +351,7 @@ cnd_matcher <- function(
       if (!is.null(class) && !inherits(x, class)) {
         return(FALSE)
       }
-      if (!is.null(regexp) && !isNA(regexp)) {
+      if (!is.null(regexp) && !identical(regexp, NA)) {
         withCallingHandlers(
           grepl(regexp, conditionMessage(x), ...),
           error = function(e) {
