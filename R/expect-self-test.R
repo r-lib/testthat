@@ -6,22 +6,19 @@ capture_success_failure <- function(expr) {
 
   last_failure <- NULL
 
-  withRestarts(
-    withCallingHandlers(
-      expr,
-      expectation_failure = function(cnd) {
-        last_failure <<- cnd
-        n_failure <<- n_failure + 1
-        # Finish the test without bubbling up
-        invokeRestart("failed")
-      },
-      expectation_success = function(cnd) {
-        n_success <<- n_success + 1
-        # Don't bubble up to any other handlers
-        invokeRestart("continue_test")
-      }
-    ),
-    failed = function() {}
+  withCallingHandlers(
+    expr,
+    expectation_failure = function(cnd) {
+      last_failure <<- cnd
+      n_failure <<- n_failure + 1
+      # Don't bubble up to any other handlers
+      invokeRestart("continue_test")
+    },
+    expectation_success = function(cnd) {
+      n_success <<- n_success + 1
+      # Don't bubble up to any other handlers
+      invokeRestart("continue_test")
+    }
   )
 
   list(
@@ -50,19 +47,19 @@ expect_success <- function(expr) {
   status <- capture_success_failure(expr)
 
   if (status$n_success == 0) {
-    fail("Expectation did not succeed")
+    return(fail("Expectation did not succeed"))
   } else if (status$n_success > 1) {
-    fail(sprintf(
+    return(fail(sprintf(
       "Expectation succeeded %i times, instead of once",
       status$n_success
-    ))
+    )))
   }
 
   if (status$n_failure > 0) {
-    fail(sprintf(
+    return(fail(sprintf(
       "Expectation failed %i times, instead of zero",
       status$n_failure
-    ))
+    )))
   }
 
   pass(NULL)
@@ -74,21 +71,22 @@ expect_failure <- function(expr, message = NULL, ...) {
   status <- capture_success_failure(expr)
 
   if (status$n_failure == 0) {
-    fail("Expectation did not fail")
+    return(fail("Expectation did not fail"))
   } else if (status$n_failure > 1) {
     # This should be impossible, but including for completeness
-    fail("Expectation failed more than once")
+    return(fail("Expectation failed more than once"))
   }
 
   if (status$n_success != 0) {
-    fail(sprintf(
+    return(fail(sprintf(
       "Expectation succeeded %i times, instead of never",
       status$n_success
-    ))
+    )))
   }
 
   if (!is.null(message)) {
-    return(expect_match(status$last_failure$message, message, ...))
+    act <- new_actual(status$last_failure$message, "Failure message")
+    return(expect_match_(act, message, ...))
   }
   pass(NULL)
 }
@@ -96,7 +94,7 @@ expect_failure <- function(expr, message = NULL, ...) {
 #' @export
 #' @rdname expect_success
 expect_snapshot_failure <- function(expr) {
-  expect_snapshot_error(expr, "expectation_failure")
+  expect_snapshot_condition_("expectation_failure", expr)
 }
 
 #' Test for absence of success or failure
@@ -115,7 +113,7 @@ expect_no_success <- function(expr) {
   status <- capture_success_failure(expr)
 
   if (status$n_success > 0) {
-    fail("Expectation succeeded")
+    return(fail("Expectation succeeded"))
   } else {
     succeed()
   }
@@ -129,7 +127,7 @@ expect_no_failure <- function(expr) {
   status <- capture_success_failure(expr)
 
   if (status$n_failure > 0) {
-    fail("Expectation failed")
+    return(fail("Expectation failed"))
   } else {
     succeed()
   }
@@ -137,13 +135,13 @@ expect_no_failure <- function(expr) {
 }
 
 expect_snapshot_skip <- function(x, cran = FALSE) {
-  expect_snapshot_error(x, class = "skip", cran = cran)
+  expect_snapshot_condition_("skip", x)
 }
 expect_skip <- function(code) {
-  expect_condition(code, class = "skip")
+  expect_condition_matching_("skip", code)
 }
 expect_no_skip <- function(code) {
-  expect_no_condition(code, class = "skip")
+  expect_no_("skip", code)
 }
 
 

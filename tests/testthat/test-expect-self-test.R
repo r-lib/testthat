@@ -8,7 +8,7 @@ test_that("expect_failure() requires 1 failure and zero successes", {
     fail()
   }))
 
-  expect_success(expect_failure({
+  expect_failure(expect_failure({
     fail()
     # Following succeed/fail are never reached
     succeed()
@@ -19,6 +19,8 @@ test_that("expect_failure() requires 1 failure and zero successes", {
 test_that("expect_failure() can optionally match message", {
   expect_success(expect_failure(fail("apple"), "apple"))
   expect_failure(expect_failure(fail("apple"), "banana"))
+
+  expect_snapshot_failure(expect_failure(fail("apple"), "banana"))
 })
 
 test_that("expect_success() requires 1 success and zero failures", {
@@ -65,8 +67,8 @@ test_that("can count successes and failures", {
     succeed()
     fail()
   })
-  expect_equal(status$n_success, 1)
-  expect_equal(status$n_failure, 1)
+  expect_equal(status$n_success, 2)
+  expect_equal(status$n_failure, 2)
 })
 
 test_that("expect_no are deprecated", {

@@ -36,26 +36,25 @@ expect_named <- function(
   act$names <- names(act$val)
 
   if (missing(expected)) {
-    expect(
-      !identical(act$names, NULL),
-      sprintf("%s does not have names.", act$lab)
-    )
+    if (identical(act$names, NULL)) {
+      msg <- sprintf("%s does not have names.", act$lab)
+      return(fail(msg))
+    }
   } else {
     exp_names <- normalise_names(expected, ignore.order, ignore.case)
     act$names <- normalise_names(act$names, ignore.order, ignore.case)
 
-    expect(
-      identical(act$names, exp_names),
-      sprintf(
+    if (!identical(act$names, exp_names)) {
+      msg <- sprintf(
         "Names of %s (%s) don't match %s",
         act$lab,
         paste0("'", act$names, "'", collapse = ", "),
         paste0("'", exp_names, "'", collapse = ", ")
-      ),
-      info = info
-    )
+      )
+      return(fail(msg, info = info))
+    }
   }
-  invisible(act$val)
+  pass(act$val)
 }
 
 normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {

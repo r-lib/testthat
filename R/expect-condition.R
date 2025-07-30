@@ -115,7 +115,7 @@ expect_error <- function(
   label = NULL
 ) {
   if (edition_get() >= 3) {
-    expect_condition_matching(
+    expect_condition_matching_(
       "error",
       {{ object }},
       regexp = regexp,
@@ -138,8 +138,10 @@ expect_error <- function(
 
     # Access error fields with `[[` rather than `$` because the
     # `$.Throwable` from the rJava package throws with unknown fields
-    expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
-    invisible(act$val %||% act$cap)
+    if (!is.null(msg)) {
+      return(fail(msg, info = info, trace = act$cap[["trace"]]))
+    }
+    pass(act$val %||% act$cap)
   }
 }
 
@@ -161,7 +163,7 @@ expect_warning <- function(
       warn("The `all` argument is deprecated")
     }
 
-    expect_condition_matching(
+    expect_condition_matching_(
       "warning",
       {{ object }},
       regexp = regexp,
@@ -186,9 +188,10 @@ expect_warning <- function(
       ...,
       cond_type = "warnings"
     )
-    expect(is.null(msg), msg, info = info)
-
-    invisible(act$val)
+    if (!is.null(msg)) {
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   }
 }
 
@@ -205,7 +208,7 @@ expect_message <- function(
   label = NULL
 ) {
   if (edition_get() >= 3) {
-    expect_condition_matching(
+    expect_condition_matching_(
       "message",
       {{ object }},
       regexp = regexp,
@@ -218,9 +221,10 @@ expect_message <- function(
   } else {
     act <- quasi_capture(enquo(object), label, capture_messages)
     msg <- compare_messages(act$cap, act$lab, regexp = regexp, all = all, ...)
-    expect(is.null(msg), msg, info = info)
-
-    invisible(act$val)
+    if (!is.null(msg)) {
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   }
 }
 
@@ -236,7 +240,7 @@ expect_condition <- function(
   label = NULL
 ) {
   if (edition_get() >= 3) {
-    expect_condition_matching(
+    expect_condition_matching_(
       "condition",
       {{ object }},
       regexp = regexp,
@@ -262,13 +266,14 @@ expect_condition <- function(
       inherit = inherit,
       cond_type = "condition"
     )
-    expect(is.null(msg), msg, info = info, trace = act$cap[["trace"]])
-
-    invisible(act$val %||% act$cap)
+    if (!is.null(msg)) {
+      return(fail(msg, info = info, trace = act$cap[["trace"]]))
+    }
+    pass(act$val %||% act$cap)
   }
 }
 
-expect_condition_matching <- function(
+expect_condition_matching_ <- function(
   base_class,
   object,
   regexp = NULL,
@@ -303,17 +308,17 @@ expect_condition_matching <- function(
 
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
-  expect(
-    is.null(msg),
-    msg,
-    info = info,
-    trace = act$cap[["trace"]],
-    trace_env = trace_env
-  )
-
+  if (!is.null(msg)) {
+    return(fail(
+      msg,
+      info = info,
+      trace = act$cap[["trace"]],
+      trace_env = trace_env
+    ))
+  }
   # If a condition was expected, return it. Otherwise return the value
   # of the expression.
-  invisible(if (expected) act$cap else act$val)
+  pass(if (expected) act$cap else act$val)
 }
 
 # -------------------------------------------------------------------------

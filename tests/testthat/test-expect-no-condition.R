@@ -33,7 +33,6 @@ test_that("expect_no_* don't emit success when they fail", {
 })
 
 test_that("capture correct trace_env (#1994)", {
-  # This should fail, not error
   status <- capture_success_failure(
     expect_warning(expect_error(stop("oops")))
   )

@@ -51,16 +51,16 @@ expect_type <- function(object, type) {
   act <- quasi_label(enquo(object), arg = "object")
   act_type <- typeof(act$val)
 
-  expect(
-    identical(act_type, type),
-    sprintf(
+  if (!identical(act_type, type)) {
+    msg <- sprintf(
       "%s has type %s, not %s.",
       act$lab,
       format_class(act_type),
       format_class(type)
     )
-  )
-  invisible(act$val)
+    return(fail(msg))
+  }
+  pass(act$val)
 }
 
 #' @export
@@ -74,29 +74,34 @@ expect_s3_class <- function(object, class, exact = FALSE) {
   exp_lab <- format_class(class)
 
   if (identical(class, NA)) {
-    expect(
-      isS3(object) == !is.na(class),
-      sprintf("%s is an S3 object", act$lab)
-    )
+    if (isS3(object)) {
+      msg <- sprintf("%s is an S3 object", act$lab)
+      return(fail(msg))
+    }
   } else if (is.character(class)) {
     if (!isS3(act$val)) {
-      fail(sprintf("%s is not an S3 object", act$lab))
+      return(fail(sprintf("%s is not an S3 object", act$lab)))
     } else if (exact) {
-      expect(
-        identical(class(act$val), class),
-        sprintf("%s has class %s, not %s.", act$lab, act$class, exp_lab)
-      )
+      if (!identical(class(act$val), class)) {
+        msg <- sprintf("%s has class %s, not %s.", act$lab, act$class, exp_lab)
+        return(fail(msg))
+      }
     } else {
-      expect(
-        inherits(act$val, class),
-        sprintf("%s inherits from %s not %s.", act$lab, act$class, exp_lab)
-      )
+      if (!inherits(act$val, class)) {
+        msg <- sprintf(
+          "%s inherits from %s not %s.",
+          act$lab,
+          act$class,
+          exp_lab
+        )
+        return(fail(msg))
+      }
     }
   } else {
     abort("`class` must be a NA or a character vector")
   }
 
-  invisible(act$val)
+  pass(act$val)
 }
 
 #' @export
@@ -110,25 +115,22 @@ expect_s7_class <- function(object, class) {
   act <- quasi_label(enquo(object), arg = "object")
 
   if (!S7::S7_inherits(object)) {
-    fail(sprintf("%s is not an S7 object", act$lab))
-  } else {
-    expect(
-      S7::S7_inherits(object, class),
-      sprintf(
-        "%s inherits from %s not <%s>.",
-        act$lab,
-        paste0(
-          "<",
-          setdiff(base::class(object), "S7_object"),
-          ">",
-          collapse = "/"
-        ),
-        attr(class, "name", TRUE)
-      )
-    )
+    return(fail(sprintf("%s is not an S7 object", act$lab)))
   }
 
-  invisible(act$val)
+  if (!S7::S7_inherits(object, class)) {
+    obj_class <- setdiff(base::class(object), "S7_object")
+    class_desc <- paste0("<", obj_class, ">", collapse = "/")
+    msg <- sprintf(
+      "%s inherits from %s not <%s>.",
+      act$lab,
+      class_desc,
+      attr(class, "name", TRUE)
+    )
+    return(fail(msg))
+  }
+
+  pass(act$val)
 }
 
 #' @export
@@ -139,24 +141,29 @@ expect_s4_class <- function(object, class) {
   exp_lab <- format_class(class)
 
   if (identical(class, NA)) {
-    expect(
-      isS4(object) == !is.na(class),
-      sprintf("%s is an S4 object", act$lab)
-    )
+    if (isS4(object)) {
+      msg <- sprintf("%s is an S4 object", act$lab)
+      return(fail(msg))
+    }
   } else if (is.character(class)) {
     if (!isS4(act$val)) {
-      fail(sprintf("%s is not an S4 object", act$lab))
+      return(fail(sprintf("%s is not an S4 object", act$lab)))
     } else {
-      expect(
-        methods::is(act$val, class),
-        sprintf("%s inherits from %s not %s.", act$lab, act$class, exp_lab)
-      )
+      if (!methods::is(act$val, class)) {
+        msg <- sprintf(
+          "%s inherits from %s not %s.",
+          act$lab,
+          act$class,
+          exp_lab
+        )
+        return(fail(msg))
+      }
     }
   } else {
     abort("`class` must be a NA or a character vector")
   }
 
-  invisible(act$val)
+  pass(act$val)
 }
 
 isS3 <- function(x) is.object(x) && !isS4(x)
@@ -191,12 +198,16 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
   act$class <- format_class(class(act$val))
   exp_lab <- format_class(class(class))
 
-  expect(
-    inherits(act$val, class),
-    sprintf("%s inherits from `%s` not `%s`.", act$lab, act$class, exp_lab),
-    info = info
-  )
-  invisible(act$val)
+  if (!inherits(act$val, class)) {
+    msg <- sprintf(
+      "%s inherits from `%s` not `%s`.",
+      act$lab,
+      act$class,
+      exp_lab
+    )
+    return(fail(msg, info = info))
+  }
+  pass(act$val)
 }
 
 

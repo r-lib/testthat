@@ -77,7 +77,6 @@ reference:
 
 - title: Expectation internals
   contents:
-  - expect
   - fail
   - expect_success
 

@@ -7,55 +7,46 @@
 #'   [length()] of a vector.
 #' @inheritParams expect_that
 #' @param ... Ignored.
-#' @param length Expected [length()] of `object`.
 #' @param nrow,ncol Expected [nrow()]/[ncol()] of `object`.
 #' @param dim Expected [dim()] of `object`.
 #' @family expectations
 #' @export
 #' @examples
 #' x <- matrix(1:9, nrow = 3)
-#' expect_shape(x, length = 9)
 #' expect_shape(x, nrow = 3)
 #' expect_shape(x, ncol = 3)
 #' expect_shape(x, dim = c(3, 3))
-expect_shape = function(object, ..., length, nrow, ncol, dim) {
+expect_shape = function(object, ..., nrow, ncol, dim) {
   check_dots_empty()
-  check_exclusive(length, nrow, ncol, dim)
+  check_exclusive(nrow, ncol, dim)
   act <- quasi_label(enquo(object), arg = "object")
-
-  # Re-use expect_length() to ensure they stay in sync.
-  if (!missing(length)) {
-    return(expect_length_impl_(act, length))
-  }
-  # now that we've handled the length argument, revert to usual base function
-  length <- base::length
 
   dim_object <- base::dim(object)
   if (is.null(dim_object)) {
-    fail(sprintf("%s has no dimensions.", act$lab))
+    return(fail(sprintf("%s has no dimensions.", act$lab)))
   }
 
   if (!missing(nrow)) {
     check_number_whole(nrow, allow_na = TRUE)
     act$nrow <- dim_object[1L]
 
-    expect(
-      identical(as.integer(act$nrow), as.integer(nrow)),
-      sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
-    )
+    if (!identical(as.integer(act$nrow), as.integer(nrow))) {
+      msg <- sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
+      return(fail(msg))
+    }
   } else if (!missing(ncol)) {
     check_number_whole(ncol, allow_na = TRUE)
 
     if (length(dim_object) == 1L) {
-      fail(sprintf("%s has only one dimension.", act$lab))
+      return(fail(sprintf("%s has only one dimension.", act$lab)))
     }
 
     act$ncol <- dim_object[2L]
 
-    expect(
-      identical(as.integer(act$ncol), as.integer(ncol)),
-      sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
-    )
+    if (!identical(as.integer(act$ncol), as.integer(ncol))) {
+      msg <- sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
+      return(fail(msg))
+    }
   } else {
     # !missing(dim)
     if (!is.numeric(dim) && !is.integer(dim)) {
@@ -64,24 +55,24 @@ expect_shape = function(object, ..., length, nrow, ncol, dim) {
     act$dim <- dim_object
 
     if (length(act$dim) != length(dim)) {
-      fail(sprintf(
+      return(fail(sprintf(
         "%s has %i dimensions, not %i.",
         act$lab,
         length(act$dim),
         length(dim)
-      ))
+      )))
     }
 
-    expect(
-      identical(as.integer(act$dim), as.integer(dim)),
-      sprintf(
+    if (!identical(as.integer(act$dim), as.integer(dim))) {
+      msg <- sprintf(
         "%s has dim (%s), not (%s).",
         act$lab,
         toString(act$dim),
         toString(dim)
       )
-    )
+      return(fail(msg))
+    }
   }
 
-  invisible(act$val)
+  pass(act$val)
 }
