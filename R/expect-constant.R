@@ -29,14 +29,14 @@ NULL
 #' @export
 #' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   expect_waldo_constant_(act, TRUE, info = info, ignore_attr = TRUE)
 }
 
 #' @export
 #' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   expect_waldo_constant_(act, FALSE, info = info, ignore_attr = TRUE)
 }
 
@@ -55,7 +55,7 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' expect_null(x)
 #' show_failure(expect_null(y))
 expect_null <- function(object, info = NULL, label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   expect_waldo_constant_(act, NULL, info = info)
 }
 

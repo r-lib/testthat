@@ -27,7 +27,7 @@ There are three main parts to writing an expectation, as illustrated by `expect_
 ```{r}
 expect_length <- function(object, n) {  
   # 1. Capture object and label
-  act <- quasi_label(rlang::enquo(object), arg = "object")
+  act <- quasi_label(rlang::enquo(object))
 
   # 2. Verify the expectations
   act_n <- length(act$val)

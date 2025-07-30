@@ -63,8 +63,8 @@ expect_equal <- function(
   label = NULL,
   expected.label = NULL
 ) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
   if (edition_get() >= 3) {
     expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)
@@ -93,8 +93,8 @@ expect_identical <- function(
   expected.label = NULL,
   ...
 ) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
   if (edition_get() >= 3) {
     expect_waldo_equal_("identical", act, exp, info, ...)
@@ -180,8 +180,8 @@ expect_equivalent <- function(
   label = NULL,
   expected.label = NULL
 ) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
   edition_deprecate(
     3,

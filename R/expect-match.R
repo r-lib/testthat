@@ -38,7 +38,7 @@ expect_match <- function(
   label = NULL
 ) {
   # Capture here to avoid environment-related messiness
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   stopifnot(is.character(regexp), length(regexp) == 1)
 
   stopifnot(is.character(act$val))
@@ -73,7 +73,7 @@ expect_no_match <- function(
   label = NULL
 ) {
   # Capture here to avoid environment-related messiness
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   stopifnot(is.character(regexp), length(regexp) == 1)
 
   stopifnot(is.character(act$val))

@@ -267,7 +267,7 @@
     Backtrace:
         x
      1. +-testthat::expect_s3_class(foo(), "foo")
-     2. | \-testthat::quasi_label(enquo(object), arg = "object")
+     2. | \-testthat::quasi_label(enquo(object))
      3. |   +-testthat:::new_actual(...)
      4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
      5. \-foo()
@@ -277,13 +277,13 @@
     Backtrace:
          x
       1. +-testthat::expect_s3_class(f(), "foo")
-      2. | \-testthat::quasi_label(enquo(object), arg = "object")
+      2. | \-testthat::quasi_label(enquo(object))
       3. |   +-testthat:::new_actual(...)
       4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
       5. \-f()
       6.   \-g()
       7.     +-testthat::expect_s3_class(foo(), "foo")
-      8.     | \-testthat::quasi_label(enquo(object), arg = "object")
+      8.     | \-testthat::quasi_label(enquo(object))
       9.     |   +-testthat:::new_actual(...)
      10.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
      11.     \-foo()
@@ -295,7 +295,7 @@
      1. \-f()
      2.   \-g()
      3.     +-testthat::expect_s3_class(foo(), "foo")
-     4.     | \-testthat::quasi_label(enquo(object), arg = "object")
+     4.     | \-testthat::quasi_label(enquo(object))
      5.     |   +-testthat:::new_actual(...)
      6.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
      7.     \-foo()
@@ -398,7 +398,7 @@
     Backtrace:
         x
      1. +-testthat::expect_s3_class(foo(), "foo")
-     2. | \-testthat::quasi_label(enquo(object), arg = "object")
+     2. | \-testthat::quasi_label(enquo(object))
      3. |   +-testthat:::new_actual(...)
      4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
      5. \-foo()
@@ -408,13 +408,13 @@
     Backtrace:
          x
       1. +-testthat::expect_s3_class(f(), "foo")
-      2. | \-testthat::quasi_label(enquo(object), arg = "object")
+      2. | \-testthat::quasi_label(enquo(object))
       3. |   +-testthat:::new_actual(...)
       4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
       5. \-f()
       6.   \-g()
       7.     +-testthat::expect_s3_class(foo(), "foo")
-      8.     | \-testthat::quasi_label(enquo(object), arg = "object")
+      8.     | \-testthat::quasi_label(enquo(object))
       9.     |   +-testthat:::new_actual(...)
      10.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
      11.     \-foo()
@@ -426,7 +426,7 @@
      1. \-f()
      2.   \-g()
      3.     +-testthat::expect_s3_class(foo(), "foo")
-     4.     | \-testthat::quasi_label(enquo(object), arg = "object")
+     4.     | \-testthat::quasi_label(enquo(object))
      5.     |   +-testthat:::new_actual(...)
      6.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
      7.     \-foo()
