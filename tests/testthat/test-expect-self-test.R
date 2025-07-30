@@ -19,6 +19,8 @@ test_that("expect_failure() requires 1 failure and zero successes", {
 test_that("expect_failure() can optionally match message", {
   expect_success(expect_failure(fail("apple"), "apple"))
   expect_failure(expect_failure(fail("apple"), "banana"))
+
+  expect_snapshot_failure(expect_failure(fail("apple"), "banana"))
 })
 
 test_that("expect_success() requires 1 success and zero failures", {

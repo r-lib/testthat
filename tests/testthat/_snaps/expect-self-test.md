@@ -1,3 +1,8 @@
+# expect_failure() can optionally match message
+
+    Failure message does not match "banana".
+    Actual value: "apple"
+
 # errors in expect_success bubble up
 
     Code

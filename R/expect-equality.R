@@ -67,7 +67,7 @@ expect_equal <- function(
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   if (edition_get() >= 3) {
-    expect_waldo_equal("equal", act, exp, info, ..., tolerance = tolerance)
+    expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)
   } else {
     if (!is.null(tolerance)) {
       comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
@@ -97,7 +97,7 @@ expect_identical <- function(
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   if (edition_get() >= 3) {
-    expect_waldo_equal("identical", act, exp, info, ...)
+    expect_waldo_equal_("identical", act, exp, info, ...)
   } else {
     ident <- identical(act$val, exp$val, ...)
     if (ident) {
@@ -119,7 +119,14 @@ expect_identical <- function(
   }
 }
 
-expect_waldo_equal <- function(type, act, exp, info, ...) {
+expect_waldo_equal_ <- function(
+  type,
+  act,
+  exp,
+  info,
+  ...,
+  trace_env = caller_env()
+) {
   comp <- waldo_compare(
     act$val,
     exp$val,
@@ -137,7 +144,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
       "`expected`",
       paste0(comp, collapse = "\n\n")
     )
-    return(fail(msg, info = info, trace_env = caller_env()))
+    return(fail(msg, info = info, trace_env = trace_env))
   }
   pass(act$val)
 }
