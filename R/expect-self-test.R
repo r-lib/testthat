@@ -138,10 +138,10 @@ expect_snapshot_skip <- function(x, cran = FALSE) {
   expect_snapshot_condition_("skip", x)
 }
 expect_skip <- function(code) {
-  expect_condition(code, class = "skip")
+  expect_condition_matching_("skip", code)
 }
 expect_no_skip <- function(code) {
-  expect_no_condition(code, class = "skip")
+  expect_no_("skip", code)
 }
 
 
