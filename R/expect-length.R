@@ -21,7 +21,7 @@ expect_length <- function(object, n) {
 
   if (act$n != n) {
     msg <- sprintf("%s has length %i, not length %i.", act$lab, act$n, n)
-    return(fail(msg, trace_env = parent.frame()))
+    return(fail(msg))
   }
   pass(act$val)
 }
