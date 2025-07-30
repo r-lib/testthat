@@ -41,11 +41,10 @@ quasi_label <- function(quo, label = NULL, arg = "quo") {
   }
 
   expr <- quo_get_expr(quo)
+  value <- eval_bare(expr, quo_get_env(quo))
+  label <- label %||% auto_label(expr, value, arg)
 
-  new_actual(
-    eval_bare(expr, quo_get_env(quo)),
-    label %||% expr_label(expr)
-  )
+  new_actual(value, label)
 }
 
 new_actual <- function(value, label) {
@@ -64,6 +63,49 @@ quasi_capture <- function(.quo, .label, .capture, ...) {
   )
 
   act
+}
+
+auto_label <- function(expr, value, arg) {
+  if (is.call(expr) || is.name(expr)) {
+    label <- expr_label(expr)
+    if (is_simple(value)) {
+      paste0(label, " (", simple_format(value), ")")
+    } else {
+      label
+    }
+  } else if (is_simple(expr)) {
+    paste0("`", arg, "` (", simple_format(expr), ")")
+  } else {
+    paste0("`", arg, "`")
+  }
+}
+
+# expect_true(NULL)
+
+is_simple <- function(x) {
+  if (is.null(x)) {
+    return(TRUE)
+  }
+  if (!is.atomic(x)) {
+    return(FALSE)
+  }
+  if (length(x) != 1) {
+    return(FALSE)
+  }
+
+  if (is.character(x)) {
+    !grepl("\n", x) && nchar(x) < 100
+  } else if (is.logical(x) || is.numeric(x)) {
+    TRUE
+  }
+}
+
+simple_format <- function(x) {
+  if (is.character(x)) {
+    encodeString(x, quote = '"')
+  } else {
+    format(x)
+  }
 }
 
 expr_label <- function(x) {

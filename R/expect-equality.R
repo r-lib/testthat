@@ -136,12 +136,10 @@ expect_waldo_equal_ <- function(
   )
   if (length(comp) != 0) {
     msg <- sprintf(
-      "%s (%s) not %s to %s (%s).\n\n%s",
+      "%s not %s to %s.\n\n%s",
       act$lab,
-      "`actual`",
       type,
       exp$lab,
-      "`expected`",
       paste0(comp, collapse = "\n\n")
     )
     return(fail(msg, info = info, trace_env = trace_env))

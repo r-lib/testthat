@@ -1,5 +1,5 @@
 test_that("atomic scalars deparsed to single values", {
-  expect_equal(expr_label(NULL), "NULL")
+  expect_equal(expr_label(NULL, "expected"), "NULL")
   expect_equal(expr_label(TRUE), "TRUE")
   expect_equal(expr_label(1L), "1L")
   expect_equal(expr_label(1), "1")
