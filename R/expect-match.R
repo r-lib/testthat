@@ -75,11 +75,7 @@ expect_no_match <- function(
   # Capture here to avoid environment-related messiness
   act <- quasi_label(enquo(object), label, arg = "object")
   stopifnot(is.character(regexp), length(regexp) == 1)
-
   stopifnot(is.character(act$val))
-  if (length(object) == 0) {
-    return(fail(sprintf("%s is empty.", act$lab), info = info))
-  }
 
   expect_match_(
     act = act,
@@ -114,20 +110,17 @@ expect_match_ <- function(
     return(pass(act$val))
   }
 
-  escape <- if (fixed) identity else escape_regex
-
+  text <- encodeString(act$val)
   if (length(act$val) == 1) {
-    values <- paste0("Actual value: \"", escape(encodeString(act$val)), "\"")
+    values <- paste0("Text: \"", text, "\"")
   } else {
-    values <- paste0(
-      "Actual values:\n",
-      paste0("* ", escape(encodeString(act$val)), collapse = "\n")
-    )
+    values <- paste0("Text:\n", paste0("* ", text, collapse = "\n"))
   }
 
   msg <- sprintf(
-    if (negate) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
-    escape(act$lab),
+    if (negate) "%s does match %s %s.\n%s" else "%s does not match %s %s.\n%s",
+    act$lab,
+    if (fixed) "string" else "regexp",
     encodeString(regexp, quote = '"'),
     values
   )
