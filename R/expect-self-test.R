@@ -85,7 +85,8 @@ expect_failure <- function(expr, message = NULL, ...) {
   }
 
   if (!is.null(message)) {
-    return(expect_match(status$last_failure$message, message, ...))
+    act <- new_actual(status$last_failure$message, "Failure message")
+    return(expect_match_(act, message, ...))
   }
   pass(NULL)
 }
