@@ -16,67 +16,34 @@ snapper <- local_snapshotter()
 snapper$start_file("snapshotting.Rmd", "test")
 ```
 
-This vignette shows you how to write your expectations that work identically to the built-in `expect_` functions. 
-
-You can use these either locally by putting them in a helper file, or export them from your package.
+This vignette shows you how to write your expectations. You can use within your package by putting them in a helper file, or share them with others by exporting them from your package.
 
 ## Expectation basics
 
-There are three main parts to writing an expectation, as illustrated by `expect_length()`:
+An expectation has three main parts, as illustrated by `expect_length()`:
 
 ```{r}
 expect_length <- function(object, n) {  
   # 1. Capture object and label
   act <- quasi_label(rlang::enquo(object), arg = "object")
 
-  # 2. Verify the expectations
+  # 2. Fail when expectations aren't met
   act_n <- length(act$val)
   if (act_n != n) {
     msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
     return(fail(msg))
   }
   
-  # 3. Pass
+  # 3. Pass when expectations are
   pass(act$val)
 }
 ```
 
-### Capture value and label
+The first step in any expectation is to use `quasi_label()` to capture both the value (`$val`) of the first argument and a label (`$lab`) to use failure messages. This is a pattern that exists to support fairly esoteric testthat features; you don't need to understand, just copy and paste it 🙂.
 
-The first step in any expectation is to capture the actual object, and generate a label for it to use if a failure occur. All testthat expectations support quasiquotation so that you can unquote variables. This makes it easier to generate good labels when the expectation is called from a function or within a for loop.
+Next, you need to fail, for each way that the `object` violates our expectation. In my experience it's easier to check for problems one by one, because that yields the most informative failure messages. Note that it's really important to `return(fail())` here. You wont see the problem when interactively testing your function because when run outside of `test_that()`, `fail()` throws an error, causing the function to terminate early. When running inside of `test_that()` however, `fail()` does not stop execution because we want to collect all failures in a given test.
 
-By convention, the first argument to every `expect_` function is called `object`, and you capture its value (`val`) and label (`lab`) with `act <- quasi_label(enquo(object))`, where `act` is short for actual (in constrast to expected).
-
-### Verify the expectation
-
-Now we can check if our expectation is met and return `fail()` if not. The most challenging job here is typically generating the error message because you want it to be as self-contained as possible. This means it should typically give both the expected and actual value, along with the name of the object passed to the expectation. testthat expectations use `sprintf()`, but if you're familiar with {glue}, you might want to use that instead.
-
-More complicated expectations will have more `if` statements. For example, we might want to make our `expect_length()` function include an assertion that `object` is a vector:
-
-```{r}
-expect_vector_length <- function(object, n) {  
-  act <- quasi_label(rlang::enquo(object), arg = "object")
-
-  if (!is.atomic(act$val) || !is.list(act$val)) {
-    msg <- sprintf("%s is a %s, not a vector", act$lab, typeof(act$val))
-    return(fail(msg))
-  }
-
-  act_n <- length(act$val)
-  if (act$n != n) {
-    msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
-    return(fail(msg))
-  }
-  
-  pass(act$val)
-}
-```
-
-Note that it's really important to `return(fail())` here. You wont see the problem when interactively testing your function because when run outside of `test_that()`, `fail()` throws an error, causing the function to terminate early. When running inside of `test_that()` however, `fail()` does not stop execution because we want to collect all failures in a given test.
-
-### Pass the test
-
-If no assertions fail, call `pass()` with the input value (usually `act$val`). Returning the input value is good practice since expectation functions are called primarily for their side-effects (triggering a failure). This allows expectations to be chained:
+Finally, if the object is expected, call `pass()` with the input value (usually `act$val`). Returning the input value is good practice since expectation functions are called primarily for their side-effects (triggering a failure). This allows expectations to be chained:
 
 ```{r}
 mtcars |>
@@ -93,12 +60,137 @@ testthat comes with three expectations designed specifically to test expectation
 * `expect_failure()` checks that your expectation emits exactly one failure and zero successes. 
 * `expect_failure_snapshot()` captures the failure message in a snapshot, making it easier to review if it's useful or not.
 
+It's important to check that expectations return either one failure or one success because the ensures that reporting is correct. If you 
+
 ```{r}
 test_that("expect_length works as expected", {
   x <- 1:10
   expect_success(expect_length(x, 10))
   expect_failure(expect_length(x, 11))
+})
 
+test_that("expect_length gives useful feedback", {
+  x <- 1:10
   expect_snapshot_failure(expect_length(x, 11))
 })
+```
+
+## Examples
+
+### `expect_vector_length()`
+
+For example, you could imagine a slightly more complex version that first checked if the object was a vector:
+
+```{r}
+expect_vector_length <- function(object, n) {  
+  act <- quasi_label(rlang::enquo(object))
+
+  if (!is.atomic(act$val) && !is.list(act$val)) {
+    msg <- sprintf("%s is a %s, not a vector", act$lab, typeof(act$val))
+    return(fail(msg))
+  }
+
+  act_n <- length(act$val)
+  if (act_n != n) {
+    msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
+    return(fail(msg))
+  }
+  
+  pass(act$val)
+}
+```
+
+To make your failure messages as actionable as possible, state both what the object is and what you expected: 
+
+```{r}
+#| error: true
+expect_vector_length(mean, 10)
+expect_vector_length(mtcars, 15)
+```
+
+### `expect_s3_class()`
+
+As another example, imagine if you're checking to see if an object inherits from an S3 class. In R, there's no direct way to tell if an object is an S3 object: you can confirm that it's an object, then that it's not an S4 object. So you might organise your test this way:
+
+```{r}
+expect_s3_class <- function(object, class) {
+  act <- quasi_label(rlang::enquo(object), arg = "object")
+
+  if (!is.object(act$val)) {
+    return(fail(sprintf("%s is not an object.", act$lab)))
+  }
+
+  if (isS4(act$val)) {
+    return(fail(sprintf("%s is an S4 object, not an S3 object.", act$lab)))
+  }
+
+  if (!inherits(act$val, class)) {
+    msg <- sprintf(
+      "%s inherits from %s not %s.",
+      act$lab,
+      paste0(class(object), collapse = "/"),
+      paste0(class, collapse = "/")
+    )
+    return(fail(msg))
+  }
+
+  pass(act$val)
+}
+```
+
+```{r}
+#| error: true
+x1 <- 1:10
+TestClass <- methods::setClass("Test", contains = "integer")
+x2 <- TestClass()
+x3 <- factor()
+
+expect_s3_class(x1, "integer")
+expect_s3_class(x2, "integer")
+expect_s3_class(x3, "integer")
+```
+
+## Repeated code
+
+As you write more expectations, you might discover repeated code that you want to extract out in to a helper. For example, testthat has `expect_true()`, `expect_false()`, and `expect_null()` which are special cases of `expect_equal()`
+
+```{r}
+expect_true <- function(object) {
+  act <- quasi_label(enquo(object))
+  expect_constant_(act, TRUE, ignore_attr = TRUE)
+}
+expect_false <- function(object) {
+  act <- quasi_label(enquo(object))
+  expect_constant_(act, FALSE, ignore_attr = TRUE)
+}
+expect_null <- function(object, label = NULL) {
+  act <- quasi_label(enquo(object))
+  expect_constant_(act, NULL)
+}
+
+expect_constant_ <- function(
+  act,
+  constant,
+  ignore_attr = TRUE,
+  trace_env = caller_env()
+) {
+  comp <- waldo::compare(
+    act$val,
+    constant,
+    x_arg = "actual",
+    y_arg = "expected",
+    ignore_attr = ignore_attr
+  )
+  if (length(comp) != 0) {
+    msg <- sprintf(
+      "%s is not %s\n\n%s",
+      act$lab,
+      format(constant),
+      paste0(comp, collapse = "\n\n")
+    )
+    return(fail(msg, info = info, trace_env = trace_env))
+  }
+
+  pass(act$val)
+}
 ```
