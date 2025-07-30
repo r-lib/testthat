@@ -47,11 +47,11 @@
 
 # expect_no_match works
 
-    `x` does match string "e*".
+    `x` matches string "e*".
     Text: "te*st"
 
 ---
 
-    `x` does match regexp "TEST".
+    `x` matches regexp "TEST".
     Text: "test"
 

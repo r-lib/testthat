@@ -121,7 +121,7 @@ expect_match_ <- function(
   }
 
   msg <- sprintf(
-    if (negate) "%s matches %s %s (expecting no match).\n%s" else "%s does not match %s %s.\n%s",
+    if (negate) "%s matches %s %s.\n%s" else "%s does not match %s %s.\n%s",
     act$lab,
     if (fixed) "string" else "regexp",
     encodeString(regexp, quote = '"'),
