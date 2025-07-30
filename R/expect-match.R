@@ -1,10 +1,11 @@
 #' Does a string match a regular expression?
 #'
 #' @details
-#' `expect_match()` is a wrapper around [grepl()]. See its documentation for
-#' more detail about the individual arguments. `expect_no_match()` provides
-#' the complementary case, checking that a string *does not* match a regular
-#' expression.
+#' `expect_match()` checks if a character vector matches a regular expression,
+#' powered by [grepl()].
+#'
+#' `expect_no_match()` provides the complementary case, checking that a
+#' character vector *does not* match a regular expression.
 #'
 #' @inheritParams expect_that
 #' @inheritParams base::grepl
@@ -21,12 +22,11 @@
 #' expect_match("Testing is fun", "f.n")
 #' expect_no_match("Testing is fun", "horrible")
 #'
-#' \dontrun{
-#' expect_match("Testing is fun", "horrible")
+#' show_failure(expect_match("Testing is fun", "horrible"))
+#' show_failure(expect_match("Testing is fun", "horrible", fixed = TRUE))
 #'
 #' # Zero-length inputs always fail
-#' expect_match(character(), ".")
-#' }
+#' show_failure(expect_match(character(), "."))
 expect_match <- function(
   object,
   regexp,
@@ -37,11 +37,14 @@ expect_match <- function(
   info = NULL,
   label = NULL
 ) {
-  # Capture here to avoid environment-related messiness
   act <- quasi_label(enquo(object), label, arg = "object")
-  stopifnot(is.character(regexp), length(regexp) == 1)
 
-  stopifnot(is.character(act$val))
+  check_character(object)
+  check_string(regexp)
+  check_bool(perl)
+  check_bool(fixed)
+  check_bool(all)
+
   if (length(object) == 0) {
     return(fail(sprintf("%s is empty.", act$lab), info = info))
   }
