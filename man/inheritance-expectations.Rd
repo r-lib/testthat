@@ -79,7 +79,6 @@ Other expectations:
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
 \code{\link{expect_reference}()},
-\code{\link{expect_shape}()},
 \code{\link{expect_silent}()},
 \code{\link{logical-expectations}}
 }
