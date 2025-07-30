@@ -19,6 +19,15 @@ test_that("expect_no_* pass with pure code", {
   expect_success(expect_no_condition(1))
 })
 
+test_that("expect_no_ continues execution", {
+  b <- 1
+  expect_failure(expect_no_warning({
+    warning("x")
+    b <- 2
+  }))
+  expect_equal(b, 2)
+})
+
 test_that("expect_no_* don't emit success when they fail", {
   expect_failure(expect_no_error(stop("!")))
 })

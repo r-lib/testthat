@@ -67,7 +67,7 @@ expect_equal <- function(
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   if (edition_get() >= 3) {
-    expect_waldo_equal("equal", act, exp, info, ..., tolerance = tolerance)
+    expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)
   } else {
     if (!is.null(tolerance)) {
       comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
@@ -97,7 +97,7 @@ expect_identical <- function(
   exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
 
   if (edition_get() >= 3) {
-    expect_waldo_equal("identical", act, exp, info, ...)
+    expect_waldo_equal_("identical", act, exp, info, ...)
   } else {
     ident <- identical(act$val, exp$val, ...)
     if (ident) {
@@ -119,7 +119,14 @@ expect_identical <- function(
   }
 }
 
-expect_waldo_equal <- function(type, act, exp, info, ...) {
+expect_waldo_equal_ <- function(
+  type,
+  act,
+  exp,
+  info,
+  ...,
+  trace_env = caller_env()
+) {
   comp <- waldo_compare(
     act$val,
     exp$val,
@@ -137,7 +144,7 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
       "`expected`",
       paste0(comp, collapse = "\n\n")
     )
-    return(fail(msg, info = info, trace_env = caller_env()))
+    return(fail(msg, info = info, trace_env = trace_env))
   }
   pass(act$val)
 }
@@ -194,42 +201,3 @@ expect_equivalent <- function(
   }
   pass(act$val)
 }
-
-
-#' Does code return a reference to the expected object?
-#'
-#' `expect_reference()` compares the underlying memory addresses of
-#' two symbols. It is for expert use only.
-#'
-#' @section 3rd edition:
-#' `r lifecycle::badge("deprecated")`
-#'
-#' `expect_reference()` is deprecated in the third edition. If you know what
-#' you're doing, and you really need this behaviour, just use `is_reference()`
-#' directly: `expect_true(rlang::is_reference(x, y))`.
-#'
-#' @inheritParams expect_equal
-#' @family expectations
-#' @keywords internal
-#' @export
-expect_reference <- function(
-  object,
-  expected,
-  info = NULL,
-  label = NULL,
-  expected.label = NULL
-) {
-  edition_deprecate(3, "expect_reference()")
-
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
-
-  if (!is_reference(act$val, exp$val)) {
-    msg <- sprintf("%s not a reference to %s.", act$lab, exp$lab)
-    return(fail(msg, info = info))
-  }
-  pass(act$val)
-}
-
-# expect_reference() needs dev version of rlang
-utils::globalVariables("is_reference")

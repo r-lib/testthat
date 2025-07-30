@@ -103,10 +103,17 @@ expect_match_ <- function(
   all = TRUE,
   info = NULL,
   label = NULL,
-  negate = FALSE
+  negate = FALSE,
+  trace_env = caller_env()
 ) {
   matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
   condition <- if (negate) !matches else matches
+  ok <- if (all) all(condition) else any(condition)
+
+  if (ok) {
+    return(pass(act$val))
+  }
+
   escape <- if (fixed) identity else escape_regex
 
   if (length(act$val) == 1) {
@@ -117,14 +124,12 @@ expect_match_ <- function(
       paste0("* ", escape(encodeString(act$val)), collapse = "\n")
     )
   }
-  if (if (all) !all(condition) else !any(condition)) {
-    msg <- sprintf(
-      if (negate) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
-      escape(act$lab),
-      encodeString(regexp, quote = '"'),
-      values
-    )
-    return(fail(msg, info = info, trace_env = caller_env()))
-  }
-  pass(act$val)
+
+  msg <- sprintf(
+    if (negate) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
+    escape(act$lab),
+    encodeString(regexp, quote = '"'),
+    values
+  )
+  return(fail(msg, info = info, trace_env = trace_env))
 }

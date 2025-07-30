@@ -85,7 +85,8 @@ expect_failure <- function(expr, message = NULL, ...) {
   }
 
   if (!is.null(message)) {
-    return(expect_match(status$last_failure$message, message, ...))
+    act <- new_actual(status$last_failure$message, "Failure message")
+    return(expect_match_(act, message, ...))
   }
   pass(NULL)
 }
@@ -93,7 +94,7 @@ expect_failure <- function(expr, message = NULL, ...) {
 #' @export
 #' @rdname expect_success
 expect_snapshot_failure <- function(expr) {
-  expect_snapshot_error(expr, "expectation_failure")
+  expect_snapshot_condition_("expectation_failure", expr)
 }
 
 #' Test for absence of success or failure
@@ -134,13 +135,13 @@ expect_no_failure <- function(expr) {
 }
 
 expect_snapshot_skip <- function(x, cran = FALSE) {
-  expect_snapshot_error(x, class = "skip", cran = cran)
+  expect_snapshot_condition_("skip", x)
 }
 expect_skip <- function(code) {
-  expect_condition(code, class = "skip")
+  expect_condition_matching_("skip", code)
 }
 expect_no_skip <- function(code) {
-  expect_no_condition(code, class = "skip")
+  expect_no_("skip", code)
 }
 
 
@@ -162,9 +163,7 @@ expect_snapshot_reporter <- function(
   paths = test_path("reporters/tests.R")
 ) {
   local_options(rlang_trace_format_srcrefs = FALSE)
-  withr::local_rng_version("3.3")
-  set.seed(1014)
-  # withr::local_seed(1014)
+  withr::local_seed(1014)
 
   expect_snapshot_output(
     with_reporter(reporter, {

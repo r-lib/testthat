@@ -48,7 +48,7 @@ SnapshotReporter <- R6::R6Class(
       ...,
       tolerance = testthat_tolerance(),
       variant = NULL,
-      trace_env = NULL
+      trace_env = caller_env()
     ) {
       check_string(self$test, allow_empty = FALSE)
       i <- self$new_snaps$append(self$test, variant, save(value))
@@ -102,7 +102,7 @@ SnapshotReporter <- R6::R6Class(
       path,
       file_equal,
       variant = NULL,
-      trace_env = NULL
+      trace_env = caller_env()
     ) {
       self$announce_file_snapshot(name)
 

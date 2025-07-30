@@ -45,6 +45,7 @@ expect_output <- function(
     }
     pass(act$val)
   } else {
-    expect_match(act$cap, enc2native(regexp), ..., info = info, label = act$lab)
+    act <- new_actual(act$cap, act$lab)
+    expect_match_(act, enc2native(regexp), ...)
   }
 }

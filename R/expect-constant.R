@@ -30,14 +30,14 @@ NULL
 #' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
-  expect_waldo_constant(act, TRUE, info = info, ignore_attr = TRUE)
+  expect_waldo_constant_(act, TRUE, info = info, ignore_attr = TRUE)
 }
 
 #' @export
 #' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
-  expect_waldo_constant(act, FALSE, info = info, ignore_attr = TRUE)
+  expect_waldo_constant_(act, FALSE, info = info, ignore_attr = TRUE)
 }
 
 #' Does code return `NULL`?
@@ -56,12 +56,18 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' show_failure(expect_null(y))
 expect_null <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label, arg = "object")
-  expect_waldo_constant(act, NULL, info = info)
+  expect_waldo_constant_(act, NULL, info = info)
 }
 
 # helpers -----------------------------------------------------------------
 
-expect_waldo_constant <- function(act, constant, info, ...) {
+expect_waldo_constant_ <- function(
+  act,
+  constant,
+  info,
+  ...,
+  trace_env = caller_env()
+) {
   comp <- waldo_compare(
     act$val,
     constant,
@@ -77,7 +83,7 @@ expect_waldo_constant <- function(act, constant, info, ...) {
       deparse(constant),
       paste0(comp, collapse = "\n\n")
     )
-    return(fail(msg, info = info, trace_env = caller_env()))
+    return(fail(msg, info = info, trace_env = trace_env))
   }
 
   pass(act$val)

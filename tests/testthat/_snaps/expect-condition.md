@@ -1,6 +1,6 @@
 # regexp = NULL checks for presence of error
 
-    `null()` did not throw the expected error.
+    `{ ... }` did not throw the expected error.
 
 # regexp = string matches for error message
 

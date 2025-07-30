@@ -95,7 +95,7 @@ expect_snapshot_file <- function(
   variant = NULL
 ) {
   edition_require(3, "expect_snapshot_file()")
-  if (!cran && !interactive() && on_cran()) {
+  if (!cran && on_cran()) {
     skip("On CRAN")
   }
 
@@ -191,7 +191,7 @@ snapshot_file_equal <- function(
   path,
   file_equal = compare_file_binary,
   fail_on_new = FALSE,
-  trace_env = NULL
+  trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
     abort(paste0("`", path, "` not found"))

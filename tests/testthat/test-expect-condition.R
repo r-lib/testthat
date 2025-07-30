@@ -5,11 +5,11 @@ test_that("returns condition or value", {
 
 test_that("regexp = NULL checks for presence of error", {
   expect_success(expect_error(stop()))
-  expect_snapshot_failure(expect_error(null()))
+  expect_snapshot_failure(expect_error({}))
 })
 
 test_that("regexp = NA checks for absence of error", {
-  expect_success(expect_error(null(), NA))
+  expect_success(expect_error({}, NA))
   expect_failure(expect_error(stop("Yes"), NA))
 })
 
@@ -136,7 +136,7 @@ test_that("when checking for no warnings, exclude deprecation warnings (2e)", {
 # expect_message ----------------------------------------------------------
 
 test_that("regexp = NA checks for absence of message", {
-  expect_success(expect_message(null(), NA))
+  expect_success(expect_message({}, NA))
   expect_failure(expect_message(message("!"), NA))
 })
 
