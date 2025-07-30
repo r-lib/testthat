@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* New `local_on_cran(TRUE)` allows you to simulate how your tests will run on CRAN (#2112).
 * `expect_no_*()` now executes the entire code block, rather than stopping at the first message or warning (#1991).
 * `expect_no_failures()` and `expect_no_successes()` are now deprecated as `expect_success()` now test for no failures and `expect_failure()` tests for no successes (#)
 * New `pass()` function to use in place of `succeed()` (#2113).

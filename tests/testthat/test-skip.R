@@ -55,18 +55,42 @@ test_that("skip_if_not_installed() works as expected", {
   expect_snapshot_skip(skip_if_offline())
 })
 
-test_that("skip_on_cran() works as expected", {
-  skip_on_cran()
-
-  withr::local_envvar(NOT_CRAN = "true")
-  expect_no_skip(skip_on_cran())
-
+test_that("skip_on_cran generates useful message", {
   withr::local_envvar(NOT_CRAN = "false")
-  local_mocked_bindings(interactive = function() FALSE)
-  expect_snapshot_skip(skip_on_cran(), cran = TRUE)
+  expect_snapshot_skip(skip_on_cran())
+})
 
+test_that("skip_on_cran() works as expected", {
+  local({
+    local_on_cran(FALSE)
+    expect_no_skip(skip_on_cran())
+  })
+
+  local({
+    local_on_cran(TRUE)
+    expect_snapshot_skip(skip_on_cran())
+  })
+
+  withr::local_envvar(NOT_CRAN = NA)
   local_mocked_bindings(interactive = function() TRUE)
   expect_no_skip(skip_on_cran())
+
+  local_mocked_bindings(interactive = function() FALSE)
+  expect_skip(skip_on_cran())
+})
+
+test_that("local_on_cran sets NOT_CRAN", {
+  local({
+    local_on_cran(TRUE)
+    expect_equal(on_cran(), TRUE)
+    expect_equal(Sys.getenv("NOT_CRAN"), "false")
+  })
+
+  local({
+    local_on_cran(FALSE)
+    expect_equal(on_cran(), FALSE)
+    expect_equal(Sys.getenv("NOT_CRAN"), "true")
+  })
 })
 
 test_that("skip_on_ci() works as expected", {

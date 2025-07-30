@@ -36,6 +36,10 @@
 
     Reason: offline
 
+# skip_on_cran generates useful message
+
+    Reason: On CRAN
+
 # skip_on_cran() works as expected
 
     Reason: On CRAN

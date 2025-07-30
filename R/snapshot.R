@@ -305,7 +305,7 @@ expect_snapshot_helper <- function(
   variant = NULL,
   trace_env = caller_env()
 ) {
-  if (!cran && !interactive() && on_cran()) {
+  if (!cran && on_cran()) {
     skip("On CRAN")
   }
 
