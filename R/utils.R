@@ -4,31 +4,6 @@ magrittr::`%>%`
 
 null <- function(...) invisible()
 
-escape_regex <- function(x) {
-  chars <- c(
-    "*",
-    ".",
-    "?",
-    "^",
-    "+",
-    "$",
-    "|",
-    "(",
-    ")",
-    "[",
-    "]",
-    "{",
-    "}",
-    "\\"
-  )
-  gsub(
-    paste0("([\\", paste0(collapse = "\\", chars), "])"),
-    "\\\\\\1",
-    x,
-    perl = TRUE
-  )
-}
-
 maybe_restart <- function(restart) {
   if (!is.null(findRestart(restart))) {
     invokeRestart(restart)
