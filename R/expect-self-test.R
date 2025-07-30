@@ -94,7 +94,7 @@ expect_failure <- function(expr, message = NULL, ...) {
 #' @export
 #' @rdname expect_success
 expect_snapshot_failure <- function(expr) {
-  expect_snapshot_error(expr, "expectation_failure")
+  expect_snapshot_condition_("expectation_failure", expr)
 }
 
 #' Test for absence of success or failure
@@ -135,7 +135,7 @@ expect_no_failure <- function(expr) {
 }
 
 expect_snapshot_skip <- function(x, cran = FALSE) {
-  expect_snapshot_error(x, class = "skip", cran = cran)
+  expect_snapshot_condition_("skip", x)
 }
 expect_skip <- function(code) {
   expect_condition(code, class = "skip")
