@@ -1,24 +1,24 @@
 # provide useful feedback on failure
 
-    1 (`actual`) is not identical to "a" (`expected`).
+    `x` (1) is not identical to "a".
     
     `actual` is a double vector (1)
     `expected` is a character vector ('a')
 
 ---
 
-    1 (`actual`) is not equal to "a" (`expected`).
+    `x` (1) is not equal to "a".
     
     `actual` is a double vector (1)
     `expected` is a character vector ('a')
 
 ---
 
-    1 not identical to "a".
+    `x` (1) not identical to "a".
     Types not compatible: double is not character
 
 ---
 
-    1 not equal to "a".
+    `x` (1) not equal to "a".
     Types not compatible: double is not character
 

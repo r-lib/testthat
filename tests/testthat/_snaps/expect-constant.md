@@ -1,34 +1,34 @@
 # logical tests act as expected
 
-    FALSE (`actual`) is not equal to TRUE (`expected`).
+    FALSE is not equal to TRUE.
     
     `actual`:   FALSE
     `expected`: TRUE 
 
 ---
 
-    TRUE (`actual`) is not equal to FALSE (`expected`).
+    TRUE is not equal to FALSE.
     
     `actual`:   TRUE 
     `expected`: FALSE
 
 # can compare non-vectors
 
-    quote(x) (`actual`) is not equal to TRUE (`expected`).
+    quote(x) is not equal to TRUE.
     
     `actual` is a symbol
     `expected` is a logical vector (TRUE)
 
 # expect_null works
 
-    1L (`actual`) is not equal to FALSE (`expected`).
+    1L is not equal to FALSE.
     
     `actual` is an integer vector (1)
     `expected` is NULL
 
 ---
 
-    environment() (`actual`) is not equal to FALSE (`expected`).
+    environment() is not equal to FALSE.
     
     `actual` is an environment
     `expected` is NULL

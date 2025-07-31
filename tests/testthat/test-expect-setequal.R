@@ -32,16 +32,32 @@ test_that("error for non-vectors", {
 test_that("useful message on failure", {
   expect_snapshot_failure(expect_setequal("actual", "expected"))
 
-  expect_snapshot_failure(expect_setequal(1:2, 2))
-  expect_snapshot_failure(expect_setequal(2, 2:3))
-  expect_snapshot_failure(expect_setequal(1:2, 2:3))
+  x <- 1:2
+  y <- 2
+  expect_snapshot_failure(expect_setequal(x, y))
+
+  x <- 2
+  y <- 2:3
+  expect_snapshot_failure(expect_setequal(x, y))
+
+  x <- 1:2
+  y <- 2:3
+  expect_snapshot_failure(expect_setequal(x, y))
 
   # doesn't repeat values
-  expect_snapshot_failure(expect_setequal(c("a", "a"), c("b", "b", "b")))
+  x <- c("a", "a")
+  y <- c("b", "b", "b")
+  expect_snapshot_failure(expect_setequal(x, y))
+
+  # still looks good when expected is inlined
+  x <- c("a", "b", "c")
+  expect_snapshot_failure(expect_setequal(x, c("a", "b", "c", "d")))
 })
 
 test_that("truncates long vectors", {
-  expect_snapshot_failure(expect_setequal(1:2, 1:50))
+  x <- 1:2
+  y <- 1:50
+  expect_snapshot_failure(expect_setequal(x, y))
 })
 
 # mapequal ----------------------------------------------------------------

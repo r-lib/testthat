@@ -41,11 +41,10 @@ quasi_label <- function(quo, label = NULL, arg = "quo") {
   }
 
   expr <- quo_get_expr(quo)
+  value <- eval_bare(expr, quo_get_env(quo))
+  label <- label %||% auto_label(expr, value)
 
-  labelled_value(
-    eval_bare(expr, quo_get_env(quo)),
-    label %||% expr_label(expr)
-  )
+  labelled_value(value, label)
 }
 
 labelled_value <- function(value, label) {
@@ -64,6 +63,39 @@ quasi_capture <- function(.quo, .label, .capture, ...) {
   )
 
   act
+}
+
+auto_label <- function(expr, value) {
+  if (is.call(expr) || is.name(expr)) {
+    label <- expr_label(expr)
+    if (can_inline(value)) {
+      paste0(label, " (", as_label(value), ")")
+    } else {
+      label
+    }
+  } else {
+    expr_label(expr)
+  }
+}
+
+can_inline <- function(x) {
+  if (is.null(x)) {
+    return(TRUE)
+  }
+  if (!is.atomic(x) || !is.vector(x)) {
+    return(FALSE)
+  }
+  if (length(x) != 1) {
+    return(FALSE)
+  }
+
+  if (is.character(x)) {
+    is.na(x) || (!grepl("\n", x) && nchar(x) < 100)
+  } else if (is.logical(x) || is.numeric(x)) {
+    TRUE
+  } else {
+    FALSE
+  }
 }
 
 expr_label <- function(x) {

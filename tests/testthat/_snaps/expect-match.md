@@ -4,7 +4,7 @@
 
 ---
 
-    `one` does not match regexp "asdf".
+    `one` ("bcde") does not match regexp "asdf".
     Text: "bcde"
 
 ---
@@ -47,11 +47,11 @@
 
 # expect_no_match works
 
-    `x` matches string "e*".
+    `x` ("te*st") matches string "e*".
     Text: "te*st"
 
 ---
 
-    `x` matches regexp "TEST".
+    `x` ("test") matches regexp "TEST".
     Text: "test"
 

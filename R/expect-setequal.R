@@ -41,9 +41,9 @@ expect_setequal <- function(object, expected) {
   if (length(exp_miss) || length(act_miss)) {
     return(fail(paste0(
       act$lab,
-      " (`actual`) and ",
+      " doesn't have the same values as ",
       exp$lab,
-      " (`expected`) don't have the same values.\n",
+      ".\n",
       if (length(act_miss)) {
         paste0("* Only in `actual`: ", values(act_miss), "\n")
       },
@@ -138,11 +138,11 @@ expect_contains <- function(object, expected) {
   if (any(exp_miss)) {
     return(fail(paste0(
       act$lab,
-      " (`actual`) doesn't fully contain all the values in ",
+      " doesn't fully contain all the values in ",
       exp$lab,
-      " (`expected`).\n",
-      paste0("* Missing from `actual`: ", values(exp$val[exp_miss]), "\n"),
-      paste0("* Present in `actual`:   ", values(act$val), "\n")
+      ".\n",
+      paste0("* Missing from ", act$lab, ": ", values(exp$val[exp_miss]), "\n"),
+      paste0("* Present in ", act$lab, ":   ", values(act$val), "\n")
     )))
   }
 
@@ -164,11 +164,11 @@ expect_in <- function(object, expected) {
   if (any(act_miss)) {
     return(fail(paste0(
       act$lab,
-      " (`actual`) isn't fully contained within ",
+      " isn't fully contained within ",
       exp$lab,
-      " (`expected`).\n",
-      paste0("* Missing from `expected`: ", values(act$val[act_miss]), "\n"),
-      paste0("* Present in `expected`:   ", values(exp$val), "\n")
+      ".\n",
+      paste0("* Missing from ", act$lab, ": ", values(act$val[act_miss]), "\n"),
+      paste0("* Present in ", act$lab, ":   ", values(exp$val), "\n")
     )))
   }
 
