@@ -160,56 +160,25 @@ expect_s3_class(x3, "integer")
 
 ## Repeated code
 
-As you write more expectations, you might discover repeated code that you want to extract out in to a helper. For example, testthat has `expect_true()`, `expect_false()`, and `expect_null()` which are special cases of `expect_equal()`. 
+As you write more expectations, you might discover repeated code that you want to extract out in to a helper. Unfortunately creating helper functions is not straightforward in testthat because every `fail()` captures the calling environment in order to give maximally useful tracebacks. Because getting this right is not critical (you'll just get a slightly suboptimal traceback in the case of failure), we don't recommend bothering. However, we document it here because it's important to get it right in testthat itself.
+
+The key challenge is that `fail()` captures a `trace_env` which should be the execution environment of the expectation. This usually works, because the default value of `trace_env` is `caller_env()`. But when you introduce a helper, you'll need to explicitly pass it along:
 
 ```{r}
-expect_true <- function(object) {
-  act <- quasi_label(enquo(object))
-  expect_waldo_equal_("equal", act, TRUE, ignore_attr = TRUE)
-}
-expect_false <- function(object) {
-  act <- quasi_label(enquo(object))
-  expect_waldo_equal_("equal", act, FALSE, ignore_attr = TRUE)
-}
-expect_null <- function(object, label = NULL) {
-  act <- quasi_label(enquo(object))
-  expect_waldo_equal_("equal", act, NULL)
-}
-```
-
-You might wonder why these functions don't call `expect_equal()` directly. Unfortunately creating helper functions is not straightforward in testthat because every `fail()` captures the calling environment in order to give maximally useful tracebacks. Getting this right is not critical (you'll just get a slightly suboptimal traceback in the case of failure) but it's good practice, particularly for testthat itself.
-
-To do things 100% correctly, in your helper function you need to have a `trace_env` argument that defaults to `caller_env()`, and then you need to pass it to every instance of 
-
-```{r}
-expect_waldo_equal_ <- function(
-  type,
-  act,
-  exp,
-  info,
-  ...,
-  trace_env = caller_env()
-) {
-  comp <- waldo_compare(
-    act$val,
-    exp$val,
-    ...,
-    x_arg = "actual",
-    y_arg = "expected"
-  )
-  if (length(comp) != 0) {
-    msg <- sprintf(
-      "%s (%s) not %s to %s (%s).\n\n%s",
-      act$lab,
-      "`actual`",
-      type,
-      exp$lab,
-      "`expected`",
-      paste0(comp, collapse = "\n\n")
-    )
-    return(fail(msg, info = info, trace_env = trace_env))
+expect_length_ <- function(act, n, trace_env = caller_env()) {
+  act_n <- length(act$val)
+  if (act_n != n) {
+    msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
+    return(fail(msg, trace_env = trace_env))
   }
+
   pass(act$val)
 }
 
+expect_length <- function(object, n) {  
+  act <- quasi_label(rlang::enquo(object), arg = "object")
+  expect_length_(act, n)
+}
 ```
+
+Note that the helper probably shouldn't be user facing, and we give it a `_` suffix to make that clear. It's also typically easiest for a helper to take the labelled value produced by `quasi_label()` rather than having to do that repeatedly.
