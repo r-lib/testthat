@@ -24,8 +24,8 @@
 #' show_failure(expect_mapequal(x, list(a = 1, b = "x")))
 #' show_failure(expect_mapequal(x, list(a = 1, b = 2, c = 3)))
 expect_setequal <- function(object, expected) {
-  act <- quasi_label(enquo(object))
-  exp <- quasi_label(enquo(expected))
+  act <- quasi_label(enquo(object), arg = "object")
+  exp <- quasi_label(enquo(expected), arg = "expected")
 
   if (!is_vector(act$val) || !is_vector(exp$val)) {
     abort("`object` and `expected` must both be vectors")
@@ -76,8 +76,8 @@ is_vector <- function(x) is.list(x) || (is.atomic(x) && !is.null(x))
 #' @export
 #' @rdname expect_setequal
 expect_mapequal <- function(object, expected) {
-  act <- quasi_label(enquo(object))
-  exp <- quasi_label(enquo(expected))
+  act <- quasi_label(enquo(object), arg = "object")
+  exp <- quasi_label(enquo(expected), arg = "expected")
 
   if (!is_vector(act$val) || !is_vector(exp$val)) {
     abort("`object` and `expected` must both be vectors")
@@ -126,8 +126,8 @@ check_names_ok <- function(x, label) {
 #' @export
 #' @rdname expect_setequal
 expect_contains <- function(object, expected) {
-  act <- quasi_label(enquo(object))
-  exp <- quasi_label(enquo(expected))
+  act <- quasi_label(enquo(object), arg = "object")
+  exp <- quasi_label(enquo(expected), arg = "expected")
 
   if (!is_vector(act$val) || !is_vector(exp$val)) {
     abort("`object` and `expected` must both be vectors")
@@ -152,8 +152,8 @@ expect_contains <- function(object, expected) {
 #' @export
 #' @rdname expect_setequal
 expect_in <- function(object, expected) {
-  act <- quasi_label(enquo(object))
-  exp <- quasi_label(enquo(expected))
+  act <- quasi_label(enquo(object), arg = "object")
+  exp <- quasi_label(enquo(expected), arg = "expected")
 
   if (!is_vector(act$val) || !is_vector(exp$val)) {
     abort("`object` and `expected` must both be vectors")
