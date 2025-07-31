@@ -39,11 +39,13 @@ expect_length <- function(object, n) {
 }
 ```
 
-The first step in any expectation is to use `quasi_label()` to capture both the value (`$val`) of the first argument and a label (`$lab`) to use failure messages. This is a pattern that exists to support fairly esoteric testthat features; you don't need to understand, just copy and paste it 🙂.
+The first step in any expectation is to use `quasi_label()` to capture a "labelled value", i.e. an list that contains both the value (`$val`) for testing and a label (`$lab`) for messaging. This is a pattern that exists for fairly esoteric reasons; you don't need to understand, just copy and paste it 🙂.
 
-Next, you need to fail, for each way that the `object` violates our expectation. In my experience it's easier to check for problems one by one, because that yields the most informative failure messages. Note that it's really important to `return(fail())` here. You wont see the problem when interactively testing your function because when run outside of `test_that()`, `fail()` throws an error, causing the function to terminate early. When running inside of `test_that()` however, `fail()` does not stop execution because we want to collect all failures in a given test.
+Next you need to check each way that `object` could be broken. In most cases, it's easier to check for problems one by one, using early returns to `fail()` when any expectation is violated as that makes it easier to write failure messages. It's good practice to state both what the object is and what you expected in your failures.
 
-Finally, if the object is expected, call `pass()` with the input value (usually `act$val`). Returning the input value is good practice since expectation functions are called primarily for their side-effects (triggering a failure). This allows expectations to be chained:
+Also note that you need to use `return(fail())` here. You won't see the problem when interactively testing your function because when run outside of `test_that()`, `fail()` throws an error, causing the function to terminate early. When running inside of `test_that()`, however, `fail()` does not stop execution because we want to collect all failures in a given test.  
+
+Finally, if the object is as expected, call `pass()` with `act$val`. Returning the input value is good practice since expectation functions are called primarily for their side-effects (triggering a failure). This allows expectations to be chained:
 
 ```{r}
 mtcars |>
@@ -52,15 +54,15 @@ mtcars |>
   expect_length(11)
 ```
 
-## Testing your expectations
+### Testing your expectations
 
-testthat comes with three expectations designed specifically to test expectations: `expect_success()` and `expect_failure()`:
+Once you've written your expectation, you need to test it, and luckily testthat comes with three expectations designed specifically to test expectations:
 
 * `expect_success()` checks that your expectation emits exactly one success and zero failures.
 * `expect_failure()` checks that your expectation emits exactly one failure and zero successes. 
 * `expect_failure_snapshot()` captures the failure message in a snapshot, making it easier to review if it's useful or not.
 
-It's important to check that expectations return either one failure or one success because the ensures that reporting is correct. If you 
+The first two expectations are particularly important because they ensure that your expectation reports the correct number of succeses and failures to the user.
 
 ```{r}
 test_that("expect_length works as expected", {
@@ -77,9 +79,17 @@ test_that("expect_length gives useful feedback", {
 
 ## Examples
 
+The following sections show you a few more variations, losely based on existing testthat expectations.
+
 ### `expect_vector_length()`
 
-For example, you could imagine a slightly more complex version that first checked if the object was a vector:
+Lets make `expect_length()` a bit more strict by also checking that the input is a vector. R is a bit weird that it gives a length to pretty much every object, and you can imagine not wanting this code to succeed:
+
+```{r}
+expect_length(mean, 1)
+```
+
+To do this we'll add an extra check that the input is either an atomic vector or a list:
 
 ```{r}
 expect_vector_length <- function(object, n) {  
@@ -100,17 +110,15 @@ expect_vector_length <- function(object, n) {
 }
 ```
 
-To make your failure messages as actionable as possible, state both what the object is and what you expected: 
-
 ```{r}
 #| error: true
-expect_vector_length(mean, 10)
+expect_vector_length(mean, 1)
 expect_vector_length(mtcars, 15)
 ```
 
 ### `expect_s3_class()`
 
-As another example, imagine if you're checking to see if an object inherits from an S3 class. In R, there's no direct way to tell if an object is an S3 object: you can confirm that it's an object, then that it's not an S4 object. So you might organise your test this way:
+Or imagine if you're checking to see if an object inherits from an S3 class. In R, there's no direct way to tell if an object is an S3 object: you can confirm that it's an object, then that it's not an S4 object. So you might organise your expectation this way:
 
 ```{r}
 expect_s3_class <- function(object, class) {
@@ -152,45 +160,56 @@ expect_s3_class(x3, "integer")
 
 ## Repeated code
 
-As you write more expectations, you might discover repeated code that you want to extract out in to a helper. For example, testthat has `expect_true()`, `expect_false()`, and `expect_null()` which are special cases of `expect_equal()`
+As you write more expectations, you might discover repeated code that you want to extract out in to a helper. For example, testthat has `expect_true()`, `expect_false()`, and `expect_null()` which are special cases of `expect_equal()`. 
 
 ```{r}
 expect_true <- function(object) {
   act <- quasi_label(enquo(object))
-  expect_constant_(act, TRUE, ignore_attr = TRUE)
+  expect_waldo_equal_("equal", act, TRUE, ignore_attr = TRUE)
 }
 expect_false <- function(object) {
   act <- quasi_label(enquo(object))
-  expect_constant_(act, FALSE, ignore_attr = TRUE)
+  expect_waldo_equal_("equal", act, FALSE, ignore_attr = TRUE)
 }
 expect_null <- function(object, label = NULL) {
   act <- quasi_label(enquo(object))
-  expect_constant_(act, NULL)
+  expect_waldo_equal_("equal", act, NULL)
 }
+```
 
-expect_constant_ <- function(
+You might wonder why these functions don't call `expect_equal()` directly. Unfortunately creating helper functions is not straightforward in testthat because every `fail()` captures the calling environment in order to give maximally useful tracebacks. Getting this right is not critical (you'll just get a slightly suboptimal traceback in the case of failure) but it's good practice, particularly for testthat itself.
+
+To do things 100% correctly, in your helper function you need to have a `trace_env` argument that defaults to `caller_env()`, and then you need to pass it to every instance of 
+
+```{r}
+expect_waldo_equal_ <- function(
+  type,
   act,
-  constant,
-  ignore_attr = TRUE,
+  exp,
+  info,
+  ...,
   trace_env = caller_env()
 ) {
-  comp <- waldo::compare(
+  comp <- waldo_compare(
     act$val,
-    constant,
+    exp$val,
+    ...,
     x_arg = "actual",
-    y_arg = "expected",
-    ignore_attr = ignore_attr
+    y_arg = "expected"
   )
   if (length(comp) != 0) {
     msg <- sprintf(
-      "%s is not %s\n\n%s",
+      "%s (%s) not %s to %s (%s).\n\n%s",
       act$lab,
-      format(constant),
+      "`actual`",
+      type,
+      exp$lab,
+      "`expected`",
       paste0(comp, collapse = "\n\n")
     )
     return(fail(msg, info = info, trace_env = trace_env))
   }
-
   pass(act$val)
 }
+
 ```
