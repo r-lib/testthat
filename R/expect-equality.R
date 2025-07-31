@@ -136,7 +136,7 @@ expect_waldo_equal_ <- function(
   )
   if (length(comp) != 0) {
     msg <- sprintf(
-      "%s (%s) not %s to %s (%s).\n\n%s",
+      "%s (%s) is not %s to %s (%s).\n\n%s",
       act$lab,
       "`actual`",
       type,
