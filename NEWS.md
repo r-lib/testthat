@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* Power `expect_mapequal()` with `waldo::compare(list_as_map = TRUE)` (#1521).
 * `expect_snapshot_value()` can now handle expressions that generate `-` (#1678) or zero length atomic vectors (#2042).
 * `expect_matches()` failures should be a little easier to read (#2135).
 * New `local_on_cran(TRUE)` allows you to simulate how your tests will run on CRAN (#2112).
