@@ -6,8 +6,9 @@
 #'   (i.e. `y` is a subset of `x`).
 #' * `expect_in(x, y)` tests every element of `x` is in `y`
 #'   (i.e. `x` is a subset of `y`).
-#' * `expect_mapequal(x, y)` tests that `x` and `y` have the same names, and
-#'    that `x[names(y)]` equals `y`.
+#' * `expect_mapequal(x, y)` treats lists as if they are mappings between names
+#'   and values. Concretely, this drops `NULL`s in both objects and sorts
+#'   named components.
 #'
 #' Note that `expect_setequal()` ignores names, and you will be warned if both
 #' `object` and `expected` have them.
@@ -79,39 +80,7 @@ expect_mapequal <- function(object, expected) {
   act <- quasi_label(enquo(object), arg = "object")
   exp <- quasi_label(enquo(expected), arg = "expected")
 
-  if (!is_vector(act$val) || !is_vector(exp$val)) {
-    abort("`object` and `expected` must both be vectors")
-  }
-
-  # Length-0 vectors are OK whether named or unnamed.
-  if (length(act$val) == 0 && length(exp$val) == 0) {
-    warn("`object` and `expected` are empty lists")
-    return(pass(act$val))
-  }
-
-  act_nms <- names(act$val)
-  exp_nms <- names(exp$val)
-
-  check_names_ok(act_nms, "object")
-  check_names_ok(exp_nms, "expected")
-
-  if (setequal(act_nms, exp_nms)) {
-    return(expect_equal(act$val[exp_nms], exp$val))
-  }
-
-  act_miss <- setdiff(exp_nms, act_nms)
-  if (length(act_miss) > 0) {
-    vals <- paste0(encodeString(act_miss, quote = '"'), ", ")
-    return(fail(paste0("Names absent from `object`: ", vals)))
-  }
-
-  exp_miss <- setdiff(act_nms, exp_nms)
-  if (length(exp_miss) > 0) {
-    vals <- paste0(encodeString(exp_miss, quote = '"'), ", ")
-    return(fail(paste0("Names absent from `expected`: ", vals)))
-  }
-
-  pass(act$val)
+  expect_waldo_equal_("equal", act, exp, list_as_map = TRUE)
 }
 
 check_names_ok <- function(x, label) {
