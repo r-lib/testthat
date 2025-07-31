@@ -73,10 +73,8 @@ auto_label <- function(expr, value) {
     } else {
       label
     }
-    # } else if (is_simple(expr)) {
-    #   simple_format(expr)
   } else {
-    as_label(expr)
+    expr_label(expr)
   }
 }
 
@@ -98,10 +96,6 @@ can_inline <- function(x) {
   } else {
     FALSE
   }
-}
-
-is_date_time <- function(x) {
-  inherits(x, "Date") || inherits(x, "POSIXct")
 }
 
 expr_label <- function(x) {
