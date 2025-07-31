@@ -2,31 +2,6 @@
 #' @export
 magrittr::`%>%`
 
-escape_regex <- function(x) {
-  chars <- c(
-    "*",
-    ".",
-    "?",
-    "^",
-    "+",
-    "$",
-    "|",
-    "(",
-    ")",
-    "[",
-    "]",
-    "{",
-    "}",
-    "\\"
-  )
-  gsub(
-    paste0("([\\", paste0(collapse = "\\", chars), "])"),
-    "\\\\\\1",
-    x,
-    perl = TRUE
-  )
-}
-
 can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")
 }
