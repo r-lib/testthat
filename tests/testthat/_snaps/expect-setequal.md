@@ -45,29 +45,29 @@
 
 # expect_contains() gives useful message on failure
 
-    `x1` (`actual`) doesn't fully contain all the values in `x2` (`expected`).
-    * Missing from `actual`: "d"
-    * Present in `actual`:   "a", "b", "c"
+    `x1` doesn't fully contain all the values in `x2`.
+    * Missing from `x1`: "d"
+    * Present in `x1`:   "a", "b", "c"
     
 
 ---
 
-    `x1` (`actual`) doesn't fully contain all the values in `x3` (`expected`).
-    * Missing from `actual`: "d", "e"
-    * Present in `actual`:   "a", "b", "c"
+    `x1` doesn't fully contain all the values in `x3`.
+    * Missing from `x1`: "d", "e"
+    * Present in `x1`:   "a", "b", "c"
     
 
 # expect_in() gives useful message on failure
 
-    `x1` (`actual`) isn't fully contained within `x2` (`expected`).
-    * Missing from `expected`: "a"
-    * Present in `expected`:   "b", "c"
+    `x1` isn't fully contained within `x2`.
+    * Missing from `x1`: "a"
+    * Present in `x1`:   "b", "c"
     
 
 ---
 
-    `x1` (`actual`) isn't fully contained within `x3` (`expected`).
-    * Missing from `expected`: "a", "b"
-    * Present in `expected`:   "d", "e"
+    `x1` isn't fully contained within `x3`.
+    * Missing from `x1`: "a", "b"
+    * Present in `x1`:   "d", "e"
     
 
