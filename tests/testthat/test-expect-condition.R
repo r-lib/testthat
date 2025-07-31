@@ -5,11 +5,11 @@ test_that("returns condition or value", {
 
 test_that("regexp = NULL checks for presence of error", {
   expect_success(expect_error(stop()))
-  expect_snapshot_failure(expect_error(null()))
+  expect_snapshot_failure(expect_error({}))
 })
 
 test_that("regexp = NA checks for absence of error", {
-  expect_success(expect_error(null(), NA))
+  expect_success(expect_error({}, NA))
   expect_failure(expect_error(stop("Yes"), NA))
 })
 
@@ -78,8 +78,17 @@ test_that("can capture Throwable conditions from rJava", {
 
 test_that("capture correct trace_env (#1994)", {
   # This should fail, not error
-  expect_failure(expect_error(stop("oops")) |> expect_warning())
-  expect_failure(expect_warning(expect_error(stop("oops"))))
+  status <- capture_success_failure({
+    stop("oops") |> expect_error() |> expect_warning()
+  })
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
+
+  status <- capture_success_failure({
+    stop("oops") %>% expect_error() %>% expect_warning()
+  })
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
 })
 
 # expect_warning() ----------------------------------------------------------
@@ -127,7 +136,7 @@ test_that("when checking for no warnings, exclude deprecation warnings (2e)", {
 # expect_message ----------------------------------------------------------
 
 test_that("regexp = NA checks for absence of message", {
-  expect_success(expect_message(null(), NA))
+  expect_success(expect_message({}, NA))
   expect_failure(expect_message(message("!"), NA))
 })
 
@@ -243,7 +252,10 @@ test_that("can match parent conditions (#1493)", {
 test_that("unused arguments generate an error", {
   expect_snapshot(error = TRUE, {
     expect_condition(stop("Hi!"), foo = "bar")
+    expect_condition(stop("Hi!"), , , "bar")
+    expect_condition(stop("Hi!"), , , "bar", fixed = TRUE)
     expect_condition(stop("Hi!"), "x", foo = "bar")
+    expect_condition(stop("Hi!"), pattern = "bar", fixed = TRUE)
   })
 })
 

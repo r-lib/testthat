@@ -1,15 +1,3 @@
-test_that("length compared correctly", {
-  expect_success(expect_shape(1, length = 1))
-  expect_snapshot_failure(expect_shape(1, length = 2))
-  expect_success(expect_shape(1:10, length = 10))
-  expect_success(expect_shape(letters[1:5], length = 5))
-  expect_success(expect_shape(integer(), length = 0))
-
-  x <- list(1:10, letters)
-  out <- expect_shape(x, length = 2)
-  expect_identical(out, x)
-})
-
 test_that("dim compared correctly", {
   expect_success(expect_shape(matrix(nrow = 5, ncol = 4), dim = c(5L, 4L)))
   expect_snapshot_failure(expect_shape(

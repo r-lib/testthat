@@ -153,8 +153,9 @@ waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
   # Need to very carefully isolate this change to this function - can not set
   # in expectation functions because part of expectation handling bubbles
   # up through calling handlers, which are run before on.exit()
-  local_reporter_output()
-
+  if (!is_snapshot()) {
+    local_reporter_output()
+  }
   waldo::compare(x, y, ..., x_arg = x_arg, y_arg = y_arg)
 }
 

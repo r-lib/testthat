@@ -1,3 +1,41 @@
+#' Expect that a condition holds.
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' An old style of testing that's no longer encouraged.
+#'
+#' @section 3rd edition:
+#' `r lifecycle::badge("deprecated")`
+#'
+#' This style of testing is formally deprecated as of the 3rd edition.
+#' Use a more specific `expect_` function instead.
+#'
+#' @param object Object to test.
+#'
+#'   Supports limited unquoting to make it easier to generate readable failures
+#'   within a function or for loop. See [quasi_label] for more details.
+#' @param condition, a function that returns whether or not the condition
+#'   is met, and if not, an error message to display.
+#' @param label Used to customise failure messages. For expert use only.
+#' @param info Extra information to be included in the message. This argument
+#'   is soft-deprecated and should not be used in new code. Instead see
+#'   alternatives in [quasi_label].
+#' @return the (internal) expectation result as an invisible list
+#' @keywords internal
+#' @export
+#' @seealso [fail()] for an expectation that always fails.
+#' @examples
+#' expect_that(5 * 2, equals(10))
+#' expect_that(sqrt(2) ^ 2, equals(2))
+#' \dontrun{
+#' expect_that(sqrt(2) ^ 2, is_identical_to(2))
+#' }
+expect_that <- function(object, condition, info = NULL, label = NULL) {
+  edition_deprecate(3, "expect_that()")
+  condition(object)
+}
+
 #' Old-style expectations.
 #'
 #' @description
@@ -109,10 +147,11 @@ takes_less_than <- function(amount) {
   function(expr) {
     duration <- system.time(force(expr))["elapsed"]
 
-    expect(
-      duration < amount,
-      paste0("took ", duration, " seconds, which is more than ", amount)
-    )
+    if (duration >= amount) {
+      msg <- paste0("took ", duration, " seconds, which is more than ", amount)
+      return(fail(msg))
+    }
+    pass(expr)
   }
 }
 
@@ -130,11 +169,11 @@ not <- function(f) {
   stopifnot(is.function(f))
 
   negate <- function(expt) {
-    expect(
-      !expectation_success(expt),
-      failure_message = paste0("NOT(", expt$message, ")"),
-      srcref = expt$srcref
-    )
+    if (expectation_success(expt)) {
+      msg <- paste0("NOT(", expt$message, ")")
+      return(fail(msg, srcref = expt$srcref))
+    }
+    pass(NULL)
   }
 
   function(...) {

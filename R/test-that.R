@@ -142,6 +142,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
   handle_expectation <- function(e) {
     handled <<- TRUE
     register_expectation(e, 7)
+    # Don't bubble up to any other handlers
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
@@ -162,11 +163,11 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
     register_expectation(e, 5)
 
-    maybe_restart("muffleWarning")
+    tryInvokeRestart("muffleWarning")
   }
   handle_message <- function(e) {
     if (edition_get() < 3) {
-      maybe_restart("muffleMessage")
+      tryInvokeRestart("muffleMessage")
     }
   }
   handle_skip <- function(e) {

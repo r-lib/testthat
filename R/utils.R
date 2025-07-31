@@ -2,8 +2,6 @@
 #' @export
 magrittr::`%>%`
 
-null <- function(...) invisible()
-
 escape_regex <- function(x) {
   chars <- c(
     "*",
@@ -29,15 +27,6 @@ escape_regex <- function(x) {
   )
 }
 
-maybe_restart <- function(restart) {
-  if (!is.null(findRestart(restart))) {
-    invokeRestart(restart)
-  }
-}
-
-# Backport for R < 4.0
-deparse1 <- function(expr, ...) paste(deparse(expr, ...), collapse = "\n")
-
 can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")
 }
@@ -49,8 +38,6 @@ transport_fun <- function(f) {
   f <- zap_srcref(f)
   f
 }
-
-isNA <- function(x) length(x) == 1 && is.na(x)
 
 compact <- function(x) {
   x[lengths(x) > 0]
@@ -101,10 +88,3 @@ map_lgl <- function(.x, .f, ...) {
 }
 
 r_version <- function() paste0("R", getRversion()[, 1:2])
-
-# Waiting on https://github.com/r-lib/withr/pull/188
-local_tempfile1 <- function(lines, env = parent.frame()) {
-  path <- withr::local_tempfile(.local_envir = env)
-  writeLines(lines, path)
-  path
-}

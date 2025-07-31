@@ -19,26 +19,25 @@ test_that("expect_no_* pass with pure code", {
   expect_success(expect_no_condition(1))
 })
 
+test_that("expect_no_ continues execution", {
+  b <- 1
+  expect_failure(expect_no_warning({
+    warning("x")
+    b <- 2
+  }))
+  expect_equal(b, 2)
+})
+
 test_that("expect_no_* don't emit success when they fail", {
-  expect_no_success(expect_no_error(stop("!")))
+  expect_failure(expect_no_error(stop("!")))
 })
 
 test_that("capture correct trace_env (#1994)", {
-  # This should fail, not error
-  expect_failure(
-    expect_message({
-      message("a")
-      warn("b")
-    }) |>
-      expect_no_warning()
+  status <- capture_success_failure(
+    expect_warning(expect_error(stop("oops")))
   )
-  expect_failure(
-    expect_no_message({
-      message("a")
-      warn("b")
-    }) |>
-      expect_warning()
-  )
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
 })
 
 test_that("unmatched conditions bubble up", {

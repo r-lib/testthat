@@ -39,7 +39,7 @@ expect_setequal <- function(object, expected) {
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
   if (length(exp_miss) || length(act_miss)) {
-    fail(paste0(
+    return(fail(paste0(
       act$lab,
       " (`actual`) and ",
       exp$lab,
@@ -50,12 +50,9 @@ expect_setequal <- function(object, expected) {
       if (length(exp_miss)) {
         paste0("* Only in `expected`: ", values(exp_miss), "\n")
       }
-    ))
-  } else {
-    succeed()
+    )))
   }
-
-  invisible(act$val)
+  pass(act$val)
 }
 
 values <- function(x) {
@@ -89,8 +86,7 @@ expect_mapequal <- function(object, expected) {
   # Length-0 vectors are OK whether named or unnamed.
   if (length(act$val) == 0 && length(exp$val) == 0) {
     warn("`object` and `expected` are empty lists")
-    succeed()
-    return(invisible(act$val))
+    return(pass(act$val))
   }
 
   act_nms <- names(act$val)
@@ -99,23 +95,23 @@ expect_mapequal <- function(object, expected) {
   check_names_ok(act_nms, "object")
   check_names_ok(exp_nms, "expected")
 
-  if (!setequal(act_nms, exp_nms)) {
-    act_miss <- setdiff(exp_nms, act_nms)
-    if (length(act_miss) > 0) {
-      vals <- paste0(encodeString(act_miss, quote = '"'), ", ")
-      fail(paste0("Names absent from `object`: ", vals))
-    }
-
-    exp_miss <- setdiff(act_nms, exp_nms)
-    if (length(exp_miss) > 0) {
-      vals <- paste0(encodeString(exp_miss, quote = '"'), ", ")
-      fail(paste0("Names absent from `expected`: ", vals))
-    }
-  } else {
-    expect_equal(act$val[exp_nms], exp$val)
+  if (setequal(act_nms, exp_nms)) {
+    return(expect_equal(act$val[exp_nms], exp$val))
   }
 
-  invisible(act$val)
+  act_miss <- setdiff(exp_nms, act_nms)
+  if (length(act_miss) > 0) {
+    vals <- paste0(encodeString(act_miss, quote = '"'), ", ")
+    return(fail(paste0("Names absent from `object`: ", vals)))
+  }
+
+  exp_miss <- setdiff(act_nms, exp_nms)
+  if (length(exp_miss) > 0) {
+    vals <- paste0(encodeString(exp_miss, quote = '"'), ", ")
+    return(fail(paste0("Names absent from `expected`: ", vals)))
+  }
+
+  pass(act$val)
 }
 
 check_names_ok <- function(x, label) {
@@ -140,19 +136,17 @@ expect_contains <- function(object, expected) {
   exp_miss <- !exp$val %in% act$val
 
   if (any(exp_miss)) {
-    fail(paste0(
+    return(fail(paste0(
       act$lab,
       " (`actual`) doesn't fully contain all the values in ",
       exp$lab,
       " (`expected`).\n",
       paste0("* Missing from `actual`: ", values(exp$val[exp_miss]), "\n"),
       paste0("* Present in `actual`:   ", values(act$val), "\n")
-    ))
-  } else {
-    succeed()
+    )))
   }
 
-  invisible(act$val)
+  pass(act$val)
 }
 
 #' @export
@@ -168,17 +162,15 @@ expect_in <- function(object, expected) {
   act_miss <- !act$val %in% exp$val
 
   if (any(act_miss)) {
-    fail(paste0(
+    return(fail(paste0(
       act$lab,
       " (`actual`) isn't fully contained within ",
       exp$lab,
       " (`expected`).\n",
       paste0("* Missing from `expected`: ", values(act$val[act_miss]), "\n"),
       paste0("* Present in `expected`:   ", values(exp$val), "\n")
-    ))
-  } else {
-    succeed()
+    )))
   }
 
-  invisible(act$val)
+  pass(act$val)
 }

@@ -50,7 +50,7 @@ test_that("failures are errors", {
     expect_false(TRUE)
   }
 
-  expect_error(f(), "is not TRUE", class = "expectation_failure")
+  expect_error(f(), class = "expectation_failure")
 })
 
 test_that("infinite recursion is captured", {
@@ -79,7 +79,7 @@ test_that("return value from test_that", {
   with_reporter(
     "",
     success <- test_that("success", {
-      expect(TRUE, "Yes!")
+      succeed("Yes!")
     })
   )
   expect_true(success)
@@ -109,7 +109,7 @@ test_that("return value from test_that", {
   with_reporter(
     "",
     success <- test_that("failure", {
-      expect(FALSE, "No!")
+      fail()
     })
   )
   expect_false(success)

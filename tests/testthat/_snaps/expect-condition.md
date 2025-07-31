@@ -1,6 +1,6 @@
 # regexp = NULL checks for presence of error
 
-    `null()` did not throw the expected error.
+    `{ ... }` did not throw the expected error.
 
 # regexp = string matches for error message
 
@@ -12,7 +12,7 @@
       expect_error(stop("!"), regexp = 1)
     Condition
       Error in `expect_error()`:
-      ! `pattern` must be a single string, `NA`, or `NULL`, not the number 1.
+      ! `regexp` must be a single string, `NA`, or `NULL`, not the number 1.
     Code
       expect_error(stop("!"), class = 1)
     Condition
@@ -35,12 +35,35 @@
       expect_condition(stop("Hi!"), foo = "bar")
     Condition
       Error in `expect_condition()`:
-      ! Can't specify `...` without `pattern`.
+      ! Can't supply `...` unless `regexp` is set.
+      * Unused arguments: `foo`.
+      i Did you mean to use `regexp` so `...` is passed to `grepl()`?
+    Code
+      expect_condition(stop("Hi!"), , , "bar")
+    Condition
+      Error in `expect_condition()`:
+      ! Can't supply `...` unless `regexp` is set.
+      * Unused arguments: `..1`.
+      i Did you mean to use `regexp` so `...` is passed to `grepl()`?
+    Code
+      expect_condition(stop("Hi!"), , , "bar", fixed = TRUE)
+    Condition
+      Error in `expect_condition()`:
+      ! Can't supply `...` unless `regexp` is set.
+      * Unused arguments: `..1` and `fixed`.
+      i Did you mean to use `regexp` so `...` is passed to `grepl()`?
     Code
       expect_condition(stop("Hi!"), "x", foo = "bar")
     Condition
       Error in `expect_condition()`:
-      ! Failed to compare condition to `pattern`.
+      ! Failed to compare condition to `regexp`.
       Caused by error in `grepl()`:
       ! unused argument (foo = "bar")
+    Code
+      expect_condition(stop("Hi!"), pattern = "bar", fixed = TRUE)
+    Condition
+      Error in `expect_condition()`:
+      ! Can't supply `...` unless `regexp` is set.
+      * Unused arguments: `pattern` and `fixed`.
+      i Did you mean to use `regexp` so `...` is passed to `grepl()`?
 

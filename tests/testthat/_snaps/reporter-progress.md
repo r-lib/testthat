@@ -31,7 +31,7 @@
     
     [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
     
-    I believe in you!
+    No one gets it right on their first try
 
 # gracefully handles multiple contexts
 
@@ -45,7 +45,7 @@
     == Results =====================================================================
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
     
-    You rock!
+    Way to go!
 
 # fails after max_fail tests
 
@@ -66,67 +66,67 @@
     x | 11        0 | reporters/fail-many
     --------------------------------------------------------------------------------
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -137,67 +137,67 @@
     == Results =====================================================================
     -- Failed tests ----------------------------------------------------------------
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -205,7 +205,7 @@
     [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ]
     == Terminated early ============================================================
     
-    I believe in you!
+    No one gets it right on their first try
 
 # can fully suppress incremental updates
 
@@ -224,7 +224,7 @@
     == Results =====================================================================
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
     
-    You rock!
+    Way to go!
 
 ---
 
@@ -235,7 +235,7 @@
     == Results =====================================================================
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
     
-    You rock!
+    Way to go!
 
 # reports backtraces
 
@@ -268,22 +268,25 @@
         x
      1. +-testthat::expect_s3_class(foo(), "foo")
      2. | \-testthat::quasi_label(enquo(object), arg = "object")
-     3. |   \-rlang::eval_bare(expr, quo_get_env(quo))
-     4. \-foo()
+     3. |   +-testthat:::labelled_value(...)
+     4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     5. \-foo()
     
     Error ('reporters/backtraces.R:13:10'): errors thrown from a quasi-labelled argument are entraced (deep case)
     Error in `foo()`: foo
     Backtrace:
-        x
-     1. +-testthat::expect_s3_class(f(), "foo")
-     2. | \-testthat::quasi_label(enquo(object), arg = "object")
-     3. |   \-rlang::eval_bare(expr, quo_get_env(quo))
-     4. \-f()
-     5.   \-g()
-     6.     +-testthat::expect_s3_class(foo(), "foo")
-     7.     | \-testthat::quasi_label(enquo(object), arg = "object")
-     8.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
-     9.     \-foo()
+         x
+      1. +-testthat::expect_s3_class(f(), "foo")
+      2. | \-testthat::quasi_label(enquo(object), arg = "object")
+      3. |   +-testthat:::labelled_value(...)
+      4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
+      5. \-f()
+      6.   \-g()
+      7.     +-testthat::expect_s3_class(foo(), "foo")
+      8.     | \-testthat::quasi_label(enquo(object), arg = "object")
+      9.     |   +-testthat:::labelled_value(...)
+     10.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     11.     \-foo()
     
     Error ('reporters/backtraces.R:21:10'): errors thrown from a quasi-labelled argument are entraced (deep deep case)
     Error in `bar()`: foobar
@@ -293,16 +296,17 @@
      2.   \-g()
      3.     +-testthat::expect_s3_class(foo(), "foo")
      4.     | \-testthat::quasi_label(enquo(object), arg = "object")
-     5.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
-     6.     \-foo()
-     7.       \-bar()
+     5.     |   +-testthat:::labelled_value(...)
+     6.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     7.     \-foo()
+     8.       \-bar()
     
     Error ('reporters/backtraces.R:32:16'): failed expect_error() prints a backtrace
     Error in `signaller()`: bar
     Backtrace:
         x
      1. +-testthat::expect_error(f(), "foo")
-     2. | \-testthat:::expect_condition_matching(...)
+     2. | \-testthat:::expect_condition_matching_(...)
      3. |   \-testthat:::quasi_capture(...)
      4. |     +-testthat (local) .capture(...)
      5. |     | \-base::withCallingHandlers(...)
@@ -356,7 +360,7 @@
      26.                                                   \-f(x - 1)
     
     Failure ('reporters/backtraces.R:62:6'): (code run outside of `test_that()`)
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -368,7 +372,7 @@
      4.       \-testthat::expect_true(FALSE)
     
     Failure ('reporters/backtraces.R:67:3'): nested expectations get backtraces
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -395,22 +399,25 @@
         x
      1. +-testthat::expect_s3_class(foo(), "foo")
      2. | \-testthat::quasi_label(enquo(object), arg = "object")
-     3. |   \-rlang::eval_bare(expr, quo_get_env(quo))
-     4. \-foo()
+     3. |   +-testthat:::labelled_value(...)
+     4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     5. \-foo()
     
     Error ('reporters/backtraces.R:13:10'): errors thrown from a quasi-labelled argument are entraced (deep case)
     Error in `foo()`: foo
     Backtrace:
-        x
-     1. +-testthat::expect_s3_class(f(), "foo")
-     2. | \-testthat::quasi_label(enquo(object), arg = "object")
-     3. |   \-rlang::eval_bare(expr, quo_get_env(quo))
-     4. \-f()
-     5.   \-g()
-     6.     +-testthat::expect_s3_class(foo(), "foo")
-     7.     | \-testthat::quasi_label(enquo(object), arg = "object")
-     8.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
-     9.     \-foo()
+         x
+      1. +-testthat::expect_s3_class(f(), "foo")
+      2. | \-testthat::quasi_label(enquo(object), arg = "object")
+      3. |   +-testthat:::labelled_value(...)
+      4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
+      5. \-f()
+      6.   \-g()
+      7.     +-testthat::expect_s3_class(foo(), "foo")
+      8.     | \-testthat::quasi_label(enquo(object), arg = "object")
+      9.     |   +-testthat:::labelled_value(...)
+     10.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     11.     \-foo()
     
     Error ('reporters/backtraces.R:21:10'): errors thrown from a quasi-labelled argument are entraced (deep deep case)
     Error in `bar()`: foobar
@@ -420,16 +427,17 @@
      2.   \-g()
      3.     +-testthat::expect_s3_class(foo(), "foo")
      4.     | \-testthat::quasi_label(enquo(object), arg = "object")
-     5.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
-     6.     \-foo()
-     7.       \-bar()
+     5.     |   +-testthat:::labelled_value(...)
+     6.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
+     7.     \-foo()
+     8.       \-bar()
     
     Error ('reporters/backtraces.R:32:16'): failed expect_error() prints a backtrace
     Error in `signaller()`: bar
     Backtrace:
         x
      1. +-testthat::expect_error(f(), "foo")
-     2. | \-testthat:::expect_condition_matching(...)
+     2. | \-testthat:::expect_condition_matching_(...)
      3. |   \-testthat:::quasi_capture(...)
      4. |     +-testthat (local) .capture(...)
      5. |     | \-base::withCallingHandlers(...)
@@ -476,7 +484,7 @@
      26.                                                   \-f(x - 1)
     
     Failure ('reporters/backtraces.R:62:6'): (code run outside of `test_that()`)
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -488,7 +496,7 @@
      4.       \-testthat::expect_true(FALSE)
     
     Failure ('reporters/backtraces.R:67:3'): nested expectations get backtraces
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -501,7 +509,7 @@
     
     [ FAIL 9 | WARN 1 | SKIP 0 | PASS 1 ]
     
-    I believe in you!
+    No one gets it right on their first try
 
 # records skips
 
@@ -519,7 +527,7 @@
     
     [ FAIL 0 | WARN 0 | SKIP 2 | PASS 0 ]
     
-    You rock!
+    Way to go!
 
 # compact display is informative
 
@@ -534,13 +542,13 @@
     [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
     
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     -- Failure ('reporters/tests.R:16:8'): Failure:2a ------------------------------
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 

@@ -42,9 +42,16 @@ quasi_label <- function(quo, label = NULL, arg = "quo") {
 
   expr <- quo_get_expr(quo)
 
+  labelled_value(
+    eval_bare(expr, quo_get_env(quo)),
+    label %||% expr_label(expr)
+  )
+}
+
+labelled_value <- function(value, label) {
   list(
-    val = eval_bare(expr, quo_get_env(quo)),
-    lab = label %||% expr_label(expr)
+    val = value,
+    lab = label
   )
 }
 

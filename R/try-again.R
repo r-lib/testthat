@@ -25,7 +25,7 @@ try_again <- function(times, code) {
           if (
             identical(e$message, "restarting interrupted promise evaluation")
           ) {
-            maybe_restart("muffleWarning")
+            tryInvokeRestart("muffleWarning")
           }
         }
       ),
@@ -44,5 +44,5 @@ try_again <- function(times, code) {
     times <- times - 1L
   }
 
-  stop(e)
+  exp_signal(e)
 }
