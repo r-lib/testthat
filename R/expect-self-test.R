@@ -114,10 +114,8 @@ expect_no_success <- function(expr) {
 
   if (status$n_success > 0) {
     return(fail("Expectation succeeded"))
-  } else {
-    succeed()
   }
-  invisible(NULL)
+  pass(NULL)
 }
 
 #' @export
@@ -128,10 +126,8 @@ expect_no_failure <- function(expr) {
 
   if (status$n_failure > 0) {
     return(fail("Expectation failed"))
-  } else {
-    succeed()
   }
-  invisible(NULL)
+  pass(NULL)
 }
 
 expect_snapshot_skip <- function(x, cran = FALSE) {
