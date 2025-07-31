@@ -54,7 +54,7 @@ test_that("expect_snapshot_file works with variant", {
 })
 
 test_that("basic workflow", {
-  snapper <- local_snapshotter()
+  snapper <- local_snapshotter(fail_on_new = FALSE)
 
   # warns on first run
   snapper$start_file("snapshot-6", "test")
@@ -79,7 +79,7 @@ test_that("basic workflow", {
 })
 
 test_that("can announce snapshot file", {
-  snapper <- local_snapshotter()
+  snapper <- local_snapshotter(fail_on_new = FALSE)
   snapper$start_file("snapshot-announce", "test")
   announce_snapshot_file(name = "bar.svg")
   expect_equal(snapper$snap_file_seen, "snapshot-announce/bar.svg")
