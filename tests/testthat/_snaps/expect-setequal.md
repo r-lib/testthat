@@ -1,39 +1,45 @@
 # useful message on failure
 
-    "actual" (`actual`) and "expected" (`expected`) don't have the same values.
+    "actual" doesn't have the same values as "expected".
     * Only in `actual`: "actual"
     * Only in `expected`: "expected"
     
 
 ---
 
-    1:2 (`actual`) and 2 (`expected`) don't have the same values.
+    `x` doesn't have the same values as `y` (2).
     * Only in `actual`: 1
     
 
 ---
 
-    2 (`actual`) and 2:3 (`expected`) don't have the same values.
+    `x` (2) doesn't have the same values as `y`.
     * Only in `expected`: 3
     
 
 ---
 
-    1:2 (`actual`) and 2:3 (`expected`) don't have the same values.
+    `x` doesn't have the same values as `y`.
     * Only in `actual`: 1
     * Only in `expected`: 3
     
 
 ---
 
-    c("a", "a") (`actual`) and c("b", "b", "b") (`expected`) don't have the same values.
+    `x` doesn't have the same values as `y`.
     * Only in `actual`: "a"
     * Only in `expected`: "b"
     
 
+---
+
+    `x` doesn't have the same values as c("a", "b", "c", "d").
+    * Only in `expected`: "d"
+    
+
 # truncates long vectors
 
-    1:2 (`actual`) and 1:50 (`expected`) don't have the same values.
+    `x` doesn't have the same values as `y`.
     * Only in `expected`: 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
     
 

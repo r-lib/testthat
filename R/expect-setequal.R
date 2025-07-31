@@ -41,9 +41,9 @@ expect_setequal <- function(object, expected) {
   if (length(exp_miss) || length(act_miss)) {
     return(fail(paste0(
       act$lab,
-      " and ",
+      " doesn't have the same values as ",
       exp$lab,
-      " don't have the same values.\n",
+      ".\n",
       if (length(act_miss)) {
         paste0("* Only in `actual`: ", values(act_miss), "\n")
       },

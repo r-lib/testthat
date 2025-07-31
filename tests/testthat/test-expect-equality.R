@@ -65,13 +65,14 @@ test_that("provide useful feedback on failure", {
   local_output_override()
 
   local_edition(3)
-  expect_snapshot_error(expect_identical(1, "a"))
-  expect_snapshot_error(expect_equal(1, "a"))
+  x <- 1
+  expect_snapshot_failure(expect_identical(x, "a"))
+  expect_snapshot_failure(expect_equal(x, "a"))
 
   local_edition(2)
   withr::local_options(testthat.edition_ignore = TRUE)
-  expect_snapshot_error(expect_identical(1, "a"))
-  expect_snapshot_error(expect_equal(1, "a"))
+  expect_snapshot_failure(expect_identical(x, "a"))
+  expect_snapshot_failure(expect_equal(x, "a"))
 })
 
 test_that("default labels use unquoting", {
