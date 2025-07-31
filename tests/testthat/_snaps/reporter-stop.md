@@ -2,13 +2,13 @@
 
     Test passed 
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
-    FALSE is not TRUE
+    FALSE is not equal to TRUE.
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     -- Failure ('reporters/tests.R:16:8'): Failure:2a ------------------------------
-    FALSE is not TRUE
+    FALSE is not equal to TRUE.
     
     `actual`:   FALSE
     `expected`: TRUE 

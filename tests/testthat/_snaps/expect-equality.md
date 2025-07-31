@@ -1,16 +1,16 @@
 # provide useful feedback on failure
 
-    `x` (1) not identical to "a".
+    `x` (1) is not identical to "a".
     
-    `actual` is [32ma double vector[39m (1)
-    `expected` is [32ma character vector[39m ('a')
+    `actual` is a double vector (1)
+    `expected` is a character vector ('a')
 
 ---
 
-    `x` (1) not equal to "a".
+    `x` (1) is not equal to "a".
     
-    `actual` is [32ma double vector[39m (1)
-    `expected` is [32ma character vector[39m ('a')
+    `actual` is a double vector (1)
+    `expected` is a character vector ('a')
 
 ---
 

@@ -268,21 +268,16 @@ expect_snapshot_condition_ <- function(
   )
   if (is.null(val)) {
     if (base_class == class) {
-      return(fail(
-        sprintf("%s did not generate %s", lab, base_class),
-        trace_env = trace_env
-      ))
+      msg <- sprintf("%s did not generate %s", lab, base_class)
     } else {
-      return(fail(
-        sprintf(
-          "%s did not generate %s with class '%s'",
-          lab,
-          base_class,
-          class
-        ),
-        trace_env = trace_env
-      ))
+      msg <- sprintf(
+        "%s did not generate %s with class '%s'",
+        lab,
+        base_class,
+        class
+      )
     }
+    return(fail(msg, trace_env = trace_env))
   }
 
   expect_snapshot_helper(

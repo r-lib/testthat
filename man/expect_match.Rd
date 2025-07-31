@@ -79,12 +79,11 @@ expect_match("Testing is fun", "fun")
 expect_match("Testing is fun", "f.n")
 expect_no_match("Testing is fun", "horrible")
 
-\dontrun{
-expect_match("Testing is fun", "horrible")
+show_failure(expect_match("Testing is fun", "horrible"))
+show_failure(expect_match("Testing is fun", "horrible", fixed = TRUE))
 
 # Zero-length inputs always fail
-expect_match(character(), ".")
-}
+show_failure(expect_match(character(), "."))
 }
 \seealso{
 Other expectations: 

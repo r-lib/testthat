@@ -1,35 +1,35 @@
 # logical tests act as expected
 
-    FALSE is not TRUE
+    FALSE is not equal to TRUE.
     
-    `actual`:   [32mFALSE[39m
-    `expected`: [32mTRUE[39m 
+    `actual`:   FALSE
+    `expected`: TRUE 
 
 ---
 
-    TRUE is not FALSE
+    TRUE is not equal to FALSE.
     
-    `actual`:   [32mTRUE[39m 
-    `expected`: [32mFALSE[39m
+    `actual`:   TRUE 
+    `expected`: FALSE
 
 # can compare non-vectors
 
-    quote(x) is not TRUE
+    quote(x) is not equal to TRUE.
     
-    `actual` is [32ma symbol[39m
-    `expected` is [32ma logical vector[39m (TRUE)
+    `actual` is a symbol
+    `expected` is a logical vector (TRUE)
 
 # expect_null works
 
-    1L is not NULL
+    1L is not equal to FALSE.
     
-    `actual` is [32man integer vector[39m (1)
-    `expected` is [32mNULL[39m
+    `actual` is an integer vector (1)
+    `expected` is NULL
 
 ---
 
-    environment() is not NULL
+    environment() is not equal to FALSE.
     
-    `actual` is [32man environment[39m
-    `expected` is [32mNULL[39m
+    `actual` is an environment
+    `expected` is NULL
 
