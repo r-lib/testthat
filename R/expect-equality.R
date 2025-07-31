@@ -123,7 +123,7 @@ expect_waldo_equal_ <- function(
   type,
   act,
   exp,
-  info,
+  info = NULL,
   ...,
   trace_env = caller_env()
 ) {
