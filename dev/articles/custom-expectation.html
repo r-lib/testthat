@@ -95,104 +95,62 @@
 
     
     
-<p>This vignette shows you how to write your expectations that work
-identically to the built-in <code>expect_</code> functions.</p>
-<p>You can use these either locally by putting them in a helper file, or
-export them from your package.</p>
+<p>This vignette shows you how to write your own expectations. You can
+use them within your package by putting them in a helper file, or share
+them with others by exporting them from your package.</p>
 <div class="section level2">
 <h2 id="expectation-basics">Expectation basics<a class="anchor" aria-label="anchor" href="#expectation-basics"></a>
 </h2>
-<p>There are three main parts to writing an expectation, as illustrated
-by <code><a href="../reference/expect_length.html">expect_length()</a></code>:</p>
+<p>An expectation has three main parts, as illustrated by
+<code><a href="../reference/expect_length.html">expect_length()</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expect_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>  </span>
 <span>  <span class="co"># 1. Capture object and label</span></span>
 <span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="co"># 2. Verify the expectations</span></span>
+<span>  <span class="co"># 2. Check if expectations are violated</span></span>
 <span>  <span class="va">act_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">act_n</span> <span class="op">!=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act_n</span>, <span class="va">n</span><span class="op">)</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span>  </span>
-<span>  <span class="co"># 3. Pass</span></span>
+<span>  <span class="co"># 3. Pass when expectations are met</span></span>
 <span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="section level3">
-<h3 id="capture-value-and-label">Capture value and label<a class="anchor" aria-label="anchor" href="#capture-value-and-label"></a>
-</h3>
-<p>The first step in any expectation is to capture the actual object,
-and generate a label for it to use if a failure occur. All testthat
-expectations support quasiquotation so that you can unquote variables.
-This makes it easier to generate good labels when the expectation is
-called from a function or within a for loop.</p>
-<p>By convention, the first argument to every <code>expect_</code>
-function is called <code>object</code>, and you capture its value
-(<code>val</code>) and label (<code>lab</code>) with
-<code>act &lt;- quasi_label(enquo(object))</code>, where
-<code>act</code> is short for actual (in constrast to expected).</p>
-</div>
-<div class="section level3">
-<h3 id="verify-the-expectation">Verify the expectation<a class="anchor" aria-label="anchor" href="#verify-the-expectation"></a>
-</h3>
-<p>Now we can check if our expectation is met and return
-<code><a href="../reference/fail.html">fail()</a></code> if not. The most challenging job here is typically
-generating the error message because you want it to be as self-contained
-as possible. This means it should typically give both the expected and
-actual value, along with the name of the object passed to the
-expectation. testthat expectations use <code><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf()</a></code>, but if
-you’re familiar with {glue}, you might want to use that instead.</p>
-<p>More complicated expectations will have more <code>if</code>
-statements. For example, we might want to make our
-<code><a href="../reference/expect_length.html">expect_length()</a></code> function include an assertion that
-<code>object</code> is a vector:</p>
+<p>The first step in any expectation is to use
+<code><a href="../reference/quasi_label.html">quasi_label()</a></code> to capture a “labelled value”, i.e. a list
+that contains both the value (<code>$val</code>) for testing and a label
+(<code>$lab</code>) for messaging. This is a pattern that exists for
+fairly esoteric reasons; you don’t need to understand it, just copy and
+paste it 🙂.</p>
+<p>Next you need to check each way that <code>object</code> could
+violate the expectation. In this case, there’s only one check, but in
+more complicated cases there can be multiple checks. In most cases, it’s
+easier to check for violations one by one, using early returns to
+<code><a href="../reference/fail.html">fail()</a></code>. This makes it easier to write informative failure
+messages that state both what the object is and what you expected.</p>
+<p>Also note that you need to use <code>return(fail())</code> here. You
+won’t see the problem when interactively testing your function because
+when run outside of <code><a href="../reference/test_that.html">test_that()</a></code>, <code><a href="../reference/fail.html">fail()</a></code> throws
+an error, causing the function to terminate early. When running inside
+of <code><a href="../reference/test_that.html">test_that()</a></code>, however, <code><a href="../reference/fail.html">fail()</a></code> does not stop
+execution because we want to collect all failures in a given test.</p>
+<p>Finally, if the object is as expected, call <code><a href="../reference/fail.html">pass()</a></code> with
+<code>act$val</code>. Returning the input value is good practice since
+expectation functions are called primarily for their side-effects
+(triggering a failure). This allows expectations to be chained:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">expect_vector_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>  </span>
-<span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, arg <span class="op">=</span> <span class="st">"object"</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/is.recursive.html" class="external-link">is.atomic</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span> <span class="op">||</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">is.list</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s is a %s, not a vector"</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="va">act_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">n</span> <span class="op">!=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act_n</span>, <span class="va">n</span><span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span>  </span>
-<span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-<p>Note that it’s really important to <code>return(fail())</code> here.
-You wont see the problem when interactively testing your function
-because when run outside of <code><a href="../reference/test_that.html">test_that()</a></code>,
-<code><a href="../reference/fail.html">fail()</a></code> throws an error, causing the function to terminate
-early. When running inside of <code><a href="../reference/test_that.html">test_that()</a></code> however,
-<code><a href="../reference/fail.html">fail()</a></code> does not stop execution because we want to collect
-all failures in a given test.</p>
-</div>
-<div class="section level3">
-<h3 id="pass-the-test">Pass the test<a class="anchor" aria-label="anchor" href="#pass-the-test"></a>
-</h3>
-<p>If no assertions fail, call <code><a href="../reference/fail.html">pass()</a></code> with the input value
-(usually <code>act$val</code>). Returning the input value is good
-practice since expectation functions are called primarily for their
-side-effects (triggering a failure). This allows expectations to be
-chained:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_type</a></span><span class="op">(</span><span class="st">"list"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="st">"data.frame"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">11</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="testing-your-expectations">Testing your expectations<a class="anchor" aria-label="anchor" href="#testing-your-expectations"></a>
-</h2>
-<p>testthat comes with three expectations designed specifically to test
-expectations: <code><a href="../reference/expect_success.html">expect_success()</a></code> and
-<code><a href="../reference/expect_success.html">expect_failure()</a></code>:</p>
+<div class="section level3">
+<h3 id="testing-your-expectations">Testing your expectations<a class="anchor" aria-label="anchor" href="#testing-your-expectations"></a>
+</h3>
+<p>Once you’ve written your expectation, you need to test it, and
+luckily testthat comes with three expectations designed specifically to
+test expectations:</p>
 <ul>
 <li>
 <code><a href="../reference/expect_success.html">expect_success()</a></code> checks that your expectation emits
@@ -204,17 +162,166 @@ exactly one failure and zero successes.</li>
 <code>expect_failure_snapshot()</code> captures the failure message
 in a snapshot, making it easier to review if it’s useful or not.</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p>The first two expectations are particularly important because they
+ensure that your expectation reports the correct number of successes and
+failures to the user.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"expect_length works as expected"</span>, <span class="op">{</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span>  <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_success.html">expect_failure</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">11</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span></span>
 <span></span>
+<span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"expect_length gives useful feedback"</span>, <span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span>  <span class="fu"><a href="../reference/expect_success.html">expect_snapshot_failure</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">11</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;">: expect_length works as expected</span> ───────────────────────────</span></span>
+<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;">: expect_length gives useful feedback</span> ───────────────────────</span></span>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; `x` has length 10, not length 11.</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
+<p>The following sections show you a few more variations, loosely based
+on existing testthat expectations.</p>
+<div class="section level3">
+<h3 id="expect_vector_length">
+<code>expect_vector_length()</code><a class="anchor" aria-label="anchor" href="#expect_vector_length"></a>
+</h3>
+<p>Let’s make <code><a href="../reference/expect_length.html">expect_length()</a></code> a bit more strict by also
+checking that the input is a vector. R is a bit weird in that it gives a
+length to pretty much every object, and you can imagine not wanting this
+code to succeed:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">mean</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<p>To do this we’ll add an extra check that the input is either an
+atomic vector or a list:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">expect_vector_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>  </span>
+<span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># It's non-trivial to check if an object is a vector in base R so we</span></span>
+<span>  <span class="co"># use an rlang helper</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/type-predicates.html" class="external-link">is_vector</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s is a %s, not a vector"</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="va">act_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">act_n</span> <span class="op">!=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act_n</span>, <span class="va">n</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">expect_vector_length</span><span class="op">(</span><span class="va">mean</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: `mean` is a closure, not a vector</span></span>
+<span><span class="fu">expect_vector_length</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">15</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: `mtcars` has length 11, not length 15.</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="expect_s3_class">
+<code>expect_s3_class()</code><a class="anchor" aria-label="anchor" href="#expect_s3_class"></a>
+</h3>
+<p>Or imagine if you’re checking to see if an object inherits from an S3
+class. In R, there’s no direct way to tell if an object is an S3 object:
+you can confirm that it’s an object, then that it’s not an S4 object. So
+you might organize your expectation this way:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">expect_s3_class</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/scalar-type-predicates.html" class="external-link">is_string</a></span><span class="op">(</span><span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">abort</a></span><span class="op">(</span><span class="st">"`class` must be a string."</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/is.object.html" class="external-link">is.object</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s is not an object."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/isS4.html" class="external-link">isS4</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s is an S4 object, not an S3 object."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span>, <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span></span>
+<span>      <span class="st">"%s inherits from %s not %s."</span>,</span>
+<span>      <span class="va">act</span><span class="op">$</span><span class="va">lab</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">class</span>, collapse <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="va">TestClass</span> <span class="op">&lt;-</span> <span class="fu">methods</span><span class="fu">::</span><span class="kw"><a href="https://rdrr.io/r/methods/setClass.html" class="external-link">setClass</a></span><span class="op">(</span><span class="st">"Test"</span>, contains <span class="op">=</span> <span class="st">"integer"</span><span class="op">)</span></span>
+<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu">TestClass</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">x3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x1</span>, <span class="st">"integer"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: `x1` is not an object.</span></span>
+<span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x2</span>, <span class="st">"integer"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: `x2` is an S4 object, not an S3 object.</span></span>
+<span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x3</span>, <span class="st">"integer"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: `x3` inherits from factor not integer.</span></span>
+<span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x3</span>, <span class="st">"factor"</span><span class="op">)</span></span></code></pre></div>
+<p>Note that I also check that the <code>class</code> argument must be a
+string. This is an error, not a failure, because it suggests you’re
+using the function incorrectly.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x1</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `expect_s3_class()`:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> `class` must be a string.</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="repeated-code">Repeated code<a class="anchor" aria-label="anchor" href="#repeated-code"></a>
+</h2>
+<p>As you write more expectations, you might discover repeated code that
+you want to extract out into a helper. Unfortunately, creating helper
+functions is not straightforward in testthat because every
+<code><a href="../reference/fail.html">fail()</a></code> captures the calling environment in order to give
+maximally useful tracebacks. Because getting this right is not critical
+(you’ll just get a slightly suboptimal traceback in the case of
+failure), we don’t recommend bothering. However, we document it here
+because it’s important to get it right in testthat itself.</p>
+<p>The key challenge is that <code><a href="../reference/fail.html">fail()</a></code> captures a
+<code>trace_env</code> which should be the execution environment of the
+expectation. This usually works, because the default value of
+<code>trace_env</code> is <code>caller_env()</code>. But when you
+introduce a helper, you’ll need to explicitly pass it along:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">expect_length_</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">act</span>, <span class="va">n</span>, <span class="va">trace_env</span> <span class="op">=</span> <span class="fu">caller_env</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">act_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">act_n</span> <span class="op">!=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act_n</span>, <span class="va">n</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span>, trace_env <span class="op">=</span> <span class="va">trace_env</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">expect_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>  </span>
+<span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">expect_length_</span><span class="op">(</span><span class="va">act</span>, <span class="va">n</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>A few recommendations:</p>
+<ul>
+<li>The helper shouldn’t be user facing, so we give it a <code>_</code>
+suffix to make that clear.</li>
+<li>It’s typically easiest for a helper to take the labelled value
+produced by <code><a href="../reference/quasi_label.html">quasi_label()</a></code>.</li>
+<li>Your helper should usually call both <code><a href="../reference/fail.html">fail()</a></code> and
+<code><a href="../reference/fail.html">pass()</a></code> and be returned from the wrapping expectation.</li>
+</ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

@@ -102,14 +102,15 @@ supplied when you need to forward a srcref captured elsewhere.</p></dd>
 
 <dt id="arg-trace">trace<a class="anchor" aria-label="anchor" href="#arg-trace"></a></dt>
 <dd><p>An optional backtrace created by <code><a href="https://rlang.r-lib.org/reference/trace_back.html" class="external-link">rlang::trace_back()</a></code>.
-When supplied, the expectation is displayed with the backtrace.</p></dd>
+When supplied, the expectation is displayed with the backtrace.
+Expert use only.</p></dd>
 
 
 <dt id="arg-trace-env">trace_env<a class="anchor" aria-label="anchor" href="#arg-trace-env"></a></dt>
-<dd><p>If <code>is.null(trace)</code>, this is used to automatically
-generate a traceback running from <code>test_code()</code>/<code><a href="test_file.html">test_file()</a></code> to
-<code>trace_env</code>. You'll generally only need to set this if you're wrapping
-an expectation inside another function.</p></dd>
+<dd><p>If <code>trace</code> is not specified, this is used to generate an
+informative traceack for failures. You should only need to set this if
+you're calling <code><a href="fail.html">fail()</a></code> from a helper function; see
+<code><a href="../articles/custom-expectation.html">vignette("custom-expectation")</a></code> for details.</p></dd>
 
 </dl></div>
     <div class="section level2">
