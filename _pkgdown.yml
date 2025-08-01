@@ -41,6 +41,10 @@ reference:
   - expect_invisible
   - expect_output
   - expect_silent
+
+- subtitle: Helpers
+  contents:
+  - try_again
   - local_reproducible_output
 
 - title: Snapshot testing

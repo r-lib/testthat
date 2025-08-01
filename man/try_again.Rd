@@ -2,26 +2,30 @@
 % Please edit documentation in R/try-again.R
 \name{try_again}
 \alias{try_again}
-\title{Try evaluating an expressing multiple times until it succeeds.}
+\title{Try evaluating an expressing multiple times until it succeeds}
 \usage{
 try_again(times, code)
 }
 \arguments{
-\item{times}{Maximum number of attempts.}
+\item{times}{Number of times to retry.}
 
-\item{code}{Code to evaluate}
+\item{code}{Code to evaluate.}
 }
 \description{
-Try evaluating an expressing multiple times until it succeeds.
+If you have a flaky test, you can use \code{try_again()} to run it a few times
+until it succeeds. In most cases, you are better fixing the underlying
+cause of the flakeyness, but sometimes that's not possible.
 }
 \examples{
-third_try <- local({
-  i <- 3
-  function() {
-    i <<- i - 1
-    if (i > 0) fail(paste0("i is ", i))
-  }
-})
-try_again(3, third_try())
+usually_return_1 <- function(i) {
+  if (runif(1) < 0.1) 0 else 1
 }
-\keyword{internal}
+
+\dontrun{
+# 10\% chance of failure:
+expect_equal(usually_return_1(), 1)
+
+# 1\% chance of failure:
+try_again(3, expect_equal(usually_return_1(), 1))
+}
+}
