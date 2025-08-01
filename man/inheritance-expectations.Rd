@@ -5,6 +5,7 @@
 \alias{expect_type}
 \alias{expect_s3_class}
 \alias{expect_s4_class}
+\alias{expect_r6_class}
 \alias{expect_s7_class}
 \title{Does code return an object inheriting from the expected base type, S3 class,
 or S4 class?}
@@ -14,6 +15,8 @@ expect_type(object, type)
 expect_s3_class(object, class, exact = FALSE)
 
 expect_s4_class(object, class)
+
+expect_r6_class(object, class)
 
 expect_s7_class(object, class)
 }
@@ -33,6 +36,7 @@ the test will pass if \code{object} inherits from any of them, unless
 \code{exact = TRUE}.
 \item \code{expect_s4_class()}: a character vector of class names or \code{NA} to assert
 that \code{object} isn't an S4 object.
+\item \code{expect_r6_class()}: a string.
 \item \code{expect_s7_class()}: an \code{\link[S7:S7_class]{S7::S7_class()}} object.
 }}
 
@@ -51,6 +55,8 @@ the vocabulary used here.
 \item \code{expect_s4_class(x, class)} checks that \code{x} is an S4 object that
 \code{\link[=is]{is()}} \code{class}.
 \item \code{expect_s4_class(x, NA)} checks that \code{x} isn't an S4 object.
+\item \code{expect_r6_class(x, class)} checks that \code{x} an R6 object that
+inherits from \code{class}.
 \item \code{expect_s7_class(x, Class)} checks that \code{x} is an S7 object that
 \code{\link[S7:S7_inherits]{S7::S7_inherits()}} from \code{Class}
 }
