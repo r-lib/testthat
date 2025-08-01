@@ -124,19 +124,11 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
     # to be able to debug with the DebugReporter
     register_expectation(e, 2)
 
-    e[["handled"]] <- TRUE
     test_error <<- e
+    invokeRestart("end_test")
   }
   handle_fatal <- function(e) {
     handled <<- TRUE
-    # Error caught in handle_error() has precedence
-    if (!is.null(test_error)) {
-      e <- test_error
-      if (isTRUE(e[["handled"]])) {
-        return()
-      }
-    }
-
     register_expectation(e, 0)
   }
   handle_expectation <- function(e) {
@@ -175,7 +167,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
     debug_end <- if (inherits(e, "skip_empty")) -1 else 2
     register_expectation(e, debug_end)
-    signalCondition(e)
+    invokeRestart("end_test")
   }
 
   test_env <- new.env(parent = env)
@@ -185,24 +177,30 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
   withr::local_options(testthat_topenv = test_env)
 
   before <- inspect_state()
-  tryCatch(
-    withCallingHandlers(
-      {
-        eval(code, test_env)
-        if (!handled && !is.null(test)) {
-          skip_empty()
-        }
-      },
-      expectation = handle_expectation,
-      skip = handle_skip,
-      warning = handle_warning,
-      message = handle_message,
-      error = handle_error
+  withRestarts(
+    tryCatch(
+      withCallingHandlers(
+        {
+          eval(code, test_env)
+          if (!handled && !is.null(test)) {
+            skip_empty()
+          }
+        },
+        expectation = handle_expectation,
+        packageNotFoundError = function(e) {
+          if (on_cran()) {
+            skip(paste0(e$package, " is not installed."))
+          }
+        },
+        skip = handle_skip,
+        warning = handle_warning,
+        message = handle_message,
+        error = handle_error
+      ),
+      # some errors may need handling here, e.g., stack overflow
+      error = handle_fatal
     ),
-    # some errors may need handling here, e.g., stack overflow
-    error = handle_fatal,
-    # skip silently terminate code
-    skip = function(e) {}
+    end_test = function() {}
   )
   after <- inspect_state()
 

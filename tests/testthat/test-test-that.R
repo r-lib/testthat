@@ -147,3 +147,19 @@ test_that("no braces required in testthat 2e", {
     NA
   )
 })
+
+test_that("missing packages cause a skip on CRAN", {
+  local_on_cran(TRUE)
+  # skip generated test_that, so need to wrap
+  expect_skip(test_that("", {
+    library(notinstalled)
+  }))
+
+  local_on_cran(FALSE)
+  expect_error(
+    test_that("", {
+      library(notinstalled)
+    }),
+    class = "packageNotFoundError"
+  )
+})
