@@ -83,3 +83,13 @@ test_that("display of successes only is compact", {
     test_path("reporters/successes.R")
   )
 })
+
+# parallel progress reporter ----------------------------------------------
+
+test_that("ParallelProgressReporter fails after max_fail tests", {
+  withr::local_options(testthat.progress.max_fails = 10)
+  expect_snapshot_reporter(
+    ParallelProgressReporter$new(update_interval = 0, min_time = Inf),
+    test_path(c("reporters/fail-many.R", "reporters/fail.R"))
+  )
+})

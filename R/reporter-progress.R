@@ -221,16 +221,20 @@ ProgressReporter <- R6::R6Class(
       self$report_issues(self$ctxt_issues)
 
       if (self$is_full()) {
-        snapshotter <- get_snapshotter()
-        if (!is.null(snapshotter)) {
-          snapshotter$end_file()
-        }
-
-        stop_reporter(c(
-          "Maximum number of failures exceeded; quitting at end of file.",
-          i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
-        ))
+        self$report_full()
       }
+    },
+
+    report_full = function() {
+      snapshotter <- get_snapshotter()
+      if (!is.null(snapshotter)) {
+        snapshotter$end_file()
+      }
+
+      stop_reporter(c(
+        "Maximum number of failures exceeded; quitting at end of file.",
+        i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
+      ))
     },
 
     add_result = function(context, test, result) {
@@ -258,6 +262,10 @@ ProgressReporter <- R6::R6Class(
     },
 
     end_reporter = function() {
+      if (self$is_full()) {
+        return()
+      }
+
       self$cat_line()
 
       colour_if <- function(n, type) {
@@ -465,7 +473,13 @@ ParallelProgressReporter <- R6::R6Class(
       self$report_issues(fsts$issues)
 
       self$files[[self$file_name]] <- NULL
-      if (length(self$files)) self$update(force = TRUE)
+      if (length(self$files)) {
+        self$update(force = TRUE)
+      }
+
+      if (self$is_full()) {
+        self$report_full()
+      }
     },
 
     end_reporter = function() {
