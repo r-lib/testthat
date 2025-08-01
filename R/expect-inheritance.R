@@ -48,7 +48,7 @@ NULL
 expect_type <- function(object, type) {
   stopifnot(is.character(type), length(type) == 1)
 
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
   act_type <- typeof(act$val)
 
   if (!identical(act_type, type)) {
@@ -69,7 +69,7 @@ expect_type <- function(object, type) {
 #'   from `class`. If `TRUE`, checks that object has a class that's identical
 #'   to `class`.
 expect_s3_class <- function(object, class, exact = FALSE) {
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
   act$class <- format_class(class(act$val))
   exp_lab <- format_class(class)
 
@@ -112,7 +112,7 @@ expect_s7_class <- function(object, class) {
     stop_input_type(class, "an S7 class object")
   }
 
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
 
   if (!S7::S7_inherits(object)) {
     return(fail(sprintf("%s is not an S7 object", act$lab)))
@@ -136,7 +136,7 @@ expect_s7_class <- function(object, class) {
 #' @export
 #' @rdname inheritance-expectations
 expect_s4_class <- function(object, class) {
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
   act$class <- format_class(methods::is(act$val))
   exp_lab <- format_class(class)
 
@@ -194,7 +194,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
     "Use `expect_type()`, `expect_s3_class()`, or `expect_s4_class()` instead"
   )
 
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   act$class <- format_class(class(act$val))
   exp_lab <- format_class(class(class))
 
