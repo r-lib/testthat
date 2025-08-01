@@ -95,7 +95,9 @@ To do this we'll add an extra check that the input is either an atomic vector or
 expect_vector_length <- function(object, n) {  
   act <- quasi_label(rlang::enquo(object))
 
-  if (!is.atomic(act$val) && !is.list(act$val)) {
+  # It's non-trivial to check if an object is a vector in base R so we
+  # use an rlang helper
+  if (!rlang::is_vector(act$val)) {
     msg <- sprintf("%s is a %s, not a vector", act$lab, typeof(act$val))
     return(fail(msg))
   }
@@ -160,6 +162,7 @@ x3 <- factor()
 expect_s3_class(x1, "integer")
 expect_s3_class(x2, "integer")
 expect_s3_class(x3, "integer")
+expect_s3_class(x3, "factor")
 ```
 
 Note that I also check that the `class` argument must be a string. This is an error, not a failure, because it suggests you're using the function incorrectly.
@@ -192,4 +195,8 @@ expect_length <- function(object, n) {
 }
 ```
 
-Note that the helper probably shouldn't be user facing, and we give it a `_` suffix to make that clear. It's also typically easiest for a helper to take the labelled value produced by `quasi_label()` rather than having to do that repeatedly.
+A few recommendations:
+
+* The helper shouldn't be user facing, so we give it a `_` suffix to make that clear. 
+* It's typically easiest for a helper to take the labelled value produced by `quasi_label()`.
+* Your helper should usually call both `fail()` and `pass()` and be returned from the wrapping expectation.
