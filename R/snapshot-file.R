@@ -88,7 +88,7 @@
 expect_snapshot_file <- function(
   path,
   name = basename(path),
-  binary = lifecycle::deprecated(),
+  binary = deprecated(),
   cran = FALSE,
   compare = NULL,
   transform = NULL,

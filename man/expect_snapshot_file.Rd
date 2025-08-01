@@ -10,7 +10,7 @@
 expect_snapshot_file(
   path,
   name = basename(path),
-  binary = lifecycle::deprecated(),
+  binary = deprecated(),
   cran = FALSE,
   compare = NULL,
   transform = NULL,
