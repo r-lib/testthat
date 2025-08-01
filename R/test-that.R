@@ -65,7 +65,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
   if (!is.null(test)) {
     reporter$start_test(context = reporter$.context, test = test)
-    on.exit(reporter$end_test(context = reporter$.context, test = test))
+    withr::defer(reporter$end_test(context = reporter$.context, test = test))
   }
 
   ok <- TRUE
@@ -111,7 +111,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
     # case of a stack overflow.  This is important for the DebugReporter.
     # Call options() manually, avoid withr overhead.
     options(expressions = expressions_opt_new)
-    on.exit(options(expressions = expressions_opt), add = TRUE)
+    withr::defer(options(expressions = expressions_opt))
 
     # Add structured backtrace to the expectation
     if (can_entrace(e)) {
@@ -180,7 +180,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
   test_env <- new.env(parent = env)
   old <- options(rlang_trace_top_env = test_env)[[1]]
-  on.exit(options(rlang_trace_top_env = old), add = TRUE)
+  withr::defer(options(rlang_trace_top_env = old))
 
   withr::local_options(testthat_topenv = test_env)
 

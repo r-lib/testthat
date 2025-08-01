@@ -50,7 +50,7 @@ test_dir <- function(
   load_helpers = TRUE,
   stop_on_failure = TRUE,
   stop_on_warning = FALSE,
-  wrap = lifecycle::deprecated(),
+  wrap = deprecated(),
   package = NULL,
   load_package = c("none", "installed", "source")
 ) {
@@ -341,7 +341,7 @@ test_one_file <- function(
   error_call = caller_env()
 ) {
   reporter <- get_reporter()
-  on.exit(teardown_run(), add = TRUE)
+  withr::defer(teardown_run())
 
   reporter$start_file(path)
   source_file(

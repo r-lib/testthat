@@ -12,7 +12,7 @@ local({
 
   perform_test <- function(pkgName, catchEnabled) {
     owd <- setwd(tempdir())
-    on.exit(setwd(owd), add = TRUE)
+    withr::defer(setwd(owd))
 
     pkgPath <- file.path(tempdir(), pkgName)
     libPath <- file.path(tempdir(), "rlib")
@@ -21,13 +21,10 @@ local({
     }
     .libPaths(c(libPath, .libPaths()))
 
-    on.exit(
-      {
-        unlink(pkgPath, recursive = TRUE)
-        unlink(libPath, recursive = TRUE)
-      },
-      add = TRUE
-    )
+    withr::defer({
+      unlink(pkgPath, recursive = TRUE)
+      unlink(libPath, recursive = TRUE)
+    })
 
     quietly(usethis::create_package(pkgPath, open = FALSE))
     quietly(testthat::use_catch(pkgPath))

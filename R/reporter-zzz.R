@@ -39,7 +39,7 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
   reporter <- find_reporter(reporter)
 
   old <- set_reporter(reporter)
-  on.exit(set_reporter(old), add = TRUE)
+  withr::defer(set_reporter(old))
 
   if (start_end_reporter) {
     reporter$start_reporter()

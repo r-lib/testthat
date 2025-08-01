@@ -13,7 +13,7 @@ test_dir(
   load_helpers = TRUE,
   stop_on_failure = TRUE,
   stop_on_warning = FALSE,
-  wrap = lifecycle::deprecated(),
+  wrap = deprecated(),
   package = NULL,
   load_package = c("none", "installed", "source")
 )

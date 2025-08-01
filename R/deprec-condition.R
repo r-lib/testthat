@@ -129,7 +129,7 @@ capture_warnings <- function(code, ignore_deprecation = FALSE) {
 }
 
 get_messages <- function(x) {
-  vapply(x, cnd_message, FUN.VALUE = character(1))
+  map_chr(x, cnd_message)
 }
 
 #' Is an error informative?
