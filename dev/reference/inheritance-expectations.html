@@ -102,9 +102,9 @@ the vocabulary used here.</p><ul><li><p><code>expect_type(x, type)</code> checks
 <span></span>
 <span><span class="fu">expect_s3_class</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span>, exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">expect_s7_class</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span><span class="op">)</span></span>
+<span><span class="fu">expect_s4_class</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">expect_s4_class</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">expect_s7_class</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -122,15 +122,21 @@ within a function or for loop. See <a href="quasi_label.html">quasi_label</a> fo
 
 
 <dt id="arg-class">class<a class="anchor" aria-label="anchor" href="#arg-class"></a></dt>
-<dd><p>Either a character vector of class names, or
-for <code>expect_s3_class()</code> and <code>expect_s4_class()</code>, an <code>NA</code> to assert
-that <code>object</code> isn't an S3 or S4 object.</p></dd>
+<dd><ul><li><p><code>expect_type()</code>: a single string giving an R base type.</p></li>
+<li><p><code>expect_s3_class()</code>: a character vector of class names or <code>NA</code> to assert
+that <code>object</code> isn't an S3 object. If you provide multiple class names,
+the test will pass if <code>object</code> inherits from any of them, unless
+<code>exact = TRUE</code>.</p></li>
+<li><p><code>expect_s4_class()</code>: a character vector of class names or <code>NA</code> to assert
+that <code>object</code> isn't an S4 object.</p></li>
+<li><p><code>expect_s7_class()</code>: an <code><a href="https://rconsortium.github.io/S7/reference/S7_class.html" class="external-link">S7::S7_class()</a></code> object.</p></li>
+</ul></dd>
 
 
 <dt id="arg-exact">exact<a class="anchor" aria-label="anchor" href="#arg-exact"></a></dt>
 <dd><p>If <code>FALSE</code>, the default, checks that <code>object</code> inherits
-from <code>class</code>. If <code>TRUE</code>, checks that object has a class that's identical
-to <code>class</code>.</p></dd>
+from any element of <code>class</code>. If <code>TRUE</code>, checks that object has a class
+that's identical to <code>class</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -160,6 +166,17 @@ to <code>class</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `x` is not an S4 object</span>
 <span class="r-in"><span><span class="co"># A data frame is built from a list:</span></span></span>
 <span class="r-in"><span><span class="fu">expect_type</span><span class="op">(</span><span class="va">x</span>, <span class="st">"list"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using multiple class names tests if the object inherits from any of them</span></span></span>
+<span class="r-in"><span><span class="fu">expect_s3_class</span><span class="op">(</span><span class="va">f</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ordered"</span>, <span class="st">"factor"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Use exact = TRUE to test for exact match</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_s3_class</span><span class="op">(</span><span class="va">f</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ordered"</span>, <span class="st">"factor"</span><span class="op">)</span>, exact <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `f` has class 'factor', not 'ordered'/'factor'.</span>
+<span class="r-in"><span><span class="fu">expect_s3_class</span><span class="op">(</span><span class="va">o</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ordered"</span>, <span class="st">"factor"</span><span class="op">)</span>, exact <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An integer vector is an atomic vector of type "integer"</span></span></span>
 <span class="r-in"><span><span class="fu">expect_type</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">x</span>, <span class="st">"integer"</span><span class="op">)</span></span></span>
