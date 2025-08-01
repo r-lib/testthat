@@ -45,28 +45,11 @@ expect_named <- function(
   exp <- quasi_label(enquo(expected), arg = "expected")
 
   exp$val <- normalise_names(exp$val, ignore.order, ignore.case)
-  act$names <- normalise_names(act$names, ignore.order, ignore.case)
+  act_names <- normalise_names(act$names, ignore.order, ignore.case)
 
   if (ignore.order) {
-    act_miss <- unique(act$names[!act$names %in% exp$val])
-    exp_miss <- unique(exp$val[!exp$val %in% act$names])
-
-    if (length(exp_miss) != 0 || length(act_miss) != 0) {
-      msg <- paste0(
-        "Names of ",
-        act$lab,
-        " (`actual`) and ",
-        exp$lab,
-        " (`expected`) don't have the same values.\n",
-        if (length(act_miss)) {
-          paste0("* Only in `actual`: ", values(act_miss), "\n")
-        },
-        if (length(exp_miss)) {
-          paste0("* Only in `expected`: ", values(exp_miss), "\n")
-        }
-      )
-      return(fail(msg))
-    }
+    act <- labelled_value(act_names, act$lab)
+    return(expect_setequal_(act, exp))
   } else {
     if (!identical(act$names, exp$val)) {
       msg <- sprintf(
