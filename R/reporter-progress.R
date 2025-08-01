@@ -306,7 +306,7 @@ ProgressReporter <- R6::R6Class(
         self$rule()
 
         issues <- issues$as_list()
-        summary <- vapply(issues, issue_summary, FUN.VALUE = character(1))
+        summary <- map_chr(issues, issue_summary)
         self$cat_tight(paste(summary, collapse = "\n\n"))
 
         self$cat_line()
@@ -374,12 +374,7 @@ CompactProgressReporter <- R6::R6Class(
       self$cat_line()
 
       issues <- self$ctxt_issues$as_list()
-      summary <- vapply(
-        issues,
-        issue_summary,
-        rule = TRUE,
-        FUN.VALUE = character(1)
-      )
+      summary <- map_chr(issues, issue_summary, rule = TRUE)
       self$cat_tight(paste(summary, collapse = "\n\n"))
 
       self$cat_line()

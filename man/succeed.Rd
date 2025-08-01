@@ -7,13 +7,14 @@
 succeed(message = "Success has been forced", info = NULL)
 }
 \arguments{
-\item{message}{a string to display.}
+\item{message}{Failure message to send to the user. It's best practice to
+describe both what is expected and what was actually received.}
 
 \item{info}{Character vector continuing additional information. Included
 for backward compatibility only and new expectations should not use it.}
 }
 \description{
 This is an older version of \code{\link[=pass]{pass()}} that exists for backwards compatibility.
-You should now use \code{pass()} instead`
+You should now use \code{pass()} instead.
 }
 \keyword{internal}

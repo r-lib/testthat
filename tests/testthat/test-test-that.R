@@ -9,7 +9,7 @@ test_that("can't access variables from other tests (2)", {
 test_that("messages are suppressed", {
   local_edition(2)
   message("YOU SHOULDN'T SEE ME")
-  succeed()
+  pass(NULL)
 })
 
 test_that("errors are captured", {
@@ -72,7 +72,7 @@ test_that("return value from test_that", {
   with_reporter(
     "",
     success <- test_that("success", {
-      succeed()
+      pass(NULL)
     })
   )
   expect_true(success)

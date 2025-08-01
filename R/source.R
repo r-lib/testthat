@@ -19,8 +19,13 @@ source_file <- function(
   wrap = TRUE,
   error_call = caller_env()
 ) {
-  stopifnot(file.exists(path))
-  stopifnot(is.environment(env))
+  check_string(path, call = error_call)
+  if (!file.exists(path)) {
+    cli::cli_abort("{.arg path} does not exist.", call = error_call)
+  }
+  if (!is.environment(env)) {
+    stop_input_type(env, "an environment", call = error_call)
+  }
 
   lines <- brio::read_lines(path)
   srcfile <- srcfilecopy(
@@ -33,7 +38,7 @@ source_file <- function(
   ## We need to parse from a connection, because parse() has a bug,
   ## and converts the input to the native encoding, if the text arg is used
   con <- textConnection(lines, encoding = "UTF-8")
-  on.exit(try(close(con), silent = TRUE), add = TRUE)
+  withr::defer(try(close(con), silent = TRUE))
   exprs <- parse(con, n = -1, srcfile = srcfile, encoding = "UTF-8")
   exprs <- filter_desc(exprs, desc, error_call = error_call)
 
@@ -44,7 +49,7 @@ source_file <- function(
 
   if (chdir) {
     old_dir <- setwd(dirname(path))
-    on.exit(setwd(old_dir), add = TRUE)
+    withr::defer(setwd(old_dir))
   }
 
   withr::local_options(testthat_topenv = env, testthat_path = path)

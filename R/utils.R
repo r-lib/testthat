@@ -2,31 +2,6 @@
 #' @export
 magrittr::`%>%`
 
-escape_regex <- function(x) {
-  chars <- c(
-    "*",
-    ".",
-    "?",
-    "^",
-    "+",
-    "$",
-    "|",
-    "(",
-    ")",
-    "[",
-    "]",
-    "{",
-    "}",
-    "\\"
-  )
-  gsub(
-    paste0("([\\", paste0(collapse = "\\", chars), "])"),
-    "\\\\\\1",
-    x,
-    perl = TRUE
-  )
-}
-
 can_entrace <- function(cnd) {
   !inherits(cnd, "Throwable")
 }
@@ -37,10 +12,6 @@ transport_fun <- function(f) {
   environment(f) <- .GlobalEnv
   f <- zap_srcref(f)
   f
-}
-
-compact <- function(x) {
-  x[lengths(x) > 0]
 }
 
 # Handled specially in test_code so no backtrace
@@ -76,15 +47,6 @@ first_upper <- function(x) {
 
 in_rcmd_check <- function() {
   nzchar(Sys.getenv("_R_CHECK_PACKAGE_NAME_", ""))
-}
-
-map_chr <- function(.x, .f, ...) {
-  .f <- as_function(.f)
-  vapply(.x, .f, FUN.VALUE = character(1), ...)
-}
-map_lgl <- function(.x, .f, ...) {
-  .f <- as_function(.f)
-  vapply(.x, .f, FUN.VALUE = logical(1), ...)
 }
 
 r_version <- function() paste0("R", getRversion()[, 1:2])
