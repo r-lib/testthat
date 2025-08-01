@@ -12,6 +12,8 @@
 #' * `expect_s4_class(x, class)` checks that `x` is an S4 object that
 #'   [is()] `class`.
 #' * `expect_s4_class(x, NA)` checks that `x` isn't an S4 object.
+#' * `expect_r6_class(x, class)` checks that `x` an R6 object that
+#'   inherits from `class`.
 #' * `expect_s7_class(x, Class)` checks that `x` is an S7 object that
 #'   [S7::S7_inherits()] from `Class`
 #'
@@ -26,6 +28,7 @@
 #'    `exact = TRUE`.
 #'  * `expect_s4_class()`: a character vector of class names or `NA` to assert
 #'    that `object` isn't an S4 object.
+#'  * `expect_r6_class()`: a string.
 #'  * `expect_s7_class()`: an [S7::S7_class()] object.
 #' @inheritParams expect_that
 #' @family expectations
@@ -149,6 +152,26 @@ expect_s4_class <- function(object, class) {
     }
   } else {
     stop_input_type(class, c("a character vector", "NA"))
+  }
+
+  pass(act$val)
+}
+
+#' @export
+#' @rdname inheritance-expectations
+expect_r6_class <- function(object, class) {
+  act <- quasi_label(enquo(object))
+  check_string(class)
+
+  if (!inherits(act$val, "R6")) {
+    return(fail(sprintf("%s is not an R6 object", act$lab)))
+  }
+
+  if (!inherits(act$val, class)) {
+    act_class <- format_class(class(act$val))
+    exp_class <- format_class(class)
+    msg <- sprintf("%s inherits from %s not %s.", act$lab, act_class, exp_class)
+    return(fail(msg))
   }
 
   pass(act$val)
