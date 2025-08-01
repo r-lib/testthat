@@ -152,8 +152,6 @@ test_that("skips and unexpected errors reset snapshots", {
   )
 
   path <- "test-snapshot/_snaps/snapshot.md"
-  stopifnot(file.exists(path))
-
   snaps <- snap_from_md(brio::read_lines(path))
   titles <- c("errors reset snapshots", "skips reset snapshots")
   expect_true(all(titles %in% names(snaps)))

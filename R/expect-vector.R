@@ -16,6 +16,8 @@
 #' show_failure(expect_vector(1:10, ptype = character(), size = 5))
 expect_vector <- function(object, ptype = NULL, size = NULL) {
   check_installed("vctrs")
+  check_number_whole(size, min = 0, allow_null = TRUE)
+  
   act <- quasi_label(enquo(object))
 
   message <- NULL

@@ -30,6 +30,8 @@ expect_output <- function(
   label = NULL,
   width = 80
 ) {
+  check_number_whole(width, min = 1)
+  
   act <- quasi_capture(enquo(object), label, capture_output, width = width)
 
   if (identical(regexp, NA)) {

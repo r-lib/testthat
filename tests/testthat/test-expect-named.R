@@ -19,3 +19,10 @@ test_that("expected_named optionally ignores order", {
     ignore.order = TRUE
   ))
 })
+
+test_that("expect_named validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_named(c(a = 1), "a", ignore.order = "yes")
+    expect_named(c(a = 1), "a", ignore.case = "yes")
+  })
+})

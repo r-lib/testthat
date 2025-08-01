@@ -65,6 +65,7 @@ expect_equal <- function(
 ) {
   act <- quasi_label(enquo(object), label)
   exp <- quasi_label(enquo(expected), expected.label)
+  check_number_decimal(tolerance, min = 0, allow_null = TRUE)
 
   if (edition_get() >= 3) {
     expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)

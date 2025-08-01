@@ -46,7 +46,7 @@ NULL
 #' @export
 #' @rdname inheritance-expectations
 expect_type <- function(object, type) {
-  stopifnot(is.character(type), length(type) == 1)
+  check_string(type)
 
   act <- quasi_label(enquo(object))
   act_type <- typeof(act$val)
@@ -69,6 +69,8 @@ expect_type <- function(object, type) {
 #'   from `class`. If `TRUE`, checks that object has a class that's identical
 #'   to `class`.
 expect_s3_class <- function(object, class, exact = FALSE) {
+  check_bool(exact)
+
   act <- quasi_label(enquo(object))
   act$class <- format_class(class(act$val))
   exp_lab <- format_class(class)
@@ -98,7 +100,7 @@ expect_s3_class <- function(object, class, exact = FALSE) {
       }
     }
   } else {
-    abort("`class` must be a NA or a character vector")
+    stop_input_type(class, c("a character vector", "NA"))
   }
 
   pass(act$val)
@@ -187,7 +189,7 @@ isS3 <- function(x) is.object(x) && !isS4(x)
 #' @inheritParams expect_type
 #' @export
 expect_is <- function(object, class, info = NULL, label = NULL) {
-  stopifnot(is.character(class))
+  check_character(class)
   edition_deprecate(
     3,
     "expect_is()",
