@@ -71,7 +71,7 @@ expect_snapshot <- function(
   check_bool(cran)
   check_bool(error)
   check_bool(cnd_class)
-  
+
   edition_require(3, "expect_snapshot()")
   variant <- check_variant(variant)
   if (!is.null(transform)) {
@@ -199,7 +199,7 @@ snap_header <- function(state, header) {
 #' @export
 expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
   check_bool(cran)
-  
+
   edition_require(3, "expect_snapshot_output()")
   variant <- check_variant(variant)
 
@@ -232,7 +232,7 @@ expect_snapshot_error <- function(
 ) {
   check_string(class)
   check_bool(cran)
-  
+
   edition_require(3, "expect_snapshot_error()")
   expect_snapshot_condition_(
     "error",
@@ -253,7 +253,7 @@ expect_snapshot_warning <- function(
 ) {
   check_string(class)
   check_bool(cran)
-  
+
   edition_require(3, "expect_snapshot_warning()")
   expect_snapshot_condition_(
     "warning",

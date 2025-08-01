@@ -17,7 +17,7 @@
 expect_vector <- function(object, ptype = NULL, size = NULL) {
   check_installed("vctrs")
   check_number_whole(size, min = 0, allow_null = TRUE)
-  
+
   act <- quasi_label(enquo(object))
 
   message <- NULL

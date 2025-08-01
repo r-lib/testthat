@@ -34,7 +34,7 @@ expect_named <- function(
 ) {
   check_bool(ignore.order)
   check_bool(ignore.case)
-  
+
   act <- quasi_label(enquo(object), label)
   act$names <- names(act$val)
 

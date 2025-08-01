@@ -97,7 +97,7 @@ expect_snapshot_file <- function(
   check_string(path)
   check_string(name)
   check_bool(cran)
-  
+
   edition_require(3, "expect_snapshot_file()")
   if (!cran && on_cran()) {
     skip("On CRAN")
