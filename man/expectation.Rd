@@ -31,7 +31,8 @@ is.expectation(x)
 \item{srcref}{Optional \code{srcref} giving location of test.}
 
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
-When supplied, the expectation is displayed with the backtrace.}
+When supplied, the expectation is displayed with the backtrace.
+Expert use only.}
 
 \item{...}{Additional attributes for the expectation object.}
 

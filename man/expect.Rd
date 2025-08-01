@@ -25,12 +25,13 @@ for backward compatibility only and new expectations should not use it.}
 supplied when you need to forward a srcref captured elsewhere.}
 
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
-When supplied, the expectation is displayed with the backtrace.}
+When supplied, the expectation is displayed with the backtrace.
+Expert use only.}
 
-\item{trace_env}{If \code{is.null(trace)}, this is used to automatically
-generate a traceback running from \code{test_code()}/\code{test_file()} to
-\code{trace_env}. You'll generally only need to set this if you're wrapping
-an expectation inside another function.}
+\item{trace_env}{If \code{trace} is not specified, this is used to generate an
+informative traceack for failures. You should only need to set this if
+you're calling \code{fail()} from a helper function; see
+\code{vignette("custom-expectation")} for details.}
 }
 \value{
 An expectation object from either \code{succeed()} or \code{fail()}.
