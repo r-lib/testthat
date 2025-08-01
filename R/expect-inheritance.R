@@ -19,15 +19,14 @@
 #'
 #' @param type String giving base type (as returned by [typeof()]).
 #' @param class
-#'
-#'  * `expect_type()` a single string giving an R base type.
-#'  * `expect_s3_class()` a character vector of class names or `NA` to assert
+#'  * `expect_type()`: a single string giving an R base type.
+#'  * `expect_s3_class()`: a character vector of class names or `NA` to assert
 #'    that `object` isn't an S3 object. If you provide multiple class names,
 #'    the test will pass if `object` inherits from any of them, unless
 #'    `exact = TRUE`.
-#'  * `expect_s4_class()` a character vector of class names or `NA` to assert
+#'  * `expect_s4_class()`: a character vector of class names or `NA` to assert
 #'    that `object` isn't an S4 object.
-#'  * `expect_s7_class()` an [S7::S7_class()] object.
+#'  * `expect_s7_class()`: an [S7::S7_class()] object.
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
