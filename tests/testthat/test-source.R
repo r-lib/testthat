@@ -137,3 +137,73 @@ test_that("source_dir()", {
   )
   expect_equal(res[[1]](), "Hello World")
 })
+
+test_that("you can select deeply nested describe(...)", {
+  code <- exprs(
+    f(),
+    describe("level 0", {
+      g()
+      describe("level 1 A", {
+        h()
+        describe("level 2 A", {
+          i()
+          it("level 3 A", {
+            expect_equal(1, 1)
+          })
+          j()
+        })
+        k()
+        describe("level 2 B", {
+          l()
+          it("level 3 B", {
+            o()
+            expect_equal(1, 1)
+            p()
+          })
+          m()
+          it("level 3 C", {
+            o()
+            expect_equal(1, 1)
+            p()
+          })
+          n()
+          it("level 3 D", {
+            expect_equal(1, 1)
+          })
+          o()
+        })
+        p()
+        describe("level 2 C", {
+          expect_equal(1, 1)
+        })
+        r()
+      })
+      s()
+      describe("level 1 B", {})
+      t()
+    }),
+    x()
+  )
+
+  expected <- exprs(
+    f(),
+    describe("level 0", {
+      g()
+      describe("level 1 A", {
+        h()
+        k()
+        describe("level 2 B", {
+          l()
+          m()
+          it("level 3 C", {
+            o()
+            expect_equal(1, 1)
+            p()
+          })
+        })
+      })
+    })
+  )
+
+  expect_equal(filter_desc(code, c("level 0", "level 1 A", "level 2 B", "level 3 C")), expected)
+})

@@ -73,43 +73,57 @@ filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
   if (is.null(desc)) {
     return(exprs)
   }
+  desc_levels <- if (is.list(desc)) {
+    desc
+  } else {
+    as.list(desc)
+  }
 
-  found <- FALSE
-  include <- rep(FALSE, length(exprs))
-
-  for (i in seq_along(exprs)) {
-    expr <- exprs[[i]]
-
-    if (!is_call(expr, c("test_that", "describe"), n = 2)) {
-      if (!found) {
-        include[[i]] <- TRUE
-      }
+  find_matching_expr <- function(exprs, queue) {
+    if (length(queue) == 0) {
+      exprs
     } else {
-      if (!is_string(expr[[2]])) {
-        next
+      found <- FALSE
+      include <- rep(FALSE, length(exprs))
+      desc <- queue[[1]]
+
+      for (i in seq_along(exprs)) {
+        expr <- exprs[[i]]
+
+        if (!is_call(expr, c("test_that", "describe", "it"), n = 2)) {
+          if (!found) {
+            include[[i]] <- TRUE
+          }
+        } else {
+          if (!is_string(expr[[2]])) {
+            next
+          }
+
+          test_desc <- as.character(expr[[2]])
+          if (test_desc != desc) {
+            next
+          }
+
+          if (found) {
+            abort(
+              "Found multiple tests with specified description",
+              call = error_call
+            )
+          }
+          include[[i]] <- TRUE
+          found <- TRUE
+          exprs[[i]][[3]] <- find_matching_expr(expr[[3]], queue[-1])
+        }
       }
 
-      test_desc <- as.character(expr[[2]])
-      if (test_desc != desc) {
-        next
+      if (!found) {
+        abort("Failed to find test with specified description", call = error_call)
       }
 
-      if (found) {
-        abort(
-          "Found multiple tests with specified description",
-          call = error_call
-        )
-      }
-      include[[i]] <- TRUE
-      found <- TRUE
+      exprs[include]
     }
   }
-
-  if (!found) {
-    abort("Failed to find test with specified description", call = error_call)
-  }
-
-  exprs[include]
+  find_matching_expr(exprs, desc_levels)
 }
 
 #' @rdname source_file
