@@ -39,12 +39,7 @@ expect_named <- function(
   act$names <- names(act$val)
 
   if (missing(expected)) {
-    if (identical(act$names, NULL)) {
-      msg <- sprintf("%s does not have names.", act$lab)
-      return(fail(msg))
-    } else {
-      return(pass(act$val))
-    }
+    return(expect_has_names_(act))
   }
 
   exp <- quasi_label(enquo(expected), arg = "expected")
@@ -100,4 +95,12 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
   }
 
   x
+}
+
+expect_has_names_ <- function(act) {
+  if (identical(act$names, NULL)) {
+    msg <- sprintf("%s does not have names.", act$lab)
+    return(fail(msg))
+  }
+  return(pass(act$val))
 }
