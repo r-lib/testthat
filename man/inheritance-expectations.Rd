@@ -4,8 +4,8 @@
 \alias{inheritance-expectations}
 \alias{expect_type}
 \alias{expect_s3_class}
-\alias{expect_s7_class}
 \alias{expect_s4_class}
+\alias{expect_s7_class}
 \title{Does code return an object inheriting from the expected base type, S3 class,
 or S4 class?}
 \usage{
@@ -13,9 +13,9 @@ expect_type(object, type)
 
 expect_s3_class(object, class, exact = FALSE)
 
-expect_s7_class(object, class)
-
 expect_s4_class(object, class)
+
+expect_s7_class(object, class)
 }
 \arguments{
 \item{object}{Object to test.

@@ -81,6 +81,14 @@ test_that("expect_s4_class allows unquoting of first argument", {
   expect_success(expect_s4_class(!!rlang::quo(obj), "new_class"))
 })
 
+
+test_that("expect_s3_class validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_s4_class(factor("a"), 1)
+  })
+})
+
+
 # expect_s7_class --------------------------------------------------------
 
 test_that("can check with actual class", {

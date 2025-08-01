@@ -31,6 +31,14 @@
       Error in `expect_s3_class()`:
       ! `exact` must be `TRUE` or `FALSE`, not the string "yes".
 
+---
+
+    Code
+      expect_s4_class(factor("a"), 1)
+    Condition
+      Error in `expect_s4_class()`:
+      ! `class` must be a character vector or NA, not the number 1.
+
 # test_s3_class respects class hierarchy
 
     `x` inherits from 'a'/'b' not 'c'.

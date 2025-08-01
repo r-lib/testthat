@@ -123,6 +123,39 @@ expect_s3_class <- function(object, class, exact = FALSE) {
 
 #' @export
 #' @rdname inheritance-expectations
+expect_s4_class <- function(object, class) {
+  act <- quasi_label(enquo(object))
+  act$class <- format_class(methods::is(act$val))
+  exp_lab <- format_class(class)
+
+  if (identical(class, NA)) {
+    if (isS4(object)) {
+      msg <- sprintf("%s is an S4 object", act$lab)
+      return(fail(msg))
+    }
+  } else if (is.character(class)) {
+    if (!isS4(act$val)) {
+      return(fail(sprintf("%s is not an S4 object", act$lab)))
+    } else {
+      if (!methods::is(act$val, class)) {
+        msg <- sprintf(
+          "%s inherits from %s not %s.",
+          act$lab,
+          act$class,
+          exp_lab
+        )
+        return(fail(msg))
+      }
+    }
+  } else {
+    stop_input_type(class, c("a character vector", "NA"))
+  }
+
+  pass(act$val)
+}
+
+#' @export
+#' @rdname inheritance-expectations
 expect_s7_class <- function(object, class) {
   check_installed("S7")
   if (!inherits(class, "S7_class")) {
@@ -149,41 +182,6 @@ expect_s7_class <- function(object, class) {
 
   pass(act$val)
 }
-
-#' @export
-#' @rdname inheritance-expectations
-expect_s4_class <- function(object, class) {
-  act <- quasi_label(enquo(object))
-  act$class <- format_class(methods::is(act$val))
-  exp_lab <- format_class(class)
-
-  if (identical(class, NA)) {
-    if (isS4(object)) {
-      msg <- sprintf("%s is an S4 object", act$lab)
-      return(fail(msg))
-    }
-  } else if (is.character(class)) {
-    if (!isS4(act$val)) {
-      return(fail(sprintf("%s is not an S4 object", act$lab)))
-    } else {
-      if (!methods::is(act$val, class)) {
-        msg <- sprintf(
-          "%s inherits from %s not %s.",
-          act$lab,
-          act$class,
-          exp_lab
-        )
-        return(fail(msg))
-      }
-    }
-  } else {
-    abort("`class` must be a NA or a character vector")
-  }
-
-  pass(act$val)
-}
-
-isS3 <- function(x) is.object(x) && !isS4(x)
 
 #' Does an object inherit from a given class?
 #'
@@ -228,6 +226,9 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
   pass(act$val)
 }
 
+# Helpers ----------------------------------------------------------------------
+
+isS3 <- function(x) is.object(x) && !isS4(x)
 
 format_class <- function(x) {
   paste0(encodeString(x, quote = "'"), collapse = "/")
