@@ -40,7 +40,7 @@ quasi_label <- function(quo, label = NULL, arg = NULL) {
     if (is_call(arg, "enquo")) {
       arg <- arg[[2]]
     }
-    arg <- deparse1(arg)
+    arg <- as_label(arg)
   }
 
   force(quo)
