@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `try_again()` is now publicised. The first argument is now the number of retries, not tries (#2050).
 * `vignette("custom-expectations)` has been overhauled to make it much clearer how to create high-quality expectations (#2113, #2132, #2072).
 * `expect_snapshot()` and friends will now fail when creating a new snapshot on CI. This is usually a signal that you've forgotten to run it locally before committing (#1461).
 * `expect_snapshot_value()` can now handle expressions that generate `-` (#1678) or zero length atomic vectors (#2042).
