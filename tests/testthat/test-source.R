@@ -11,7 +11,7 @@ test_that("source_file always uses UTF-8 encoding", {
 
   ## Some text in UTF-8
   tmp <- tempfile()
-  on.exit(unlink(tmp), add = TRUE)
+  withr::defer(unlink(tmp))
   utf8 <- as.raw(c(
     0xc3,
     0xa1,

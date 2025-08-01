@@ -341,7 +341,7 @@ test_one_file <- function(
   error_call = caller_env()
 ) {
   reporter <- get_reporter()
-  on.exit(teardown_run(), add = TRUE)
+  withr::defer(teardown_run())
 
   reporter$start_file(path)
   source_file(

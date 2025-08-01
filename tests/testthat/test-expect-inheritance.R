@@ -31,7 +31,7 @@ test_that("test_s4_class respects class hierarchy", {
   A <- methods::setClass("A", contains = "list")
   B <- methods::setClass("B", contains = "list")
   C <- methods::setClass("C", contains = c("A", "B"))
-  on.exit({
+  withr::defer({
     methods::removeClass("A")
     methods::removeClass("B")
     methods::removeClass("C")

@@ -40,7 +40,7 @@ with_mock <- function(..., .env = topenv()) {
   mock_funs <- lapply(dots[!code_pos], eval, parent.frame())
   mocks <- extract_mocks(mock_funs, .env = .env)
 
-  on.exit(lapply(mocks, reset_mock), add = TRUE)
+  withr::defer(lapply(mocks, reset_mock))
   lapply(mocks, set_mock)
 
   # Evaluate the code
@@ -60,7 +60,7 @@ local_mock <- function(..., .env = topenv(), .local_envir = parent.frame()) {
 
   mocks <- extract_mocks(list(...), .env = .env)
   on_exit <- bquote(
-    on.exit(lapply(.(mocks), .(reset_mock)), add = TRUE),
+    withr::defer(lapply(.(mocks), .(reset_mock))),
   )
 
   lapply(mocks, set_mock)
