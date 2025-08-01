@@ -30,6 +30,16 @@ test_that("provide useful feedback on failure", {
   expect_snapshot_error(
     expect_named(c(a = 1), c("b"), ignore.order = TRUE)
   )
+
+  expect_snapshot_error(
+    expect_named(c(a = 1), c("a", "b"), ignore.order = FALSE)
+  )
+  expect_snapshot_error(
+    expect_named(c(a = 1, b = 1), c("a"), ignore.order = FALSE)
+  )
+  expect_snapshot_error(
+    expect_named(c(a = 1), c("b"), ignore.order = FALSE)
+  )
 })
 
 test_that("expect_named validates its inputs", {

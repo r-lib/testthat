@@ -49,10 +49,10 @@ expect_named <- function(
 
   if (ignore.order) {
     act <- labelled_value(act_names, act$lab)
-    return(expect_setequal_(act, exp, prefix = "Names of "))
+    return(expect_setequal_(act, exp, error_prefix = "Names of "))
   } else {
     act <- labelled_value(act_names, act$lab)
-    return(expect_waldo_equal_("equal", act, exp))
+    return(expect_waldo_equal_("equal", act, exp, error_prefix = "Names of "))
   }
 
   pass(act$val)
