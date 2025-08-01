@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `JunitReporter()` no longer fails with `"no applicable method for xml_add_child"` for warnings outside of tests (#1913). Additionally, warnings now save their backtraces.
 * `JunitReporter()` strips ANSI escapes in more placese (#1852, #2032).
 * `try_again()` is now publicised. The first argument is now the number of retries, not tries (#2050).
 * `vignette("custom-expectations)` has been overhauled to make it much clearer how to create high-quality expectations (#2113, #2132, #2072).
