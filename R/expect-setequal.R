@@ -178,8 +178,12 @@ check_map_names <- function(
     )
   }
   if (any(nms == "")) {
+    empty <- which(nms == "")
     cli::cli_abort(
-      "All elements in {.arg {error_arg}} must have names.",
+      c(
+        "All elements in {.arg {error_arg}} must have names.",
+        c = "Empty names at index: {empty}"
+      ),
       call = error_call
     )
   }
