@@ -95,7 +95,7 @@ find_reporter <- function(reporter) {
 }
 
 find_reporter_one <- function(reporter, ...) {
-  stopifnot(is.character(reporter))
+  check_string(reporter)
 
   name <- reporter
   substr(name, 1, 1) <- toupper(substr(name, 1, 1))

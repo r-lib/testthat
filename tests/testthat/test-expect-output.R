@@ -43,3 +43,9 @@ test_that("uses unicode characters in output where available", {
   bar <- "\u2551"
   expect_success(expect_output(cat(bar), "\u2551"))
 })
+
+test_that("expect_output validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_output(cat("hello"), "hello", width = "wide")
+  })
+})

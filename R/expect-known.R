@@ -58,6 +58,10 @@ expect_known_output <- function(
   print = FALSE,
   width = 80
 ) {
+  check_string(file)
+  check_bool(update)
+  check_bool(print)
+  check_number_whole(width, min = 1)
   edition_deprecate(
     3,
     "expect_known_output()",
@@ -131,6 +135,10 @@ expect_output_file <- function(
   print = FALSE,
   width = 80
 ) {
+  check_string(file)
+  check_bool(update)
+  check_bool(print)
+  check_number_whole(width, min = 1)
   # Code is a copy of expect_known_output()
   edition_deprecate(
     3,
@@ -158,6 +166,9 @@ expect_known_value <- function(
   label = NULL,
   version = 2
 ) {
+  check_string(file)
+  check_bool(update)
+  check_number_whole(version, min = 1)
   edition_deprecate(
     3,
     "expect_known_value()",

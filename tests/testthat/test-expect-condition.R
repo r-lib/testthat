@@ -34,10 +34,11 @@ test_that("base_class must match when class is set", {
   expect_success(expect_warning(foo(), class = "bar"))
 })
 
-test_that("check type of class and pattern", {
+test_that("expect_error validates its inputs", {
   expect_snapshot(error = TRUE, {
     expect_error(stop("!"), regexp = 1)
     expect_error(stop("!"), class = 1)
+    expect_error(stop("!"), inherit = "yes")
   })
 })
 
@@ -133,12 +134,31 @@ test_that("when checking for no warnings, exclude deprecation warnings (2e)", {
   )
 })
 
+test_that("expect_warning validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_warning(warning("!"), regexp = 1)
+    expect_warning(warning("!"), class = 1)
+    expect_warning(warning("!"), inherit = "yes")
+    expect_warning(warning("!"), all = "yes")
+  })
+})
+
 # expect_message ----------------------------------------------------------
 
 test_that("regexp = NA checks for absence of message", {
   expect_success(expect_message({}, NA))
   expect_failure(expect_message(message("!"), NA))
 })
+
+test_that("expect_message validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_message(message("!"), regexp = 1)
+    expect_message(message("!"), class = 1)
+    expect_message(message("!"), inherit = "yes")
+    expect_message(message("!"), all = "yes")
+  })
+})
+
 
 # expect_condition --------------------------------------------------------
 
@@ -247,6 +267,14 @@ test_that("can match parent conditions (#1493)", {
   # Can disable parent matching
   expect_error(expect_error(f(), class = "foo", inherit = FALSE))
   expect_error(expect_error(f(), "Parent message.", inherit = FALSE))
+})
+
+test_that("expect_condition validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_condition(stop("!"), regexp = 1)
+    expect_condition(stop("!"), class = 1)
+    expect_condition(stop("!"), inherit = "yes")
+  })
 })
 
 test_that("unused arguments generate an error", {
