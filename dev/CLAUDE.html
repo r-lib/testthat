@@ -64,23 +64,15 @@
 </div>
 <div class="section level2">
 <h2 id="key-development-commands">Key Development Commands<a class="anchor" aria-label="anchor" href="#key-development-commands"></a></h2>
+<p>General advice: * When running R from the console, always run it with <code>--quiet --vanilla</code> * Always run <code>air format .</code> after generating code</p>
 <div class="section level3">
-<h3 id="testing">Testing<a class="anchor" aria-label="anchor" href="#testing"></a></h3>
+<h3 id="development-tools">Development tools<a class="anchor" aria-label="anchor" href="#development-tools"></a></h3>
 <ul><li>
-<code>devtools::test()</code> or <code>Ctrl/Cmd+Shift+T</code> in RStudio - Run all tests</li>
+<code>devtools::test()</code> - Run all tests</li>
 <li>
 <code>devtools::test_file("tests/testthat/test-filename.R")</code> - Run tests in a specific file</li>
 <li>
-<code><a href="reference/test_package.html">testthat::test_local()</a></code> - Run tests for local source package</li>
-<li>
-<code>testthat::test_package("testthat")</code> - Run tests for installed package</li>
-<li>
-<code>R CMD check</code> - Full package check including tests</li>
-</ul></div>
-<div class="section level3">
-<h3 id="building-and-installation">Building and Installation<a class="anchor" aria-label="anchor" href="#building-and-installation"></a></h3>
-<ul><li>
-<code>devtools::load_all()</code> or <code>Ctrl/Cmd+Shift+L</code> - Load package for development</li>
+<code>devtools::load_all()</code> - Load package for development</li>
 <li>
 <code>devtools::document()</code> - Generate documentation</li>
 <li>
