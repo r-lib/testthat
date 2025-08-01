@@ -24,6 +24,8 @@ test_that("reparse handles common cases", {
   expect_equal(roundtrip(c(1, 2, 3)), c(1, 2, 3))
   expect_equal(roundtrip(list(1, 2, 3)), list(1, 2, 3))
   expect_equal(roundtrip(mtcars), mtcars)
+  expect_equal(roundtrip(1:10), 1:10)
+  expect_equal(roundtrip(numeric()), numeric())
 
   f <- function(x) x + 1
   expect_equal(roundtrip(f), f, ignore_function_env = TRUE)

@@ -2,10 +2,9 @@ succeed_after <- function(i) {
   function() {
     i <<- i - 1
     if (i > 0) {
-      fail(paste0("i is ", i))
-    } else {
-      succeed()
+      return(fail(paste0("i is ", i)))
     }
+    pass(NULL)
   }
 }
 
