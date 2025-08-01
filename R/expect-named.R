@@ -72,11 +72,11 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
   x
 }
 
-expect_has_names_ <- function(act) {
+expect_has_names_ <- function(act, trace_env = caller_env()) {
   act_names <- names(act$val)
   if (identical(act_names, NULL)) {
     msg <- sprintf("%s does not have names.", act$lab)
-    return(fail(msg))
+    return(fail(msg, trace_env = trace_env))
   }
   return(pass(act$val))
 }
