@@ -182,7 +182,7 @@ check_map_names <- function(
     cli::cli_abort(
       c(
         "All elements in {.arg {error_arg}} must have names.",
-        c = "Empty names at index: {empty}"
+        x = "Empty names at position{?s}: {empty}"
       ),
       call = error_call
     )

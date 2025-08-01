@@ -67,11 +67,13 @@
     Condition
       Error in `expect_mapequal()`:
       ! All elements in `object` must have names.
+      x Empty names at position: 1
     Code
       expect_mapequal(named, unnamed)
     Condition
       Error in `expect_mapequal()`:
       ! All elements in `expected` must have names.
+      x Empty names at position: 1
     Code
       expect_mapequal(named, duplicated)
     Condition
