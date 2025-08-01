@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_*()` functions consistently and rigorously check their inputs (#1754). 
 * `vignette("custom-expectations)` has been overhauled to make it much clearer how to create high-quality expectations (#2113, #2132, #2072).
 * `expect_snapshot()` and friends will now fail when creating a new snapshot on CI. This is usually a signal that you've forgotten to run it locally before committing (#1461).
 * `expect_snapshot_value()` can now handle expressions that generate `-` (#1678) or zero length atomic vectors (#2042).
