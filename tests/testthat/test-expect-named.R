@@ -48,3 +48,13 @@ test_that("expect_named validates its inputs", {
     expect_named(c(a = 1), "a", ignore.case = "yes")
   })
 })
+
+test_that("expect_named accepts glue for 'expected'", {
+  n <- structure(
+    c("v1", "v2", "v3", "v4", "v5"),
+    class = c("glue", "character")
+  )
+  v <- set_names(1:5, n)
+
+  expect_named(v, n)
+})
