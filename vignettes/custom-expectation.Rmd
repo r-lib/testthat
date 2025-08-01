@@ -24,7 +24,7 @@ An expectation has three main parts, as illustrated by `expect_length()`:
 
 ```{r}
 expect_length <- function(object, n) {  
-  # 1. Capture object and label
+  # 1. Capture object and its label
   act <- quasi_label(rlang::enquo(object), arg = "object")
 
   # 2. Fail when expectations aren't met
@@ -39,7 +39,7 @@ expect_length <- function(object, n) {
 }
 ```
 
-The first step in any expectation is to use `quasi_label()` to capture a "labelled value", i.e. an list that contains both the value (`$val`) for testing and a label (`$lab`) for messaging. This is a pattern that exists for fairly esoteric reasons; you don't need to understand, just copy and paste it 🙂.
+The first step in any expectation is to use `quasi_label()` to capture a "labelled value", i.e. a list that contains both the value (`$val`) for testing and a label (`$lab`) for messaging. This is a pattern that exists for fairly esoteric reasons; you don't need to understand, just copy and paste it 🙂.
 
 Next you need to check each way that `object` could be broken. In most cases, it's easier to check for problems one by one, using early returns to `fail()` when any expectation is violated as that makes it easier to write failure messages. It's good practice to state both what the object is and what you expected in your failures.
 
@@ -62,7 +62,7 @@ Once you've written your expectation, you need to test it, and luckily testthat 
 * `expect_failure()` checks that your expectation emits exactly one failure and zero successes. 
 * `expect_failure_snapshot()` captures the failure message in a snapshot, making it easier to review if it's useful or not.
 
-The first two expectations are particularly important because they ensure that your expectation reports the correct number of succeses and failures to the user.
+The first two expectations are particularly important because they ensure that your expectation reports the correct number of successes and failures to the user.
 
 ```{r}
 test_that("expect_length works as expected", {
@@ -79,7 +79,7 @@ test_that("expect_length gives useful feedback", {
 
 ## Examples
 
-The following sections show you a few more variations, losely based on existing testthat expectations.
+The following sections show you a few more variations, loosely based on existing testthat expectations.
 
 ### `expect_vector_length()`
 
