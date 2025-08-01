@@ -108,6 +108,11 @@ JunitReporter <- R6::R6Class(
       time <- self$elapsed_time()
       self$suite_time <- self$suite_time + time
 
+      # If no context was started (e.g., warnings outside tests), create a default one
+      if (is.null(self$suite)) {
+        self$start_context(context %||% "(unknown)")
+      }
+
       # XML node for test case
       name <- test %||% "(unnamed)"
       testcase <- xml2::xml_add_child(
@@ -147,6 +152,9 @@ JunitReporter <- R6::R6Class(
       } else if (expectation_skip(result)) {
         xml2::xml_add_child(testcase, "skipped", message = first_line(result))
         self$skipped <- self$skipped + 1
+      } else if (expectation_warning(result)) {
+        warning_node <- xml2::xml_add_child(testcase, "system-out")
+        xml2::xml_text(warning_node) <- cli::ansi_strip(format(result))
       }
     },
 

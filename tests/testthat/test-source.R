@@ -74,6 +74,14 @@ test_that("source_file wraps error", {
   })
 })
 
+test_that("checks its inputs", {
+  expect_snapshot(error = TRUE, {
+    source_file(1)
+    source_file("x")
+    source_file(".", "x")
+  })
+})
+
 
 # filter_label -------------------------------------------------------------
 

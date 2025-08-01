@@ -7,5 +7,12 @@ test_that("get_routine() fails when no routine exists", {
   expect_error(get_routine("utils", "no_such_routine"))
 })
 
+test_that("validates inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_cpp_tests_pass(123)
+    run_cpp_tests(123)
+  })
+})
+
 skip_if_not_installed("xml2")
 run_cpp_tests("testthat")

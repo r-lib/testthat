@@ -2,6 +2,8 @@
 #' @rdname run_cpp_tests
 #' @export
 expect_cpp_tests_pass <- function(package) {
+  check_string(package)
+  
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
   output <- ""
@@ -40,6 +42,8 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
+  check_string(package)
+  
   skip_on_os("solaris")
   check_installed("xml2", "to run run_cpp_tests()")
 
