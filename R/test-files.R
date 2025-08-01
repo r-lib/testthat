@@ -311,7 +311,7 @@ test_files_reporter <- function(reporter, .env = parent.frame()) {
   reporters <- list(
     find_reporter(reporter),
     lister, # track data
-    local_snapshotter("_snaps", fail_on_new = FALSE, .env = .env)
+    local_snapshotter("_snaps", fail_on_new = on_ci(), .env = .env)
   )
   list(
     multi = MultiReporter$new(reporters = compact(reporters)),
