@@ -139,7 +139,6 @@ test_that("errors in test doesn't change snapshot", {
 
 test_that("skips and unexpected errors reset snapshots", {
   regenerate <- FALSE
-
   if (regenerate) {
     withr::local_envvar(c(TESTTHAT_REGENERATE_SNAPS = "true"))
   }
@@ -156,7 +155,7 @@ test_that("skips and unexpected errors reset snapshots", {
 
   snaps <- snap_from_md(brio::read_lines(path))
   titles <- c("errors reset snapshots", "skips reset snapshots")
-  expect_true(all(titles %in% names(snaps)))
+  expect_in(titles, names(snaps))
 })
 
 test_that("`expect_error()` can fail inside `expect_snapshot()`", {
