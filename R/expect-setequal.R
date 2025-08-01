@@ -33,11 +33,23 @@ expect_setequal <- function(object, expected) {
     testthat_warn("expect_setequal() ignores names")
   }
 
+  expect_setequal_(act, exp)
+}
+
+expect_setequal_ <- function(
+  act,
+  exp,
+  trace_env = caller_env(),
+  error_prefix = NULL
+) {
   act_miss <- unique(act$val[!act$val %in% exp$val])
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
   if (length(exp_miss) || length(act_miss)) {
-    return(fail(paste0(
+    msg <- paste0(
+      if (!is.null(error_prefix)) {
+        error_prefix
+      },
       act$lab,
       " (`actual`) and ",
       exp$lab,
@@ -48,7 +60,8 @@ expect_setequal <- function(object, expected) {
       if (length(exp_miss)) {
         paste0("* Only in `expected`: ", values(exp_miss), "\n")
       }
-    )))
+    )
+    return(fail(msg, trace_env = trace_env))
   }
   pass(act$val)
 }
