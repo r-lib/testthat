@@ -49,17 +49,10 @@ expect_named <- function(
 
   if (ignore.order) {
     act <- labelled_value(act_names, act$lab)
-    return(expect_setequal_(act, exp))
+    return(expect_setequal_(act, exp, prefix = "Names of "))
   } else {
-    if (!identical(act$names, exp$val)) {
-      msg <- sprintf(
-        "Names of %s (%s) don't match %s",
-        act$lab,
-        paste0("'", act$names, "'", collapse = ", "),
-        paste0("'", exp$val, "'", collapse = ", ")
-      )
-      return(fail(msg))
-    }
+    act <- labelled_value(act_names, act$lab)
+    return(expect_waldo_equal_("equal", act, exp))
   }
 
   pass(act$val)
