@@ -3,7 +3,7 @@ local_edition(2)
 context("Successes")
 
 test_that("Success", {
-  succeed()
+  pass(NULL)
 })
 
 context("Failures")

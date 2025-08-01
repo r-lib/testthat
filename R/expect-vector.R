@@ -16,7 +16,7 @@
 #' show_failure(expect_vector(1:10, ptype = character(), size = 5))
 expect_vector <- function(object, ptype = NULL, size = NULL) {
   check_installed("vctrs")
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
 
   message <- NULL
   tryCatch(

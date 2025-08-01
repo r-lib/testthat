@@ -19,7 +19,7 @@
 expect_shape = function(object, ..., nrow, ncol, dim) {
   check_dots_empty()
   check_exclusive(nrow, ncol, dim)
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
 
   dim_object <- base::dim(object)
   if (is.null(dim_object)) {

@@ -12,7 +12,7 @@ library(testthat)
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
 # Pretend we're snapsotting
-snapper <- local_snapshotter()
+snapper <- local_snapshotter(fail_on_new = FALSE)
 snapper$start_file("snapshotting.Rmd", "test")
 ```
 
@@ -24,8 +24,8 @@ An expectation has three main parts, as illustrated by `expect_length()`:
 
 ```{r}
 expect_length <- function(object, n) {  
-  # 1. Capture object and its label
-  act <- quasi_label(rlang::enquo(object), arg = "object")
+  # 1. Capture object and label
+  act <- quasi_label(rlang::enquo(object))
 
   # 2. Fail when expectations aren't met
   act_n <- length(act$val)
@@ -126,7 +126,7 @@ expect_s3_class <- function(object, class) {
     rlang::abort("`class` must be a string.")
   }
 
-  act <- quasi_label(rlang::enquo(object), arg = "object")
+  act <- quasi_label(rlang::enquo(object))
 
   if (!is.object(act$val)) {
     return(fail(sprintf("%s is not an object.", act$lab)))
@@ -187,7 +187,7 @@ expect_length_ <- function(act, n, trace_env = caller_env()) {
 }
 
 expect_length <- function(object, n) {  
-  act <- quasi_label(rlang::enquo(object), arg = "object")
+  act <- quasi_label(rlang::enquo(object))
   expect_length_(act, n)
 }
 ```

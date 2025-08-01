@@ -164,7 +164,7 @@ expect_known_value <- function(
     "Please use `expect_snapshot_value()` instead"
   )
 
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
 
   if (!file.exists(file)) {
     warning("Creating reference value", call. = FALSE)
@@ -214,7 +214,7 @@ expect_known_hash <- function(object, hash = NULL) {
     "Please use `expect_snapshot_value()` instead"
   )
 
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
   act_hash <- digest::digest(act$val)
   if (!is.null(hash)) {
     act_hash <- substr(act_hash, 1, nchar(hash))

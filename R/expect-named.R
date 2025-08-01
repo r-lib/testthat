@@ -32,7 +32,7 @@ expect_named <- function(
   info = NULL,
   label = NULL
 ) {
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   act$names <- names(act$val)
 
   if (missing(expected)) {

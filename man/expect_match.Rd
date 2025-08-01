@@ -63,10 +63,11 @@ alternatives in \link{quasi_label}.}
 Does a string match a regular expression?
 }
 \details{
-\code{expect_match()} is a wrapper around \code{\link[=grepl]{grepl()}}. See its documentation for
-more detail about the individual arguments. \code{expect_no_match()} provides
-the complementary case, checking that a string \emph{does not} match a regular
-expression.
+\code{expect_match()} checks if a character vector matches a regular expression,
+powered by \code{\link[=grepl]{grepl()}}.
+
+\code{expect_no_match()} provides the complementary case, checking that a
+character vector \emph{does not} match a regular expression.
 }
 \section{Functions}{
 \itemize{
