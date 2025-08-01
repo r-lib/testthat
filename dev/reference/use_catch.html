@@ -145,6 +145,23 @@ tests. <code>testthat</code> will look for a routine with one of the names:</p>
 <span>    <span class="va">c_run_testthat_tests</span></span>
 <span>    <span class="va">run_testthat_tests</span></span></code></pre></div>
 
+<p>Assuming you have <code>useDynLib(&lt;pkg&gt;, .registration = TRUE)</code> in your package's
+<code>NAMESPACE</code> file, this implies having routine registration code of the form:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="sc">/</span><span class="er">/</span> The definition <span class="cf">for</span> this <span class="cf">function</span> comes from the file <span class="st">'src/test-runner.cpp'</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="sc">/</span><span class="er">/</span> which is generated via <span class="st">`</span><span class="at">testthat::use_catch()</span><span class="st">`</span>.</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>extern SEXP <span class="fu">run_testthat_tests</span>();</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>static const R_CallMethodDef callMethods[] <span class="ot">=</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="sc">/</span><span class="er">/</span> other .Call method definitions,</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  {<span class="st">"run_testthat_tests"</span>, (DL_FUNC) <span class="sc">&amp;</span>run_testthat_tests, <span class="dv">0</span>},</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  {<span class="cn">NULL</span>, <span class="cn">NULL</span>, <span class="dv">0</span>}</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>};</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>void R_init_<span class="sc">&lt;</span>pkg<span class="sc">&gt;</span>(DllInfo<span class="sc">*</span> dllInfo) {</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>  <span class="fu">R_registerRoutines</span>(dllInfo, <span class="cn">NULL</span>, callMethods, <span class="cn">NULL</span>, <span class="cn">NULL</span>);</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>  <span class="fu">R_useDynamicSymbols</span>(dllInfo, <span class="cn">FALSE</span>);</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>}</span></code></pre><p></p></div>
+<p>replacing <code>&lt;pkg&gt;</code> above with the name of your package, as appropriate.</p>
 <p>See <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility" class="external-link">Controlling Visibility</a>
 and <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols" class="external-link">Registering Symbols</a>
 in the <strong>Writing R Extensions</strong> manual for more information.</p>
