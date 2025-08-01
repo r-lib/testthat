@@ -27,3 +27,17 @@ test_that("ANSI escapes are stripped from all user text in XML", {
 
   expect_no_error(xml2::read_xml(tmp))
 })
+
+test_that("warnings outside context don't cause xml_add_child errors", {
+  skip_if_not_installed("xml2")
+
+  tmp <- withr::local_tempfile(fileext = ".xml")
+  reporter <- JunitReporterMock$new(file = tmp)
+  reporter$start_reporter()
+
+  # This would previously fail with "no applicable method for 'xml_add_child'"
+  expect_no_error({
+    reporter$add_result(NULL, "test", new_expectation("warning", "test"))
+  })
+  reporter$end_reporter()
+})
