@@ -36,7 +36,6 @@ expect_named <- function(
   check_bool(ignore.case)
 
   act <- quasi_label(enquo(object), label)
-  act$names <- names(act$val)
 
   if (missing(expected)) {
     return(expect_has_names_(act))
@@ -45,7 +44,7 @@ expect_named <- function(
   exp <- quasi_label(enquo(expected), arg = "expected")
 
   exp$val <- normalise_names(exp$val, ignore.order, ignore.case)
-  act_names <- normalise_names(act$names, ignore.order, ignore.case)
+  act_names <- normalise_names(names(act$val), ignore.order, ignore.case)
 
   if (ignore.order) {
     act <- labelled_value(act_names, act$lab)
@@ -74,7 +73,8 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
 }
 
 expect_has_names_ <- function(act) {
-  if (identical(act$names, NULL)) {
+  act_names <- names(act$val)
+  if (identical(act_names, NULL)) {
     msg <- sprintf("%s does not have names.", act$lab)
     return(fail(msg))
   }
