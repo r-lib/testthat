@@ -41,7 +41,7 @@ expect_length <- function(object, n) {
 
 The first step in any expectation is to use `quasi_label()` to capture a "labelled value", i.e. a list that contains both the value (`$val`) for testing and a label (`$lab`) for messaging. This is a pattern that exists for fairly esoteric reasons; you don't need to understand, just copy and paste it 🙂.
 
-Next you need to check each way that `object` could be broken. In most cases, it's easier to check for problems one by one, using early returns to `fail()` when any expectation is violated as that makes it easier to write failure messages. It's good practice to state both what the object is and what you expected in your failures.
+Next you need to check each way that `object` could violate the expectation. In this case, there's only one check, but in the more complicated cases that you'll see later there can be multiple checks. In most cases, it's easier to check for violations one by one, using early returns to `fail()`. This makes it easier to write informative failure messages that state both what the object is and what you expected.
 
 Also note that you need to use `return(fail())` here. You won't see the problem when interactively testing your function because when run outside of `test_that()`, `fail()` throws an error, causing the function to terminate early. When running inside of `test_that()`, however, `fail()` does not stop execution because we want to collect all failures in a given test.  
 
