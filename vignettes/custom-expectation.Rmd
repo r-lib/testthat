@@ -122,6 +122,10 @@ Or imagine if you're checking to see if an object inherits from an S3 class. In 
 
 ```{r}
 expect_s3_class <- function(object, class) {
+  if (!rlang::is_string(class)) {
+    rlang::abort("`class` must be a string.")
+  }
+
   act <- quasi_label(rlang::enquo(object), arg = "object")
 
   if (!is.object(act$val)) {
@@ -156,6 +160,13 @@ x3 <- factor()
 expect_s3_class(x1, "integer")
 expect_s3_class(x2, "integer")
 expect_s3_class(x3, "integer")
+```
+
+Note that I also check that the `class` argument must be a string. This is an error, not a failure, because it suggests you're using the function incorrectly.
+
+```{r}
+#| error: true
+expect_s3_class(x1, 1)
 ```
 
 ## Repeated code
