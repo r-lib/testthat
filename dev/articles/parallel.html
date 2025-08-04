@@ -102,6 +102,9 @@
 details.&lt;/p&gt;'><sup>1</sup></a>. Then add
 the following line to the <code>DESCRIPTION</code>:</p>
 <pre><code><span><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">parallel</span><span class="op">:</span> <span class="va">true</span></span></code></pre>
+<p>If needed (for example, for debugging) you can temporarily suppress
+parallel testing with
+<code>Sys.setenv(TESTTHAT_PARALLEL = "false")</code>.</p>
 <p>By default, testthat will use <code>getOption("Ncpus", 2)</code>
 cores. To increase that value for your development machine we recommend
 setting <code>TESTTHAT_CPUS</code> in your <code>.Renviron</code>. The
