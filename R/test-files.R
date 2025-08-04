@@ -52,7 +52,8 @@ test_dir <- function(
   stop_on_warning = FALSE,
   wrap = deprecated(),
   package = NULL,
-  load_package = c("none", "installed", "source")
+  load_package = c("none", "installed", "source"),
+  shuffle = FALSE
 ) {
   load_package <- arg_match(load_package)
 
@@ -94,7 +95,8 @@ test_dir <- function(
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
     load_package = load_package,
-    parallel = parallel
+    parallel = parallel,
+    shuffle = shuffle
   )
 }
 
@@ -120,6 +122,7 @@ test_file <- function(
   reporter = default_compact_reporter(),
   desc = NULL,
   package = NULL,
+  shuffle = FALSE,
   ...
 ) {
   if (!file.exists(path)) {
@@ -132,6 +135,7 @@ test_file <- function(
     test_paths = basename(path),
     reporter = reporter,
     desc = desc,
+    shuffle = shuffle,
     ...
   )
 }
@@ -149,6 +153,7 @@ test_files <- function(
   wrap = TRUE,
   load_package = c("none", "installed", "source"),
   parallel = FALSE,
+  shuffle = FALSE,
   error_call = caller_env()
 ) {
   if (!isTRUE(wrap)) {
@@ -166,7 +171,8 @@ test_files <- function(
       env = env,
       stop_on_failure = stop_on_failure,
       stop_on_warning = stop_on_warning,
-      load_package = load_package
+      load_package = load_package,
+      shuffle = shuffle
     )
   } else {
     test_files_serial(
@@ -180,6 +186,7 @@ test_files <- function(
       stop_on_warning = stop_on_warning,
       desc = desc,
       load_package = load_package,
+      shuffle = shuffle,
       error_call = error_call
     )
   }
@@ -197,6 +204,7 @@ test_files_serial <- function(
   desc = NULL,
   wrap = TRUE,
   load_package = c("none", "installed", "source"),
+  shuffle = FALSE,
   error_call = caller_env()
 ) {
   # Because load_all() called by test_files_setup_env() will have already
@@ -222,6 +230,7 @@ test_files_serial <- function(
       test_one_file,
       env = env,
       desc = desc,
+      shuffle = shuffle,
       error_call = error_call
     )
   )
@@ -338,6 +347,7 @@ test_one_file <- function(
   path,
   env = test_env(),
   desc = NULL,
+  shuffle = FALSE,
   error_call = caller_env()
 ) {
   reporter <- get_reporter()
@@ -348,6 +358,7 @@ test_one_file <- function(
     path,
     env = env(env),
     desc = desc,
+    shuffle = shuffle,
     error_call = error_call
   )
   reporter$end_context_if_started()

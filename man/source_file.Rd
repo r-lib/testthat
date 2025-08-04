@@ -14,6 +14,7 @@ source_file(
   chdir = TRUE,
   desc = NULL,
   wrap = TRUE,
+  shuffle = FALSE,
   error_call = caller_env()
 )
 
@@ -22,7 +23,8 @@ source_dir(
   pattern = "\\\\.[rR]$",
   env = test_env(),
   chdir = TRUE,
-  wrap = TRUE
+  wrap = TRUE,
+  shuffle = FALSE
 )
 
 source_test_helpers(path = "tests/testthat", env = test_env())
@@ -42,6 +44,9 @@ source_test_teardown(path = "tests/testthat", env = test_env())
 
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}
+
+\item{shuffle}{If \code{TRUE}, randomly reorder the top-level expressions
+in the file.}
 
 \item{pattern}{Regular expression used to filter files.}
 }
