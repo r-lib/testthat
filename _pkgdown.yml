@@ -64,7 +64,6 @@ reference:
 
 - title: Run tests
   contents:
-  - starts_with("auto_test")
   - describe
   - starts_with("test_")
   - use_catch

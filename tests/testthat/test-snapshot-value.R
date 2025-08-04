@@ -48,3 +48,10 @@ test_that("check_roundtrip() gives nice error", {
     error = TRUE
   )
 })
+
+test_that("expect_snapshot_value validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_value(123, cran = "yes")
+    expect_snapshot_value(123, tolerance = "high")
+  })
+})

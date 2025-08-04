@@ -185,3 +185,11 @@ test_that("snapshot_hint output differs in R CMD check", {
     ci = TRUE
   )))
 })
+
+test_that("expect_snapshot_file validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_file(123, "test.txt")
+    expect_snapshot_file("test.txt", 123)
+    expect_snapshot_file("test.txt", "test.txt", cran = "yes")
+  })
+})

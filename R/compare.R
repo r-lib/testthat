@@ -16,8 +16,8 @@ compare <- function(x, y, ...) {
 }
 
 comparison <- function(equal = TRUE, message = "Equal") {
-  stopifnot(is.logical(equal), length(equal) == 1)
-  stopifnot(is.character(message))
+  check_bool(equal)
+  check_character(message)
 
   structure(
     list(

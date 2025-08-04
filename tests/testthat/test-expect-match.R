@@ -9,13 +9,23 @@ test_that("generates useful failure messages", {
   expect_snapshot_failure(expect_match(many, 'asdf'))
 })
 
-test_that("checks its inputs", {
+test_that("expect_match validates its inputs", {
   expect_snapshot(error = TRUE, {
     expect_match(1)
     expect_match("x", 1)
     expect_match("x", "x", fixed = 1)
     expect_match("x", "x", perl = 1)
     expect_match("x", "x", all = 1)
+  })
+})
+
+test_that("expect_no_match validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_no_match(1, "x")
+    expect_no_match("x", 1)
+    expect_no_match("x", "x", fixed = 1)
+    expect_no_match("x", "x", perl = 1)
+    expect_no_match("x", "x", all = 1)
   })
 })
 

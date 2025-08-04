@@ -19,8 +19,13 @@ source_file <- function(
   wrap = TRUE,
   error_call = caller_env()
 ) {
-  stopifnot(file.exists(path))
-  stopifnot(is.environment(env))
+  check_string(path, call = error_call)
+  if (!file.exists(path)) {
+    cli::cli_abort("{.arg path} does not exist.", call = error_call)
+  }
+  if (!is.environment(env)) {
+    stop_input_type(env, "an environment", call = error_call)
+  }
 
   lines <- brio::read_lines(path)
   srcfile <- srcfilecopy(

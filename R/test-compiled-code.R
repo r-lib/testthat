@@ -2,6 +2,8 @@
 #' @rdname run_cpp_tests
 #' @export
 expect_cpp_tests_pass <- function(package) {
+  check_string(package)
+
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
   output <- ""
@@ -40,6 +42,8 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
+  check_string(package)
+
   skip_on_os("solaris")
   check_installed("xml2", "to run run_cpp_tests()")
 
@@ -252,6 +256,28 @@ run_cpp_tests <- function(package) {
 #'     c_run_testthat_tests
 #'     run_testthat_tests
 #' }
+#'
+#' Assuming you have `useDynLib(<pkg>, .registration = TRUE)` in your package's
+#' `NAMESPACE` file, this implies having routine registration code of the form:
+#'
+#' ```
+#' // The definition for this function comes from the file 'src/test-runner.cpp',
+#' // which is generated via `testthat::use_catch()`.
+#' extern SEXP run_testthat_tests();
+#'
+#' static const R_CallMethodDef callMethods[] = {
+#'   // other .Call method definitions,
+#'   {"run_testthat_tests", (DL_FUNC) &run_testthat_tests, 0},
+#'   {NULL, NULL, 0}
+#' };
+#'
+#' void R_init_<pkg>(DllInfo* dllInfo) {
+#'   R_registerRoutines(dllInfo, NULL, callMethods, NULL, NULL);
+#'   R_useDynamicSymbols(dllInfo, FALSE);
+#' }
+#' ```
+#'
+#' replacing `<pkg>` above with the name of your package, as appropriate.
 #'
 #' See [Controlling Visibility](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility)
 #' and [Registering Symbols](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols)
