@@ -1,5 +1,3 @@
-cat("\nHello?\n")
-
 test_that("captures expectations; doesn't produce any output", {
   reporter <- SilentReporter$new()
   expect_snapshot_reporter(reporter)
