@@ -51,3 +51,15 @@ test_that("has to have a valid description for the block", {
     it(c("a", "b"))
   })
 })
+
+test_that("skips are scoped to describe/it", {
+  reporter <- SilentReporter$new()
+  with_reporter(reporter, {
+    describe("", skip())
+    describe("", expect_true())
+    it("", skip())
+    it("", expect_true(TRUE))
+  })
+  results <- reporter$expectations()
+  expect_length(results, 4)
+})
