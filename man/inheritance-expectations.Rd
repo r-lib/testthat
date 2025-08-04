@@ -28,17 +28,20 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{type}{String giving base type (as returned by \code{\link[=typeof]{typeof()}}).}
 
-\item{class}{\itemize{
+\item{class}{The different
+\itemize{
 \item \code{expect_type()}: a string.
-\item \code{expect_s3_class()}: a character vector of class names or \code{NA} to assert
-that \code{object} isn't an S3 object. If you provide multiple class names,
-the test will pass if \code{object} inherits from any of them, unless
-\code{exact = TRUE}.
-\item \code{expect_s4_class()}: a string or \code{NA} to assert that \code{object} isn't an
+\item \code{expect_s3_class()}: a character vector of class names. If you provide
+multiple class names, the test will pass if \code{object} inherits from any
+of them, unless \code{exact = TRUE}.
+\item \code{expect_s4_class()}: a string or \code{NA} to assert that \code{object} is not an
 S4 object.
 \item \code{expect_r6_class()}: a string.
 \item \code{expect_s7_class()}: an \code{\link[S7:S7_class]{S7::S7_class()}} object.
-}}
+}
+
+For historical reasons, \code{expect_s3_class()} and \code{expect_s4_class()} take
+\code{NA} to assert that the \code{object} is not an S3 or S4 object.}
 
 \item{exact}{If \code{FALSE}, the default, checks that \code{object} inherits
 from any element of \code{class}. If \code{TRUE}, checks that object has a class
