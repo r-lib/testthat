@@ -14,3 +14,8 @@ stopifnot(
     expectation_failure = function(e) TRUE
   )
 )
+
+test_that("output", {
+  message("hello!")
+  expect_true(TRUE)
+})

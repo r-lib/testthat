@@ -12,6 +12,7 @@
 PROCESS_DONE <- 200L
 PROCESS_STARTED <- 201L
 PROCESS_MSG <- 301L
+PROCESS_OUTPUT <- 302L
 PROCESS_EXITED <- 500L
 PROCESS_CRASHED <- 501L
 PROCESS_CLOSED <- 502L
@@ -50,7 +51,8 @@ task_q <- R6::R6Class(
         state = "waiting",
         fun = I(list(fun)),
         args = I(list(args)),
-        worker = I(list(NULL))
+        worker = I(list(NULL)),
+        path = args[[1]]
       )
       private$schedule()
       invisible(id)
@@ -62,32 +64,39 @@ task_q <- R6::R6Class(
         if (x == Inf) -1 else as.integer(as.double(x, "secs") * 1000)
       }
       repeat {
+        pr <- vector(mode = "list", nrow(private$tasks))
         topoll <- which(private$tasks$state == "running")
-        conns <- lapply(
+        pr[topoll] <- processx::poll(
           private$tasks$worker[topoll],
-          function(x) x$get_poll_connection()
+          as_ms(timeout)
         )
-        pr <- processx::poll(conns, as_ms(timeout))
-        ready <- topoll[pr == "ready"]
-        results <- lapply(ready, function(i) {
+        results <- lapply(seq_along(pr), function(i) {
+          if (is.null(pr[[i]]) || all(pr[[i]] != "ready")) {
+            return()
+          }
           worker <- private$tasks$worker[[i]]
-          msg <- worker$read()
-
-          # Also read any available stdout/stderr
-          stdout_lines <- worker$read_output_lines()
-          stderr_lines <- worker$read_error_lines()
-
-          # Forward stdout/stderr to console
-          if (length(stdout_lines) > 0) {
-            for (line in stdout_lines) {
-              cat(line, "\n", file = stdout())
+          msgs <- NULL
+          if (pr[[i]][["output"]] == "ready" || pr[[i]][["error"]] == "ready") {
+            lns <- c(worker$read_output_lines(), worker$read_error_lines())
+            inc <- paste0(worker$read_output(), worker$read_error())
+            if (nchar(inc)) {
+              lns <- c(lns, strsplit(inc, "\n", fixed = TRUE)[[1]])
             }
+            msg <- structure(
+              list(
+                code = PROCESS_OUTPUT,
+                message = lns,
+                path = private$tasks$path[i]
+              ),
+              class = "testthat_message"
+            )
+            msgs <- list(msg)
           }
-          if (length(stderr_lines) > 0) {
-            for (line in stderr_lines) {
-              cat(line, "\n", file = stderr())
-            }
+          if (pr[[i]][["process"]] != "ready") {
+            return(msgs)
           }
+
+          pri <- msg <- worker$read()
 
           ## TODO: why can this be NULL?
           if (is.null(msg) || msg$code == PROCESS_MSG) {
@@ -115,9 +124,13 @@ task_q <- R6::R6Class(
               class = c("testthat_process_error", "testthat_error")
             )
           }
-          msg
+          if (!is.null(msg)) {
+            msgs <- c(msgs, list(msg))
+          }
+          msgs
         })
         results <- results[!map_lgl(results, is.null)]
+        results <- unlist(results, recursive = FALSE)
 
         private$schedule()
         if (is.finite(timeout)) {
@@ -147,7 +160,8 @@ task_q <- R6::R6Class(
         state = "running",
         fun = nl,
         args = nl,
-        worker = nl
+        worker = nl,
+        path = NA_character_
       )
       rsopts <- callr::r_session_options(stdout = "|", stderr = "|", ...)
       for (i in seq_len(concurrency)) {

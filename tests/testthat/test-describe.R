@@ -50,4 +50,5 @@ describe("describe", {
   it("should not be possible to access variables from other specs (2)", {
     expect_false(exists("some_test_var"))
   })
+  print(1:100)
 })

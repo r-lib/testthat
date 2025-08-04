@@ -143,6 +143,12 @@ parallel_event_loop_smooth <- function(queue, reporters, test_dir) {
 
     updated <- FALSE
     for (x in msgs) {
+      if (x$code == PROCESS_OUTPUT) {
+        lns <- paste0(x$path, ": ", x$message)
+        cat("\n", file = stdout())
+        base::writeLines(lns, stdout())
+        next
+      }
       if (x$code != PROCESS_MSG) {
         next
       }
@@ -204,7 +210,10 @@ parallel_event_loop_chunky <- function(queue, reporters, test_dir) {
 replay_events <- function(reporter, events) {
   snapshotter <- getOption("testthat.snapshotter")
   for (m in events) {
-    if (m$type == "snapshotter") {
+    if (m$code == PROCESS_OUTPUT) {
+      lns <- paste0(m$path, ": ", m$message)
+      base::writeLines(lns, stdout())
+    } else if (m$type == "snapshotter") {
       do.call(snapshotter[[m$cmd]], m$args)
     } else {
       do.call(reporter[[m$cmd]], m$args)
