@@ -57,7 +57,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-<ul><li>The last snapshot is no longer lost if the snapshot file is missing the final newline (<a href="https://github.com/r-lib/testthat/issues/2092" class="external-link">#2092</a>). It’s easy to accidentally remove this because there are two trailing new lines in snapshot files and many editors will automatically remove if you touch the file.</li>
+<ul><li>
+<code>ParallelProgressReporter</code> now respect <code>max_failures</code> (<a href="https://github.com/r-lib/testthat/issues/1162" class="external-link">#1162</a>).</li>
+<li>The last snapshot is no longer lost if the snapshot file is missing the final newline (<a href="https://github.com/r-lib/testthat/issues/2092" class="external-link">#2092</a>). It’s easy to accidentally remove this because there are two trailing new lines in snapshot files and many editors will automatically remove if you touch the file.</li>
 <li>New <code><a href="../reference/inheritance-expectations.html">expect_r6_class()</a></code> (<a href="https://github.com/r-lib/testthat/issues/2030" class="external-link">#2030</a>).</li>
 <li>
 <code>expect_*()</code> functions consistently and rigorously check their inputs (<a href="https://github.com/r-lib/testthat/issues/1754" class="external-link">#1754</a>).</li>
