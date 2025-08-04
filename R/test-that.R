@@ -61,12 +61,11 @@ test_that <- function(desc, code) {
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
 test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
-
   frame <- caller_env()
 
   if (!is.null(test)) {
     reporter$start_test(context = reporter$.context, test = test)
-    on.exit(reporter$end_test(context = reporter$.context, test = test))
+    withr::defer(reporter$end_test(context = reporter$.context, test = test))
   }
 
   ok <- TRUE
@@ -112,7 +111,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
     # case of a stack overflow.  This is important for the DebugReporter.
     # Call options() manually, avoid withr overhead.
     options(expressions = expressions_opt_new)
-    on.exit(options(expressions = expressions_opt), add = TRUE)
+    withr::defer(options(expressions = expressions_opt))
 
     # Add structured backtrace to the expectation
     if (can_entrace(e)) {
@@ -142,7 +141,8 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
   }
   handle_expectation <- function(e) {
     handled <<- TRUE
-    register_expectation(e, 6)
+    register_expectation(e, 7)
+    # Don't bubble up to any other handlers
     invokeRestart("continue_test")
   }
   handle_warning <- function(e) {
@@ -163,11 +163,11 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
     register_expectation(e, 5)
 
-    maybe_restart("muffleWarning")
+    tryInvokeRestart("muffleWarning")
   }
   handle_message <- function(e) {
     if (edition_get() < 3) {
-     maybe_restart("muffleMessage")
+      tryInvokeRestart("muffleMessage")
     }
   }
   handle_skip <- function(e) {
@@ -180,7 +180,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
   test_env <- new.env(parent = env)
   old <- options(rlang_trace_top_env = test_env)[[1]]
-  on.exit(options(rlang_trace_top_env = old), add = TRUE)
+  withr::defer(options(rlang_trace_top_env = old))
 
   withr::local_options(testthat_topenv = test_env)
 
@@ -194,15 +194,15 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
         }
       },
       expectation = handle_expectation,
-      skip =        handle_skip,
-      warning =     handle_warning,
-      message =     handle_message,
-      error =       handle_error
+      skip = handle_skip,
+      warning = handle_warning,
+      message = handle_message,
+      error = handle_error
     ),
     # some errors may need handling here, e.g., stack overflow
     error = handle_fatal,
     # skip silently terminate code
-    skip  = function(e) {}
+    skip = function(e) {}
   )
   after <- inspect_state()
 

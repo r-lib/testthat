@@ -3,6 +3,12 @@ test_that("expect_type checks typeof", {
   expect_failure(expect_type(factor("a"), "double"))
 })
 
+test_that("expect_type validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_type(1, c("integer", "double"))
+  })
+})
+
 test_that("expect_is checks class", {
   local_edition(2)
 
@@ -31,7 +37,7 @@ test_that("test_s4_class respects class hierarchy", {
   A <- methods::setClass("A", contains = "list")
   B <- methods::setClass("B", contains = "list")
   C <- methods::setClass("C", contains = c("A", "B"))
-  on.exit({
+  withr::defer({
     methods::removeClass("A")
     methods::removeClass("B")
     methods::removeClass("C")
@@ -40,6 +46,13 @@ test_that("test_s4_class respects class hierarchy", {
   expect_success(expect_s4_class(C(), "A"))
   expect_success(expect_s4_class(C(), "B"))
   expect_snapshot_failure(expect_s4_class(C(), "D"))
+})
+
+test_that("expect_s3_class validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_s3_class(factor("a"), 1)
+    expect_s3_class(factor("a"), "factor", exact = "yes")
+  })
 })
 
 test_that("test_s3_class respects class hierarchy", {
@@ -58,23 +71,28 @@ test_that("test_s3_class can request exact match", {
 
 test_that("expect_s3_class allows unquoting of first argument", {
   f <- factor("a")
-  expect_success(expect_s3_class(!! rlang::quo(f), "factor"))
+  expect_success(expect_s3_class(!!rlang::quo(f), "factor"))
 })
 
 
 test_that("expect_s4_class allows unquoting of first argument", {
   cls <- methods::setClass("new_class", slots = c("a" = "numeric"))
   obj <- methods::new("new_class", a = 3)
-  expect_success(expect_s4_class(!! rlang::quo(obj), "new_class"))
+  expect_success(expect_s4_class(!!rlang::quo(obj), "new_class"))
 })
+
+
+test_that("expect_s3_class validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_s4_class(factor("a"), 1)
+  })
+})
+
 
 # expect_s7_class --------------------------------------------------------
 
-test_that("checks its inputs", {
-  expect_snapshot(expect_s7_class(1, 1), error = TRUE)
-})
-
 test_that("can check with actual class", {
+  skip_if_not_installed("S7")
   Foo <- S7::new_class("Foo", package = NULL)
   Bar <- S7::new_class("Bar", package = NULL)
   expect_success(expect_s7_class(Foo(), class = Foo))
@@ -82,4 +100,8 @@ test_that("can check with actual class", {
 
   Baz <- S7::new_class("Baz", parent = Foo, package = NULL)
   expect_snapshot_failure(expect_s7_class(Baz(), class = Bar))
+})
+
+test_that("expect_s7_class validates its inputs", {
+  expect_snapshot(expect_s7_class(1, 1), error = TRUE)
 })

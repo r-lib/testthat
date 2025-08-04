@@ -54,16 +54,21 @@ NULL
 
 #' @export
 #' @rdname equality-expectations
-expect_equal <- function(object, expected, ...,
-                         tolerance = if (edition_get() >= 3) testthat_tolerance(),
-                         info = NULL, label = NULL,
-                         expected.label = NULL) {
-
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+expect_equal <- function(
+  object,
+  expected,
+  ...,
+  tolerance = if (edition_get() >= 3) testthat_tolerance(),
+  info = NULL,
+  label = NULL,
+  expected.label = NULL
+) {
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
+  check_number_decimal(tolerance, min = 0, allow_null = TRUE)
 
   if (edition_get() >= 3) {
-    expect_waldo_equal("equal", act, exp, info, ..., tolerance = tolerance)
+    expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)
   } else {
     if (!is.null(tolerance)) {
       comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
@@ -71,24 +76,29 @@ expect_equal <- function(object, expected, ...,
       comp <- compare(act$val, exp$val, ...)
     }
 
-    expect(
-      comp$equal,
-      sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message),
-      info = info
-    )
-    invisible(act$val)
+    if (!comp$equal) {
+      msg <- sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message)
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   }
 }
 
 #' @export
 #' @rdname equality-expectations
-expect_identical <- function(object, expected, info = NULL, label = NULL,
-                             expected.label = NULL, ...) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+expect_identical <- function(
+  object,
+  expected,
+  info = NULL,
+  label = NULL,
+  expected.label = NULL,
+  ...
+) {
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
   if (edition_get() >= 3) {
-    expect_waldo_equal("identical", act, exp, info, ...)
+    expect_waldo_equal_("identical", act, exp, info, ...)
   } else {
     ident <- identical(act$val, exp$val, ...)
     if (ident) {
@@ -102,31 +112,42 @@ expect_identical <- function(object, expected, info = NULL, label = NULL,
       }
     }
 
-    expect(
-      ident,
-      sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg),
-      info = info
-    )
-    invisible(act$val)
+    if (!ident) {
+      msg <- sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg)
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   }
 }
 
-expect_waldo_equal <- function(type, act, exp, info, ...) {
-  comp <- waldo_compare(act$val, exp$val, ..., x_arg = "actual", y_arg = "expected")
-  expect(
-    length(comp) == 0,
-    sprintf(
-      "%s (%s) not %s to %s (%s).\n\n%s",
-      act$lab, "`actual`",
-      type,
-      exp$lab, "`expected`",
-      paste0(comp, collapse = "\n\n")
-    ),
-    info = info,
-    trace_env = caller_env()
+expect_waldo_equal_ <- function(
+  type,
+  act,
+  exp,
+  info = NULL,
+  ...,
+  trace_env = caller_env()
+) {
+  comp <- waldo_compare(
+    act$val,
+    exp$val,
+    ...,
+    x_arg = "actual",
+    y_arg = "expected"
   )
-
-  invisible(act$val)
+  if (length(comp) != 0) {
+    msg <- sprintf(
+      "%s (%s) is not %s to %s (%s).\n\n%s",
+      act$lab,
+      "`actual`",
+      type,
+      exp$lab,
+      "`expected`",
+      paste0(comp, collapse = "\n\n")
+    )
+    return(fail(msg, info = info, trace_env = trace_env))
+  }
+  pass(act$val)
 }
 
 #' Is an object equal to the expected value, ignoring attributes?
@@ -152,56 +173,32 @@ expect_waldo_equal <- function(type, act, exp, info, ...) {
 #' expect_equal(a, b)
 #' }
 #' expect_equivalent(a, b)
-expect_equivalent <- function(object, expected, ..., info = NULL, label = NULL,
-                              expected.label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+expect_equivalent <- function(
+  object,
+  expected,
+  ...,
+  info = NULL,
+  label = NULL,
+  expected.label = NULL
+) {
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
-  edition_deprecate(3, "expect_equivalent()",
+  edition_deprecate(
+    3,
+    "expect_equivalent()",
     "Use expect_equal(ignore_attr = TRUE)"
   )
 
   comp <- compare(act$val, exp$val, ..., check.attributes = FALSE)
-  expect(
-    comp$equal,
-    sprintf("%s not equivalent to %s.\n%s", act$lab, exp$lab, comp$message),
-    info = info
-  )
-  invisible(act$val)
+  if (!comp$equal) {
+    msg <- sprintf(
+      "%s not equivalent to %s.\n%s",
+      act$lab,
+      exp$lab,
+      comp$message
+    )
+    return(fail(msg, info = info))
+  }
+  pass(act$val)
 }
-
-
-#' Does code return a reference to the expected object?
-#'
-#' `expect_reference()` compares the underlying memory addresses of
-#' two symbols. It is for expert use only.
-#'
-#' @section 3rd edition:
-#' `r lifecycle::badge("deprecated")`
-#'
-#' `expect_reference()` is deprecated in the third edition. If you know what
-#' you're doing, and you really need this behaviour, just use `is_reference()`
-#' directly: `expect_true(rlang::is_reference(x, y))`.
-#'
-#' @inheritParams expect_equal
-#' @family expectations
-#' @keywords internal
-#' @export
-expect_reference <- function(object, expected, info = NULL, label = NULL,
-                             expected.label = NULL) {
-
-  edition_deprecate(3, "expect_reference()")
-
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
-
-  expect(
-    is_reference(act$val, exp$val),
-    sprintf("%s not a reference to %s.", act$lab, exp$lab),
-    info = info
-  )
-  invisible(act$val)
-}
-
-# expect_reference() needs dev version of rlang
-utils::globalVariables("is_reference")

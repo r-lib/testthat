@@ -11,11 +11,39 @@ test_that("source_file always uses UTF-8 encoding", {
 
   ## Some text in UTF-8
   tmp <- tempfile()
-  on.exit(unlink(tmp), add = TRUE)
+  withr::defer(unlink(tmp))
   utf8 <- as.raw(c(
-    0xc3, 0xa1, 0x72, 0x76, 0xc3, 0xad, 0x7a, 0x74, 0xc5, 0xb1, 0x72, 0xc5,
-    0x91, 0x20, 0x74, 0xc3, 0xbc, 0x6b, 0xc3, 0xb6, 0x72, 0x66, 0xc3, 0xba,
-    0x72, 0xc3, 0xb3, 0x67, 0xc3, 0xa9, 0x70
+    0xc3,
+    0xa1,
+    0x72,
+    0x76,
+    0xc3,
+    0xad,
+    0x7a,
+    0x74,
+    0xc5,
+    0xb1,
+    0x72,
+    0xc5,
+    0x91,
+    0x20,
+    0x74,
+    0xc3,
+    0xbc,
+    0x6b,
+    0xc3,
+    0xb6,
+    0x72,
+    0x66,
+    0xc3,
+    0xba,
+    0x72,
+    0xc3,
+    0xb3,
+    0x67,
+    0xc3,
+    0xa9,
+    0x70
   ))
   writeBin(c(charToRaw("x <- \""), utf8, charToRaw("\"\n")), tmp)
 
@@ -46,6 +74,14 @@ test_that("source_file wraps error", {
   })
 })
 
+test_that("checks its inputs", {
+  expect_snapshot(error = TRUE, {
+    source_file(1)
+    source_file("x")
+    source_file(".", "x")
+  })
+})
+
 
 # filter_label -------------------------------------------------------------
 
@@ -63,11 +99,14 @@ test_that("can find only matching test", {
 })
 
 test_that("preserve srcrefs", {
-  code <- parse(keep.source = TRUE, text = '
+  code <- parse(
+    keep.source = TRUE,
+    text = '
     test_that("foo", {
       # this is a comment
     })
-  ')
+  '
+  )
   expect_snapshot(filter_desc(code, "foo"))
 })
 
@@ -81,4 +120,28 @@ test_that("errors if duplicate labels", {
   )
 
   expect_snapshot(filter_desc(code, "baz"), error = TRUE)
+})
+
+test_that("source_dir()", {
+  res <- source_dir("test_dir", pattern = "hello", chdir = TRUE, wrap = FALSE)
+  expect_equal(res[[1]](), "Hello World")
+
+  res <- source_dir(
+    normalizePath("test_dir"),
+    pattern = "hello",
+    chdir = TRUE,
+    wrap = FALSE
+  )
+  expect_equal(res[[1]](), "Hello World")
+
+  res <- source_dir("test_dir", pattern = "hello", chdir = FALSE, wrap = FALSE)
+  expect_equal(res[[1]](), "Hello World")
+
+  res <- source_dir(
+    normalizePath("test_dir"),
+    pattern = "hello",
+    chdir = FALSE,
+    wrap = FALSE
+  )
+  expect_equal(res[[1]](), "Hello World")
 })

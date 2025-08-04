@@ -40,7 +40,7 @@ with_mock <- function(..., .env = topenv()) {
   mock_funs <- lapply(dots[!code_pos], eval, parent.frame())
   mocks <- extract_mocks(mock_funs, .env = .env)
 
-  on.exit(lapply(mocks, reset_mock), add = TRUE)
+  withr::defer(lapply(mocks, reset_mock))
   lapply(mocks, set_mock)
 
   # Evaluate the code
@@ -60,7 +60,7 @@ local_mock <- function(..., .env = topenv(), .local_envir = parent.frame()) {
 
   mocks <- extract_mocks(list(...), .env = .env)
   on_exit <- bquote(
-    on.exit(lapply(.(mocks), .(reset_mock)), add = TRUE),
+    withr::defer(lapply(.(mocks), .(reset_mock))),
   )
 
   lapply(mocks, set_mock)
@@ -86,7 +86,9 @@ extract_mocks <- function(funs, .env) {
 
       if (is_base_pkg(pkg_name)) {
         stop(
-          "Can't mock functions in base packages (", pkg_name, ")",
+          "Can't mock functions in base packages (",
+          pkg_name,
+          ")",
           call. = FALSE
         )
       }
@@ -100,8 +102,12 @@ extract_mocks <- function(funs, .env) {
       env <- asNamespace(pkg_name)
 
       if (!exists(name, envir = env, mode = "function")) {
-        stop("Function ", name, " not found in environment ",
-          environmentName(env), ".",
+        stop(
+          "Function ",
+          name,
+          " not found in environment ",
+          environmentName(env),
+          ".",
           call. = FALSE
         )
       }
@@ -116,7 +122,8 @@ mock <- function(name, env, new) {
     list(
       env = env,
       name = as.name(name),
-      orig_value = .Call(duplicate_, target_value), target_value = target_value,
+      orig_value = .Call(duplicate_, target_value),
+      target_value = target_value,
       new_value = new
     ),
     class = "mock"
@@ -124,11 +131,23 @@ mock <- function(name, env, new) {
 }
 
 set_mock <- function(mock) {
-  .Call(reassign_function, mock$name, mock$env, mock$target_value, mock$new_value)
+  .Call(
+    reassign_function,
+    mock$name,
+    mock$env,
+    mock$target_value,
+    mock$new_value
+  )
 }
 
 reset_mock <- function(mock) {
-  .Call(reassign_function, mock$name, mock$env, mock$target_value, mock$orig_value)
+  .Call(
+    reassign_function,
+    mock$name,
+    mock$env,
+    mock$target_value,
+    mock$orig_value
+  )
 }
 
 is_base_pkg <- function(x) {

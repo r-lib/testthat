@@ -38,10 +38,7 @@
 #'
 #' # warning does match so causes a failure:
 #' try(expect_no_warning(foo(), message = "problem"))
-expect_no_error <- function(object,
-                            ...,
-                            message = NULL,
-                            class = NULL) {
+expect_no_error <- function(object, ..., message = NULL, class = NULL) {
   check_dots_empty()
   expect_no_("error", {{ object }}, regexp = message, class = class)
 }
@@ -49,85 +46,89 @@ expect_no_error <- function(object,
 
 #' @export
 #' @rdname expect_no_error
-expect_no_warning <- function(object,
-                              ...,
-                              message = NULL,
-                              class = NULL
-                              ) {
+expect_no_warning <- function(object, ..., message = NULL, class = NULL) {
   check_dots_empty()
   expect_no_("warning", {{ object }}, regexp = message, class = class)
 }
 
 #' @export
 #' @rdname expect_no_error
-expect_no_message <- function(object,
-                              ...,
-                              message = NULL,
-                              class = NULL
-                              ) {
+expect_no_message <- function(object, ..., message = NULL, class = NULL) {
   check_dots_empty()
   expect_no_("message", {{ object }}, regexp = message, class = class)
 }
 
 #' @export
 #' @rdname expect_no_error
-expect_no_condition <- function(object,
-                                ...,
-                                message = NULL,
-                                class = NULL
-                                ) {
+expect_no_condition <- function(object, ..., message = NULL, class = NULL) {
   check_dots_empty()
   expect_no_("condition", {{ object }}, regexp = message, class = class)
 }
 
 
-expect_no_ <- function(base_class,
-                       object,
-                       regexp = NULL,
-                       class = NULL,
-                       trace_env = caller_env()) {
-
+expect_no_ <- function(
+  base_class,
+  object,
+  regexp = NULL,
+  class = NULL,
+  trace_env = caller_env()
+) {
   matcher <- cnd_matcher(
     base_class,
     class,
-    pattern = regexp,
-    ignore_deprecation = base_class == "warning" && is.null(regexp) && is.null(class)
+    regexp = regexp,
+    ignore_deprecation = base_class == "warning" &&
+      is.null(regexp) &&
+      is.null(class)
   )
 
+  first_match <- NULL
   capture <- function(code) {
-    try_fetch(
-      {
-        code
-        # We can't call succeed() here because that generates a condition
-        # that causes `expect_no_condition()` to always fail
-        NULL
-      },
-      !!base_class := function(cnd) {
-        if (!matcher(cnd)) {
-          return(zap())
-        }
+    withRestarts(
+      withCallingHandlers(
+        code,
+        condition = function(cnd) {
+          if (!is.null(first_match) || !matcher(cnd)) {
+            return()
+          }
 
-        expected <- paste0(
-          "Expected ", quo_label(enquo(object)), " to run without any ", base_class, "s",
-          if (!is.null(class)) paste0(" of class '", class, "'"),
-          if (!is.null(regexp)) paste0(" matching pattern '", regexp, "'"),
-          "."
-        )
-        actual <- paste0(
-          "Actually got a <", class(cnd)[[1]], "> with text:\n",
-          indent_lines(rlang::cnd_message(cnd))
-        )
-        message <- format_error_bullets(c(expected, i = actual))
-        fail(message, trace_env = trace_env)
-      }
+          first_match <<- cnd
+          cnd_muffle(cnd)
+
+          # Matching errors should terminate execution
+          if (inherits(cnd, "error")) {
+            invokeRestart("done")
+          }
+        }
+      ),
+      done = function() {}
     )
   }
 
   act <- quasi_capture(enquo(object), NULL, capture)
-  if (is.null(act$cap)) {
-    succeed()
+
+  if (!is.null(first_match)) {
+    expected <- paste0(
+      "Expected ",
+      quo_label(enquo(object)),
+      " to run without any ",
+      base_class,
+      "s",
+      if (!is.null(class)) paste0(" of class '", class, "'"),
+      if (!is.null(regexp)) paste0(" matching pattern '", regexp, "'"),
+      "."
+    )
+    actual <- paste0(
+      "Actually got a <",
+      class(first_match)[[1]],
+      "> with text:\n",
+      indent_lines(rlang::cnd_message(first_match))
+    )
+    message <- format_error_bullets(c(expected, i = actual))
+    return(fail(message, trace_env = trace_env))
   }
-  invisible(act$val)
+
+  pass(act$val)
 }
 
 indent_lines <- function(x) {

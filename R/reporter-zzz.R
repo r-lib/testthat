@@ -39,7 +39,7 @@ with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
   reporter <- find_reporter(reporter)
 
   old <- set_reporter(reporter)
-  on.exit(set_reporter(old), add = TRUE)
+  withr::defer(set_reporter(old))
 
   if (start_end_reporter) {
     reporter$start_reporter()
@@ -75,7 +75,9 @@ stop_reporter <- function(message) {
 #' @param reporter name of reporter(s), or reporter object(s)
 #' @keywords internal
 find_reporter <- function(reporter) {
-  if (is.null(reporter)) return(NULL)
+  if (is.null(reporter)) {
+    return(NULL)
+  }
 
   if (inherits(reporter, "R6ClassGenerator")) {
     reporter$new()
@@ -93,7 +95,7 @@ find_reporter <- function(reporter) {
 }
 
 find_reporter_one <- function(reporter, ...) {
-  stopifnot(is.character(reporter))
+  check_string(reporter)
 
   name <- reporter
   substr(name, 1, 1) <- toupper(substr(name, 1, 1))

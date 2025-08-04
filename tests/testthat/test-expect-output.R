@@ -13,8 +13,8 @@ test_that("expect = NULL checks for some output", {
 
 test_that("expect = string checks for match", {
   expect_success(expect_output(g(), "!"))
-  expect_failure(expect_output(g(), "x"), 'does not match "x"')
-  expect_failure(expect_output("a", "x"), "produced no output")
+  expect_snapshot_failure(expect_output(g(), "x"))
+  expect_snapshot_failure(expect_output("a", "x"))
 })
 
 test_that("multiline outputs captures and matches", {
@@ -42,4 +42,10 @@ test_that("uses unicode characters in output where available", {
 
   bar <- "\u2551"
   expect_success(expect_output(cat(bar), "\u2551"))
+})
+
+test_that("expect_output validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_output(cat("hello"), "hello", width = "wide")
+  })
 })

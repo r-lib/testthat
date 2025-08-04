@@ -68,7 +68,9 @@ test_example <- function(path, title = path) {
     reporter = get_reporter() %||% StopReporter$new(),
     skip_on_empty = FALSE
   )
-  if (ok) succeed(path)
+  if (ok) {
+    succeed(path)
+  }
 
   invisible(ok)
 }

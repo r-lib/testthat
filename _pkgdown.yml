@@ -26,6 +26,7 @@ reference:
 - subtitle: Vectors
   contents:
   - expect_length
+  - expect_shape
   - expect_gt
   - expect_match
   - expect_named
@@ -40,6 +41,10 @@ reference:
   - expect_invisible
   - expect_output
   - expect_silent
+
+- subtitle: Helpers
+  contents:
+  - try_again
   - local_reproducible_output
 
 - title: Snapshot testing
@@ -59,7 +64,6 @@ reference:
 
 - title: Run tests
   contents:
-  - starts_with("auto_test")
   - describe
   - starts_with("test_")
   - use_catch
@@ -76,8 +80,6 @@ reference:
 
 - title: Expectation internals
   contents:
-  - expect
-  - expectation
   - fail
   - expect_success
 

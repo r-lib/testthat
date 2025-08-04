@@ -1,0 +1,2 @@
+[format]
+skip = ["srcref_line"]

@@ -1,5 +1,5 @@
-
-SnapshotReporter <- R6::R6Class("SnapshotReporter",
+SnapshotReporter <- R6::R6Class(
+  "SnapshotReporter",
   inherit = Reporter,
   public = list(
     snap_dir = character(),
@@ -41,13 +41,15 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     # Called by expectation
-    take_snapshot = function(value,
-                             save = identity,
-                             load = identity,
-                             ...,
-                             tolerance = testthat_tolerance(),
-                             variant = NULL,
-                             trace_env = NULL) {
+    take_snapshot = function(
+      value,
+      save = identity,
+      load = identity,
+      ...,
+      tolerance = testthat_tolerance(),
+      variant = NULL,
+      trace_env = caller_env()
+    ) {
       check_string(self$test, allow_empty = FALSE)
       i <- self$new_snaps$append(self$test, variant, save(value))
 
@@ -57,8 +59,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         old <- load(old_raw)
 
         comp <- waldo_compare(
-          x = old,   x_arg = "old",
-          y = value, y_arg = "new",
+          x = old,
+          x_arg = "old",
+          y = value,
+          y_arg = "new",
           ...,
           tolerance = tolerance,
           quote_strings = FALSE
@@ -85,7 +89,7 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
           value_enc
         )
         if (self$fail_on_new) {
-          fail(message, trace_env = trace_env)
+          return(fail(message, trace_env = trace_env))
         } else {
           testthat_warn(message)
         }
@@ -93,7 +97,13 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       }
     },
 
-    take_file_snapshot = function(name, path, file_equal, variant = NULL, trace_env = NULL) {
+    take_file_snapshot = function(
+      name,
+      path,
+      file_equal,
+      variant = NULL,
+      trace_env = caller_env()
+    ) {
       self$announce_file_snapshot(name)
 
       if (is.null(variant)) {
@@ -145,7 +155,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       # clean up if we've seen all files
       tests <- context_name(find_test_scripts(".", full.names = FALSE))
       if (!on_ci() && all(tests %in% self$test_file_seen)) {
-        snapshot_cleanup(self$snap_dir,
+        snapshot_cleanup(
+          self$snap_dir,
           test_files_seen = self$test_file_seen,
           snap_files_seen = self$snap_file_seen
         )
@@ -184,9 +195,17 @@ get_snapshotter <- function() {
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, fail_on_new = FALSE, .env = parent.frame()) {
+local_snapshotter <- function(
+  snap_dir = NULL,
+  cleanup = FALSE,
+  fail_on_new = FALSE,
+  .env = parent.frame()
+) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
-  reporter <- SnapshotReporter$new(snap_dir = snap_dir, fail_on_new = fail_on_new)
+  reporter <- SnapshotReporter$new(
+    snap_dir = snap_dir,
+    fail_on_new = fail_on_new
+  )
   if (!identical(cleanup, FALSE)) {
     warn("`cleanup` is deprecated")
   }

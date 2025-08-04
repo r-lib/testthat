@@ -1,11 +1,27 @@
 # testthat (development version)
 
+* `expect_*()` functions consistently and rigorously check their inputs (#1754). 
+* `JunitReporter()` no longer fails with `"no applicable method for xml_add_child"` for warnings outside of tests (#1913). Additionally, warnings now save their backtraces.
+* `JunitReporter()` strips ANSI escapes in more placese (#1852, #2032).
+* `try_again()` is now publicised. The first argument is now the number of retries, not tries (#2050).
+* `vignette("custom-expectations)` has been overhauled to make it much clearer how to create high-quality expectations (#2113, #2132, #2072).
+* `expect_snapshot()` and friends will now fail when creating a new snapshot on CI. This is usually a signal that you've forgotten to run it locally before committing (#1461).
+* `expect_snapshot_value()` can now handle expressions that generate `-` (#1678) or zero length atomic vectors (#2042).
+* `expect_matches()` failures should be a little easier to read (#2135).
+* New `local_on_cran(TRUE)` allows you to simulate how your tests will run on CRAN (#2112).
+* `expect_no_*()` now executes the entire code block, rather than stopping at the first message or warning (#1991).
+* `expect_no_failures()` and `expect_no_successes()` are now deprecated as `expect_success()` now test for no failures and `expect_failure()` tests for no successes (#)
+* New `pass()` function to use in place of `succeed()` (#2113).
+* `expectation()` is now a combination of `new_expectation()` and `exp_signal()` (#2125).
+* `is_null()`/`matches()` deprecated in 2.0.0 (2017-12-19) and `is_true()`/`is_false()` deprecated in 2.1.0 (2019-04-23) have been removed (#2109).
+* `local_edition()` now gives a useful error for bad values (#1547).
 * testthat now requires R 4.1.
 * `expect_s4_class()` now supports unquoting (@stibu81, #2064).
 * `it()` now finds the correct evaluation environment in more cases (@averissimo, #2085).
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
 * New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require, say, `...names` (@MichaelChirico, #2022)
 * `skip_on_os()` gains an option `"emscripten"` of the `os` argument to skip tests on Emscripten (@eitsupi, #2103).
+* New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`, `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
 
 # testthat 3.2.3
 

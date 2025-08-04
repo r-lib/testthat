@@ -45,8 +45,6 @@ expect_true(length(a) == 3)
 expect_equal(length(a), 3)
 }
 \seealso{
-\code{\link[=is_false]{is_false()}} for complement
-
 Other expectations: 
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},
@@ -57,6 +55,7 @@ Other expectations:
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
 \code{\link{expect_reference}()},
+\code{\link{expect_shape}()},
 \code{\link{expect_silent}()},
 \code{\link{inheritance-expectations}}
 }

@@ -17,7 +17,8 @@ testthat_examples <- function() {
 #' @rdname testthat_examples
 testthat_example <- function(filename) {
   system.file(
-    "examples", paste0("test-", filename, ".R"),
+    "examples",
+    paste0("test-", filename, ".R"),
     package = "testthat",
     mustWork = TRUE
   )

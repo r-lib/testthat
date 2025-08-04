@@ -3,7 +3,7 @@ local_edition(2)
 context("Successes")
 
 test_that("Success", {
-  succeed()
+  pass(NULL)
 })
 
 context("Failures")
@@ -37,8 +37,7 @@ test_that("explicit skips are reported", {
   skip("skip")
 })
 
-test_that("empty tests are implicitly skipped", {
-})
+test_that("empty tests are implicitly skipped", {})
 
 context("Warnings")
 

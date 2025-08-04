@@ -10,7 +10,7 @@ test_that("list comparison truncates to max_diffs", {
 })
 
 test_that("no diff", {
-  expect_equal(compare(1,1), no_difference())
+  expect_equal(compare(1, 1), no_difference())
 })
 
 test_that("vector_equal_tol handles infinity", {
@@ -102,7 +102,6 @@ test_that("vectors longer than `max_diffs` (#513)", {
 
 # numeric ------------------------------------------------------------------
 
-
 test_that("numeric types are compatible", {
   expect_true(compare(1, 1L)$equal)
   expect_true(compare(1L, 1)$equal)
@@ -183,7 +182,10 @@ test_that("both POSIXt classes are compatible", {
 })
 
 test_that("other classes are not", {
-  expect_match(compare(Sys.time(), 1)$message, "'POSIXct'/'POSIXt' is not 'numeric'")
+  expect_match(
+    compare(Sys.time(), 1)$message,
+    "'POSIXct'/'POSIXt' is not 'numeric'"
+  )
 })
 
 test_that("base lengths must be identical", {
@@ -194,8 +196,14 @@ test_that("base lengths must be identical", {
 })
 
 test_that("tzones must be identical", {
-  t1 <- ISOdatetime(2016, 2, 29, 12, 13, 14, "EST")
-  t2 <- ISOdatetime(2016, 2, 29, 12, 13, 14, "US/Eastern")
+  # skip on minimal setups
+  tryCatch(
+    {
+      t1 <- ISOdatetime(2016, 2, 29, 12, 13, 14, "EST")
+      t2 <- ISOdatetime(2016, 2, 29, 12, 13, 14, "US/Eastern")
+    },
+    warning = function(w) skip(conditionMessage(w))
+  )
 
   expect_match(compare(t1, t2)$message, '"tzone": 1 string mismatch')
 })

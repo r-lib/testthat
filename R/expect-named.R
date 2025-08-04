@@ -24,40 +24,53 @@
 #' # Can also check for the absence of names with NULL
 #' z <- 1:4
 #' expect_named(z, NULL)
-expect_named <- function(object, expected, ignore.order = FALSE,
-                         ignore.case = FALSE, info = NULL,
-                         label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
+expect_named <- function(
+  object,
+  expected,
+  ignore.order = FALSE,
+  ignore.case = FALSE,
+  info = NULL,
+  label = NULL
+) {
+  check_bool(ignore.order)
+  check_bool(ignore.case)
+
+  act <- quasi_label(enquo(object), label)
   act$names <- names(act$val)
 
   if (missing(expected)) {
-    expect(
-      !identical(act$names, NULL),
-      sprintf("%s does not have names.", act$lab)
-    )
+    if (identical(act$names, NULL)) {
+      msg <- sprintf("%s does not have names.", act$lab)
+      return(fail(msg))
+    }
   } else {
     exp_names <- normalise_names(expected, ignore.order, ignore.case)
     act$names <- normalise_names(act$names, ignore.order, ignore.case)
 
-    expect(
-      identical(act$names, exp_names),
-      sprintf(
+    if (!identical(act$names, exp_names)) {
+      msg <- sprintf(
         "Names of %s (%s) don't match %s",
         act$lab,
         paste0("'", act$names, "'", collapse = ", "),
         paste0("'", exp_names, "'", collapse = ", ")
-      ),
-      info = info
-    )
+      )
+      return(fail(msg, info = info))
+    }
   }
-  invisible(act$val)
+  pass(act$val)
 }
 
 normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
-  if (is.null(x)) return()
+  if (is.null(x)) {
+    return()
+  }
 
-  if (ignore.order) x <- sort(x)
-  if (ignore.case) x <- tolower(x)
+  if (ignore.order) {
+    x <- sort(x)
+  }
+  if (ignore.case) {
+    x <- tolower(x)
+  }
 
   x
 }

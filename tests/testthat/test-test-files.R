@@ -9,7 +9,11 @@ test_that("stops on failure", {
 
 test_that("runs all tests and records output", {
   withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
-  res <- test_dir(test_path("test_dir"), reporter = "silent", stop_on_failure = FALSE)
+  res <- test_dir(
+    test_path("test_dir"),
+    reporter = "silent",
+    stop_on_failure = FALSE
+  )
   df <- as.data.frame(res)
   df$user <- df$system <- df$real <- df$result <- NULL
 

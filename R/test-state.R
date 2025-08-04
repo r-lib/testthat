@@ -43,8 +43,10 @@
 #' @param callback Either a zero-argument function that returns an object
 #'   capturing global state that you're interested in, or `NULL`.
 set_state_inspector <- function(callback) {
-
-  if (!is.null(callback) && !(is.function(callback) && length(formals(callback)) == 0)) {
+  if (
+    !is.null(callback) &&
+      !(is.function(callback) && length(formals(callback)) == 0)
+  ) {
     cli::cli_abort("{.arg callback} must be a zero-arg function, or NULL")
   }
 
@@ -53,7 +55,6 @@ set_state_inspector <- function(callback) {
 }
 
 testthat_state_condition <- function(before, after, call) {
-
   diffs <- waldo_compare(before, after, x_arg = "before", y_arg = "after")
 
   if (length(diffs) == 0) {

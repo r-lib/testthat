@@ -24,33 +24,33 @@
 #' show_failure(expect_mapequal(x, list(a = 1, b = "x")))
 #' show_failure(expect_mapequal(x, list(a = 1, b = 2, c = 3)))
 expect_setequal <- function(object, expected) {
-  act <- quasi_label(enquo(object), arg = "object")
-  exp <- quasi_label(enquo(expected), arg = "expected")
+  act <- quasi_label(enquo(object))
+  exp <- quasi_label(enquo(expected))
 
-  if (!is_vector(act$val) || !is_vector(exp$val)) {
-    abort("`object` and `expected` must both be vectors")
-  }
-
+  check_vector(object)
+  check_vector(expected)
   if (!is.null(names(act$val)) && !is.null(names(exp$val))) {
-    warn("expect_setequal() ignores names")
+    testthat_warn("expect_setequal() ignores names")
   }
 
   act_miss <- unique(act$val[!act$val %in% exp$val])
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
   if (length(exp_miss) || length(act_miss)) {
-    fail(paste0(
-      act$lab, " (`actual`) and ", exp$lab, " (`expected`) don't have the same values.\n",
-      if (length(act_miss))
-        paste0("* Only in `actual`: ", values(act_miss), "\n"),
-      if (length(exp_miss))
+    return(fail(paste0(
+      act$lab,
+      " (`actual`) and ",
+      exp$lab,
+      " (`expected`) don't have the same values.\n",
+      if (length(act_miss)) {
+        paste0("* Only in `actual`: ", values(act_miss), "\n")
+      },
+      if (length(exp_miss)) {
         paste0("* Only in `expected`: ", values(exp_miss), "\n")
-    ))
-  } else {
-    succeed()
+      }
+    )))
   }
-
-  invisible(act$val)
+  pass(act$val)
 }
 
 values <- function(x) {
@@ -74,100 +74,127 @@ is_vector <- function(x) is.list(x) || (is.atomic(x) && !is.null(x))
 #' @export
 #' @rdname expect_setequal
 expect_mapequal <- function(object, expected) {
-  act <- quasi_label(enquo(object), arg = "object")
-  exp <- quasi_label(enquo(expected), arg = "expected")
+  act <- quasi_label(enquo(object))
+  exp <- quasi_label(enquo(expected))
 
-  if (!is_vector(act$val) || !is_vector(exp$val)) {
-    abort("`object` and `expected` must both be vectors")
-  }
+  check_vector(object)
+  check_map_names(object)
+  check_vector(expected)
+  check_map_names(expected)
 
   # Length-0 vectors are OK whether named or unnamed.
   if (length(act$val) == 0 && length(exp$val) == 0) {
-    warn("`object` and `expected` are empty lists")
-    succeed()
-    return(invisible(act$val))
+    testthat_warn("`object` and `expected` are empty lists")
+    return(pass(act$val))
   }
 
   act_nms <- names(act$val)
   exp_nms <- names(exp$val)
-
-  check_names_ok(act_nms, "object")
-  check_names_ok(exp_nms, "expected")
-
-  if (!setequal(act_nms, exp_nms)) {
-    act_miss <- setdiff(exp_nms, act_nms)
-    if (length(act_miss) > 0) {
-      vals <- paste0(encodeString(act_miss, quote = '"'), ", ")
-      fail(paste0("Names absent from `object`: ", vals))
-    }
-
-    exp_miss <- setdiff(act_nms, exp_nms)
-    if (length(exp_miss) > 0) {
-      vals <- paste0(encodeString(exp_miss, quote = '"'), ", ")
-      fail(paste0("Names absent from `expected`: ", vals))
-    }
-  } else {
-    expect_equal(act$val[exp_nms], exp$val)
+  if (setequal(act_nms, exp_nms)) {
+    act <- labelled_value(act$val[exp_nms], act$lab)
+    return(expect_waldo_equal_("equal", act, exp))
   }
 
-  invisible(act$val)
-}
+  act_miss <- setdiff(exp_nms, act_nms)
+  if (length(act_miss) > 0) {
+    vals <- paste0(encodeString(act_miss, quote = '"'), ", ")
+    return(fail(paste0("Names absent from `object`: ", vals)))
+  }
 
-check_names_ok <- function(x, label) {
-  if (anyDuplicated(x)) {
-    stop("Duplicate names in `", label, "`: ", unique(x[duplicated(x)]))
+  exp_miss <- setdiff(act_nms, exp_nms)
+  if (length(exp_miss) > 0) {
+    vals <- paste0(encodeString(exp_miss, quote = '"'), ", ")
+    return(fail(paste0("Names absent from `expected`: ", vals)))
   }
-  if (any(x == "")) {
-    stop("All elements in `", label, "` must be named")
-  }
+
+  pass(act$val)
 }
 
 #' @export
 #' @rdname expect_setequal
 expect_contains <- function(object, expected) {
-  act <- quasi_label(enquo(object), arg = "object")
-  exp <- quasi_label(enquo(expected), arg = "expected")
+  act <- quasi_label(enquo(object))
+  exp <- quasi_label(enquo(expected))
 
-  if (!is_vector(act$val) || !is_vector(exp$val)) {
-    abort("`object` and `expected` must both be vectors")
-  }
+  check_vector(object)
+  check_vector(expected)
 
   exp_miss <- !exp$val %in% act$val
-
   if (any(exp_miss)) {
-    fail(paste0(
-      act$lab, " (`actual`) doesn't fully contain all the values in ", exp$lab, " (`expected`).\n",
-      paste0("* Missing from `actual`: ",  values(exp$val[exp_miss]), "\n"),
-      paste0("* Present in `actual`:   ",  values(act$val), "\n")
-    ))
-  } else {
-    succeed()
+    return(fail(paste0(
+      act$lab,
+      " (`actual`) doesn't fully contain all the values in ",
+      exp$lab,
+      " (`expected`).\n",
+      paste0("* Missing from `actual`: ", values(exp$val[exp_miss]), "\n"),
+      paste0("* Present in `actual`:   ", values(act$val), "\n")
+    )))
   }
 
-  invisible(act$val)
+  pass(act$val)
 }
 
 #' @export
 #' @rdname expect_setequal
 expect_in <- function(object, expected) {
-  act <- quasi_label(enquo(object), arg = "object")
-  exp <- quasi_label(enquo(expected), arg = "expected")
+  act <- quasi_label(enquo(object))
+  exp <- quasi_label(enquo(expected))
 
-  if (!is_vector(act$val) || !is_vector(exp$val)) {
-    abort("`object` and `expected` must both be vectors")
-  }
+  check_vector(object)
+  check_vector(expected)
 
   act_miss <- !act$val %in% exp$val
-
   if (any(act_miss)) {
-    fail(paste0(
-      act$lab, " (`actual`) isn't fully contained within ", exp$lab, " (`expected`).\n",
-      paste0("* Missing from `expected`: ",  values(act$val[act_miss]), "\n"),
-      paste0("* Present in `expected`:   ",  values(exp$val), "\n")
-    ))
-  } else {
-    succeed()
+    return(fail(paste0(
+      act$lab,
+      " (`actual`) isn't fully contained within ",
+      exp$lab,
+      " (`expected`).\n",
+      paste0("* Missing from `expected`: ", values(act$val[act_miss]), "\n"),
+      paste0("* Present in `expected`:   ", values(exp$val), "\n")
+    )))
   }
 
-  invisible(act$val)
+  pass(act$val)
+}
+
+# Helpers ----------------------------------------------------------------------
+
+check_map_names <- function(
+  x,
+  error_arg = caller_arg(x),
+  error_call = caller_env()
+) {
+  nms <- names2(x)
+
+  if (anyDuplicated(nms)) {
+    dups <- unique(nms[duplicated(nms)])
+    cli::cli_abort(
+      c(
+        "All elements in {.arg {error_arg}} must have unique names.",
+        x = "Duplicate names: {.str {dups}}"
+      ),
+      call = error_call
+    )
+  }
+  if (any(nms == "")) {
+    empty <- which(nms == "")
+    cli::cli_abort(
+      c(
+        "All elements in {.arg {error_arg}} must have names.",
+        x = "Empty names at position{?s}: {empty}"
+      ),
+      call = error_call
+    )
+  }
+}
+
+check_vector <- function(
+  x,
+  error_arg = caller_arg(x),
+  error_call = caller_env()
+) {
+  if (!is_vector(x)) {
+    stop_input_type(x, "a vector", arg = error_arg, call = error_call)
+  }
 }

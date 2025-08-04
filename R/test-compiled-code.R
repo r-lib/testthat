@@ -2,22 +2,33 @@
 #' @rdname run_cpp_tests
 #' @export
 expect_cpp_tests_pass <- function(package) {
+  check_string(package)
+
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
   output <- ""
   tests_passed <- TRUE
 
   tryCatch(
-    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests, FALSE)),
+    output <- capture_output_lines(
+      tests_passed <- .Call(run_testthat_tests, FALSE)
+    ),
     error = function(e) {
-      warning(sprintf("failed to call test entrypoint '%s'", run_testthat_tests))
+      warning(sprintf(
+        "failed to call test entrypoint '%s'",
+        run_testthat_tests
+      ))
     }
   )
 
   # Drop first line of output (it's jut a '####' delimiter)
   info <- paste(output[-1], collapse = "\n")
 
-  expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
+  if (!tests_passed) {
+    msg <- paste("C++ unit tests:", info, sep = "\n")
+    return(fail(msg))
+  }
+  pass(NULL)
 }
 
 #' Do C++ tests past?
@@ -31,6 +42,8 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
+  check_string(package)
+
   skip_on_os("solaris")
   check_installed("xml2", "to run run_cpp_tests()")
 
@@ -40,20 +53,26 @@ run_cpp_tests <- function(package) {
   tests_passed <- TRUE
 
   catch_error <- FALSE
-  tryCatch({
-    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests, TRUE))
-  },
+  tryCatch(
+    {
+      output <- capture_output_lines(
+        tests_passed <- .Call(run_testthat_tests, TRUE)
+      )
+    },
     error = function(e) {
       catch_error <- TRUE
       reporter <- get_reporter()
 
       context_start("Catch")
       reporter$start_test(context = "Catch", test = "Catch")
-      reporter$add_result(context = "Catch", test = "Catch", result = expectation("failure", e$message))
+      reporter$add_result(
+        context = "Catch",
+        test = "Catch",
+        result = new_expectation("failure", e$message)
+      )
       reporter$end_test(context = "Catch", test = "Catch")
     }
   )
-
 
   if (catch_error) {
     return()
@@ -78,9 +97,13 @@ run_cpp_tests <- function(package) {
       get_reporter()$start_test(context = context_name, test = test_name)
 
       for (i in seq_len(successes)) {
-        exp <- expectation("success", "")
+        exp <- new_expectation("success", "")
         exp$test <- test_name
-        get_reporter()$add_result(context = context_name, test = test_name, result = exp)
+        get_reporter()$add_result(
+          context = context_name,
+          test = test_name,
+          result = exp
+        )
       }
 
       failures <- xml2::xml_find_all(test, "./Expression")
@@ -91,7 +114,8 @@ run_cpp_tests <- function(package) {
         filename <- xml2::xml_attr(failure, "filename")
         type <- xml2::xml_attr(failure, "type")
 
-        type_msg <- switch(type,
+        type_msg <- switch(
+          type,
           "CATCH_CHECK_FALSE" = "isn't false.",
           "CATCH_CHECK_THROWS" = "did not throw an exception.",
           "CATCH_CHECK_THROWS_AS" = "threw an exception with unexpected type.",
@@ -101,12 +125,19 @@ run_cpp_tests <- function(package) {
         org_text <- paste(org_text, type_msg)
 
         line <- xml2::xml_attr(failure, "line")
-        failure_srcref <- srcref(srcfile(file.path("src", filename)), c(line, line, 1, 1))
+        failure_srcref <- srcref(
+          srcfile(file.path("src", filename)),
+          c(line, line, 1, 1)
+        )
 
-        exp <- expectation("failure", org_text, srcref = failure_srcref)
+        exp <- new_expectation("failure", org_text, srcref = failure_srcref)
         exp$test <- test_name
 
-        get_reporter()$add_result(context = context_name, test = test_name, result = exp)
+        get_reporter()$add_result(
+          context = context_name,
+          test = test_name,
+          result = exp
+        )
       }
 
       exceptions <- xml2::xml_find_all(test, "./Exception")
@@ -115,12 +146,23 @@ run_cpp_tests <- function(package) {
         filename <- xml2::xml_attr(exception, "filename")
         line <- xml2::xml_attr(exception, "line")
 
-        exception_srcref <- srcref(srcfile(file.path("src", filename)), c(line, line, 1, 1))
+        exception_srcref <- srcref(
+          srcfile(file.path("src", filename)),
+          c(line, line, 1, 1)
+        )
 
-        exp <- expectation("error", exception_text, srcref = exception_srcref)
+        exp <- new_expectation(
+          "error",
+          exception_text,
+          srcref = exception_srcref
+        )
         exp$test <- test_name
 
-        get_reporter()$add_result(context = context_name, test = test_name, result = exp)
+        get_reporter()$add_result(
+          context = context_name,
+          test = test_name,
+          result = exp
+        )
       }
 
       get_reporter()$end_test(context = context_name, test = test_name)
@@ -215,6 +257,28 @@ run_cpp_tests <- function(package) {
 #'     run_testthat_tests
 #' }
 #'
+#' Assuming you have `useDynLib(<pkg>, .registration = TRUE)` in your package's
+#' `NAMESPACE` file, this implies having routine registration code of the form:
+#'
+#' ```
+#' // The definition for this function comes from the file 'src/test-runner.cpp',
+#' // which is generated via `testthat::use_catch()`.
+#' extern SEXP run_testthat_tests();
+#'
+#' static const R_CallMethodDef callMethods[] = {
+#'   // other .Call method definitions,
+#'   {"run_testthat_tests", (DL_FUNC) &run_testthat_tests, 0},
+#'   {NULL, NULL, 0}
+#' };
+#'
+#' void R_init_<pkg>(DllInfo* dllInfo) {
+#'   R_registerRoutines(dllInfo, NULL, callMethods, NULL, NULL);
+#'   R_useDynamicSymbols(dllInfo, FALSE);
+#' }
+#' ```
+#'
+#' replacing `<pkg>` above with the name of your package, as appropriate.
+#'
 #' See [Controlling Visibility](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility)
 #' and [Registering Symbols](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols)
 #' in the **Writing R Extensions** manual for more information.
@@ -266,7 +330,12 @@ use_catch <- function(dir = getwd()) {
   desc <- read.dcf(desc_path, all = TRUE)
   pkg <- desc$Package
   if (!nzchar(pkg)) {
-    stop("no 'Package' field in DESCRIPTION file '", desc_path, "'", call. = FALSE)
+    stop(
+      "no 'Package' field in DESCRIPTION file '",
+      desc_path,
+      "'",
+      call. = FALSE
+    )
   }
 
   src_dir <- file.path(dir, "src")
@@ -301,7 +370,12 @@ use_catch <- function(dir = getwd()) {
   # Copy the 'test-cpp.R' file.
   test_dir <- file.path(dir, "tests", "testthat")
   if (!file.exists(test_dir) && !dir.create(test_dir, recursive = TRUE)) {
-    stop("failed to create 'tests/testthat/' directory '", test_dir, "'", call. = FALSE)
+    stop(
+      "failed to create 'tests/testthat/' directory '",
+      test_dir,
+      "'",
+      call. = FALSE
+    )
   }
 
   template_file <- system.file(package = "testthat", "resources", "test-cpp.R")
@@ -311,7 +385,11 @@ use_catch <- function(dir = getwd()) {
   cat(transformed, file = output_path)
 
   # Copy the 'test-runner.R file.
-  template_file <- system.file(package = "testthat", "resources", "catch-routine-registration.R")
+  template_file <- system.file(
+    package = "testthat",
+    "resources",
+    "catch-routine-registration.R"
+  )
   contents <- readChar(template_file, file.info(template_file)$size, TRUE)
   transformed <- sprintf(contents, pkg)
   output_path <- file.path(dir, "R", "catch-routine-registration.R")
@@ -320,11 +398,14 @@ use_catch <- function(dir = getwd()) {
   message("> Added C++ unit testing infrastructure.")
   message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION.")
   message("> Please ensure you have 'Suggests: xml2' in your DESCRIPTION.")
-  message("> Please ensure you have 'useDynLib(", pkg, ", .registration = TRUE)' in your NAMESPACE.")
+  message(
+    "> Please ensure you have 'useDynLib(",
+    pkg,
+    ", .registration = TRUE)' in your NAMESPACE."
+  )
 }
 
 get_routine <- function(package, routine) {
-
   # check to see if the package has explicitly exported
   # the associated routine (check common prefixes as we
   # don't necessarily have access to the NAMESPACE and

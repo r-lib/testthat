@@ -20,25 +20,34 @@
 #' @inheritParams expect_snapshot
 #' @inheritParams compare
 #' @export
-expect_snapshot_value <- function(x,
-                                  style = c("json", "json2", "deparse", "serialize"),
-                                  cran = FALSE,
-                                  tolerance = testthat_tolerance(),
-                                  ...,
-                                  variant = NULL) {
+expect_snapshot_value <- function(
+  x,
+  style = c("json", "json2", "deparse", "serialize"),
+  cran = FALSE,
+  tolerance = testthat_tolerance(),
+  ...,
+  variant = NULL
+) {
   edition_require(3, "expect_snapshot_value()")
+
+  style <- arg_match(style)
+  check_bool(cran)
+  check_number_decimal(tolerance, min = 0)
+
   variant <- check_variant(variant)
   lab <- quo_label(enquo(x))
 
-  style <- arg_match(style)
-
-  save <- switch(style,
+  save <- switch(
+    style,
     json = function(x) jsonlite::toJSON(x, auto_unbox = TRUE, pretty = TRUE),
     json2 = function(x) jsonlite::serializeJSON(x, pretty = TRUE),
     deparse = function(x) paste0(deparse(x), collapse = "\n"),
-    serialize = function(x) jsonlite::base64_enc(serialize(x, NULL, version = 2))
+    serialize = function(x) {
+      jsonlite::base64_enc(serialize(x, NULL, version = 2))
+    }
   )
-  load <- switch(style,
+  load <- switch(
+    style,
     json = function(x) jsonlite::fromJSON(x, simplifyVector = FALSE),
     json2 = function(x) jsonlite::unserializeJSON(x),
     deparse = function(x) reparse(x),
@@ -55,7 +64,9 @@ expect_snapshot_value <- function(x,
     tolerance = tolerance
   )
 
-  expect_snapshot_helper(lab, x,
+  expect_snapshot_helper(
+    lab,
+    x,
     save = save,
     load = load,
     cran = cran,
@@ -69,63 +80,59 @@ expect_snapshot_value <- function(x,
 # Safe environment for evaluating deparsed objects, based on inspection of
 # https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
 reparse <- function(x) {
-  env <- env(emptyenv(),
-    `-` = `-`,
-    c = c,
-    list = list,
-    quote = quote,
-    structure = structure,
-    expression = expression,
-    `function` = `function`,
-    new = methods::new,
-    getClass = methods::getClass,
-    pairlist = pairlist,
-    alist = alist,
-    as.pairlist = as.pairlist
+  env <- env(emptyenv())
+  env_bind(
+    env,
+    !!!env_get_list(
+      base_env(),
+      c(
+        c("c", "structure", ":", "-"),
+        c("list", "numeric", "integer", "logical", "character"),
+        "function",
+        c("quote", "alist", "pairlist", "as.pairlist", "expression")
+      )
+    )
   )
+  env_bind(env, !!!env_get_list(ns_env("methods"), c("new", "getClass")))
 
   eval(parse(text = x), env)
 }
 
-# Safe environment for evaluating deparsed objects, based on inspection of
-# https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
-reparse <- function(x) {
-  env <- env(emptyenv(),
-    `-` = `-`,
-    c = c,
-    list = list,
-    quote = quote,
-    structure = structure,
-    expression = expression,
-    `function` = `function`,
-    new = methods::new,
-    getClass = methods::getClass,
-    pairlist = pairlist,
-    alist = alist,
-    as.pairlist = as.pairlist
+check_roundtrip <- function(
+  x,
+  y,
+  label,
+  style,
+  ...,
+  tolerance = testthat_tolerance(),
+  error_call = caller_env()
+) {
+  check <- waldo_compare(
+    x,
+    y,
+    x_arg = "original",
+    y_arg = "new",
+    ...,
+    tolerance = tolerance
   )
-
-  eval(parse(text = x), env)
-}
-
-check_roundtrip <- function(x,
-                            y,
-                            label,
-                            style,
-                            ...,
-                            tolerance = testthat_tolerance(),
-                            error_call = caller_env()) {
-  check <- waldo_compare(x, y, x_arg = "original", y_arg = "new", ..., tolerance = tolerance)
   if (length(check) > 0) {
-    abort(c(
-      paste0("`", label, "` could not be safely serialized with `style = \"", style, "\"`."),
-      " " = paste0(
-        "Serializing then deserializing the object returned something new:\n\n",
-        check, "\n"
+    abort(
+      c(
+        paste0(
+          "`",
+          label,
+          "` could not be safely serialized with `style = \"",
+          style,
+          "\"`."
+        ),
+        " " = paste0(
+          "Serializing then deserializing the object returned something new:\n\n",
+          check,
+          "\n"
+        ),
+        i = "You may need to try a different `style`."
       ),
-      i = "You may need to try a different `style`."),
       call = error_call
     )
   }
 }
-

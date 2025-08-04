@@ -2,7 +2,7 @@
 snap_to_md <- function(data) {
   h2 <- paste0("# ", names(data), "\n\n")
   code_block <- function(x) paste0(indent_add(x), collapse = "\n\n---\n\n")
-  data <- vapply(data, code_block, character(1))
+  data <- map_chr(data, code_block)
 
   paste0(h2, data, "\n\n", collapse = "")
 }
@@ -25,7 +25,7 @@ snap_from_md <- function(lines) {
 
     cases <- unname(split(lines[-drop], case_group[-drop]))
     code_unblock <- function(x) paste0(indent_del(x), collapse = "\n")
-    vapply(cases, code_unblock, character(1))
+    map_chr(cases, code_unblock)
   }
 
   lapply(tests, split_tests)

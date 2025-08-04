@@ -25,8 +25,11 @@ test_that("warns if both inputs are named", {
   expect_warning(expect_setequal(c(a = 1), c(b = 1)), "ignores names")
 })
 
-test_that("error for non-vectors", {
-  expect_error(expect_setequal(sum, sum), "be vectors")
+test_that("checks inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_setequal(sum, 1)
+    expect_setequal(1, sum)
+  })
 })
 
 test_that("useful message on failure", {
@@ -53,7 +56,10 @@ test_that("ignores order", {
 test_that("error if any names are duplicated", {
   expect_error(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
   expect_error(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
-  expect_error(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 3, b = 2, a = 1)))
+  expect_error(expect_mapequal(
+    list(a = 1, b = 2, b = 3),
+    list(b = 3, b = 2, a = 1)
+  ))
 })
 
 test_that("handling NULLs", {
@@ -69,14 +75,21 @@ test_that("fails if values don't match", {
   expect_failure(expect_mapequal(list(a = 1, b = 2), list(a = 1, b = 3)))
 })
 
-test_that("error for non-vectors", {
-  expect_error(expect_mapequal(sum, sum), "be vectors")
-  expect_error(expect_mapequal(NULL, NULL), "be vectors")
-})
+test_that("check inputs", {
+  unnamed <- list(1)
+  named <- list(a = 1)
+  duplicated <- list(x = 1, x = 2)
 
-test_that("error if any unnamed values", {
-  expect_error(expect_mapequal(list(1, b = 2), list(1, b = 2)))
-  expect_error(expect_mapequal(list(1, b = 2), list(b = 2, 1)))
+  expect_snapshot(error = TRUE, {
+    expect_mapequal(sum, named)
+    expect_mapequal(named, sum)
+
+    expect_mapequal(unnamed, named)
+    expect_mapequal(named, unnamed)
+
+    expect_mapequal(named, duplicated)
+    expect_mapequal(duplicated, named)
+  })
 })
 
 test_that("succeeds if comparing empty named and unnamed vectors", {
