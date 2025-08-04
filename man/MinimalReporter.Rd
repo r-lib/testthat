@@ -25,6 +25,7 @@ Other reporters:
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},
-\code{\link{TeamcityReporter}}
+\code{\link{TeamcityReporter}},
+\code{\link{TimingReporter}}
 }
 \concept{reporters}

@@ -24,6 +24,7 @@ Other reporters:
 \code{\link{SilentReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
-\code{\link{TeamcityReporter}}
+\code{\link{TeamcityReporter}},
+\code{\link{TimingReporter}}
 }
 \concept{reporters}

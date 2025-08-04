@@ -29,6 +29,7 @@ Other reporters:
 \code{\link{SilentReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},
-\code{\link{TeamcityReporter}}
+\code{\link{TeamcityReporter}},
+\code{\link{TimingReporter}}
 }
 \concept{reporters}

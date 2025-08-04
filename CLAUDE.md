@@ -17,9 +17,12 @@ General advice:
 - `devtools::test()` - Run all tests
 - `devtools::test_file("tests/testthat/test-filename.R")` - Run tests in a specific file
 - `devtools::load_all()` - Load package for development
-- `devtools::document()` - Generate documentation
 - `devtools::check()` - Run R CMD check
 - `devtools::install()` - Install package locally
+
+### Documentation
+
+- Always run `devtools::document()` after changing any roxygen2 docs.
 
 ## Core Architecture
 
