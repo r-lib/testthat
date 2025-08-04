@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* The last snapshot is no longer lost if the snapshot file is missing the final newline (#2092). It's easy to accidentally remove this because there are two trailing new lines in snapshot files and many editors will automatically remove if you touch the file.
 * `expect_*()` functions consistently and rigorously check their inputs (#1754). 
 * `JunitReporter()` no longer fails with `"no applicable method for xml_add_child"` for warnings outside of tests (#1913). Additionally, warnings now save their backtraces.
 * `JunitReporter()` strips ANSI escapes in more placese (#1852, #2032).
