@@ -19,7 +19,7 @@
 NULL
 
 the <- new.env(parent = emptyenv())
-
+the$description <- character()
 
 # The following block is used by usethis to automatically manage
 # roxygen namespace tags. Modify with care!

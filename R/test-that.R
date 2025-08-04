@@ -34,7 +34,7 @@
 #' })
 #' }
 test_that <- function(desc, code) {
-  check_string(desc)
+  local_description_push(desc)
 
   code <- substitute(code)
   if (edition_get() >= 3) {
@@ -46,18 +46,19 @@ test_that <- function(desc, code) {
     }
   }
 
-  test_code(desc, code, env = parent.frame())
+  test_code(code, env = parent.frame())
 }
 
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
-test_code <- function(test, code, env, reporter = NULL, skip_on_empty = TRUE) {
+test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
   # Must initialise interactive reporter before local_test_context()
   reporter <- get_reporter() %||% local_interactive_reporter()
   local_test_context()
 
   frame <- caller_env()
 
+  test <- test_description()
   if (!is.null(test)) {
     reporter$start_test(context = reporter$.context, test = test)
     withr::defer(reporter$end_test(context = reporter$.context, test = test))
@@ -209,4 +210,31 @@ test_code <- function(test, code, env, reporter = NULL, skip_on_empty = TRUE) {
   }
 
   invisible(ok)
+}
+
+
+# Maintain a stack of descriptions
+local_description_push <- function(description, frame = caller_env()) {
+  check_string(description, call = frame)
+  local_description_set(c(the$description, description), frame = frame)
+}
+local_description_set <- function(
+  description = character(),
+  frame = caller_env()
+) {
+  check_character(description, call = frame)
+
+  old <- the$description
+  the$description <- description
+  withr::defer(the$description <- old, frame)
+
+  invisible(old)
+}
+
+test_description <- function() {
+  if (length(the$description) == 0) {
+    NULL
+  } else {
+    paste(the$description, collapse = " / ")
+  }
 }

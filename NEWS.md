@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `describe()`, `it()`, and `test_that()` now have a shared stack of descriptions so that if you nest any inside of each other, any resulting failures will show you the full path (#)
+* `describe()` now correctly scopes `skip()` (#2007).
 * `expect_*()` functions consistently and rigorously check their inputs (#1754). 
 * `JunitReporter()` no longer fails with `"no applicable method for xml_add_child"` for warnings outside of tests (#1913). Additionally, warnings now save their backtraces.
 * `JunitReporter()` strips ANSI escapes in more placese (#1852, #2032).

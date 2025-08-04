@@ -45,11 +45,9 @@ describe("variable scoping", {
 test_that("has to have a valid description for the block", {
   expect_snapshot(error = TRUE, {
     describe()
-    describe("")
     describe(c("a", "b"))
 
     it()
-    it("")
     it(c("a", "b"))
   })
 })

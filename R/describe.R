@@ -56,29 +56,17 @@
 #'     it("can handle division by 0") #not yet implemented
 #'   })
 #' })
-
 describe <- function(description, code) {
-  check_string(description, allow_empty = FALSE)
-  describe_description <- description
+  local_description_push(description)
 
-  # prepares a new environment for each it-block
-  describe_env <- new.env(parent = parent.frame())
-  describe_env$it <- function(description, code = NULL) {
-    check_string(description, allow_empty = FALSE)
-    description <- paste0(describe_description, ": ", description)
-
-    code <- substitute(code)
-    test_code(description, code, env = describe_env, skip_on_empty = FALSE)
-  }
-
-  test_code(description, code, describe_env, skip_on_empty = FALSE)
+  test_code(code, parent.frame(), skip_on_empty = FALSE)
 }
 
 #' @export
 #' @rdname describe
 it <- function(description, code = NULL) {
-  check_string(description, allow_empty = FALSE)
+  local_description_push(description)
 
   code <- substitute(code)
-  test_code(description, code, env = parent.frame(), skip_on_empty = FALSE)
+  test_code(code, env = parent.frame(), skip_on_empty = FALSE)
 }

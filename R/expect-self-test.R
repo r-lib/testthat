@@ -158,6 +158,7 @@ expect_snapshot_reporter <- function(
   reporter,
   paths = test_path("reporters/tests.R")
 ) {
+
   local_options(rlang_trace_format_srcrefs = FALSE)
   withr::local_seed(1014)
 

@@ -175,9 +175,13 @@ test_that("hint is informative", {
 })
 
 test_that("expect_snapshot requires a non-empty test label", {
+  local_description_set()
+
   test_that("", {
     expect_error(expect_snapshot(1 + 1))
   })
+
+  pass(NULL) # quiet message about this test being empty
 })
 
 test_that("expect_snapshot validates its inputs", {

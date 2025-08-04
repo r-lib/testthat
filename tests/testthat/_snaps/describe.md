@@ -6,11 +6,6 @@
       Error in `describe()`:
       ! `description` must be a single string, not absent.
     Code
-      describe("")
-    Condition
-      Error in `describe()`:
-      ! `description` must be a single string, not the empty string "".
-    Code
       describe(c("a", "b"))
     Condition
       Error in `describe()`:
@@ -20,11 +15,6 @@
     Condition
       Error in `it()`:
       ! `description` must be a single string, not absent.
-    Code
-      it("")
-    Condition
-      Error in `it()`:
-      ! `description` must be a single string, not the empty string "".
     Code
       it(c("a", "b"))
     Condition
