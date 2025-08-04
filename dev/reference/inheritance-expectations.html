@@ -8,6 +8,8 @@ expect_s3_class(x, NA) checks that x isn't an S3 object.
 expect_s4_class(x, class) checks that x is an S4 object that
 is() class.
 expect_s4_class(x, NA) checks that x isn't an S4 object.
+expect_r6_class(x, class) checks that x an R6 object that
+inherits from class.
 expect_s7_class(x, Class) checks that x is an S7 object that
 S7::S7_inherits() from Class
 
@@ -21,6 +23,8 @@ expect_s3_class(x, NA) checks that x isn't an S3 object.
 expect_s4_class(x, class) checks that x is an S4 object that
 is() class.
 expect_s4_class(x, NA) checks that x isn't an S4 object.
+expect_r6_class(x, class) checks that x an R6 object that
+inherits from class.
 expect_s7_class(x, Class) checks that x is an S7 object that
 S7::S7_inherits() from Class
 
@@ -91,6 +95,8 @@ the vocabulary used here.</p><ul><li><p><code>expect_type(x, type)</code> checks
 <li><p><code>expect_s4_class(x, class)</code> checks that <code>x</code> is an S4 object that
 <code>is()</code> <code>class</code>.</p></li>
 <li><p><code>expect_s4_class(x, NA)</code> checks that <code>x</code> isn't an S4 object.</p></li>
+<li><p><code>expect_r6_class(x, class)</code> checks that <code>x</code> an R6 object that
+inherits from <code>class</code>.</p></li>
 <li><p><code>expect_s7_class(x, Class)</code> checks that <code>x</code> is an S7 object that
 <code><a href="https://rconsortium.github.io/S7/reference/S7_inherits.html" class="external-link">S7::S7_inherits()</a></code> from <code>Class</code></p></li>
 </ul><p>See <code><a href="expect_vector.html">expect_vector()</a></code> for testing properties of objects created by vctrs.</p>
@@ -103,6 +109,8 @@ the vocabulary used here.</p><ul><li><p><code>expect_type(x, type)</code> checks
 <span><span class="fu">expect_s3_class</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span>, exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">expect_s4_class</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">expect_r6_class</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">expect_s7_class</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -129,6 +137,7 @@ the test will pass if <code>object</code> inherits from any of them, unless
 <code>exact = TRUE</code>.</p></li>
 <li><p><code>expect_s4_class()</code>: a character vector of class names or <code>NA</code> to assert
 that <code>object</code> isn't an S4 object.</p></li>
+<li><p><code>expect_r6_class()</code>: a string.</p></li>
 <li><p><code>expect_s7_class()</code>: an <code><a href="https://rconsortium.github.io/S7/reference/S7_class.html" class="external-link">S7::S7_class()</a></code> object.</p></li>
 </ul></dd>
 
