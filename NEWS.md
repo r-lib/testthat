@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `ParallelProgressReporter` now respect `max_failures` (#1162).
 * The last snapshot is no longer lost if the snapshot file is missing the final newline (#2092). It's easy to accidentally remove this because there are two trailing new lines in snapshot files and many editors will automatically remove if you touch the file.
 * New `expect_r6_class()` (#2030).
 * `expect_*()` functions consistently and rigorously check their inputs (#1754). 
