@@ -1,6 +1,6 @@
 # testthat (development version)
 
-* `describe()`, `it()`, and `test_that()` now have a shared stack of descriptions so that if you nest any inside of each other, any resulting failures will show you the full path (#)
+* `describe()`, `it()`, and `test_that()` now have a shared stack of descriptions so that if you nest any inside of each other, any resulting failures will show you the full path.
 * `describe()` now correctly scopes `skip()` (#2007).
 * `ParallelProgressReporter` now respect `max_failures` (#1162).
 * The last snapshot is no longer lost if the snapshot file is missing the final newline (#2092). It's easy to accidentally remove this because there are two trailing new lines in snapshot files and many editors will automatically remove if you touch the file.
