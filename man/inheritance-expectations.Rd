@@ -29,13 +29,13 @@ within a function or for loop. See \link{quasi_label} for more details.}
 \item{type}{String giving base type (as returned by \code{\link[=typeof]{typeof()}}).}
 
 \item{class}{\itemize{
-\item \code{expect_type()}: a single string giving an R base type.
+\item \code{expect_type()}: a string.
 \item \code{expect_s3_class()}: a character vector of class names or \code{NA} to assert
 that \code{object} isn't an S3 object. If you provide multiple class names,
 the test will pass if \code{object} inherits from any of them, unless
 \code{exact = TRUE}.
-\item \code{expect_s4_class()}: a character vector of class names or \code{NA} to assert
-that \code{object} isn't an S4 object.
+\item \code{expect_s4_class()}: a string or \code{NA} to assert that \code{object} isn't an
+S4 object.
 \item \code{expect_r6_class()}: a string.
 \item \code{expect_s7_class()}: an \code{\link[S7:S7_class]{S7::S7_class()}} object.
 }}
