@@ -28,24 +28,23 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{type}{String giving base type (as returned by \code{\link[=typeof]{typeof()}}).}
 
-\item{class}{The different
+\item{class}{The required type varies depending on the function:
 \itemize{
 \item \code{expect_type()}: a string.
-\item \code{expect_s3_class()}: a character vector of class names. If you provide
-multiple class names, the test will pass if \code{object} inherits from any
-of them, unless \code{exact = TRUE}.
-\item \code{expect_s4_class()}: a string or \code{NA} to assert that \code{object} is not an
-S4 object.
+\item \code{expect_s3_class()}: a string or character vector. The behaviour of
+multiple values (i.e. a character vector) is controlled by the
+\code{exact} argument.
+\item \code{expect_s4_class()}: a string.
 \item \code{expect_r6_class()}: a string.
 \item \code{expect_s7_class()}: an \code{\link[S7:S7_class]{S7::S7_class()}} object.
 }
 
-For historical reasons, \code{expect_s3_class()} and \code{expect_s4_class()} take
-\code{NA} to assert that the \code{object} is not an S3 or S4 object.}
+For historical reasons, \code{expect_s3_class()} and \code{expect_s4_class()} also
+take \code{NA} to assert that the \code{object} is not an S3 or S4 object.}
 
 \item{exact}{If \code{FALSE}, the default, checks that \code{object} inherits
 from any element of \code{class}. If \code{TRUE}, checks that object has a class
-that's identical to \code{class}.}
+that exactly matches \code{class}.}
 }
 \description{
 See \url{https://adv-r.hadley.nz/oo.html} for an overview of R's OO systems, and
