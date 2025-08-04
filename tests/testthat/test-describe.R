@@ -1,4 +1,3 @@
-someExternalVariable <- 1
 describe("describe", {
   it("can contain nested describe blocks", {
     describe("addition", {
@@ -18,36 +17,39 @@ describe("describe", {
       it("can be shown that P != NP")
     })
   })
+})
 
-  it("has to have a valid description for the block", {
-    expect_snapshot(error = TRUE, {
-      describe()
-      describe("")
-      describe(c("a", "b"))
-
-      it()
-      it("")
-      it(c("a", "b"))
-    })
-  })
-
+someExternalVariable <- 1
+describe("variable scoping", {
   someInternalVariable <- 1
   it("should be possible to use variables from outer environments", {
     expect_equal(1, someExternalVariable)
     expect_equal(1, someInternalVariable)
+
+    someInternalVariable <- 2
+    someExternalVariable <- 3
   })
 
   # prefix is needed to test this use case
-  testthat::it("should be possible to use variables from outer environments with package prefix", {
+  testthat::it("even when using it() directly", {
     expect_equal(1, someExternalVariable)
     expect_equal(1, someInternalVariable)
   })
 
-  it("should not be possible to access variables from other specs (1)", {
-    some_test_var <- 5
+  it("shouldn't affect other tests", {
+    expect_equal(1, someExternalVariable)
+    expect_equal(1, someInternalVariable)
   })
+})
 
-  it("should not be possible to access variables from other specs (2)", {
-    expect_false(exists("some_test_var"))
+test_that("has to have a valid description for the block", {
+  expect_snapshot(error = TRUE, {
+    describe()
+    describe("")
+    describe(c("a", "b"))
+
+    it()
+    it("")
+    it(c("a", "b"))
   })
 })

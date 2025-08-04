@@ -46,21 +46,16 @@ test_that <- function(desc, code) {
     }
   }
 
-  # Must initialise interactive reporter before local_test_context()
-  reporter <- get_reporter() %||% local_interactive_reporter()
-  local_test_context()
-
-  test_code(
-    desc,
-    code,
-    env = parent.frame(),
-    reporter = reporter
-  )
+  test_code(desc, code, env = parent.frame())
 }
 
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
-test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
+test_code <- function(test, code, env, reporter = NULL, skip_on_empty = TRUE) {
+  # Must initialise interactive reporter before local_test_context()
+  reporter <- get_reporter() %||% local_interactive_reporter()
+  local_test_context()
+
   frame <- caller_env()
 
   if (!is.null(test)) {

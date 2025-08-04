@@ -1,4 +1,4 @@
-# describe: has to have a valid description for the block
+# has to have a valid description for the block
 
     Code
       describe()

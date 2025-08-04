@@ -62,30 +62,16 @@ describe <- function(description, code) {
   describe_description <- description
 
   # prepares a new environment for each it-block
-  describe_environment <- new.env(parent = parent.frame())
-  describe_environment$it <- function(description, code = NULL) {
+  describe_env <- new.env(parent = parent.frame())
+  describe_env$it <- function(description, code = NULL) {
     check_string(description, allow_empty = FALSE)
-    code <- substitute(code)
-
     description <- paste0(describe_description, ": ", description)
-    describe_it(description, code, describe_environment)
+
+    code <- substitute(code)
+    test_code(description, code, env = describe_env, skip_on_empty = FALSE)
   }
 
-  eval(substitute(code), describe_environment)
-  invisible()
-}
-
-describe_it <- function(description, code, env = parent.frame()) {
-  reporter <- get_reporter() %||% local_interactive_reporter()
-  local_test_context()
-
-  test_code(
-    description,
-    code,
-    env = env,
-    reporter = reporter,
-    skip_on_empty = FALSE
-  )
+  test_code(description, code, describe_env, skip_on_empty = FALSE)
 }
 
 #' @export
@@ -94,5 +80,5 @@ it <- function(description, code = NULL) {
   check_string(description, allow_empty = FALSE)
 
   code <- substitute(code)
-  describe_it(description, code, env = parent.frame())
+  test_code(description, code, env = parent.frame(), skip_on_empty = FALSE)
 }
