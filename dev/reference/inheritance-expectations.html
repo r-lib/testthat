@@ -130,22 +130,21 @@ within a function or for loop. See <a href="quasi_label.html">quasi_label</a> fo
 
 
 <dt id="arg-class">class<a class="anchor" aria-label="anchor" href="#arg-class"></a></dt>
-<dd><ul><li><p><code>expect_type()</code>: a single string giving an R base type.</p></li>
-<li><p><code>expect_s3_class()</code>: a character vector of class names or <code>NA</code> to assert
-that <code>object</code> isn't an S3 object. If you provide multiple class names,
-the test will pass if <code>object</code> inherits from any of them, unless
-<code>exact = TRUE</code>.</p></li>
-<li><p><code>expect_s4_class()</code>: a character vector of class names or <code>NA</code> to assert
-that <code>object</code> isn't an S4 object.</p></li>
+<dd><p>The required type varies depending on the function:</p><ul><li><p><code>expect_type()</code>: a string.</p></li>
+<li><p><code>expect_s3_class()</code>: a string or character vector. The behaviour of
+multiple values (i.e. a character vector) is controlled by the
+<code>exact</code> argument.</p></li>
+<li><p><code>expect_s4_class()</code>: a string.</p></li>
 <li><p><code>expect_r6_class()</code>: a string.</p></li>
 <li><p><code>expect_s7_class()</code>: an <code><a href="https://rconsortium.github.io/S7/reference/S7_class.html" class="external-link">S7::S7_class()</a></code> object.</p></li>
-</ul></dd>
+</ul><p>For historical reasons, <code>expect_s3_class()</code> and <code>expect_s4_class()</code> also
+take <code>NA</code> to assert that the <code>object</code> is not an S3 or S4 object.</p></dd>
 
 
 <dt id="arg-exact">exact<a class="anchor" aria-label="anchor" href="#arg-exact"></a></dt>
 <dd><p>If <code>FALSE</code>, the default, checks that <code>object</code> inherits
 from any element of <code>class</code>. If <code>TRUE</code>, checks that object has a class
-that's identical to <code>class</code>.</p></dd>
+that exactly matches <code>class</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
