@@ -164,7 +164,7 @@ expect_r6_class <- function(object, class) {
   check_string(class)
 
   if (!inherits(act$val, "R6")) {
-    return(fail(sprintf("%s is not an R6 object", act$lab)))
+    return(fail(sprintf("%s is not an R6 object.", act$lab)))
   }
 
   if (!inherits(act$val, class)) {

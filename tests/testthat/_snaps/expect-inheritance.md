@@ -49,7 +49,7 @@
 
 # expect_r6_class generates useful failures
 
-    `x` is not an R6 object
+    `x` is not an R6 object.
 
 # expect_r6_class validates its inputs
 
