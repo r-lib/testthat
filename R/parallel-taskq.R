@@ -70,7 +70,25 @@ task_q <- R6::R6Class(
         pr <- processx::poll(conns, as_ms(timeout))
         ready <- topoll[pr == "ready"]
         results <- lapply(ready, function(i) {
-          msg <- private$tasks$worker[[i]]$read()
+          worker <- private$tasks$worker[[i]]
+          msg <- worker$read()
+
+          # Also read any available stdout/stderr
+          stdout_lines <- worker$read_output_lines()
+          stderr_lines <- worker$read_error_lines()
+
+          # Forward stdout/stderr to console
+          if (length(stdout_lines) > 0) {
+            for (line in stdout_lines) {
+              cat(line, "\n", file = stdout())
+            }
+          }
+          if (length(stderr_lines) > 0) {
+            for (line in stderr_lines) {
+              cat(line, "\n", file = stderr())
+            }
+          }
+
           ## TODO: why can this be NULL?
           if (is.null(msg) || msg$code == PROCESS_MSG) {
             private$tasks$state[[i]] <- "running"
@@ -131,7 +149,7 @@ task_q <- R6::R6Class(
         args = nl,
         worker = nl
       )
-      rsopts <- callr::r_session_options(...)
+      rsopts <- callr::r_session_options(stdout = "|", stderr = "|", ...)
       for (i in seq_len(concurrency)) {
         rs <- callr::r_session$new(rsopts, wait = FALSE)
         private$tasks$worker[[i]] <- rs
