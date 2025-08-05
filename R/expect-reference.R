@@ -23,8 +23,8 @@ expect_reference <- function(
 ) {
   edition_deprecate(3, "expect_reference()")
 
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
   if (!is_reference(act$val, exp$val)) {
     msg <- sprintf("%s not a reference to %s.", act$lab, exp$lab)

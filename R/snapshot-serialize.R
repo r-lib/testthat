@@ -2,7 +2,7 @@
 snap_to_md <- function(data) {
   h2 <- paste0("# ", names(data), "\n\n")
   code_block <- function(x) paste0(indent_add(x), collapse = "\n\n---\n\n")
-  data <- vapply(data, code_block, character(1))
+  data <- map_chr(data, code_block)
 
   paste0(h2, data, "\n\n", collapse = "")
 }
@@ -19,13 +19,17 @@ snap_from_md <- function(lines) {
     sep <- grepl("^-{3,}", lines)
     case_group <- cumsum(sep)
 
-    # Remove first line and last line, separator, line above and line below
+    # Remove first line, separator, line above and line below
+    # Only remove last line if it's empty (to handle missing final newlines)
     sep_loc <- which(sep)
-    drop <- c(1, sep_loc, sep_loc + 1, sep_loc - 1, length(lines))
+    drop <- c(1, sep_loc, sep_loc + 1, sep_loc - 1)
+    if (length(lines) > 0 && lines[length(lines)] == "") {
+      drop <- c(drop, length(lines))
+    }
 
     cases <- unname(split(lines[-drop], case_group[-drop]))
     code_unblock <- function(x) paste0(indent_del(x), collapse = "\n")
-    vapply(cases, code_unblock, character(1))
+    map_chr(cases, code_unblock)
   }
 
   lapply(tests, split_tests)

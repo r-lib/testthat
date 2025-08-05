@@ -1,5 +1,14 @@
 # testthat (development version)
 
+* `ParallelProgressReporter` now respect `max_failures` (#1162).
+* The last snapshot is no longer lost if the snapshot file is missing the final newline (#2092). It's easy to accidentally remove this because there are two trailing new lines in snapshot files and many editors will automatically remove if you touch the file.
+* New `expect_r6_class()` (#2030).
+* `expect_*()` functions consistently and rigorously check their inputs (#1754). 
+* `JunitReporter()` no longer fails with `"no applicable method for xml_add_child"` for warnings outside of tests (#1913). Additionally, warnings now save their backtraces.
+* `JunitReporter()` strips ANSI escapes in more placese (#1852, #2032).
+* `try_again()` is now publicised. The first argument is now the number of retries, not tries (#2050).
+* `vignette("custom-expectations)` has been overhauled to make it much clearer how to create high-quality expectations (#2113, #2132, #2072).
+* `expect_snapshot()` and friends will now fail when creating a new snapshot on CI. This is usually a signal that you've forgotten to run it locally before committing (#1461).
 * `expect_snapshot_value()` can now handle expressions that generate `-` (#1678) or zero length atomic vectors (#2042).
 * `expect_matches()` failures should be a little easier to read (#2135).
 * New `local_on_cran(TRUE)` allows you to simulate how your tests will run on CRAN (#2112).

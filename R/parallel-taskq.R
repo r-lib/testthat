@@ -99,7 +99,7 @@ task_q <- R6::R6Class(
           }
           msg
         })
-        results <- results[!vapply(results, is.null, logical(1))]
+        results <- results[!map_lgl(results, is.null)]
 
         private$schedule()
         if (is.finite(timeout)) {

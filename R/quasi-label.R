@@ -34,10 +34,21 @@
 #' # !!. This causes the failure message to show the value rather than the
 #' # variable name
 #' show_failure(expect_equal(f(!!i), !!(i * 10)))
-quasi_label <- function(quo, label = NULL, arg = "quo") {
+quasi_label <- function(quo, label = NULL, arg = NULL) {
+  if (is.null(arg)) {
+    arg <- substitute(quo)
+    if (is_call(arg, "enquo")) {
+      arg <- arg[[2]]
+    }
+    arg <- as_label(arg)
+  }
+
   force(quo)
   if (quo_is_missing(quo)) {
-    stop("argument `", arg, "` is missing, with no default.", call. = FALSE)
+    cli::cli_abort(
+      "argument {.arg {arg}} is missing, with no default.",
+      call = caller_env()
+    )
   }
 
   expr <- quo_get_expr(quo)

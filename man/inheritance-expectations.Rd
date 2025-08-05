@@ -4,8 +4,9 @@
 \alias{inheritance-expectations}
 \alias{expect_type}
 \alias{expect_s3_class}
-\alias{expect_s7_class}
 \alias{expect_s4_class}
+\alias{expect_r6_class}
+\alias{expect_s7_class}
 \title{Does code return an object inheriting from the expected base type, S3 class,
 or S4 class?}
 \usage{
@@ -13,9 +14,11 @@ expect_type(object, type)
 
 expect_s3_class(object, class, exact = FALSE)
 
-expect_s7_class(object, class)
-
 expect_s4_class(object, class)
+
+expect_r6_class(object, class)
+
+expect_s7_class(object, class)
 }
 \arguments{
 \item{object}{Object to test.
@@ -25,13 +28,23 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{type}{String giving base type (as returned by \code{\link[=typeof]{typeof()}}).}
 
-\item{class}{Either a character vector of class names, or
-for \code{expect_s3_class()} and \code{expect_s4_class()}, an \code{NA} to assert
-that \code{object} isn't an S3 or S4 object.}
+\item{class}{The required type varies depending on the function:
+\itemize{
+\item \code{expect_type()}: a string.
+\item \code{expect_s3_class()}: a string or character vector. The behaviour of
+multiple values (i.e. a character vector) is controlled by the
+\code{exact} argument.
+\item \code{expect_s4_class()}: a string.
+\item \code{expect_r6_class()}: a string.
+\item \code{expect_s7_class()}: an \code{\link[S7:S7_class]{S7::S7_class()}} object.
+}
+
+For historical reasons, \code{expect_s3_class()} and \code{expect_s4_class()} also
+take \code{NA} to assert that the \code{object} is not an S3 or S4 object.}
 
 \item{exact}{If \code{FALSE}, the default, checks that \code{object} inherits
-from \code{class}. If \code{TRUE}, checks that object has a class that's identical
-to \code{class}.}
+from any element of \code{class}. If \code{TRUE}, checks that object has a class
+that exactly matches \code{class}.}
 }
 \description{
 See \url{https://adv-r.hadley.nz/oo.html} for an overview of R's OO systems, and
@@ -44,6 +57,8 @@ the vocabulary used here.
 \item \code{expect_s4_class(x, class)} checks that \code{x} is an S4 object that
 \code{\link[=is]{is()}} \code{class}.
 \item \code{expect_s4_class(x, NA)} checks that \code{x} isn't an S4 object.
+\item \code{expect_r6_class(x, class)} checks that \code{x} an R6 object that
+inherits from \code{class}.
 \item \code{expect_s7_class(x, Class)} checks that \code{x} is an S7 object that
 \code{\link[S7:S7_inherits]{S7::S7_inherits()}} from \code{Class}
 }
@@ -57,6 +72,15 @@ expect_s3_class(x, "data.frame")
 show_failure(expect_s4_class(x, "data.frame"))
 # A data frame is built from a list:
 expect_type(x, "list")
+
+f <- factor(c("a", "b", "c"))
+o <- ordered(f)
+
+# Using multiple class names tests if the object inherits from any of them
+expect_s3_class(f, c("ordered", "factor"))
+# Use exact = TRUE to test for exact match
+show_failure(expect_s3_class(f, c("ordered", "factor"), exact = TRUE))
+expect_s3_class(o, c("ordered", "factor"), exact = TRUE)
 
 # An integer vector is an atomic vector of type "integer"
 expect_type(x$x, "integer")
