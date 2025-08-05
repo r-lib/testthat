@@ -36,6 +36,8 @@ get_reporter <- function() {
 #' @rdname reporter-accessors
 #' @export
 with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
+  # Ensure we don't propagate the local description to the new reporter
+  local_description_set()
   reporter <- find_reporter(reporter)
 
   old <- set_reporter(reporter)

@@ -31,21 +31,31 @@ expect_compare_ <- function(
   msg <- c(
     "<" = "not strictly less than",
     "<=" = "not less than",
-    ">" = "not strictly more than",
-    ">=" = "not more than"
+    ">" = "not strictly greater than",
+    ">=" = "not greater than"
   )[[operator]]
+
+  negated_op <- switch(operator, "<" = ">=", "<=" = ">", ">" = "<=", ">=" = "<")
 
   cmp <- op(act$val, exp$val)
   if (length(cmp) != 1 || !is.logical(cmp)) {
     abort("Result of comparison must be a single logical value")
   }
   if (!isTRUE(cmp)) {
+    digits <- max(
+      digits(act$val),
+      digits(exp$val),
+      min_digits(act$val, exp$val)
+    )
     msg <- sprintf(
-      "%s is %s %s. Difference: %.3g",
+      "%s is %s %s.\n%s - %s = %s %s 0",
       act$lab,
       msg,
       exp$lab,
-      act$val - exp$val
+      num_exact(act$val, digits),
+      num_exact(exp$val, digits),
+      num_exact(act$val - exp$val, digits),
+      negated_op
     )
     return(fail(msg, trace_env = trace_env))
   }
@@ -108,4 +118,40 @@ expect_less_than <- function(...) {
 expect_more_than <- function(...) {
   warning("Deprecated: please use `expect_gt()` instead", call. = FALSE)
   expect_gt(...)
+}
+
+
+# Helpers -----------------------------------------------------------------
+
+num_exact <- function(x, digits = 6) {
+  sprintf(paste0("%0.", digits, "f"), x)
+}
+
+min_digits <- function(x, y, tolerance = testthat_tolerance()) {
+  if (is.integer(x) && is.integer(y)) {
+    return(0L)
+  }
+
+  attributes(x) <- NULL
+  attributes(y) <- NULL
+
+  n <- digits(abs(x - y))
+  if (!is.null(tolerance)) {
+    n <- min(n, digits(tolerance))
+  }
+
+  as.integer(n) + 1L
+}
+
+digits <- function(x) {
+  x <- x[!is.na(x) & x != 0]
+  if (length(x) == 0) {
+    return(0)
+  }
+  scale <- -log10(min(x))
+  if (scale <= 0) {
+    0L
+  } else {
+    ceiling(round(scale, digits = 2))
+  }
 }

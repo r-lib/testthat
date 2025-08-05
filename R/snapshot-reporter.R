@@ -35,9 +35,11 @@ SnapshotReporter <- R6::R6Class(
     },
 
     start_test = function(context, test) {
-      if (is.character(test)) {
-        self$test <- gsub("\n", "", test)
+      if (is.null(test)) {
+        return()
       }
+
+      self$test <- paste0(gsub("\n", "", test), collapse = " / ")
     },
 
     # Called by expectation
