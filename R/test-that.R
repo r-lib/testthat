@@ -89,11 +89,6 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
     reporter$add_result(context = reporter$.context, test = test, result = e)
   }
 
-  # Any error will be assigned to this variable first
-  # In case of stack overflow, no further processing (not even a call to
-  # signalCondition() ) might be possible
-  test_error <- NULL
-
   expressions_opt <- getOption("expressions")
   expressions_opt_new <- min(expressions_opt + 500L, 500000L)
 
@@ -104,39 +99,21 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
   handle_error <- function(e) {
     handled <<- TRUE
-    # First thing: Collect test error
-    test_error <<- e
 
     # Increase option(expressions) to handle errors here if possible, even in
-    # case of a stack overflow.  This is important for the DebugReporter.
-    # Call options() manually, avoid withr overhead.
-    options(expressions = expressions_opt_new)
-    withr::defer(options(expressions = expressions_opt))
+    # case of a stack overflow. This is important for the DebugReporter.
+    local_options(expressions = expressions_opt_new)
 
     # Add structured backtrace to the expectation
     if (can_entrace(e)) {
       e <- cnd_entrace(e)
     }
 
-    test_error <<- e
-
-    # Error will be handled by handle_fatal() if this fails; need to do it here
-    # to be able to debug with the DebugReporter
     register_expectation(e, 2)
-
-    e[["handled"]] <- TRUE
-    test_error <<- e
+    invokeRestart("end_test")
   }
   handle_fatal <- function(e) {
     handled <<- TRUE
-    # Error caught in handle_error() has precedence
-    if (!is.null(test_error)) {
-      e <- test_error
-      if (isTRUE(e[["handled"]])) {
-        return()
-      }
-    }
-
     register_expectation(e, 0)
   }
   handle_expectation <- function(e) {
@@ -162,7 +139,6 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
     }
 
     register_expectation(e, 5)
-
     tryInvokeRestart("muffleWarning")
   }
   handle_message <- function(e) {
@@ -175,7 +151,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
     debug_end <- if (inherits(e, "skip_empty")) -1 else 2
     register_expectation(e, debug_end)
-    signalCondition(e)
+    invokeRestart("end_test")
   }
 
   test_env <- new.env(parent = env)
@@ -185,24 +161,25 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
   withr::local_options(testthat_topenv = test_env)
 
   before <- inspect_state()
-  tryCatch(
-    withCallingHandlers(
-      {
-        eval(code, test_env)
-        if (!handled && !is.null(test)) {
-          skip_empty()
-        }
-      },
-      expectation = handle_expectation,
-      skip = handle_skip,
-      warning = handle_warning,
-      message = handle_message,
-      error = handle_error
+  withRestarts(
+    tryCatch(
+      withCallingHandlers(
+        {
+          eval(code, test_env)
+          if (!handled && !is.null(test)) {
+            skip_empty()
+          }
+        },
+        expectation = handle_expectation,
+        skip = handle_skip,
+        warning = handle_warning,
+        message = handle_message,
+        error = handle_error
+      ),
+      # some errors may need handling here, e.g., stack overflow
+      error = handle_fatal
     ),
-    # some errors may need handling here, e.g., stack overflow
-    error = handle_fatal,
-    # skip silently terminate code
-    skip = function(e) {}
+    end_test = function() {}
   )
   after <- inspect_state()
 
