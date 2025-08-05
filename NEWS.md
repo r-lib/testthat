@@ -1,9 +1,10 @@
 # testthat (development version)
 
+* Parallel testthat now does not ignore test files with syntax errors (#1360).
 * `ParallelProgressReporter` now respect `max_failures` (#1162).
 * The last snapshot is no longer lost if the snapshot file is missing the final newline (#2092). It's easy to accidentally remove this because there are two trailing new lines in snapshot files and many editors will automatically remove if you touch the file.
 * New `expect_r6_class()` (#2030).
-* `expect_*()` functions consistently and rigorously check their inputs (#1754). 
+* `expect_*()` functions consistently and rigorously check their inputs (#1754).
 * `JunitReporter()` no longer fails with `"no applicable method for xml_add_child"` for warnings outside of tests (#1913). Additionally, warnings now save their backtraces.
 * `JunitReporter()` strips ANSI escapes in more placese (#1852, #2032).
 * `try_again()` is now publicised. The first argument is now the number of retries, not tries (#2050).
