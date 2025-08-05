@@ -102,9 +102,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
     # Increase option(expressions) to handle errors here if possible, even in
     # case of a stack overflow. This is important for the DebugReporter.
-    # Call options() manually, avoid withr overhead.
-    options(expressions = expressions_opt_new)
-    withr::defer(options(expressions = expressions_opt))
+    local_options(expressions = expressions_opt_new)
 
     # Add structured backtrace to the expectation
     if (can_entrace(e)) {
