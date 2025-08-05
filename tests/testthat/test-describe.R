@@ -50,5 +50,6 @@ describe("describe", {
   it("should not be possible to access variables from other specs (2)", {
     expect_false(exists("some_test_var"))
   })
+  withr::local_options(width = 60)
   print(1:100)
 })
