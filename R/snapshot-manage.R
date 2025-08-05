@@ -77,6 +77,9 @@ review_app <- function(name, old_path, new_path) {
       diffviewer::visual_diff(old_path[[i()]], new_path[[i()]])
     })
 
+    # Can't skip if there's only one file to review
+    shiny::updateActionButton(session, "skip", disabled = (n <= 1))
+
     # Handle buttons - after clicking update move input$cases to next case,
     # and remove current case (for accept/reject). If no cases left, close app
     shiny::observeEvent(input$reject, {
@@ -104,6 +107,10 @@ review_app <- function(name, old_path, new_path) {
         choices = case_index[!handled],
         selected = i
       )
+
+      n_left <- sum(!handled)
+      # Disable skip button if only one case remains
+      shiny::updateActionButton(session, "skip", disabled = (n_left <= 1))
     }
     next_case <- function() {
       if (all(handled)) {
