@@ -143,6 +143,12 @@ parallel_event_loop_smooth <- function(queue, reporters, test_dir) {
 
     updated <- FALSE
     for (x in msgs) {
+      if (x$code == PROCESS_OUTPUT) {
+        lns <- paste0("> ", x$path, ": ", x$message)
+        cat("\n", file = stdout())
+        base::writeLines(lns, stdout())
+        next
+      }
       if (x$code != PROCESS_MSG) {
         next
       }
@@ -178,6 +184,11 @@ parallel_event_loop_chunky <- function(queue, reporters, test_dir) {
   while (!queue$is_idle()) {
     msgs <- queue$poll(Inf)
     for (x in msgs) {
+      if (x$code == PROCESS_OUTPUT) {
+        lns <- paste0("> ", x$path, ": ", x$message)
+        base::writeLines(lns, stdout())
+        next
+      }
       if (x$code != PROCESS_MSG) {
         next
       }
