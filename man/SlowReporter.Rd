@@ -11,10 +11,11 @@ is useful for performance optimization and identifying tests that may
 benefit from optimization or parallelization.
 
 \code{SlowReporter} is designed to identify slow tests. It reports the
-execution time for each test and can optionally filter out tests that
-run faster than a specified threshold (default: 1 second). This reporter
-is useful for performance optimization and identifying tests that may
-benefit from optimization or parallelization.
+execution time for each test, ignoring tests faster than a specified
+threshold (default: 0.5s).
+
+The easiest way to run it over your package is with
+\code{devtools::test(reporter = "slow")}.
 }
 \seealso{
 Other reporters: 
