@@ -8,8 +8,13 @@
     `x` is not strictly greater than 1.1 * x.
     0.0000100 - 0.0000110 = -0.0000010 <= 0
 
----
+# useful output when difference is zero
 
-    `x` is not strictly less than `x`.
+    `x` is not strictly less than 100.
     100.0 - 100.0 = 0.0 >= 0
+
+# useful output when differnce is large
+
+    `x` is not strictly less than 0.001.
+    100.000 - 0.001 = 99.999 >= 0
 

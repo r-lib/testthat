@@ -12,9 +12,16 @@ test_that("useful output when numbers are very small", {
   x <- 1e-5
   expect_snapshot_failure(expect_lte(1.1 * x, x))
   expect_snapshot_failure(expect_gt(x, 1.1 * x))
+})
 
+test_that("useful output when difference is zero", {
   x <- 100
-  expect_snapshot_failure(expect_lt(x, x))
+  expect_snapshot_failure(expect_lt(x, 100))
+})
+
+test_that("useful output when differnce is large", {
+  x <- 100
+  expect_snapshot_failure(expect_lt(x, 0.001))
 })
 
 test_that("comparison result object invisibly", {
