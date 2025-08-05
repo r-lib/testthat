@@ -78,6 +78,9 @@ task_q <- R6::R6Class(
             private$tasks$state[[i]] <- "ready"
             msg <- NULL
           } else if (msg$code == PROCESS_DONE) {
+            if (!is.null(msg$error)) {
+              private$handle_error(msg, i)
+            }
             private$tasks$state[[i]] <- "ready"
           } else if (msg$code %in% PROCESS_FAILURES) {
             private$handle_error(msg, i)
