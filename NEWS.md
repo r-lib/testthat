@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `test_dir()`, `test_file()`, `test_package()`, `test_check()`, `test_local()`, `source_file()` gain a `shuffle` argument that randomly reorders expressions using `sample()` (#1942). Randomly shuffling all the expressions in a test file ensures that you haven't accidentally introduced any dependencies between tests.
 * `ParallelProgressReporter` now respect `max_failures` (#1162).
 * The last snapshot is no longer lost if the snapshot file is missing the final newline (#2092). It's easy to accidentally remove this because there are two trailing new lines in snapshot files and many editors will automatically remove if you touch the file.
 * New `expect_r6_class()` (#2030).

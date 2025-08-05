@@ -63,7 +63,8 @@ test_local <- function(
   path = ".",
   reporter = NULL,
   ...,
-  load_package = "source"
+  load_package = "source",
+  shuffle = FALSE
 ) {
   package <- pkgload::pkg_name(path)
   test_path <- file.path(pkgload::pkg_path(path), "tests", "testthat")
@@ -74,6 +75,7 @@ test_local <- function(
     package = package,
     reporter = reporter,
     ...,
-    load_package = load_package
+    load_package = load_package,
+    shuffle = shuffle
   )
 }

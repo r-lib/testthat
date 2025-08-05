@@ -9,6 +9,7 @@ test_file(
   reporter = default_compact_reporter(),
   desc = NULL,
   package = NULL,
+  shuffle = FALSE,
   ...
 )
 }
@@ -25,6 +26,9 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 test (\code{test_that()} or \code{describe()}) with this \code{desc}ription.}
 
 \item{package}{If these tests belong to a package, the name of the package.}
+
+\item{shuffle}{If \code{TRUE}, randomly reorder the top-level expressions
+in the file.}
 
 \item{...}{Additional parameters passed on to \code{test_dir()}}
 }

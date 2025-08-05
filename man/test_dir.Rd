@@ -15,7 +15,8 @@ test_dir(
   stop_on_warning = FALSE,
   wrap = deprecated(),
   package = NULL,
-  load_package = c("none", "installed", "source")
+  load_package = c("none", "installed", "source"),
+  shuffle = FALSE
 )
 }
 \arguments{
@@ -57,6 +58,9 @@ field in your DESCRIPTION file:
 \if{html}{\out{<div class="sourceCode">}}\preformatted{Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
 }\if{html}{\out{</div>}}
 }}
+
+\item{shuffle}{If \code{TRUE}, randomly reorder the top-level expressions
+in the file.}
 }
 \value{
 A list (invisibly) containing data about the test results.
