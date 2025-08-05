@@ -89,11 +89,6 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
     reporter$add_result(context = reporter$.context, test = test, result = e)
   }
 
-  # Any error will be assigned to this variable first
-  # In case of stack overflow, no further processing (not even a call to
-  # signalCondition() ) might be possible
-  test_error <- NULL
-
   expressions_opt <- getOption("expressions")
   expressions_opt_new <- min(expressions_opt + 500L, 500000L)
 
@@ -104,11 +99,9 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
 
   handle_error <- function(e) {
     handled <<- TRUE
-    # First thing: Collect test error
-    test_error <<- e
 
     # Increase option(expressions) to handle errors here if possible, even in
-    # case of a stack overflow.  This is important for the DebugReporter.
+    # case of a stack overflow. This is important for the DebugReporter.
     # Call options() manually, avoid withr overhead.
     options(expressions = expressions_opt_new)
     on.exit(options(expressions = expressions_opt), add = TRUE)
@@ -118,13 +111,7 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
       e <- cnd_entrace(e)
     }
 
-    test_error <<- e
-
-    # Error will be handled by handle_fatal() if this fails; need to do it here
-    # to be able to debug with the DebugReporter
     register_expectation(e, 2)
-
-    test_error <<- e
     invokeRestart("end_test")
   }
   handle_fatal <- function(e) {
@@ -154,7 +141,6 @@ test_code <- function(test, code, env, reporter, skip_on_empty = TRUE) {
     }
 
     register_expectation(e, 5)
-
     tryInvokeRestart("muffleWarning")
   }
   handle_message <- function(e) {
