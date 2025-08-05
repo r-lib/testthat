@@ -55,7 +55,6 @@ source_file <- function(
   withr::local_options(testthat_topenv = env, testthat_path = path)
   if (wrap) {
     invisible(test_code(
-      test = NULL,
       code = exprs,
       env = env,
       reporter = get_reporter() %||% StopReporter$new()

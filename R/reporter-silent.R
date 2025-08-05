@@ -28,3 +28,11 @@ SilentReporter <- R6::R6Class(
     }
   )
 )
+
+# Useful for testing test_that() and friends which otherwise swallow
+# all expectations by design
+capture_expectations <- function(code) {
+  reporter <- SilentReporter$new()
+  with_reporter(reporter, code)
+  reporter$expectations()
+}

@@ -29,6 +29,7 @@ CountReporter <- R6::R6Class(
 test_that("contexts are opened, then closed", {
   local_edition(2)
   report <- CountReporter$new()
+  local_description_set()
 
   with_reporter(report, test_one_file("context.R"))
   expect_equal(report$context_count, 2)
