@@ -53,8 +53,7 @@ test_that("has to have a valid description for the block", {
 })
 
 test_that("names are concatenated", {
-  reporter <- SilentReporter$new()
-  with_reporter(reporter, {
+  expectations <- capture_expectations({
     describe("a", {
       describe("b", {
         it("c", {
@@ -65,18 +64,15 @@ test_that("names are concatenated", {
       })
     })
   })
-  expectation <- reporter$expectations()[[1]]
-  expect_equal(expectation$test, "a / b / c / d")
+  expect_equal(expectations[[1]]$test, "a / b / c / d")
 })
 
 test_that("skips are scoped to describe/it", {
-  reporter <- SilentReporter$new()
-  with_reporter(reporter, {
+  expectations <- capture_expectations({
     describe("", skip())
     describe("", expect_true())
     it("", skip())
     it("", expect_true(TRUE))
   })
-  results <- reporter$expectations()
-  expect_length(results, 4)
+  expect_length(expectations, 4)
 })
