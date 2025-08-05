@@ -147,3 +147,20 @@ test_that("no braces required in testthat 2e", {
     NA
   )
 })
+
+test_that("missing packages cause a skip on CRAN", {
+  local_on_cran(TRUE)
+
+  expectations <- capture_expectations(test_that("", {
+    library(notinstalled)
+  }))
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_skip")
+
+  local_on_cran(FALSE)
+  expectations <- capture_expectations(test_that("", {
+    library(notinstalled)
+  }))
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_error")
+})
