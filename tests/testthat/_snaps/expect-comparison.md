@@ -8,3 +8,8 @@
     `x` is not strictly greater than 1.1 * x.
     0.0000100 - 0.0000110 = -0.0000010 <= 0
 
+---
+
+    `x` is not strictly less than `x`.
+    100.0 - 100.0 = 0.0 >= 0
+

@@ -42,7 +42,11 @@ expect_compare_ <- function(
     abort("Result of comparison must be a single logical value")
   }
   if (!isTRUE(cmp)) {
-    digits <- min_digits(act$val, exp$val)
+    digits <- max(
+      digits(act$val),
+      digits(exp$val),
+      min_digits(act$val, exp$val)
+    )
     msg <- sprintf(
       "%s is %s %s.\n%s - %s = %s %s 0",
       act$lab,
