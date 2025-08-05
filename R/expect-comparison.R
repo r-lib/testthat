@@ -35,7 +35,7 @@ expect_compare_ <- function(
     ">=" = "not greater than"
   )[[operator]]
 
-  negated_op <- switch(operator, "<" = ">", "<=" = ">=", ">" = "<", ">=" = "<=")
+  negated_op <- switch(operator, "<" = ">=", "<=" = ">", ">" = "<=", ">=" = "<")
 
   cmp <- op(act$val, exp$val)
   if (length(cmp) != 1 || !is.logical(cmp)) {
