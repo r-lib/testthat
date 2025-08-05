@@ -133,79 +133,6 @@
     --------------------------------------------------------------------------------
     Maximum number of failures exceeded; quitting at end of file.
     i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
-    
-    == Results =====================================================================
-    -- Failed tests ----------------------------------------------------------------
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ]
-    == Terminated early ============================================================
-    
-    No one gets it right on their first try
 
 # can fully suppress incremental updates
 
@@ -631,4 +558,82 @@
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 5 ]
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 6 ]
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
+
+# ParallelProgressReporter fails after max_fail tests
+
+    v | F W  S  OK | Context
+    
+    - [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ] Starting up...                          
+    x | 11        0 | reporters/fail-many                                           
+    --------------------------------------------------------------------------------
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    --------------------------------------------------------------------------------
+    Maximum number of failures exceeded; quitting at end of file.
+    i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
+    
+                                                                                    
 

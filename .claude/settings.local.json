@@ -4,6 +4,7 @@
     "allow": [
       "Bash(find:*)",
       "Bash(R:*)",
+      "Bash(rm:*)",
       "Bash(air format:*)"
     ],
     "deny": []

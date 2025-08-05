@@ -16,6 +16,7 @@ General advice:
 
 - `devtools::test()` - Run all tests
 - `devtools::test_file("tests/testthat/test-filename.R")` - Run tests in a specific file
+- DO NOT USE `devtools::test_active_file()`
 - `devtools::load_all()` - Load package for development
 - `devtools::document()` - Generate documentation
 - `devtools::check()` - Run R CMD check

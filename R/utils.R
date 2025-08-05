@@ -37,7 +37,13 @@ rstudio_tickle <- function() {
   }
 
   rstudioapi::executeCommand("vcsRefresh")
-  rstudioapi::executeCommand("refreshFiles")
+  if (!is_positron()) {
+    rstudioapi::executeCommand("refreshFiles")
+  }
+}
+
+is_positron <- function() {
+  nzchar(Sys.getenv("POSITRON", ""))
 }
 
 first_upper <- function(x) {
