@@ -22,10 +22,10 @@ Other reporters:
 \code{\link{ProgressReporter}},
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
+\code{\link{SlowReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},
-\code{\link{TeamcityReporter}},
-\code{\link{TimingReporter}}
+\code{\link{TeamcityReporter}}
 }
 \concept{reporters}
