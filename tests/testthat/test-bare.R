@@ -16,6 +16,5 @@ stopifnot(
 )
 
 test_that("output", {
-  message("hello!")
   expect_true(TRUE)
 })
