@@ -50,7 +50,7 @@ test_dir <- function(
   load_helpers = TRUE,
   stop_on_failure = TRUE,
   stop_on_warning = FALSE,
-  wrap = lifecycle::deprecated(),
+  wrap = deprecated(),
   package = NULL,
   load_package = c("none", "installed", "source")
 ) {
@@ -311,7 +311,7 @@ test_files_reporter <- function(reporter, .env = parent.frame()) {
   reporters <- list(
     find_reporter(reporter),
     lister, # track data
-    local_snapshotter("_snaps", fail_on_new = FALSE, .env = .env)
+    local_snapshotter("_snaps", fail_on_new = on_ci(), .env = .env)
   )
   list(
     multi = MultiReporter$new(reporters = compact(reporters)),
@@ -341,7 +341,7 @@ test_one_file <- function(
   error_call = caller_env()
 ) {
   reporter <- get_reporter()
-  on.exit(teardown_run(), add = TRUE)
+  withr::defer(teardown_run())
 
   reporter$start_file(path)
   source_file(

@@ -147,3 +147,10 @@ test_that("expect_equivalent returns value", {
 
   expect_equal(expect_equivalent(one, one), 1)
 })
+
+test_that("expect_equal validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_equal(1, 2, tolerance = "high")
+    expect_equal(1, 2, tolerance = -1)
+  })
+})

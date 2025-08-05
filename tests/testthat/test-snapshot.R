@@ -175,7 +175,39 @@ test_that("hint is informative", {
 })
 
 test_that("expect_snapshot requires a non-empty test label", {
+  local_description_set()
+
   test_that("", {
     expect_error(expect_snapshot(1 + 1))
+  })
+
+  pass(NULL) # quiet message about this test being empty
+})
+
+test_that("expect_snapshot validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot(1 + 1, cran = "yes")
+    expect_snapshot(1 + 1, error = "yes")
+    expect_snapshot(1 + 1, cnd_class = "yes")
+  })
+})
+
+test_that("expect_snapshot_output validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_output(cat("test"), cran = "yes")
+  })
+})
+
+test_that("expect_snapshot_error validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_error(stop("!"), class = 123)
+    expect_snapshot_error(stop("!"), cran = "yes")
+  })
+})
+
+test_that("expect_snapshot_warning validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_warning(warning("!"), class = 123)
+    expect_snapshot_warning(warning("!"), cran = "yes")
   })
 })

@@ -56,7 +56,7 @@ StopReporter <- R6::R6Class(
         }
       } else {
         issues <- self$issues$as_list()
-        messages <- vapply(issues, issue_summary, rule = TRUE, character(1))
+        messages <- map_chr(issues, issue_summary, rule = TRUE)
         self$cat_line(messages, "\n")
       }
     },

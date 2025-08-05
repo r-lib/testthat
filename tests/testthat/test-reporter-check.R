@@ -7,7 +7,7 @@ test_that("basic report works", {
 })
 
 test_that("doesn't truncate long lines", {
-  on.exit(unlink(test_path("testthat-problems.rds")))
+  withr::defer(unlink(test_path("testthat-problems.rds")))
 
   expect_snapshot_reporter(
     CheckReporter$new(),
@@ -27,7 +27,7 @@ test_that("always shows summary", {
 })
 
 test_that("shows warnings when not on CRAN", {
-  on.exit(unlink(test_path("testthat-problems.rds")))
+  withr::defer(unlink(test_path("testthat-problems.rds")))
 
   withr::local_options("NOT_CRAN" = "true")
   expect_snapshot_reporter(CheckReporter$new(), test_path("reporters/tests.R"))

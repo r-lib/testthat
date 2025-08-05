@@ -32,7 +32,7 @@ test_that("reparse handles common cases", {
 })
 
 test_that("errors if can't roundtrip", {
-  snapper <- local_snapshotter()
+  snapper <- local_snapshotter(fail_on_new = FALSE)
   snapper$start_file("snapshot-4", "test")
 
   expect_error(expect_snapshot_value(NULL), "safely serialized")
@@ -47,4 +47,11 @@ test_that("check_roundtrip() gives nice error", {
     wrapper(NULL, list(), label = "foo", style = "json"),
     error = TRUE
   )
+})
+
+test_that("expect_snapshot_value validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_value(123, cran = "yes")
+    expect_snapshot_value(123, tolerance = "high")
+  })
 })

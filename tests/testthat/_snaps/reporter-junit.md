@@ -45,7 +45,12 @@
         </testcase>
       </testsuite>
       <testsuite name="Warnings" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="1" failures="0" errors="0" time="0">
-        <testcase time="0" classname="Warnings" name="warnings_get_backtraces"/>
+        <testcase time="0" classname="Warnings" name="warnings_get_backtraces">
+          <system-out>def
+    Backtrace:
+        x
+     1. \-f()</system-out>
+        </testcase>
         <testcase time="0" classname="Warnings" name="warnings_get_backtraces">
           <skipped message="Reason: empty test ('reporters/tests.R:44:1')"/>
         </testcase>

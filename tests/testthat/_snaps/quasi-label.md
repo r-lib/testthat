@@ -27,6 +27,6 @@
     Code
       expect_equal()
     Condition
-      Error:
+      Error in `expect_equal()`:
       ! argument `object` is missing, with no default.
 

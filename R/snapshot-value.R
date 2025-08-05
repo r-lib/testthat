@@ -29,10 +29,13 @@ expect_snapshot_value <- function(
   variant = NULL
 ) {
   edition_require(3, "expect_snapshot_value()")
-  variant <- check_variant(variant)
-  lab <- quo_label(enquo(x))
 
   style <- arg_match(style)
+  check_bool(cran)
+  check_number_decimal(tolerance, min = 0)
+
+  variant <- check_variant(variant)
+  lab <- quo_label(enquo(x))
 
   save <- switch(
     style,

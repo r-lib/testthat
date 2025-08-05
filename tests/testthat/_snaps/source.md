@@ -8,6 +8,24 @@
       Caused by error in `h()`:
       ! !
 
+# checks its inputs
+
+    Code
+      source_file(1)
+    Condition
+      Error:
+      ! `path` must be a single string, not the number 1.
+    Code
+      source_file("x")
+    Condition
+      Error:
+      ! `path` does not exist.
+    Code
+      source_file(".", "x")
+    Condition
+      Error:
+      ! `env` must be an environment, not the string "x".
+
 # can find only matching test
 
     Code
