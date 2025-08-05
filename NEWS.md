@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_lt()`, `expect_gt()`, and friends have a refined display that is more likely to display the correct number of digits and shows you the actual values compared.
 * `describe()`, `it()`, and `test_that()` now have a shared stack of descriptions so that if you nest any inside of each other, any resulting failures will show you the full path.
 * `describe()` now correctly scopes `skip()` (#2007).
 * `ParallelProgressReporter` now respect `max_failures` (#1162).
