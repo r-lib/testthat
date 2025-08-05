@@ -14,7 +14,3 @@ stopifnot(
     expectation_failure = function(e) TRUE
   )
 )
-
-test_that("output", {
-  expect_true(TRUE)
-})
