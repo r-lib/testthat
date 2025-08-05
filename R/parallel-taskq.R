@@ -52,7 +52,8 @@ task_q <- R6::R6Class(
         fun = I(list(fun)),
         args = I(list(args)),
         worker = I(list(NULL)),
-        path = args[[1]]
+        path = args[[1]],
+        startup = I(list(NULL))
       )
       private$schedule()
       invisible(id)
@@ -71,32 +72,41 @@ task_q <- R6::R6Class(
           as_ms(timeout)
         )
         results <- lapply(seq_along(pr), function(i) {
+          # nothing from this worker?
           if (is.null(pr[[i]]) || all(pr[[i]] != "ready")) {
             return()
           }
+
+          # there is a testthat message?
           worker <- private$tasks$worker[[i]]
-          msgs <- NULL
-          if (pr[[i]][["output"]] == "ready" || pr[[i]][["error"]] == "ready") {
+          msg <- if (pr[[i]][["process"]] == "ready") {
+            worker$read()
+          }
+
+          # there is an output message?
+          has_output <- pr[[i]][["output"]] == "ready" ||
+            pr[[i]][["error"]] == "ready"
+          outmsg <- NULL
+          if (has_output) {
             lns <- c(worker$read_output_lines(), worker$read_error_lines())
             inc <- paste0(worker$read_output(), worker$read_error())
             if (nchar(inc)) {
               lns <- c(lns, strsplit(inc, "\n", fixed = TRUE)[[1]])
             }
-            msg <- structure(
-              list(
-                code = PROCESS_OUTPUT,
-                message = lns,
-                path = private$tasks$path[i]
-              ),
-              class = "testthat_message"
-            )
-            msgs <- list(msg)
+            # startup message?
+            if (is.na(private$tasks$path[i])) {
+              private$tasks$startup[[i]] <- c(private$tasks$startup[[i]], lns)
+            } else {
+              outmsg <- structure(
+                list(
+                  code = PROCESS_OUTPUT,
+                  message = lns,
+                  path = private$tasks$path[i]
+                ),
+                class = "testthat_message"
+              )
+            }
           }
-          if (pr[[i]][["process"]] != "ready") {
-            return(msgs)
-          }
-
-          pri <- msg <- worker$read()
 
           ## TODO: why can this be NULL?
           if (is.null(msg) || msg$code == PROCESS_MSG) {
@@ -124,13 +134,10 @@ task_q <- R6::R6Class(
               class = c("testthat_process_error", "testthat_error")
             )
           }
-          if (!is.null(msg)) {
-            msgs <- c(msgs, list(msg))
-          }
-          msgs
+          compact(list(msg, outmsg))
         })
-        results <- results[!map_lgl(results, is.null)]
-        results <- unlist(results, recursive = FALSE)
+        # single list for all workers
+        results <- compact(unlist(results, recursive = FALSE))
 
         private$schedule()
         if (is.finite(timeout)) {
@@ -161,7 +168,8 @@ task_q <- R6::R6Class(
         fun = nl,
         args = nl,
         worker = nl,
-        path = NA_character_
+        path = NA_character_,
+        startup = nl
       )
       rsopts <- callr::r_session_options(stdout = "|", stderr = "|", ...)
       for (i in seq_len(concurrency)) {
@@ -205,7 +213,10 @@ task_q <- R6::R6Class(
       file <- private$tasks$args[[task_no]][[1]]
       if (is.null(fun)) {
         msg$error$stdout <- msg$stdout
-        msg$error$stderr <- msg$stderr
+        msg$error$stderr <- paste(
+          c(private$tasks$startup[[task_no]], msg$stderr),
+          collapse = "\n"
+        )
         abort(
           paste0(
             "testthat subprocess failed to start, stderr:\n",
