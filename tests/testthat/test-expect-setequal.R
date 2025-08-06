@@ -53,22 +53,19 @@ test_that("ignores order", {
   expect_success(expect_mapequal(list(a = 1, b = 2), list(b = 2, a = 1)))
 })
 
+test_that("ignores order recursively", {
+  x <- list(outer_1 = 1, outer_2 = list(inner_1 = 1, inner_2 = 2))
+  y <- list(outer_2 = list(inner_2 = 2, inner_1 = 1), outer_1 = 1)
+  expect_success(expect_mapequal(x, y))
+})
+
 test_that("error if any names are duplicated", {
-  expect_snapshot(
-    error = TRUE,
-    expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1))
-  )
-  expect_snapshot(
-    error = TRUE,
-    expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1))
-  )
-  expect_snapshot(
-    error = TRUE,
-    expect_mapequal(
-      list(a = 1, b = 2, b = 3),
-      list(b = 3, b = 2, a = 1)
-    )
-  )
+  expect_failure(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
+  expect_failure(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
+  expect_failure(expect_mapequal(
+    list(a = 1, b = 2, b = 3),
+    list(b = 3, b = 2, a = 1)
+  ))
 })
 
 test_that("handling NULLs", {
@@ -84,31 +81,9 @@ test_that("fails if values don't match", {
   expect_failure(expect_mapequal(list(a = 1, b = 2), list(a = 1, b = 3)))
 })
 
-test_that("check inputs", {
-  unnamed <- list(1)
-  named <- list(a = 1)
-  duplicated <- list(x = 1, x = 2)
-
-  expect_snapshot(error = TRUE, {
-    expect_mapequal(sum, named)
-    expect_mapequal(named, sum)
-
-    expect_mapequal(unnamed, named)
-    expect_mapequal(named, unnamed)
-
-    expect_mapequal(named, duplicated)
-    expect_mapequal(duplicated, named)
-  })
-})
-
-test_that("succeeds if comparing empty named and unnamed vectors", {
-  x1 <- list()
-  x2 <- setNames(list(), character())
-
-  expect_snapshot(.res1 <- expect_mapequal(x1, x1))
-  expect_snapshot(.res2 <- expect_mapequal(x1, x2))
-  expect_snapshot(.res3 <- expect_mapequal(x2, x1))
-  expect_snapshot(.res4 <- expect_mapequal(x2, x2))
+test_that("fails if unnamed values in different location if any unnamed values", {
+  expect_success(expect_mapequal(list(1, b = 2, c = 3), list(1, c = 3, b = 2)))
+  expect_failure(expect_mapequal(list(1, b = 2, c = 3), list(b = 2, 1, c = 3)))
 })
 
 # contains ----------------------------------------------------------------
