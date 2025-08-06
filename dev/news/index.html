@@ -57,7 +57,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-<ul><li>On CRAN, <code><a href="../reference/test_that.html">test_that()</a></code> now automatically skips if a package is not installed (<a href="https://github.com/r-lib/testthat/issues/1585" class="external-link">#1585</a>). Practically, this means that you no longer need to check that suggested packages are installed. (We don’t do this in the tidyverse because we think it has limited payoff, but other styles advise differently.)</li>
+<ul><li>Power <code><a href="../reference/expect_setequal.html">expect_mapequal()</a></code> with <code>waldo::compare(list_as_map = TRUE)</code> (<a href="https://github.com/r-lib/testthat/issues/1521" class="external-link">#1521</a>).</li>
+<li>On CRAN, <code><a href="../reference/test_that.html">test_that()</a></code> now automatically skips if a package is not installed (<a href="https://github.com/r-lib/testthat/issues/1585" class="external-link">#1585</a>). Practically, this means that you no longer need to check that suggested packages are installed. (We don’t do this in the tidyverse because we think it has limited payoff, but other styles advise differently.)</li>
 <li>
 <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> no longer skips on CRAN, as that skips the rest of the test. Instead it just returns, neither succeeding nor failing (<a href="https://github.com/r-lib/testthat/issues/1585" class="external-link">#1585</a>).</li>
 <li>Interrupting a test now prints the test name. This makes it easier to tell where a very slow test might be hanging (<a href="https://github.com/r-lib/testthat/issues/1464" class="external-link">#1464</a>)</li>
