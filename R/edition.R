@@ -40,7 +40,7 @@ edition_require <- function(in_edition, what) {
     return()
   }
 
-  stop(paste0("`", what, "` requires ", edition_name(in_edition), "."))
+  cli::cli_abort("{.code {what}} requires {edition_name(in_edition)}.")
 }
 
 edition_name <- function(x) {

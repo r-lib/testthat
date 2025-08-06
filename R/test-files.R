@@ -123,7 +123,7 @@ test_file <- function(
   ...
 ) {
   if (!file.exists(path)) {
-    stop("`path` does not exist", call. = FALSE)
+    cli::cli_abort("{.arg path} does not exist.")
   }
 
   test_files(
@@ -325,10 +325,10 @@ test_files_check <- function(
   stop_on_warning = FALSE
 ) {
   if (stop_on_failure && !all_passed(results)) {
-    stop("Test failures", call. = FALSE)
+    cli::cli_abort("Test failures.")
   }
   if (stop_on_warning && any_warnings(results)) {
-    stop("Tests generated warnings", call. = FALSE)
+    cli::cli_abort("Tests generated warnings.")
   }
 
   invisible(results)

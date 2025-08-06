@@ -40,7 +40,7 @@ task_q <- R6::R6Class(
         id <- private$get_next_id()
       }
       if (id %in% private$tasks$id) {
-        stop("Duplicate task id")
+        cli::cli_abort("Duplicate task id.")
       }
       before <- which(private$tasks$idle)[1]
       private$tasks <- df_add_row(

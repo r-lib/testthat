@@ -155,7 +155,7 @@ parallel_event_loop_smooth <- function(queue, reporters, test_dir) {
 
       m <- x$message
       if (!inherits(m, "testthat_message")) {
-        message(m)
+        cli::cli_inform("{m}")
         next
       }
 
@@ -195,7 +195,7 @@ parallel_event_loop_chunky <- function(queue, reporters, test_dir) {
 
       m <- x$message
       if (!inherits(m, "testthat_message")) {
-        message(m)
+        cli::cli_inform("{m}")
         next
       }
 

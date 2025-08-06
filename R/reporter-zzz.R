@@ -85,27 +85,34 @@ find_reporter <- function(reporter) {
     reporter$new()
   } else if (inherits(reporter, "Reporter")) {
     reporter
+  } else if (is_string(reporter)) {
+    find_reporter_one(reporter)
   } else if (is.character(reporter)) {
-    if (length(reporter) <= 1L) {
-      find_reporter_one(reporter)
-    } else {
-      MultiReporter$new(reporters = lapply(reporter, find_reporter_one))
-    }
+    MultiReporter$new(reporters = lapply(reporter, find_reporter_one))
   } else {
-    stop("Invalid input", call. = FALSE)
+    stop_input_type(
+      reporter,
+      c(
+        "a string",
+        "a character vector",
+        "a reporter object",
+        "a reporter class"
+      )
+    )
   }
 }
 
-find_reporter_one <- function(reporter, ...) {
-  check_string(reporter)
-
+find_reporter_one <- function(reporter, error_call = caller_env()) {
   name <- reporter
   substr(name, 1, 1) <- toupper(substr(name, 1, 1))
   name <- paste0(name, "Reporter")
 
   if (!exists(name)) {
-    stop("Can not find test reporter ", reporter, call. = FALSE)
+    cli::cli_abort(
+      "Cannot find test reporter {.str {reporter}}.",
+      call = error_call
+    )
   }
 
-  get(name)$new(...)
+  get(name)$new()
 }
