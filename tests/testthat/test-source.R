@@ -82,20 +82,54 @@ test_that("checks its inputs", {
   })
 })
 
+# filter_desc -------------------------------------------------------------
 
-# filter_label -------------------------------------------------------------
+test_that("works with all tests types", {
+  code <- exprs(
+    test_that("foo", {}),
+    describe("bar", {}),
+    it("baz", {})
+  )
+  expect_equal(filter_desc(code, "foo"), code[1])
+  expect_equal(filter_desc(code, "bar"), code[2])
+  expect_equal(filter_desc(code, "baz"), code[3])
+})
 
-test_that("can find only matching test", {
+test_that("only returns code before subtest", {
   code <- exprs(
     f(),
-    test_that("foo", {}),
+    describe("foo", {}),
     g(),
-    describe("bar", {}),
     h()
   )
-  expect_equal(filter_subtests(code, "foo"), code[c(1, 2)])
-  expect_equal(filter_subtests(code, "bar"), code[c(1, 3, 4)])
-  expect_snapshot(filter_subtests(code, "baz"), error = TRUE)
+  expect_equal(filter_desc(code, "foo"), code[c(1, 2)])
+})
+
+test_that("can select recursively", {
+  code <- exprs(
+    x <- 1,
+    describe("a", {
+      y <- 1
+      describe("b", {
+        z <- 1
+      })
+      y <- 2
+    }),
+    x <- 2
+  )
+
+  expect_equal(
+    filter_desc(code, c("a", "b")),
+    exprs(
+      x <- 1,
+      describe("a", {
+        y <- 1
+        describe("b", {
+          z <- 1
+        })
+      })
+    )
+  )
 })
 
 test_that("preserve srcrefs", {
@@ -110,8 +144,7 @@ test_that("preserve srcrefs", {
   expect_snapshot(filter_desc(code, "foo"))
 })
 
-
-test_that("errors if duplicate labels", {
+test_that("errors if zero or duplicate labels", {
   code <- exprs(
     f(),
     test_that("baz", {}),
@@ -119,7 +152,10 @@ test_that("errors if duplicate labels", {
     g()
   )
 
-  expect_snapshot(filter_desc(code, "baz"), error = TRUE)
+  expect_snapshot(error = TRUE, {
+    filter_desc(code, "baz")
+    filter_desc(code, "missing")
+  })
 })
 
 test_that("source_dir()", {
@@ -144,77 +180,4 @@ test_that("source_dir()", {
     wrap = FALSE
   )
   expect_equal(res[[1]](), "Hello World")
-})
-
-test_that("you can select deeply nested describe(...)", {
-  code <- exprs(
-    f(),
-    describe("level 0", {
-      g()
-      describe("level 1 A", {
-        h()
-        describe("level 2 A", {
-          i()
-          it("level 3 A", {
-            expect_equal(1, 1)
-          })
-          j()
-        })
-        k()
-        describe("level 2 B", {
-          l()
-          it("level 3 B", {
-            o()
-            expect_equal(1, 1)
-            p()
-          })
-          m()
-          it("level 3 C", {
-            o()
-            expect_equal(1, 1)
-            p()
-          })
-          n()
-          it("level 3 D", {
-            expect_equal(1, 1)
-          })
-          o()
-        })
-        p()
-        describe("level 2 C", {
-          expect_equal(1, 1)
-        })
-        r()
-      })
-      s()
-      describe("level 1 B", {})
-      t()
-    }),
-    x()
-  )
-
-  expected <- exprs(
-    f(),
-    describe("level 0", {
-      g()
-      describe("level 1 A", {
-        h()
-        k()
-        describe("level 2 B", {
-          l()
-          m()
-          it("level 3 C", {
-            o()
-            expect_equal(1, 1)
-            p()
-          })
-        })
-      })
-    })
-  )
-
-  expect_equal(
-    filter_subtests(code, c("level 0", "level 1 A", "level 2 B", "level 3 C")),
-    expected
-  )
 })

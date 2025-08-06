@@ -5,7 +5,9 @@
 #' @param path Path to files.
 #' @param pattern Regular expression used to filter files.
 #' @param env Environment in which to evaluate code.
-#' @param desc If not-`NULL`, will run only test with this `desc`ription.
+#' @param desc A character vector used to filter tests. This is used to
+#'   (recursively) filter the content of the file, so that only the non-test
+#'   code up to and including the match test is run.
 #' @param chdir Change working directory to `dirname(path)`?
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
@@ -41,7 +43,7 @@ source_file <- function(
   con <- textConnection(lines, encoding = "UTF-8")
   withr::defer(try(close(con), silent = TRUE))
   exprs <- parse(con, n = -1, srcfile = srcfile, encoding = "UTF-8")
-  exprs <- filter_subtests(exprs, desc, error_call = error_call)
+  exprs <- filter_desc(exprs, desc, error_call = error_call)
 
   n <- length(exprs)
   if (n == 0L) {
@@ -74,34 +76,32 @@ source_file <- function(
   }
 }
 
-filter_subtests <- function(exprs, descs, error_call = caller_env()) {
+filter_desc <- function(exprs, descs, error_call = caller_env()) {
   if (length(descs) == 0) {
     return(exprs)
   }
+  desc <- descs[[1]]
 
-  is_subtest <- unname(map_lgl(exprs, is_subtest))
+  subtest_idx <- which(unname(map_lgl(exprs, is_subtest)))
 
-  subtest_idx <- which(is_subtest)
-  code_idx <- which(!is_subtest)
-  matching_idx <- keep(subtest_idx, \(idx) {
-    exprs[[idx]][[2]] == descs[[1]]
-  })
-
+  matching_idx <- keep(subtest_idx, \(idx) exprs[[idx]][[2]] == desc)
   if (length(matching_idx) == 0) {
     cli::cli_abort(
-      "Failed to find test with specified description",
+      "Failed to find test with description {.str {desc}}.",
       call = error_call
     )
   } else if (length(matching_idx) > 1) {
     cli::cli_abort(
-      "Found multiple tests with specified description",
+      "Found multiple tests with description {.str {desc}}.",
       call = error_call
     )
   }
 
-  keep_idx <- intersect(seq_along(exprs), c(matching_idx, code_idx))
-  exprs[[matching_idx]] <- filter_subtests(
-    exprs[[matching_idx]],
+  # Want all code up to and including the matching test, except for subtests
+  keep_idx <- setdiff(seq2(1, matching_idx), setdiff(subtest_idx, matching_idx))
+  # Recursively inspect the components of the subtest
+  exprs[[matching_idx]][[3]] <- filter_desc(
+    exprs[[matching_idx]][[3]],
     descs[-1],
     error_call = error_call
   )
@@ -111,7 +111,6 @@ filter_subtests <- function(exprs, descs, error_call = caller_env()) {
 is_subtest <- function(expr) {
   is_call(expr, c("test_that", "describe", "it"), n = 2) && is_string(expr[[2]])
 }
-
 
 #' @rdname source_file
 #' @export
