@@ -169,7 +169,7 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
         expectation = handle_expectation,
         packageNotFoundError = function(e) {
           if (on_cran()) {
-            skip(paste0(e$package, " is not installed."))
+            skip(paste0("{", e$package, "} is not installed."))
           }
         },
         skip = handle_skip,
