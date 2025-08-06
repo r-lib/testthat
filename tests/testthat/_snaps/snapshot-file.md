@@ -1,3 +1,19 @@
+# warns on first creation
+
+    Code
+      out <- snapshot_file_equal(tempdir(), "test.txt", NULL, path)
+    Condition
+      Warning:
+      Adding new file snapshot: 'tests/testthat/_snaps/test.txt'
+
+---
+
+    Code
+      expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, "doesnt-exist.txt"))
+    Condition
+      Error in `snapshot_file_equal()`:
+      ! `doesnt-exist.txt` not found
+
 # snapshot_hint output differs in R CMD check
 
     Code

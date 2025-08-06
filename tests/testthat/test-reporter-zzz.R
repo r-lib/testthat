@@ -4,10 +4,9 @@ test_that("can locate reporter from name", {
 })
 
 test_that("useful error message if can't find reporter", {
-  expect_error(
-    find_reporter(c("summary", "blah")),
-    "Can not find test reporter blah"
-  )
+  expect_snapshot(error = TRUE, {
+    find_reporter(c("summary", "blah"))
+  })
 })
 
 test_that("character vector yields multi reporter", {

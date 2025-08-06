@@ -22,7 +22,7 @@ test_that("can compare data frames", {
 })
 
 test_that("warns if both inputs are named", {
-  expect_warning(expect_setequal(c(a = 1), c(b = 1)), "ignores names")
+  expect_snapshot(expect_setequal(c(a = 1), c(b = 1)))
 })
 
 test_that("checks inputs", {

@@ -1,3 +1,11 @@
+# warns if both inputs are named
+
+    Code
+      expect_setequal(c(a = 1), c(b = 1))
+    Condition
+      Warning:
+      expect_setequal() ignores names
+
 # checks inputs
 
     Code

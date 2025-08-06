@@ -48,3 +48,11 @@
 
     
 
+# stop if needed errors when needed
+
+    Code
+      r$stop_if_needed()
+    Condition
+      Error:
+      ! Test failed
+

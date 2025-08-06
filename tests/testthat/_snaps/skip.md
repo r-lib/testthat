@@ -78,6 +78,14 @@
 
     Reason: On Windows i386
 
+# skip_unless_r works as expected
+
+    Code
+      skip_unless_r("idfjdij")
+    Condition
+      Error in `skip_unless_r()`:
+      ! `spec` must be an valid version specification, like ">= 4.0.0", not "idfjdij".
+
 # skip_unless_r gives the expected output
 
     Reason: Current R version (4.5.0) does not satisfy requirement (>= 999.999.999)
