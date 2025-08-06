@@ -149,6 +149,12 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
     register_expectation(e, debug_end)
     invokeRestart("end_test")
   }
+  handle_interrupt <- function(e) {
+    if (!is.null(test)) {
+      cat("\n")
+      cli::cli_inform(c("!" = "Interrupting test: {test}"))
+    }
+  }
 
   test_env <- new.env(parent = env)
   old <- options(rlang_trace_top_env = test_env)[[1]]
@@ -167,10 +173,16 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
           }
         },
         expectation = handle_expectation,
+        packageNotFoundError = function(e) {
+          if (on_cran()) {
+            skip(paste0("{", e$package, "} is not installed."))
+          }
+        },
         skip = handle_skip,
         warning = handle_warning,
         message = handle_message,
-        error = handle_error
+        error = handle_error,
+        interrupt = handle_interrupt
       ),
       # some errors may need handling here, e.g., stack overflow
       error = handle_fatal
