@@ -211,3 +211,14 @@ test_that("expect_snapshot_warning validates its inputs", {
     expect_snapshot_warning(warning("!"), cran = "yes")
   })
 })
+
+test_that("on CRAN, snapshots are not run but don't skill entire test", {
+  local_on_cran(TRUE)
+
+  expectations <- capture_expectations(test_that("", {
+    expect_snapshot(1 + 1)
+    expect_true(TRUE)
+  }))
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_success")
+})

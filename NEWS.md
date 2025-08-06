@@ -1,6 +1,8 @@
 # testthat (development version)
 
 * On CRAN, `test_that()` will now automatically skip if a package is not installed (#1585). Practically, this means that you no longer need to check that suggested packages are installed. (We don't do this in the tidyverse because we think it has limited payoff, but other styles advise differently.)
+* `expect_snapshot()` no longer skips on CRAN, as that skips the rest of the test. Instead it just returns, neither succeeding nor failing (#1585).
+* Interrupting a test now prints the test name. This makes it easier to tell where a very slow test might be hanging (#1464)
 * Parallel testthat now does not ignore test files with syntax errors (#1360).
 * `expect_lt()`, `expect_gt()`, and friends have a refined display that is more likely to display the correct number of digits and shows you the actual values compared.
 * `describe()`, `it()`, and `test_that()` now have a shared stack of descriptions so that if you nest any inside of each other, any resulting failures will show you the full path.

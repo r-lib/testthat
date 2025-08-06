@@ -313,7 +313,7 @@ expect_snapshot_helper <- function(
   trace_env = caller_env()
 ) {
   if (!cran && on_cran()) {
-    skip("On CRAN")
+    return(invisible())
   }
 
   snapshotter <- get_snapshotter()
