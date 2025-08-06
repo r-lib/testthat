@@ -143,7 +143,7 @@ skip_unless_r <- function(spec) {
   parts <- unlist(strsplit(spec, " ", fixed = TRUE))
   if (length(parts) != 2L) {
     cli::cli_abort(
-      "{.arg spec} must be an valid version specification, like {.str >= 4.0.0}, not {.str spec}."
+      "{.arg spec} must be an valid version specification, like {.str >= 4.0.0}, not {.str {spec}}."
     )
   }
   comparator <- match.fun(parts[1L])
