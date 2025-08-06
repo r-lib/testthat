@@ -21,6 +21,7 @@ source_file <- function(
 ) {
   stopifnot(file.exists(path))
   stopifnot(is.environment(env))
+  check_character(desc, allow_null = TRUE)
 
   lines <- brio::read_lines(path)
   srcfile <- srcfilecopy(
@@ -35,7 +36,7 @@ source_file <- function(
   con <- textConnection(lines, encoding = "UTF-8")
   on.exit(try(close(con), silent = TRUE), add = TRUE)
   exprs <- parse(con, n = -1, srcfile = srcfile, encoding = "UTF-8")
-  exprs <- filter_desc(exprs, desc, error_call = error_call)
+  exprs <- filter_subtests(exprs, desc, error_call = error_call)
 
   n <- length(exprs)
   if (n == 0L) {
@@ -69,62 +70,44 @@ source_file <- function(
   }
 }
 
-filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
-  if (is.null(desc)) {
+filter_subtests <- function(exprs, descs, error_call = caller_env()) {
+  if (length(descs) == 0) {
     return(exprs)
   }
-  desc_levels <- if (is.list(desc)) {
-    desc
-  } else {
-    as.list(desc)
+
+  is_subtest <- unname(map_lgl(exprs, is_subtest))
+
+  subtest_idx <- which(is_subtest)
+  code_idx <- which(!is_subtest)
+  matching_idx <- keep(subtest_idx, \(idx) {
+    exprs[[idx]][[2]] == descs[[1]]
+  })
+
+  if (length(matching_idx) == 0) {
+    cli::cli_abort(
+      "Failed to find test with specified description",
+      call = error_call
+    )
+  } else if (length(matching_idx) > 1) {
+    cli::cli_abort(
+      "Found multiple tests with specified description",
+      call = error_call
+    )
   }
 
-  find_matching_expr <- function(exprs, queue) {
-    if (length(queue) == 0) {
-      exprs
-    } else {
-      found <- FALSE
-      include <- rep(FALSE, length(exprs))
-      desc <- queue[[1]]
-
-      for (i in seq_along(exprs)) {
-        expr <- exprs[[i]]
-
-        if (!is_call(expr, c("test_that", "describe", "it"), n = 2)) {
-          if (!found) {
-            include[[i]] <- TRUE
-          }
-        } else {
-          if (!is_string(expr[[2]])) {
-            next
-          }
-
-          test_desc <- as.character(expr[[2]])
-          if (test_desc != desc) {
-            next
-          }
-
-          if (found) {
-            abort(
-              "Found multiple tests with specified description",
-              call = error_call
-            )
-          }
-          include[[i]] <- TRUE
-          found <- TRUE
-          exprs[[i]][[3]] <- find_matching_expr(expr[[3]], queue[-1])
-        }
-      }
-
-      if (!found) {
-        abort("Failed to find test with specified description", call = error_call)
-      }
-
-      exprs[include]
-    }
-  }
-  find_matching_expr(exprs, desc_levels)
+  keep_idx <- intersect(seq_along(exprs), c(matching_idx, code_idx))
+  exprs[[matching_idx]] <- filter_subtests(
+    exprs[[matching_idx]],
+    descs[-1],
+    error_call = error_call
+  )
+  exprs[keep_idx]
 }
+
+is_subtest <- function(expr) {
+  is_call(expr, c("test_that", "describe", "it"), n = 2) && is_string(expr[[2]])
+}
+
 
 #' @rdname source_file
 #' @export

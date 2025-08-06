@@ -85,9 +85,9 @@ test_that("can find only matching test", {
     describe("bar", {}),
     h()
   )
-  expect_equal(filter_desc(code, "foo"), code[c(1, 2)])
-  expect_equal(filter_desc(code, "bar"), code[c(1, 3, 4)])
-  expect_snapshot(filter_desc(code, "baz"), error = TRUE)
+  expect_equal(filter_subtests(code, "foo"), code[c(1, 2)])
+  expect_equal(filter_subtests(code, "bar"), code[c(1, 3, 4)])
+  expect_snapshot(filter_subtests(code, "baz"), error = TRUE)
 })
 
 test_that("preserve srcrefs", {
@@ -205,5 +205,8 @@ test_that("you can select deeply nested describe(...)", {
     })
   )
 
-  expect_equal(filter_desc(code, c("level 0", "level 1 A", "level 2 B", "level 3 C")), expected)
+  expect_equal(
+    filter_subtests(code, c("level 0", "level 1 A", "level 2 B", "level 3 C")),
+    expected
+  )
 })
