@@ -2,8 +2,7 @@
 % Please edit documentation in R/reporter-list.R
 \name{ListReporter}
 \alias{ListReporter}
-\title{List reporter: gather all test results along with elapsed time and
-file information.}
+\title{Capture test results and metadata}
 \description{
 This reporter gathers all results, adding additional information such as
 test elapsed time, and test filename if available. Very useful for reporting.

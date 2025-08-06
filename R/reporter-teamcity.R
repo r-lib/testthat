@@ -1,4 +1,4 @@
-#' Test reporter: Teamcity format.
+#' Report results in Teamcity format
 #'
 #' This reporter will output results in the Teamcity message format.
 #' For more information about Teamcity messages, see

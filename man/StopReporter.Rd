@@ -2,13 +2,12 @@
 % Please edit documentation in R/reporter-stop.R
 \name{StopReporter}
 \alias{StopReporter}
-\title{Test reporter: stop on error}
+\title{Error if any test fails}
 \description{
 The default reporter used when \code{\link[=expect_that]{expect_that()}} is run interactively.
 It responds by \code{\link[=stop]{stop()}}ping on failures and doing nothing otherwise. This
 will ensure that a failing test will raise an error.
-}
-\details{
+
 This should be used when doing a quick and dirty test, or during the final
 automated testing of R CMD check.  Otherwise, use a reporter that runs all
 tests and gives you more context about the problem.

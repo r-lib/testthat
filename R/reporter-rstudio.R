@@ -1,4 +1,4 @@
-#' Test reporter: RStudio
+#' Report results to RStudio
 #'
 #' This reporter is designed for output to RStudio. It produces results in
 #' any easily parsed form.

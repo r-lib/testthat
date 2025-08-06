@@ -1,4 +1,4 @@
-#' Test reporter: gather all errors silently.
+#' Gather all expectations silently
 #'
 #' This reporter quietly runs all tests, simply gathering all expectations.
 #' This is helpful for programmatically inspecting errors after a test run.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-silent.R
 \name{SilentReporter}
 \alias{SilentReporter}
-\title{Test reporter: gather all errors silently.}
+\title{Gather all expectations silently}
 \description{
 This reporter quietly runs all tests, simply gathering all expectations.
 This is helpful for programmatically inspecting errors after a test run.

@@ -1,5 +1,6 @@
-#' Test reporter: stop on error
+#' Error if any test fails
 #'
+#' @description
 #' The default reporter used when [expect_that()] is run interactively.
 #' It responds by [stop()]ping on failures and doing nothing otherwise. This
 #' will ensure that a failing test will raise an error.

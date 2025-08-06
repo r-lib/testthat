@@ -2,7 +2,7 @@
 % Please edit documentation in R/test-state.R
 \name{set_state_inspector}
 \alias{set_state_inspector}
-\title{State inspected}
+\title{Check for global state changes}
 \usage{
 set_state_inspector(callback)
 }

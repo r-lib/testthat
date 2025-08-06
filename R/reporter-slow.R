@@ -1,4 +1,4 @@
-#' Test reporter: show timings for slow tests
+#' Find slow tests
 #'
 #' @description
 #' `SlowReporter` is designed to identify slow tests. It reports the
