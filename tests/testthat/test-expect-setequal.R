@@ -54,7 +54,6 @@ test_that("ignores order", {
 })
 
 test_that("ignores order recursively", {
-  local_edition(3)
   x <- list(outer_1 = 1, outer_2 = list(inner_1 = 1, inner_2 = 2))
   y <- list(outer_2 = list(inner_2 = 2, inner_1 = 1), outer_1 = 1)
   expect_success(expect_mapequal(x, y))
