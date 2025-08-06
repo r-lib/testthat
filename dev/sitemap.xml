@@ -26,6 +26,7 @@
 <url><loc>https://testthat.r-lib.org/dev/reference/RStudioReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/Reporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/SilentReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/reference/SlowReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/StopReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/SummaryReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/TapReporter.html</loc></url>
