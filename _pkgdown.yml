@@ -79,8 +79,8 @@ reference:
 
 - title: Reporters
   contents:
-  - Reporter
   - ends_with("Reporter")
+  - -Reporter
 
 news:
   releases:

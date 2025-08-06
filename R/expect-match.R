@@ -1,4 +1,4 @@
-#' Does a string match a regular expression?
+#' Do you expect a string to match this pattern?
 #'
 #' @details
 #' `expect_match()` checks if a character vector matches a regular expression,

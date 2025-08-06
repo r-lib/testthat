@@ -1,4 +1,4 @@
-#' Report 13 line summary of problems
+#' Report results for `R CMD check`
 #'
 #' `R CMD check` displays only the last 13 lines of the result, so this
 #' report is designed to ensure that you see something useful there.

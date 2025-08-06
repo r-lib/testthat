@@ -2,7 +2,7 @@
 % Please edit documentation in R/test-compiled-code.R
 \name{use_catch}
 \alias{use_catch}
-\title{Use Catch for C++ Unit Testing}
+\title{Use Catch for C++ unit testing}
 \usage{
 use_catch(dir = getwd())
 }

@@ -7,8 +7,7 @@
 \alias{expect_s4_class}
 \alias{expect_r6_class}
 \alias{expect_s7_class}
-\title{Does code return an object inheriting from the expected base type, S3 class,
-or S4 class?}
+\title{Do you expect an S3/S4/R6/S7 object that inherits from this class?}
 \usage{
 expect_type(object, type)
 

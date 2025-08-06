@@ -1,4 +1,4 @@
-#' Does code return a number greater/less than the expected value?
+#' Do you expect a number bigger or smaller than this?
 #'
 #' @inheritParams expect_equal
 #' @param object,expected A value to compare and its expected bound.

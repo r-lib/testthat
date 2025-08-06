@@ -1,4 +1,4 @@
-#' Mocking tools
+#' Temporarily redefine function definitions
 #'
 #' @description
 #' `with_mocked_bindings()` and `local_mocked_bindings()` provide tools for

@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-named.R
 \name{expect_named}
 \alias{expect_named}
-\title{Does code return a vector with (given) names?}
+\title{Do you expect a vector with (these) names?}
 \usage{
 expect_named(
   object,
