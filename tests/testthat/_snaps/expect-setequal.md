@@ -1,3 +1,16 @@
+# checks inputs
+
+    Code
+      expect_setequal(sum, 1)
+    Condition
+      Error in `expect_setequal()`:
+      ! `object` must be a vector, not a primitive function.
+    Code
+      expect_setequal(1, sum)
+    Condition
+      Error in `expect_setequal()`:
+      ! `expected` must be a vector, not a primitive function.
+
 # useful message on failure
 
     "actual" (`actual`) and "expected" (`expected`) don't have the same values.

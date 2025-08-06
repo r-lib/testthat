@@ -4,7 +4,7 @@ local_edition(2)
 
 test_that("uses specified width", {
   old <- options(width = 20)
-  on.exit(options(old), add = TRUE)
+  withr::defer(options(old))
 
   x <- 1:100
   expect_known_output(print(x), "width-80.txt")
@@ -51,7 +51,7 @@ test_that("Warning for non-UTF-8 reference files", {
   Encoding(x) <- "latin1"
 
   tmp <- tempfile()
-  on.exit(unlink(tmp), add = TRUE)
+  withr::defer(unlink(tmp))
   writeBin(x, tmp)
 
   suppressWarnings(
@@ -81,7 +81,7 @@ test_that("first run is successful", {
 
 test_that("equal_to_ref does not overwrite existing", {
   tmp_rds <- tempfile(fileext = ".rds")
-  on.exit(unlink(tmp_rds))
+  withr::defer(unlink(tmp_rds))
   ref_obj1 <- 1:3
   ref_obj2 <- 2:4
   saveRDS(ref_obj1, tmp_rds)
@@ -99,7 +99,7 @@ test_that("equal_to_ref does not overwrite existing", {
 
 test_that("serializes to version 2 by default", {
   tmp_rds <- tempfile(fileext = ".rds")
-  on.exit(unlink(tmp_rds))
+  withr::defer(unlink(tmp_rds))
 
   expect_warning(
     expect_known_value("a", tmp_rds),
@@ -111,7 +111,7 @@ test_that("serializes to version 2 by default", {
 
 test_that("version 3 is possible", {
   tmp_rds <- tempfile(fileext = ".rds")
-  on.exit(unlink(tmp_rds))
+  withr::defer(unlink(tmp_rds))
 
   expect_warning(
     expect_known_value("a", tmp_rds, version = 3),

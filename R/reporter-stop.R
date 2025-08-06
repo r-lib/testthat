@@ -14,48 +14,53 @@ StopReporter <- R6::R6Class(
   "StopReporter",
   inherit = Reporter,
   public = list(
-    failures = NULL,
+    # All expectations that need to be reported (error, failure, warning, skip)
+    issues = NULL,
+    # Expectations that should cause the test to fail (error, failure)
     n_fail = 0L,
+    # Successful expectations
+    n_success = 0L,
     stop_reporter = TRUE,
     praise = TRUE,
 
     initialize = function(stop_reporter = TRUE, praise = TRUE) {
       super$initialize()
-      self$failures <- Stack$new()
+      self$issues <- Stack$new()
       self$praise <- praise
       self$stop_reporter <- stop_reporter
     },
 
     start_test = function(context, test) {
-      self$failures <- Stack$new()
+      self$issues <- Stack$new()
     },
 
     add_result = function(context, test, result) {
       if (expectation_success(result)) {
+        self$n_success <- self$n_success + 1
         return()
       }
 
       if (expectation_broken(result)) {
         self$n_fail <- self$n_fail + 1
       }
-
-      self$failures$push(result)
+      self$issues$push(result)
     },
 
     end_test = function(context, test) {
       self$local_user_output()
 
-      failures <- self$failures$as_list()
-      if (length(failures) == 0 && self$praise) {
-        self$cat_line(colourise("Test passed", "success"), " ", praise_emoji())
-        return()
-      }
-
-      messages <- vapply(failures, issue_summary, rule = TRUE, character(1))
-      if (length(messages) > 0) {
+      if (self$issues$size() == 0) {
+        if (self$praise && self$n_success > 0) {
+          emoji <- praise_emoji()
+          self$cat_line(colourise("Test passed", "success"), " ", emoji)
+        }
+      } else {
+        issues <- self$issues$as_list()
+        messages <- map_chr(issues, issue_summary, rule = TRUE)
         self$cat_line(messages, "\n")
       }
     },
+
     stop_if_needed = function() {
       if (self$stop_reporter && self$n_fail > 0) {
         abort("Test failed", call = NULL)

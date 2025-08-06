@@ -133,79 +133,6 @@
     --------------------------------------------------------------------------------
     Maximum number of failures exceeded; quitting at end of file.
     i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
-    
-    == Results =====================================================================
-    -- Failed tests ----------------------------------------------------------------
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    Failure ('reporters/fail-many.R:3:5'): Example
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ]
-    == Terminated early ============================================================
-    
-    No one gets it right on their first try
 
 # can fully suppress incremental updates
 
@@ -267,7 +194,7 @@
     Backtrace:
         x
      1. +-testthat::expect_s3_class(foo(), "foo")
-     2. | \-testthat::quasi_label(enquo(object), arg = "object")
+     2. | \-testthat::quasi_label(enquo(object))
      3. |   +-testthat:::labelled_value(...)
      4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
      5. \-foo()
@@ -277,13 +204,13 @@
     Backtrace:
          x
       1. +-testthat::expect_s3_class(f(), "foo")
-      2. | \-testthat::quasi_label(enquo(object), arg = "object")
+      2. | \-testthat::quasi_label(enquo(object))
       3. |   +-testthat:::labelled_value(...)
       4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
       5. \-f()
       6.   \-g()
       7.     +-testthat::expect_s3_class(foo(), "foo")
-      8.     | \-testthat::quasi_label(enquo(object), arg = "object")
+      8.     | \-testthat::quasi_label(enquo(object))
       9.     |   +-testthat:::labelled_value(...)
      10.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
      11.     \-foo()
@@ -295,7 +222,7 @@
      1. \-f()
      2.   \-g()
      3.     +-testthat::expect_s3_class(foo(), "foo")
-     4.     | \-testthat::quasi_label(enquo(object), arg = "object")
+     4.     | \-testthat::quasi_label(enquo(object))
      5.     |   +-testthat:::labelled_value(...)
      6.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
      7.     \-foo()
@@ -398,7 +325,7 @@
     Backtrace:
         x
      1. +-testthat::expect_s3_class(foo(), "foo")
-     2. | \-testthat::quasi_label(enquo(object), arg = "object")
+     2. | \-testthat::quasi_label(enquo(object))
      3. |   +-testthat:::labelled_value(...)
      4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
      5. \-foo()
@@ -408,13 +335,13 @@
     Backtrace:
          x
       1. +-testthat::expect_s3_class(f(), "foo")
-      2. | \-testthat::quasi_label(enquo(object), arg = "object")
+      2. | \-testthat::quasi_label(enquo(object))
       3. |   +-testthat:::labelled_value(...)
       4. |   \-rlang::eval_bare(expr, quo_get_env(quo))
       5. \-f()
       6.   \-g()
       7.     +-testthat::expect_s3_class(foo(), "foo")
-      8.     | \-testthat::quasi_label(enquo(object), arg = "object")
+      8.     | \-testthat::quasi_label(enquo(object))
       9.     |   +-testthat:::labelled_value(...)
      10.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
      11.     \-foo()
@@ -426,7 +353,7 @@
      1. \-f()
      2.   \-g()
      3.     +-testthat::expect_s3_class(foo(), "foo")
-     4.     | \-testthat::quasi_label(enquo(object), arg = "object")
+     4.     | \-testthat::quasi_label(enquo(object))
      5.     |   +-testthat:::labelled_value(...)
      6.     |   \-rlang::eval_bare(expr, quo_get_env(quo))
      7.     \-foo()
@@ -631,4 +558,82 @@
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 5 ]
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 6 ]
     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
+
+# ParallelProgressReporter fails after max_fail tests
+
+    v | F W  S  OK | Context
+    
+    - [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ] Starting up...                          
+    x | 11        0 | reporters/fail-many                                           
+    --------------------------------------------------------------------------------
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
+    Failure ('reporters/fail-many.R:3:5'): Example
+    FALSE (`actual`) is not equal to TRUE (`expected`).
+    
+    `actual`:   FALSE
+    `expected`: TRUE 
+    --------------------------------------------------------------------------------
+    Maximum number of failures exceeded; quitting at end of file.
+    i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
+    
+                                                                                    
 

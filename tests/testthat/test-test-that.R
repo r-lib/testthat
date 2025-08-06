@@ -9,7 +9,7 @@ test_that("can't access variables from other tests (2)", {
 test_that("messages are suppressed", {
   local_edition(2)
   message("YOU SHOULDN'T SEE ME")
-  succeed()
+  pass(NULL)
 })
 
 test_that("errors are captured", {
@@ -72,7 +72,7 @@ test_that("return value from test_that", {
   with_reporter(
     "",
     success <- test_that("success", {
-      succeed()
+      pass(NULL)
     })
   )
   expect_true(success)
@@ -146,4 +146,21 @@ test_that("no braces required in testthat 2e", {
     test_that("", expect_true(TRUE)),
     NA
   )
+})
+
+test_that("missing packages cause a skip on CRAN", {
+  local_on_cran(TRUE)
+
+  expectations <- capture_expectations(test_that("", {
+    library(notinstalled)
+  }))
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_skip")
+
+  local_on_cran(FALSE)
+  expectations <- capture_expectations(test_that("", {
+    library(notinstalled)
+  }))
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_error")
 })

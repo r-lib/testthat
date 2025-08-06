@@ -83,3 +83,16 @@
       
       i You may need to try a different `style`.
 
+# expect_snapshot_value validates its inputs
+
+    Code
+      expect_snapshot_value(123, cran = "yes")
+    Condition
+      Error in `expect_snapshot_value()`:
+      ! `cran` must be `TRUE` or `FALSE`, not the string "yes".
+    Code
+      expect_snapshot_value(123, tolerance = "high")
+    Condition
+      Error in `expect_snapshot_value()`:
+      ! `tolerance` must be a number, not the string "high".
+

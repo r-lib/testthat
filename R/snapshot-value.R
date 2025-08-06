@@ -29,10 +29,13 @@ expect_snapshot_value <- function(
   variant = NULL
 ) {
   edition_require(3, "expect_snapshot_value()")
-  variant <- check_variant(variant)
-  lab <- quo_label(enquo(x))
 
   style <- arg_match(style)
+  check_bool(cran)
+  check_number_decimal(tolerance, min = 0)
+
+  variant <- check_variant(variant)
+  lab <- quo_label(enquo(x))
 
   save <- switch(
     style,
@@ -77,43 +80,20 @@ expect_snapshot_value <- function(
 # Safe environment for evaluating deparsed objects, based on inspection of
 # https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
 reparse <- function(x) {
-  env <- env(
-    emptyenv(),
-    `-` = `-`,
-    c = c,
-    list = list,
-    quote = quote,
-    structure = structure,
-    expression = expression,
-    `function` = `function`,
-    new = methods::new,
-    getClass = methods::getClass,
-    pairlist = pairlist,
-    alist = alist,
-    as.pairlist = as.pairlist
+  env <- env(emptyenv())
+  env_bind(
+    env,
+    !!!env_get_list(
+      base_env(),
+      c(
+        c("c", "structure", ":", "-"),
+        c("list", "numeric", "integer", "logical", "character"),
+        "function",
+        c("quote", "alist", "pairlist", "as.pairlist", "expression")
+      )
+    )
   )
-
-  eval(parse(text = x), env)
-}
-
-# Safe environment for evaluating deparsed objects, based on inspection of
-# https://github.com/wch/r-source/blob/5234fe7b40aad8d3929d240c83203fa97d8c79fc/src/main/deparse.c#L845
-reparse <- function(x) {
-  env <- env(
-    emptyenv(),
-    `-` = `-`,
-    c = c,
-    list = list,
-    quote = quote,
-    structure = structure,
-    expression = expression,
-    `function` = `function`,
-    new = methods::new,
-    getClass = methods::getClass,
-    pairlist = pairlist,
-    alist = alist,
-    as.pairlist = as.pairlist
-  )
+  env_bind(env, !!!env_get_list(ns_env("methods"), c("new", "getClass")))
 
   eval(parse(text = x), env)
 }

@@ -11,7 +11,7 @@ test_that("source_file always uses UTF-8 encoding", {
 
   ## Some text in UTF-8
   tmp <- tempfile()
-  on.exit(unlink(tmp), add = TRUE)
+  withr::defer(unlink(tmp))
   utf8 <- as.raw(c(
     0xc3,
     0xa1,
@@ -71,6 +71,14 @@ test_that("source_file always uses UTF-8 encoding", {
 test_that("source_file wraps error", {
   expect_snapshot(error = TRUE, {
     source_file(test_path("reporters/error-setup.R"), wrap = FALSE)
+  })
+})
+
+test_that("checks its inputs", {
+  expect_snapshot(error = TRUE, {
+    source_file(1)
+    source_file("x")
+    source_file(".", "x")
   })
 })
 

@@ -8,18 +8,22 @@ testthat is R's most popular unit testing framework, used by thousands of CRAN p
 
 ## Key Development Commands
 
-### Testing
-- `devtools::test()` or `Ctrl/Cmd+Shift+T` in RStudio - Run all tests
-- `devtools::test_file("tests/testthat/test-filename.R")` - Run tests in a specific file
-- `testthat::test_local()` - Run tests for local source package
-- `testthat::test_package("testthat")` - Run tests for installed package
-- `R CMD check` - Full package check including tests
+General advice:
+* When running R from the console, always run it with `--quiet --vanilla`
+* Always run `air format .` after generating code
 
-### Building and Installation
-- `devtools::load_all()` or `Ctrl/Cmd+Shift+L` - Load package for development
-- `devtools::document()` - Generate documentation
+### Development tools
+
+- `devtools::test()` - Run all tests
+- `devtools::test_file("tests/testthat/test-filename.R")` - Run tests in a specific file
+- DO NOT USE `devtools::test_active_file()`
+- `devtools::load_all()` - Load package for development
 - `devtools::check()` - Run R CMD check
 - `devtools::install()` - Install package locally
+
+### Documentation
+
+- Always run `devtools::document()` after changing any roxygen2 docs.
 
 ## Core Architecture
 

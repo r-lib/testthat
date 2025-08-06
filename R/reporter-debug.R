@@ -13,7 +13,7 @@ DebugReporter <- R6::R6Class(
       if (!expectation_success(result) && !is.null(result$start_frame)) {
         if (sink_number() > 0) {
           sink(self$out)
-          on.exit(sink(), add = TRUE)
+          withr::defer(sink())
         }
 
         recover2(
@@ -53,7 +53,7 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
 
   if (.isMethodsDispatchOn()) {
     tState <- tracingState(FALSE)
-    on.exit(tracingState(tState))
+    withr::defer(tracingState(tState))
   }
   from <- min(end_frame, length(calls))
 
