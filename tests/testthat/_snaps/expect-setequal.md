@@ -1,3 +1,11 @@
+# warns if both inputs are named
+
+    Code
+      expect_setequal(c(a = 1), c(b = 1))
+    Condition
+      Warning:
+      expect_setequal() ignores names
+
 # checks inputs
 
     Code
@@ -50,6 +58,33 @@
     * Only in `expected`: 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
     
 
+# error if any names are duplicated
+
+    Code
+      expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1))
+    Condition
+      Error in `expect_mapequal()`:
+      ! All elements in `object` must have unique names.
+      x Duplicate names: "b"
+
+---
+
+    Code
+      expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1))
+    Condition
+      Error in `expect_mapequal()`:
+      ! All elements in `expected` must have unique names.
+      x Duplicate names: "b"
+
+---
+
+    Code
+      expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 3, b = 2, a = 1))
+    Condition
+      Error in `expect_mapequal()`:
+      ! All elements in `object` must have unique names.
+      x Duplicate names: "b"
+
 # check inputs
 
     Code
@@ -86,6 +121,38 @@
       Error in `expect_mapequal()`:
       ! All elements in `object` must have unique names.
       x Duplicate names: "x"
+
+# succeeds if comparing empty named and unnamed vectors
+
+    Code
+      .res1 <- expect_mapequal(x1, x1)
+    Condition
+      Warning:
+      `object` and `expected` are empty lists
+
+---
+
+    Code
+      .res2 <- expect_mapequal(x1, x2)
+    Condition
+      Warning:
+      `object` and `expected` are empty lists
+
+---
+
+    Code
+      .res3 <- expect_mapequal(x2, x1)
+    Condition
+      Warning:
+      `object` and `expected` are empty lists
+
+---
+
+    Code
+      .res4 <- expect_mapequal(x2, x2)
+    Condition
+      Warning:
+      `object` and `expected` are empty lists
 
 # expect_contains() gives useful message on failure
 

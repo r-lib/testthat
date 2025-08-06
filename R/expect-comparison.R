@@ -39,7 +39,10 @@ expect_compare_ <- function(
 
   cmp <- op(act$val, exp$val)
   if (length(cmp) != 1 || !is.logical(cmp)) {
-    abort("Result of comparison must be a single logical value")
+    abort(
+      "Result of comparison must be a single logical value",
+      call = trace_env
+    )
   }
   if (!isTRUE(cmp)) {
     digits <- max(

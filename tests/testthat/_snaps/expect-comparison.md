@@ -18,3 +18,11 @@
     `x` is not strictly less than 0.001.
     100.000 - 0.001 = 99.999 >= 0
 
+# comparison must yield a single logical
+
+    Code
+      expect_lt(1:10, 5)
+    Condition
+      Error in `expect_lt()`:
+      ! Result of comparison must be a single logical value
+

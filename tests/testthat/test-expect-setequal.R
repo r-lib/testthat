@@ -22,7 +22,7 @@ test_that("can compare data frames", {
 })
 
 test_that("warns if both inputs are named", {
-  expect_warning(expect_setequal(c(a = 1), c(b = 1)), "ignores names")
+  expect_snapshot(expect_setequal(c(a = 1), c(b = 1)))
 })
 
 test_that("checks inputs", {
@@ -54,12 +54,21 @@ test_that("ignores order", {
 })
 
 test_that("error if any names are duplicated", {
-  expect_error(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
-  expect_error(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
-  expect_error(expect_mapequal(
-    list(a = 1, b = 2, b = 3),
-    list(b = 3, b = 2, a = 1)
-  ))
+  expect_snapshot(
+    error = TRUE,
+    expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1))
+  )
+  expect_snapshot(
+    error = TRUE,
+    expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1))
+  )
+  expect_snapshot(
+    error = TRUE,
+    expect_mapequal(
+      list(a = 1, b = 2, b = 3),
+      list(b = 3, b = 2, a = 1)
+    )
+  )
 })
 
 test_that("handling NULLs", {
@@ -96,10 +105,10 @@ test_that("succeeds if comparing empty named and unnamed vectors", {
   x1 <- list()
   x2 <- setNames(list(), character())
 
-  expect_warning(expect_success(expect_mapequal(x1, x1)))
-  expect_warning(expect_success(expect_mapequal(x1, x2)))
-  expect_warning(expect_success(expect_mapequal(x2, x1)))
-  expect_warning(expect_success(expect_mapequal(x2, x2)))
+  expect_snapshot(.res1 <- expect_mapequal(x1, x1))
+  expect_snapshot(.res2 <- expect_mapequal(x1, x2))
+  expect_snapshot(.res3 <- expect_mapequal(x2, x1))
+  expect_snapshot(.res4 <- expect_mapequal(x2, x2))
 })
 
 # contains ----------------------------------------------------------------

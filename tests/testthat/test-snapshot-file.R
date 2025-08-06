@@ -38,10 +38,7 @@ test_that("expect_snapshot_file works in a different directory", {
   brio::write_lines("a", "a.txt", eol = "\r\n")
 
   # expect no warning
-  expect_warning(
-    expect_snapshot_file("a.txt"),
-    regexp = NA
-  )
+  expect_no_warning(expect_snapshot_file("a.txt"))
 })
 
 test_that("expect_snapshot_file works with variant", {
@@ -99,21 +96,18 @@ test_that("warns on first creation", {
   withr::defer(unlink(file.path(tempdir(), "test.txt")))
 
   # Warns on first run
-  expect_warning(
-    expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path)),
-    "new file snapshot"
-  )
+  expect_snapshot(out <- snapshot_file_equal(tempdir(), "test.txt", NULL, path))
+  expect_true(out)
 
   # Errors on non-existing file
-  expect_error(
+  expect_snapshot(error = TRUE, {
     expect_true(snapshot_file_equal(
       tempdir(),
       "test.txt",
       NULL,
       "doesnt-exist.txt"
-    )),
-    "`doesnt-exist.txt` not found"
-  )
+    ))
+  })
 
   # Unchanged returns TRUE
   expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path))
