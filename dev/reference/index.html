@@ -55,6 +55,41 @@
     </div>
 
     <div class="section level2">
+      <h2 id="basics">Basics<a class="anchor" aria-label="anchor" href="#basics"></a></h2>
+
+
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="test_that.html">test_that()</a></code>
+
+        </dt>
+        <dd>Run a test</dd>
+      </dl><dl><dt>
+
+          <code><a href="equality-expectations.html">expect_equal()</a></code> <code><a href="equality-expectations.html">expect_identical()</a></code>
+
+        </dt>
+        <dd>Do you expect this value?</dd>
+      </dl><dl><dt>
+
+          <code><a href="expect_error.html">expect_error()</a></code> <code><a href="expect_error.html">expect_warning()</a></code> <code><a href="expect_error.html">expect_message()</a></code> <code><a href="expect_error.html">expect_condition()</a></code>
+
+        </dt>
+        <dd>Do you expect an error, warning, message, or other condition?</dd>
+      </dl><dl><dt>
+
+          <code><a href="logical-expectations.html">expect_true()</a></code> <code><a href="logical-expectations.html">expect_false()</a></code>
+
+        </dt>
+        <dd>Do you expect <code>TRUE</code> or <code>FALSE</code>?</dd>
+      </dl></div><div class="section level2">
       <h2 id="expectations">Expectations<a class="anchor" aria-label="anchor" href="#expectations"></a></h2>
 
 
@@ -62,7 +97,7 @@
 
     </div><div class="section level2">
 
-      <h3 id="objects">Objects<a class="anchor" aria-label="anchor" href="#objects"></a></h3>
+      <h3 id="values">Values<a class="anchor" aria-label="anchor" href="#values"></a></h3>
 
 
 
@@ -72,82 +107,59 @@
 
 
       <dl><dt>
-
-          <code><a href="equality-expectations.html">expect_equal()</a></code> <code><a href="equality-expectations.html">expect_identical()</a></code>
-
-        </dt>
-        <dd>Does code return the expected value?</dd>
-      </dl><dl><dt>
-
-          <code><a href="expect_null.html">expect_null()</a></code>
-
-        </dt>
-        <dd>Does code return <code>NULL</code>?</dd>
-      </dl><dl><dt>
-
-          <code><a href="inheritance-expectations.html">expect_type()</a></code> <code><a href="inheritance-expectations.html">expect_s3_class()</a></code> <code><a href="inheritance-expectations.html">expect_s4_class()</a></code> <code><a href="inheritance-expectations.html">expect_r6_class()</a></code> <code><a href="inheritance-expectations.html">expect_s7_class()</a></code>
-
-        </dt>
-        <dd>Does code return an object inheriting from the expected base type, S3 class, or S4 class?</dd>
-      </dl></div><div class="section level2">
-
-      <h3 id="vectors">Vectors<a class="anchor" aria-label="anchor" href="#vectors"></a></h3>
-
-
-
-    </div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="expect_length.html">expect_length()</a></code>
-
-        </dt>
-        <dd>Does code return a vector with the specified length?</dd>
-      </dl><dl><dt>
-
-          <code><a href="expect_shape.html">expect_shape()</a></code>
-
-        </dt>
-        <dd>Does code return an object with the specified shape?</dd>
-      </dl><dl><dt>
 
           <code><a href="comparison-expectations.html">expect_lt()</a></code> <code><a href="comparison-expectations.html">expect_lte()</a></code> <code><a href="comparison-expectations.html">expect_gt()</a></code> <code><a href="comparison-expectations.html">expect_gte()</a></code>
 
         </dt>
-        <dd>Does code return a number greater/less than the expected value?</dd>
+        <dd>Do you expect a number bigger or smaller than this?</dd>
+      </dl><dl><dt>
+
+          <code><a href="expect_length.html">expect_length()</a></code>
+
+        </dt>
+        <dd>Do you expect a vector with this length?</dd>
       </dl><dl><dt>
 
           <code><a href="expect_match.html">expect_match()</a></code> <code><a href="expect_match.html">expect_no_match()</a></code>
 
         </dt>
-        <dd>Does a string match a regular expression?</dd>
+        <dd>Do you expect a string to match this pattern?</dd>
       </dl><dl><dt>
 
           <code><a href="expect_named.html">expect_named()</a></code>
 
         </dt>
-        <dd>Does code return a vector with (given) names?</dd>
+        <dd>Do you expect a vector with (these) names?</dd>
+      </dl><dl><dt>
+
+          <code><a href="expect_null.html">expect_null()</a></code>
+
+        </dt>
+        <dd>Do you expect <code>NULL</code>?</dd>
       </dl><dl><dt>
 
           <code><a href="expect_setequal.html">expect_setequal()</a></code> <code><a href="expect_setequal.html">expect_mapequal()</a></code> <code><a href="expect_setequal.html">expect_contains()</a></code> <code><a href="expect_setequal.html">expect_in()</a></code>
 
         </dt>
-        <dd>Does code return a vector containing the expected values?</dd>
+        <dd>Do you expect a vector containing these values?</dd>
       </dl><dl><dt>
 
-          <code><a href="logical-expectations.html">expect_true()</a></code> <code><a href="logical-expectations.html">expect_false()</a></code>
+          <code><a href="expect_shape.html">expect_shape()</a></code>
 
         </dt>
-        <dd>Does code return <code>TRUE</code> or <code>FALSE</code>?</dd>
+        <dd>Do you expect an object with this shape?</dd>
+      </dl><dl><dt>
+
+          <code><a href="inheritance-expectations.html">expect_type()</a></code> <code><a href="inheritance-expectations.html">expect_s3_class()</a></code> <code><a href="inheritance-expectations.html">expect_s4_class()</a></code> <code><a href="inheritance-expectations.html">expect_r6_class()</a></code> <code><a href="inheritance-expectations.html">expect_s7_class()</a></code>
+
+        </dt>
+        <dd>Do you expect an S3/S4/R6/S7 object that inherits from this class?</dd>
       </dl><dl><dt>
 
           <code><a href="expect_vector.html">expect_vector()</a></code>
 
         </dt>
-        <dd>Does code return a vector with the expected size and/or prototype?</dd>
+        <dd>Do you expect a vector with this size and/or prototype?</dd>
       </dl></div><div class="section level2">
 
       <h3 id="side-effects">Side-effects<a class="anchor" aria-label="anchor" href="#side-effects"></a></h3>
@@ -161,60 +173,31 @@
 
       <dl><dt>
 
-          <code><a href="expect_error.html">expect_error()</a></code> <code><a href="expect_error.html">expect_warning()</a></code> <code><a href="expect_error.html">expect_message()</a></code> <code><a href="expect_error.html">expect_condition()</a></code>
-
-        </dt>
-        <dd>Does code throw an error, warning, message, or other condition?</dd>
-      </dl><dl><dt>
-
           <code><a href="expect_no_error.html">expect_no_error()</a></code> <code><a href="expect_no_error.html">expect_no_warning()</a></code> <code><a href="expect_no_error.html">expect_no_message()</a></code> <code><a href="expect_no_error.html">expect_no_condition()</a></code>
 
         </dt>
-        <dd>Does code run without error, warning, message, or other condition?</dd>
+        <dd>Do you expect the absence of errors, warnings, messages, or other conditions?</dd>
       </dl><dl><dt>
 
           <code><a href="expect_invisible.html">expect_invisible()</a></code> <code><a href="expect_invisible.html">expect_visible()</a></code>
 
         </dt>
-        <dd>Does code return a visible or invisible object?</dd>
+        <dd>Do you expect the result to be (in)visible?</dd>
       </dl><dl><dt>
 
           <code><a href="expect_output.html">expect_output()</a></code>
 
         </dt>
-        <dd>Does code print output to the console?</dd>
+        <dd>Do you expect printed output to match this pattern?</dd>
       </dl><dl><dt>
 
           <code><a href="expect_silent.html">expect_silent()</a></code>
 
         </dt>
-        <dd>Does code execute silently?</dd>
+        <dd>Do you expect code to execute silently?</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a></h3>
-
-
-
-    </div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="try_again.html">try_again()</a></code>
-
-        </dt>
-        <dd>Try evaluating an expressing multiple times until it succeeds</dd>
-      </dl><dl><dt>
-
-          <code><a href="local_test_context.html">local_test_context()</a></code> <code><a href="local_test_context.html">local_reproducible_output()</a></code>
-
-        </dt>
-        <dd>Locally set options for maximal test reproducibility</dd>
-      </dl></div><div class="section level2">
-      <h2 id="snapshot-testing">Snapshot testing<a class="anchor" aria-label="anchor" href="#snapshot-testing"></a></h2>
-
+      <h3 id="snapshot-tests">Snapshot tests<a class="anchor" aria-label="anchor" href="#snapshot-tests"></a></h3>
 
 
 
@@ -228,25 +211,25 @@
           <code><a href="expect_snapshot.html">expect_snapshot()</a></code>
 
         </dt>
-        <dd>Snapshot testing</dd>
+        <dd>Do you expect this code to run the same way as last time?</dd>
       </dl><dl><dt>
 
           <code><a href="expect_snapshot_value.html">expect_snapshot_value()</a></code>
 
         </dt>
-        <dd>Snapshot testing for values</dd>
+        <dd>Do you expect this code to return the same value as last time?</dd>
       </dl><dl><dt>
 
           <code><a href="expect_snapshot_file.html">expect_snapshot_file()</a></code> <code><a href="expect_snapshot_file.html">announce_snapshot_file()</a></code> <code><a href="expect_snapshot_file.html">compare_file_binary()</a></code> <code><a href="expect_snapshot_file.html">compare_file_text()</a></code>
 
         </dt>
-        <dd>Snapshot testing for whole files</dd>
+        <dd>Do you expect this code to create the same file as last time?</dd>
       </dl><dl><dt>
 
           <code><a href="snapshot_accept.html">snapshot_accept()</a></code> <code><a href="snapshot_accept.html">snapshot_review()</a></code>
 
         </dt>
-        <dd>Snapshot management</dd>
+        <dd>Accept or reject modified snapshots</dd>
       </dl></div><div class="section level2">
       <h2 id="test-helpers">Test helpers<a class="anchor" aria-label="anchor" href="#test-helpers"></a></h2>
 
@@ -260,22 +243,34 @@
 
       <dl><dt>
 
-          <code><a href="local_edition.html">local_edition()</a></code> <code><a href="local_edition.html">edition_get()</a></code>
-
-        </dt>
-        <dd>Temporarily change the active testthat edition</dd>
-      </dl><dl><dt>
-
           <code><a href="is_testing.html">is_testing()</a></code> <code><a href="is_testing.html">is_parallel()</a></code> <code><a href="is_testing.html">is_checking()</a></code> <code><a href="is_testing.html">is_snapshot()</a></code> <code><a href="is_testing.html">testing_package()</a></code>
 
         </dt>
         <dd>Determine testing status</dd>
       </dl><dl><dt>
 
+          <code><a href="local_edition.html">local_edition()</a></code> <code><a href="local_edition.html">edition_get()</a></code>
+
+        </dt>
+        <dd>Temporarily change the active testthat edition</dd>
+      </dl><dl><dt>
+
+          <code><a href="local_test_context.html">local_test_context()</a></code> <code><a href="local_test_context.html">local_reproducible_output()</a></code>
+
+        </dt>
+        <dd>Temporarily set options for maximum reproducibility</dd>
+      </dl><dl><dt>
+
+          <code><a href="set_state_inspector.html">set_state_inspector()</a></code>
+
+        </dt>
+        <dd>Check for global state changes</dd>
+      </dl><dl><dt>
+
           <code><a href="skip.html">skip()</a></code> <code><a href="skip.html">skip_if_not()</a></code> <code><a href="skip.html">skip_if()</a></code> <code><a href="skip.html">skip_if_not_installed()</a></code> <code><a href="skip.html">skip_unless_r()</a></code> <code><a href="skip.html">skip_if_offline()</a></code> <code><a href="skip.html">skip_on_cran()</a></code> <code><a href="skip.html">local_on_cran()</a></code> <code><a href="skip.html">skip_on_os()</a></code> <code><a href="skip.html">skip_on_ci()</a></code> <code><a href="skip.html">skip_on_covr()</a></code> <code><a href="skip.html">skip_on_bioc()</a></code> <code><a href="skip.html">skip_if_translated()</a></code>
 
         </dt>
-        <dd>Skip a test</dd>
+        <dd>Skip a test for various reasons</dd>
       </dl><dl><dt>
 
           <code><a href="teardown_env.html">teardown_env()</a></code>
@@ -284,10 +279,10 @@
         <dd>Run code after all test files</dd>
       </dl><dl><dt>
 
-          <code><a href="set_state_inspector.html">set_state_inspector()</a></code>
+          <code><a href="try_again.html">try_again()</a></code>
 
         </dt>
-        <dd>State inspected</dd>
+        <dd>Evaluate an expression multiple times until it succeeds</dd>
       </dl></div><div class="section level2">
       <h2 id="run-tests">Run tests<a class="anchor" aria-label="anchor" href="#run-tests"></a></h2>
 
@@ -300,12 +295,6 @@
 
 
       <dl><dt>
-
-          <code><a href="describe.html">describe()</a></code> <code><a href="describe.html">it()</a></code>
-
-        </dt>
-        <dd>describe: a BDD testing language</dd>
-      </dl><dl><dt>
 
           <code><a href="test_dir.html">test_dir()</a></code>
 
@@ -331,129 +320,10 @@
         <dd>Locate a file in the testing directory</dd>
       </dl><dl><dt>
 
-          <code><a href="test_that.html">test_that()</a></code>
-
-        </dt>
-        <dd>Run a test</dd>
-      </dl><dl><dt>
-
           <code><a href="use_catch.html">use_catch()</a></code>
 
         </dt>
-        <dd>Use Catch for C++ Unit Testing</dd>
-      </dl></div><div class="section level2">
-      <h2 id="reporters">Reporters<a class="anchor" aria-label="anchor" href="#reporters"></a></h2>
-
-
-
-
-    </div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="Reporter.html">Reporter</a></code>
-
-        </dt>
-        <dd>Manage test reporting</dd>
-      </dl><dl><dt>
-
-          <code><a href="CheckReporter.html">CheckReporter</a></code>
-
-        </dt>
-        <dd>Check reporter: 13 line summary of problems</dd>
-      </dl><dl><dt>
-
-          <code><a href="DebugReporter.html">DebugReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: start recovery.</dd>
-      </dl><dl><dt>
-
-          <code><a href="FailReporter.html">FailReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: fail at end.</dd>
-      </dl><dl><dt>
-
-          <code><a href="JunitReporter.html">JunitReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: summary of errors in jUnit XML format.</dd>
-      </dl><dl><dt>
-
-          <code><a href="ListReporter.html">ListReporter</a></code>
-
-        </dt>
-        <dd>List reporter: gather all test results along with elapsed time and file information.</dd>
-      </dl><dl><dt>
-
-          <code><a href="LocationReporter.html">LocationReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: location</dd>
-      </dl><dl><dt>
-
-          <code><a href="MinimalReporter.html">MinimalReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: minimal.</dd>
-      </dl><dl><dt>
-
-          <code><a href="MultiReporter.html">MultiReporter</a></code>
-
-        </dt>
-        <dd>Multi reporter: combine several reporters in one.</dd>
-      </dl><dl><dt>
-
-          <code><a href="ProgressReporter.html">ProgressReporter</a></code> <code><a href="ProgressReporter.html">CompactProgressReporter</a></code> <code><a href="ProgressReporter.html">ParallelProgressReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: interactive progress bar of errors.</dd>
-      </dl><dl><dt>
-
-          <code><a href="RStudioReporter.html">RStudioReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: RStudio</dd>
-      </dl><dl><dt>
-
-          <code><a href="SilentReporter.html">SilentReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: gather all errors silently.</dd>
-      </dl><dl><dt>
-
-          <code><a href="SlowReporter.html">SlowReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: show timings for slow tests</dd>
-      </dl><dl><dt>
-
-          <code><a href="StopReporter.html">StopReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: stop on error</dd>
-      </dl><dl><dt>
-
-          <code><a href="SummaryReporter.html">SummaryReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: summary of errors.</dd>
-      </dl><dl><dt>
-
-          <code><a href="TapReporter.html">TapReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: TAP format.</dd>
-      </dl><dl><dt>
-
-          <code><a href="TeamcityReporter.html">TeamcityReporter</a></code>
-
-        </dt>
-        <dd>Test reporter: Teamcity format.</dd>
+        <dd>Use Catch for C++ unit testing</dd>
       </dl></div><div class="section level2">
       <h2 id="mocking">Mocking<a class="anchor" aria-label="anchor" href="#mocking"></a></h2>
 
@@ -470,7 +340,7 @@
           <code><a href="local_mocked_bindings.html">local_mocked_bindings()</a></code> <code><a href="local_mocked_bindings.html">with_mocked_bindings()</a></code>
 
         </dt>
-        <dd>Mocking tools</dd>
+        <dd>Temporarily redefine function definitions</dd>
       </dl><dl><dt>
 
           <code><a href="mock_output_sequence.html">mock_output_sequence()</a></code>
@@ -478,7 +348,7 @@
         </dt>
         <dd>Mock a sequence of output from a function</dd>
       </dl></div><div class="section level2">
-      <h2 id="expectation-internals">Expectation internals<a class="anchor" aria-label="anchor" href="#expectation-internals"></a></h2>
+      <h2 id="custom-expectations">Custom expectations<a class="anchor" aria-label="anchor" href="#custom-expectations"></a></h2>
 
 
 
@@ -493,13 +363,120 @@
           <code><a href="fail.html">fail()</a></code> <code><a href="fail.html">pass()</a></code>
 
         </dt>
-        <dd><code><a href="../reference/fail.html">pass()</a></code> or <code><a href="../reference/fail.html">fail()</a></code> a test</dd>
+        <dd>Declare that an expectation either passes or fails</dd>
       </dl><dl><dt>
 
           <code><a href="expect_success.html">expect_success()</a></code> <code><a href="expect_success.html">expect_failure()</a></code> <code><a href="expect_success.html">expect_snapshot_failure()</a></code> <code><a href="expect_success.html">show_failure()</a></code>
 
         </dt>
-        <dd>Tools for testing expectations</dd>
+        <dd>Test your custom expectations</dd>
+      </dl></div><div class="section level2">
+      <h2 id="reporters">Reporters<a class="anchor" aria-label="anchor" href="#reporters"></a></h2>
+
+
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="CheckReporter.html">CheckReporter</a></code>
+
+        </dt>
+        <dd>Report results for <code>R CMD check</code></dd>
+      </dl><dl><dt>
+
+          <code><a href="DebugReporter.html">DebugReporter</a></code>
+
+        </dt>
+        <dd>Interactively debug failing tests</dd>
+      </dl><dl><dt>
+
+          <code><a href="FailReporter.html">FailReporter</a></code>
+
+        </dt>
+        <dd>Fail if any tests fail</dd>
+      </dl><dl><dt>
+
+          <code><a href="JunitReporter.html">JunitReporter</a></code>
+
+        </dt>
+        <dd>Report results in jUnit XML format</dd>
+      </dl><dl><dt>
+
+          <code><a href="ListReporter.html">ListReporter</a></code>
+
+        </dt>
+        <dd>Capture test results and metadata</dd>
+      </dl><dl><dt>
+
+          <code><a href="LocationReporter.html">LocationReporter</a></code>
+
+        </dt>
+        <dd>Test reporter: location</dd>
+      </dl><dl><dt>
+
+          <code><a href="MinimalReporter.html">MinimalReporter</a></code>
+
+        </dt>
+        <dd>Report minimal results as compactly as possible</dd>
+      </dl><dl><dt>
+
+          <code><a href="MultiReporter.html">MultiReporter</a></code>
+
+        </dt>
+        <dd>Run multiple reporters at the same time</dd>
+      </dl><dl><dt>
+
+          <code><a href="ProgressReporter.html">ProgressReporter</a></code> <code><a href="ProgressReporter.html">CompactProgressReporter</a></code> <code><a href="ProgressReporter.html">ParallelProgressReporter</a></code>
+
+        </dt>
+        <dd>Report progress interactively</dd>
+      </dl><dl><dt>
+
+          <code><a href="RStudioReporter.html">RStudioReporter</a></code>
+
+        </dt>
+        <dd>Report results to RStudio</dd>
+      </dl><dl><dt>
+
+          <code><a href="SilentReporter.html">SilentReporter</a></code>
+
+        </dt>
+        <dd>Silently collect and all expectations</dd>
+      </dl><dl><dt>
+
+          <code><a href="SlowReporter.html">SlowReporter</a></code>
+
+        </dt>
+        <dd>Find slow tests</dd>
+      </dl><dl><dt>
+
+          <code><a href="StopReporter.html">StopReporter</a></code>
+
+        </dt>
+        <dd>Error if any test fails</dd>
+      </dl><dl><dt>
+
+          <code><a href="SummaryReporter.html">SummaryReporter</a></code>
+
+        </dt>
+        <dd>Report a summary of failures</dd>
+      </dl><dl><dt>
+
+          <code><a href="TapReporter.html">TapReporter</a></code>
+
+        </dt>
+        <dd>Report results in TAP format</dd>
+      </dl><dl><dt>
+
+          <code><a href="TeamcityReporter.html">TeamcityReporter</a></code>
+
+        </dt>
+        <dd>Report results in Teamcity format</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
