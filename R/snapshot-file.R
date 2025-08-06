@@ -1,4 +1,4 @@
-#' Snapshot testing for whole files
+#' Do you expect this code to create the same file as last time?
 #'
 #' @description
 #' Whole file snapshot testing is designed for testing objects that don't have

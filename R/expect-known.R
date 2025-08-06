@@ -1,4 +1,4 @@
-#' Expectations: is the output or the value equal to a known good value?
+#' Do you expect the results/output to equal a known value?
 #'
 #' For complex printed output and objects, it is often challenging to describe
 #' exactly what you expect to see. `expect_known_value()` and
@@ -113,7 +113,7 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
   pass(NULL)
 }
 
-#' Expectations: is the output or the value equal to a known good value?
+#' Do you expect the output/result to equal a known good value?
 #'
 #' `expect_output_file()` behaves identically to [expect_known_output()].
 #'

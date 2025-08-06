@@ -26,6 +26,7 @@
 #'
 #' @param description description of the feature
 #' @param code test code containing the specs
+#' @keywords internal
 #' @export
 #' @examples
 #' describe("matrix()", {

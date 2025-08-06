@@ -1,5 +1,4 @@
-#' Does code return an object inheriting from the expected base type, S3 class,
-#' or S4 class?
+#' Do you expect an S3/S4/R6/S7 object that inherits from this class?
 #'
 #' @description
 #' See <https://adv-r.hadley.nz/oo.html> for an overview of R's OO systems, and
@@ -207,7 +206,7 @@ expect_s7_class <- function(object, class) {
   pass(act$val)
 }
 
-#' Does an object inherit from a given class?
+#' Do you expect to inherit from this class?
 #'
 #' @description
 #' `r lifecycle::badge("superseded")`

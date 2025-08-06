@@ -1,4 +1,4 @@
-#' Snapshot management
+#' Accept or reject modified snapshots
 #'
 #' * `snapshot_accept()` accepts all modified snapshots.
 #' * `snapshot_review()` opens a Shiny app that shows a visual diff of each

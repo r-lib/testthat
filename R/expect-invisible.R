@@ -1,4 +1,4 @@
-#' Does code return a visible or invisible object?
+#' Do you expect the result to be (in)visible?
 #'
 #' Use this to test whether a function returns a visible or invisible
 #' output. Typically you'll use this to check that functions called primarily

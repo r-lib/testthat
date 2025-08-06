@@ -170,7 +170,7 @@ run_cpp_tests <- function(package) {
   }
 }
 
-#' Use Catch for C++ Unit Testing
+#' Use Catch for C++ unit testing
 #'
 #' Add the necessary infrastructure to enable C++ unit testing
 #' in \R packages with [Catch](https://github.com/catchorg/Catch2) and

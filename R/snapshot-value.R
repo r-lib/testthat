@@ -1,4 +1,4 @@
-#' Snapshot testing for values
+#' Do you expect this code to return the same value as last time?
 #'
 #' Captures the result of function, flexibly serializing it into a text
 #' representation that's stored in a snapshot file. See [expect_snapshot()]

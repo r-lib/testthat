@@ -3,7 +3,7 @@
 \name{snapshot_accept}
 \alias{snapshot_accept}
 \alias{snapshot_review}
-\title{Snapshot management}
+\title{Accept or reject modified snapshots}
 \usage{
 snapshot_accept(files = NULL, path = "tests/testthat")
 

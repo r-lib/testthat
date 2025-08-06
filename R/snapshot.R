@@ -1,4 +1,4 @@
-#' Snapshot testing
+#' Do you expect this code to run the same way as last time?
 #'
 #' @description
 #' Snapshot tests (aka golden tests) are similar to unit tests except that the

@@ -1,4 +1,4 @@
-#' Does code return a vector with the specified length?
+#' Do you expect a vector with this length?
 #'
 #' @seealso [expect_vector()] to make assertions about the "size" of a vector,
 #'   [expect_shape()] for more general assertions about object "shape".

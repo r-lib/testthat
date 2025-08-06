@@ -1,4 +1,4 @@
-#' Does code return the expected value?
+#' Do you expect this value?
 #'
 #' @description
 #' These functions provide two levels of strictness when comparing a

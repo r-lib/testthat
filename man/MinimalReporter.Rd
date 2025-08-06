@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-minimal.R
 \name{MinimalReporter}
 \alias{MinimalReporter}
-\title{Test reporter: minimal.}
+\title{Report minimal results as compactly as possible}
 \description{
 The minimal test reporter provides the absolutely minimum amount of
 information: whether each expectation has succeeded, failed or experienced

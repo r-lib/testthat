@@ -5,7 +5,7 @@
 \alias{expect_mapequal}
 \alias{expect_contains}
 \alias{expect_in}
-\title{Does code return a vector containing the expected values?}
+\title{Do you expect a vector containing these values?}
 \usage{
 expect_setequal(object, expected)
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-tap.R
 \name{TapReporter}
 \alias{TapReporter}
-\title{Test reporter: TAP format.}
+\title{Report results in TAP format}
 \description{
 This reporter will output results in the Test Anything Protocol (TAP),
 a simple text-based interface between testing modules in a test harness.

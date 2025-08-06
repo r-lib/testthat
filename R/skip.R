@@ -1,4 +1,4 @@
-#' Skip a test
+#' Skip a test for various reasons
 #'
 #' @description
 #' `skip_if()` and `skip_if_not()` allow you to skip tests, immediately

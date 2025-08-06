@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-slow.R, R/reporter-timing.R
 \name{SlowReporter}
 \alias{SlowReporter}
-\title{Test reporter: show timings for slow tests}
+\title{Find slow tests}
 \description{
 \code{SlowReporter} is designed to identify slow tests. It reports the
 execution time for each test and can optionally filter out tests that

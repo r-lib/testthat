@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-junit.R
 \name{JunitReporter}
 \alias{JunitReporter}
-\title{Test reporter: summary of errors in jUnit XML format.}
+\title{Report results in jUnit XML format}
 \description{
 This reporter includes detailed results about each test and summaries,
 written to a file (or stdout) in jUnit XML format. This can be read by
