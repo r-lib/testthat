@@ -23,3 +23,21 @@
       * Copy 'tests/testthat/_snaps/lala/foo.new.r' to local test directory
       * Run `testthat::snapshot_review('lala/')` to review changes
 
+# expect_snapshot_file validates its inputs
+
+    Code
+      expect_snapshot_file(123, "test.txt")
+    Condition
+      Error in `expect_snapshot_file()`:
+      ! `path` must be a single string, not the number 123.
+    Code
+      expect_snapshot_file("test.txt", 123)
+    Condition
+      Error in `expect_snapshot_file()`:
+      ! `name` must be a single string, not the number 123.
+    Code
+      expect_snapshot_file("test.txt", "test.txt", cran = "yes")
+    Condition
+      Error in `expect_snapshot_file()`:
+      ! `cran` must be `TRUE` or `FALSE`, not the string "yes".
+

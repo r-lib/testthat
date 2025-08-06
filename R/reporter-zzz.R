@@ -36,10 +36,12 @@ get_reporter <- function() {
 #' @rdname reporter-accessors
 #' @export
 with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
+  # Ensure we don't propagate the local description to the new reporter
+  local_description_set()
   reporter <- find_reporter(reporter)
 
   old <- set_reporter(reporter)
-  on.exit(set_reporter(old), add = TRUE)
+  withr::defer(set_reporter(old))
 
   if (start_end_reporter) {
     reporter$start_reporter()
@@ -95,7 +97,7 @@ find_reporter <- function(reporter) {
 }
 
 find_reporter_one <- function(reporter, ...) {
-  stopifnot(is.character(reporter))
+  check_string(reporter)
 
   name <- reporter
   substr(name, 1, 1) <- toupper(substr(name, 1, 1))

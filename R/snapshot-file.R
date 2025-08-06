@@ -88,12 +88,16 @@
 expect_snapshot_file <- function(
   path,
   name = basename(path),
-  binary = lifecycle::deprecated(),
+  binary = deprecated(),
   cran = FALSE,
   compare = NULL,
   transform = NULL,
   variant = NULL
 ) {
+  check_string(path)
+  check_string(name)
+  check_bool(cran)
+
   edition_require(3, "expect_snapshot_file()")
   if (!cran && on_cran()) {
     skip("On CRAN")

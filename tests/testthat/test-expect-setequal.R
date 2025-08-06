@@ -25,8 +25,11 @@ test_that("warns if both inputs are named", {
   expect_warning(expect_setequal(c(a = 1), c(b = 1)), "ignores names")
 })
 
-test_that("error for non-vectors", {
-  expect_error(expect_setequal(sum, sum), "be vectors")
+test_that("checks inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_setequal(sum, 1)
+    expect_setequal(1, sum)
+  })
 })
 
 test_that("useful message on failure", {

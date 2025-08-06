@@ -25,3 +25,22 @@ test_that("snapshots always use \n", {
   has_cr <- grepl("\r", snap, fixed = TRUE)
   expect_equal(has_cr, FALSE)
 })
+
+test_that("snap_from_md handles missing final newlines", {
+  one_newline <- withr::local_tempfile(
+    fileext = ".md",
+    lines = c(
+      "# test_case",
+      "",
+      "result1",
+      "",
+      "---",
+      "",
+      "result2"
+    )
+  )
+  expect_equal(
+    read_snaps(one_newline),
+    list(test_case = c("result1", "result2"))
+  )
+})
