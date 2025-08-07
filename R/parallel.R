@@ -46,12 +46,9 @@ test_files_parallel <- function(
   # TODO: support timeouts. 20-30s for each file by default?
 
   num_workers <- min(default_num_cpus(), length(test_paths))
-  inform(paste0(
-    "Starting ",
-    num_workers,
-    " test process",
-    if (num_workers != 1) "es"
-  ))
+  cli::cli_inform(
+    "Starting {num_workers} test process{?es}."
+  )
 
   # Set up work queue ------------------------------------------
   queue <- NULL
@@ -110,7 +107,7 @@ default_num_cpus <- function() {
   if (!is.null(ncpus)) {
     ncpus <- suppressWarnings(as.integer(ncpus))
     if (is.na(ncpus)) {
-      abort("`getOption(Ncpus)` must be an integer")
+      cli::cli_abort("{.fn getOption}({.arg Ncpus}) must be an integer.")
     }
     return(ncpus)
   }
@@ -120,7 +117,7 @@ default_num_cpus <- function() {
   if (ncpus != "") {
     ncpus <- suppressWarnings(as.integer(ncpus))
     if (is.na(ncpus)) {
-      abort("TESTTHAT_CPUS must be an integer")
+      cli::cli_abort("{.envvar TESTTHAT_CPUS} must be an integer.")
     }
     return(ncpus)
   }
@@ -155,7 +152,7 @@ parallel_event_loop_smooth <- function(queue, reporters, test_dir) {
 
       m <- x$message
       if (!inherits(m, "testthat_message")) {
-        message(m)
+        cli::cli_inform(as.character(m))
         next
       }
 
@@ -195,7 +192,7 @@ parallel_event_loop_chunky <- function(queue, reporters, test_dir) {
 
       m <- x$message
       if (!inherits(m, "testthat_message")) {
-        message(m)
+        cli::cli_inform(as.character(m))
         next
       }
 

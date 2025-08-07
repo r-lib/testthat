@@ -12,7 +12,7 @@
       expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, "doesnt-exist.txt"))
     Condition
       Error in `snapshot_file_equal()`:
-      ! `doesnt-exist.txt` not found
+      ! 'doesnt-exist.txt' not found.
 
 # snapshot_hint output differs in R CMD check
 

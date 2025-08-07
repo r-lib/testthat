@@ -92,7 +92,7 @@ find_reporter <- function(reporter) {
       MultiReporter$new(reporters = lapply(reporter, find_reporter_one))
     }
   } else {
-    stop("Invalid input", call. = FALSE)
+    cli::cli_abort("Invalid input.")
   }
 }
 
@@ -104,7 +104,7 @@ find_reporter_one <- function(reporter, ...) {
   name <- paste0(name, "Reporter")
 
   if (!exists(name)) {
-    stop("Can not find test reporter ", reporter, call. = FALSE)
+    cli::cli_abort("Cannot find test reporter {.arg {reporter}}.")
   }
 
   get(name)$new(...)

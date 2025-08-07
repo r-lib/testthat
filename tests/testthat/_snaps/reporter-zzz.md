@@ -3,6 +3,6 @@
     Code
       find_reporter(c("summary", "blah"))
     Condition
-      Error:
-      ! Can not find test reporter blah
+      Error in `FUN()`:
+      ! Cannot find test reporter `blah`.
 

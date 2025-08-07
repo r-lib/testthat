@@ -116,21 +116,11 @@ check_roundtrip <- function(
     tolerance = tolerance
   )
   if (length(check) > 0) {
-    abort(
+    cli::cli_abort(
       c(
-        paste0(
-          "`",
-          label,
-          "` could not be safely serialized with `style = \"",
-          style,
-          "\"`."
-        ),
-        " " = paste0(
-          "Serializing then deserializing the object returned something new:\n\n",
-          check,
-          "\n"
-        ),
-        i = "You may need to try a different `style`."
+        "{.code {label}} could not be safely serialized with {.arg style} = {.str {style}}.",
+        " " = "Serializing then deserializing the object returned something new:\n\n{check}\n",
+        i = "You may need to try a different {.arg style}."
       ),
       call = error_call
     )

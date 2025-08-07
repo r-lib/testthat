@@ -53,6 +53,6 @@
     Code
       r$stop_if_needed()
     Condition
-      Error:
-      ! Test failed
+      Error in `r$stop_if_needed()`:
+      ! Test failed.
 

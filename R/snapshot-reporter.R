@@ -209,7 +209,7 @@ local_snapshotter <- function(
     fail_on_new = fail_on_new
   )
   if (!identical(cleanup, FALSE)) {
-    warn("`cleanup` is deprecated")
+    cli::cli_warn("{.arg cleanup} is deprecated.")
   }
 
   withr::local_options(

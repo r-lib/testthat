@@ -414,7 +414,7 @@ check_variant <- function(x) {
   } else if (is_string(x)) {
     x
   } else {
-    abort("If supplied, `variant` must be a string")
+    cli::cli_abort("If supplied, {.arg variant} must be a string.")
   }
 }
 

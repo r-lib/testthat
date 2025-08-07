@@ -3,54 +3,47 @@
     Code
       snapshot_accept(path = path)
     Message
-      Updating snapshots:
-      * a.md
-      * b.md
+      Updating snapshots: 'a.md' and 'b.md'.
 
 ---
 
     Code
       snapshot_accept(path = path)
     Message
-      No snapshots to update
+      No snapshots to update.
 
 # can accept specific files
 
     Code
       snapshot_accept("a", path = path)
     Message
-      Updating snapshots:
-      * a.md
+      Updating snapshots: 'a.md'.
 
 ---
 
     Code
       snapshot_accept("test/a.txt", path = path)
     Message
-      Updating snapshots:
-      * test/a.txt
+      Updating snapshots: 'test/a.txt'.
 
 ---
 
     Code
       snapshot_accept("test/", path = path)
     Message
-      Updating snapshots:
-      * test/a.txt
+      Updating snapshots: 'test/a.txt'.
 
 # can work with variants
 
     Code
       snapshot_accept(path = path)
     Message
-      Updating snapshots:
-      * foo/a.md
+      Updating snapshots: 'foo/a.md'.
 
 ---
 
     Code
       snapshot_accept("foo/a", path = path)
     Message
-      Updating snapshots:
-      * foo/a.md
+      Updating snapshots: 'foo/a.md'.
 
