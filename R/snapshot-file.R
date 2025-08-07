@@ -194,12 +194,13 @@ snapshot_file_equal <- function(
   snap_variant,
   path,
   file_equal = compare_file_binary,
-  fail_on_new = FALSE,
+  fail_on_new = NULL,
   trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
     abort(paste0("`", path, "` not found"))
   }
+  fail_on_new <- fail_on_new %||% on_ci()
 
   cur_path <- file.path(snap_test_dir, snap_name)
   new_path <- new_name(cur_path)
@@ -224,7 +225,10 @@ snapshot_file_equal <- function(
       snap_name,
       "'"
     )
-    if (fail_on_new) {
+
+    # We want to fail on CI since this suggests that the user has failed
+    # to record the value locally
+    if (on_ci()) {
       return(fail(message, trace_env = trace_env))
     } else {
       testthat_warn(message)

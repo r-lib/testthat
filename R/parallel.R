@@ -88,7 +88,7 @@ test_files_parallel <- function(
 
 test_files_reporter_parallel <- function(reporter, .env = parent.frame()) {
   lister <- ListReporter$new()
-  snapshotter <- MainprocessSnapshotReporter$new("_snaps", fail_on_new = FALSE)
+  snapshotter <- MainprocessSnapshotReporter$new("_snaps")
   reporters <- list(
     find_reporter(reporter),
     lister, # track data
@@ -303,10 +303,7 @@ queue_process_setup <- function(
 
 queue_task <- function(path) {
   withr::local_envvar("TESTTHAT_IS_PARALLEL" = "true")
-  snapshotter <- SubprocessSnapshotReporter$new(
-    snap_dir = "_snaps",
-    fail_on_new = FALSE
-  )
+  snapshotter <- SubprocessSnapshotReporter$new(snap_dir = "_snaps")
   withr::local_options(testthat.snapshotter = snapshotter)
   reporters <- list(
     SubprocessReporter$new(),
