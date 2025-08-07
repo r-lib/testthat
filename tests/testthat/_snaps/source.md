@@ -4,7 +4,7 @@
       source_file(test_path("reporters/error-setup.R"), wrap = FALSE)
     Condition
       Error:
-      ! In path: "reporters/error-setup.R"
+      ! In path: 'reporters/error-setup.R'.
       Caused by error in `h()`:
       ! !
 
@@ -32,7 +32,7 @@
       filter_desc(code, "baz")
     Condition
       Error:
-      ! Failed to find test with specified description
+      ! Failed to find test with specified description.
 
 # preserve srcrefs
 
@@ -49,5 +49,5 @@
       filter_desc(code, "baz")
     Condition
       Error:
-      ! Found multiple tests with specified description
+      ! Found multiple tests with specified description.
 

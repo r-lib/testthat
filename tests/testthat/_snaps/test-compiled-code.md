@@ -3,8 +3,8 @@
     Code
       get_routine("utils", "no_such_routine")
     Condition
-      Error:
-      ! failed to locate routine 'no_such_routine' in package 'utils'
+      Error in `get_routine()`:
+      ! Failed to locate routine `no_such_routine` in package utils.
 
 # validates inputs
 
