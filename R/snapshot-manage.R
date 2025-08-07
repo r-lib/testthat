@@ -1,6 +1,7 @@
 #' Accept or reject modified snapshots
 #'
 #' * `snapshot_accept()` accepts all modified snapshots.
+#' * `snapshot_reject()` rejects all modified snapshots by deleting the `.new` variants.
 #' * `snapshot_review()` opens a Shiny app that shows a visual diff of each
 #'    modified snapshot. This is particularly useful for whole file snapshots
 #'    created by `expect_snapshot_file()`.
@@ -21,6 +22,22 @@ snapshot_accept <- function(files = NULL, path = "tests/testthat") {
   inform(c("Updating snapshots:", changed$name))
   unlink(changed$cur)
   file.rename(changed$new, changed$cur)
+
+  rstudio_tickle()
+  invisible()
+}
+
+#' @rdname snapshot_accept
+#' @export
+snapshot_reject <- function(files = NULL, path = "tests/testthat") {
+  changed <- snapshot_meta(files, path)
+  if (nrow(changed) == 0) {
+    inform("No snapshots to reject")
+    return(invisible())
+  }
+
+  inform(c("Rejecting snapshots:", changed$name))
+  unlink(changed$new)
 
   rstudio_tickle()
   invisible()
