@@ -392,16 +392,11 @@ use_catch <- function(dir = getwd()) {
   output_path <- file.path(dir, "R", "catch-routine-registration.R")
   cat(transformed, file = output_path)
 
-  cli::cli_inform("> Added C++ unit testing infrastructure.")
-  cli::cli_inform(
-    "> Please ensure you have {.field LinkingTo: testthat} in your DESCRIPTION."
-  )
-  cli::cli_inform(
-    "> Please ensure you have {.field Suggests: xml2} in your DESCRIPTION."
-  )
-  cli::cli_inform(
-    "> Please ensure you have {.code useDynLib({pkg}, .registration = TRUE)} in your NAMESPACE."
-  )
+  cli::cli_inform(c(
+    v = "Added C++ unit testing infrastructure.",
+    i = "Please ensure you have {.field LinkingTo: testthat} in your DESCRIPTION.",
+    i = "Please ensure you have {.field Suggests: xml2} in your DESCRIPTION."
+  ))
 }
 
 get_routine <- function(package, routine) {
