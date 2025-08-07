@@ -48,6 +48,6 @@ expect_output <- function(
     pass(act$val)
   } else {
     act <- labelled_value(act$cap, act$lab)
-    expect_match_(act, enc2native(regexp), ...)
+    expect_match_(act, enc2native(regexp), ..., title = "Output")
   }
 }
