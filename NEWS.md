@@ -19,7 +19,7 @@
 * `vignette("custom-expectations)` has been overhauled to make it much clearer how to create high-quality expectations (#2113, #2132, #2072).
 * `expect_snapshot()` and friends will now fail when creating a new snapshot on CI. This is usually a signal that you've forgotten to run it locally before committing (#1461).
 * `expect_snapshot_value()` can now handle expressions that generate `-` (#1678) or zero length atomic vectors (#2042).
-* `expect_matches()` failures should be a little easier to read (#2135).
+* `expect_matches()` failures should be a little easier to read (#2135, #2181).
 * New `local_on_cran(TRUE)` allows you to simulate how your tests will run on CRAN (#2112).
 * `expect_no_*()` now executes the entire code block, rather than stopping at the first message or warning (#1991).
 * `expect_no_failures()` and `expect_no_successes()` are now deprecated as `expect_success()` now test for no failures and `expect_failure()` tests for no successes (#)

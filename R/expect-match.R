@@ -106,6 +106,7 @@ expect_match_ <- function(
   info = NULL,
   label = NULL,
   negate = FALSE,
+  title = "Text",
   trace_env = caller_env()
 ) {
   matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
@@ -118,14 +119,24 @@ expect_match_ <- function(
 
   text <- encodeString(act$val)
   if (length(act$val) == 1) {
-    values <- paste0('Text: "', text, '"')
+    values <- paste0(title, ': "', text, '"')
+    which <- ""
   } else {
-    values <- paste0("Text:\n", paste0("* ", text, collapse = "\n"))
+    bullet <- ifelse(
+      condition,
+      cli::col_green(cli::symbol$tick),
+      cli::col_red(cli::symbol$cross)
+    )
+    values <- paste0(title, ":\n", paste0(bullet, " ", text, collapse = "\n"))
+    which <- if (all) "Every element of " else "Some element of "
   }
+  match <- if (negate) "matches" else "does not match"
 
   msg <- sprintf(
-    if (negate) "%s matches %s %s.\n%s" else "%s does not match %s %s.\n%s",
+    "%s%s %s %s %s.\n%s",
+    which,
     act$lab,
+    match,
     if (fixed) "string" else "regexp",
     encodeString(regexp, quote = '"'),
     values
