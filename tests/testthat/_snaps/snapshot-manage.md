@@ -47,3 +47,12 @@
     Message
       Updating snapshots: 'foo/a.md'.
 
+# snapshot_reject deletes .new files
+
+    Code
+      snapshot_reject(path = path)
+    Message
+      Rejecting snapshots:
+      * a.md
+      * b.md
+

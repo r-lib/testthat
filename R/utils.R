@@ -63,3 +63,7 @@ no_wrap <- function(x) {
   x <- gsub("\n", "\f", x, fixed = TRUE)
   x
 }
+
+paste_c <- function(...) {
+  paste0(c(...), collapse = "")
+}

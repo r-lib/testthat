@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* New `snapshot_reject()` rejects all modified snapshots by deleting the `.new` variants (#1923).
 * New `SlowReporter` makes it easier to find the slowest tests in your package. The easiest way to run it is with `devtools::test(reporter = "slow")` (#1466).
 * Power `expect_mapequal()` with `waldo::compare(list_as_map = TRUE)` (#1521).
 * On CRAN, `test_that()` now automatically skips if a package is not installed (#1585). Practically, this means that you no longer need to check that suggested packages are installed. (We don't do this in the tidyverse because we think it has limited payoff, but other styles advise differently.)
@@ -19,7 +20,7 @@
 * `vignette("custom-expectations)` has been overhauled to make it much clearer how to create high-quality expectations (#2113, #2132, #2072).
 * `expect_snapshot()` and friends will now fail when creating a new snapshot on CI. This is usually a signal that you've forgotten to run it locally before committing (#1461).
 * `expect_snapshot_value()` can now handle expressions that generate `-` (#1678) or zero length atomic vectors (#2042).
-* `expect_matches()` failures should be a little easier to read (#2135).
+* `expect_matches()` failures should be a little easier to read (#2135, #2181).
 * New `local_on_cran(TRUE)` allows you to simulate how your tests will run on CRAN (#2112).
 * `expect_no_*()` now executes the entire code block, rather than stopping at the first message or warning (#1991).
 * `expect_no_failures()` and `expect_no_successes()` are now deprecated as `expect_success()` now test for no failures and `expect_failure()` tests for no successes (#)

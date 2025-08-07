@@ -1,12 +1,15 @@
 test_that("generates useful failure messages", {
+  local_reproducible_output(unicode = TRUE)
+
   zero <- character(0)
   expect_snapshot_failure(expect_match(zero, 'asdf'))
 
   one <- "bcde"
   expect_snapshot_failure(expect_match(one, 'asdf'))
 
-  many <- letters[1:5]
-  expect_snapshot_failure(expect_match(many, 'asdf'))
+  many <- c("a", "a", "b")
+  expect_snapshot_failure(expect_match(many, "a"))
+  expect_snapshot_failure(expect_match(many, "c", all = FALSE))
 })
 
 test_that("expect_match validates its inputs", {
