@@ -116,6 +116,10 @@ check_roundtrip <- function(
     tolerance = tolerance
   )
   if (length(check) > 0) {
+    # Supress cli wrapping
+    check <- gsub(" ", "\u00a0", check, fixed = TRUE)
+    check <- gsub("\n", "\f", check, fixed = TRUE)
+
     cli::cli_abort(
       c(
         "{.code {label}} could not be safely serialized with {.arg style} = {.str {style}}.",
