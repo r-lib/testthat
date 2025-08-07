@@ -206,7 +206,7 @@ task_q <- R6::R6Class(
     },
 
     handle_error = function(msg, task_no) {
-      cli::cli_inform("") # get out of the progress bar, if any
+      cat("\n") # get out of the progress bar, if any
       fun <- private$tasks$fun[[task_no]]
       file <- private$tasks$args[[task_no]][[1]]
       if (is.null(fun)) {
@@ -218,18 +218,19 @@ task_q <- R6::R6Class(
         cli::cli_abort(
           c(
             "testthat subprocess failed to start.",
-            "i" = "stderr: {msg$error$stderr}"
+            " " = "{no_wrap(msg$error$stderr)}"
           ),
           test_file = NULL,
-          parent = msg$error,
-          class = c("testthat_process_error", "testthat_error")
+          class = c("testthat_process_error", "testthat_error"),
+          call = NULL
         )
       } else {
         cli::cli_abort(
           "testthat subprocess exited in file {.file {file}}.",
           test_file = file,
           parent = msg$error,
-          class = c("testthat_process_error", "testthat_error")
+          class = c("testthat_process_error", "testthat_error"),
+          call = NULL
         )
       }
     }

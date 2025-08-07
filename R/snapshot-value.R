@@ -116,14 +116,10 @@ check_roundtrip <- function(
     tolerance = tolerance
   )
   if (length(check) > 0) {
-    # Supress cli wrapping
-    check <- gsub(" ", "\u00a0", check, fixed = TRUE)
-    check <- gsub("\n", "\f", check, fixed = TRUE)
-
     cli::cli_abort(
       c(
         "{.code {label}} could not be safely serialized with {.arg style} = {.str {style}}.",
-        " " = "Serializing then deserializing the object returned something new:\n\n{check}\n",
+        " " = "Serializing then deserializing the object returned something new:\n\n{no_wrap(check)}\n",
         i = "You may need to try a different {.arg style}."
       ),
       call = error_call
