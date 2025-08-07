@@ -56,3 +56,7 @@ in_rcmd_check <- function() {
 }
 
 r_version <- function() paste0("R", getRversion()[, 1:2])
+
+paste_c <- function(...) {
+  paste0(c(...), collapse = "")
+}
