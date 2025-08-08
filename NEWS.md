@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `expect_named()` now gives more informative errors (#2091).
+* `expect_*()` functions consistently and rigorously check their inputs (#1754). 
 * `test_that()` no longer warns about the absence of `{}` since it no longer seems to be necessary.
 * `test_that()`, `describe()`, and `it()` can now be arbitrarily nested. Each component will skip only if it and its subtests don't contain any expectations. The interactive stop reporter has been fixed so it doesn't duplicate failures. (#2063, #2188).
 * Test filtering now works with `it()`, and the `desc` argument can take a character vector in order to recursively filter subtests (i.e. `it()` nested inside of `describe()`) (#2118).
