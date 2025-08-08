@@ -12,7 +12,7 @@
       snapshot_file_equal_("doesnt-exist.txt")
     Condition
       Error in `snapshot_file_equal()`:
-      ! `doesnt-exist.txt` not found
+      ! 'doesnt-exist.txt' not found.
 
 # snapshot_hint output differs in R CMD check
 

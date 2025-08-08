@@ -63,8 +63,8 @@ source_file <- function(
     withCallingHandlers(
       invisible(eval(exprs, env)),
       error = function(err) {
-        abort(
-          paste0("In path: ", encodeString(path, quote = '"')),
+        cli::cli_abort(
+          "Failed to evaluate {.path {path}}.",
           parent = err,
           call = error_call
         )
@@ -99,8 +99,8 @@ filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
       }
 
       if (found) {
-        abort(
-          "Found multiple tests with specified description",
+        cli::cli_abort(
+          "Found multiple tests with specified description.",
           call = error_call
         )
       }
@@ -110,7 +110,10 @@ filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
   }
 
   if (!found) {
-    abort("Failed to find test with specified description", call = error_call)
+    cli::cli_abort(
+      "Failed to find test with specified description.",
+      call = error_call
+    )
   }
 
   exprs[include]
@@ -125,9 +128,17 @@ source_dir <- function(
   chdir = TRUE,
   wrap = TRUE
 ) {
-  files <- normalizePath(sort(dir(path, pattern, full.names = TRUE)))
+  files <- sort(dir(path, pattern, full.names = TRUE))
+
+  error_call <- current_env()
   lapply(files, function(path) {
-    source_file(path, env = env, chdir = chdir, wrap = wrap)
+    source_file(
+      path,
+      env = env,
+      chdir = chdir,
+      wrap = wrap,
+      error_call = error_call
+    )
   })
 }
 

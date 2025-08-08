@@ -39,8 +39,8 @@ expect_compare_ <- function(
 
   cmp <- op(act$val, exp$val)
   if (length(cmp) != 1 || !is.logical(cmp)) {
-    abort(
-      "Result of comparison must be a single logical value",
+    cli::cli_abort(
+      "Result of comparison must be a single logical value.",
       call = trace_env
     )
   }
@@ -112,14 +112,14 @@ expect_gte <- function(object, expected, label = NULL, expected.label = NULL) {
 #' @param ... All arguments passed on to `expect_lt()`/`expect_gt()`.
 #' @keywords internal
 expect_less_than <- function(...) {
-  warning("Deprecated: please use `expect_lt()` instead", call. = FALSE)
+  cli::cli_warn("Deprecated: please use {.fn expect_lt} instead.")
   expect_lt(...)
 }
 
 #' @rdname expect_less_than
 #' @export
 expect_more_than <- function(...) {
-  warning("Deprecated: please use `expect_gt()` instead", call. = FALSE)
+  cli::cli_warn("Deprecated: please use {.fn expect_gt} instead.")
   expect_gt(...)
 }
 

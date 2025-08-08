@@ -40,7 +40,7 @@ task_q <- R6::R6Class(
         id <- private$get_next_id()
       }
       if (id %in% private$tasks$id) {
-        stop("Duplicate task id")
+        cli::cli_abort("Duplicate task id.")
       }
       before <- which(private$tasks$idle)[1]
       private$tasks <- df_add_row(
@@ -123,16 +123,11 @@ task_q <- R6::R6Class(
             private$handle_error(msg, i)
           } else {
             file <- private$tasks$args[[i]][[1]]
-            errmsg <- paste0(
-              "unknown message from testthat subprocess: ",
-              msg$code,
-              ", ",
-              "in file `",
-              file,
-              "`"
-            )
-            abort(
-              errmsg,
+            cli::cli_abort(
+              c(
+                "Unknown message from testthat subprocess: {msg$code}.",
+                "i" = "In file {.file {file}}."
+              ),
               test_file = file,
               class = c("testthat_process_error", "testthat_error")
             )
@@ -211,7 +206,7 @@ task_q <- R6::R6Class(
     },
 
     handle_error = function(msg, task_no) {
-      inform("\n") # get out of the progress bar, if any
+      cat("\n") # get out of the progress bar, if any
       fun <- private$tasks$fun[[task_no]]
       file <- private$tasks$args[[task_no]][[1]]
       if (is.null(fun)) {
@@ -220,21 +215,22 @@ task_q <- R6::R6Class(
           c(private$tasks$startup[[task_no]], msg$stderr),
           collapse = "\n"
         )
-        abort(
-          paste0(
-            "testthat subprocess failed to start, stderr:\n",
-            msg$error$stderr
+        cli::cli_abort(
+          c(
+            "testthat subprocess failed to start.",
+            " " = "{no_wrap(msg$error$stderr)}"
           ),
           test_file = NULL,
-          parent = msg$error,
-          class = c("testthat_process_error", "testthat_error")
+          class = c("testthat_process_error", "testthat_error"),
+          call = NULL
         )
       } else {
-        abort(
-          paste0("testthat subprocess exited in file `", file, "`"),
+        cli::cli_abort(
+          "testthat subprocess exited in file {.file {file}}.",
           test_file = file,
           parent = msg$error,
-          class = c("testthat_process_error", "testthat_error")
+          class = c("testthat_process_error", "testthat_error"),
+          call = NULL
         )
       }
     }

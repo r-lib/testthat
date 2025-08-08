@@ -217,7 +217,7 @@ skip_on_os <- function(os, arch = NULL) {
 
   if (!is.null(arch) && !is.null(msg)) {
     if (!is.character(arch)) {
-      abort("`arch` must be a character vector")
+      cli::cli_abort("{.arg arch} must be a character vector.")
     }
 
     if (system_arch() %in% arch) {
