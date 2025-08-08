@@ -46,9 +46,7 @@ test_files_parallel <- function(
   # TODO: support timeouts. 20-30s for each file by default?
 
   num_workers <- min(default_num_cpus(), length(test_paths))
-  cli::cli_inform(
-    "Starting {num_workers} test process{?es}."
-  )
+  cli::cli_inform("Starting {num_workers} test process{?es}.")
 
   # Set up work queue ------------------------------------------
   queue <- NULL
@@ -107,7 +105,10 @@ default_num_cpus <- function() {
   if (!is.null(ncpus)) {
     ncpus <- suppressWarnings(as.integer(ncpus))
     if (is.na(ncpus)) {
-      cli::cli_abort("{.fn getOption}({.arg Ncpus}) must be an integer.")
+      cli::cli_abort(
+        "{.code getOption('Ncpus')} must be an integer.",
+        call = NULL
+      )
     }
     return(ncpus)
   }
