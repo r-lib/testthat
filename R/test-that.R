@@ -64,12 +64,13 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
     withr::defer(reporter$end_test(context = reporter$.context, test = test))
   }
 
-  # Want to skip if the test (and its subtests) have no expectations
-  # if (the$top_level_test) {
-  #   the$test_expectations <- 0
-  #   the$top_level_test <- FALSE
-  #   withr::defer(the$top_level_test <- TRUE)
-  # }
+  if (the$top_level_test) {
+    # Not strictly necessary but nice to reset the count
+    the$test_expectations <- 0
+    the$top_level_test <- FALSE
+    withr::defer(the$top_level_test <- TRUE)
+  }
+  # Used to skip if the test _and_ its subtests have no expectations
   starting_expectations <- the$test_expectations
 
   ok <- TRUE
