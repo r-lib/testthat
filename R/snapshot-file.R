@@ -200,7 +200,7 @@ snapshot_file_equal <- function(
   trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
-    abort(paste0("`", path, "` not found"))
+    cli::cli_abort("{.path {path}} not found.")
   }
 
   if (is.null(snap_variant)) {

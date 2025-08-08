@@ -131,35 +131,6 @@ expect_in <- function(object, expected) {
 
 # Helpers ----------------------------------------------------------------------
 
-check_map_names <- function(
-  x,
-  error_arg = caller_arg(x),
-  error_call = caller_env()
-) {
-  nms <- names2(x)
-
-  if (anyDuplicated(nms)) {
-    dups <- unique(nms[duplicated(nms)])
-    cli::cli_abort(
-      c(
-        "All elements in {.arg {error_arg}} must have unique names.",
-        x = "Duplicate names: {.str {dups}}"
-      ),
-      call = error_call
-    )
-  }
-  if (any(nms == "")) {
-    empty <- which(nms == "")
-    cli::cli_abort(
-      c(
-        "All elements in {.arg {error_arg}} must have names.",
-        x = "Empty names at position{?s}: {empty}"
-      ),
-      call = error_call
-    )
-  }
-}
-
 check_vector <- function(
   x,
   error_arg = caller_arg(x),

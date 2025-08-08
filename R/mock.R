@@ -27,9 +27,11 @@ with_mock <- function(..., .env = topenv()) {
   mock_qual_names <- names(dots)
 
   if (all(mock_qual_names == "")) {
-    warning(
-      "Not mocking anything. Please use named parameters to specify the functions you want to mock.",
-      call. = FALSE
+    cli::cli_warn(
+      c(
+        "Not mocking anything.",
+        "i" = "Please use named parameters to specify the functions you want to mock."
+      )
     )
     code_pos <- rep(TRUE, length(dots))
   } else {
@@ -85,11 +87,8 @@ extract_mocks <- function(funs, .env) {
       pkg_name <- gsub(pkg_and_name_rx, "\\1", qual_name)
 
       if (is_base_pkg(pkg_name)) {
-        stop(
-          "Can't mock functions in base packages (",
-          pkg_name,
-          ")",
-          call. = FALSE
+        cli::cli_abort(
+          "Can't mock functions in base package {.pkg {pkg_name}}."
         )
       }
 
@@ -102,13 +101,8 @@ extract_mocks <- function(funs, .env) {
       env <- asNamespace(pkg_name)
 
       if (!exists(name, envir = env, mode = "function")) {
-        stop(
-          "Function ",
-          name,
-          " not found in environment ",
-          environmentName(env),
-          ".",
-          call. = FALSE
+        cli::cli_abort(
+          "Function {.fn {name}} not found in environment {environmentName(env)}."
         )
       }
       mock(name = name, env = env, new = funs[[qual_name]])

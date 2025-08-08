@@ -24,5 +24,5 @@
       expect_lt(1:10, 5)
     Condition
       Error in `expect_lt()`:
-      ! Result of comparison must be a single logical value
+      ! Result of comparison must be a single logical value.
 
