@@ -171,14 +171,14 @@ please use <code><a href="expect_snapshot_output.html">expect_snapshot_output()<
 <span class="r-in"><span><span class="co"># The first run always succeeds</span></span></span>
 <span class="r-in"><span><span class="fu">expect_known_output</span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, <span class="va">tmp</span>, print <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`expect_known_output()` was deprecated in the 3rd edition.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">ℹ</span> Please use `expect_snapshot_output()` instead</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Creating reference output</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use `expect_snapshot_output()` instead</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Creating reference output.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Subsequent runs will succeed only if the file is unchanged</span></span></span>
 <span class="r-in"><span><span class="co"># This will succeed:</span></span></span>
 <span class="r-in"><span><span class="fu">expect_known_output</span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, <span class="va">tmp</span>, print <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`expect_known_output()` was deprecated in the 3rd edition.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">ℹ</span> Please use `expect_snapshot_output()` instead</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use `expect_snapshot_output()` instead</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="co"># This will fail</span></span></span>
