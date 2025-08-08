@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `test_that()`, `describe()`, and `it()` can now be arbitrarily nested. Each component will skip only if it and its subtests don't contain any expectations. The interactive stop reporter has been fixed so it doesn't duplicate failures. (#2063, #2188).
 * New `snapshot_reject()` rejects all modified snapshots by deleting the `.new` variants (#1923).
 * New `SlowReporter` makes it easier to find the slowest tests in your package. The easiest way to run it is with `devtools::test(reporter = "slow")` (#1466).
 * Power `expect_mapequal()` with `waldo::compare(list_as_map = TRUE)` (#1521).
