@@ -1,9 +1,8 @@
-#' Test reporter: gather all errors silently.
+#' Silently collect and all expectations
 #'
 #' This reporter quietly runs all tests, simply gathering all expectations.
 #' This is helpful for programmatically inspecting errors after a test run.
-#' You can retrieve the results with the `expectations()`
-#' method.
+#' You can retrieve the results with `$expectations()`.
 #'
 #' @export
 #' @family reporters
@@ -28,3 +27,11 @@ SilentReporter <- R6::R6Class(
     }
   )
 )
+
+# Useful for testing test_that() and friends which otherwise swallow
+# all expectations by design
+capture_expectations <- function(code) {
+  reporter <- SilentReporter$new()
+  with_reporter(reporter, code)
+  reporter$expectations()
+}

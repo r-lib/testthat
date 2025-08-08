@@ -14,7 +14,7 @@
 \alias{skip_on_covr}
 \alias{skip_on_bioc}
 \alias{skip_if_translated}
-\title{Skip a test}
+\title{Skip a test for various reasons}
 \usage{
 skip(message = "Skipping")
 

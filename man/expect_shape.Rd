@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-shape.R
 \name{expect_shape}
 \alias{expect_shape}
-\title{Does code return an object with the specified shape?}
+\title{Do you expect an object with this shape?}
 \usage{
 expect_shape(object, ..., nrow, ncol, dim)
 }

@@ -5,7 +5,7 @@
 \alias{expect_mapequal}
 \alias{expect_contains}
 \alias{expect_in}
-\title{Does code return a vector containing the expected values?}
+\title{Do you expect a vector containing these values?}
 \usage{
 expect_setequal(object, expected)
 
@@ -30,8 +30,9 @@ and that every element of \code{y} occurs in \code{x}.
 (i.e. \code{y} is a subset of \code{x}).
 \item \code{expect_in(x, y)} tests every element of \code{x} is in \code{y}
 (i.e. \code{x} is a subset of \code{y}).
-\item \code{expect_mapequal(x, y)} tests that \code{x} and \code{y} have the same names, and
-that \code{x[names(y)]} equals \code{y}.
+\item \code{expect_mapequal(x, y)} treats lists as if they are mappings between names
+and values. Concretely, this drops \code{NULL}s in both objects and sorts
+named components.
 }
 }
 \details{

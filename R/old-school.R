@@ -139,9 +139,8 @@ throws_error <- function(regexp = NULL, ...) {
 #' @export
 #' @param amount maximum duration in seconds
 takes_less_than <- function(amount) {
-  warning(
-    "takes_less_than() is deprecated because it is stochastic and unreliable",
-    call. = FALSE
+  cli::cli_warn(
+    "{.fn takes_less_than} is deprecated because it is stochastic and unreliable."
   )
 
   function(expr) {
@@ -165,7 +164,7 @@ takes_less_than <- function(amount) {
 #' @keywords internal
 #' @export
 not <- function(f) {
-  warning("`not()` is deprecated.", call. = FALSE)
+  cli::cli_warn("{.fn not} is deprecated.")
   stopifnot(is.function(f))
 
   negate <- function(expt) {

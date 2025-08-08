@@ -46,12 +46,7 @@ test_files_parallel <- function(
   # TODO: support timeouts. 20-30s for each file by default?
 
   num_workers <- min(default_num_cpus(), length(test_paths))
-  inform(paste0(
-    "Starting ",
-    num_workers,
-    " test process",
-    if (num_workers != 1) "es"
-  ))
+  cli::cli_inform("Starting {num_workers} test process{?es}.")
 
   # Set up work queue ------------------------------------------
   queue <- NULL
@@ -110,7 +105,10 @@ default_num_cpus <- function() {
   if (!is.null(ncpus)) {
     ncpus <- suppressWarnings(as.integer(ncpus))
     if (is.na(ncpus)) {
-      abort("`getOption(Ncpus)` must be an integer")
+      cli::cli_abort(
+        "{.code getOption('Ncpus')} must be an integer.",
+        call = NULL
+      )
     }
     return(ncpus)
   }
@@ -120,7 +118,7 @@ default_num_cpus <- function() {
   if (ncpus != "") {
     ncpus <- suppressWarnings(as.integer(ncpus))
     if (is.na(ncpus)) {
-      abort("TESTTHAT_CPUS must be an integer")
+      cli::cli_abort("{.envvar TESTTHAT_CPUS} must be an integer.")
     }
     return(ncpus)
   }
@@ -143,13 +141,19 @@ parallel_event_loop_smooth <- function(queue, reporters, test_dir) {
 
     updated <- FALSE
     for (x in msgs) {
+      if (x$code == PROCESS_OUTPUT) {
+        lns <- paste0("> ", x$path, ": ", x$message)
+        cat("\n", file = stdout())
+        base::writeLines(lns, stdout())
+        next
+      }
       if (x$code != PROCESS_MSG) {
         next
       }
 
       m <- x$message
       if (!inherits(m, "testthat_message")) {
-        message(m)
+        cli::cli_inform(as.character(m))
         next
       }
 
@@ -178,13 +182,18 @@ parallel_event_loop_chunky <- function(queue, reporters, test_dir) {
   while (!queue$is_idle()) {
     msgs <- queue$poll(Inf)
     for (x in msgs) {
+      if (x$code == PROCESS_OUTPUT) {
+        lns <- paste0("> ", x$path, ": ", x$message)
+        base::writeLines(lns, stdout())
+        next
+      }
       if (x$code != PROCESS_MSG) {
         next
       }
 
       m <- x$message
       if (!inherits(m, "testthat_message")) {
-        message(m)
+        cli::cli_inform(as.character(m))
         next
       }
 

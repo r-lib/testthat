@@ -1,3 +1,11 @@
+# stops on failure
+
+    Code
+      test_dir(test_path("test_dir"), reporter = "silent")
+    Condition
+      Error in `test_files_check()`:
+      ! Test failures.
+
 # runs all tests and records output
 
                   file context                                      test nb failed skipped error warning passed
@@ -18,4 +26,36 @@
     15 test-failures.R                                        no failure  2      0   FALSE FALSE       0      2
     16   test-helper.R                                       helper test  1      0   FALSE FALSE       0      1
     17     test-skip.R                                        Skips skip  1      0    TRUE FALSE       0      0
+
+# complains if no files
+
+    Code
+      test_dir(path)
+    Condition
+      Error in `test_dir()`:
+      ! No test files found.
+
+# can control if failures generate errors
+
+    Code
+      test_error(stop_on_failure = TRUE)
+    Condition
+      Error in `test_files_check()`:
+      ! Test failures.
+
+# can control if warnings errors
+
+    Code
+      test_warning(stop_on_warning = TRUE)
+    Condition
+      Error in `test_files_check()`:
+      ! Tests generated warnings.
+
+# complains if file doesn't exist
+
+    Code
+      test_file("DOESNTEXIST")
+    Condition
+      Error in `test_file()`:
+      ! `path` does not exist.
 

@@ -175,9 +175,13 @@ test_that("hint is informative", {
 })
 
 test_that("expect_snapshot requires a non-empty test label", {
+  local_description_set()
+
   test_that("", {
     expect_error(expect_snapshot(1 + 1))
   })
+
+  pass(NULL) # quiet message about this test being empty
 })
 
 test_that("expect_snapshot validates its inputs", {
@@ -206,4 +210,15 @@ test_that("expect_snapshot_warning validates its inputs", {
     expect_snapshot_warning(warning("!"), class = 123)
     expect_snapshot_warning(warning("!"), cran = "yes")
   })
+})
+
+test_that("on CRAN, snapshots are not run but don't skill entire test", {
+  local_on_cran(TRUE)
+
+  expectations <- capture_expectations(test_that("", {
+    expect_snapshot(1 + 1)
+    expect_true(TRUE)
+  }))
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_success")
 })

@@ -15,7 +15,7 @@
 test_examples <- function(path = "../..") {
   res <- test_examples_source(path) %||% test_examples_installed()
   if (is.null(res)) {
-    stop("Could not find examples", call. = FALSE)
+    cli::cli_abort("Could not find examples.")
   }
   invisible(res)
 }
@@ -47,24 +47,23 @@ test_examples_installed <- function(package = testing_package()) {
 #' @export
 #' @rdname test_examples
 test_rd <- function(rd, title = attr(rd, "Rdfile")) {
-  test_example(rd, title)
+  test_example(rd, title %||% "example")
 }
 
 #' @export
 #' @rdname test_examples
 test_example <- function(path, title = path) {
+  local_description_push(title)
+
   ex_path <- withr::local_tempfile(pattern = "test_example-", fileext = ".R")
   tools::Rd2ex(path, ex_path)
   if (!file.exists(ex_path)) {
     return(invisible(FALSE))
   }
 
-  env <- new.env(parent = globalenv())
-
   ok <- test_code(
-    test = title,
     code = parse(ex_path, encoding = "UTF-8"),
-    env = env,
+    env = globalenv(),
     reporter = get_reporter() %||% StopReporter$new(),
     skip_on_empty = FALSE
   )

@@ -1,4 +1,4 @@
-#' Test reporter: start recovery.
+#' Interactively debug failing tests
 #'
 #' This reporter will call a modified version of [recover()] on all
 #' broken expectations.

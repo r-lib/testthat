@@ -3,7 +3,7 @@
 \name{fail}
 \alias{fail}
 \alias{pass}
-\title{\code{pass()} or \code{fail()} a test}
+\title{Declare that an expectation either passes or fails}
 \usage{
 fail(
   message = "Failure has been forced",

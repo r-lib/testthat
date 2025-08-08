@@ -1,5 +1,6 @@
-#' Test reporter: stop on error
+#' Error if any test fails
 #'
+#' @description
 #' The default reporter used when [expect_that()] is run interactively.
 #' It responds by [stop()]ping on failures and doing nothing otherwise. This
 #' will ensure that a failing test will raise an error.
@@ -14,51 +15,55 @@ StopReporter <- R6::R6Class(
   "StopReporter",
   inherit = Reporter,
   public = list(
-    failures = NULL,
+    # All expectations that need to be reported (error, failure, warning, skip)
+    issues = NULL,
+    # Expectations that should cause the test to fail (error, failure)
     n_fail = 0L,
+    # Successful expectations
+    n_success = 0L,
     stop_reporter = TRUE,
     praise = TRUE,
 
     initialize = function(stop_reporter = TRUE, praise = TRUE) {
       super$initialize()
-      self$failures <- Stack$new()
+      self$issues <- Stack$new()
       self$praise <- praise
       self$stop_reporter <- stop_reporter
     },
 
     start_test = function(context, test) {
-      self$failures <- Stack$new()
+      self$issues <- Stack$new()
     },
 
     add_result = function(context, test, result) {
       if (expectation_success(result)) {
+        self$n_success <- self$n_success + 1
         return()
       }
 
       if (expectation_broken(result)) {
         self$n_fail <- self$n_fail + 1
       }
+      self$issues$push(result)
 
-      self$failures$push(result)
+      self$local_user_output()
+      self$cat_line(issue_summary(result, rule = TRUE), "\n")
     },
 
-    end_test = function(context, test) {
+    end_reporter = function(context, test) {
       self$local_user_output()
 
-      failures <- self$failures$as_list()
-      if (length(failures) == 0 && self$praise) {
-        self$cat_line(colourise("Test passed", "success"), " ", praise_emoji())
-        return()
-      }
-
-      messages <- map_chr(failures, issue_summary, rule = TRUE)
-      if (length(messages) > 0) {
-        self$cat_line(messages, "\n")
+      if (self$issues$size() == 0) {
+        if (self$praise && self$n_success > 0) {
+          emoji <- praise_emoji()
+          self$cat_line(colourise("Test passed", "success"), " ", emoji)
+        }
       }
     },
+
     stop_if_needed = function() {
       if (self$stop_reporter && self$n_fail > 0) {
-        abort("Test failed", call = NULL)
+        cli::cli_abort("Test failed.", call = NULL)
       }
     }
   )

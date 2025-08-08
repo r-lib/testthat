@@ -15,7 +15,7 @@ test_that("checks its inputs", {
 
 test_that("deprecation only fired for newer edition", {
   local_edition(2)
-  expect_warning(edition_deprecate(3, "old stuff"), NA)
+  expect_no_warning(edition_deprecate(3, "old stuff"))
 
   local_edition(3)
   expect_snapshot(edition_deprecate(3, "old stuff"))
@@ -28,7 +28,7 @@ test_that("required only fired for older edition", {
 
   withr::local_options(testthat.edition_ignore = FALSE)
   local_edition(3)
-  expect_error(edition_require(3, "new stuff"), NA)
+  expect_no_error(edition_require(3, "new stuff"))
 })
 
 test_that("edition for testthat is 3", {
