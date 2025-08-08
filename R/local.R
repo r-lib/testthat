@@ -200,6 +200,7 @@ local_interactive_reporter <- function(.env = parent.frame()) {
   # Use StopReporter
   reporter <- StopReporter$new()
   old <- set_reporter(reporter)
+  withr::defer(reporter$end_reporter(), envir = .env)
   withr::defer(reporter$stop_if_needed(), envir = .env)
   withr::defer(set_reporter(old), envir = .env)
 

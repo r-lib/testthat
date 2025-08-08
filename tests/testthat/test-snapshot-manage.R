@@ -36,7 +36,7 @@ test_that("can work with variants", {
 
 test_that("snapshot_reject deletes .new files", {
   path <- local_snapshot_dir(c("a.md", "a.new.md", "b.md", "b.new.md"))
-  
+
   expect_snapshot(snapshot_reject(path = path))
   expect_equal(dir(file.path(path, "_snaps")), c("a.md", "b.md"))
 })

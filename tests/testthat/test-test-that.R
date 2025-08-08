@@ -121,9 +121,24 @@ test_that("return value from test_that", {
     })
   )
   expect_false(skip)
-  # No tests = automatically generated skip
-  with_reporter("", skip <- test_that("success", {}))
+})
+
+test_that("empty test skips automatically", {
+  expectations <- capture_expectations(skip <- test_that("success", {}))
   expect_false(skip)
+  expect_s3_class(expectations[[1]], "expectation_skip")
+})
+
+test_that("nested tests skipped correctly", {
+  expectations <- capture_expectations({
+    describe("outer", {
+      it("1")
+      it("2", expect_true(TRUE))
+    })
+  })
+  expect_length(expectations, 2)
+  expect_s3_class(expectations[[1]], "expectation_skip")
+  expect_s3_class(expectations[[2]], "expectation_success")
 })
 
 test_that("can signal warnings and messages without restart", {
@@ -133,12 +148,6 @@ test_that("can signal warnings and messages without restart", {
   expect_null(signalCondition(warning_cnd("foo")))
 })
 
-test_that("braces required in testthat 3e", {
-  local_edition(3)
-  expect_warning(
-    test_that("", expect_true(TRUE))
-  )
-})
 
 test_that("no braces required in testthat 2e", {
   local_edition(2)
