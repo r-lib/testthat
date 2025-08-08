@@ -37,15 +37,6 @@ test_that <- function(desc, code) {
   local_description_push(desc)
 
   code <- substitute(code)
-  if (edition_get() >= 3) {
-    if (!is_call(code, "{")) {
-      cli::cli_warn(
-        "The {.arg code} argument to {.fn test_that} must be a braced expression to get accurate file-line information for failures.",
-        class = "testthat_braces_warning"
-      )
-    }
-  }
-
   test_code(code, parent.frame())
 }
 
