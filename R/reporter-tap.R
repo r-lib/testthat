@@ -1,4 +1,4 @@
-#' Test reporter: TAP format.
+#' Report results in TAP format
 #'
 #' This reporter will output results in the Test Anything Protocol (TAP),
 #' a simple text-based interface between testing modules in a test harness.

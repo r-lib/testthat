@@ -1,7 +1,7 @@
 # regression test: test_file() used to crash with a NULL reporter
 test_that("ListReporter with test_file and NULL reporter", {
   test_file_path <- 'test-list-reporter/test-exercise-list-reporter.R'
-  expect_error(test_file(test_path(test_file_path), reporter = NULL), NA)
+  expect_no_error(test_file(test_path(test_file_path), reporter = NULL))
 })
 
 # regression: check that an exception is reported if it is raised in the test file outside

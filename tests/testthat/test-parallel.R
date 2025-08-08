@@ -20,6 +20,11 @@ test_that("detect number of cpus to use", {
   expect_equal(default_num_cpus(), 13L)
 })
 
+test_that("good error if bad option", {
+  withr::local_options(Ncpus = "bad")
+  expect_snapshot(default_num_cpus(), error = TRUE)
+})
+
 test_that("ok", {
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
   # we cannot run these with the silent reporter, because it is not

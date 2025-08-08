@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-known.R
 \name{expect_output_file}
 \alias{expect_output_file}
-\title{Expectations: is the output or the value equal to a known good value?}
+\title{Do you expect the output/result to equal a known good value?}
 \usage{
 expect_output_file(
   object,

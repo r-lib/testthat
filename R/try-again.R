@@ -1,4 +1,4 @@
-#' Try evaluating an expressing multiple times until it succeeds
+#' Evaluate an expression multiple times until it succeeds
 #'
 #' If you have a flaky test, you can use `try_again()` to run it a few times
 #' until it succeeds. In most cases, you are better fixing the underlying

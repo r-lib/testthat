@@ -88,6 +88,35 @@ test_that("expect_s3_class validates its inputs", {
   })
 })
 
+# expect_r6_class --------------------------------------------------------
+
+test_that("expect_r6_class succeeds when object inherits from expected class", {
+  Person <- R6::R6Class("Person")
+  Student <- R6::R6Class("Student", inherit = Person)
+
+  person <- Person$new()
+  student <- Student$new()
+
+  expect_success(expect_r6_class(person, "Person"))
+  expect_success(expect_r6_class(student, "Student"))
+  expect_success(expect_r6_class(student, "Person"))
+})
+
+test_that("expect_r6_class generates useful failures", {
+  x <- 1
+  person <- R6::R6Class("Person")$new()
+
+  expect_snapshot_failure({
+    expect_r6_class(x, "Student")
+    expect_r6_class(person, "Student")
+  })
+})
+
+test_that("expect_r6_class validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_r6_class(1, c("Person", "Student"))
+  })
+})
 
 # expect_s7_class --------------------------------------------------------
 

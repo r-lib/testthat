@@ -2,9 +2,9 @@
 
 test_that("stops on failure", {
   withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
-  expect_error(
+  expect_snapshot(error = TRUE, {
     test_dir(test_path("test_dir"), reporter = "silent")
-  )
+  })
 })
 
 test_that("runs all tests and records output", {
@@ -27,7 +27,7 @@ test_that("complains if no files", {
   path <- withr::local_tempfile()
   dir.create(path)
 
-  expect_error(test_dir(path), "test files")
+  expect_snapshot(error = TRUE, test_dir(path))
 })
 
 test_that("can control if failures generate errors", {
@@ -36,8 +36,8 @@ test_that("can control if failures generate errors", {
     test_dir(test_path("test-error"), reporter = "silent", ...)
   }
 
-  expect_error(test_error(stop_on_failure = TRUE), "Test failures")
-  expect_error(test_error(stop_on_failure = FALSE), NA)
+  expect_snapshot(error = TRUE, test_error(stop_on_failure = TRUE))
+  expect_no_error(test_error(stop_on_failure = FALSE))
 })
 
 test_that("can control if warnings errors", {
@@ -46,8 +46,8 @@ test_that("can control if warnings errors", {
     test_dir(test_path("test-warning"), reporter = "silent", ...)
   }
 
-  expect_error(test_warning(stop_on_warning = TRUE), "Tests generated warnings")
-  expect_error(test_warning(stop_on_warning = FALSE), NA)
+  expect_snapshot(error = TRUE, test_warning(stop_on_warning = TRUE))
+  expect_no_error(test_warning(stop_on_warning = FALSE))
 })
 
 # test_file ---------------------------------------------------------------
@@ -58,7 +58,7 @@ test_that("can test single file", {
 })
 
 test_that("complains if file doesn't exist", {
-  expect_error(test_file("DOESNTEXIST"), "does not exist")
+  expect_snapshot(error = TRUE, test_file("DOESNTEXIST"))
 })
 
 

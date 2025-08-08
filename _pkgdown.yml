@@ -16,38 +16,35 @@ home:
     href: http://r-pkgs.org/tests.html
 
 reference:
-- title: Expectations
-- subtitle: Objects
-  contents:
-  - expect_equal
-  - expect_null
-  - expect_type
 
-- subtitle: Vectors
+- title: Basics
   contents:
-  - expect_length
-  - expect_shape
+  - test_that
+  - expect_equal
+  - expect_error
+  - expect_true
+
+- title: Expectations
+- subtitle: Values
+  contents:
   - expect_gt
+  - expect_length
   - expect_match
   - expect_named
+  - expect_null
   - expect_setequal
-  - expect_true
+  - expect_shape
+  - expect_type
   - expect_vector
 
 - subtitle: Side-effects
   contents:
-  - expect_error
   - expect_no_error
   - expect_invisible
   - expect_output
   - expect_silent
 
-- subtitle: Helpers
-  contents:
-  - try_again
-  - local_reproducible_output
-
-- title: Snapshot testing
+- subtitle: Snapshot tests
   contents:
   - expect_snapshot
   - expect_snapshot_value
@@ -56,32 +53,34 @@ reference:
 
 - title: Test helpers
   contents:
-  - local_edition
   - is_testing
+  - local_edition
+  - local_reproducible_output
+  - set_state_inspector
   - skip
   - teardown_env
-  - set_state_inspector
+  - try_again
 
 - title: Run tests
   contents:
-  - describe
-  - starts_with("test_")
+  - starts_with("test_") 
+  - -test_that
   - use_catch
-
-- title: Reporters
-  contents:
-  - Reporter
-  - ends_with("Reporter")
 
 - title: Mocking
   contents:
   - with_mocked_bindings
   - starts_with("mock_")
 
-- title: Expectation internals
+- title: Custom expectations
   contents:
   - fail
   - expect_success
+
+- title: Reporters
+  contents:
+  - ends_with("Reporter")
+  - -Reporter
 
 news:
   releases:

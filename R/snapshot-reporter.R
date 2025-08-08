@@ -35,9 +35,11 @@ SnapshotReporter <- R6::R6Class(
     },
 
     start_test = function(context, test) {
-      if (is.character(test)) {
-        self$test <- gsub("\n", "", test)
+      if (is.null(test)) {
+        return()
       }
+
+      self$test <- paste0(gsub("\n", "", test), collapse = " / ")
     },
 
     # Called by expectation
@@ -106,13 +108,9 @@ SnapshotReporter <- R6::R6Class(
     ) {
       self$announce_file_snapshot(name)
 
-      if (is.null(variant)) {
-        snap_dir <- file.path(self$snap_dir, self$file)
-      } else {
-        snap_dir <- file.path(self$snap_dir, variant, self$file)
-      }
       snapshot_file_equal(
-        snap_test_dir = snap_dir,
+        snap_dir = self$snap_dir,
+        snap_test = self$file,
         snap_name = name,
         snap_variant = variant,
         path = path,
@@ -207,7 +205,7 @@ local_snapshotter <- function(
     fail_on_new = fail_on_new
   )
   if (!identical(cleanup, FALSE)) {
-    warn("`cleanup` is deprecated")
+    cli::cli_warn("{.arg cleanup} is deprecated.")
   }
 
   withr::local_options(

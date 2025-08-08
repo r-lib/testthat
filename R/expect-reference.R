@@ -1,4 +1,4 @@
-#' Does code return a reference to the expected object?
+#' Do you expect a reference to this object?
 #'
 #' `expect_reference()` compares the underlying memory addresses of
 #' two symbols. It is for expert use only.

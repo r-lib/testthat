@@ -8,6 +8,22 @@ test_that("basic comparisons work", {
   expect_success(expect_gte(10, 10))
 })
 
+test_that("useful output when numbers are very small", {
+  x <- 1e-5
+  expect_snapshot_failure(expect_lte(1.1 * x, x))
+  expect_snapshot_failure(expect_gt(x, 1.1 * x))
+})
+
+test_that("useful output when difference is zero", {
+  x <- 100
+  expect_snapshot_failure(expect_lt(x, 100))
+})
+
+test_that("useful output when differnce is large", {
+  x <- 100
+  expect_snapshot_failure(expect_lt(x, 0.001))
+})
+
 test_that("comparison result object invisibly", {
   out <- expect_invisible(expect_lt(1, 10))
   expect_equal(out, 1)
@@ -45,7 +61,7 @@ test_that("comparisons with more complicated objects work", {
 })
 
 test_that("comparison must yield a single logical", {
-  expect_error(expect_lt(1:10, 5), "single logical")
+  expect_snapshot(error = TRUE, expect_lt(1:10, 5))
 })
 
 test_that("wordy versions are deprecated", {

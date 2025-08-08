@@ -47,6 +47,18 @@
 
     `x` inherits from 'a'/'b' not 'c'/'d'.
 
+# expect_r6_class generates useful failures
+
+    `x` is not an R6 object.
+
+# expect_r6_class validates its inputs
+
+    Code
+      expect_r6_class(1, c("Person", "Student"))
+    Condition
+      Error in `expect_r6_class()`:
+      ! `class` must be a single string, not a character vector.
+
 # can check with actual class
 
     Foo() inherits from <Foo> not <Bar>.

@@ -1,4 +1,4 @@
-#' Does code return a vector with (given) names?
+#' Do you expect a vector with (these) names?
 #'
 #' You can either check for the presence of names (leaving `expected`
 #' blank), specific names (by supplying a vector of names), or absence of

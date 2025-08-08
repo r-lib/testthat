@@ -3,7 +3,7 @@
 \name{local_test_context}
 \alias{local_test_context}
 \alias{local_reproducible_output}
-\title{Locally set options for maximal test reproducibility}
+\title{Temporarily set options for maximum reproducibility}
 \usage{
 local_test_context(.env = parent.frame())
 

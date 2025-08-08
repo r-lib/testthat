@@ -1,4 +1,4 @@
-#' Locally set options for maximal test reproducibility
+#' Temporarily set options for maximum reproducibility
 #'
 #' @description
 #' `local_test_context()` is run automatically by `test_that()` but you may
@@ -200,6 +200,7 @@ local_interactive_reporter <- function(.env = parent.frame()) {
   # Use StopReporter
   reporter <- StopReporter$new()
   old <- set_reporter(reporter)
+  withr::defer(reporter$end_reporter(), envir = .env)
   withr::defer(reporter$stop_if_needed(), envir = .env)
   withr::defer(set_reporter(old), envir = .env)
 

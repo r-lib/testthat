@@ -4,7 +4,7 @@
       source_file(test_path("reporters/error-setup.R"), wrap = FALSE)
     Condition
       Error:
-      ! In path: "reporters/error-setup.R"
+      ! Failed to evaluate 'reporters/error-setup.R'.
       Caused by error in `h()`:
       ! !
 
@@ -26,14 +26,6 @@
       Error:
       ! `env` must be an environment, not the string "x".
 
-# can find only matching test
-
-    Code
-      filter_desc(code, "baz")
-    Condition
-      Error:
-      ! Failed to find test with specified description
-
 # preserve srcrefs
 
     Code
@@ -43,11 +35,16 @@
             # this is a comment
           }))
 
-# errors if duplicate labels
+# errors if zero or duplicate labels
 
     Code
       filter_desc(code, "baz")
     Condition
       Error:
-      ! Found multiple tests with specified description
+      ! Found multiple tests with description "baz".
+    Code
+      filter_desc(code, "missing")
+    Condition
+      Error:
+      ! Failed to find test with description "missing".
 

@@ -1,7 +1,6 @@
 methods::setOldClass("proc_time")
 
-#' List reporter: gather all test results along with elapsed time and
-#' file information.
+#' Capture test results and metadata
 #'
 #' This reporter gathers all results, adding additional information such as
 #' test elapsed time, and test filename if available. Very useful for reporting.

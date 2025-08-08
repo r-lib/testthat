@@ -11,9 +11,9 @@ test_that("can suppress praise", {
 
 test_that("stop if needed errors when needed", {
   r <- StopReporter$new()
-  expect_error(r$stop_if_needed(), NA)
+  expect_no_error(r$stop_if_needed())
   r$n_fail <- 1
-  expect_error(r$stop_if_needed(), "Test failed")
+  expect_snapshot(error = TRUE, r$stop_if_needed())
   r$stop_reporter <- FALSE
-  expect_error(r$stop_if_needed(), NA)
+  expect_no_error(r$stop_if_needed())
 })
