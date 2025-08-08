@@ -103,7 +103,9 @@
 
 
 <dt id="arg-desc">desc<a class="anchor" aria-label="anchor" href="#arg-desc"></a></dt>
-<dd><p>If not-<code>NULL</code>, will run only test with this <code>desc</code>ription.</p></dd>
+<dd><p>A character vector used to filter tests. This is used to
+(recursively) filter the content of the file, so that only the non-test
+code up to and including the match test is run.</p></dd>
 
 
 <dt id="arg-wrap">wrap<a class="anchor" aria-label="anchor" href="#arg-wrap"></a></dt>
