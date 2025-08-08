@@ -172,8 +172,8 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
       withCallingHandlers(
         {
           eval(code, test_env)
-          has_expectations <- the$test_expectations > starting_expectations
-          if (!has_expectations && skip_on_empty) {
+          new_expectations <- the$test_expectations > starting_expectations
+          if (!new_expectations && skip_on_empty) {
             skip_empty()
           }
         },
