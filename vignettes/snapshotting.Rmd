@@ -128,6 +128,8 @@ test_that("bullets", {
 If this is a deliberate change, you can follow the advice in the message and update the snapshots for that file by running `snapshot_accept("pizza")`; otherwise you can fix the bug and your tests will pass once more.
 (You can also accept snapshot for all files with `snapshot_accept()`).
 
+If you delete the test, the corresponding snapshot will be remove the next time you run the tests. If you delete all snapshots in the file, the entire snapshot file will be deleted the next time you run all the tests.
+
 ### Snapshot format
 
 Snapshots are recorded using a subset of markdown.
