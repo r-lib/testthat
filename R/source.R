@@ -5,7 +5,9 @@
 #' @param path Path to files.
 #' @param pattern Regular expression used to filter files.
 #' @param env Environment in which to evaluate code.
-#' @param desc If not-`NULL`, will run only test with this `desc`ription.
+#' @param desc A character vector used to filter tests. This is used to
+#'   (recursively) filter the content of the file, so that only the non-test
+#'   code up to and including the match test is run.
 #' @param chdir Change working directory to `dirname(path)`?
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
@@ -26,6 +28,7 @@ source_file <- function(
   if (!is.environment(env)) {
     stop_input_type(env, "an environment", call = error_call)
   }
+  check_character(desc, allow_null = TRUE)
 
   lines <- brio::read_lines(path)
   srcfile <- srcfilecopy(
@@ -73,50 +76,40 @@ source_file <- function(
   }
 }
 
-filter_desc <- function(exprs, desc = NULL, error_call = caller_env()) {
-  if (is.null(desc)) {
+filter_desc <- function(exprs, descs, error_call = caller_env()) {
+  if (length(descs) == 0) {
     return(exprs)
   }
+  desc <- descs[[1]]
 
-  found <- FALSE
-  include <- rep(FALSE, length(exprs))
+  subtest_idx <- which(unname(map_lgl(exprs, is_subtest)))
 
-  for (i in seq_along(exprs)) {
-    expr <- exprs[[i]]
-
-    if (!is_call(expr, c("test_that", "describe"), n = 2)) {
-      if (!found) {
-        include[[i]] <- TRUE
-      }
-    } else {
-      if (!is_string(expr[[2]])) {
-        next
-      }
-
-      test_desc <- as.character(expr[[2]])
-      if (test_desc != desc) {
-        next
-      }
-
-      if (found) {
-        cli::cli_abort(
-          "Found multiple tests with specified description.",
-          call = error_call
-        )
-      }
-      include[[i]] <- TRUE
-      found <- TRUE
-    }
-  }
-
-  if (!found) {
+  matching_idx <- keep(subtest_idx, \(idx) exprs[[idx]][[2]] == desc)
+  if (length(matching_idx) == 0) {
     cli::cli_abort(
-      "Failed to find test with specified description.",
+      "Failed to find test with description {.str {desc}}.",
+      call = error_call
+    )
+  } else if (length(matching_idx) > 1) {
+    cli::cli_abort(
+      "Found multiple tests with description {.str {desc}}.",
       call = error_call
     )
   }
 
-  exprs[include]
+  # Want all code up to and including the matching test, except for subtests
+  keep_idx <- setdiff(seq2(1, matching_idx), setdiff(subtest_idx, matching_idx))
+  # Recursively inspect the components of the subtest
+  exprs[[matching_idx]][[3]] <- filter_desc(
+    exprs[[matching_idx]][[3]],
+    descs[-1],
+    error_call = error_call
+  )
+  exprs[keep_idx]
+}
+
+is_subtest <- function(expr) {
+  is_call(expr, c("test_that", "describe", "it"), n = 2) && is_string(expr[[2]])
 }
 
 #' @rdname source_file
