@@ -364,13 +364,23 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
     name <- file.path(variant, file)
   }
 
+  args <- encodeString(name, quote = '"')
+  # Include path argument if we're in a different working directory
+  wd <- Sys.getenv("TESTTHAT_WD", unset = "")
+  if (wd != "") {
+    test_path <- file.path(wd, "tests/testthat")
+    if (test_path != getwd()) {
+      args <- paste0(args, ", ", encodeString(getwd(), quote = '"'))
+    }
+  }
+
   paste0(
     cli::format_inline(
-      "* Run {.run testthat::snapshot_accept('{name}')} to accept the change."
+      "* Run {.run testthat::snapshot_accept({args})} to accept the change."
     ),
     "\n",
     cli::format_inline(
-      "* Run {.run testthat::snapshot_review('{name}')} to interactively review the change."
+      "* Run {.run testthat::snapshot_review({args})} to interactively review the change."
     )
   )
 }
