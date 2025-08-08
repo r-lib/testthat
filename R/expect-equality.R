@@ -146,9 +146,7 @@ expect_waldo_equal_ <- function(
       "`expected`",
       paste0(comp, collapse = "\n\n")
     )
-    if (!is.null(error_prefix)) {
-      msg <- paste0(error_prefix, msg)
-    }
+    msg <- paste0(error_prefix, msg)
     return(fail(msg, info = info, trace_env = trace_env))
   }
   pass(act$val)
