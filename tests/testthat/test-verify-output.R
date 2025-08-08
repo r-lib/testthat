@@ -49,7 +49,7 @@ test_that("can record all types of output", {
 
 test_that("can't record plots", {
   skip_if(interactive())
-  expect_error(verify_output(tempfile(), plot(1:10)), "Plots")
+  expect_snapshot(error = TRUE, verify_output(tempfile(), plot(1:10)))
 })
 
 test_that("verify_output() splits condition messages on newlines", {

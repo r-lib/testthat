@@ -1,4 +1,4 @@
-#' Skip a test
+#' Skip a test for various reasons
 #'
 #' @description
 #' `skip_if()` and `skip_if_not()` allow you to skip tests, immediately
@@ -138,10 +138,12 @@ package_version <- function(x) {
 #'   should only be run on R versions 4.1.0 and later.
 #' @rdname skip
 skip_unless_r <- function(spec) {
+  check_string(spec)
+
   parts <- unlist(strsplit(spec, " ", fixed = TRUE))
   if (length(parts) != 2L) {
     cli::cli_abort(
-      "{.arg spec} should be a comparison like '>=' and an R version separated by a space."
+      "{.arg spec} must be an valid version specification, like {.str >= 4.0.0}, not {.str {spec}}."
     )
   }
   comparator <- match.fun(parts[1L])

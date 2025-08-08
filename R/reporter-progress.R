@@ -1,4 +1,4 @@
-#' Test reporter: interactive progress bar of errors.
+#' Report progress interactively
 #'
 #' @description
 #' `ProgressReporter` is designed for interactive use. Its goal is to

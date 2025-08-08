@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-inheritance.R
 \name{expect_is}
 \alias{expect_is}
-\title{Does an object inherit from a given class?}
+\title{Do you expect to inherit from this class?}
 \usage{
 expect_is(object, class, info = NULL, label = NULL)
 }

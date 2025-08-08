@@ -1,3 +1,11 @@
+# get_routine() fails when no routine exists
+
+    Code
+      get_routine("utils", "no_such_routine")
+    Condition
+      Error:
+      ! failed to locate routine 'no_such_routine' in package 'utils'
+
 # validates inputs
 
     Code

@@ -1,4 +1,4 @@
-#' Does code return a vector containing the expected values?
+#' Do you expect a vector containing these values?
 #'
 #' * `expect_setequal(x, y)` tests that every element of `x` occurs in `y`,
 #'    and that every element of `y` occurs in `x`.

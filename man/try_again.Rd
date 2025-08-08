@@ -2,7 +2,7 @@
 % Please edit documentation in R/try-again.R
 \name{try_again}
 \alias{try_again}
-\title{Try evaluating an expressing multiple times until it succeeds}
+\title{Evaluate an expression multiple times until it succeeds}
 \usage{
 try_again(times, code)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-debug.R
 \name{DebugReporter}
 \alias{DebugReporter}
-\title{Test reporter: start recovery.}
+\title{Interactively debug failing tests}
 \description{
 This reporter will call a modified version of \code{\link[=recover]{recover()}} on all
 broken expectations.

@@ -5,7 +5,7 @@
 \alias{expect_failure}
 \alias{expect_snapshot_failure}
 \alias{show_failure}
-\title{Tools for testing expectations}
+\title{Test your custom expectations}
 \usage{
 expect_success(expr)
 

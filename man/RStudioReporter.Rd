@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-rstudio.R
 \name{RStudioReporter}
 \alias{RStudioReporter}
-\title{Test reporter: RStudio}
+\title{Report results to RStudio}
 \description{
 This reporter is designed for output to RStudio. It produces results in
 any easily parsed form.

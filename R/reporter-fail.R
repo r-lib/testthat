@@ -1,4 +1,4 @@
-#' Test reporter: fail at end.
+#' Fail if any tests fail
 #'
 #' This reporter will simply throw an error if any of the tests failed. It is
 #' best combined with another reporter, such as the

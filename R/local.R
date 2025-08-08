@@ -1,4 +1,4 @@
-#' Locally set options for maximal test reproducibility
+#' Temporarily set options for maximum reproducibility
 #'
 #' @description
 #' `local_test_context()` is run automatically by `test_that()` but you may

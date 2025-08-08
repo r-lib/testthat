@@ -1,9 +1,8 @@
-#' Test reporter: gather all errors silently.
+#' Silently collect and all expectations
 #'
 #' This reporter quietly runs all tests, simply gathering all expectations.
 #' This is helpful for programmatically inspecting errors after a test run.
-#' You can retrieve the results with the `expectations()`
-#' method.
+#' You can retrieve the results with `$expectations()`.
 #'
 #' @export
 #' @family reporters
