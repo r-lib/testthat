@@ -11,17 +11,14 @@ test_that("can mock S3 methods", {
 })
 
 test_that("can mock S4 methods", {
-  Person <- setClass("Person", slots = c(name = "character", age = "numeric"))
-  setGeneric("age", function(x) standardGeneric("age"))
-  setMethod("age", "Person", function(x) x@age)
-  jim <- Person(name = "Jim", age = 32)
+  jim <- TestMockPerson(name = "Jim", age = 32)
 
   local({
-    local_mocked_s4_method("age", "Person", function(x) 42)
-    expect_equal(age(jim), 42)
+    local_mocked_s4_method("mock_age", "TestMockPerson", function(x) 42)
+    expect_equal(mock_age(jim), 42)
   })
 
-  expect_equal(age(jim), 32)
+  expect_equal(mock_age(jim), 32)
 })
 
 

@@ -61,3 +61,10 @@ TestMockClass <- R6::R6Class(
     n = function() 1
   )
 )
+
+TestMockPerson <- setClass(
+  "TestMockPerson",
+  slots = c(name = "character", age = "numeric")
+)
+setGeneric("mock_age", function(x) standardGeneric("mock_age"))
+setMethod("mock_age", "TestMockPerson", function(x) x@age)
