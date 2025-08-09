@@ -1,8 +1,8 @@
 ---
-title: "Challenging Testing Problems"
+title: "Challenging testing problems"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Challenging Testing Problems}
+  %\VignetteIndexEntry{Challenging testing problems}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,30 +14,37 @@ knitr::opts_chunk$set(
 )
 ```
 
+Testing is easy when your functions are pure: they take some inputs and return predictable outputs. But real-world code often involves randomness, external state, graphics, user interaction, and other challenging elements. This vignette provides practical solutions for testing these tricky scenarios.
+
+Other packages:
+
+* For testing graphical output, we recommend vdiffr.
+* For testing code that uses HTTP requests we recommend vcr or httptest2.
+
 ```{r setup}
 library(testthat)
 ```
 
-Testing is easy when your functions are pure: they take some inputs and return predictable outputs. But real-world code often involves randomness, external state, graphics, user interaction, and other challenging elements. This vignette provides practical solutions for testing these tricky scenarios.
+## External state
 
-## Output Affected by RNG
+Tests should be isolated from global options, environment variables, and other external state that might affect behavior.
+
+### Output affected by RNG
 
 Random number generation can make tests non-deterministic. Use `withr::local_seed()` to ensure reproducible results within your tests.
 
-### The Problem
-
 ```{r, eval = FALSE}
-# This test will randomly pass or fail
-test_that("random sample has expected properties", {
-  x <- sample(1:100, 10)
-  expect_length(x, 10)
-  expect_true(all(x %in% 1:100))
-  # This might fail randomly:
-  expect_equal(x[1], 42)
+simulate_data <- function(n) {
+  rnorm(n, mean = 0, sd = 1)
+}
+
+test_that("simulate_data returns correct structure", {
+  result <- simulate_data(5)
+  expect_length(result, 5)
+  expect_type(result, "double")
+  expect_equal(result[1], 1.048, tolerance = 0.001)
 })
 ```
-
-### The Solution
 
 ```{r}
 test_that("random sample has expected properties", {
@@ -50,28 +57,7 @@ test_that("random sample has expected properties", {
 })
 ```
 
-For functions that internally use random numbers:
-
-```{r}
-simulate_data <- function(n) {
-  rnorm(n, mean = 0, sd = 1)
-}
-
-test_that("simulate_data returns correct structure", {
-  withr::local_seed(456)
-  result <- simulate_data(5)
-  expect_length(result, 5)
-  expect_type(result, "double")
-  # Test specific values with fixed seed
-  expect_equal(result[1], 1.048, tolerance = 0.001)
-})
-```
-
-## Output Affected by External State
-
-Tests should be isolated from global options, environment variables, and other external state that might affect behavior.
-
-### Global Options
+### Global options
 
 ```{r}
 # Function that depends on global options
@@ -89,7 +75,7 @@ test_that("format_number respects digits option", {
 })
 ```
 
-### Environment Variables
+### Environment variables
 
 ```{r}
 # Function that depends on environment variables
@@ -108,11 +94,11 @@ test_that("get_api_url uses default when env var not set", {
 })
 ```
 
-### Working Directory
+### Reading and writing files
 
 ```{r}
 test_that("function works in different directories", {
-  withr::local_dir(tempdir())
+  withr::local_dir(withr::local_tempdir())
   # Test code that depends on working directory
   writeLines("test content", "temp_file.txt")
   expect_true(file.exists("temp_file.txt"))
@@ -120,39 +106,19 @@ test_that("function works in different directories", {
 })
 ```
 
-## Graphical Output
+### Local wrappers
 
-Testing plots and other graphical output requires specialized tools. The [vdiffr](https://vdiffr.r-lib.org/) package provides visual regression testing for ggplot2 and base R graphics.
+If you want to make your own function, you should take a `frame` argument. frame is an environment on the call stack, i.e. it's the execution environment of some function, and the local effects will be undone when that function is completed. Underneath the hood this is all wrappers around `on.exit()`.
 
-### Setting Up vdiffr
+```{r}
 
-```{r, eval = FALSE}
-# In your test file
-library(vdiffr)
-
-test_that("plot looks correct", {
-  p <- ggplot(mtcars, aes(wt, mpg)) + geom_point()
-  expect_doppelganger("basic scatterplot", p)
-})
 ```
 
-### Base R Graphics
-
-```{r, eval = FALSE}
-test_that("base R plot is correct", {
-  expect_doppelganger("base histogram", function() {
-    hist(rnorm(100), main = "Normal Distribution")
-  })
-})
-```
-
-The first time you run these tests, vdiffr will create reference images. Subsequent runs will compare against these references and flag any visual differences.
-
-## Errors and User-Facing Text
+## Errors and user-facing text
 
 Error messages, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Snapshots are perfect for this.
 
-### Testing Error Messages
+### Testing error messages
 
 ```{r}
 divide_positive <- function(x, y) {
@@ -168,22 +134,7 @@ test_that("divide_positive gives helpful error", {
 })
 ```
 
-### Testing Warnings
-
-```{r}
-maybe_warn <- function(x) {
-  if (x < 0) {
-    warning("Negative value detected: ", x)
-  }
-  abs(x)
-}
-
-test_that("maybe_warn produces expected warning", {
-  expect_snapshot(maybe_warn(-5))
-})
-```
-
-### Testing Complex Output
+### Testing complex output
 
 ```{r}
 summarize_data <- function(x) {
@@ -198,59 +149,45 @@ test_that("summarize_data output is correct", {
 })
 ```
 
-## HTTP Responses
+The same idea applies to messages and warnings.
 
-Testing code that makes HTTP requests requires mocking to avoid external dependencies. Use httr2 mocking for httr2-based code, or httptest2 for httr-based code.
+### `local_reproducible_output()`
 
-### With httr2
 
-```{r, eval = FALSE}
-library(httr2)
 
-get_user_info <- function(user_id) {
-  req <- request("https://api.example.com") |>
-    req_url_path_append("users", user_id)
-  resp <- req_perform(req)
-  resp_body_json(resp)
-}
+### Transformations
 
-test_that("get_user_info handles successful response", {
-  # Mock the HTTP response
-  with_mocked_responses(
-    request("https://api.example.com/users/123") |>
-      req_method("GET") |>
-      mock_response(
-        status_code = 200,
-        body = '{"id": 123, "name": "Alice"}'
-      ),
-    {
-      result <- get_user_info(123)
-      expect_equal(result$id, 123)
-      expect_equal(result$name, "Alice")
-    }
-  )
-})
+Sometimes part of the output varies in ways that you can't easily control. There are two techniques you can use: mocking (described next) or the `transform` output. 
+
+## Mocking
+
+<!-- https://github.com/search?q=%28org%3Ar-lib+OR+org%3Atidyverse%29+local_mocked+bindings+path%3Atests%2Ftestthat&type=code -->
+
+* Package versions and installed status
+* Retrieving external state (vcr typically best) but sometimes better at higher level. e.g. token prices in ellemr.
+* Pretending that you're on a different operating system
+* Cause things to deliberately error
+* The passing of time
+* Slow functions that aren't important for specific test
+* Sometimes easier or more clear to mock a function rather than setting options/env vars. And generally just tickling some branch that would otherwise be hard to reach.
+* Record internal state with `<<-`.
+
+    ```{r}
+    unix_time <- function() unclass(Sys.time())
+    
+    time <- 0
+    local_mocked_bindings(unix_time = function(time) time)
+    time <- 1
+    time <- 10
+    ```
+
+### Interactivity and user input
+
+```{r}
+local_mocked_bindings(interactive = function() FALSE)
 ```
 
-### With httptest2
-
-```{r, eval = FALSE}
-library(httptest2)
-
-test_that("API call works", {
-  with_mock_api({
-    # httptest2 will look for mock files in tests/testthat/api.example.com/
-    result <- get_user_info(123)
-    expect_equal(result$id, 123)
-  })
-})
-```
-
-## Interactivity
-
-Interactive functions that prompt for user input need mocking to work in automated tests.
-
-### Mocking User Input
+But we generally recommend using `rlang::is_interactive()`. Can be manually overridden by `rlang_interactive` option, whih is automatically set inside of tests.
 
 ```{r}
 ask_yes_no <- function(question) {
@@ -269,31 +206,10 @@ test_that("ask_yes_no handles no response", {
 })
 ```
 
-### Mocking File Selection
 
-```{r}
-read_user_file <- function() {
-  file_path <- file.choose()
-  readLines(file_path)
-}
+## Reducing duplication
 
-test_that("read_user_file works with mocked file selection", {
-  temp_file <- tempfile()
-  writeLines(c("line 1", "line 2"), temp_file)
-  
-  mockery::stub(read_user_file, "file.choose", temp_file)
-  result <- read_user_file()
-  
-  expect_equal(result, c("line 1", "line 2"))
-  unlink(temp_file)
-})
-```
-
-## Testing Many Combinations
-
-When you need to test many parameter combinations, use helper functions and loops to avoid repetitive code.
-
-### Using Helper Functions
+### Using helper functions
 
 ```{r}
 # Function to test
@@ -311,13 +227,15 @@ test_power <- function(x, n, expected) {
 }
 
 # Test many combinations
-test_power(2, 3, 8)
-test_power(5, 2, 25)
-test_power(10, 0, 1)
-test_power(-3, 2, 9)
+test_that("power combinations work", {
+  test_power(2, 3, 8)
+  test_power(5, 2, 25)
+  test_power(10, 0, 1)
+  test_power(-3, 2, 9)
+})
 ```
 
-### Using Loops for Systematic Testing
+### Using loops
 
 ```{r}
 test_that("power_function works for multiple bases and exponents", {
@@ -328,60 +246,12 @@ test_that("power_function works for multiple bases and exponents", {
   )
   
   for (i in seq_len(nrow(test_cases))) {
-    expect_equal(
-      power_function(test_cases$x[i], test_cases$n[i]),
-      test_cases$expected[i],
-      info = paste("Failed for x =", test_cases$x[i], "n =", test_cases$n[i])
-    )
+    test_that(paste("x =", test_cases$x[i], "n =", test_cases$n[i]), {
+      expect_equal(
+        power_function(test_cases$x[i], test_cases$n[i]),
+        test_cases$expected[i]
+      )
+    })
   }
 })
 ```
-
-### Property-Based Testing
-
-```{r}
-test_that("power_function satisfies mathematical properties", {
-  # Test that x^0 = 1 for any non-zero x
-  for (x in c(-10, -1, 1, 2, 10, 100)) {
-    expect_equal(power_function(x, 0), 1, 
-                info = paste("x^0 should equal 1 for x =", x))
-  }
-  
-  # Test that x^1 = x for any x
-  for (x in c(-5, 0, 1, 7, 100)) {
-    expect_equal(power_function(x, 1), x,
-                info = paste("x^1 should equal x for x =", x))
-  }
-})
-```
-
-### Testing Edge Cases Systematically
-
-```{r}
-test_that("power_function handles edge cases correctly", {
-  # Test error conditions
-  error_cases <- list(
-    list(x = 5, n = -1, pattern = "Negative exponents"),
-    list(x = 0, n = 0, pattern = "0\\^0 is undefined")
-  )
-  
-  for (case in error_cases) {
-    expect_error(
-      power_function(case$x, case$n),
-      case$pattern,
-      info = paste("Expected error for x =", case$x, "n =", case$n)
-    )
-  }
-})
-```
-
-## Best Practices
-
-1. **Isolate tests**: Use `withr` functions to ensure tests don't affect each other
-2. **Make tests deterministic**: Control randomness with seeds
-3. **Test the interface**: Focus on testing user-facing behavior, not implementation details
-4. **Use appropriate tools**: Choose the right mocking/testing approach for your specific challenge
-5. **Document complex setups**: Add comments explaining why specific mocking or setup is needed
-6. **Keep tests fast**: Mock external dependencies to avoid network calls and file I/O when possible
-
-By addressing these challenging scenarios systematically, you can build confidence that your code works correctly under all conditions your users might encounter.
