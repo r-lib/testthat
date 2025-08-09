@@ -236,7 +236,7 @@ snapshot_file_equal <- function(
 
     # We want to fail on CI since this suggests that the user has failed
     # to record the value locally
-    if (on_ci()) {
+    if (fail_on_new) {
       return(fail(message, trace_env = trace_env))
     } else {
       testthat_warn(message)
