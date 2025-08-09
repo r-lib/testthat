@@ -174,6 +174,15 @@ test_that("hint is informative", {
   })
 })
 
+test_that("hint includes path when WD is different", {
+  withr::local_envvar(TESTTHAT_WD = "..")
+
+  hint <- snapshot_accept_hint("_default", "bar.R", reset_output = FALSE)
+  hint <- gsub(getwd(), "<WD>", hint)
+  # Can't use snapshot here because its hint will get the wrong path
+  expect_match(hint, 'snapshot_accept("bar.R", "<WD>")', fixed = TRUE)
+})
+
 test_that("expect_snapshot requires a non-empty test label", {
   local_description_set()
 
