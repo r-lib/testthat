@@ -39,11 +39,6 @@ FileSnaps <- R6::R6Class(
     },
 
     append = function(test, variant, data) {
-      if (!has_name(self$snaps, variant)) {
-        # Needed for R < 3.6
-        self$snaps[[variant]] <- list()
-      }
-
       self$snaps[[variant]][[test]] <- c(self$snaps[[variant]][[test]], data)
       length(self$snaps[[variant]][[test]])
     },

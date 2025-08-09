@@ -9,7 +9,7 @@ test_that("can establish local snapshotter for testing", {
 
 test_that("basic workflow", {
   path <- withr::local_tempdir()
-  snapper <- local_snapshotter(path, fail_on_new = FALSE)
+  snapper <- local_snapshotter(snap_dir = path, fail_on_new = FALSE)
   snapper$start_file("snapshot-2")
   # output if not active (because test not set here)
   expect_snapshot_output("x") |>
@@ -98,7 +98,7 @@ test_that("only reverting change in variant deletes .new", {
 
 test_that("removing tests removes snap file", {
   path <- withr::local_tempdir()
-  snapper <- local_snapshotter(path, fail_on_new = FALSE)
+  snapper <- local_snapshotter(snap_dir = path, fail_on_new = FALSE)
   snapper$start_file("snapshot-3", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   snapper$end_file()

@@ -63,7 +63,7 @@ test_files_parallel <- function(
   )
 
   withr::with_dir(test_dir, {
-    reporters <- test_files_reporter_parallel(reporter)
+    reporters <- test_files_reporter(reporter, "parallel")
     with_reporter(reporters$multi, {
       parallel_updates <- reporter$capabilities$parallel_updates
       if (parallel_updates) {
@@ -81,23 +81,6 @@ test_files_parallel <- function(
   })
 }
 
-test_files_reporter_parallel <- function(reporter, .env = parent.frame()) {
-  lister <- ListReporter$new()
-  snapshotter <- MainprocessSnapshotReporter$new("_snaps", fail_on_new = FALSE)
-  reporters <- list(
-    find_reporter(reporter),
-    lister, # track data
-    snapshotter
-  )
-  withr::local_options(
-    "testthat.snapshotter" = snapshotter,
-    .local_envir = .env
-  )
-  list(
-    multi = MultiReporter$new(reporters = compact(reporters)),
-    list = lister
-  )
-}
 
 default_num_cpus <- function() {
   # Use common option, if set
