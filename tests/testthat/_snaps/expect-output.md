@@ -1,7 +1,8 @@
 # expect = string checks for match
 
     `g()` does not match regexp "x".
-    Output: "!"
+    Output:
+    x | !
 
 ---
 

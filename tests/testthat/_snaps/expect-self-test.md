@@ -1,7 +1,8 @@
 # expect_failure() can optionally match message
 
     Failure message does not match regexp "banana".
-    Text: "apple"
+    Text:
+    x | apple
 
 # errors in expect_success bubble up
 
