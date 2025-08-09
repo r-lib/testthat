@@ -139,6 +139,10 @@ expect_snapshot_file <- function(
     variant = variant,
     trace_env = caller_env()
   )
+  if (expectation_failure(equal)) {
+    return(equal)
+  }
+
   hint <- snapshot_review_hint(snapshotter$file, name)
 
   if (!equal) {
@@ -238,10 +242,8 @@ snapshot_file_equal <- function(
     # to record the value locally
     if (fail_on_new) {
       return(fail(message, trace_env = trace_env))
-    } else {
-      testthat_warn(message)
     }
-
+    testthat_warn(message)
     TRUE
   }
 }

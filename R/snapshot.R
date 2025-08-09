@@ -331,9 +331,8 @@ expect_snapshot_helper <- function(
     variant = variant,
     trace_env = trace_env
   )
-  # Comparison failed
-  if (is.null(comp)) {
-    return(invisible())
+  if (expectation_failure(comp)) {
+    return(comp)
   }
 
   if (!identical(variant, "_default")) {

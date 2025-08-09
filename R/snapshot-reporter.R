@@ -87,16 +87,13 @@ SnapshotReporter <- R6::R6Class(
         message <- paste0(
           "Adding new snapshot",
           if (variant != "_default") paste0(" for variant '", variant, "'"),
-          if (fail_on_new) " in CI",
           ":\n",
           value_enc
         )
         if (fail_on_new) {
-          fail(message, trace_env = trace_env)
-          return(NULL)
-        } else {
-          testthat_warn(message)
+          return(fail(message, trace_env = trace_env))
         }
+        testthat_warn(message)
         character()
       }
     },
