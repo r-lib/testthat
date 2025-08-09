@@ -38,6 +38,17 @@ test_that("basic workflow", {
   expect_true(file.exists(file.path(path, "snapshot-2.new.md")))
 })
 
+test_that("defaults to failing on CI", {
+  withr::local_envvar(CI = "true")
+
+  path <- withr::local_tempdir()
+  snapper <- local_snapshotter(path)
+  snapper$start_file("snapshot-2")
+  # warns on first creation
+  snapper$start_file("snapshot-2", "test")
+  expect_error(expect_snapshot_output("x"), "Adding new")
+})
+
 test_that("only create new files for changed variants", {
   snapper <- local_snapshotter(fail_on_new = FALSE)
   snapper$start_file("variants", "test")

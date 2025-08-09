@@ -86,7 +86,8 @@ test_that("warns on first creation", {
       snap_test = "my-test",
       snap_name = "test.txt",
       snap_variant = NULL,
-      path = path
+      path = path,
+      fail_on_new = FALSE
     )
   }
 
