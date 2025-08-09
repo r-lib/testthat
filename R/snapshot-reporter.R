@@ -8,13 +8,13 @@ SnapshotReporter <- R6::R6Class(
     test_file_seen = character(),
     snap_file_seen = character(),
     variants_changed = FALSE,
-    fail_on_new = FALSE,
+    fail_on_new = NULL,
 
     old_snaps = NULL,
     cur_snaps = NULL,
     new_snaps = NULL,
 
-    initialize = function(snap_dir = "_snaps", fail_on_new = FALSE) {
+    initialize = function(snap_dir = "_snaps", fail_on_new = NULL) {
       self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
       self$fail_on_new <- fail_on_new
     },
@@ -82,19 +82,18 @@ SnapshotReporter <- R6::R6Class(
         value_enc <- save(value)
 
         self$cur_snaps$append(self$test, variant, value_enc)
+        fail_on_new <- self$fail_on_new %||% on_ci()
 
         message <- paste0(
           "Adding new snapshot",
           if (variant != "_default") paste0(" for variant '", variant, "'"),
-          if (self$fail_on_new) " in CI",
           ":\n",
           value_enc
         )
-        if (self$fail_on_new) {
+        if (fail_on_new) {
           return(fail(message, trace_env = trace_env))
-        } else {
-          testthat_warn(message)
         }
+        testthat_warn(message)
         character()
       }
     },
@@ -196,7 +195,7 @@ get_snapshotter <- function() {
 local_snapshotter <- function(
   snap_dir = NULL,
   cleanup = FALSE,
-  fail_on_new = FALSE,
+  fail_on_new = NULL,
   .env = parent.frame()
 ) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)

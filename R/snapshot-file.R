@@ -139,6 +139,10 @@ expect_snapshot_file <- function(
     variant = variant,
     trace_env = caller_env()
   )
+  if (inherits(equal, "expectation_failure")) {
+    return(equal)
+  }
+
   hint <- snapshot_review_hint(snapshotter$file, name)
 
   if (!equal) {
@@ -196,7 +200,7 @@ snapshot_file_equal <- function(
   snap_variant, # variant (optional)
   path, # path to new file
   file_equal = compare_file_binary,
-  fail_on_new = FALSE,
+  fail_on_new = NULL,
   trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
@@ -208,6 +212,7 @@ snapshot_file_equal <- function(
   } else {
     snap_test_dir <- file.path(snap_dir, snap_variant, snap_test)
   }
+  fail_on_new <- fail_on_new %||% on_ci()
 
   cur_path <- file.path(snap_test_dir, snap_name)
   new_path <- file.path(snap_test_dir, new_name(snap_name))
@@ -232,12 +237,13 @@ snapshot_file_equal <- function(
       snap_name,
       "'"
     )
+
+    # We want to fail on CI since this suggests that the user has failed
+    # to record the value locally
     if (fail_on_new) {
       return(fail(message, trace_env = trace_env))
-    } else {
-      testthat_warn(message)
     }
-
+    testthat_warn(message)
     TRUE
   }
 }
