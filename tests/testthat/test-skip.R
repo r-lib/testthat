@@ -88,6 +88,20 @@ test_that("local_on_cran sets NOT_CRAN", {
   })
 })
 
+test_that("local_assume_not_on_cran() sets NOT_CRAN if not already set", {
+  withr::local_envvar(NOT_CRAN = NA)
+  local({
+    local_assume_not_on_cran()
+    expect_equal(Sys.getenv("NOT_CRAN"), "true")
+  })
+
+  withr::local_envvar(NOT_CRAN = "false")
+  local({
+    local_assume_not_on_cran()
+    expect_equal(Sys.getenv("NOT_CRAN"), "false")
+  })
+})
+
 test_that("skip_on_ci() works as expected", {
   withr::local_envvar(CI = "false")
   expect_no_skip(skip_on_ci())
