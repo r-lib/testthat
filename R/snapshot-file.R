@@ -188,22 +188,30 @@ snapshot_review_hint <- function(
   )
 }
 
+
 snapshot_file_equal <- function(
-  snap_test_dir,
-  snap_name,
-  snap_variant,
-  path,
+  snap_dir, # _snaps/
+  snap_test, # test file name
+  snap_name, # snapshot file name
+  snap_variant, # variant (optional)
+  path, # path to new file
   file_equal = compare_file_binary,
   fail_on_new = NULL,
   trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
-    abort(paste0("`", path, "` not found"))
+    cli::cli_abort("{.path {path}} not found.")
+  }
+
+  if (is.null(snap_variant)) {
+    snap_test_dir <- file.path(snap_dir, snap_test)
+  } else {
+    snap_test_dir <- file.path(snap_dir, snap_variant, snap_test)
   }
   fail_on_new <- fail_on_new %||% on_ci()
 
   cur_path <- file.path(snap_test_dir, snap_name)
-  new_path <- new_name(cur_path)
+  new_path <- file.path(snap_test_dir, new_name(snap_name))
 
   if (file.exists(cur_path)) {
     eq <- file_equal(cur_path, path)
@@ -218,10 +226,10 @@ snapshot_file_equal <- function(
     dir.create(snap_test_dir, showWarnings = FALSE, recursive = TRUE)
     file.copy(path, cur_path)
 
-    message <- paste0(
+    message <- paste_c(
       "Adding new file snapshot: 'tests/testthat/_snaps/",
-      snap_variant,
-      if (!is.null(snap_variant)) "/",
+      c(snap_variant, if (!is.null(snap_variant)) "/"),
+      c(snap_test, "/"),
       snap_name,
       "'"
     )

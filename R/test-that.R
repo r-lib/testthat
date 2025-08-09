@@ -37,16 +37,7 @@ test_that <- function(desc, code) {
   local_description_push(desc)
 
   code <- substitute(code)
-  if (edition_get() >= 3) {
-    if (!is_call(code, "{")) {
-      warn(
-        "The `code` argument to `test_that()` must be a braced expression to get accurate file-line information for failures.",
-        class = "testthat_braces_warning"
-      )
-    }
-  }
-
-  test_code(code, env = parent.frame())
+  test_code(code, parent.frame())
 }
 
 # Access error fields with `[[` rather than `$` because the
@@ -63,6 +54,15 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
     reporter$start_test(context = reporter$.context, test = test)
     withr::defer(reporter$end_test(context = reporter$.context, test = test))
   }
+
+  if (the$top_level_test) {
+    # Not strictly necessary but nice to reset the count
+    the$test_expectations <- 0
+    the$top_level_test <- FALSE
+    withr::defer(the$top_level_test <- TRUE)
+  }
+  # Used to skip if the test _and_ its subtests have no expectations
+  starting_expectations <- the$test_expectations
 
   ok <- TRUE
 
@@ -88,13 +88,8 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
   expressions_opt <- getOption("expressions")
   expressions_opt_new <- min(expressions_opt + 500L, 500000L)
 
-  # If no handlers are called we skip: BDD (`describe()`) tests are often
-  # nested and the top level might not contain any expectations, so we need
-  # some way to disable
-  handled <- !skip_on_empty
-
   handle_error <- function(e) {
-    handled <<- TRUE
+    the$test_expectations <- the$test_expectations + 1L
 
     # Increase option(expressions) to handle errors here if possible, even in
     # case of a stack overflow. This is important for the DebugReporter.
@@ -109,11 +104,11 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
     invokeRestart("end_test")
   }
   handle_fatal <- function(e) {
-    handled <<- TRUE
+    the$test_expectations <- the$test_expectations + 1L
     register_expectation(e, 0)
   }
   handle_expectation <- function(e) {
-    handled <<- TRUE
+    the$test_expectations <- the$test_expectations + 1L
     register_expectation(e, 7)
     # Don't bubble up to any other handlers
     invokeRestart("continue_test")
@@ -143,7 +138,7 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
     }
   }
   handle_skip <- function(e) {
-    handled <<- TRUE
+    the$test_expectations <- the$test_expectations + 1L
 
     debug_end <- if (inherits(e, "skip_empty")) -1 else 2
     register_expectation(e, debug_end)
@@ -168,7 +163,8 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
       withCallingHandlers(
         {
           eval(code, test_env)
-          if (!handled && !is.null(test)) {
+          new_expectations <- the$test_expectations > starting_expectations
+          if (!new_expectations && skip_on_empty) {
             skip_empty()
           }
         },

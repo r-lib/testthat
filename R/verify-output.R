@@ -167,7 +167,7 @@ output_replay.message <- function(x) {
 
 #' @export
 output_replay.recordedplot <- function(x) {
-  abort("Plots are not supported")
+  cli::cli_abort("Plots are not supported.")
 }
 
 

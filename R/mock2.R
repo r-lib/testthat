@@ -185,18 +185,18 @@ local_bindings_rebind <- function(..., .env = .frame, .frame = caller_env()) {
   invisible()
 }
 
-dev_package <- function() {
+dev_package <- function(call = caller_env()) {
   if (is_testing() && testing_package() != "") {
     testing_package()
   } else {
     loaded <- loadedNamespaces()
     is_dev <- map_lgl(loaded, function(x) !is.null(pkgload::dev_meta(x)))
     if (sum(is_dev) == 0) {
-      cli::cli_abort("No packages loaded with pkgload")
+      cli::cli_abort("No packages loaded with pkgload", call = call)
     } else if (sum(is_dev) == 1) {
       loaded[is_dev]
     } else {
-      cli::cli_abort("Multiple packages loaded with pkgload")
+      cli::cli_abort("Multiple packages loaded with pkgload", call = call)
     }
   }
 }

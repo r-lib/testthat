@@ -2,12 +2,15 @@
 % Please edit documentation in R/snapshot-manage.R
 \name{snapshot_accept}
 \alias{snapshot_accept}
+\alias{snapshot_reject}
 \alias{snapshot_review}
 \title{Accept or reject modified snapshots}
 \usage{
 snapshot_accept(files = NULL, path = "tests/testthat")
 
-snapshot_review(files = NULL, path = "tests/testthat")
+snapshot_reject(files = NULL, path = "tests/testthat")
+
+snapshot_review(files = NULL, path = "tests/testthat", ...)
 }
 \arguments{
 \item{files}{Optionally, filter effects to snapshots from specified files.
@@ -15,10 +18,13 @@ This can be a snapshot name (e.g. \code{foo} or \code{foo.md}), a snapshot file 
 (e.g. \code{testfile/foo.txt}), or a snapshot file directory (e.g. \verb{testfile/}).}
 
 \item{path}{Path to tests.}
+
+\item{...}{Additional arguments passed on to \code{\link[shiny:runApp]{shiny::runApp()}}.}
 }
 \description{
 \itemize{
 \item \code{snapshot_accept()} accepts all modified snapshots.
+\item \code{snapshot_reject()} rejects all modified snapshots by deleting the \code{.new} variants.
 \item \code{snapshot_review()} opens a Shiny app that shows a visual diff of each
 modified snapshot. This is particularly useful for whole file snapshots
 created by \code{expect_snapshot_file()}.

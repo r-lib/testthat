@@ -1,5 +1,13 @@
 # testthat (development version)
 
+* `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
+* `snapshot_review()` now passes `...` on to `shiny::runApp()` (#1928).
+* `expect_named()` now gives more informative errors (#2091).
+* `expect_*()` functions consistently and rigorously check their inputs (#1754). 
+* `test_that()` no longer warns about the absence of `{}` since it no longer seems to be necessary.
+* `test_that()`, `describe()`, and `it()` can now be arbitrarily nested. Each component will skip only if it and its subtests don't contain any expectations. The interactive stop reporter has been fixed so it doesn't duplicate failures. (#2063, #2188).
+* Test filtering now works with `it()`, and the `desc` argument can take a character vector in order to recursively filter subtests (i.e. `it()` nested inside of `describe()`) (#2118).
+* New `snapshot_reject()` rejects all modified snapshots by deleting the `.new` variants (#1923).
 * New `SlowReporter` makes it easier to find the slowest tests in your package. The easiest way to run it is with `devtools::test(reporter = "slow")` (#1466).
 * Power `expect_mapequal()` with `waldo::compare(list_as_map = TRUE)` (#1521).
 * On CRAN, `test_that()` now automatically skips if a package is not installed (#1585). Practically, this means that you no longer need to check that suggested packages are installed. (We don't do this in the tidyverse because we think it has limited payoff, but other styles advise differently.)

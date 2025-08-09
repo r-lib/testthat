@@ -126,7 +126,8 @@ expect_waldo_equal_ <- function(
   exp,
   info = NULL,
   ...,
-  trace_env = caller_env()
+  trace_env = caller_env(),
+  error_prefix = NULL
 ) {
   comp <- waldo_compare(
     act$val,
@@ -145,6 +146,7 @@ expect_waldo_equal_ <- function(
       "`expected`",
       paste0(comp, collapse = "\n\n")
     )
+    msg <- paste0(error_prefix, msg)
     return(fail(msg, info = info, trace_env = trace_env))
   }
   pass(act$val)

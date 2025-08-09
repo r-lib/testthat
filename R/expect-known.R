@@ -79,7 +79,7 @@ expect_known_output <- function(
 
 compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
   if (!file.exists(path)) {
-    warning("Creating reference output", call. = FALSE)
+    cli::cli_warn("Creating reference output.")
     brio::write_lines(lines, path)
     return(pass(NULL))
   }
@@ -88,11 +88,11 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
   if (update) {
     brio::write_lines(lines, path)
     if (!all_utf8(lines)) {
-      warning("New reference output is not UTF-8 encoded", call. = FALSE)
+      cli::cli_warn("New reference output is not UTF-8 encoded.")
     }
   }
   if (!all_utf8(old_lines)) {
-    warning("Reference output is not UTF-8 encoded", call. = FALSE)
+    cli::cli_warn("Reference output is not UTF-8 encoded.")
   }
 
   comp <- waldo_compare(
@@ -178,7 +178,7 @@ expect_known_value <- function(
   act <- quasi_label(enquo(object), label)
 
   if (!file.exists(file)) {
-    warning("Creating reference value", call. = FALSE)
+    cli::cli_warn("Creating reference value.")
     saveRDS(object, file, version = version)
   } else {
     ref_val <- readRDS(file)
@@ -232,7 +232,7 @@ expect_known_hash <- function(object, hash = NULL) {
   }
 
   if (is.null(hash)) {
-    warning(paste0("No recorded hash: use ", substr(act_hash, 1, 10)))
+    cli::cli_warn("No recorded hash: use {substr(act_hash, 1, 10)}.")
   } else {
     if (hash != act_hash) {
       msg <- sprintf("Value hashes to %s, not %s", act_hash, hash)

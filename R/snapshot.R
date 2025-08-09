@@ -408,13 +408,13 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
 # if transform() wiped out the full message, don't indent, #1487
 indent <- function(x) if (length(x)) paste0("  ", x) else x
 
-check_variant <- function(x) {
+check_variant <- function(x, call = caller_env()) {
   if (is.null(x)) {
     "_default"
   } else if (is_string(x)) {
     x
   } else {
-    abort("If supplied, `variant` must be a string")
+    cli::cli_abort("If supplied, {.arg variant} must be a string.", call = call)
   }
 }
 

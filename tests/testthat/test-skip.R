@@ -55,11 +55,6 @@ test_that("skip_if_not_installed() works as expected", {
   expect_snapshot_skip(skip_if_offline())
 })
 
-test_that("skip_on_cran generates useful message", {
-  withr::local_envvar(NOT_CRAN = "false")
-  expect_snapshot_skip(skip_on_cran())
-})
-
 test_that("skip_on_cran() works as expected", {
   local({
     local_on_cran(FALSE)

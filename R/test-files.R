@@ -65,7 +65,7 @@ test_dir <- function(
     start_first = start_first
   )
   if (length(test_paths) == 0) {
-    abort("No test files found")
+    cli::cli_abort("No test files found.")
   }
 
   if (!is_missing(wrap)) {
@@ -123,7 +123,7 @@ test_file <- function(
   ...
 ) {
   if (!file.exists(path)) {
-    stop("`path` does not exist", call. = FALSE)
+    cli::cli_abort("{.arg path} does not exist.")
   }
 
   test_files(
@@ -273,7 +273,7 @@ find_load_all_args <- function(path) {
 
   args <- parse_expr(args)
   if (!is_call(args, "list")) {
-    abort("`Config/testthat/load-all` must be a list.", call = NULL)
+    cli::cli_abort("{.field Config/testthat/load-all} must be a list.")
   }
 
   args <- as.list(args[-1])
@@ -325,10 +325,10 @@ test_files_check <- function(
   stop_on_warning = FALSE
 ) {
   if (stop_on_failure && !all_passed(results)) {
-    stop("Test failures", call. = FALSE)
+    cli::cli_abort("Test failures.")
   }
   if (stop_on_warning && any_warnings(results)) {
-    stop("Tests generated warnings", call. = FALSE)
+    cli::cli_abort("Tests generated warnings.")
   }
 
   invisible(results)
@@ -366,7 +366,10 @@ test_one_file <- function(
 #' @export
 teardown_env <- function() {
   if (is.null(the$teardown_env)) {
-    abort("`teardown_env()` has not been initialized", .internal = TRUE)
+    cli::cli_abort(
+      "{.fn teardown_env} has not been initialized.",
+      .internal = TRUE
+    )
   }
 
   the$teardown_env

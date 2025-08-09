@@ -5,6 +5,8 @@ test_that("can locate reporter from name", {
 
 test_that("useful error message if can't find reporter", {
   expect_snapshot(error = TRUE, {
+    find_reporter(1)
+    find_reporter("blah")
     find_reporter(c("summary", "blah"))
   })
 })

@@ -3,6 +3,6 @@
     Code
       test_examples("asdf")
     Condition
-      Error:
-      ! Could not find examples
+      Error in `test_examples()`:
+      ! Could not find examples.
 
