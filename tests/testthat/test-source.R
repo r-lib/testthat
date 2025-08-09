@@ -84,7 +84,7 @@ test_that("checks its inputs", {
 
 # filter_desc -------------------------------------------------------------
 
-test_that("works with all tests types", {
+test_that("works with all subtest types", {
   code <- exprs(
     test_that("foo", {}),
     describe("bar", {}),
@@ -95,14 +95,15 @@ test_that("works with all tests types", {
   expect_equal(filter_desc(code, "baz"), code[3])
 })
 
-test_that("only returns code before subtest", {
+test_that("only returns non-subtest code before subtest", {
   code <- exprs(
     f(),
+    test_that("bar", {}),
     describe("foo", {}),
     g(),
     h()
   )
-  expect_equal(filter_desc(code, "foo"), code[c(1, 2)])
+  expect_equal(filter_desc(code, "foo"), code[c(1, 3)])
 })
 
 test_that("can select recursively", {
@@ -128,6 +129,57 @@ test_that("can select recursively", {
           z <- 1
         })
       })
+    )
+  )
+})
+
+test_that("works on code like the describe() example", {
+  code <- exprs(
+    describe("math library", {
+      x1 <- 1
+      x2 <- 1
+      describe("addition()", {
+        it("can add two numbers", {
+          expect_equal(x1 + x2, addition(x1, x2))
+        })
+      })
+      describe("division()", {
+        x1 <- 10
+        x2 <- 2
+        it("can divide two numbers", {
+          expect_equal(x1 / x2, division(x1, x2))
+        })
+        it("can handle division by 0") #not yet implemented
+      })
+    })
+  )
+
+  expect_equal(
+    filter_desc(
+      code,
+      c("math library", "division()", "can divide two numbers")
+    ),
+    exprs(
+      describe("math library", {
+        x1 <- 1
+        x2 <- 1
+        describe("division()", {
+          x1 <- 10
+          x2 <- 2
+          it("can divide two numbers", {
+            expect_equal(x1 / x2, division(x1, x2))
+          })
+        })
+      })
+    )
+  )
+
+  # what happens for an unimplemented specification?
+  expect_snapshot(
+    error = TRUE,
+    filter_desc(
+      code,
+      c("math library", "division()", "can handle division by 0")
     )
   )
 })
