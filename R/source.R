@@ -7,7 +7,7 @@
 #' @param env Environment in which to evaluate code.
 #' @param desc A character vector used to filter tests. This is used to
 #'   (recursively) filter the content of the file, so that only the non-test
-#'   code up to and including the match test is run.
+#'   code up to and including the matching test is run.
 #' @param chdir Change working directory to `dirname(path)`?
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
