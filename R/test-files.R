@@ -325,10 +325,18 @@ test_files_check <- function(
   stop_on_warning = FALSE
 ) {
   if (stop_on_failure && !all_passed(results)) {
-    cli::cli_abort("Test failures.")
+    cli::cli_abort(
+      "Test failures.",
+      call = NULL,
+      trace = data.frame()
+    )
   }
   if (stop_on_warning && any_warnings(results)) {
-    cli::cli_abort("Tests generated warnings.")
+    cli::cli_abort(
+      "Tests generated warnings.",
+      call = NULL,
+      trace = data.frame()
+    )
   }
 
   invisible(results)
