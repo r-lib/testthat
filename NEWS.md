@@ -1,6 +1,7 @@
 # testthat (development version)
 
 * New `local_mocked_s3_method()`, `local_mocked_s4_method()`, and `local_mocked_r6_class()` allow you to mock S3 and S4 methods and R6 classes (#1892, #1916)
+* `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
 * `snapshot_review()` now passes `...` on to `shiny::runApp()` (#1928).
 * `expect_named()` now gives more informative errors (#2091).
 * `expect_*()` functions consistently and rigorously check their inputs (#1754). 
