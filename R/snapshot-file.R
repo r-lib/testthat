@@ -139,7 +139,7 @@ expect_snapshot_file <- function(
     variant = variant,
     trace_env = caller_env()
   )
-  if (expectation_failure(equal)) {
+  if (inherits(equal, "expectation_failure")) {
     return(equal)
   }
 

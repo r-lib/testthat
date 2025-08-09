@@ -331,7 +331,7 @@ expect_snapshot_helper <- function(
     variant = variant,
     trace_env = trace_env
   )
-  if (expectation_failure(comp)) {
+  if (inherits(comp, "expectation_failure")) {
     return(comp)
   }
 
