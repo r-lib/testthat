@@ -1,4 +1,4 @@
-#' Expectations: is the output or the value equal to a known good value?
+#' Do you expect the results/output to equal a known value?
 #'
 #' For complex printed output and objects, it is often challenging to describe
 #' exactly what you expect to see. `expect_known_value()` and
@@ -48,15 +48,23 @@
 #' # This will fail
 #' expect_known_output(mtcars[1:9, ], tmp, print = TRUE)
 #' }
-expect_known_output <- function(object, file,
-                                update = TRUE,
-                                ...,
-                                info = NULL,
-                                label = NULL,
-                                print = FALSE,
-                                width = 80) {
-
-  edition_deprecate(3, "expect_known_output()",
+expect_known_output <- function(
+  object,
+  file,
+  update = TRUE,
+  ...,
+  info = NULL,
+  label = NULL,
+  print = FALSE,
+  width = 80
+) {
+  check_string(file)
+  check_bool(update)
+  check_bool(print)
+  check_number_whole(width, min = 1)
+  edition_deprecate(
+    3,
+    "expect_known_output()",
     "Please use `expect_snapshot_output()` instead"
   )
 
@@ -71,40 +79,41 @@ expect_known_output <- function(object, file,
 
 compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
   if (!file.exists(path)) {
-    warning("Creating reference output", call. = FALSE)
+    cli::cli_warn("Creating reference output.")
     brio::write_lines(lines, path)
-    succeed()
-    return()
+    return(pass(NULL))
   }
 
   old_lines <- brio::read_lines(path)
   if (update) {
     brio::write_lines(lines, path)
     if (!all_utf8(lines)) {
-      warning("New reference output is not UTF-8 encoded", call. = FALSE)
+      cli::cli_warn("New reference output is not UTF-8 encoded.")
     }
   }
   if (!all_utf8(old_lines)) {
-    warning("Reference output is not UTF-8 encoded", call. = FALSE)
+    cli::cli_warn("Reference output is not UTF-8 encoded.")
   }
 
   comp <- waldo_compare(
-    x = old_lines, x_arg = "old",
-    y = lines, y_arg = "new",
+    x = old_lines,
+    x_arg = "old",
+    y = lines,
+    y_arg = "new",
     ...
   )
-  expect(
-    length(comp) == 0,
-    sprintf(
+  if (length(comp) != 0) {
+    msg <- sprintf(
       "Results have changed from known value recorded in %s.\n\n%s",
-      encodeString(path, quote = "'"), paste0(comp, collapse = "\n\n")
-    ),
-    info = info,
-    trace_env = caller_env()
-  )
+      encodeString(path, quote = "'"),
+      paste0(comp, collapse = "\n\n")
+    )
+    return(fail(msg, info = info, trace_env = caller_env()))
+  }
+  pass(NULL)
 }
 
-#' Expectations: is the output or the value equal to a known good value?
+#' Do you expect the output/result to equal a known good value?
 #'
 #' `expect_output_file()` behaves identically to [expect_known_output()].
 #'
@@ -116,17 +125,25 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
 #'
 #' @export
 #' @keywords internal
-expect_output_file <- function(object, file,
-                               update = TRUE,
-                               ...,
-                               info = NULL,
-                               label = NULL,
-                               print = FALSE,
-                               width = 80) {
-
+expect_output_file <- function(
+  object,
+  file,
+  update = TRUE,
+  ...,
+  info = NULL,
+  label = NULL,
+  print = FALSE,
+  width = 80
+) {
+  check_string(file)
+  check_bool(update)
+  check_bool(print)
+  check_number_whole(width, min = 1)
   # Code is a copy of expect_known_output()
-  edition_deprecate(3, "expect_output_file()",
-                    "Please use `expect_snapshot_output()` instead"
+  edition_deprecate(
+    3,
+    "expect_output_file()",
+    "Please use `expect_snapshot_output()` instead"
   )
 
   act <- list()
@@ -140,22 +157,29 @@ expect_output_file <- function(object, file,
 
 #' @export
 #' @rdname expect_known_output
-expect_known_value <- function(object, file,
-                               update = TRUE,
-                               ...,
-                               info = NULL,
-                               label = NULL,
-                               version = 2) {
-  edition_deprecate(3, "expect_known_value()",
+expect_known_value <- function(
+  object,
+  file,
+  update = TRUE,
+  ...,
+  info = NULL,
+  label = NULL,
+  version = 2
+) {
+  check_string(file)
+  check_bool(update)
+  check_number_whole(version, min = 1)
+  edition_deprecate(
+    3,
+    "expect_known_value()",
     "Please use `expect_snapshot_value()` instead"
   )
 
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
 
   if (!file.exists(file)) {
-    warning("Creating reference value", call. = FALSE)
+    cli::cli_warn("Creating reference value.")
     saveRDS(object, file, version = version)
-    succeed()
   } else {
     ref_val <- readRDS(file)
     comp <- compare(act$val, ref_val, ...)
@@ -163,24 +187,27 @@ expect_known_value <- function(object, file,
       saveRDS(act$val, file, version = version)
     }
 
-    expect(
-      comp$equal,
-      sprintf(
+    if (!comp$equal) {
+      msg <- sprintf(
         "%s has changed from known value recorded in %s.\n%s",
-        act$lab, encodeString(file, quote = "'"), comp$message
-      ),
-      info = info
-    )
+        act$lab,
+        encodeString(file, quote = "'"),
+        comp$message
+      )
+      return(fail(msg, info = info))
+    }
   }
 
-  invisible(act$value)
+  pass(act$value)
 }
 
 #' @export
 #' @rdname expect_known_output
 #' @usage NULL
 expect_equal_to_reference <- function(..., update = FALSE) {
-  edition_deprecate(3, "expect_equal_to_reference()",
+  edition_deprecate(
+    3,
+    "expect_equal_to_reference()",
     "Please use `expect_snapshot_value()` instead"
   )
   expect_known_value(..., update = update)
@@ -191,27 +218,29 @@ expect_equal_to_reference <- function(..., update = FALSE) {
 #' @param hash Known hash value. Leave empty and you'll be informed what
 #'   to use in the test output.
 expect_known_hash <- function(object, hash = NULL) {
-  edition_deprecate(3, "expect_known_hash()",
+  check_installed("digest")
+  edition_deprecate(
+    3,
+    "expect_known_hash()",
     "Please use `expect_snapshot_value()` instead"
   )
 
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
   act_hash <- digest::digest(act$val)
   if (!is.null(hash)) {
     act_hash <- substr(act_hash, 1, nchar(hash))
   }
 
   if (is.null(hash)) {
-    warning(paste0("No recorded hash: use ", substr(act_hash, 1, 10)))
-    succeed()
+    cli::cli_warn("No recorded hash: use {substr(act_hash, 1, 10)}.")
   } else {
-    expect(
-      hash == act_hash,
-      sprintf("Value hashes to %s, not %s", act_hash, hash)
-    )
+    if (hash != act_hash) {
+      msg <- sprintf("Value hashes to %s, not %s", act_hash, hash)
+      return(fail(msg))
+    }
   }
 
-  invisible(act$value)
+  pass(act$value)
 }
 
 all_utf8 <- function(x) {

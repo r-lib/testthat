@@ -1,6 +1,7 @@
-#' Snapshot management
+#' Accept or reject modified snapshots
 #'
 #' * `snapshot_accept()` accepts all modified snapshots.
+#' * `snapshot_reject()` rejects all modified snapshots by deleting the `.new` variants.
 #' * `snapshot_review()` opens a Shiny app that shows a visual diff of each
 #'    modified snapshot. This is particularly useful for whole file snapshots
 #'    created by `expect_snapshot_file()`.
@@ -14,11 +15,11 @@
 snapshot_accept <- function(files = NULL, path = "tests/testthat") {
   changed <- snapshot_meta(files, path)
   if (nrow(changed) == 0) {
-    inform("No snapshots to update")
+    cli::cli_inform("No snapshots to update.")
     return(invisible())
   }
 
-  inform(c("Updating snapshots:", changed$name))
+  cli::cli_inform("Updating snapshots: {.path {changed$name}}.")
   unlink(changed$cur)
   file.rename(changed$new, changed$cur)
 
@@ -28,21 +29,38 @@ snapshot_accept <- function(files = NULL, path = "tests/testthat") {
 
 #' @rdname snapshot_accept
 #' @export
-snapshot_review <- function(files = NULL, path = "tests/testthat") {
-  check_installed(c("shiny", "diffviewer"), "to use snapshot_review()")
-
+snapshot_reject <- function(files = NULL, path = "tests/testthat") {
   changed <- snapshot_meta(files, path)
   if (nrow(changed) == 0) {
-    inform("No snapshots to update")
+    inform("No snapshots to reject")
     return(invisible())
   }
 
-  review_app(changed$name, changed$cur, changed$new)
+  inform(c("Rejecting snapshots:", changed$name))
+  unlink(changed$new)
+
   rstudio_tickle()
   invisible()
 }
 
-review_app <- function(name, old_path, new_path) {
+#' @rdname snapshot_accept
+#' @param ... Additional arguments passed on to [shiny::runApp()].
+#' @export
+snapshot_review <- function(files = NULL, path = "tests/testthat", ...) {
+  check_installed(c("shiny", "diffviewer"), "to use snapshot_review()")
+
+  changed <- snapshot_meta(files, path)
+  if (nrow(changed) == 0) {
+    cli::cli_inform("No snapshots to update.")
+    return(invisible())
+  }
+
+  review_app(changed$name, changed$cur, changed$new, ...)
+  rstudio_tickle()
+  invisible()
+}
+
+review_app <- function(name, old_path, new_path, ...) {
   stopifnot(
     length(name) == length(old_path),
     length(old_path) == length(new_path)
@@ -52,12 +70,17 @@ review_app <- function(name, old_path, new_path) {
   case_index <- stats::setNames(seq_along(name), name)
   handled <- rep(FALSE, n)
 
-  ui <- shiny::fluidPage(style = "margin: 0.5em",
-    shiny::fluidRow(style = "display: flex",
-      shiny::div(style = "flex: 1 1",
+  ui <- shiny::fluidPage(
+    style = "margin: 0.5em",
+    shiny::fluidRow(
+      style = "display: flex",
+      shiny::div(
+        style = "flex: 1 1",
         shiny::selectInput("cases", NULL, case_index, width = "100%")
       ),
-      shiny::div(class = "btn-group", style = "margin-left: 1em; flex: 0 0 auto",
+      shiny::div(
+        class = "btn-group",
+        style = "margin-left: 1em; flex: 0 0 auto",
         shiny::actionButton("skip", "Skip"),
         shiny::actionButton("accept", "Accept", class = "btn-success"),
       )
@@ -75,12 +98,12 @@ review_app <- function(name, old_path, new_path) {
     # Handle buttons - after clicking update move input$cases to next case,
     # and remove current case (for accept/reject). If no cases left, close app
     shiny::observeEvent(input$reject, {
-      inform(paste0("Rejecting snapshot: '", new_path[[i()]], "'"))
+      cli::cli_inform("Rejecting snapshot: {.path {new_path[[i()]]}}.")
       unlink(new_path[[i()]])
       update_cases()
     })
     shiny::observeEvent(input$accept, {
-      inform(paste0("Accepting snapshot: '", old_path[[i()]], "'"))
+      cli::cli_inform("Accepting snapshot: {.path {old_path[[i()]]}}.")
       file.rename(new_path[[i()]], old_path[[i()]])
       update_cases()
     })
@@ -93,14 +116,16 @@ review_app <- function(name, old_path, new_path) {
       handled[[i()]] <<- TRUE
       i <- next_case()
 
-      shiny::updateSelectInput(session, "cases",
+      shiny::updateSelectInput(
+        session,
+        "cases",
         choices = case_index[!handled],
         selected = i
       )
     }
     next_case <- function() {
       if (all(handled)) {
-        inform("Review complete")
+        cli::cli_inform("Review complete.")
         shiny::stopApp()
         return()
       }
@@ -108,18 +133,23 @@ review_app <- function(name, old_path, new_path) {
       # Find next case;
       remaining <- case_index[!handled]
       next_cases <- which(remaining > i())
-      if (length(next_cases) == 0) remaining[[1]] else remaining[[next_cases[[1]]]]
+      if (length(next_cases) == 0) {
+        remaining[[1]]
+      } else {
+        remaining[[next_cases[[1]]]]
+      }
     }
   }
 
-  inform(c(
-    "Starting Shiny app for snapshot review",
-    i = "Use Ctrl + C to quit"
+  cli::cli_inform(c(
+    "Starting Shiny app for snapshot review.",
+    i = "Use {.kbd Ctrl + C} to quit."
   ))
   shiny::runApp(
     shiny::shinyApp(ui, server),
     quiet = TRUE,
-    launch.browser = shiny::paneViewer()
+    launch.browser = shiny::paneViewer(),
+    ...
   )
   invisible()
 }
@@ -131,7 +161,11 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
   cur <- all[!grepl("\\.new\\.", all)]
 
   snap_file <- basename(dirname(cur)) != "_snaps"
-  snap_test <- ifelse(snap_file, basename(dirname(cur)), gsub("\\.md$", "", basename(cur)))
+  snap_test <- ifelse(
+    snap_file,
+    basename(dirname(cur)),
+    gsub("\\.md$", "", basename(cur))
+  )
 
   if (length(cur) == 0) {
     new <- character()
@@ -140,7 +174,8 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     new[!file.exists(new)] <- NA
   }
 
-  snap_name <- ifelse(snap_file,
+  snap_name <- ifelse(
+    snap_file,
     file.path(snap_test, basename(cur)),
     basename(cur)
   )

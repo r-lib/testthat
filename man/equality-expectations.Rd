@@ -4,7 +4,7 @@
 \alias{equality-expectations}
 \alias{expect_equal}
 \alias{expect_identical}
-\title{Does code return the expected value?}
+\title{Do you expect this value?}
 \usage{
 expect_equal(
   object,
@@ -92,6 +92,7 @@ Other expectations:
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
 \code{\link{expect_reference}()},
+\code{\link{expect_shape}()},
 \code{\link{expect_silent}()},
 \code{\link{inheritance-expectations}},
 \code{\link{logical-expectations}}

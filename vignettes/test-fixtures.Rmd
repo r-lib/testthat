@@ -316,7 +316,7 @@ To run code before any test is run, you can create a file called `tests/testthat
 
 ```{r, eval = FALSE}
 # Run before any test
-write.csv("mtcars.csv", mtcars)
+write.csv(mtcars, "mtcars.csv")
 
 # Run after all tests
 withr::defer(unlink("mtcars.csv"), teardown_env())

@@ -1,4 +1,3 @@
-
 # +-----------------------------+     +-------------------------------+
 # | Main R process              |     | Subprocess 1                  |
 # | +------------------------+  |     | +---------------------------+ |
@@ -33,25 +32,21 @@
 #   runs an event loop.
 
 test_files_parallel <- function(
-                       test_dir,
-                       test_package,
-                       test_paths,
-                       load_helpers = TRUE,
-                       reporter = default_parallel_reporter(),
-                       env = NULL,
-                       stop_on_failure = FALSE,
-                       stop_on_warning = FALSE,
-                       wrap = TRUE,  # unused, to match test_files signature
-                       load_package = c("none", "installed", "source")
-                       ) {
-
+  test_dir,
+  test_package,
+  test_paths,
+  load_helpers = TRUE,
+  reporter = default_parallel_reporter(),
+  env = NULL,
+  stop_on_failure = FALSE,
+  stop_on_warning = FALSE,
+  wrap = TRUE, # unused, to match test_files signature
+  load_package = c("none", "installed", "source")
+) {
   # TODO: support timeouts. 20-30s for each file by default?
 
   num_workers <- min(default_num_cpus(), length(test_paths))
-  inform(paste0(
-    "Starting ", num_workers, " test process",
-    if (num_workers != 1) "es"
-  ))
+  cli::cli_inform("Starting {num_workers} test process{?es}.")
 
   # Set up work queue ------------------------------------------
   queue <- NULL
@@ -78,7 +73,8 @@ test_files_parallel <- function(
       }
     })
 
-    test_files_check(reporters$list$get_results(),
+    test_files_check(
+      reporters$list$get_results(),
       stop_on_failure = stop_on_failure,
       stop_on_warning = stop_on_warning
     )
@@ -108,7 +104,12 @@ default_num_cpus <- function() {
   ncpus <- getOption("Ncpus", NULL)
   if (!is.null(ncpus)) {
     ncpus <- suppressWarnings(as.integer(ncpus))
-    if (is.na(ncpus)) abort("`getOption(Ncpus)` must be an integer")
+    if (is.na(ncpus)) {
+      cli::cli_abort(
+        "{.code getOption('Ncpus')} must be an integer.",
+        call = NULL
+      )
+    }
     return(ncpus)
   }
 
@@ -116,7 +117,9 @@ default_num_cpus <- function() {
   ncpus <- Sys.getenv("TESTTHAT_CPUS", "")
   if (ncpus != "") {
     ncpus <- suppressWarnings(as.integer(ncpus))
-    if (is.na(ncpus)) abort("TESTTHAT_CPUS must be an integer")
+    if (is.na(ncpus)) {
+      cli::cli_abort("{.envvar TESTTHAT_CPUS} must be an integer.")
+    }
     return(ncpus)
   }
 
@@ -138,13 +141,19 @@ parallel_event_loop_smooth <- function(queue, reporters, test_dir) {
 
     updated <- FALSE
     for (x in msgs) {
+      if (x$code == PROCESS_OUTPUT) {
+        lns <- paste0("> ", x$path, ": ", x$message)
+        cat("\n", file = stdout())
+        base::writeLines(lns, stdout())
+        next
+      }
       if (x$code != PROCESS_MSG) {
         next
       }
 
       m <- x$message
       if (!inherits(m, "testthat_message")) {
-        message(m)
+        cli::cli_inform(as.character(m))
         next
       }
 
@@ -173,13 +182,18 @@ parallel_event_loop_chunky <- function(queue, reporters, test_dir) {
   while (!queue$is_idle()) {
     msgs <- queue$poll(Inf)
     for (x in msgs) {
+      if (x$code == PROCESS_OUTPUT) {
+        lns <- paste0("> ", x$path, ": ", x$message)
+        base::writeLines(lns, stdout())
+        next
+      }
       if (x$code != PROCESS_MSG) {
         next
       }
 
       m <- x$message
       if (!inherits(m, "testthat_message")) {
-        message(m)
+        cli::cli_inform(as.character(m))
         next
       }
 
@@ -207,16 +221,19 @@ replay_events <- function(reporter, events) {
   }
 }
 
-queue_setup <- function(test_paths,
-                        test_package,
-                        test_dir,
-                        num_workers,
-                        load_helpers,
-                        load_package) {
-
+queue_setup <- function(
+  test_paths,
+  test_package,
+  test_dir,
+  num_workers,
+  load_helpers,
+  load_package
+) {
   # TODO: observe `load_package`, but the "none" default is not
   # OK for the subprocess, because it'll not have the tested package
-  if (load_package == "none") load_package <- "source"
+  if (load_package == "none") {
+    load_package <- "source"
+  }
 
   # TODO: similarly, load_helpers = FALSE, coming from devtools,
   # is not appropriate in the subprocess
@@ -228,7 +245,8 @@ queue_setup <- function(test_paths,
 
   # First we load the package "manually", in case it is testthat itself
   load_hook <- expr({
-    switch(!!load_package,
+    switch(
+      !!load_package,
       installed = library(!!test_package, character.only = TRUE),
       source = pkgload::load_all(!!test_dir, helpers = FALSE, quiet = TRUE)
     )
@@ -256,7 +274,12 @@ queue_setup <- function(test_paths,
   queue
 }
 
-queue_process_setup <- function(test_package, test_dir, load_helpers, load_package) {
+queue_process_setup <- function(
+  test_package,
+  test_dir,
+  load_helpers,
+  load_package
+) {
   env <- asNamespace("testthat")$test_files_setup_env(
     test_package,
     test_dir,
@@ -313,15 +336,22 @@ queue_teardown <- function(queue) {
     if (!is.null(tasks$worker[[i]])) {
       # The worker might have crashed or exited, so this might fail.
       # If it does then we'll just ignore that worker
-      tryCatch({
-        tasks$worker[[i]]$call(clean_fn)
-        topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
-      }, error = function(e) tasks$worker[i] <- list(NULL))
+      tryCatch(
+        {
+          tasks$worker[[i]]$call(clean_fn)
+          topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
+        },
+        error = function(e) tasks$worker[i] <- list(NULL)
+      )
     }
   }
 
   # Give covr time to write out the coverage files
-  if (in_covr()) grace <- 30L else grace <- 3L
+  if (in_covr()) {
+    grace <- 30L
+  } else {
+    grace <- 3L
+  }
   limit <- Sys.time() + grace
   while (length(topoll) > 0 && (timeout <- limit - Sys.time()) > 0) {
     timeout <- as.double(timeout, units = "secs") * 1000
@@ -351,7 +381,8 @@ queue_teardown <- function(queue) {
 # collect several of them and only emit a condition a couple of times
 # a second. End-of-test and end-of-file events would be transmitted
 # immediately.
-SubprocessReporter <- R6::R6Class("SubprocessReporter",
+SubprocessReporter <- R6::R6Class(
+  "SubprocessReporter",
   inherit = Reporter,
   public = list(
     start_file = function(filename) {

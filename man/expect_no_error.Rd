@@ -5,7 +5,7 @@
 \alias{expect_no_warning}
 \alias{expect_no_message}
 \alias{expect_no_condition}
-\title{Does code run without error, warning, message, or other condition?}
+\title{Do you expect the absence of errors, warnings, messages, or other conditions?}
 \usage{
 expect_no_error(object, ..., message = NULL, class = NULL)
 

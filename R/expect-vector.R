@@ -1,4 +1,4 @@
-#' Does code return a vector with the expected size and/or prototype?
+#' Do you expect a vector with this size and/or prototype?
 #'
 #' `expect_vector()` is a thin wrapper around [vctrs::vec_assert()], converting
 #' the results of that function in to the expectations used by testthat. This
@@ -16,7 +16,9 @@
 #' show_failure(expect_vector(1:10, ptype = character(), size = 5))
 expect_vector <- function(object, ptype = NULL, size = NULL) {
   check_installed("vctrs")
-  act <- quasi_label(enquo(object), arg = "object")
+  check_number_whole(size, min = 0, allow_null = TRUE)
+
+  act <- quasi_label(enquo(object))
 
   message <- NULL
   tryCatch(
@@ -26,5 +28,8 @@ expect_vector <- function(object, ptype = NULL, size = NULL) {
     }
   )
 
-  expect(is.null(message), message)
+  if (!is.null(message)) {
+    return(fail(message))
+  }
+  pass(act$val)
 }

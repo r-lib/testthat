@@ -82,7 +82,6 @@ Most of these functions have not been recommended for a number of years, but bef
     This was an overly clever API that I regretted even before the release of testthat 1.0.0.
 
 -   `expect_equivalent()` has been deprecated since it is now equivalent (HA HA) to `expect_equal(ignore_attr = TRUE)`.
-    The main difference is that it won't ignore names; so you'll need an explicit `unname()` if you deliberately want to ignore names.
 
 -   `setup()` and `teardown()` are deprecated in favour of test fixtures.
     See `vignette("test-fixtures")` for details.
@@ -119,13 +118,13 @@ expect_warning(f(), "First")
 You can either add additional expectations to catch these warnings, or silence them all with `suppressWarnings()`:
 
 ```{r}
-f() %>% 
-  expect_warning("First") %>% 
-  expect_warning("Second") %>% 
+f() |> 
+  expect_warning("First") |> 
+  expect_warning("Second") |> 
   expect_warning("Third")
 
-f() %>% 
-  expect_warning("First") %>% 
+f() |> 
+  expect_warning("First") |> 
   suppressWarnings()
 ```
 

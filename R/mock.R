@@ -4,7 +4,7 @@
 #' `r lifecycle::badge("defunct")`
 #'
 #' `with_mock()` and `local_mock()` are now defunct, and can be replaced by
-#' [with_mocked_bindings()] and [local_mocked_bindings()]. These functions only 
+#' [with_mocked_bindings()] and [local_mocked_bindings()]. These functions only
 #' worked by abusing of R's internals.
 #'
 #' @param ... named parameters redefine mocked functions, unnamed parameters

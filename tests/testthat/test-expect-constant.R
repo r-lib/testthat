@@ -30,3 +30,8 @@ test_that("expect_null works", {
   expect_snapshot_failure(expect_null(1L))
   expect_snapshot_failure(expect_null(environment()))
 })
+
+test_that("returns the input value", {
+  res <- expect_true(TRUE)
+  expect_equal(res, TRUE)
+})

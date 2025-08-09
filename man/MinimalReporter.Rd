@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-minimal.R
 \name{MinimalReporter}
 \alias{MinimalReporter}
-\title{Test reporter: minimal.}
+\title{Report minimal results as compactly as possible}
 \description{
 The minimal test reporter provides the absolutely minimum amount of
 information: whether each expectation has succeeded, failed or experienced
@@ -22,6 +22,7 @@ Other reporters:
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
 \code{\link{SilentReporter}},
+\code{\link{SlowReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},

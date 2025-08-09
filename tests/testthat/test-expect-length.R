@@ -16,3 +16,9 @@ test_that("returns input", {
   out <- expect_length(x, 2)
   expect_identical(out, x)
 })
+
+test_that("expect_length validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_length(1:5, "a")
+  })
+})

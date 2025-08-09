@@ -22,11 +22,14 @@ test_that("can compare data frames", {
 })
 
 test_that("warns if both inputs are named", {
-  expect_warning(expect_setequal(c(a = 1), c(b = 1)), "ignores names")
+  expect_snapshot(expect_setequal(c(a = 1), c(b = 1)))
 })
 
-test_that("error for non-vectors", {
-  expect_error(expect_setequal(sum, sum), "be vectors")
+test_that("checks inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_setequal(sum, 1)
+    expect_setequal(1, sum)
+  })
 })
 
 test_that("useful message on failure", {
@@ -50,10 +53,19 @@ test_that("ignores order", {
   expect_success(expect_mapequal(list(a = 1, b = 2), list(b = 2, a = 1)))
 })
 
+test_that("ignores order recursively", {
+  x <- list(outer_1 = 1, outer_2 = list(inner_1 = 1, inner_2 = 2))
+  y <- list(outer_2 = list(inner_2 = 2, inner_1 = 1), outer_1 = 1)
+  expect_success(expect_mapequal(x, y))
+})
+
 test_that("error if any names are duplicated", {
-  expect_error(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
-  expect_error(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
-  expect_error(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 3, b = 2, a = 1)))
+  expect_failure(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
+  expect_failure(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
+  expect_failure(expect_mapequal(
+    list(a = 1, b = 2, b = 3),
+    list(b = 3, b = 2, a = 1)
+  ))
 })
 
 test_that("handling NULLs", {
@@ -69,24 +81,9 @@ test_that("fails if values don't match", {
   expect_failure(expect_mapequal(list(a = 1, b = 2), list(a = 1, b = 3)))
 })
 
-test_that("error for non-vectors", {
-  expect_error(expect_mapequal(sum, sum), "be vectors")
-  expect_error(expect_mapequal(NULL, NULL), "be vectors")
-})
-
-test_that("error if any unnamed values", {
-  expect_error(expect_mapequal(list(1, b = 2), list(1, b = 2)))
-  expect_error(expect_mapequal(list(1, b = 2), list(b = 2, 1)))
-})
-
-test_that("succeeds if comparing empty named and unnamed vectors", {
-  x1 <- list()
-  x2 <- setNames(list(), character())
-
-  expect_warning(expect_success(expect_mapequal(x1, x1)))
-  expect_warning(expect_success(expect_mapequal(x1, x2)))
-  expect_warning(expect_success(expect_mapequal(x2, x1)))
-  expect_warning(expect_success(expect_mapequal(x2, x2)))
+test_that("fails if unnamed values in different location if any unnamed values", {
+  expect_success(expect_mapequal(list(1, b = 2, c = 3), list(1, c = 3, b = 2)))
+  expect_failure(expect_mapequal(list(1, b = 2, c = 3), list(b = 2, 1, c = 3)))
 })
 
 # contains ----------------------------------------------------------------

@@ -1,13 +1,15 @@
-
 new_capture <- function(class) {
   exiting_handlers <- rep_named(class, list(identity))
 
-  calling_handlers <- rep_named(class, alist(function(cnd) {
-    if (can_entrace(cnd)) {
-      cnd <- cnd_entrace(cnd)
-    }
-    return_from(env, cnd)
-  }))
+  calling_handlers <- rep_named(
+    class,
+    alist(function(cnd) {
+      if (can_entrace(cnd)) {
+        cnd <- cnd_entrace(cnd)
+      }
+      return_from(env, cnd)
+    })
+  )
 
   formals <- pairlist2(code = , entrace = FALSE)
 
@@ -16,11 +18,23 @@ new_capture <- function(class) {
 
   body <- expr({
     if (!entrace) {
-      return(tryCatch({ code; NULL }, !!!exiting_handlers))
+      return(tryCatch(
+        {
+          code
+          NULL
+        },
+        !!!exiting_handlers
+      ))
     }
 
     env <- environment()
-    withCallingHandlers({ code; NULL }, !!!calling_handlers)
+    withCallingHandlers(
+      {
+        code
+        NULL
+      },
+      !!!calling_handlers
+    )
   })
 
   new_function(formals, body, ns_env("testthat"))
@@ -87,7 +101,7 @@ capture_messages <- function(code) {
     code,
     message = function(condition) {
       out$push(condition)
-      maybe_restart("muffleMessage")
+      tryInvokeRestart("muffleMessage")
     }
   )
 
@@ -107,7 +121,7 @@ capture_warnings <- function(code, ignore_deprecation = FALSE) {
       }
 
       out$push(condition)
-      maybe_restart("muffleWarning")
+      tryInvokeRestart("muffleWarning")
     }
   )
 
@@ -115,7 +129,7 @@ capture_warnings <- function(code, ignore_deprecation = FALSE) {
 }
 
 get_messages <- function(x) {
-  vapply(x, cnd_message, FUN.VALUE = character(1))
+  map_chr(x, cnd_message)
 }
 
 #' Is an error informative?

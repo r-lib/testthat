@@ -42,11 +42,8 @@ test_that("can control numeric tolerance", {
   expect_failure(expect_equal(x1, x2))
   expect_success(expect_equal(x1, x2, tolerance = 1e-5))
   expect_success(expect_equivalent(x1, x2, tolerance = 1e-5))
+
   # with partial matching
-  # we work around https://github.com/r-lib/testthat/issues/1188
-  if (getRversion() < "3.6.0" && is.null(getOption("warnPartialMatchArgs"))) {
-    options(warnPartialMatchArgs = FALSE)
-  }
   withr::local_options(warnPartialMatchArgs = FALSE)
   expect_success(expect_equal(x1, x2, tol = 1e-5))
 
@@ -81,7 +78,7 @@ test_that("default labels use unquoting", {
   local_edition(2)
 
   x <- 2
-  expect_failure(expect_equal(1, !! x), "1 not equal to 2", fixed = TRUE)
+  expect_failure(expect_equal(1, !!x), "1 not equal to 2", fixed = TRUE)
 })
 
 test_that("% is not treated as sprintf format specifier (#445)", {
@@ -93,17 +90,21 @@ test_that("% is not treated as sprintf format specifier (#445)", {
 test_that("is_call_infix() handles complex calls (#1472)", {
   expect_false(is_call_infix(quote(
     base::any(
-      c(veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE),
+      c(
+        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
+      ),
       na.rm = TRUE
     )
   )))
 
   withr::local_envvar(
     "_R_CHECK_LENGTH_1_LOGIC2_" = "TRUE",
-    )
+  )
   expect_true(
     base::any(
-      c(veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE),
+      c(
+        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
+      ),
       na.rm = TRUE
     )
   )
@@ -145,4 +146,11 @@ test_that("expect_equivalent returns value", {
   one <- 1
 
   expect_equal(expect_equivalent(one, one), 1)
+})
+
+test_that("expect_equal validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_equal(1, 2, tolerance = "high")
+    expect_equal(1, 2, tolerance = -1)
+  })
 })

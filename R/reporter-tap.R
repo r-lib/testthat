@@ -1,4 +1,4 @@
-#' Test reporter: TAP format.
+#' Report results in TAP format
 #'
 #' This reporter will output results in the Test Anything Protocol (TAP),
 #' a simple text-based interface between testing modules in a test harness.
@@ -6,7 +6,8 @@
 #'
 #' @export
 #' @family reporters
-TapReporter <- R6::R6Class("TapReporter",
+TapReporter <- R6::R6Class(
+  "TapReporter",
   inherit = Reporter,
   public = list(
     results = list(),
@@ -48,7 +49,11 @@ TapReporter <- R6::R6Class("TapReporter",
           self$cat_line(msg)
         } else {
           self$cat_line(
-            "ok ", i, " # ", toupper(expectation_type(result)), " ",
+            "ok ",
+            i,
+            " # ",
+            toupper(expectation_type(result)),
+            " ",
             format(result)
           )
         }

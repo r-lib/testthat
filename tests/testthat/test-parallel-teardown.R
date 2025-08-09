@@ -1,4 +1,3 @@
-
 test_that("teardown error", {
   skip("teardown errors are ignored")
   withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")

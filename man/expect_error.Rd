@@ -5,7 +5,7 @@
 \alias{expect_warning}
 \alias{expect_message}
 \alias{expect_condition}
-\title{Does code throw an error, warning, message, or other condition?}
+\title{Do you expect an error, warning, message, or other condition?}
 \usage{
 expect_error(
   object,
@@ -192,6 +192,7 @@ Other expectations:
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
 \code{\link{expect_reference}()},
+\code{\link{expect_shape}()},
 \code{\link{expect_silent}()},
 \code{\link{inheritance-expectations}},
 \code{\link{logical-expectations}}

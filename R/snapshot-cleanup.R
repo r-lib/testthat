@@ -1,8 +1,12 @@
-snapshot_cleanup <- function(path, test_files_seen = character(), snap_files_seen = character()) {
+snapshot_cleanup <- function(
+  path,
+  test_files_seen = character(),
+  snap_files_seen = character()
+) {
   outdated <- snapshot_outdated(path, test_files_seen, snap_files_seen)
 
   if (length(outdated) > 0) {
-    inform(c("Deleting unused snapshots:", outdated))
+    cli::cli_inform("Deleting unused snapshots: {.path {outdated}}")
     unlink(file.path(path, outdated), recursive = TRUE)
   }
 
@@ -13,8 +17,8 @@ snapshot_cleanup <- function(path, test_files_seen = character(), snap_files_see
   unlink(empty, recursive = TRUE)
 
   # Delete snapshot folder
-  if (is_dir_empty(path)) { 
-    unlink(path, recursive = TRUE) 
+  if (is_dir_empty(path)) {
+    unlink(path, recursive = TRUE)
   }
 
   rstudio_tickle()
@@ -26,19 +30,26 @@ is_dir_empty <- function(x) {
   length(dir(x, recursive = TRUE)) == 0
 }
 
-snapshot_outdated <- function(path, test_files_seen = character(), snap_files_seen = character()) {
+snapshot_outdated <- function(
+  path,
+  test_files_seen = character(),
+  snap_files_seen = character()
+) {
   all_files <- dir(path, recursive = TRUE)
   expected <- snapshot_expected(path, test_files_seen, snap_files_seen)
   setdiff(all_files, expected)
 }
 
 snapshot_expected <- function(
-    snap_dir,
-    test_files_seen = character(),
-    snap_files_seen = character()) {
-
+  snap_dir,
+  test_files_seen = character(),
+  snap_files_seen = character()
+) {
   if (length(test_files_seen) > 0) {
-    snaps <- c(paste0(test_files_seen, ".md"), paste0(test_files_seen, ".new.md"))
+    snaps <- c(
+      paste0(test_files_seen, ".md"),
+      paste0(test_files_seen, ".new.md")
+    )
   } else {
     snaps <- character()
   }
@@ -50,7 +61,8 @@ snapshot_expected <- function(
 
   snap_files_seen_new <- paste0(
     tools::file_path_sans_ext(snap_files_seen),
-    ".new.", tools::file_ext(snap_files_seen)
+    ".new.",
+    tools::file_ext(snap_files_seen)
   )
 
   sort(c(
@@ -64,5 +76,5 @@ snapshot_expected <- function(
 }
 
 dir_contains <- function(paths, expected_files) {
-  map_lgl(paths, ~ any(file.exists(file.path(.x, expected_files))))
+  map_lgl(paths, \(path) any(file.exists(file.path(path, expected_files))))
 }

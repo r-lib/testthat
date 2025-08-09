@@ -1,11 +1,12 @@
-#' Multi reporter: combine several reporters in one.
+#' Run multiple reporters at the same time
 #'
 #' This reporter is useful to use several reporters at the same time, e.g.
 #' adding a custom reporter without removing the current one.
 #'
 #' @export
 #' @family reporters
-MultiReporter <- R6::R6Class("MultiReporter",
+MultiReporter <- R6::R6Class(
+  "MultiReporter",
   inherit = Reporter,
   public = list(
     reporters = list(),
@@ -29,7 +30,13 @@ MultiReporter <- R6::R6Class("MultiReporter",
       o_apply(self$reporters, "start_test", context, test)
     },
     add_result = function(context, test, result) {
-      o_apply(self$reporters, "add_result", context = context, test = test, result = result)
+      o_apply(
+        self$reporters,
+        "add_result",
+        context = context,
+        test = test,
+        result = result
+      )
     },
     end_test = function(context, test) {
       o_apply(self$reporters, "end_test", context, test)
@@ -51,9 +58,12 @@ MultiReporter <- R6::R6Class("MultiReporter",
 
 o_apply <- function(objects, method, ...) {
   x <- NULL # silence check note
-  f <- new_function(exprs(x = ), expr(
-    `$`(x, !!method)(...)
-  ))
+  f <- new_function(
+    exprs(x = ),
+    expr(
+      `$`(x, !!method)(...)
+    )
+  )
 
   lapply(objects, f)
 }

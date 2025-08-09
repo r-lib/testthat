@@ -1,4 +1,4 @@
-#' Does code print output to the console?
+#' Do you expect printed output to match this pattern?
 #'
 #' Test for output produced by `print()` or `cat()`. This is best used for
 #' very simple output; for more complex cases use [expect_snapshot()].
@@ -22,31 +22,32 @@
 #' # You can use the arguments of grepl to control the matching
 #' expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
 #' expect_output(str(mtcars), "$ mpg", fixed = TRUE)
-expect_output <- function(object,
-                          regexp = NULL,
-                          ...,
-                          info = NULL,
-                          label = NULL,
-                          width = 80
-                          ) {
+expect_output <- function(
+  object,
+  regexp = NULL,
+  ...,
+  info = NULL,
+  label = NULL,
+  width = 80
+) {
+  check_number_whole(width, min = 1)
+
   act <- quasi_capture(enquo(object), label, capture_output, width = width)
 
   if (identical(regexp, NA)) {
-    expect(
-      identical(act$cap, ""),
-      sprintf("%s produced output.\n%s", act$lab, encodeString(act$cap)),
-      info = info
-    )
+    if (!identical(act$cap, "")) {
+      msg <- sprintf("%s produced output.\n%s", act$lab, encodeString(act$cap))
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   } else if (is.null(regexp) || identical(act$cap, "")) {
-    expect(
-      !identical(act$cap, ""),
-      sprintf("%s produced no output", act$lab),
-      info = info
-    )
+    if (identical(act$cap, "")) {
+      msg <- sprintf("%s produced no output", act$lab)
+      return(fail(msg, info = info))
+    }
+    pass(act$val)
   } else {
-    expect_match(act$cap, enc2native(regexp), ..., info = info, label = act$lab)
+    act <- labelled_value(act$cap, act$lab)
+    expect_match_(act, enc2native(regexp), ..., title = "Output")
   }
-
-  invisible(act$val)
 }
-

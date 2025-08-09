@@ -1,4 +1,4 @@
-#' Skip a test
+#' Skip a test for various reasons
 #'
 #' @description
 #' `skip_if()` and `skip_if_not()` allow you to skip tests, immediately
@@ -27,7 +27,8 @@
 #'    env var).
 #'
 #' * `skip_on_cran()` skips on CRAN (using the `NOT_CRAN` env var set by
-#'    devtools and friends).
+#'    devtools and friends). `local_on_cran()` gives you the ability to
+#'    easily simulate what will happen on CRAN.
 #'
 #' * `skip_on_covr()` skips when covr is running (using the `R_COVR` env var).
 #'
@@ -114,8 +115,14 @@ skip_if_not_installed <- function(pkg, minimum_version = NULL) {
     installed_version <- package_version(pkg)
     if (installed_version < minimum_version) {
       skip(paste0(
-        "Installed ", pkg, " is version ", installed_version, "; ",
-        "but ", minimum_version, " is required"
+        "Installed ",
+        pkg,
+        " is version ",
+        installed_version,
+        "; ",
+        "but ",
+        minimum_version,
+        " is required"
       ))
     }
   }
@@ -125,6 +132,36 @@ skip_if_not_installed <- function(pkg, minimum_version = NULL) {
 package_version <- function(x) {
   utils::packageVersion(x)
 }
+
+#' @export
+#' @param spec A version specification like '>= 4.1.0' denoting that this test
+#'   should only be run on R versions 4.1.0 and later.
+#' @rdname skip
+skip_unless_r <- function(spec) {
+  check_string(spec)
+
+  parts <- unlist(strsplit(spec, " ", fixed = TRUE))
+  if (length(parts) != 2L) {
+    cli::cli_abort(
+      "{.arg spec} must be an valid version specification, like {.str >= 4.0.0}, not {.str {spec}}."
+    )
+  }
+  comparator <- match.fun(parts[1L])
+  required_version <- numeric_version(parts[2L])
+
+  current_version <- getRversion()
+  skip_if_not(
+    comparator(current_version, required_version),
+    sprintf(
+      "Current R version (%s) does not satisfy requirement (%s %s)",
+      current_version,
+      parts[1L],
+      required_version
+    )
+  )
+}
+# for mocking
+getRversion <- NULL
 
 #' @export
 #' @rdname skip
@@ -145,8 +182,18 @@ skip_on_cran <- function() {
 }
 
 #' @export
+#' @rdname skip
+#' @param on_cran Pretend we're on CRAN (`TRUE`) or not (`FALSE`).
+#' @param frame Calling frame to tie change to; expect use only.
+local_on_cran <- function(on_cran, frame = caller_env()) {
+  check_bool(on_cran)
+  withr::local_envvar(NOT_CRAN = tolower(!on_cran), .local_envir = frame)
+}
+
+#' @export
 #' @param os Character vector of one or more operating systems to skip on.
-#'   Supported values are `"windows"`, `"mac"`, `"linux"`, and `"solaris"`.
+#'   Supported values are `"windows"`, `"mac"`, `"linux"`, `"solaris"`,
+#'   and `"emscripten"`.
 #' @param arch Character vector of one or more architectures to skip on.
 #'   Common values include `"i386"` (32 bit), `"x86_64"` (64 bit), and
 #'   `"aarch64"` (M1 mac). Supplying `arch` makes the test stricter; i.e. both
@@ -155,20 +202,22 @@ skip_on_cran <- function() {
 skip_on_os <- function(os, arch = NULL) {
   os <- match.arg(
     os,
-    choices = c("windows", "mac", "linux", "solaris"),
+    choices = c("windows", "mac", "linux", "solaris", "emscripten"),
     several.ok = TRUE
   )
 
-  msg <- switch(system_os(),
+  msg <- switch(
+    system_os(),
     windows = if ("windows" %in% os) "On Windows",
-    darwin =  if ("mac" %in% os) "On Mac",
-    linux =   if ("linux" %in% os) "On Linux",
-    sunos =   if ("solaris" %in% os) "On Solaris"
+    darwin = if ("mac" %in% os) "On Mac",
+    linux = if ("linux" %in% os) "On Linux",
+    sunos = if ("solaris" %in% os) "On Solaris",
+    emscripten = if ("emscripten" %in% os) "On Emscripten"
   )
 
   if (!is.null(arch) && !is.null(msg)) {
     if (!is.character(arch)) {
-      abort("`arch` must be a character vector")
+      cli::cli_abort("{.arg arch} must be a character vector.")
     }
 
     if (system_arch() %in% arch) {
@@ -246,7 +295,7 @@ skip_on_appveyor <- function() {
 # helpers -----------------------------------------------------------------
 
 on_ci <- function() {
- env_var_is_true("CI")
+  env_var_is_true("CI")
 }
 in_covr <- function() {
   env_var_is_true("R_COVR")
@@ -255,7 +304,12 @@ on_bioc <- function() {
   env_var_is_true("IS_BIOC_BUILD_MACHINE")
 }
 on_cran <- function() {
-  !interactive() && !env_var_is_true("NOT_CRAN")
+  env <- Sys.getenv("NOT_CRAN")
+  if (identical(env, "")) {
+    !interactive()
+  } else {
+    !isTRUE(as.logical(env))
+  }
 }
 
 env_var_is_true <- function(x) {
