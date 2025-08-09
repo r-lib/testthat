@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `snapshot_review()` now passes `...` on to `shiny::runApp()` (#1928).
 * `expect_named()` now gives more informative errors (#2091).
 * `expect_*()` functions consistently and rigorously check their inputs (#1754). 
 * `test_that()` no longer warns about the absence of `{}` since it no longer seems to be necessary.
