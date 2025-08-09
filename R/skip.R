@@ -190,6 +190,14 @@ local_on_cran <- function(on_cran, frame = caller_env()) {
   withr::local_envvar(NOT_CRAN = tolower(!on_cran), .local_envir = frame)
 }
 
+# Assert that we're not on CRAN, but don't override the user's setting
+local_assume_not_on_cran <- function(frame = caller_env()) {
+  if (Sys.getenv("NOT_CRAN") != "") {
+    return()
+  }
+  withr::local_envvar("NOT_CRAN" = "true", .local_envir = frame)
+}
+
 #' @export
 #' @param os Character vector of one or more operating systems to skip on.
 #'   Supported values are `"windows"`, `"mac"`, `"linux"`, `"solaris"`,

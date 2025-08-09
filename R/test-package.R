@@ -68,7 +68,7 @@ test_local <- function(
   package <- pkgload::pkg_name(path)
   test_path <- file.path(pkgload::pkg_path(path), "tests", "testthat")
 
-  withr::local_envvar(NOT_CRAN = "true")
+  local_assume_not_on_cran()
   test_dir(
     test_path,
     package = package,

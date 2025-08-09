@@ -190,8 +190,7 @@ local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
 }
 
 local_interactive_reporter <- function(.env = parent.frame()) {
-  # Definitely not on CRAN
-  withr::local_envvar(NOT_CRAN = "true", .local_envir = .env)
+  local_assume_not_on_cran()
   withr::local_options(testthat_interactive = TRUE, .local_envir = .env)
 
   # Use edition from working directory
