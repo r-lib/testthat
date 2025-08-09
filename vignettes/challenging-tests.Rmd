@@ -1,0 +1,257 @@
+---
+title: "Challenging testing problems"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Challenging testing problems}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Testing is easy when your functions are pure: they take some inputs and return predictable outputs. But real-world code often involves randomness, external state, graphics, user interaction, and other challenging elements. This vignette provides practical solutions for testing these tricky scenarios.
+
+Other packages:
+
+* For testing graphical output, we recommend vdiffr.
+* For testing code that uses HTTP requests we recommend vcr or httptest2.
+
+```{r setup}
+library(testthat)
+```
+
+## External state
+
+Tests should be isolated from global options, environment variables, and other external state that might affect behavior.
+
+### Output affected by RNG
+
+Random number generation can make tests non-deterministic. Use `withr::local_seed()` to ensure reproducible results within your tests.
+
+```{r, eval = FALSE}
+simulate_data <- function(n) {
+  rnorm(n, mean = 0, sd = 1)
+}
+
+test_that("simulate_data returns correct structure", {
+  result <- simulate_data(5)
+  expect_length(result, 5)
+  expect_type(result, "double")
+  expect_equal(result[1], 1.048, tolerance = 0.001)
+})
+```
+
+```{r}
+test_that("random sample has expected properties", {
+  withr::local_seed(123)
+  x <- sample(1:100, 10)
+  expect_length(x, 10)
+  expect_true(all(x %in% 1:100))
+  # This will always pass now:
+  expect_equal(x[1], 31)
+})
+```
+
+### Global options
+
+```{r}
+# Function that depends on global options
+format_number <- function(x) {
+  format(x, digits = getOption("digits"))
+}
+
+test_that("format_number respects digits option", {
+  # Save and restore the original option
+  withr::local_options(digits = 3)
+  expect_equal(format_number(pi), "3.14")
+  
+  withr::local_options(digits = 5)
+  expect_equal(format_number(pi), "3.1416")
+})
+```
+
+### Environment variables
+
+```{r}
+# Function that depends on environment variables
+get_api_url <- function() {
+  Sys.getenv("API_URL", default = "https://api.example.com")
+}
+
+test_that("get_api_url uses environment variable", {
+  withr::local_envvar(API_URL = "https://test-api.example.com")
+  expect_equal(get_api_url(), "https://test-api.example.com")
+})
+
+test_that("get_api_url uses default when env var not set", {
+  withr::local_envvar(API_URL = NA)
+  expect_equal(get_api_url(), "https://api.example.com")
+})
+```
+
+### Reading and writing files
+
+```{r}
+test_that("function works in different directories", {
+  withr::local_dir(withr::local_tempdir())
+  # Test code that depends on working directory
+  writeLines("test content", "temp_file.txt")
+  expect_true(file.exists("temp_file.txt"))
+  # File will be cleaned up automatically
+})
+```
+
+### Local wrappers
+
+If you want to make your own function, you should take a `frame` argument. frame is an environment on the call stack, i.e. it's the execution environment of some function, and the local effects will be undone when that function is completed. Underneath the hood this is all wrappers around `on.exit()`.
+
+```{r}
+
+```
+
+## Errors and user-facing text
+
+Error messages, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Snapshots are perfect for this.
+
+### Testing error messages
+
+```{r}
+divide_positive <- function(x, y) {
+  if (y <= 0) {
+    stop("Divisor must be positive, got: ", y)
+  }
+  x / y
+}
+
+test_that("divide_positive gives helpful error", {
+  expect_snapshot_error(divide_positive(10, -2))
+  expect_snapshot_error(divide_positive(10, 0))
+})
+```
+
+### Testing complex output
+
+```{r}
+summarize_data <- function(x) {
+  cat("Summary of data:\n")
+  cat("Length:", length(x), "\n")
+  cat("Mean:", mean(x), "\n")
+  cat("Range:", range(x), "\n")
+}
+
+test_that("summarize_data output is correct", {
+  expect_snapshot(summarize_data(1:10))
+})
+```
+
+The same idea applies to messages and warnings.
+
+### `local_reproducible_output()`
+
+
+
+### Transformations
+
+Sometimes part of the output varies in ways that you can't easily control. There are two techniques you can use: mocking (described next) or the `transform` output. 
+
+## Mocking
+
+<!-- https://github.com/search?q=%28org%3Ar-lib+OR+org%3Atidyverse%29+local_mocked+bindings+path%3Atests%2Ftestthat&type=code -->
+
+* Package versions and installed status
+* Retrieving external state (vcr typically best) but sometimes better at higher level. e.g. token prices in ellemr.
+* Pretending that you're on a different operating system
+* Cause things to deliberately error
+* The passing of time
+* Slow functions that aren't important for specific test
+* Sometimes easier or more clear to mock a function rather than setting options/env vars. And generally just tickling some branch that would otherwise be hard to reach.
+* Record internal state with `<<-`.
+
+    ```{r}
+    unix_time <- function() unclass(Sys.time())
+    
+    time <- 0
+    local_mocked_bindings(unix_time = function(time) time)
+    time <- 1
+    time <- 10
+    ```
+
+### Interactivity and user input
+
+```{r}
+local_mocked_bindings(interactive = function() FALSE)
+```
+
+But we generally recommend using `rlang::is_interactive()`. Can be manually overridden by `rlang_interactive` option, whih is automatically set inside of tests.
+
+```{r}
+ask_yes_no <- function(question) {
+  response <- readline(paste0(question, " (y/n): "))
+  tolower(response) %in% c("y", "yes")
+}
+
+test_that("ask_yes_no handles yes response", {
+  mockery::stub(ask_yes_no, "readline", "y")
+  expect_true(ask_yes_no("Continue?"))
+})
+
+test_that("ask_yes_no handles no response", {
+  mockery::stub(ask_yes_no, "readline", "n")
+  expect_false(ask_yes_no("Continue?"))
+})
+```
+
+
+## Reducing duplication
+
+### Using helper functions
+
+```{r}
+# Function to test
+power_function <- function(x, n) {
+  if (n < 0) stop("Negative exponents not supported")
+  if (x == 0 && n == 0) stop("0^0 is undefined")
+  x^n
+}
+
+# Helper function for testing
+test_power <- function(x, n, expected) {
+  test_that(paste0("power_function(", x, ", ", n, ") equals ", expected), {
+    expect_equal(power_function(x, n), expected)
+  })
+}
+
+# Test many combinations
+test_that("power combinations work", {
+  test_power(2, 3, 8)
+  test_power(5, 2, 25)
+  test_power(10, 0, 1)
+  test_power(-3, 2, 9)
+})
+```
+
+### Using loops
+
+```{r}
+test_that("power_function works for multiple bases and exponents", {
+  test_cases <- data.frame(
+    x = c(2, 3, 4, 5),
+    n = c(2, 2, 2, 2),
+    expected = c(4, 9, 16, 25)
+  )
+  
+  for (i in seq_len(nrow(test_cases))) {
+    test_that(paste("x =", test_cases$x[i], "n =", test_cases$n[i]), {
+      expect_equal(
+        power_function(test_cases$x[i], test_cases$n[i]),
+        test_cases$expected[i]
+      )
+    })
+  }
+})
+```
