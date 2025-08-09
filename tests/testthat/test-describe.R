@@ -13,6 +13,17 @@ describe("describe", {
   })
 })
 
+test_that("can write snaphot tests", {
+  local_description_set()
+
+  describe("snapshot tests in describe", {
+    expect_snapshot(1 + 1)
+    it("and in it", {
+      expect_snapshot(1 + 1)
+    })
+  })
+})
+
 test_that("unimplemented specs generate skips", {
   expectations <- capture_expectations({
     it("can have not yet implemented specs", {
