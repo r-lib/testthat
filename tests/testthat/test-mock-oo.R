@@ -1,3 +1,5 @@
+# S3 --------------------------------------------------------------------------
+
 test_that("can mock S3 methods", {
   x <- as.POSIXlt(Sys.time())
   df <- data.frame(x = 1:3)
@@ -9,6 +11,17 @@ test_that("can mock S3 methods", {
 
   expect_length(x, 1)
 })
+
+test_that("validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    local_mocked_s3_method(1)
+    local_mocked_s3_method("mean", 1)
+    local_mocked_s3_method("mean", "bar", 1)
+    local_mocked_s3_method("mean", "bar", function() {})
+  })
+})
+
+# S4 --------------------------------------------------------------------------
 
 test_that("can mock S4 methods", {
   jim <- TestMockPerson(name = "Jim", age = 32)
@@ -22,13 +35,34 @@ test_that("can mock S4 methods", {
 })
 
 
-test_that("can mock R6 classes", {
+test_that("validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    local_mocked_s4_method(1)
+    local_mocked_s4_method("mean", 1)
+    local_mocked_s4_method("mean", "bar", 1)
+    local_mocked_s4_method("mean", "bar", function() {})
+  })
+})
+
+# R6 --------------------------------------------------------------------------
+
+test_that("can mock R6 methods", {
   local({
-    local_mocked_r6_class(TestMockClass, public = list(n = function() 2))
+    local_mocked_r6_class(TestMockClass, public = list(sum = function() 2))
     obj <- TestMockClass$new()
-    expect_equal(obj$n(), 2)
+    expect_equal(obj$sum(), 2)
   })
 
   obj <- TestMockClass$new()
-  expect_equal(obj$n(), 1)
+  expect_equal(obj$sum(), 4321)
+})
+
+test_that("can mock all R6 components", {
+  local_mocked_r6_class(
+    TestMockClass,
+    public = list(public_fun = function() 0, public_val = 0),
+    private = list(private_fun = function() 0, private_val = 0)
+  )
+  obj <- TestMockClass$new()
+  expect_equal(obj$sum(), 0)
 })
