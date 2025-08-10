@@ -70,6 +70,7 @@ test will also be run. See <code><a href="../articles/special-files.html">vignet
 <span>  reporter <span class="op">=</span> <span class="fu"><a href="default_reporter.html">default_compact_reporter</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  desc <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  package <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  shuffle <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -96,6 +97,11 @@ test (<code><a href="test_that.html">test_that()</a></code> or <code><a href="de
 
 <dt id="arg-package">package<a class="anchor" aria-label="anchor" href="#arg-package"></a></dt>
 <dd><p>If these tests belong to a package, the name of the package.</p></dd>
+
+
+<dt id="arg-shuffle">shuffle<a class="anchor" aria-label="anchor" href="#arg-shuffle"></a></dt>
+<dd><p>If <code>TRUE</code>, randomly reorder the top-level expressions
+in the file.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>

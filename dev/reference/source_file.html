@@ -68,6 +68,7 @@
 <span>  chdir <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  desc <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  wrap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  shuffle <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  error_call <span class="op">=</span> <span class="fu">caller_env</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -76,7 +77,8 @@
 <span>  pattern <span class="op">=</span> <span class="st">"\\.[rR]$"</span>,</span>
 <span>  env <span class="op">=</span> <span class="fu"><a href="test_env.html">test_env</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  chdir <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  wrap <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  wrap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  shuffle <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">source_test_helpers</span><span class="op">(</span>path <span class="op">=</span> <span class="st">"tests/testthat"</span>, env <span class="op">=</span> <span class="fu"><a href="test_env.html">test_env</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
@@ -111,6 +113,11 @@ code up to and including the matching test is run.</p></dd>
 <dt id="arg-wrap">wrap<a class="anchor" aria-label="anchor" href="#arg-wrap"></a></dt>
 <dd><p>Automatically wrap all code within <code><a href="test_that.html">test_that()</a></code>? This ensures
 that all expectations are reported, even if outside a test block.</p></dd>
+
+
+<dt id="arg-shuffle">shuffle<a class="anchor" aria-label="anchor" href="#arg-shuffle"></a></dt>
+<dd><p>If <code>TRUE</code>, randomly reorder the top-level expressions
+in the file.</p></dd>
 
 
 <dt id="arg-pattern">pattern<a class="anchor" aria-label="anchor" href="#arg-pattern"></a></dt>

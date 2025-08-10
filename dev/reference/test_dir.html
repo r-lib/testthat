@@ -88,7 +88,8 @@ helper, and setup files that testthat uses, and what you might use each for.</p>
 <span>  stop_on_warning <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  wrap <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  package <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  load_package <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"installed"</span>, <span class="st">"source"</span><span class="op">)</span></span>
+<span>  load_package <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"installed"</span>, <span class="st">"source"</span><span class="op">)</span>,</span>
+<span>  shuffle <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -150,6 +151,11 @@ To configure the arguments passed to <code>load_all()</code>, add this
 field in your DESCRIPTION file:</p>
 <p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>Config<span class="sc">/</span>testthat<span class="sc">/</span>load<span class="sc">-</span>all<span class="sc">:</span> <span class="fu">list</span>(<span class="at">export_all =</span> <span class="cn">FALSE</span>, <span class="at">helpers =</span> <span class="cn">FALSE</span>)</span></code></pre><p></p></div></li>
 </ul></dd>
+
+
+<dt id="arg-shuffle">shuffle<a class="anchor" aria-label="anchor" href="#arg-shuffle"></a></dt>
+<dd><p>If <code>TRUE</code>, randomly reorder the top-level expressions
+in the file.</p></dd>
 
 </dl></div>
     <div class="section level2">
