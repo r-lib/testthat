@@ -82,7 +82,7 @@ test_that("expect_s4_class allows unquoting of first argument", {
 })
 
 
-test_that("expect_s3_class validates its inputs", {
+test_that("expect_s4_class validates its inputs", {
   expect_snapshot(error = TRUE, {
     expect_s4_class(factor("a"), 1)
   })

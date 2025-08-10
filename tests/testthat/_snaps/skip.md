@@ -18,7 +18,7 @@
 
     Reason: a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name || a_very_long_argument_name is not TRUE
 
-# skip_if_not_installed() works as expected
+# skip_if_not_installed() works as expected, absence and version
 
     Reason: {doesntexist} is not installed
 
@@ -26,7 +26,7 @@
 
     Reason: Installed testthat is version 3.0.0; but 9999.9999.999 is required
 
----
+# skip_if_not_installed() works as expected, offline
 
     Reason: offline
 
