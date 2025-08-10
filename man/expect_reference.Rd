@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-reference.R
 \name{expect_reference}
 \alias{expect_reference}
-\title{Does code return a reference to the expected object?}
+\title{Do you expect a reference to this object?}
 \usage{
 expect_reference(
   object,

@@ -1,4 +1,4 @@
-#' Does code return a vector with the expected size and/or prototype?
+#' Do you expect a vector with this size and/or prototype?
 #'
 #' `expect_vector()` is a thin wrapper around [vctrs::vec_assert()], converting
 #' the results of that function in to the expectations used by testthat. This

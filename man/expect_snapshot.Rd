@@ -2,7 +2,7 @@
 % Please edit documentation in R/snapshot.R
 \name{expect_snapshot}
 \alias{expect_snapshot}
-\title{Snapshot testing}
+\title{Do you expect this code to run the same way as last time?}
 \usage{
 expect_snapshot(
   x,

@@ -9,13 +9,19 @@
 
 ---
 
-    `many` does not match regexp "asdf".
+    Every element of `many` does not match regexp "a".
     Text:
-    * a
-    * b
-    * c
-    * d
-    * e
+    ✔ a
+    ✔ a
+    ✖ b
+
+---
+
+    Some element of `many` does not match regexp "c".
+    Text:
+    ✖ a
+    ✖ a
+    ✖ b
 
 # expect_match validates its inputs
 

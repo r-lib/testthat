@@ -1,4 +1,4 @@
-#' Multi reporter: combine several reporters in one.
+#' Run multiple reporters at the same time
 #'
 #' This reporter is useful to use several reporters at the same time, e.g.
 #' adding a custom reporter without removing the current one.

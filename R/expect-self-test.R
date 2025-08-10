@@ -28,7 +28,7 @@ capture_success_failure <- function(expr) {
   )
 }
 
-#' Tools for testing expectations
+#' Test your custom expectations
 #'
 #' @description
 #' `expect_success()` checks that there's exactly one success and no failures;

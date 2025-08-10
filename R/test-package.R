@@ -27,7 +27,7 @@
 test_package <- function(package, reporter = check_reporter(), ...) {
   test_path <- system.file("tests", "testthat", package = package)
   if (test_path == "") {
-    inform(paste0("No installed testthat tests found for ", package))
+    cli::cli_inform("No installed testthat tests found for {.pkg {package}}.")
     return(invisible())
   }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/snapshot-value.R
 \name{expect_snapshot_value}
 \alias{expect_snapshot_value}
-\title{Snapshot testing for values}
+\title{Do you expect this code to return the same value as last time?}
 \usage{
 expect_snapshot_value(
   x,

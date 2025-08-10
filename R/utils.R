@@ -37,7 +37,13 @@ rstudio_tickle <- function() {
   }
 
   rstudioapi::executeCommand("vcsRefresh")
-  rstudioapi::executeCommand("refreshFiles")
+  if (!is_positron()) {
+    rstudioapi::executeCommand("refreshFiles")
+  }
+}
+
+is_positron <- function() {
+  nzchar(Sys.getenv("POSITRON", ""))
 }
 
 first_upper <- function(x) {
@@ -50,3 +56,14 @@ in_rcmd_check <- function() {
 }
 
 r_version <- function() paste0("R", getRversion()[, 1:2])
+
+# Supress cli wrapping
+no_wrap <- function(x) {
+  x <- gsub(" ", "\u00a0", x, fixed = TRUE)
+  x <- gsub("\n", "\f", x, fixed = TRUE)
+  x
+}
+
+paste_c <- function(...) {
+  paste0(c(...), collapse = "")
+}

@@ -1,4 +1,4 @@
-#' Test reporter: minimal.
+#' Report minimal results as compactly as possible
 #'
 #' The minimal test reporter provides the absolutely minimum amount of
 #' information: whether each expectation has succeeded, failed or experienced

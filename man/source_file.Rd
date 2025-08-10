@@ -40,7 +40,9 @@ source_test_teardown(path = "tests/testthat", env = test_env())
 
 \item{chdir}{Change working directory to \code{dirname(path)}?}
 
-\item{desc}{If not-\code{NULL}, will run only test with this \code{desc}ription.}
+\item{desc}{A character vector used to filter tests. This is used to
+(recursively) filter the content of the file, so that only the non-test
+code up to and including the matching test is run.}
 
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}

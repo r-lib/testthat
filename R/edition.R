@@ -27,8 +27,8 @@ edition_deprecate <- function(in_edition, what, instead = NULL) {
     return()
   }
 
-  warn(c(
-    paste0("`", what, "` was deprecated in ", edition_name(in_edition), "."),
+  cli::cli_warn(c(
+    "{.code {what}} was deprecated in {edition_name(in_edition)}.",
     i = instead
   ))
 }
@@ -40,7 +40,7 @@ edition_require <- function(in_edition, what) {
     return()
   }
 
-  stop(paste0("`", what, "` requires ", edition_name(in_edition), "."))
+  cli::cli_abort("{.code {what}} requires {edition_name(in_edition)}.")
 }
 
 edition_name <- function(x) {

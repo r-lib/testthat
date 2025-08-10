@@ -55,11 +55,6 @@ test_that("skip_if_not_installed() works as expected, offline", {
   expect_snapshot_skip(skip_if_offline())
 })
 
-test_that("skip_on_cran generates useful message", {
-  withr::local_envvar(NOT_CRAN = "false")
-  expect_snapshot_skip(skip_on_cran())
-})
-
 test_that("skip_on_cran() works as expected", {
   local({
     local_on_cran(FALSE)
@@ -170,11 +165,7 @@ test_that("skip_unless_r works as expected", {
   expect_skip(skip_unless_r("== 0.0.0"))
   expect_skip(skip_unless_r("<= 0.0.0"))
 
-  expect_error(
-    skip_unless_r("idfjdij"),
-    "should be a comparison like '>='",
-    fixed = TRUE
-  )
+  expect_snapshot(error = TRUE, skip_unless_r("idfjdij"))
 })
 
 test_that("skip_unless_r gives the expected output", {
