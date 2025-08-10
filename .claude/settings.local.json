@@ -5,7 +5,10 @@
       "Bash(find:*)",
       "Bash(R:*)",
       "Bash(rm:*)",
-      "Bash(air format:*)"
+      "Bash(air format:*)",
+      "Edit(R/**)",
+      "Edit(tests/**)",
+      "Edit(vignettes/**)"
     ],
     "deny": []
   }

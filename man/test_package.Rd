@@ -10,7 +10,13 @@ test_package(package, reporter = check_reporter(), ...)
 
 test_check(package, reporter = check_reporter(), ...)
 
-test_local(path = ".", reporter = NULL, ..., load_package = "source")
+test_local(
+  path = ".",
+  reporter = NULL,
+  ...,
+  load_package = "source",
+  shuffle = FALSE
+)
 }
 \arguments{
 \item{package}{If these tests belong to a package, the name of the package.}
@@ -36,6 +42,9 @@ field in your DESCRIPTION file:
 \if{html}{\out{<div class="sourceCode">}}\preformatted{Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
 }\if{html}{\out{</div>}}
 }}
+
+\item{shuffle}{If \code{TRUE}, randomly reorder the top-level expressions
+in the file.}
 }
 \value{
 A list (invisibly) containing data about the test results.
