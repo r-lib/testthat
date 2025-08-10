@@ -196,7 +196,8 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     files <- files[!is_dir]
 
     dirs <- substr(dirs, 1, nchar(dirs) - 1)
-    files <- ifelse(tools::file_ext(files) == "", paste0(files, ".md"), files)
+    # Match regardless of whether user include .md or not
+    files <- c(files, paste0(files, ".md"))
 
     out <- out[out$name %in% files | out$test %in% dirs, , drop = FALSE]
   }
