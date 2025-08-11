@@ -36,7 +36,7 @@ library(testthat)
 ```
 
 ```{r include = FALSE}
-snapper <- local_snapshotter()
+snapper <- local_snapshotter(fail_on_new = FALSE)
 snapper$start_file("snapshotting.Rmd", "test")
 ```
 

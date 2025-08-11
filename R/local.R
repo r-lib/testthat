@@ -1,4 +1,4 @@
-#' Locally set options for maximal test reproducibility
+#' Temporarily set options for maximum reproducibility
 #'
 #' @description
 #' `local_test_context()` is run automatically by `test_that()` but you may
@@ -65,7 +65,11 @@
 #'   cat("\n")
 #' })
 local_test_context <- function(.env = parent.frame()) {
-  withr::local_envvar("_R_CHECK_BROWSER_NONINTERACTIVE_" = "true", TESTTHAT = "true", .local_envir = .env)
+  withr::local_envvar(
+    "_R_CHECK_BROWSER_NONINTERACTIVE_" = "true",
+    TESTTHAT = "true",
+    .local_envir = .env
+  )
   if (edition_get() >= 3) {
     local_reproducible_output(.env = .env)
   }
@@ -93,14 +97,15 @@ local_test_context <- function(.env = parent.frame()) {
 #'   local_reproducible_output(unicode = TRUE)
 #'   expect_equal(cli::symbol$ellipsis, "\u2026")
 #' })
-local_reproducible_output <- function(width = 80,
-                                      crayon = FALSE,
-                                      unicode = FALSE,
-                                      rstudio = FALSE,
-                                      hyperlinks = FALSE,
-                                      lang = "C",
-                                      .env = parent.frame()) {
-
+local_reproducible_output <- function(
+  width = 80,
+  crayon = FALSE,
+  unicode = FALSE,
+  rstudio = FALSE,
+  hyperlinks = FALSE,
+  lang = "C",
+  .env = parent.frame()
+) {
   if (unicode) {
     # If you force unicode display, you _must_ skip the test on non-utf8
     # locales; otherwise it's guaranteed to fail
@@ -148,9 +153,10 @@ waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
   # Need to very carefully isolate this change to this function - can not set
   # in expectation functions because part of expectation handling bubbles
   # up through calling handlers, which are run before on.exit()
-  local_reporter_output()
-
-  waldo::compare(x, y,..., x_arg = x_arg, y_arg = y_arg)
+  if (!is_snapshot()) {
+    local_reporter_output()
+  }
+  waldo::compare(x, y, ..., x_arg = x_arg, y_arg = y_arg)
 }
 
 local_width <- function(width = 80, .env = parent.frame()) {
@@ -194,6 +200,7 @@ local_interactive_reporter <- function(.env = parent.frame()) {
   # Use StopReporter
   reporter <- StopReporter$new()
   old <- set_reporter(reporter)
+  withr::defer(reporter$end_reporter(), envir = .env)
   withr::defer(reporter$stop_if_needed(), envir = .env)
   withr::defer(set_reporter(old), envir = .env)
 

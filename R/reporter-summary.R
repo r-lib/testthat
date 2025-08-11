@@ -1,19 +1,20 @@
-#' Test reporter: summary of errors.
+#' Report a summary of failures
 #'
-#' This is a reporter designed for interactive usage: it lets you know which
-#' tests have run successfully and as well as fully reporting information about
+#' @description
+#' This is designed for interactive usage: it lets you know which tests have
+#' run successfully and as well as fully reporting information about
 #' failures and errors.
 #'
 #' You can use the `max_reports` field to control the maximum number
-#' of detailed reports produced by this reporter. This is useful when running
-#' with [auto_test()]
+#' of detailed reports produced by this reporter.
 #'
 #' As an additional benefit, this reporter will praise you from time-to-time
 #' if all your tests pass.
 #'
 #' @export
 #' @family reporters
-SummaryReporter <- R6::R6Class("SummaryReporter",
+SummaryReporter <- R6::R6Class(
+  "SummaryReporter",
   inherit = Reporter,
   public = list(
     failures = NULL,
@@ -23,10 +24,12 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
     show_praise = TRUE,
     omit_dots = FALSE,
 
-    initialize = function(show_praise = TRUE,
-                          omit_dots = getOption("testthat.summary.omit_dots"),
-                          max_reports = getOption("testthat.summary.max_reports", 10L),
-                          ...) {
+    initialize = function(
+      show_praise = TRUE,
+      omit_dots = getOption("testthat.summary.omit_dots"),
+      max_reports = getOption("testthat.summary.max_reports", 10L),
+      ...
+    ) {
       super$initialize(...)
       self$capabilities$parallel_support <- TRUE
       self$failures <- Stack$new()
@@ -81,7 +84,9 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
 
       if (self$failures$size() >= self$max_reports) {
         self$cat_line(
-          "Maximum number of ", self$max_reports, " failures reached, ",
+          "Maximum number of ",
+          self$max_reports,
+          " failures reached, ",
           "some test results may be missing."
         )
         self$cat_line()
@@ -110,8 +115,13 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
       single_letter_summary(result)
     },
 
-    cat_reports = function(header, expectations, max_n, summary_fun,
-                           collapse = "\n\n") {
+    cat_reports = function(
+      header,
+      expectations,
+      max_n,
+      summary_fun,
+      collapse = "\n\n"
+    ) {
       n <- length(expectations)
       if (n == 0L) {
         return()
@@ -127,7 +137,7 @@ SummaryReporter <- R6::R6Class("SummaryReporter",
       exp_summary <- function(i) {
         summary_fun(expectations[[i]], labels[i])
       }
-      report_summary <- vapply(seq_along(expectations), exp_summary, character(1))
+      report_summary <- map_chr(seq_along(expectations), exp_summary)
 
       self$cat_tight(paste(report_summary, collapse = collapse))
       if (n > max_n) {
@@ -147,7 +157,10 @@ skip_summary <- function(x, label) {
   header <- paste0(label, ". ", x$test)
 
   paste0(
-    colourise(header, "skip"), expectation_location(x, " (", ")"), " - ", x$message
+    colourise(header, "skip"),
+    expectation_location(x, " (", ")"),
+    " - ",
+    x$message
   )
 }
 
@@ -155,7 +168,8 @@ failure_summary <- function(x, label, width = cli::console_width()) {
   header <- paste0(label, ". ", issue_header(x))
 
   paste0(
-    cli::rule(header, col = testthat_style("error")), "\n",
+    cli::rule(header, col = testthat_style("error")),
+    "\n",
     format(x)
   )
 }

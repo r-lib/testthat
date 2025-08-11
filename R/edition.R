@@ -27,18 +27,20 @@ edition_deprecate <- function(in_edition, what, instead = NULL) {
     return()
   }
 
-  warn(c(
-    paste0("`", what, "` was deprecated in ", edition_name(in_edition), "."),
+  cli::cli_warn(c(
+    "{.code {what}} was deprecated in {edition_name(in_edition)}.",
     i = instead
   ))
 }
 
 edition_require <- function(in_edition, what) {
-  if (edition_get() >= in_edition || isTRUE(getOption("testthat.edition_ignore"))) {
+  if (
+    edition_get() >= in_edition || isTRUE(getOption("testthat.edition_ignore"))
+  ) {
     return()
   }
 
-  stop(paste0("`", what, "` requires ", edition_name(in_edition), "."))
+  cli::cli_abort("{.code {what}} requires {edition_name(in_edition)}.")
 }
 
 edition_name <- function(x) {

@@ -1,4 +1,4 @@
-#' Does code execute silently?
+#' Do you expect code to execute silently?
 #'
 #' Checks that the code produces no output, messages, or warnings.
 #'
@@ -26,10 +26,9 @@ expect_silent <- function(object) {
     if (length(act$cap$messages) > 0) "messages"
   )
 
-  expect(
-    length(outputs) == 0,
-    sprintf("%s produced %s.", act$lab, paste(outputs, collapse = ", "))
-  )
-
-  invisible(act$cap$result)
+  if (length(outputs) != 0) {
+    msg <- sprintf("%s produced %s.", act$lab, paste(outputs, collapse = ", "))
+    return(fail(msg))
+  }
+  pass(act$cap$result)
 }

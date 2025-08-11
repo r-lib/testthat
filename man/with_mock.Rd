@@ -20,17 +20,11 @@ package name.}
 \item{.local_envir}{Environment in which to add exit handler.
 For expert use only.}
 }
-\value{
-The result of the last unnamed parameter
-}
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#defunct}{\figure{lifecycle-defunct.svg}{options: alt='[Defunct]'}}}{\strong{[Defunct]}}
 
-\code{with_mock()} and \code{local_mock()} are deprecated in favour of
-\code{\link[=with_mocked_bindings]{with_mocked_bindings()}} and \code{\link[=local_mocked_bindings]{local_mocked_bindings()}}.
-
-These functions worked by using some C code to temporarily modify the mocked
-function \emph{in place}. This was an abuse of R's internals and it is no longer
-permitted.
+\code{with_mock()} and \code{local_mock()} are now defunct, and can be replaced by
+\code{\link[=with_mocked_bindings]{with_mocked_bindings()}} and \code{\link[=local_mocked_bindings]{local_mocked_bindings()}}. These functions only
+worked by abusing of R's internals.
 }
 \keyword{internal}

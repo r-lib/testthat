@@ -4,7 +4,7 @@
 \alias{logical-expectations}
 \alias{expect_true}
 \alias{expect_false}
-\title{Does code return \code{TRUE} or \code{FALSE}?}
+\title{Do you expect \code{TRUE} or \code{FALSE}?}
 \usage{
 expect_true(object, info = NULL, label = NULL)
 
@@ -45,8 +45,6 @@ expect_true(length(a) == 3)
 expect_equal(length(a), 3)
 }
 \seealso{
-\code{\link[=is_false]{is_false()}} for complement
-
 Other expectations: 
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},
@@ -57,7 +55,6 @@ Other expectations:
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
 \code{\link{expect_reference}()},
-\code{\link{expect_shape}()},
 \code{\link{expect_silent}()},
 \code{\link{inheritance-expectations}}
 }

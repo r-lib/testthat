@@ -2,7 +2,7 @@
 % Please edit documentation in R/expectation.R
 \name{expect}
 \alias{expect}
-\title{The building block of all \code{expect_} functions}
+\title{The previous building block of all \code{expect_} functions}
 \usage{
 expect(
   ok,
@@ -25,35 +25,24 @@ for backward compatibility only and new expectations should not use it.}
 supplied when you need to forward a srcref captured elsewhere.}
 
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
-When supplied, the expectation is displayed with the backtrace.}
+When supplied, the expectation is displayed with the backtrace.
+Expert use only.}
 
-\item{trace_env}{If \code{is.null(trace)}, this is used to automatically
-generate a traceback running from \code{test_code()}/\code{test_file()} to
-\code{trace_env}. You'll generally only need to set this if you're wrapping
-an expectation inside another function.}
+\item{trace_env}{If \code{trace} is not specified, this is used to generate an
+informative traceack for failures. You should only need to set this if
+you're calling \code{fail()} from a helper function; see
+\code{vignette("custom-expectation")} for details.}
 }
 \value{
-An expectation object. Signals the expectation condition
+An expectation object from either \code{succeed()} or \code{fail()}.
 with a \code{continue_test} restart.
 }
 \description{
-Call \code{expect()} when writing your own expectations. See
+Previously, we recommended using \code{expect()} when writing your own
+expectations. Now we instead recommend \code{\link[=pass]{pass()}} and \code{\link[=fail]{fail()}}. See
 \code{vignette("custom-expectation")} for details.
-}
-\details{
-While \code{expect()} creates and signals an expectation in one go,
-\code{exp_signal()} separately signals an expectation that you
-have manually created with \code{\link[=new_expectation]{new_expectation()}}. Expectations are
-signalled with the following protocol:
-\itemize{
-\item If the expectation is a failure or an error, it is signalled with
-\code{\link[base:stop]{base::stop()}}. Otherwise, it is signalled with
-\code{\link[base:conditions]{base::signalCondition()}}.
-\item The \code{continue_test} restart is registered. When invoked, failing
-expectations are ignored and normal control flow is resumed to
-run the other tests.
-}
 }
 \seealso{
 \code{\link[=exp_signal]{exp_signal()}}
 }
+\keyword{internal}

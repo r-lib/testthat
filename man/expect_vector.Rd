@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-vector.R
 \name{expect_vector}
 \alias{expect_vector}
-\title{Does code return a vector with the expected size and/or prototype?}
+\title{Do you expect a vector with this size and/or prototype?}
 \usage{
 expect_vector(object, ptype = NULL, size = NULL)
 }

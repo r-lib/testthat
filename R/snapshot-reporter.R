@@ -1,5 +1,5 @@
-
-SnapshotReporter <- R6::R6Class("SnapshotReporter",
+SnapshotReporter <- R6::R6Class(
+  "SnapshotReporter",
   inherit = Reporter,
   public = list(
     snap_dir = character(),
@@ -9,13 +9,13 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     snap_file_seen = character(),
     snap_file_saved = character(),
     variants_changed = FALSE,
-    fail_on_new = FALSE,
+    fail_on_new = NULL,
 
     old_snaps = NULL,
     cur_snaps = NULL,
     new_snaps = NULL,
 
-    initialize = function(snap_dir = "_snaps", fail_on_new = FALSE) {
+    initialize = function(snap_dir = "_snaps", fail_on_new = NULL) {
       self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
       self$fail_on_new <- fail_on_new
     },
@@ -37,19 +37,23 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
     },
 
     start_test = function(context, test) {
-      if (is.character(test)) {
-        self$test <- gsub("\n", "", test)
+      if (is.null(test)) {
+        return()
       }
+
+      self$test <- paste0(gsub("\n", "", test), collapse = " / ")
     },
 
     # Called by expectation
-    take_snapshot = function(value,
-                             save = identity,
-                             load = identity,
-                             ...,
-                             tolerance = testthat_tolerance(),
-                             variant = NULL,
-                             trace_env = NULL) {
+    take_snapshot = function(
+      value,
+      save = identity,
+      load = identity,
+      ...,
+      tolerance = testthat_tolerance(),
+      variant = NULL,
+      trace_env = caller_env()
+    ) {
       check_string(self$test, allow_empty = FALSE)
       i <- self$new_snaps$append(self$test, variant, save(value))
 
@@ -59,8 +63,10 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         old <- load(old_raw)
 
         comp <- waldo_compare(
-          x = old,   x_arg = "old",
-          y = value, y_arg = "new",
+          x = old,
+          x_arg = "old",
+          y = value,
+          y_arg = "new",
           ...,
           tolerance = tolerance,
           quote_strings = FALSE
@@ -78,42 +84,43 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
         value_enc <- save(value)
 
         self$cur_snaps$append(self$test, variant, value_enc)
+        fail_on_new <- self$fail_on_new %||% on_ci()
 
         message <- paste0(
           "Adding new snapshot",
           if (variant != "_default") paste0(" for variant '", variant, "'"),
-          if (self$fail_on_new) " in CI",
           ":\n",
           value_enc
         )
-        if (self$fail_on_new) {
-          fail(message, trace_env = trace_env)
-        } else {
-          testthat_warn(message)
+        if (fail_on_new) {
+          return(fail(message, trace_env = trace_env))
         }
+        testthat_warn(message)
         character()
       }
     },
 
-    take_file_snapshot = function(name, path, file_equal, variant = NULL, trace_env = NULL) {
+    take_file_snapshot = function(
+      name,
+      path,
+      file_equal,
+      variant = NULL,
+      trace_env = caller_env()
+    ) {
       self$announce_file_snapshot(name)
 
-      if (is.null(variant)) {
-        snap_dir <- file.path(self$snap_dir, self$file)
-      } else {
-        snap_dir <- file.path(self$snap_dir, variant, self$file)
-      }
-
-      save_path <- file.path(snap_dir, name)
+      save_path <- paste0(c(self$file, variant, name), collapse = "/")
       if (save_path %in% self$snap_file_saved) {
         cli::cli_abort(
-          "Snapshot file {.arg name} has already been saved. Please provide a unique snapshot file name."
+          "Snapshot file names must be unique. {.arg name} has already been used.",
+          call = trace_env
         )
       }
       self$snap_file_saved <- c(self$snap_file_saved, save_path)
 
       snapshot_file_equal(
-        snap_test_dir = snap_dir,
+        snap_dir = self$snap_dir,
+        snap_test = self$file,
         snap_name = name,
         snap_variant = variant,
         path = path,
@@ -156,7 +163,8 @@ SnapshotReporter <- R6::R6Class("SnapshotReporter",
       # clean up if we've seen all files
       tests <- context_name(find_test_scripts(".", full.names = FALSE))
       if (!on_ci() && all(tests %in% self$test_file_seen)) {
-        snapshot_cleanup(self$snap_dir,
+        snapshot_cleanup(
+          self$snap_dir,
           test_files_seen = self$test_file_seen,
           snap_files_seen = self$snap_file_seen
         )
@@ -195,11 +203,19 @@ get_snapshotter <- function() {
 #'
 #' @export
 #' @keywords internal
-local_snapshotter <- function(snap_dir = NULL, cleanup = FALSE, fail_on_new = FALSE, .env = parent.frame()) {
+local_snapshotter <- function(
+  snap_dir = NULL,
+  cleanup = FALSE,
+  fail_on_new = NULL,
+  .env = parent.frame()
+) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
-  reporter <- SnapshotReporter$new(snap_dir = snap_dir, fail_on_new = fail_on_new)
+  reporter <- SnapshotReporter$new(
+    snap_dir = snap_dir,
+    fail_on_new = fail_on_new
+  )
   if (!identical(cleanup, FALSE)) {
-    warn("`cleanup` is deprecated")
+    cli::cli_warn("{.arg cleanup} is deprecated.")
   }
 
   withr::local_options(

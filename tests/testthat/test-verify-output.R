@@ -3,8 +3,17 @@ test_that("can record all types of output", {
     "Output"
     1 + 2
     invisible(1:10)
-    12345678 + 12345678 + 12345678 + 12345678 + 12345678 + 12345678 +
-      12345678 + 12345678 + 12345678 + 12345678 + 12345678
+    12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678 +
+      12345678
 
     "# Header"
     "Other output"
@@ -40,7 +49,7 @@ test_that("can record all types of output", {
 
 test_that("can't record plots", {
   skip_if(interactive())
-  expect_error(verify_output(tempfile(), plot(1:10)), "Plots")
+  expect_snapshot(error = TRUE, verify_output(tempfile(), plot(1:10)))
 })
 
 test_that("verify_output() splits condition messages on newlines", {
@@ -75,7 +84,8 @@ test_that("verify_output() doesn't use cli unicode by default", {
     unicode = TRUE,
     {
       cat(cli::symbol$info, cli::symbol$cross, "\n")
-    })
+    }
+  )
 })
 
 test_that("verify_output() handles carriage return", {

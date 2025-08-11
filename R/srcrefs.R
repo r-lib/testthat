@@ -1,4 +1,7 @@
-find_expectation_srcref <- function(test_code_frame = NULL, top = caller_env()) {
+find_expectation_srcref <- function(
+  test_code_frame = NULL,
+  top = caller_env()
+) {
   # It's not possible to give useful srcrefs interactively so don't even try
   path <- getOption("testthat_path")
   if (is.null(path)) {
@@ -26,10 +29,7 @@ find_expectation_srcref <- function(test_code_frame = NULL, top = caller_env()) 
   call_srcref %||% testthat_srcref
 }
 
-find_srcref <- function(bottom = NULL,
-                        top = caller_env(),
-                        container = NULL) {
-
+find_srcref <- function(bottom = NULL, top = caller_env(), container = NULL) {
   idx <- sys_index(bottom, top)
   calls <- sys.calls()[rev(idx)]
 
@@ -72,13 +72,13 @@ sys_index <- function(bottom = NULL, top = caller_env()) {
   } else {
     bottom_idx <- Position(function(env) identical(bottom, env), frames)
     if (is.na(bottom_idx)) {
-      abort("Can't find `bottom` on stack")
+      cli::cli_abort("Can't find {.arg bottom} on stack.")
     }
   }
 
   top_idx <- Position(function(env) identical(top, env), frames)
   if (is.na(top_idx)) {
-    abort("Can't find `top` on stack")
+    cli::cli_abort("Can't find {.arg top} on stack.")
   }
 
   seq2(bottom_idx, top_idx)

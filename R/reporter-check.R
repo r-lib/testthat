@@ -1,11 +1,12 @@
-#' Check reporter: 13 line summary of problems
+#' Report results for `R CMD check`
 #'
 #' `R CMD check` displays only the last 13 lines of the result, so this
 #' report is designed to ensure that you see something useful there.
 #'
 #' @export
 #' @family reporters
-CheckReporter <- R6::R6Class("CheckReporter",
+CheckReporter <- R6::R6Class(
+  "CheckReporter",
   inherit = Reporter,
   public = list(
     problems = NULL,
@@ -86,10 +87,21 @@ summary_line <- function(n_fail, n_warn, n_skip, n_pass) {
   # Ordered from most important to least important
   paste0(
     "[ ",
-    colourise_if("FAIL", "failure", n_fail > 0), " ", n_fail, " | ",
-    colourise_if("WARN", "warn", n_warn > 0),    " ", n_warn, " | ",
-    colourise_if("SKIP", "skip", n_skip > 0),    " ", n_skip, " | ",
-    colourise_if("PASS", "success", n_fail == 0), " ", n_pass,
+    colourise_if("FAIL", "failure", n_fail > 0),
+    " ",
+    n_fail,
+    " | ",
+    colourise_if("WARN", "warn", n_warn > 0),
+    " ",
+    n_warn,
+    " | ",
+    colourise_if("SKIP", "skip", n_skip > 0),
+    " ",
+    n_skip,
+    " | ",
+    colourise_if("PASS", "success", n_fail == 0),
+    " ",
+    n_pass,
     " ]"
   )
 }

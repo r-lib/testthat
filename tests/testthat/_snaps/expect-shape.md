@@ -1,6 +1,10 @@
-# length compared correctly
+# expect_length validates its inputs
 
-    1 has length 1, not length 2.
+    Code
+      expect_length(1:5, "a")
+    Condition
+      Error in `expect_length()`:
+      ! `n` must be a whole number, not the string "a".
 
 # dim compared correctly
 
@@ -56,12 +60,12 @@
       expect_shape(1:10)
     Condition
       Error in `expect_shape()`:
-      ! One of `length`, `nrow`, `ncol`, or `dim` must be supplied.
+      ! One of `nrow`, `ncol`, or `dim` must be supplied.
     Code
       expect_shape(1:10, nrow = 1L, ncol = 2L)
     Condition
       Error in `expect_shape()`:
-      ! Exactly one of `length`, `nrow`, `ncol`, or `dim` must be supplied.
+      ! Exactly one of `nrow`, `ncol`, or `dim` must be supplied.
       x `nrow` and `ncol` were supplied together.
     Code
       expect_shape(1:10, 2)

@@ -1,14 +1,14 @@
 methods::setOldClass("proc_time")
 
-#' List reporter: gather all test results along with elapsed time and
-#' file information.
+#' Capture test results and metadata
 #'
 #' This reporter gathers all results, adding additional information such as
 #' test elapsed time, and test filename if available. Very useful for reporting.
 #'
 #' @export
 #' @family reporters
-ListReporter <- R6::R6Class("ListReporter",
+ListReporter <- R6::R6Class(
+  "ListReporter",
   inherit = Reporter,
   public = list(
     current_start_time = NA,
@@ -25,8 +25,10 @@ ListReporter <- R6::R6Class("ListReporter",
     },
 
     start_test = function(context, test) {
-      if (!identical(self$current_context, context) ||
-          !identical(self$current_test, test)) {
+      if (
+        !identical(self$current_context, context) ||
+          !identical(self$current_test, test)
+      ) {
         self$current_context <- context
         self$current_test <- test
         self$current_expectations <- Stack$new()
@@ -51,16 +53,17 @@ ListReporter <- R6::R6Class("ListReporter",
       elapsed <- as.double(proc.time() - self$current_start_time)
 
       results <- list()
-      if (!is.null(self$current_expectations))
+      if (!is.null(self$current_expectations)) {
         results <- self$current_expectations$as_list()
+      }
 
       self$results$push(list(
-        file =    self$current_file %||% NA_character_,
+        file = self$current_file %||% NA_character_,
         context = context,
-        test =    test,
-        user =    elapsed[1],
-        system =  elapsed[2],
-        real =    elapsed[3],
+        test = test,
+        user = elapsed[1],
+        system = elapsed[2],
+        real = elapsed[3],
         results = results
       ))
 
@@ -87,23 +90,24 @@ ListReporter <- R6::R6Class("ListReporter",
       # look for exceptions raised outside of tests
       # they happened just before end_context since they interrupt the test_file execution
       results <- results$as_list()
-      if (length(results) == 0) return()
+      if (length(results) == 0) {
+        return()
+      }
 
       self$results$push(list(
-        file =    self$current_file %||% NA_character_,
+        file = self$current_file %||% NA_character_,
         context = context,
-        test =    NA_character_,
-        user =    NA_real_,
-        system =  NA_real_,
-        real =    NA_real_,
+        test = NA_character_,
+        user = NA_real_,
+        system = NA_real_,
+        real = NA_real_,
         results = results
-       ))
+      ))
     },
 
     get_results = function() {
       testthat_results(self$results$as_list())
     }
-
   )
 )
 
@@ -144,11 +148,19 @@ as.data.frame.testthat_results <- function(x, ...) {
   if (length(x) == 0) {
     return(
       data.frame(
-        file = character(0), context = character(0), test = character(0),
-        nb = integer(0), failed = integer(0), skipped = logical(0),
-        error = logical(0), warning = integer(0),
-        user = numeric(0), system = numeric(0), real = numeric(0),
-        passed = integer(0), result = list(),
+        file = character(0),
+        context = character(0),
+        test = character(0),
+        nb = integer(0),
+        failed = integer(0),
+        skipped = logical(0),
+        error = logical(0),
+        warning = integer(0),
+        user = numeric(0),
+        system = numeric(0),
+        real = numeric(0),
+        passed = integer(0),
+        result = list(),
         stringsAsFactors = FALSE
       )
     )
@@ -175,19 +187,26 @@ summarize_one_test_results <- function(test) {
       nb_tests <- length(test_results)
     }
 
-    nb_passed <- sum(vapply(test_results, expectation_success, logical(1)))
-    nb_skipped <- sum(vapply(test_results, expectation_skip, logical(1)))
-    nb_failed <- sum(vapply(test_results, expectation_failure, logical(1)))
-    nb_warning <- sum(vapply(test_results, expectation_warning, logical(1)))
+    nb_passed <- sum(map_lgl(test_results, expectation_success))
+    nb_skipped <- sum(map_lgl(test_results, expectation_skip))
+    nb_failed <- sum(map_lgl(test_results, expectation_failure))
+    nb_warning <- sum(map_lgl(test_results, expectation_warning))
   }
 
   context <- if (length(test$context) > 0) test$context else ""
 
   res <- data.frame(
-    file = test$file, context = context, test = test$test,
-    nb = nb_tests, failed = nb_failed, skipped = as.logical(nb_skipped),
-    error = error, warning = nb_warning,
-    user = test$user, system = test$system, real = test$real,
+    file = test$file,
+    context = context,
+    test = test$test,
+    nb = nb_tests,
+    failed = nb_failed,
+    skipped = as.logical(nb_skipped),
+    error = error,
+    warning = nb_warning,
+    user = test$user,
+    system = test$system,
+    real = test$real,
     stringsAsFactors = FALSE
   )
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-inheritance.R
 \name{expect_is}
 \alias{expect_is}
-\title{Does an object inherit from a given class?}
+\title{Do you expect to inherit from this class?}
 \usage{
 expect_is(object, class, info = NULL, label = NULL)
 }
@@ -12,17 +12,15 @@ expect_is(object, class, info = NULL, label = NULL)
 Supports limited unquoting to make it easier to generate readable failures
 within a function or for loop. See \link{quasi_label} for more details.}
 
-\item{class}{Either a character vector of class names, or
-for \code{expect_s3_class()} and \code{expect_s4_class()}, an \code{NA} to assert
-that \code{object} isn't an S3 or S4 object.}
+\item{class}{Class name passed to \code{inherits()}.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
 \code{expect_is()} is an older form that uses \code{\link[=inherits]{inherits()}} without checking
 whether \code{x} is S3, S4, or neither. Instead, I'd recommend using
-\code{\link[=expect_type]{expect_type()}}, \code{\link[=expect_s3_class]{expect_s3_class()}} or \code{\link[=expect_s4_class]{expect_s4_class()}} to more clearly
-convey your  intent.
+\code{\link[=expect_type]{expect_type()}}, \code{\link[=expect_s3_class]{expect_s3_class()}}, or \code{\link[=expect_s4_class]{expect_s4_class()}} to more clearly
+convey your intent.
 }
 \section{3rd edition}{
 

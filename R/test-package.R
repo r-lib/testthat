@@ -27,7 +27,7 @@
 test_package <- function(package, reporter = check_reporter(), ...) {
   test_path <- system.file("tests", "testthat", package = package)
   if (test_path == "") {
-    inform(paste0("No installed testthat tests found for ", package))
+    cli::cli_inform("No installed testthat tests found for {.pkg {package}}.")
     return(invisible())
   }
 
@@ -59,7 +59,13 @@ test_check <- function(package, reporter = check_reporter(), ...) {
 
 #' @export
 #' @rdname test_package
-test_local <- function(path = ".", reporter = NULL, ..., load_package = "source") {
+test_local <- function(
+  path = ".",
+  reporter = NULL,
+  ...,
+  load_package = "source",
+  shuffle = FALSE
+) {
   package <- pkgload::pkg_name(path)
   test_path <- file.path(pkgload::pkg_path(path), "tests", "testthat")
 
@@ -69,6 +75,7 @@ test_local <- function(path = ".", reporter = NULL, ..., load_package = "source"
     package = package,
     reporter = reporter,
     ...,
-    load_package = load_package
+    load_package = load_package,
+    shuffle = shuffle
   )
 }

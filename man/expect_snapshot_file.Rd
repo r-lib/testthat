@@ -5,12 +5,12 @@
 \alias{announce_snapshot_file}
 \alias{compare_file_binary}
 \alias{compare_file_text}
-\title{Snapshot testing for whole files}
+\title{Do you expect this code to create the same file as last time?}
 \usage{
 expect_snapshot_file(
   path,
   name = basename(path),
-  binary = lifecycle::deprecated(),
+  binary = deprecated(),
   cran = FALSE,
   compare = NULL,
   transform = NULL,

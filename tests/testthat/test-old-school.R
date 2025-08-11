@@ -1,38 +1,7 @@
-
-test_that("old school logical works", {
-  local_edition(2L)
-
-  expect_warning(
-    expect_success(expect_that(TRUE, is_true())),
-    "deprecated")
-
-  expect_warning(
-    expect_success(expect_that(FALSE, is_false())),
-    "deprecated")
-})
-
 test_that("old school types still work", {
   local_edition(2L)
 
   expect_success(expect_that(1L, is_a("integer")))
-})
-
-test_that("tidyverse conflicts throw warnings", {
-  local_edition(2L)
-
-  expect_warning(
-    expect_that(NULL, is_null()),
-    "deprecated"
-  )
-
-  expect_warning(
-    expect_that("te*st", matches("e*", fixed = TRUE)),
-    "deprecated"
-  )
-  expect_warning(
-    expect_that("test", matches("TEST", ignore.case = TRUE)),
-    "deprecated"
-  )
 })
 
 test_that("old school names still work", {

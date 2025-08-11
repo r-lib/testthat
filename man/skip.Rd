@@ -8,12 +8,13 @@
 \alias{skip_unless_r}
 \alias{skip_if_offline}
 \alias{skip_on_cran}
+\alias{local_on_cran}
 \alias{skip_on_os}
 \alias{skip_on_ci}
 \alias{skip_on_covr}
 \alias{skip_on_bioc}
 \alias{skip_if_translated}
-\title{Skip a test}
+\title{Skip a test for various reasons}
 \usage{
 skip(message = "Skipping")
 
@@ -28,6 +29,8 @@ skip_unless_r(spec)
 skip_if_offline(host = "captive.apple.com")
 
 skip_on_cran()
+
+local_on_cran(on_cran, frame = caller_env())
 
 skip_on_os(os, arch = NULL)
 
@@ -53,6 +56,10 @@ skip_if_translated(msgid = "'\%s' not found")
 should only be run on R versions 4.1.0 and later.}
 
 \item{host}{A string with a hostname to lookup}
+
+\item{on_cran}{Pretend we're on CRAN (\code{TRUE}) or not (\code{FALSE}).}
+
+\item{frame}{Calling frame to tie change to; expect use only.}
 
 \item{os}{Character vector of one or more operating systems to skip on.
 Supported values are \code{"windows"}, \code{"mac"}, \code{"linux"}, \code{"solaris"},
@@ -91,7 +98,8 @@ difficult to install.
 \item \code{skip_on_bioc()} skips on Bioconductor (using the \code{IS_BIOC_BUILD_MACHINE}
 env var).
 \item \code{skip_on_cran()} skips on CRAN (using the \code{NOT_CRAN} env var set by
-devtools and friends).
+devtools and friends). \code{local_on_cran()} gives you the ability to
+easily simulate what will happen on CRAN.
 \item \code{skip_on_covr()} skips when covr is running (using the \code{R_COVR} env var).
 \item \code{skip_on_ci()} skips on continuous integration systems like GitHub Actions,
 travis, and appveyor (using the \code{CI} env var).
