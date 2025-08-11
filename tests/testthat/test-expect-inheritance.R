@@ -127,7 +127,6 @@ test_that("expect_r6_class validates its inputs", {
 # expect_s7_class --------------------------------------------------------
 
 test_that("can check with actual class", {
-  skip_if_not_installed("S7")
   Foo <- S7::new_class("Foo", package = NULL)
   Bar <- S7::new_class("Bar", package = NULL)
   expect_success(expect_s7_class(Foo(), class = Foo))
@@ -135,6 +134,13 @@ test_that("can check with actual class", {
 
   Baz <- S7::new_class("Baz", parent = Foo, package = NULL)
   expect_snapshot_failure(expect_s7_class(Baz(), class = Bar))
+})
+
+test_that("informative failure if not S7", {
+  Foo <- S7::new_class("Foo", package = NULL)
+
+  x <- factor()
+  expect_snapshot_failure(expect_s7_class(x, Foo))
 })
 
 test_that("expect_s7_class validates its inputs", {

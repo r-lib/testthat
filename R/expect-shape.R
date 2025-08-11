@@ -67,7 +67,7 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
     check_number_whole(ncol, allow_na = TRUE)
 
     if (length(dim_object) == 1L) {
-      msg <- sprintf("Expected %s to have more than one dimension.", act$lab)
+      msg <- sprintf("Expected %s to have two or more dimensions.", act$lab)
       return(fail(msg))
     }
 

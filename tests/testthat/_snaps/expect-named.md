@@ -13,7 +13,7 @@
     Condition
       Error:
       ! Expected names(`c(a = 1)`) to be equal to "b".
-      
+      Differences:
       `actual`:   "a"
       `expected`: "b"
 
@@ -52,7 +52,7 @@
     Condition
       Error:
       ! Expected names(`x1`) to be equal to `c("a", "b")`.
-      
+      Differences:
       `actual`:   "a"    
       `expected`: "a" "b"
 
@@ -63,7 +63,7 @@
     Condition
       Error:
       ! Expected names(`x2`) to be equal to "a".
-      
+      Differences:
       `actual`:   "a" "b"
       `expected`: "a"    
 
@@ -74,7 +74,7 @@
     Condition
       Error:
       ! Expected names(`x1`) to be equal to `c("b")`.
-      
+      Differences:
       `actual`:   "a"
       `expected`: "b"
 

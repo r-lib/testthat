@@ -132,7 +132,7 @@ expect_match_ <- function(
   }
   match <- if (negate) "not to match" else "to match"
 
-  exp_msg <- sprintf(
+  msg_exp <- sprintf(
     "Expected %s%s %s %s %s.",
     which,
     act$lab,
@@ -140,6 +140,6 @@ expect_match_ <- function(
     if (fixed) "string" else "regexp",
     encodeString(regexp, quote = '"')
   )
-  act_msg <- c(paste0("Actual ", title, ':'), text)
-  return(fail(c(exp_msg, act_msg), info = info, trace_env = trace_env))
+  msg_act <- c(paste0("Actual ", title, ':'), text)
+  return(fail(c(msg_exp, msg_act), info = info, trace_env = trace_env))
 }

@@ -67,69 +67,80 @@
     --------------------------------------------------------------------------------
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     --------------------------------------------------------------------------------
     Maximum number of failures exceeded; quitting at end of file.
     i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
@@ -284,9 +295,10 @@
     
     Failure ('reporters/backtraces.R:62:6'): (code run outside of `test_that()`)
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
@@ -296,9 +308,10 @@
     
     Failure ('reporters/backtraces.R:67:3'): nested expectations get backtraces
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
@@ -404,9 +417,10 @@
     
     Failure ('reporters/backtraces.R:62:6'): (code run outside of `test_that()`)
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
@@ -416,9 +430,10 @@
     
     Failure ('reporters/backtraces.R:67:3'): nested expectations get backtraces
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
@@ -462,15 +477,17 @@
     
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     -- Failure ('reporters/tests.R:16:8'): Failure:2a ------------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
@@ -560,69 +577,80 @@
     --------------------------------------------------------------------------------
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     Failure ('reporters/fail-many.R:3:5'): Example
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     --------------------------------------------------------------------------------
     Maximum number of failures exceeded; quitting at end of file.
     i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 

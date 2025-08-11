@@ -10,6 +10,30 @@ test_that("symbols are quoted", {
   expect_equal(expr_label(quote(a)), "`a`")
 })
 
+
+test_that("is_call_infix() handles complex calls (#1472)", {
+  expect_false(is_call_infix(quote(
+    base::any(
+      c(
+        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
+      ),
+      na.rm = TRUE
+    )
+  )))
+
+  withr::local_envvar(
+    "_R_CHECK_LENGTH_1_LOGIC2_" = "TRUE",
+  )
+  expect_true(
+    base::any(
+      c(
+        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
+      ),
+      na.rm = TRUE
+    )
+  )
+})
+
 test_that("long vectors get ...", {
   long <- "123456789_123456789_123456789_123456789_123456789_123456789_"
   expect_equal(

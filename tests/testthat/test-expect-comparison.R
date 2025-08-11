@@ -1,11 +1,12 @@
 test_that("basic comparisons work", {
-  expect_success(expect_lt(10, 11))
-  expect_snapshot_failure(expect_lt(10, 10))
-  expect_success(expect_lte(10, 10))
+  x <- 10
+  expect_success(expect_lt(x, 11))
+  expect_snapshot_failure(expect_lt(x, 10))
+  expect_success(expect_lte(x, 10))
 
   expect_success(expect_gt(11, 10))
-  expect_snapshot_failure(expect_gt(10, 10))
-  expect_success(expect_gte(10, 10))
+  expect_snapshot_failure(expect_gt(x, 10))
+  expect_success(expect_gte(x, 10))
 })
 
 test_that("useful output when numbers are very small", {

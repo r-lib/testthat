@@ -83,7 +83,7 @@
       expect_shape(array(1), ncol = 1)
     Condition
       Error:
-      ! Expected `array(1)` to have more than one dimension.
+      ! Expected `array(1)` to have two or more dimensions.
 
 ---
 
@@ -91,7 +91,7 @@
       expect_shape(array(integer()), ncol = 0L)
     Condition
       Error:
-      ! Expected `array(integer())` to have more than one dimension.
+      ! Expected `array(integer())` to have two or more dimensions.
 
 # NA handling (e.g. dbplyr)
 

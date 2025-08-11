@@ -5,7 +5,7 @@
     Condition
       Error:
       ! Expected `x` to return invisibly.
-      Actually returned visibly.
+      Actual visibility: visible.
 
 ---
 
@@ -14,7 +14,7 @@
     Condition
       Error:
       ! Expected `x <- 1` to return visibly.
-      Actually returned invisibly.
+      Actual visibility: invisible.
 
 # generates useful failure messages
 
@@ -23,7 +23,7 @@
     Condition
       Error:
       ! Expected `invisible(1)` to return visibly.
-      Actually returned invisibly.
+      Actual visibility: invisible.
 
 ---
 
@@ -32,5 +32,5 @@
     Condition
       Error:
       ! Expected 1 to return invisibly.
-      Actually returned visibly.
+      Actual visibility: visible.
 

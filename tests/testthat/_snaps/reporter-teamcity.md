@@ -12,13 +12,13 @@
     ##teamcity[testSuiteStarted name='Failures']
     ##teamcity[testSuiteStarted name='Failure:1']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Expected FALSE to be equal to TRUE.' details='|n`actual`:   FALSE|n`expected`: TRUE ']
+    ##teamcity[testFailed name='expectation 1' message='Expected FALSE to be equal to TRUE.' details='Differences:|n`actual`:   FALSE|n`expected`: TRUE ']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Failure:1']
     
     ##teamcity[testSuiteStarted name='Failure:2a']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Expected FALSE to be equal to TRUE.' details='|n`actual`:   FALSE|n`expected`: TRUE |nBacktrace:|n    x|n 1. \-f()|n 2.   \-testthat::expect_true(FALSE)']
+    ##teamcity[testFailed name='expectation 1' message='Expected FALSE to be equal to TRUE.' details='Differences:|n`actual`:   FALSE|n`expected`: TRUE |n|nBacktrace:|n    x|n 1. \-f()|n 2.   \-testthat::expect_true(FALSE)']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Failure:2a']
     

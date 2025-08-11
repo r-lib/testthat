@@ -6,14 +6,16 @@
     # Context Failures
     not ok 2 Failure:1
       Expected FALSE to be equal to TRUE.
-      
+      Differences:
       `actual`:   FALSE
       `expected`: TRUE 
+      
     not ok 3 Failure:2a
       Expected FALSE to be equal to TRUE.
-      
+      Differences:
       `actual`:   FALSE
       `expected`: TRUE 
+      
       Backtrace:
           x
        1. \-f()

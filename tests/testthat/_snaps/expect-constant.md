@@ -5,7 +5,7 @@
     Condition
       Error:
       ! Expected `df` to be equal to TRUE.
-      
+      Differences:
       `actual` is an S3 object of class <data.frame>, a list
       `expected` is a logical vector (TRUE)
 
@@ -16,7 +16,7 @@
     Condition
       Error:
       ! Expected `df` to be equal to FALSE.
-      
+      Differences:
       `actual` is an S3 object of class <data.frame>, a list
       `expected` is a logical vector (FALSE)
 
@@ -27,9 +27,10 @@
     Condition
       Error:
       ! Expected FALSE to be equal to TRUE.
-      
+      Differences:
       `actual`:   FALSE
       `expected`: TRUE 
+      
       NOPE
 
 ---
@@ -39,9 +40,10 @@
     Condition
       Error:
       ! Expected TRUE to be equal to FALSE.
-      
+      Differences:
       `actual`:   TRUE 
       `expected`: FALSE
+      
       YUP
 
 # expect_null works
@@ -51,7 +53,7 @@
     Condition
       Error:
       ! Expected `df` to be equal to FALSE.
-      
+      Differences:
       `actual` is an S3 object of class <data.frame>, a list
       `expected` is NULL
 

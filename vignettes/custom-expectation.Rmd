@@ -103,7 +103,7 @@ expect_vector_length <- function(object, n) {
   if (!rlang::is_vector(act$val)) {
     msg <- c(
       sprintf("Expected %s to be a vector", act$lab),
-      sprintf("Actual: %s", typeof(act$val))
+      sprintf("Actual type: %s", typeof(act$val))
     )
     return(fail(msg))
   }
@@ -147,7 +147,7 @@ expect_s3_class <- function(object, class) {
   if (isS4(act$val)) {
     msg <- c(
       sprintf("Expected %s to be an S3 object.", act$lab),
-      "Actual: S4 object"
+      "Actual OO type: S4"
     )
     return(fail(msg))
   }

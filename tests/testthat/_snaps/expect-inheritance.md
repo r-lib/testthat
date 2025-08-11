@@ -31,7 +31,7 @@
     Condition
       Error:
       ! Expected `x1` to be an S3 object.
-      Actually is a base object.
+      Actual OO type: none.
 
 ---
 
@@ -40,7 +40,7 @@
     Condition
       Error:
       ! Expected `x2` to be an S3 object.
-      Actually is a S4 object.
+      Actual OO type: S4.
 
 ---
 
@@ -49,7 +49,7 @@
     Condition
       Error:
       ! Expected `x3` to be an S4 object.
-      Actually is a S3 object.
+      Actual OO type: S3.
 
 # expect_s[34]_class can check not S3/S4
 
@@ -131,7 +131,7 @@
     Condition
       Error:
       ! Expected `x` to be an R6 object.
-      Actually is a base object.
+      Actual OO type: none.
     Code
       expect_r6_class(person, "Student")
     Condition
@@ -164,6 +164,15 @@
       Error:
       ! Expected `Baz()` to inherit from <Bar>.
       Actual class: <Baz>/<Foo>
+
+# informative failure if not S7
+
+    Code
+      expect_s7_class(x, Foo)
+    Condition
+      Error:
+      ! Expected `x` to be an S7 object.
+      Actual OO type: S3.
 
 # expect_s7_class validates its inputs
 

@@ -8,15 +8,17 @@
       <testsuite name="Failures" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="2" errors="0" time="0">
         <testcase time="0" classname="Failures" name="Failure_1">
           <failure type="failure" message="Expected FALSE to be equal to TRUE. ('reporters/tests.R:12:3')">Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
-    `expected`: TRUE </failure>
+    `expected`: TRUE 
+    </failure>
         </testcase>
         <testcase time="0" classname="Failures" name="Failure_2a">
           <failure type="failure" message="Expected FALSE to be equal to TRUE. ('reporters/tests.R:16:8')">Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()

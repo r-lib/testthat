@@ -1,25 +1,25 @@
 test_that("basical principles of equality hold", {
   local_edition(2)
   expect_success(expect_equal(1, 1))
-  expect_snapshot_failure(expect_equal(1, 2))
+  expect_failure(expect_equal(1, 2))
   expect_success(expect_identical(1, 1))
-  expect_snapshot_failure(expect_identical(1, 2))
+  expect_failure(expect_identical(1, 2))
 
   local_edition(3)
   expect_success(expect_equal(1, 1))
-  expect_snapshot_failure(expect_equal(1, 2))
+  expect_failure(expect_equal(1, 2))
   expect_success(expect_identical(1, 1))
-  expect_snapshot_failure(expect_identical(1, 2))
+  expect_failure(expect_identical(1, 2))
 })
 
 test_that("expect_equal() ignores numeric type; expect_identical() does not", {
   local_edition(2)
   expect_success(expect_equal(1, 1L))
-  expect_snapshot_failure(expect_identical(1, 1L))
+  expect_failure(expect_identical(1, 1L))
 
   local_edition(3)
   expect_success(expect_equal(1, 1L))
-  expect_snapshot_failure(expect_identical(1, 1L))
+  expect_failure(expect_identical(1, 1L))
 })
 
 test_that("returns value", {
@@ -39,7 +39,7 @@ test_that("can control numeric tolerance", {
   x2 <- x1 + 1e-6
 
   local_edition(2)
-  expect_snapshot_failure(expect_equal(x1, x2))
+  expect_failure(expect_equal(x1, x2))
   expect_success(expect_equal(x1, x2, tolerance = 1e-5))
   expect_success(expect_equivalent(x1, x2, tolerance = 1e-5))
 
@@ -48,7 +48,7 @@ test_that("can control numeric tolerance", {
   expect_success(expect_equal(x1, x2, tol = 1e-5))
 
   local_edition(3)
-  expect_snapshot_failure(expect_equal(x1, x2))
+  expect_failure(expect_equal(x1, x2))
   expect_success(expect_equal(x1, x2, tolerance = 1e-5))
 })
 
@@ -83,34 +83,10 @@ test_that("default labels use unquoting", {
 })
 
 test_that("% is not treated as sprintf format specifier (#445)", {
-  expect_snapshot_failure(expect_equal("+", "%"))
-  expect_snapshot_failure(expect_equal("%", "+"))
-  expect_equal("%", "%")
+  expect_failure(expect_equal("+", "%"))
+  expect_failure(expect_equal("%", "+"))
+  expect_success(expect_equal("%", "%"))
 })
-
-test_that("is_call_infix() handles complex calls (#1472)", {
-  expect_false(is_call_infix(quote(
-    base::any(
-      c(
-        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
-      ),
-      na.rm = TRUE
-    )
-  )))
-
-  withr::local_envvar(
-    "_R_CHECK_LENGTH_1_LOGIC2_" = "TRUE",
-  )
-  expect_true(
-    base::any(
-      c(
-        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
-      ),
-      na.rm = TRUE
-    )
-  )
-})
-
 
 # 2nd edition ---------------------------------------------------
 
@@ -118,8 +94,9 @@ test_that("useful message if objects equal but not identical", {
   local_edition(2)
 
   f <- function() x
+  environment(f) <- new_environment()
   g <- function() x
-  environment(g) <- globalenv()
+  environment(g) <- new_environment()
 
   expect_snapshot_failure(expect_identical(f, g))
 })

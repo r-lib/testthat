@@ -1,20 +1,20 @@
 # basic comparisons work
 
     Code
-      expect_lt(10, 10)
+      expect_lt(x, 10)
     Condition
       Error:
-      ! Expected 10 < 10.
+      ! Expected `x` < 10.
       Actual 10.0 >= 10.0
       Difference 0.0 >= 0
 
 ---
 
     Code
-      expect_gt(10, 10)
+      expect_gt(x, 10)
     Condition
       Error:
-      ! Expected 10 > 10.
+      ! Expected `x` > 10.
       Actual 10.0 <= 10.0
       Difference 0.0 <= 0
 

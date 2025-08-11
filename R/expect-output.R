@@ -36,10 +36,9 @@ expect_output <- function(
 
   if (identical(regexp, NA)) {
     if (!identical(act$cap, "")) {
-      msg <- sprintf(
-        "Expected %s to produce no output.\nActual output:\n%s",
-        act$lab,
-        encodeString(act$cap)
+      msg <- c(
+        sprintf("Expected %s to produce no output.", act$lab),
+        sprintf("Actual output:\n%s", encodeString(act$cap))
       )
       return(fail(msg, info = info))
     }

@@ -20,15 +20,17 @@
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
@@ -69,15 +71,17 @@
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
@@ -118,15 +122,17 @@
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()

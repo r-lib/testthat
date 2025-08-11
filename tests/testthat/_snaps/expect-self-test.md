@@ -103,9 +103,10 @@
     Output
       Failed expectation:
       Expected FALSE to be equal to TRUE.
-      
+      Differences:
       `actual`:   FALSE
       `expected`: TRUE 
+      
 
 # expect_no are deprecated
 

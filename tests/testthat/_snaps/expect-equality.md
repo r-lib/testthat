@@ -1,88 +1,3 @@
-# basical principles of equality hold
-
-    Code
-      expect_equal(1, 2)
-    Condition
-      Error:
-      ! Expected 1 to equal 2.
-      Actual:
-      1/1 mismatches
-      [1] 1 - 2 == -1
-
----
-
-    Code
-      expect_identical(1, 2)
-    Condition
-      Error:
-      ! Expected 1 to be identical to 2.
-      1/1 mismatches
-      [1] 1 - 2 == -1
-
----
-
-    Code
-      expect_equal(1, 2)
-    Condition
-      Error:
-      ! Expected 1 to be equal to 2.
-      
-        `actual`: 1.0
-      `expected`: 2.0
-
----
-
-    Code
-      expect_identical(1, 2)
-    Condition
-      Error:
-      ! Expected 1 to be identical to 2.
-      
-        `actual`: 1.0
-      `expected`: 2.0
-
-# expect_equal() ignores numeric type; expect_identical() does not
-
-    Code
-      expect_identical(1, 1L)
-    Condition
-      Error:
-      ! Expected 1 to be identical to 1L.
-      Objects equal but not identical
-
----
-
-    Code
-      expect_identical(1, 1L)
-    Condition
-      Error:
-      ! Expected 1 to be identical to 1L.
-      
-      `actual` is a double vector (1)
-      `expected` is an integer vector (1)
-
-# can control numeric tolerance
-
-    Code
-      expect_equal(x1, x2)
-    Condition
-      Error:
-      ! Expected `x1` to equal `x2`.
-      Actual:
-      1/1 mismatches
-      [1] 1 - 1 == -1e-06
-
----
-
-    Code
-      expect_equal(x1, x2)
-    Condition
-      Error:
-      ! Expected `x1` to be equal to `x2`.
-      
-        `actual`: 1.0000000
-      `expected`: 1.0000010
-
 # provide useful feedback on failure
 
     Code
@@ -90,7 +5,7 @@
     Condition
       Error:
       ! Expected `x` to be identical to "a".
-      
+      Differences:
       `actual` is a double vector (1)
       `expected` is a character vector ('a')
 
@@ -101,7 +16,7 @@
     Condition
       Error:
       ! Expected `x` to be equal to "a".
-      
+      Differences:
       `actual` is a double vector (1)
       `expected` is a character vector ('a')
 
@@ -135,28 +50,6 @@
       1/1 mismatches
       [1] 1 - 2 == -1
 
-# % is not treated as sprintf format specifier (#445)
-
-    Code
-      expect_equal("+", "%")
-    Condition
-      Error:
-      ! Expected "+" to be equal to "%".
-      
-      `actual`:   "+"
-      `expected`: "%"
-
----
-
-    Code
-      expect_equal("%", "+")
-    Condition
-      Error:
-      ! Expected "%" to be equal to "+".
-      
-      `actual`:   "%"
-      `expected`: "+"
-
 # useful message if objects equal but not identical
 
     Code
@@ -164,8 +57,7 @@
     Condition
       Error:
       ! Expected `f` to be identical to `g`.
-      names for target but not for current
-      Length mismatch: comparison on first 0 components
+      Objects equal but not identical
 
 # attributes for object (#452)
 

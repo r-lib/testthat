@@ -15,7 +15,7 @@
     Condition
       Error:
       ! Expected `i` to be equal to 0.
-      
+      Differences:
         `actual`: 1.0
       `expected`: 0.0
 

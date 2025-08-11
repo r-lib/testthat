@@ -13,8 +13,8 @@
     Condition
       Error:
       ! Expected `stop("Yes")` to not throw a error.
-      Actual <simpleError/error/condition>:
-      Yes
+      Actually got a <simpleError> with message:
+        Yes
 
 # regexp = string matches for error message
 
@@ -49,8 +49,8 @@
     Condition
       Error:
       ! Expected `fb()` to not throw a error.
-      Actual <foobar/rlang_error/error/condition>:
-      dispatched!
+      Actually got a <foobar> with message:
+        dispatched!
 
 # expect_warning validates its inputs
 
@@ -82,8 +82,9 @@
     Condition
       Error:
       ! Expected `message("!")` to not throw a message.
-      Actual <simpleMessage/message/condition>:
-      !
+      Actually got a <simpleMessage> with message:
+        !
+        
 
 # expect_message validates its inputs
 

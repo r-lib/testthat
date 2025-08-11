@@ -107,22 +107,20 @@ expect_identical <- function(
   } else {
     ident <- identical(act$val, exp$val, ...)
     if (ident) {
-      msg <- ""
+      msg_act <- NULL
     } else {
       compare <- compare(act$val, exp$val)
       if (compare$equal) {
-        msg <- "Objects equal but not identical"
+        msg_act <- "Objects equal but not identical"
       } else {
-        msg <- compare$message
+        msg_act <- compare$message
       }
     }
 
     if (!ident) {
-      msg <- sprintf(
-        "Expected %s to be identical to %s.\n%s",
-        act$lab,
-        exp$lab,
-        msg
+      msg <- c(
+        sprintf("Expected %s to be identical to %s.", act$lab, exp$lab),
+        msg_act
       )
       return(fail(msg, info = info))
     }
@@ -146,12 +144,10 @@ expect_waldo_equal_ <- function(
     y_arg = "expected"
   )
   if (length(comp) != 0) {
-    msg <- sprintf(
-      "Expected %s to be %s to %s.\n\n%s",
-      act$lab,
-      type,
-      exp$lab,
-      paste0(comp, collapse = "\n\n")
+    msg <- c(
+      sprintf("Expected %s to be %s to %s.", act$lab, type, exp$lab),
+      "Differences:",
+      paste0(comp, collpase = "\n")
     )
     return(fail(msg, info = info, trace_env = trace_env))
   }

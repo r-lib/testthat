@@ -70,11 +70,9 @@ expect_type <- function(object, type) {
   act_type <- typeof(act$val)
 
   if (!identical(act_type, type)) {
-    msg <- sprintf(
-      "Expected %s to have type %s.\nActual type: %s",
-      act$lab,
-      format_class(type),
-      format_class(act_type)
+    msg <- c(
+      sprintf("Expected %s to have type %s.", act$lab, format_class(type)),
+      sprintf("Actual type: %s", format_class(act_type))
     )
     return(fail(msg))
   }
@@ -102,16 +100,14 @@ expect_s3_class <- function(object, class, exact = FALSE) {
     if (!isS3(act$val)) {
       msg <- c(
         sprintf("Expected %s to be an S3 object.", act$lab),
-        sprintf("Actually is a %s object.", oo_type(act$val))
+        sprintf("Actual OO type: %s.", oo_type(act$val))
       )
       return(fail(msg))
     } else if (exact) {
       if (!identical(class(act$val), class)) {
-        msg <- sprintf(
-          "Expected %s to have class %s.\nActual class: %s",
-          act$lab,
-          exp_lab,
-          act$class
+        msg <- c(
+          sprintf("Expected %s to have class %s.", act$lab, exp_lab),
+          sprintf("Actual class: %s", act$class)
         )
         return(fail(msg))
       }
@@ -147,7 +143,7 @@ expect_s4_class <- function(object, class) {
     if (!isS4(act$val)) {
       msg <- c(
         sprintf("Expected %s to be an S4 object.", act$lab),
-        sprintf("Actually is a %s object.", oo_type(act$val))
+        sprintf("Actual OO type: %s.", oo_type(act$val))
       )
       return(fail(msg))
     } else {
@@ -175,7 +171,7 @@ expect_r6_class <- function(object, class) {
   if (!inherits(act$val, "R6")) {
     msg <- c(
       sprintf("Expected %s to be an R6 object.", act$lab),
-      sprintf("Actually is a %s object.", oo_type(act$val))
+      sprintf("Actual OO type: %s.", oo_type(act$val))
     )
     return(fail(msg))
   }
@@ -206,7 +202,7 @@ expect_s7_class <- function(object, class) {
   if (!S7::S7_inherits(object)) {
     msg <- c(
       sprintf("Expected %s to be an S7 object.", act$lab),
-      sprintf("Actually is a %s object.", oo_type(act$val))
+      sprintf("Actual OO type: %s.", oo_type(act$val))
     )
     return(fail(msg))
   }
@@ -279,20 +275,17 @@ format_class <- function(x) {
 
 oo_type <- function(x) {
   if (!is.object(x)) {
-    "base"
-  } else if (!isS4(x)) {
+    return("none")
+  }
+  if (isS4(x)) {
+    "S4"
+  } else {
     if (inherits(x, "R6")) {
       "R6"
     } else if (inherits(x, "S7")) {
       "S7"
     } else {
       "S3"
-    }
-  } else {
-    if (!is(x, "refClass")) {
-      "S4"
-    } else {
-      "RC"
     }
   }
 }

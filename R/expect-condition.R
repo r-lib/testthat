@@ -629,9 +629,10 @@ check_condition_dots <- function(
 }
 
 actual_condition <- function(cond) {
-  sprintf(
-    "Actual <%s>:\n%s",
-    paste(class(cond), collapse = "/"),
-    cnd_message(cond)
+  paste0(
+    "Actually got a <",
+    class(cond)[[1]],
+    "> with message:\n",
+    indent_lines(cnd_message(cond))
   )
 }

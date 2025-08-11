@@ -2,15 +2,17 @@
 
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     
     -- Failure ('reporters/tests.R:16:8'): Failure:2a ------------------------------
     Expected FALSE to be equal to TRUE.
-    
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()

@@ -110,7 +110,7 @@
     Condition
       Error:
       ! Expected `list(a = 1, b = 2, b = 3)` to be equal to `list(b = 2, a = 1)`.
-      
+      Differences:
       `actual` is length 3
       `expected` is length 2
       
@@ -127,7 +127,7 @@
     Condition
       Error:
       ! Expected `list(a = 1, b = 2)` to be equal to `list(b = 3, b = 2, a = 1)`.
-      
+      Differences:
       `actual` is length 2
       `expected` is length 3
       
@@ -147,7 +147,7 @@
     Condition
       Error:
       ! Expected `list(a = 1, b = 2, b = 3)` to be equal to `list(b = 3, b = 2, a = 1)`.
-      
+      Differences:
         `actual[[2]]`: 2.0
       `expected[[2]]`: 3.0
       
@@ -161,7 +161,7 @@
     Condition
       Error:
       ! Expected `list(a = 1, b = 2)` to be equal to `list(a = 1)`.
-      
+      Differences:
       `actual` is length 2
       `expected` is length 1
       
@@ -178,7 +178,7 @@
     Condition
       Error:
       ! Expected `list(a = 1)` to be equal to `list(a = 1, b = 2)`.
-      
+      Differences:
       `actual` is length 1
       `expected` is length 2
       
@@ -195,7 +195,7 @@
     Condition
       Error:
       ! Expected `list(a = 1, b = 2)` to be equal to `list(a = 1, b = 3)`.
-      
+      Differences:
         `actual$b`: 2.0
       `expected$b`: 3.0
 
@@ -206,7 +206,7 @@
     Condition
       Error:
       ! Expected `list(1, b = 2, c = 3)` to be equal to `list(b = 2, 1, c = 3)`.
-      
+      Differences:
       `names(actual)`:   ""  "b" "c"
       `names(expected)`: "b" ""  "c"
       
