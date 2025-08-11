@@ -1,39 +1,39 @@
 # provide useful feedback on failure
 
-    Names of c(a = 1) (`actual`) and c("a", "b") (`expected`) don't have the same values.
+    Names of c(a = 1) (c(a = 1)) doesn't have the same values as c("a", "b").
     * Only in `expected`: "b"
     
 
 ---
 
-    Names of c(a = 1, b = 1) (`actual`) and c("a") (`expected`) don't have the same values.
+    Names of c(a = 1, b = 1) doesn't have the same values as c("a") ("a").
     * Only in `actual`: "b"
     
 
 ---
 
-    Names of c(a = 1) (`actual`) and c("b") (`expected`) don't have the same values.
+    Names of c(a = 1) (c(a = 1)) doesn't have the same values as c("b") ("b").
     * Only in `actual`: "a"
     * Only in `expected`: "b"
     
 
 ---
 
-    Names of c(a = 1) (`actual`) is not equal to c("a", "b") (`expected`).
+    Names of c(a = 1) (c(a = 1)) is not equal to c("a", "b").
     
     `actual`:   "a"    
     `expected`: "a" "b"
 
 ---
 
-    Names of c(a = 1, b = 1) (`actual`) is not equal to c("a") (`expected`).
+    Names of c(a = 1, b = 1) is not equal to c("a") ("a").
     
     `actual`:   "a" "b"
     `expected`: "a"    
 
 ---
 
-    Names of c(a = 1) (`actual`) is not equal to c("b") (`expected`).
+    Names of c(a = 1) (c(a = 1)) is not equal to c("b") ("b").
     
     `actual`:   "a"
     `expected`: "b"
