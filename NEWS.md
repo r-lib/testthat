@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_snapshot_file(name=)` must have a unique file path. If a snapshot file attempts to be saved with a duplicate `name`, an error will be thrown. (#1592)
 * `test_dir()`, `test_file()`, `test_package()`, `test_check()`, `test_local()`, `source_file()` gain a `shuffle` argument uses `sample()` to randomly reorder the top-level expressions in each test file (#1942). This random reordering surfaces dependencies between tests and code outside of any test, as well as dependencies between tests. This helps you find and eliminate unintentional dependencies.
 * `snapshot_accept(test)` now works when the test file name contains `.` (#1669).
 * `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
@@ -44,8 +45,6 @@
 * New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require, say, `...names` (@MichaelChirico, #2022)
 * `skip_on_os()` gains an option `"emscripten"` of the `os` argument to skip tests on Emscripten (@eitsupi, #2103).
 * New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`, `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
-* `expect_snapshot_file(name=)` must have a unique file path. If a snapshot file attempts to be saved with a duplicate `name`, an error will be thrown. (#1592)
-* New expectation, `expect_shape()`, for testing the shape (i.e., the `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
 
 # testthat 3.2.3
 
