@@ -5,7 +5,7 @@
 
 ---
 
-    "a" produced no output
+    Expected "a" to produce output.
 
 # expect_output validates its inputs
 

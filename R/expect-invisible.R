@@ -25,7 +25,10 @@ expect_invisible <- function(call, label = NULL) {
   vis <- withVisible(call)
 
   if (!identical(vis$visible, FALSE)) {
-    msg <- sprintf("%s returns visibly, not invisibly.", lab)
+    msg <- sprintf(
+      "Expected %s to return invisibly.\nActually returned visibly.",
+      lab
+    )
     return(fail(msg))
   }
   pass(vis$value)
@@ -38,7 +41,10 @@ expect_visible <- function(call, label = NULL) {
   vis <- withVisible(call)
 
   if (!identical(vis$visible, TRUE)) {
-    msg <- sprintf("%s returns invisibly, not visibly.", lab)
+    msg <- sprintf(
+      "Expected %s to return visibly.\nActually returned invisibly.",
+      lab
+    )
     return(fail(msg))
   }
   pass(vis$value)

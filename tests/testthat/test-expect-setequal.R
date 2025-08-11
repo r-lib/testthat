@@ -6,8 +6,8 @@ test_that("ignores order and duplicates", {
 })
 
 test_that("checks both directions of containment", {
-  expect_failure(expect_setequal(letters, letters[-1]))
-  expect_failure(expect_setequal(letters[-1], letters))
+  expect_snapshot_failure(expect_setequal(letters, letters[-1]))
+  expect_snapshot_failure(expect_setequal(letters[-1], letters))
 })
 
 test_that("truncates long differences", {
@@ -76,9 +76,15 @@ test_that("ignores order recursively", {
 })
 
 test_that("error if any names are duplicated", {
-  expect_failure(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
-  expect_failure(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
-  expect_failure(expect_mapequal(
+  expect_snapshot_failure(expect_mapequal(
+    list(a = 1, b = 2, b = 3),
+    list(b = 2, a = 1)
+  ))
+  expect_snapshot_failure(expect_mapequal(
+    list(a = 1, b = 2),
+    list(b = 3, b = 2, a = 1)
+  ))
+  expect_snapshot_failure(expect_mapequal(
     list(a = 1, b = 2, b = 3),
     list(b = 3, b = 2, a = 1)
   ))
@@ -89,17 +95,23 @@ test_that("handling NULLs", {
 })
 
 test_that("fail if names don't match", {
-  expect_failure(expect_mapequal(list(a = 1, b = 2), list(a = 1)))
-  expect_failure(expect_mapequal(list(a = 1), list(a = 1, b = 2)))
+  expect_snapshot_failure(expect_mapequal(list(a = 1, b = 2), list(a = 1)))
+  expect_snapshot_failure(expect_mapequal(list(a = 1), list(a = 1, b = 2)))
 })
 
 test_that("fails if values don't match", {
-  expect_failure(expect_mapequal(list(a = 1, b = 2), list(a = 1, b = 3)))
+  expect_snapshot_failure(expect_mapequal(
+    list(a = 1, b = 2),
+    list(a = 1, b = 3)
+  ))
 })
 
 test_that("fails if unnamed values in different location if any unnamed values", {
   expect_success(expect_mapequal(list(1, b = 2, c = 3), list(1, c = 3, b = 2)))
-  expect_failure(expect_mapequal(list(1, b = 2, c = 3), list(b = 2, 1, c = 3)))
+  expect_snapshot_failure(expect_mapequal(
+    list(1, b = 2, c = 3),
+    list(b = 2, 1, c = 3)
+  ))
 })
 
 # contains ----------------------------------------------------------------

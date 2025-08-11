@@ -23,10 +23,10 @@ test_that("can subclass expectation", {
 
 test_that("`expect()` and `exp_signal()` signal expectations", {
   expect_success(expect(TRUE, ""))
-  expect_failure(expect(FALSE, ""))
+  expect_snapshot_failure(expect(FALSE, ""))
 
   expect_success(exp_signal(new_expectation("success", "")))
-  expect_failure(exp_signal(new_expectation("failure", "")))
+  expect_snapshot_failure(exp_signal(new_expectation("failure", "")))
 })
 
 test_that("conditionMessage() is called during conversion", {

@@ -440,10 +440,10 @@ compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
   if (expected) {
     if (is.null(cond)) {
       if (is.null(cond_class)) {
-        sprintf("%s did not throw the expected %s.", lab, cond_type)
+        sprintf("Expected %s to throw a %s.", lab, cond_type)
       } else {
         sprintf(
-          "%s did not throw a %s with class <%s>.",
+          "Expected %s to throw a %s with class <%s>.",
           lab,
           cond_type,
           cond_class
@@ -455,11 +455,11 @@ compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
   } else {
     if (!is.null(cond)) {
       sprintf(
-        "%s threw an unexpected %s.\nMessage: %s\nClass:   %s",
+        "Expected %s to not throw a %s.\nActual <%s>:\n%s",
         lab,
         cond_type,
-        cnd_message(cond),
-        paste(class(cond), collapse = "/")
+        paste(class(cond), collapse = "/"),
+        cnd_message(cond)
       )
     } else {
       NULL
@@ -493,7 +493,7 @@ compare_condition_2e <- function(
 
   # Otherwise we're definitely expecting a condition
   if (is.null(cond)) {
-    return(sprintf("%s did not throw an %s.", lab, cond_type))
+    return(sprintf("Expected %s to throw a %s.", lab, cond_type))
   }
 
   matches <- cnd_matches_2e(cond, class, regexp, inherit, ...)
@@ -562,7 +562,12 @@ compare_messages <- function(
   # Expecting no messages
   if (identical(regexp, NA)) {
     if (length(messages) > 0) {
-      return(sprintf("%s generated %s:\n%s", lab, cond_type, bullets))
+      return(sprintf(
+        "Expected %s to not generate %s.\nActually generated:\n%s",
+        lab,
+        cond_type,
+        bullets
+      ))
     } else {
       return()
     }
@@ -570,7 +575,7 @@ compare_messages <- function(
 
   # Otherwise we're definitely expecting messages
   if (length(messages) == 0) {
-    return(sprintf("%s did not produce any %s.", lab, cond_type))
+    return(sprintf("Expected %s to produce %s.", lab, cond_type))
   }
 
   if (is.null(regexp)) {

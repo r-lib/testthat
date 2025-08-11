@@ -1,10 +1,16 @@
 # regexp = NULL checks for presence of error
 
-    `{ ... }` did not throw the expected error.
+    Expected `f()` to throw a error.
+
+# regexp = NA checks for absence of error
+
+    Expected `stop("Yes")` to not throw a error.
+    Actual <simpleError/error/condition>:
+    Yes
 
 # regexp = string matches for error message
 
-    "OK" did not throw the expected error.
+    Expected "OK" to throw a error.
 
 # expect_error validates its inputs
 
@@ -26,9 +32,9 @@
 
 # message method is called when expecting error
 
-    `fb()` threw an unexpected error.
-    Message: dispatched!
-    Class:   foobar/rlang_error/error/condition
+    Expected `fb()` to not throw a error.
+    Actual <foobar/rlang_error/error/condition>:
+    dispatched!
 
 # expect_warning validates its inputs
 
@@ -52,6 +58,13 @@
     Condition
       Error in `expect_warning()`:
       ! `all` must be `TRUE` or `FALSE`, not the string "yes".
+
+# regexp = NA checks for absence of message
+
+    Expected `message("!")` to not throw a message.
+    Actual <simpleMessage/message/condition>:
+    !
+    
 
 # expect_message validates its inputs
 
@@ -78,7 +91,7 @@
 
 # condition class is included in failure
 
-    `f1()` did not throw a condition with class <bar>.
+    Expected `f1()` to throw a condition with class <bar>.
 
 # expect_condition validates its inputs
 
@@ -135,4 +148,46 @@
       ! Can't supply `...` unless `regexp` is set.
       * Unused arguments: `pattern` and `fixed`.
       i Did you mean to use `regexp` so `...` is passed to `grepl()`?
+
+# other conditions are swallowed
+
+    `f("error")` threw an error with unexpected message.
+    Expected match: "not a match"
+    Actual message: "error"
+
+---
+
+    `f("warning")` produced unexpected warnings.
+    Expected match: not a match
+    Actual values:
+    * warning
+
+---
+
+    `f("message")` produced unexpected messages.
+    Expected match: not a match
+    Actual values:
+    * message
+    
+
+---
+
+    `f("condition")` threw an condition with unexpected message.
+    Expected match: "not a match"
+    Actual message: "signal"
+
+---
+
+    `f("error")` threw an error with unexpected class.
+    Expected class: not a match
+    Actual class:   simpleError/error/condition
+    Message:        error
+
+---
+
+    `f("message")` threw an condition with unexpected class.
+    Expected class: not a match
+    Actual class:   simpleMessage/message/condition
+    Message:        message
+    
 

@@ -93,7 +93,7 @@ can_inline <- function(x) {
   if (!is_syntactic_literal(x)) {
     return(FALSE)
   }
-  if (!is.null(dim(x))) {
+  if (!is.null(dim(x)) || !is.null(attributes(x))) {
     return(FALSE)
   }
 

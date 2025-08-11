@@ -1,6 +1,7 @@
 # generates actionable failure message
 
-    `x` has length 10, not length 2.
+    Expected `x` to have length 2.
+    Actual length: 10
 
 # expect_length validates its inputs
 
@@ -12,51 +13,60 @@
 
 # dim compared correctly
 
-    matrix(nrow = 6, ncol = 3) has dim (6, 3), not (6, 2).
+    Expected matrix(nrow = 6, ncol = 3) to have dim (6, 2).
+    Actual dim: (6, 3)
 
 ---
 
-    matrix(nrow = 6, ncol = 3) has dim (6, 3), not (7, 3).
+    Expected matrix(nrow = 6, ncol = 3) to have dim (7, 3).
+    Actual dim: (6, 3)
 
 ---
 
-    array(dim = 1:3) has 3 dimensions, not 2.
+    Expected array(dim = 1:3) to have 2 dimensions.
+    Actual dimensions: 3
 
 ---
 
-    array(dim = 1:3) has 3 dimensions, not 4.
+    Expected array(dim = 1:3) to have 4 dimensions.
+    Actual dimensions: 3
 
 # nrow compared correctly
 
-    matrix(nrow = 5, ncol = 5) has 5 rows, not 6.
+    Expected matrix(nrow = 5, ncol = 5) to have 6 rows.
+    Actual rows: 5
 
 ---
 
-    1 has no dimensions.
+    Expected 1 to have dimensions.
 
 # ncol compared correctly
 
-    matrix(nrow = 5, ncol = 5) has 5 columns, not 7.
+    Expected matrix(nrow = 5, ncol = 5) to have 7 columns.
+    Actual columns: 5
 
 ---
 
-    array(1) has only one dimension.
+    Expected array(1) to have more than one dimension.
 
 ---
 
-    array(integer()) has only one dimension.
+    Expected array(integer()) to have more than one dimension.
 
 # NA handling (e.g. dbplyr)
 
-    `x` has NA rows, not 10.
+    Expected `x` to have 10 rows.
+    Actual rows: NA
 
 ---
 
-    `x` has 10 columns, not NA.
+    Expected `x` to have NA columns.
+    Actual columns: 10
 
 ---
 
-    `x` has dim (NA, 10), not (10, NA).
+    Expected `x` to have dim (10, NA).
+    Actual dim: (NA, 10)
 
 # checks inputs arguments, 
 

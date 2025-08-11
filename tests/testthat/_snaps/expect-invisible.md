@@ -1,8 +1,10 @@
 # generates useful failure messages
 
-    invisible(1) returns invisibly, not visibly.
+    Expected invisible(1) to return visibly.
+    Actually returned invisibly.
 
 ---
 
-    1 returns visibly, not invisibly.
+    Expected 1 to return invisibly.
+    Actually returned visibly.
 

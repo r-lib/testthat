@@ -14,8 +14,8 @@ test_that("logical tests ignore attributes", {
 })
 
 test_that("additional info returned in message", {
-  expect_failure(expect_true(FALSE, "NOPE"), "\nNOPE")
-  expect_failure(expect_false(TRUE, "YUP"), "\nYUP")
+  expect_snapshot_failure(expect_true(FALSE, "NOPE"))
+  expect_snapshot_failure(expect_false(TRUE, "YUP"))
 })
 
 test_that("expect_null works", {

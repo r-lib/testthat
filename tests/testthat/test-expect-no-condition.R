@@ -21,7 +21,7 @@ test_that("expect_no_* pass with pure code", {
 
 test_that("expect_no_ continues execution", {
   b <- 1
-  expect_failure(expect_no_warning({
+  expect_snapshot_failure(expect_no_warning({
     warning("x")
     b <- 2
   }))
@@ -29,7 +29,7 @@ test_that("expect_no_ continues execution", {
 })
 
 test_that("expect_no_* don't emit success when they fail", {
-  expect_failure(expect_no_error(stop("!")))
+  expect_snapshot_failure(expect_no_error(stop("!")))
 })
 
 test_that("capture correct trace_env (#1994)", {

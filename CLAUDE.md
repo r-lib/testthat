@@ -12,18 +12,24 @@ General advice:
 * When running R from the console, always run it with `--quiet --vanilla`
 * Always run `air format .` after generating code
 
-### Development tools
+### Testing
 
-- `devtools::test()` - Run all tests
-- `devtools::test_file("tests/testthat/test-filename.R")` - Run tests in a specific file
+- Use `devtools::test()` to run all tests
+- Use `devtools::test_file("tests/testthat/test-filename.R")` to run tests in a specific file
 - DO NOT USE `devtools::test_active_file()`
-- `devtools::load_all()` - Load package for development
-- `devtools::check()` - Run R CMD check
-- `devtools::install()` - Install package locally
+- All testing functions automatically loads code; you don't have to.
+
+- You can accept 
+
+- All new code should have an accompanying test.
+- Tests for `R/{name}.R` go in `tests/testthat/test-{name}.R`. 
+- If there are existing tests, place new tests next to similar existing tests.
 
 ### Documentation
 
 - Always run `devtools::document()` after changing any roxygen2 docs.
+- Every user facing function should be exported and have roxygen2 documentation.
+- Whenever you add a new documentation file, make sure to also add it to `_pkgdown.yml`. Run `pkgdown::check_pkgdown()` to check that it was added correctly.
 
 ## Core Architecture
 

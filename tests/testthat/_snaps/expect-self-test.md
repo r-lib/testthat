@@ -17,7 +17,7 @@
       show_failure(expect_true(FALSE))
     Output
       Failed expectation:
-      FALSE is not equal to TRUE.
+      Expected FALSE to be equal to TRUE.
       
       `actual`:   FALSE
       `expected`: TRUE 

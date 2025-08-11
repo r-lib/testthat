@@ -24,17 +24,21 @@ test_that("ignores incomplete last line", {
   writeLines("Hi!", file)
   expect_success(expect_known_output(cat("Hi!"), file))
   expect_success(expect_known_output(cat("Hi!\n"), file))
-  expect_failure(expect_known_output(cat("Hi!\n\n"), file))
-  expect_failure(expect_known_output(cat("oops"), file))
+  expect_snapshot_failure(expect_known_output(cat("Hi!\n\n"), file))
+  expect_snapshot_failure(expect_known_output(cat("oops"), file))
 })
 
 test_that("updates by default", {
   file <- withr::local_tempfile()
   writeLines("Hi!", file)
-  expect_failure(expect_known_output(cat("oops"), file, update = FALSE))
+  expect_snapshot_failure(expect_known_output(
+    cat("oops"),
+    file,
+    update = FALSE
+  ))
 
   expect_equal(readLines(file), "Hi!")
-  expect_failure(expect_known_output(cat("oops"), file, update = TRUE))
+  expect_snapshot_failure(expect_known_output(cat("oops"), file, update = TRUE))
   expect_success(expect_known_output(cat("oops"), file))
 })
 
@@ -55,7 +59,7 @@ test_that("Warning for non-UTF-8 reference files", {
   writeBin(x, tmp)
 
   suppressWarnings(
-    expect_failure(
+    expect_snapshot_failure(
       expect_known_output("foobar", tmp, update = FALSE)
     )
   )
@@ -69,7 +73,7 @@ test_that("correctly matches to a file", {
   expect_success(expect_known_value(x, "one.rds"))
 
   x <- 2
-  expect_failure(expect_known_value(x, "one.rds", update = FALSE))
+  expect_snapshot_failure(expect_known_value(x, "one.rds", update = FALSE))
 })
 
 test_that("first run is successful", {
@@ -89,11 +93,15 @@ test_that("equal_to_ref does not overwrite existing", {
   expect_success(expect_equal_to_reference(ref_obj1, tmp_rds))
 
   # Failure does not update object
-  expect_failure(expect_equal_to_reference(ref_obj2, tmp_rds))
+  expect_snapshot_failure(expect_equal_to_reference(ref_obj2, tmp_rds))
   expect_equal(readRDS(tmp_rds), ref_obj1)
 
   # Now failure does update object
-  expect_failure(expect_equal_to_reference(ref_obj2, tmp_rds, update = TRUE))
+  expect_snapshot_failure(expect_equal_to_reference(
+    ref_obj2,
+    tmp_rds,
+    update = TRUE
+  ))
   expect_success(expect_equal_to_reference(ref_obj2, tmp_rds))
 })
 
@@ -131,5 +139,5 @@ test_that("empty hash succeeds with warning", {
 
 test_that("only succeeds if hash is correct", {
   expect_success(expect_known_hash(1:10, "c08951d2c2"))
-  expect_failure(expect_known_hash(1:10, "c08951d2c3"))
+  expect_snapshot_failure(expect_known_hash(1:10, "c08951d2c3"))
 })

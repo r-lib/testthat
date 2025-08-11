@@ -1,6 +1,6 @@
 # generates useful failure messages
 
-    `zero` is empty.
+    Expected `zero` to not be empty.
 
 ---
 

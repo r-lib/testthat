@@ -1,26 +1,119 @@
+# basical principles of equality hold
+
+    Expected 1 to equal 2.
+    Actual:
+    1/1 mismatches
+    [1] 1 - 2 == -1
+
+---
+
+    Expected 1 to be identical to 2.
+    1/1 mismatches
+    [1] 1 - 2 == -1
+
+---
+
+    Expected 1 to be equal to 2.
+    
+      `actual`: 1.0
+    `expected`: 2.0
+
+---
+
+    Expected 1 to be identical to 2.
+    
+      `actual`: 1.0
+    `expected`: 2.0
+
+# expect_equal() ignores numeric type; expect_identical() does not
+
+    Expected 1 to be identical to 1L.
+    Objects equal but not identical
+
+---
+
+    Expected 1 to be identical to 1L.
+    
+    `actual` is a double vector (1)
+    `expected` is an integer vector (1)
+
+# can control numeric tolerance
+
+    Expected `x1` (1) to equal `x2` (1.000001).
+    Actual:
+    1/1 mismatches
+    [1] 1 - 1 == -1e-06
+
+---
+
+    Expected `x1` (1) to be equal to `x2` (1.000001).
+    
+      `actual`: 1.0000000
+    `expected`: 1.0000010
+
 # provide useful feedback on failure
 
-    `x` (1) is not identical to "a".
+    Expected `x` (1) to be identical to "a".
     
     `actual` is a double vector (1)
     `expected` is a character vector ('a')
 
 ---
 
-    `x` (1) is not equal to "a".
+    Expected `x` (1) to be equal to "a".
     
     `actual` is a double vector (1)
     `expected` is a character vector ('a')
 
 ---
 
-    `x` (1) not identical to "a".
+    Expected `x` (1) to be identical to "a".
     Types not compatible: double is not character
 
 ---
 
-    `x` (1) not equal to "a".
+    Expected `x` (1) to equal "a".
+    Actual:
     Types not compatible: double is not character
+
+# default labels use unquoting
+
+    Expected 1 to equal 2.
+    Actual:
+    1/1 mismatches
+    [1] 1 - 2 == -1
+
+# % is not treated as sprintf format specifier (#445)
+
+    Expected "+" to be equal to "%".
+    
+    `actual`:   "+"
+    `expected`: "%"
+
+---
+
+    Expected "%" to be equal to "+".
+    
+    `actual`:   "%"
+    `expected`: "+"
+
+# useful message if objects equal but not identical
+
+    Expected `f` to be identical to `g`.
+    Names: 1 string mismatch
+    Length mismatch: comparison on first 1 components
+    Component 1: Modes of target, current: function, numeric
+    Component 1: target, current do not match when deparsed
+    Component 1: 'current' is not an environment
+
+# attributes for object (#452)
+
+    Expected `oops` (structure(0, oops = "oops")) to equal 0.
+    Actual:
+    Attributes: < Modes: list, NULL >
+    Attributes: < Lengths: 1, 0 >
+    Attributes: < names for target but not for current >
+    Attributes: < current is not list-like >
 
 # expect_equal validates its inputs
 

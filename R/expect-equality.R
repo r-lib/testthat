@@ -77,7 +77,12 @@ expect_equal <- function(
     }
 
     if (!comp$equal) {
-      msg <- sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message)
+      msg <- sprintf(
+        "Expected %s to equal %s.\nActual:\n%s",
+        act$lab,
+        exp$lab,
+        comp$message
+      )
       return(fail(msg, info = info))
     }
     pass(act$val)
@@ -113,7 +118,12 @@ expect_identical <- function(
     }
 
     if (!ident) {
-      msg <- sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg)
+      msg <- sprintf(
+        "Expected %s to be identical to %s.\n%s",
+        act$lab,
+        exp$lab,
+        msg
+      )
       return(fail(msg, info = info))
     }
     pass(act$val)
@@ -138,7 +148,7 @@ expect_waldo_equal_ <- function(
   )
   if (length(comp) != 0) {
     msg <- sprintf(
-      "%s is not %s to %s.\n\n%s",
+      "Expected %s to be %s to %s.\n\n%s",
       act$lab,
       type,
       exp$lab,
@@ -193,7 +203,7 @@ expect_equivalent <- function(
   comp <- compare(act$val, exp$val, ..., check.attributes = FALSE)
   if (!comp$equal) {
     msg <- sprintf(
-      "%s not equivalent to %s.\n%s",
+      "Expected %s to be equivalent to %s.\n%s",
       act$lab,
       exp$lab,
       comp$message

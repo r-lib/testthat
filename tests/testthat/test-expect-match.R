@@ -33,10 +33,10 @@ test_that("expect_no_match validates its inputs", {
 })
 
 test_that("extra arguments passed onto grepl", {
-  expect_failure(expect_match("\\s", "\\s"))
+  expect_snapshot_failure(expect_match("\\s", "\\s"))
   expect_success(expect_match("\\s", "\\s", fixed = TRUE))
 
-  expect_failure(expect_match("test", "TEST"))
+  expect_snapshot_failure(expect_match("test", "TEST"))
   expect_success(expect_match("test", "TEST", ignore.case = TRUE))
 })
 

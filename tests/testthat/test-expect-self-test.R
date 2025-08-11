@@ -1,14 +1,14 @@
 test_that("expect_failure() requires 1 failure and zero successes", {
   expect_success(expect_failure(fail()))
 
-  expect_failure(expect_failure({}))
-  expect_failure(expect_failure(pass(NULL)))
-  expect_failure(expect_failure({
+  expect_snapshot_failure(expect_failure({}))
+  expect_snapshot_failure(expect_failure(pass(NULL)))
+  expect_snapshot_failure(expect_failure({
     pass(NULL)
     fail()
   }))
 
-  expect_failure(expect_failure({
+  expect_snapshot_failure(expect_failure({
     fail()
     # Following succeed/fail are never reached
     pass(NULL)
@@ -18,21 +18,19 @@ test_that("expect_failure() requires 1 failure and zero successes", {
 
 test_that("expect_failure() can optionally match message", {
   expect_success(expect_failure(fail("apple"), "apple"))
-  expect_failure(expect_failure(fail("apple"), "banana"))
-
   expect_snapshot_failure(expect_failure(fail("apple"), "banana"))
 })
 
 test_that("expect_success() requires 1 success and zero failures", {
   expect_success(expect_success(pass(NULL)))
 
-  expect_failure(expect_success({}))
-  expect_failure(expect_success(fail()))
-  expect_failure(expect_success({
+  expect_snapshot_failure(expect_success({}))
+  expect_snapshot_failure(expect_success(fail()))
+  expect_snapshot_failure(expect_success({
     pass(NULL)
     fail()
   }))
-  expect_failure(expect_success({
+  expect_snapshot_failure(expect_success({
     pass(NULL)
     pass(NULL)
   }))
@@ -81,7 +79,7 @@ test_that("expect_no are deprecated", {
 test_that("expect_no still work", {
   withr::local_options(lifecycle_verbosity = "quiet")
   expect_success(expect_no_failure(pass(NULL)))
-  expect_failure(expect_no_failure(fail()))
+  expect_snapshot_failure(expect_no_failure(fail()))
   expect_success(expect_no_success(fail()))
-  expect_failure(expect_no_success(pass(NULL)))
+  expect_snapshot_failure(expect_no_success(pass(NULL)))
 })

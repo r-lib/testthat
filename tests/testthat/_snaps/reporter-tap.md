@@ -5,12 +5,12 @@
     ok 1 Success
     # Context Failures
     not ok 2 Failure:1
-      FALSE is not equal to TRUE.
+      Expected FALSE to be equal to TRUE.
       
       `actual`:   FALSE
       `expected`: TRUE 
     not ok 3 Failure:2a
-      FALSE is not equal to TRUE.
+      Expected FALSE to be equal to TRUE.
       
       `actual`:   FALSE
       `expected`: TRUE 

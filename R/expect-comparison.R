@@ -28,14 +28,7 @@ expect_compare_ <- function(
   operator <- match.arg(operator)
   op <- match.fun(operator)
 
-  msg <- c(
-    "<" = "not strictly less than",
-    "<=" = "not less than",
-    ">" = "not strictly greater than",
-    ">=" = "not greater than"
-  )[[operator]]
-
-  negated_op <- switch(operator, "<" = ">=", "<=" = ">", ">" = "<=", ">=" = "<")
+  actual_op <- switch(operator, "<" = ">=", "<=" = ">", ">" = "<=", ">=" = "<")
 
   cmp <- op(act$val, exp$val)
   if (length(cmp) != 1 || !is.logical(cmp)) {
@@ -45,22 +38,35 @@ expect_compare_ <- function(
     )
   }
   if (!isTRUE(cmp)) {
-    digits <- max(
-      digits(act$val),
-      digits(exp$val),
-      min_digits(act$val, exp$val)
-    )
-    msg <- sprintf(
-      "%s is %s %s.\n%s - %s = %s %s 0",
-      act$lab,
-      msg,
-      exp$lab,
-      num_exact(act$val, digits),
-      num_exact(exp$val, digits),
-      num_exact(act$val - exp$val, digits),
-      negated_op
-    )
-    return(fail(msg, trace_env = trace_env))
+    diff <- act$val - exp$val
+    msg1 <- sprintf("Expected %s %s %s.", act$lab, operator, exp$lab)
+
+    if (is.nan(diff)) {
+      msg2 <- "Actual values are incomparable."
+      msg3 <- NULL
+    } else if (is.na(diff)) {
+      msg2 <- "Actual comparison is NA."
+      msg3 <- NULL
+    } else {
+      digits <- max(
+        digits(act$val),
+        digits(exp$val),
+        min_digits(act$val, exp$val)
+      )
+
+      msg2 <- sprintf(
+        "Actual %s %s %s",
+        num_exact(act$val, digits),
+        actual_op,
+        num_exact(exp$val, digits)
+      )
+      msg3 <- sprintf(
+        "Difference %s %s 0",
+        num_exact(act$val - exp$val, digits),
+        actual_op
+      )
+    }
+    return(fail(c(msg1, msg2, msg3), trace_env = trace_env))
   }
   pass(act$val)
 }

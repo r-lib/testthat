@@ -1,3 +1,8 @@
+# expect_type checks typeof
+
+    Expected `x` to have type 'double'.
+    Actual type: 'integer'
+
 # expect_type validates its inputs
 
     Code
@@ -6,17 +11,38 @@
       Error in `expect_type()`:
       ! `type` must be a single string, not a character vector.
 
-# expect_s[34]_class can check not S3/S4
+# expect_is checks class
 
-    factor() is an S3 object
+    Expected factor("a") to inherit from `'character'`.
+    Actual inheritance: `'factor'`
+
+# expect_s3/s4_class fails if appropriate type
+
+    Expected `x1` (1) to be an S3 object.
+    Actually is a base object.
 
 ---
 
-    A() is an S4 object
+    Expected `x2` to be an S3 object.
+    Actually is a S4 object.
+
+---
+
+    Expected `x3` to be an S4 object.
+    Actually is a S3 object.
+
+# expect_s[34]_class can check not S3/S4
+
+    Expected factor() to not be an S3 object.
+
+---
+
+    Expected A() to not be an S4 object.
 
 # test_s4_class respects class hierarchy
 
-    C() inherits from 'C'/'A'/'B'/'list'/'vector' not 'D'.
+    Expected C() to inherit from 'D'.
+    Actual class: 'C'/'A'/'B'/'list'/'vector'
 
 # expect_s3_class validates its inputs
 
@@ -33,11 +59,18 @@
 
 # test_s3_class respects class hierarchy
 
-    `x` inherits from 'a'/'b' not 'c'.
+    Expected `x` to inherit from 'c'.
+    Actual class: 'a'/'b'
 
 ---
 
-    `x` inherits from 'a'/'b' not 'c'/'d'.
+    Expected `x` to inherit from 'c'/'d'.
+    Actual class: 'a'/'b'
+
+# test_s3_class can request exact match
+
+    Expected `x` to have class 'a'.
+    Actual class: 'a'/'b'
 
 # expect_s4_class validates its inputs
 
@@ -49,7 +82,8 @@
 
 # expect_r6_class generates useful failures
 
-    `x` (1) is not an R6 object.
+    Expected `x` (1) to be an R6 object.
+    Actually is a base object.
 
 # expect_r6_class validates its inputs
 
@@ -61,11 +95,13 @@
 
 # can check with actual class
 
-    Foo() inherits from <Foo> not <Bar>.
+    Expected Foo() to inherit from <Bar>.
+    Actual class: <Foo>
 
 ---
 
-    Baz() inherits from <Baz>/<Foo> not <Bar>.
+    Expected Baz() to inherit from <Bar>.
+    Actual class: <Baz>/<Foo>
 
 # expect_s7_class validates its inputs
 

@@ -50,14 +50,14 @@ expect_success <- function(expr) {
     return(fail("Expectation did not succeed"))
   } else if (status$n_success > 1) {
     return(fail(sprintf(
-      "Expectation succeeded %i times, instead of once",
+      "Expected expectation to succeed once.\nActually succeeded: %i times",
       status$n_success
     )))
   }
 
   if (status$n_failure > 0) {
     return(fail(sprintf(
-      "Expectation failed %i times, instead of zero",
+      "Expected expectation to not fail.\nActually failed: %i times",
       status$n_failure
     )))
   }
@@ -79,7 +79,7 @@ expect_failure <- function(expr, message = NULL, ...) {
 
   if (status$n_success != 0) {
     return(fail(sprintf(
-      "Expectation succeeded %i times, instead of never",
+      "Expected expectation to never succeed.\nActually succeeded: %i times",
       status$n_success
     )))
   }

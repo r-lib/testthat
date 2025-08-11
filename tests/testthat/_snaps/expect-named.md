@@ -19,21 +19,21 @@
 
 ---
 
-    Names of c(a = 1) (c(a = 1)) is not equal to c("a", "b").
+    Names of Expected c(a = 1) (c(a = 1)) to be equal to c("a", "b").
     
     `actual`:   "a"    
     `expected`: "a" "b"
 
 ---
 
-    Names of c(a = 1, b = 1) is not equal to c("a") ("a").
+    Names of Expected c(a = 1, b = 1) to be equal to c("a") ("a").
     
     `actual`:   "a" "b"
     `expected`: "a"    
 
 ---
 
-    Names of c(a = 1) (c(a = 1)) is not equal to c("b") ("b").
+    Names of Expected c(a = 1) (c(a = 1)) to be equal to c("b") ("b").
     
     `actual`:   "a"
     `expected`: "b"
