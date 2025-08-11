@@ -58,6 +58,8 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
 <ul><li>
+<code>expect_snapshot_file(name=)</code> must have a unique file path. If a snapshot file attempts to be saved with a duplicate <code>name</code>, an error will be thrown. (<a href="https://github.com/r-lib/testthat/issues/1592" class="external-link">#1592</a>)</li>
+<li>
 <code><a href="../reference/test_dir.html">test_dir()</a></code>, <code><a href="../reference/test_file.html">test_file()</a></code>, <code><a href="../reference/test_package.html">test_package()</a></code>, <code><a href="../reference/test_package.html">test_check()</a></code>, <code><a href="../reference/test_package.html">test_local()</a></code>, <code><a href="../reference/source_file.html">source_file()</a></code> gain a <code>shuffle</code> argument uses <code><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample()</a></code> to randomly reorder the top-level expressions in each test file (<a href="https://github.com/r-lib/testthat/issues/1942" class="external-link">#1942</a>). This random reordering surfaces dependencies between tests and code outside of any test, as well as dependencies between tests. This helps you find and eliminate unintentional dependencies.</li>
 <li>
 <code>snapshot_accept(test)</code> now works when the test file name contains <code>.</code> (<a href="https://github.com/r-lib/testthat/issues/1669" class="external-link">#1669</a>).</li>
