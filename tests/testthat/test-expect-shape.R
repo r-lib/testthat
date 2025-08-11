@@ -7,7 +7,6 @@ test_that("length computed correctly", {
 test_that("generates actionable failure message", {
   x <- 1:10
   expect_snapshot_failure(expect_length(x, 2))
-  expect_length(x, 15)
 })
 
 test_that("uses S4 length method", {

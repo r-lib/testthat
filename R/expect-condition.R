@@ -454,12 +454,9 @@ compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
     }
   } else {
     if (!is.null(cond)) {
-      sprintf(
-        "Expected %s to not throw a %s.\nActual <%s>:\n%s",
-        lab,
-        cond_type,
-        paste(class(cond), collapse = "/"),
-        cnd_message(cond)
+      c(
+        sprintf("Expected %s to not throw a %s.", lab, cond_type),
+        actual_condition(cond)
       )
     } else {
       NULL
@@ -628,5 +625,13 @@ check_condition_dots <- function(
       i = "Did you mean to use {.arg regexp} so {.arg ...} is passed to {.fn grepl}?"
     ),
     call = error_call
+  )
+}
+
+actual_condition <- function(cond) {
+  sprintf(
+    "Actual <%s>:\n%s",
+    paste(class(cond), collapse = "/"),
+    cnd_message(cond)
   )
 }

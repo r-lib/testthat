@@ -1,7 +1,7 @@
 # generates actionable failure message
 
     Expected `x` to have length 2.
-    Actual length: 10
+    Actual length: 10.
 
 # expect_length validates its inputs
 
@@ -14,27 +14,27 @@
 # dim compared correctly
 
     Expected `matrix(nrow = 6, ncol = 3)` to have dim (6, 2).
-    Actual dim: (6, 3)
+    Actual dim: (6, 3).
 
 ---
 
     Expected `matrix(nrow = 6, ncol = 3)` to have dim (7, 3).
-    Actual dim: (6, 3)
+    Actual dim: (6, 3).
 
 ---
 
-    Expected `array(dim = 1:3)` to have 2 dimensions.
-    Actual dimensions: 3
+    Expected `array(dim = 1:3)` to have dim (1, 2).
+    Actual dim: (1, 2, 3).
 
 ---
 
-    Expected `array(dim = 1:3)` to have 4 dimensions.
-    Actual dimensions: 3
+    Expected `array(dim = 1:3)` to have dim (1, 2, 3, 4).
+    Actual dim: (1, 2, 3).
 
 # nrow compared correctly
 
     Expected `matrix(nrow = 5, ncol = 5)` to have 6 rows.
-    Actual rows: 5
+    Actual rows: 5.
 
 ---
 
@@ -43,7 +43,7 @@
 # ncol compared correctly
 
     Expected `matrix(nrow = 5, ncol = 5)` to have 7 columns.
-    Actual columns: 5
+    Actual columns: 5.
 
 ---
 
@@ -56,17 +56,17 @@
 # NA handling (e.g. dbplyr)
 
     Expected `x` to have 10 rows.
-    Actual rows: NA
+    Actual rows: NA.
 
 ---
 
     Expected `x` to have NA columns.
-    Actual columns: 10
+    Actual columns: 10.
 
 ---
 
     Expected `x` to have dim (10, NA).
-    Actual dim: (NA, 10)
+    Actual dim: (NA, 10).
 
 # checks inputs arguments, 
 

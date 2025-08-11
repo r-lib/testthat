@@ -46,19 +46,17 @@ expect_setequal_ <- function(
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
   if (length(exp_miss) || length(act_miss)) {
-    msg <- paste0(
+    msg_exp <- sprintf(
+      "Expected %s to have the same values as %s.",
       act$lab,
-      " doesn't have the same values as ",
-      exp$lab,
-      ".\n",
-      if (length(act_miss)) {
-        paste0("* Only in `actual`: ", values(act_miss), "\n")
-      },
-      if (length(exp_miss)) {
-        paste0("* Only in `expected`: ", values(exp_miss), "\n")
-      }
+      exp$lab
     )
-    return(fail(msg, trace_env = trace_env))
+    msg_act <- c(
+      if (length(act_miss)) sprintf("Needs: %s", values(act_miss)),
+      if (length(exp_miss)) sprintf("Extra: %s", values(exp_miss))
+    )
+
+    return(fail(c(msg_exp, msg_act), trace_env = trace_env))
   }
   pass(act$val)
 }
@@ -101,14 +99,13 @@ expect_contains <- function(object, expected) {
 
   exp_miss <- !exp$val %in% act$val
   if (any(exp_miss)) {
-    return(fail(paste0(
+    msg_exp <- sprintf(
+      "Expected %s to contain all values in %s.",
       act$lab,
-      " doesn't fully contain all the values in ",
-      exp$lab,
-      ".\n",
-      paste0("* Missing from ", act$lab, ": ", values(exp$val[exp_miss]), "\n"),
-      paste0("* Present in ", act$lab, ":   ", values(act$val), "\n")
-    )))
+      exp$lab
+    )
+    msg_act <- sprintf("Missing: %s", values(exp$val[exp_miss]))
+    fail(c(msg_exp, msg_act))
   }
 
   pass(act$val)
@@ -125,14 +122,13 @@ expect_in <- function(object, expected) {
 
   act_miss <- !act$val %in% exp$val
   if (any(act_miss)) {
-    return(fail(paste0(
+    msg_exp <- sprintf(
+      "Expected all values in %s to be in %s.",
       act$lab,
-      " isn't fully contained within ",
-      exp$lab,
-      ".\n",
-      paste0("* Missing from ", act$lab, ": ", values(act$val[act_miss]), "\n"),
-      paste0("* Present in ", act$lab, ":   ", values(exp$val), "\n")
-    )))
+      exp$lab
+    )
+    msg_act <- sprintf("Extra: %s", values(act$val[act_miss]))
+    fail(c(msg_exp, msg_act))
   }
 
   pass(act$val)

@@ -108,9 +108,9 @@ expect_no_ <- function(
   act <- quasi_capture(enquo(object), NULL, capture)
 
   if (!is.null(first_match)) {
-    expected <- paste0(
+    exp_msg <- paste0(
       "Expected ",
-      quo_label(enquo(object)),
+      act$lab,
       " to run without any ",
       base_class,
       "s",
@@ -118,14 +118,13 @@ expect_no_ <- function(
       if (!is.null(regexp)) paste0(" matching pattern '", regexp, "'"),
       "."
     )
-    actual <- paste0(
+    act_msg <- paste0(
       "Actually got a <",
       class(first_match)[[1]],
-      "> with text:\n",
+      "> with message:\n",
       indent_lines(rlang::cnd_message(first_match))
     )
-    message <- format_error_bullets(c(expected, i = actual))
-    return(fail(message, trace_env = trace_env))
+    return(fail(c(exp_msg, act_msg), trace_env = trace_env))
   }
 
   pass(act$val)

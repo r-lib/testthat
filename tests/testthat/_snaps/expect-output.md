@@ -11,7 +11,7 @@
 # expect = string checks for match
 
     Expected `g()` to match regexp "x".
-    Actual Output:
+    Actual output:
     !
 
 ---
