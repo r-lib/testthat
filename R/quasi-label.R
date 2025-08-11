@@ -90,22 +90,17 @@ auto_label <- function(expr, value) {
 }
 
 can_inline <- function(x) {
-  if (is.null(x)) {
-    return(TRUE)
-  }
-  if (!is.atomic(x) || !is.vector(x)) {
+  if (!is_syntactic_literal(x)) {
     return(FALSE)
   }
-  if (length(x) != 1) {
+  if (!is.null(dim(x))) {
     return(FALSE)
   }
 
   if (is.character(x)) {
     is.na(x) || (!grepl("\n", x) && nchar(x) < 100)
-  } else if (is.logical(x) || is.numeric(x)) {
-    TRUE
   } else {
-    FALSE
+    TRUE
   }
 }
 
