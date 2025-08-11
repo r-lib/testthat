@@ -137,7 +137,6 @@ expect_snapshot_file <- function(
     path,
     file_equal = compare,
     variant = variant,
-    trace_env = caller_env()
   )
   if (inherits(equal, "expectation_failure")) {
     return(equal)
@@ -204,7 +203,7 @@ snapshot_file_equal <- function(
   trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
-    cli::cli_abort("{.path {path}} not found.")
+    cli::cli_abort("{.path {path}} not found.", call = trace_env)
   }
 
   if (is.null(snap_variant)) {
