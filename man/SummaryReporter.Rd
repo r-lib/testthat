@@ -2,16 +2,14 @@
 % Please edit documentation in R/reporter-summary.R
 \name{SummaryReporter}
 \alias{SummaryReporter}
-\title{Test reporter: summary of errors.}
+\title{Report a summary of failures}
 \description{
-This is a reporter designed for interactive usage: it lets you know which
-tests have run successfully and as well as fully reporting information about
+This is designed for interactive usage: it lets you know which tests have
+run successfully and as well as fully reporting information about
 failures and errors.
-}
-\details{
+
 You can use the \code{max_reports} field to control the maximum number
-of detailed reports produced by this reporter. This is useful when running
-with \code{\link[=auto_test]{auto_test()}}
+of detailed reports produced by this reporter.
 
 As an additional benefit, this reporter will praise you from time-to-time
 if all your tests pass.
@@ -30,6 +28,7 @@ Other reporters:
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
 \code{\link{SilentReporter}},
+\code{\link{SlowReporter}},
 \code{\link{StopReporter}},
 \code{\link{TapReporter}},
 \code{\link{TeamcityReporter}}

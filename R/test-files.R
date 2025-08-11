@@ -52,7 +52,8 @@ test_dir <- function(
   stop_on_warning = FALSE,
   wrap = deprecated(),
   package = NULL,
-  load_package = c("none", "installed", "source")
+  load_package = c("none", "installed", "source"),
+  shuffle = FALSE
 ) {
   load_package <- arg_match(load_package)
 
@@ -65,7 +66,7 @@ test_dir <- function(
     start_first = start_first
   )
   if (length(test_paths) == 0) {
-    abort("No test files found")
+    cli::cli_abort("No test files found.")
   }
 
   if (!is_missing(wrap)) {
@@ -94,7 +95,8 @@ test_dir <- function(
     stop_on_failure = stop_on_failure,
     stop_on_warning = stop_on_warning,
     load_package = load_package,
-    parallel = parallel
+    parallel = parallel,
+    shuffle = shuffle
   )
 }
 
@@ -120,10 +122,11 @@ test_file <- function(
   reporter = default_compact_reporter(),
   desc = NULL,
   package = NULL,
+  shuffle = FALSE,
   ...
 ) {
   if (!file.exists(path)) {
-    stop("`path` does not exist", call. = FALSE)
+    cli::cli_abort("{.arg path} does not exist.")
   }
 
   test_files(
@@ -132,6 +135,7 @@ test_file <- function(
     test_paths = basename(path),
     reporter = reporter,
     desc = desc,
+    shuffle = shuffle,
     ...
   )
 }
@@ -149,6 +153,7 @@ test_files <- function(
   wrap = TRUE,
   load_package = c("none", "installed", "source"),
   parallel = FALSE,
+  shuffle = FALSE,
   error_call = caller_env()
 ) {
   if (!isTRUE(wrap)) {
@@ -166,7 +171,8 @@ test_files <- function(
       env = env,
       stop_on_failure = stop_on_failure,
       stop_on_warning = stop_on_warning,
-      load_package = load_package
+      load_package = load_package,
+      shuffle = shuffle
     )
   } else {
     test_files_serial(
@@ -180,6 +186,7 @@ test_files <- function(
       stop_on_warning = stop_on_warning,
       desc = desc,
       load_package = load_package,
+      shuffle = shuffle,
       error_call = error_call
     )
   }
@@ -197,6 +204,7 @@ test_files_serial <- function(
   desc = NULL,
   wrap = TRUE,
   load_package = c("none", "installed", "source"),
+  shuffle = FALSE,
   error_call = caller_env()
 ) {
   # Because load_all() called by test_files_setup_env() will have already
@@ -222,6 +230,7 @@ test_files_serial <- function(
       test_one_file,
       env = env,
       desc = desc,
+      shuffle = shuffle,
       error_call = error_call
     )
   )
@@ -273,7 +282,7 @@ find_load_all_args <- function(path) {
 
   args <- parse_expr(args)
   if (!is_call(args, "list")) {
-    abort("`Config/testthat/load-all` must be a list.", call = NULL)
+    cli::cli_abort("{.field Config/testthat/load-all} must be a list.")
   }
 
   args <- as.list(args[-1])
@@ -311,7 +320,7 @@ test_files_reporter <- function(reporter, .env = parent.frame()) {
   reporters <- list(
     find_reporter(reporter),
     lister, # track data
-    local_snapshotter("_snaps", fail_on_new = on_ci(), .env = .env)
+    local_snapshotter("_snaps", .env = .env)
   )
   list(
     multi = MultiReporter$new(reporters = compact(reporters)),
@@ -325,10 +334,18 @@ test_files_check <- function(
   stop_on_warning = FALSE
 ) {
   if (stop_on_failure && !all_passed(results)) {
-    stop("Test failures", call. = FALSE)
+    cli::cli_abort(
+      "Test failures.",
+      call = NULL,
+      trace = data.frame()
+    )
   }
   if (stop_on_warning && any_warnings(results)) {
-    stop("Tests generated warnings", call. = FALSE)
+    cli::cli_abort(
+      "Tests generated warnings.",
+      call = NULL,
+      trace = data.frame()
+    )
   }
 
   invisible(results)
@@ -338,6 +355,7 @@ test_one_file <- function(
   path,
   env = test_env(),
   desc = NULL,
+  shuffle = FALSE,
   error_call = caller_env()
 ) {
   reporter <- get_reporter()
@@ -348,6 +366,7 @@ test_one_file <- function(
     path,
     env = env(env),
     desc = desc,
+    shuffle = shuffle,
     error_call = error_call
   )
   reporter$end_context_if_started()
@@ -366,7 +385,10 @@ test_one_file <- function(
 #' @export
 teardown_env <- function() {
   if (is.null(the$teardown_env)) {
-    abort("`teardown_env()` has not been initialized", .internal = TRUE)
+    cli::cli_abort(
+      "{.fn teardown_env} has not been initialized.",
+      .internal = TRUE
+    )
   }
 
   the$teardown_env

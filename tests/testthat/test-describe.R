@@ -11,12 +11,29 @@ describe("describe", {
       })
     })
   })
+})
 
-  it("can have not yet implemented specs", {
-    describe("Millennium Prize Problems", {
-      it("can be shown that P != NP")
+test_that("can write snaphot tests", {
+  local_description_set()
+
+  describe("snapshot tests in describe", {
+    expect_snapshot(1 + 1)
+    it("and in it", {
+      expect_snapshot(1 + 1)
     })
   })
+})
+
+test_that("unimplemented specs generate skips", {
+  expectations <- capture_expectations({
+    it("can have not yet implemented specs", {
+      describe("Millennium Prize Problems", {
+        it("can be shown that P != NP")
+      })
+    })
+  })
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_skip")
 })
 
 someExternalVariable <- 1

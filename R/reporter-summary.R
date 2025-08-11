@@ -1,12 +1,12 @@
-#' Test reporter: summary of errors.
+#' Report a summary of failures
 #'
-#' This is a reporter designed for interactive usage: it lets you know which
-#' tests have run successfully and as well as fully reporting information about
+#' @description
+#' This is designed for interactive usage: it lets you know which tests have
+#' run successfully and as well as fully reporting information about
 #' failures and errors.
 #'
 #' You can use the `max_reports` field to control the maximum number
-#' of detailed reports produced by this reporter. This is useful when running
-#' with [auto_test()]
+#' of detailed reports produced by this reporter.
 #'
 #' As an additional benefit, this reporter will praise you from time-to-time
 #' if all your tests pass.

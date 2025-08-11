@@ -3,7 +3,7 @@
 \name{local_mocked_bindings}
 \alias{local_mocked_bindings}
 \alias{with_mocked_bindings}
-\title{Mocking tools}
+\title{Temporarily redefine function definitions}
 \usage{
 local_mocked_bindings(..., .package = NULL, .env = caller_env())
 

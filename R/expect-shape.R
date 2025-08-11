@@ -1,4 +1,4 @@
-#' Does code return an object with the specified shape?
+#' Do you expect an object with this shape?
 #'
 #' This is a generalization of [expect_length()] to test the "shape" of
 #' more general objects like data.frames, matrices, and arrays.

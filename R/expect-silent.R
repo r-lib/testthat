@@ -1,4 +1,4 @@
-#' Does code execute silently?
+#' Do you expect code to execute silently?
 #'
 #' Checks that the code produces no output, messages, or warnings.
 #'

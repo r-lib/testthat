@@ -166,8 +166,6 @@ test_that("errors and warnings are folded", {
 # })
 
 test_that("hint is informative", {
-  local_reproducible_output(crayon = TRUE, hyperlinks = TRUE, rstudio = TRUE)
-
   expect_snapshot({
     cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
     cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
@@ -210,4 +208,15 @@ test_that("expect_snapshot_warning validates its inputs", {
     expect_snapshot_warning(warning("!"), class = 123)
     expect_snapshot_warning(warning("!"), cran = "yes")
   })
+})
+
+test_that("on CRAN, snapshots are not run but don't skill entire test", {
+  local_on_cran(TRUE)
+
+  expectations <- capture_expectations(test_that("", {
+    expect_snapshot(1 + 1)
+    expect_true(TRUE)
+  }))
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_success")
 })

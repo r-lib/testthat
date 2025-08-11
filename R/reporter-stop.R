@@ -1,5 +1,6 @@
-#' Test reporter: stop on error
+#' Error if any test fails
 #'
+#' @description
 #' The default reporter used when [expect_that()] is run interactively.
 #' It responds by [stop()]ping on failures and doing nothing otherwise. This
 #' will ensure that a failing test will raise an error.
@@ -44,9 +45,12 @@ StopReporter <- R6::R6Class(
         self$n_fail <- self$n_fail + 1
       }
       self$issues$push(result)
+
+      self$local_user_output()
+      self$cat_line(issue_summary(result, rule = TRUE), "\n")
     },
 
-    end_test = function(context, test) {
+    end_reporter = function(context, test) {
       self$local_user_output()
 
       if (self$issues$size() == 0) {
@@ -54,16 +58,12 @@ StopReporter <- R6::R6Class(
           emoji <- praise_emoji()
           self$cat_line(colourise("Test passed", "success"), " ", emoji)
         }
-      } else {
-        issues <- self$issues$as_list()
-        messages <- map_chr(issues, issue_summary, rule = TRUE)
-        self$cat_line(messages, "\n")
       }
     },
 
     stop_if_needed = function() {
       if (self$stop_reporter && self$n_fail > 0) {
-        abort("Test failed", call = NULL)
+        cli::cli_abort("Test failed.", call = NULL)
       }
     }
   )

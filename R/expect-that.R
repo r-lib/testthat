@@ -1,4 +1,4 @@
-#' `pass()` or `fail()` a test
+#' Declare that an expectation either passes or fails
 #'
 #' @description
 #' These are the primitives that you can use to implement your own expectations.

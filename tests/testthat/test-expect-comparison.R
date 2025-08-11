@@ -61,7 +61,7 @@ test_that("comparisons with more complicated objects work", {
 })
 
 test_that("comparison must yield a single logical", {
-  expect_error(expect_lt(1:10, 5), "single logical")
+  expect_snapshot(error = TRUE, expect_lt(1:10, 5))
 })
 
 test_that("wordy versions are deprecated", {

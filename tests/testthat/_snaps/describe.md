@@ -1,3 +1,17 @@
+# snapshot tests in describe
+
+    Code
+      1 + 1
+    Output
+      [1] 2
+
+# snapshot tests in describe / and in it
+
+    Code
+      1 + 1
+    Output
+      [1] 2
+
 # has to have a valid description for the block
 
     Code

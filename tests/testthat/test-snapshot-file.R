@@ -1,9 +1,6 @@
 test_that("expect_snapshot_file works", {
-  expect_snapshot_file(
-    write_tmp_lines(letters),
-    "foo.r",
-    compare = compare_file_text
-  )
+  path <- write_tmp_lines(letters)
+  expect_snapshot_file(path, "foo.r", compare = compare_file_text)
 
   path <- withr::local_tempfile()
   png(path, width = 300, height = 300, type = "cairo")
@@ -15,19 +12,11 @@ test_that("expect_snapshot_file works", {
   mtcars2 <- mtcars
   # mtcars2$wt[10] <- NA
   write.csv(mtcars2, path)
-  expect_snapshot_file(
-    path,
-    "foo.csv",
-    compare = compare_file_text
-  )
+  expect_snapshot_file(path, "foo.csv", compare = compare_file_text)
 
   # Deprecated `binary` argument still works
   withr::local_options(lifecycle_verbosity = "quiet")
-  expect_snapshot_file(
-    path,
-    "foo.csv",
-    binary = FALSE
-  )
+  expect_snapshot_file(path, "foo.csv", binary = FALSE)
 })
 
 
@@ -38,10 +27,7 @@ test_that("expect_snapshot_file works in a different directory", {
   brio::write_lines("a", "a.txt", eol = "\r\n")
 
   # expect no warning
-  expect_warning(
-    expect_snapshot_file("a.txt"),
-    regexp = NA
-  )
+  expect_no_warning(expect_snapshot_file("a.txt"))
 })
 
 test_that("expect_snapshot_file works with variant", {
@@ -56,25 +42,21 @@ test_that("expect_snapshot_file works with variant", {
 test_that("basic workflow", {
   snapper <- local_snapshotter(fail_on_new = FALSE)
 
+  path <- write_tmp_lines(letters)
   # warns on first run
   snapper$start_file("snapshot-6", "test")
-  expect_warning(
-    expect_snapshot_file(write_tmp_lines(letters), "letters.txt"),
-    "Adding new"
-  )
+  expect_warning(expect_snapshot_file(path, "letters.txt"), "Adding new")
   snapper$end_file()
 
   # succeeds if unchanged
   snapper$start_file("snapshot-6", "test")
-  expect_success(expect_snapshot_file(write_tmp_lines(letters), "letters.txt"))
+  expect_success(expect_snapshot_file(path, "letters.txt"))
   snapper$end_file()
 
   # fails if changed
   snapper$start_file("snapshot-6", "test")
-  expect_failure(expect_snapshot_file(
-    write_tmp_lines(letters[-1]),
-    "letters.txt"
-  ))
+  path2 <- write_tmp_lines(letters[-1])
+  expect_failure(expect_snapshot_file(path2, "letters.txt"))
   snapper$end_file()
 })
 
@@ -96,45 +78,49 @@ test_that("can transform snapshot contents", {
 
 test_that("warns on first creation", {
   path <- write_tmp_lines("a")
-  withr::defer(unlink(file.path(tempdir(), "test.txt")))
+  snap_dir <- withr::local_tempdir()
+
+  snapshot_file_equal_ <- function(path) {
+    snapshot_file_equal(
+      snap_dir = snap_dir,
+      snap_test = "my-test",
+      snap_name = "test.txt",
+      snap_variant = NULL,
+      path = path,
+      fail_on_new = FALSE
+    )
+  }
 
   # Warns on first run
-  expect_warning(
-    expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path)),
-    "new file snapshot"
-  )
+  expect_snapshot(out <- snapshot_file_equal_(path))
+  expect_true(out)
 
   # Errors on non-existing file
-  expect_error(
-    expect_true(snapshot_file_equal(
-      tempdir(),
-      "test.txt",
-      NULL,
-      "doesnt-exist.txt"
-    )),
-    "`doesnt-exist.txt` not found"
-  )
+  expect_snapshot(snapshot_file_equal_("doesnt-exist.txt"), error = TRUE)
 
   # Unchanged returns TRUE
-  expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path))
-  expect_true(file.exists(file.path(tempdir(), "test.txt")))
-  expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
+  expect_true(snapshot_file_equal_(path))
+  expect_true(file.exists(file.path(snap_dir, "my-test/test.txt")))
+  expect_false(file.exists(file.path(snap_dir, "my-test/test.new.txt")))
 
   # Changed returns FALSE
   path2 <- write_tmp_lines("b")
-  expect_false(snapshot_file_equal(tempdir(), "test.txt", NULL, path2))
-  expect_true(file.exists(file.path(tempdir(), "test.txt")))
-  expect_true(file.exists(file.path(tempdir(), "test.new.txt")))
+  expect_false(snapshot_file_equal_(path2))
+  expect_true(file.exists(file.path(snap_dir, "my-test/test.txt")))
+  expect_true(file.exists(file.path(snap_dir, "my-test/test.new.txt")))
 
   # Changing again overwrites
   path2 <- write_tmp_lines("c")
-  expect_false(snapshot_file_equal(tempdir(), "test.txt", NULL, path2))
-  expect_equal(brio::read_lines(file.path(tempdir(), "test.new.txt")), "c")
+  expect_false(snapshot_file_equal_(path2))
+  expect_equal(
+    brio::read_lines(file.path(snap_dir, "my-test/test.new.txt")),
+    "c"
+  )
 
   # Unchanged cleans up
-  expect_true(snapshot_file_equal(tempdir(), "test.txt", NULL, path))
-  expect_true(file.exists(file.path(tempdir(), "test.txt")))
-  expect_false(file.exists(file.path(tempdir(), "test.new.txt")))
+  expect_true(snapshot_file_equal_(path))
+  expect_true(file.exists(file.path(snap_dir, "my-test/test.txt")))
+  expect_false(file.exists(file.path(snap_dir, "my-test/test.new.txt")))
 })
 
 # helpers -----------------------------------------------------------------

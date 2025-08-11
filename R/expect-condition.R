@@ -1,4 +1,4 @@
-#' Does code throw an error, warning, message, or other condition?
+#' Do you expect an error, warning, message, or other condition?
 #'
 #' @description
 #' `expect_error()`, `expect_warning()`, `expect_message()`, and
@@ -169,7 +169,7 @@ expect_warning <- function(
 
   if (edition_get() >= 3) {
     if (!missing(all)) {
-      warn("The `all` argument is deprecated")
+      cli::cli_warn("The {.arg all} argument is deprecated.")
     }
 
     expect_condition_matching_(

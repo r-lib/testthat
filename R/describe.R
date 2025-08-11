@@ -26,6 +26,7 @@
 #'
 #' @param description description of the feature
 #' @param code test code containing the specs
+#' @keywords internal
 #' @export
 #' @examples
 #' describe("matrix()", {
@@ -59,7 +60,8 @@
 describe <- function(description, code) {
   local_description_push(description)
 
-  test_code(code, parent.frame(), skip_on_empty = FALSE)
+  code <- substitute(code)
+  test_code(code, parent.frame())
 }
 
 #' @export
@@ -68,5 +70,5 @@ it <- function(description, code = NULL) {
   local_description_push(description)
 
   code <- substitute(code)
-  test_code(code, env = parent.frame(), skip_on_empty = FALSE)
+  test_code(code, parent.frame())
 }
