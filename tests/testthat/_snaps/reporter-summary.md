@@ -19,14 +19,14 @@
     
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
@@ -70,14 +70,14 @@
     
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
@@ -121,14 +121,14 @@
     
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 

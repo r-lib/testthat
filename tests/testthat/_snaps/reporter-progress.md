@@ -66,77 +66,77 @@
     x | 11        0 | reporters/fail-many
     --------------------------------------------------------------------------------
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
@@ -294,7 +294,7 @@
      26.                                                   \-f(x - 1)
     
     Failure ('reporters/backtraces.R:62:6'): (code run outside of `test_that()`)
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
@@ -307,7 +307,7 @@
      4.       \-testthat::expect_true(FALSE)
     
     Failure ('reporters/backtraces.R:67:3'): nested expectations get backtraces
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
@@ -416,7 +416,7 @@
      26.                                                   \-f(x - 1)
     
     Failure ('reporters/backtraces.R:62:6'): (code run outside of `test_that()`)
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
@@ -429,7 +429,7 @@
      4.       \-testthat::expect_true(FALSE)
     
     Failure ('reporters/backtraces.R:67:3'): nested expectations get backtraces
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
@@ -476,14 +476,14 @@
     [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
     
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     -- Failure ('reporters/tests.R:16:8'): Failure:2a ------------------------------
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
@@ -576,77 +576,77 @@
     x | 11        0 | reporters/fail-many                                           
     --------------------------------------------------------------------------------
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
     
     
     Failure ('reporters/fail-many.R:3:5'): Example
-    Expected FALSE to be equal to TRUE.
+    Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
     `expected`: TRUE 
