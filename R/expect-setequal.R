@@ -40,17 +40,13 @@ expect_setequal <- function(object, expected) {
 expect_setequal_ <- function(
   act,
   exp,
-  trace_env = caller_env(),
-  error_prefix = NULL
+  trace_env = caller_env()
 ) {
   act_miss <- unique(act$val[!act$val %in% exp$val])
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
   if (length(exp_miss) || length(act_miss)) {
     msg <- paste0(
-      if (!is.null(error_prefix)) {
-        error_prefix
-      },
       act$lab,
       " doesn't have the same values as ",
       exp$lab,

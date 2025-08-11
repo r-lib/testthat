@@ -4,47 +4,47 @@
 
 # expected_named verifies actual of names
 
-    Names of Expected `c(a = 1)` to be equal to "b".
+    Expected names(`c(a = 1)`) to be equal to "b".
     
     `actual`:   "a"
     `expected`: "b"
 
 # provide useful feedback on failure
 
-    Names of `c(a = 1)` doesn't have the same values as `c("a", "b")`.
+    names(`x1`) doesn't have the same values as `c("a", "b")`.
     * Only in `expected`: "b"
     
 
 ---
 
-    Names of `c(a = 1, b = 1)` doesn't have the same values as `c("a")`.
+    names(`x2`) doesn't have the same values as "a".
     * Only in `actual`: "b"
     
 
 ---
 
-    Names of `c(a = 1)` doesn't have the same values as `c("b")`.
+    names(`x1`) doesn't have the same values as "b".
     * Only in `actual`: "a"
     * Only in `expected`: "b"
     
 
 ---
 
-    Names of Expected `c(a = 1)` to be equal to `c("a", "b")`.
+    Expected names(`x1`) to be equal to `c("a", "b")`.
     
     `actual`:   "a"    
     `expected`: "a" "b"
 
 ---
 
-    Names of Expected `c(a = 1, b = 1)` to be equal to `c("a")`.
+    Expected names(`x2`) to be equal to "a".
     
     `actual`:   "a" "b"
     `expected`: "a"    
 
 ---
 
-    Names of Expected `c(a = 1)` to be equal to `c("b")`.
+    Expected names(`x1`) to be equal to `c("b")`.
     
     `actual`:   "a"
     `expected`: "b"
