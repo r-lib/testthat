@@ -1,7 +1,18 @@
+# expect = NA checks for no output
+
+    Expected `g()` to produce no output.
+    Actual output:
+    !
+
+# expect = NULL checks for some output
+
+    Expected `f()` to produce output.
+
 # expect = string checks for match
 
-    `g()` does not match regexp "x".
-    Output: "!"
+    Expected `g()` to match regexp "x".
+    Actual Output:
+    !
 
 ---
 

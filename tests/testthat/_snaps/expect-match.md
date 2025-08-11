@@ -4,24 +4,25 @@
 
 ---
 
-    `one` ("bcde") does not match regexp "asdf".
-    Text: "bcde"
+    Expected `one` to match regexp "asdf".
+    Actual text:
+    bcde
 
 ---
 
-    Every element of `many` does not match regexp "a".
-    Text:
-    ✔ a
-    ✔ a
-    ✖ b
+    Expected every element of `many` to match regexp "a".
+    Actual text:
+    a
+    a
+    b
 
 ---
 
-    Some element of `many` does not match regexp "c".
-    Text:
-    ✖ a
-    ✖ a
-    ✖ b
+    Expected some element of `many` to match regexp "c".
+    Actual text:
+    a
+    a
+    b
 
 # expect_match validates its inputs
 
@@ -79,13 +80,27 @@
       Error in `expect_no_match()`:
       ! `all` must be `TRUE` or `FALSE`, not the number 1.
 
-# expect_no_match works
+# extra arguments passed onto grepl
 
-    `x` ("te*st") matches string "e*".
-    Text: "te*st"
+    Expected "\\s" to match regexp "\\s".
+    Actual text:
+    \\s
 
 ---
 
-    `x` ("test") matches regexp "TEST".
-    Text: "test"
+    Expected "test" to match regexp "TEST".
+    Actual text:
+    test
+
+# expect_no_match works
+
+    Expected `x` not to match string "e*".
+    Actual text:
+    te*st
+
+---
+
+    Expected `x` not to match regexp "TEST".
+    Actual text:
+    test
 

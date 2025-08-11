@@ -96,6 +96,10 @@
     Output
       [1] "****"
 
+# always checks error status
+
+    Expected `print("!")` to throw a error.
+
 # can capture error/warning messages
 
     This is an error

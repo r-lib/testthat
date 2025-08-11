@@ -35,6 +35,18 @@
     i Actually got a <rlang_message> with text:
       message
 
+# expect_no_ continues execution
+
+    Expected `{ ... }` to run without any warnings.
+    i Actually got a <simpleWarning> with text:
+      x
+
+# expect_no_* don't emit success when they fail
+
+    Expected `stop("!")` to run without any errors.
+    i Actually got a <simpleError> with text:
+      !
+
 # matched conditions give informative message
 
     Code

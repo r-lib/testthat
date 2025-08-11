@@ -13,12 +13,12 @@
 
 # expect_is checks class
 
-    Expected factor("a") to inherit from `'character'`.
+    Expected `factor("a")` to inherit from `'character'`.
     Actual inheritance: `'factor'`
 
 # expect_s3/s4_class fails if appropriate type
 
-    Expected `x1` (1) to be an S3 object.
+    Expected `x1` to be an S3 object.
     Actually is a base object.
 
 ---
@@ -33,15 +33,15 @@
 
 # expect_s[34]_class can check not S3/S4
 
-    Expected factor() to not be an S3 object.
+    Expected `factor()` to not be an S3 object.
 
 ---
 
-    Expected A() to not be an S4 object.
+    Expected `A()` to not be an S4 object.
 
 # test_s4_class respects class hierarchy
 
-    Expected C() to inherit from 'D'.
+    Expected `C()` to inherit from 'D'.
     Actual class: 'C'/'A'/'B'/'list'/'vector'
 
 # expect_s3_class validates its inputs
@@ -82,7 +82,7 @@
 
 # expect_r6_class generates useful failures
 
-    Expected `x` (1) to be an R6 object.
+    Expected `x` to be an R6 object.
     Actually is a base object.
 
 # expect_r6_class validates its inputs
@@ -95,12 +95,12 @@
 
 # can check with actual class
 
-    Expected Foo() to inherit from <Bar>.
+    Expected `Foo()` to inherit from <Bar>.
     Actual class: <Foo>
 
 ---
 
-    Expected Baz() to inherit from <Bar>.
+    Expected `Baz()` to inherit from <Bar>.
     Actual class: <Baz>/<Foo>
 
 # expect_s7_class validates its inputs

@@ -12,25 +12,25 @@
 
 # useful output when numbers are very small
 
-    Expected 1.1 * x (1.1e-05) <= `x` (1e-05).
+    Expected `1.1 * x` <= `x`.
     Actual 0.0000110 > 0.0000100
     Difference 0.0000010 > 0
 
 ---
 
-    Expected `x` (1e-05) > 1.1 * x (1.1e-05).
+    Expected `x` > `1.1 * x`.
     Actual 0.0000100 <= 0.0000110
     Difference -0.0000010 <= 0
 
 # useful output when difference is zero
 
-    Expected `x` (100) < 100.
+    Expected `x` < 100.
     Actual 100.0 >= 100.0
     Difference 0.0 >= 0
 
 # useful output when differnce is large
 
-    Expected `x` (100) < 0.001.
+    Expected `x` < 0.001.
     Actual 100.000 >= 0.001
     Difference 99.999 >= 0
 

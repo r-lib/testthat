@@ -13,27 +13,27 @@
 
 # dim compared correctly
 
-    Expected matrix(nrow = 6, ncol = 3) to have dim (6, 2).
+    Expected `matrix(nrow = 6, ncol = 3)` to have dim (6, 2).
     Actual dim: (6, 3)
 
 ---
 
-    Expected matrix(nrow = 6, ncol = 3) to have dim (7, 3).
+    Expected `matrix(nrow = 6, ncol = 3)` to have dim (7, 3).
     Actual dim: (6, 3)
 
 ---
 
-    Expected array(dim = 1:3) to have 2 dimensions.
+    Expected `array(dim = 1:3)` to have 2 dimensions.
     Actual dimensions: 3
 
 ---
 
-    Expected array(dim = 1:3) to have 4 dimensions.
+    Expected `array(dim = 1:3)` to have 4 dimensions.
     Actual dimensions: 3
 
 # nrow compared correctly
 
-    Expected matrix(nrow = 5, ncol = 5) to have 6 rows.
+    Expected `matrix(nrow = 5, ncol = 5)` to have 6 rows.
     Actual rows: 5
 
 ---
@@ -42,16 +42,16 @@
 
 # ncol compared correctly
 
-    Expected matrix(nrow = 5, ncol = 5) to have 7 columns.
+    Expected `matrix(nrow = 5, ncol = 5)` to have 7 columns.
     Actual columns: 5
 
 ---
 
-    Expected array(1) to have more than one dimension.
+    Expected `array(1)` to have more than one dimension.
 
 ---
 
-    Expected array(integer()) to have more than one dimension.
+    Expected `array(integer())` to have more than one dimension.
 
 # NA handling (e.g. dbplyr)
 

@@ -39,40 +39,40 @@
 
 # can control numeric tolerance
 
-    Expected `x1` (1) to equal `x2` (1.000001).
+    Expected `x1` to equal `x2`.
     Actual:
     1/1 mismatches
     [1] 1 - 1 == -1e-06
 
 ---
 
-    Expected `x1` (1) to be equal to `x2` (1.000001).
+    Expected `x1` to be equal to `x2`.
     
       `actual`: 1.0000000
     `expected`: 1.0000010
 
 # provide useful feedback on failure
 
-    Expected `x` (1) to be identical to "a".
+    Expected `x` to be identical to "a".
     
     `actual` is a double vector (1)
     `expected` is a character vector ('a')
 
 ---
 
-    Expected `x` (1) to be equal to "a".
+    Expected `x` to be equal to "a".
     
     `actual` is a double vector (1)
     `expected` is a character vector ('a')
 
 ---
 
-    Expected `x` (1) to be identical to "a".
+    Expected `x` to be identical to "a".
     Types not compatible: double is not character
 
 ---
 
-    Expected `x` (1) to equal "a".
+    Expected `x` to equal "a".
     Actual:
     Types not compatible: double is not character
 
@@ -100,15 +100,12 @@
 # useful message if objects equal but not identical
 
     Expected `f` to be identical to `g`.
-    Names: 1 string mismatch
-    Length mismatch: comparison on first 1 components
-    Component 1: Modes of target, current: function, numeric
-    Component 1: target, current do not match when deparsed
-    Component 1: 'current' is not an environment
+    names for target but not for current
+    Length mismatch: comparison on first 0 components
 
 # attributes for object (#452)
 
-    Expected `oops` (structure(0, oops = "oops")) to equal 0.
+    Expected `oops` to equal 0.
     Actual:
     Attributes: < Modes: list, NULL >
     Attributes: < Lengths: 1, 0 >

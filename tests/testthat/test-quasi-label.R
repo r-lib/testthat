@@ -1,17 +1,3 @@
-test_that("shows value iif simple", {
-  # symbols and calls shown
-  expect_equal(auto_label(quote(x), TRUE), "`x` (TRUE)")
-  expect_equal(auto_label(quote(f()), TRUE), "f() (TRUE)")
-  expect_equal(auto_label(quote(f()), NA_character_), "f() (NA_character_)")
-  # long arguments truncated
-  expect_equal(auto_label(call2("f", !!!letters), TRUE), "f(...) (TRUE)")
-
-  df <- data.frame(x = 1:100)
-  expect_equal(auto_label(quote(f()), df), "f()")
-  expect_equal(auto_label(quote(f()), "x\ny"), "f()")
-  expect_equal(auto_label(quote(f()), strrep("x", 100)), "f()")
-})
-
 test_that("atomic scalars deparsed to single values", {
   expect_equal(expr_label(NULL), "NULL")
   expect_equal(expr_label(TRUE), "TRUE")

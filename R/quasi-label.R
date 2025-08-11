@@ -53,7 +53,7 @@ quasi_label <- function(quo, label = NULL, arg = NULL) {
 
   expr <- quo_get_expr(quo)
   value <- eval_bare(expr, quo_get_env(quo))
-  label <- label %||% auto_label(expr, value)
+  label <- label %||% expr_label(expr)
 
   labelled_value(value, label)
 }
@@ -74,34 +74,6 @@ quasi_capture <- function(.quo, .label, .capture, ...) {
   )
 
   act
-}
-
-auto_label <- function(expr, value) {
-  if (is.call(expr) || is.name(expr)) {
-    label <- expr_label(expr)
-    if (can_inline(value)) {
-      paste0(label, " (", as_label(value), ")")
-    } else {
-      label
-    }
-  } else {
-    expr_label(expr)
-  }
-}
-
-can_inline <- function(x) {
-  if (!is_syntactic_literal(x)) {
-    return(FALSE)
-  }
-  if (!is.null(dim(x)) || !is.null(attributes(x))) {
-    return(FALSE)
-  }
-
-  if (is.character(x)) {
-    is.na(x) || (!grepl("\n", x) && nchar(x) < 100)
-  } else {
-    TRUE
-  }
 }
 
 expr_label <- function(x) {
@@ -128,7 +100,7 @@ expr_label <- function(x) {
         x <- call2(x[[1]], quote(expr = ...))
       }
     }
-    deparse1(x)
+    paste0("`", deparse1(x), "`")
   } else {
     # Any other object that's been inlined in
     x <- deparse(x)
