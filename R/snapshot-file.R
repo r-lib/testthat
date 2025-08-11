@@ -1,4 +1,4 @@
-#' Snapshot testing for whole files
+#' Do you expect this code to create the same file as last time?
 #'
 #' @description
 #' Whole file snapshot testing is designed for testing objects that don't have
@@ -88,12 +88,16 @@
 expect_snapshot_file <- function(
   path,
   name = basename(path),
-  binary = lifecycle::deprecated(),
+  binary = deprecated(),
   cran = FALSE,
   compare = NULL,
   transform = NULL,
   variant = NULL
 ) {
+  check_string(path)
+  check_string(name)
+  check_bool(cran)
+
   edition_require(3, "expect_snapshot_file()")
   if (!cran && on_cran()) {
     skip("On CRAN")
@@ -135,6 +139,10 @@ expect_snapshot_file <- function(
     variant = variant,
     trace_env = caller_env()
   )
+  if (inherits(equal, "expectation_failure")) {
+    return(equal)
+  }
+
   hint <- snapshot_review_hint(snapshotter$file, name)
 
   if (!equal) {
@@ -184,21 +192,30 @@ snapshot_review_hint <- function(
   )
 }
 
+
 snapshot_file_equal <- function(
-  snap_test_dir,
-  snap_name,
-  snap_variant,
-  path,
+  snap_dir, # _snaps/
+  snap_test, # test file name
+  snap_name, # snapshot file name
+  snap_variant, # variant (optional)
+  path, # path to new file
   file_equal = compare_file_binary,
-  fail_on_new = FALSE,
+  fail_on_new = NULL,
   trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
-    abort(paste0("`", path, "` not found"))
+    cli::cli_abort("{.path {path}} not found.")
   }
 
+  if (is.null(snap_variant)) {
+    snap_test_dir <- file.path(snap_dir, snap_test)
+  } else {
+    snap_test_dir <- file.path(snap_dir, snap_variant, snap_test)
+  }
+  fail_on_new <- fail_on_new %||% on_ci()
+
   cur_path <- file.path(snap_test_dir, snap_name)
-  new_path <- new_name(cur_path)
+  new_path <- file.path(snap_test_dir, new_name(snap_name))
 
   if (file.exists(cur_path)) {
     eq <- file_equal(cur_path, path)
@@ -213,19 +230,20 @@ snapshot_file_equal <- function(
     dir.create(snap_test_dir, showWarnings = FALSE, recursive = TRUE)
     file.copy(path, cur_path)
 
-    message <- paste0(
+    message <- paste_c(
       "Adding new file snapshot: 'tests/testthat/_snaps/",
-      snap_variant,
-      if (!is.null(snap_variant)) "/",
+      c(snap_variant, if (!is.null(snap_variant)) "/"),
+      c(snap_test, "/"),
       snap_name,
       "'"
     )
+
+    # We want to fail on CI since this suggests that the user has failed
+    # to record the value locally
     if (fail_on_new) {
       return(fail(message, trace_env = trace_env))
-    } else {
-      testthat_warn(message)
     }
-
+    testthat_warn(message)
     TRUE
   }
 }

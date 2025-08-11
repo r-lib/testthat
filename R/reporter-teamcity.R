@@ -1,4 +1,4 @@
-#' Test reporter: Teamcity format.
+#' Report results in Teamcity format
 #'
 #' This reporter will output results in the Teamcity message format.
 #' For more information about Teamcity messages, see
@@ -66,7 +66,7 @@ TeamcityReporter <- R6::R6Class(
     report_event = function(event, name, ...) {
       values <- list(name = name, ...)
 
-      values <- vapply(values, teamcity_escape, character(1))
+      values <- map_chr(values, teamcity_escape)
       if (length(values) == 0) {
         value_string <- ""
       } else {

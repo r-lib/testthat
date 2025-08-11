@@ -1,4 +1,4 @@
-#' Does code return the expected value?
+#' Do you expect this value?
 #'
 #' @description
 #' These functions provide two levels of strictness when comparing a
@@ -63,8 +63,9 @@ expect_equal <- function(
   label = NULL,
   expected.label = NULL
 ) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
+  check_number_decimal(tolerance, min = 0, allow_null = TRUE)
 
   if (edition_get() >= 3) {
     expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)
@@ -93,8 +94,8 @@ expect_identical <- function(
   expected.label = NULL,
   ...
 ) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
   if (edition_get() >= 3) {
     expect_waldo_equal_("identical", act, exp, info, ...)
@@ -123,9 +124,10 @@ expect_waldo_equal_ <- function(
   type,
   act,
   exp,
-  info,
+  info = NULL,
   ...,
-  trace_env = caller_env()
+  trace_env = caller_env(),
+  error_prefix = NULL
 ) {
   comp <- waldo_compare(
     act$val,
@@ -142,6 +144,7 @@ expect_waldo_equal_ <- function(
       exp$lab,
       paste0(comp, collapse = "\n\n")
     )
+    msg <- paste0(error_prefix, msg)
     return(fail(msg, info = info, trace_env = trace_env))
   }
   pass(act$val)
@@ -178,8 +181,8 @@ expect_equivalent <- function(
   label = NULL,
   expected.label = NULL
 ) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
   edition_deprecate(
     3,

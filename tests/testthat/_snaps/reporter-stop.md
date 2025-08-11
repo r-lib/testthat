@@ -1,6 +1,5 @@
 # produces useful output
 
-    Test passed 
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
     FALSE is not equal to TRUE.
     
@@ -47,4 +46,12 @@
 # can suppress praise
 
     
+
+# stop if needed errors when needed
+
+    Code
+      r$stop_if_needed()
+    Condition
+      Error:
+      ! Test failed.
 

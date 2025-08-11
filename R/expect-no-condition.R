@@ -1,4 +1,4 @@
-#' Does code run without error, warning, message, or other condition?
+#' Do you expect the absence of errors, warnings, messages, or other conditions?
 #'
 #' @description
 #' These expectations are the opposite of [expect_error()],

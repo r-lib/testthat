@@ -4,7 +4,7 @@
 \alias{quasi_label}
 \title{Quasi-labelling}
 \usage{
-quasi_label(quo, label = NULL, arg = "quo")
+quasi_label(quo, label = NULL, arg = NULL)
 }
 \arguments{
 \item{quo}{A quosure created by \code{rlang::enquo()}.}

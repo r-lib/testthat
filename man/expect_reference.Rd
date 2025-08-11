@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-reference.R
 \name{expect_reference}
 \alias{expect_reference}
-\title{Does code return a reference to the expected object?}
+\title{Do you expect a reference to this object?}
 \usage{
 expect_reference(
   object,
@@ -49,7 +49,6 @@ Other expectations:
 \code{\link{expect_named}()},
 \code{\link{expect_null}()},
 \code{\link{expect_output}()},
-\code{\link{expect_shape}()},
 \code{\link{expect_silent}()},
 \code{\link{inheritance-expectations}},
 \code{\link{logical-expectations}}

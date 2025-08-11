@@ -8,7 +8,9 @@ find_parallel <- function(path, load_package = "source", package = NULL) {
     if (toupper(parenv) == "FALSE") {
       return(FALSE)
     }
-    abort("`TESTTHAT_PARALLEL` must be `TRUE` or `FALSE`")
+    cli::cli_abort(
+      "{.envvar TESTTHAT_PARALLEL} must be {.code TRUE} or {.code FALSE}."
+    )
   }
 
   # Make sure we get the local package package if not "installed"
@@ -28,7 +30,7 @@ find_parallel <- function(path, load_package = "source", package = NULL) {
   if (par) {
     ed <- as.integer(desc$get_field("Config/testthat/edition", default = 2L))
     if (ed < 3) {
-      inform("Running tests in parallel requires the 3rd edition")
+      cli::cli_inform("Running tests in parallel requires the 3rd edition.")
       par <- FALSE
     }
   }

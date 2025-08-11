@@ -1,4 +1,4 @@
-#' Does code return a vector with (given) names?
+#' Do you expect a vector with (these) names?
 #'
 #' You can either check for the presence of names (leaving `expected`
 #' blank), specific names (by supplying a vector of names), or absence of
@@ -32,28 +32,28 @@ expect_named <- function(
   info = NULL,
   label = NULL
 ) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  act$names <- names(act$val)
+  check_bool(ignore.order)
+  check_bool(ignore.case)
+
+  act <- quasi_label(enquo(object), label)
 
   if (missing(expected)) {
-    if (identical(act$names, NULL)) {
-      msg <- sprintf("%s does not have names.", act$lab)
-      return(fail(msg))
-    }
-  } else {
-    exp_names <- normalise_names(expected, ignore.order, ignore.case)
-    act$names <- normalise_names(act$names, ignore.order, ignore.case)
-
-    if (!identical(act$names, exp_names)) {
-      msg <- sprintf(
-        "Names of %s (%s) don't match %s",
-        act$lab,
-        paste0("'", act$names, "'", collapse = ", "),
-        paste0("'", exp_names, "'", collapse = ", ")
-      )
-      return(fail(msg, info = info))
-    }
+    return(expect_has_names_(act))
   }
+
+  exp <- quasi_label(enquo(expected), arg = "expected")
+
+  exp$val <- normalise_names(exp$val, ignore.order, ignore.case)
+  act_names <- normalise_names(names(act$val), ignore.order, ignore.case)
+
+  if (ignore.order) {
+    act <- labelled_value(act_names, act$lab)
+    return(expect_setequal_(act, exp, error_prefix = "Names of "))
+  } else {
+    act <- labelled_value(act_names, act$lab)
+    return(expect_waldo_equal_("equal", act, exp, error_prefix = "Names of "))
+  }
+
   pass(act$val)
 }
 
@@ -70,4 +70,13 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
   }
 
   x
+}
+
+expect_has_names_ <- function(act, trace_env = caller_env()) {
+  act_names <- names(act$val)
+  if (identical(act_names, NULL)) {
+    msg <- sprintf("%s does not have names.", act$lab)
+    return(fail(msg, trace_env = trace_env))
+  }
+  return(pass(act$val))
 }

@@ -1,24 +1,18 @@
 #' Watches code and tests for changes, rerunning tests as appropriate.
 #'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
 #' The idea behind `auto_test()` is that you just leave it running while
 #' you develop your code.  Every time you save a file it will be automatically
 #' tested and you can easily see if your changes have caused any test
-#'  failures.
+#' failures.
 #'
 #' The current strategy for rerunning tests is as follows:
 #'
 #' - if any code has changed, then those files are reloaded and all tests
 #'   rerun
 #' - otherwise, each new or modified test is run
-#'
-#' In the future, `auto_test()` might implement one of the following more
-#' intelligent alternatives:
-#'
-#' - Use codetools to build up dependency tree and then rerun tests only
-#'   when a dependency changes.
-#' - Mimic ruby's autotest and rerun only failing tests until they pass,
-#'   and then rerun all tests.
-#
 #' @seealso [auto_test_package()]
 #' @export
 #' @param code_path path to directory containing code
@@ -27,7 +21,7 @@
 #' @param env environment in which to execute test suite.
 #' @param hash Passed on to [watch()]. When FALSE, uses less accurate
 #'   modification time stamps, but those are faster for large files.
-#' @keywords debugging
+#' @keywords internal
 auto_test <- function(
   code_path,
   test_path,
@@ -67,15 +61,12 @@ auto_test <- function(
   watch(c(code_path, test_path), watcher, hash = hash)
 }
 
-#' Watches a package for changes, rerunning tests as appropriate.
-#'
 #' @param pkg path to package
 #' @export
 #' @param reporter test reporter to use
 #' @param hash Passed on to [watch()].  When FALSE, uses less accurate
 #'   modification time stamps, but those are faster for large files.
-#' @keywords debugging
-#' @seealso [auto_test()] for details on how method works
+#' @rdname auto_test
 auto_test_package <- function(
   pkg = ".",
   reporter = default_reporter(),

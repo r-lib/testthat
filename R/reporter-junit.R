@@ -5,7 +5,7 @@ classnameOK <- function(text) {
 }
 
 
-#' Test reporter: summary of errors in jUnit XML format.
+#' Report results in jUnit XML format
 #'
 #' This reporter includes detailed results about each test and summaries,
 #' written to a file (or stdout) in jUnit XML format. This can be read by
@@ -108,6 +108,11 @@ JunitReporter <- R6::R6Class(
       time <- self$elapsed_time()
       self$suite_time <- self$suite_time + time
 
+      # If no context was started (e.g., warnings outside tests), create a default one
+      if (is.null(self$suite)) {
+        self$start_context(context %||% "(unknown)")
+      }
+
       # XML node for test case
       name <- test %||% "(unnamed)"
       testcase <- xml2::xml_add_child(
@@ -120,7 +125,7 @@ JunitReporter <- R6::R6Class(
 
       first_line <- function(x) {
         loc <- expectation_location(x, " (", ")")
-        paste0(strsplit(x$message, split = "\n")[[1]][1], loc)
+        paste0(strsplit(cli::ansi_strip(x$message), split = "\n")[[1]][1], loc)
       }
 
       # add an extra XML child node if not a success
@@ -147,6 +152,9 @@ JunitReporter <- R6::R6Class(
       } else if (expectation_skip(result)) {
         xml2::xml_add_child(testcase, "skipped", message = first_line(result))
         self$skipped <- self$skipped + 1
+      } else if (expectation_warning(result)) {
+        warning_node <- xml2::xml_add_child(testcase, "system-out")
+        xml2::xml_text(warning_node) <- cli::ansi_strip(format(result))
       }
     },
 
@@ -158,7 +166,7 @@ JunitReporter <- R6::R6Class(
         xml2::write_xml(self$doc, file, format = TRUE)
         cat(brio::read_file(file), file = self$out)
       } else {
-        stop("unsupported output type: ", toString(self$out))
+        cli::cli_abort("Unsupported output type: {toString(self$out)}.")
       }
     } # end_reporter
   ), # public

@@ -1,4 +1,4 @@
-#' Does code return `TRUE` or `FALSE`?
+#' Do you expect `TRUE` or `FALSE`?
 #'
 #' @description
 #' These are fall-back expectations that you can use when none of the other
@@ -29,7 +29,7 @@ NULL
 #' @export
 #' @rdname logical-expectations
 expect_true <- function(object, info = NULL, label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   exp <- labelled_value(TRUE, "TRUE")
   expect_waldo_equal_("equal", act, exp, info = info, ignore_attr = TRUE)
 }
@@ -37,12 +37,12 @@ expect_true <- function(object, info = NULL, label = NULL) {
 #' @export
 #' @rdname logical-expectations
 expect_false <- function(object, info = NULL, label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   exp <- labelled_value(FALSE, "FALSE")
   expect_waldo_equal_("equal", act, exp, info = info, ignore_attr = TRUE)
 }
 
-#' Does code return `NULL`?
+#' Do you expect `NULL`?
 #'
 #' This is a special case because `NULL` is a singleton so it's possible
 #' check for it either with `expect_equal(x, NULL)` or `expect_type(x, "NULL")`.
@@ -57,7 +57,7 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' expect_null(x)
 #' show_failure(expect_null(y))
 expect_null <- function(object, info = NULL, label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
+  act <- quasi_label(enquo(object), label)
   exp <- labelled_value(NULL, "FALSE")
   expect_waldo_equal_("equal", act, exp, info = info)
 }

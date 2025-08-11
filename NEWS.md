@@ -1,6 +1,35 @@
 # testthat (development version)
 
-* `expect_matches()` failures should be a little easier to read (#2135).
+* `test_dir()`, `test_file()`, `test_package()`, `test_check()`, `test_local()`, `source_file()` gain a `shuffle` argument uses `sample()` to randomly reorder the top-level expressions in each test file (#1942). This random reordering surfaces dependencies between tests and code outside of any test, as well as dependencies between tests. This helps you find and eliminate unintentional dependencies.
+* `snapshot_accept(test)` now works when the test file name contains `.` (#1669).
+* `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
+* `snapshot_review()` now passes `...` on to `shiny::runApp()` (#1928).
+* `expect_named()` now gives more informative errors (#2091).
+* `expect_*()` functions consistently and rigorously check their inputs (#1754). 
+* `test_that()` no longer warns about the absence of `{}` since it no longer seems to be necessary.
+* `test_that()`, `describe()`, and `it()` can now be arbitrarily nested. Each component will skip only if it and its subtests don't contain any expectations. The interactive stop reporter has been fixed so it doesn't duplicate failures. (#2063, #2188).
+* Test filtering now works with `it()`, and the `desc` argument can take a character vector in order to recursively filter subtests (i.e. `it()` nested inside of `describe()`) (#2118).
+* New `snapshot_reject()` rejects all modified snapshots by deleting the `.new` variants (#1923).
+* New `SlowReporter` makes it easier to find the slowest tests in your package. The easiest way to run it is with `devtools::test(reporter = "slow")` (#1466).
+* Power `expect_mapequal()` with `waldo::compare(list_as_map = TRUE)` (#1521).
+* On CRAN, `test_that()` now automatically skips if a package is not installed (#1585). Practically, this means that you no longer need to check that suggested packages are installed. (We don't do this in the tidyverse because we think it has limited payoff, but other styles advise differently.)
+* `expect_snapshot()` no longer skips on CRAN, as that skips the rest of the test. Instead it just returns, neither succeeding nor failing (#1585).
+* Interrupting a test now prints the test name. This makes it easier to tell where a very slow test might be hanging (#1464)
+* Parallel testthat now does not ignore test files with syntax errors (#1360).
+* `expect_lt()`, `expect_gt()`, and friends have a refined display that is more likely to display the correct number of digits and shows you the actual values compared.
+* `describe()`, `it()`, and `test_that()` now have a shared stack of descriptions so that if you nest any inside of each other, any resulting failures will show you the full path.
+* `describe()` now correctly scopes `skip()` (#2007).
+* `ParallelProgressReporter` now respect `max_failures` (#1162).
+* The last snapshot is no longer lost if the snapshot file is missing the final newline (#2092). It's easy to accidentally remove this because there are two trailing new lines in snapshot files and many editors will automatically remove if you touch the file.
+* New `expect_r6_class()` (#2030).
+* `expect_*()` functions consistently and rigorously check their inputs (#1754).
+* `JunitReporter()` no longer fails with `"no applicable method for xml_add_child"` for warnings outside of tests (#1913). Additionally, warnings now save their backtraces.
+* `JunitReporter()` strips ANSI escapes in more placese (#1852, #2032).
+* `try_again()` is now publicised. The first argument is now the number of retries, not tries (#2050).
+* `vignette("custom-expectations)` has been overhauled to make it much clearer how to create high-quality expectations (#2113, #2132, #2072).
+* `expect_snapshot()` and friends will now fail when creating a new snapshot on CI. This is usually a signal that you've forgotten to run it locally before committing (#1461).
+* `expect_snapshot_value()` can now handle expressions that generate `-` (#1678) or zero length atomic vectors (#2042).
+* `expect_matches()` failures should be a little easier to read (#2135, #2181).
 * New `local_on_cran(TRUE)` allows you to simulate how your tests will run on CRAN (#2112).
 * `expect_no_*()` now executes the entire code block, rather than stopping at the first message or warning (#1991).
 * `expect_no_failures()` and `expect_no_successes()` are now deprecated as `expect_success()` now test for no failures and `expect_failure()` tests for no successes (#)
@@ -14,7 +43,7 @@
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
 * New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require, say, `...names` (@MichaelChirico, #2022)
 * `skip_on_os()` gains an option `"emscripten"` of the `os` argument to skip tests on Emscripten (@eitsupi, #2103).
-* New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`, `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
+* New expectation, `expect_shape()`, for testing the shape (i.e., the `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
 
 # testthat 3.2.3
 

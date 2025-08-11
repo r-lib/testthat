@@ -1,7 +1,6 @@
 methods::setOldClass("proc_time")
 
-#' List reporter: gather all test results along with elapsed time and
-#' file information.
+#' Capture test results and metadata
 #'
 #' This reporter gathers all results, adding additional information such as
 #' test elapsed time, and test filename if available. Very useful for reporting.
@@ -188,10 +187,10 @@ summarize_one_test_results <- function(test) {
       nb_tests <- length(test_results)
     }
 
-    nb_passed <- sum(vapply(test_results, expectation_success, logical(1)))
-    nb_skipped <- sum(vapply(test_results, expectation_skip, logical(1)))
-    nb_failed <- sum(vapply(test_results, expectation_failure, logical(1)))
-    nb_warning <- sum(vapply(test_results, expectation_warning, logical(1)))
+    nb_passed <- sum(map_lgl(test_results, expectation_success))
+    nb_skipped <- sum(map_lgl(test_results, expectation_skip))
+    nb_failed <- sum(map_lgl(test_results, expectation_failure))
+    nb_warning <- sum(map_lgl(test_results, expectation_warning))
   }
 
   context <- if (length(test$context) > 0) test$context else ""

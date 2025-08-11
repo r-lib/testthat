@@ -1,4 +1,4 @@
-#' Does code throw an error, warning, message, or other condition?
+#' Do you expect an error, warning, message, or other condition?
 #'
 #' @description
 #' `expect_error()`, `expect_warning()`, `expect_message()`, and
@@ -114,6 +114,10 @@ expect_error <- function(
   info = NULL,
   label = NULL
 ) {
+  check_string(regexp, allow_null = TRUE, allow_na = TRUE)
+  check_string(class, allow_null = TRUE)
+  check_bool(inherit)
+
   if (edition_get() >= 3) {
     expect_condition_matching_(
       "error",
@@ -158,9 +162,14 @@ expect_warning <- function(
   info = NULL,
   label = NULL
 ) {
+  check_string(regexp, allow_null = TRUE, allow_na = TRUE)
+  check_string(class, allow_null = TRUE)
+  check_bool(inherit)
+  check_bool(all)
+
   if (edition_get() >= 3) {
     if (!missing(all)) {
-      warn("The `all` argument is deprecated")
+      cli::cli_warn("The {.arg all} argument is deprecated.")
     }
 
     expect_condition_matching_(
@@ -207,6 +216,11 @@ expect_message <- function(
   info = NULL,
   label = NULL
 ) {
+  check_string(regexp, allow_null = TRUE, allow_na = TRUE)
+  check_string(class, allow_null = TRUE)
+  check_bool(inherit)
+  check_bool(all)
+
   if (edition_get() >= 3) {
     expect_condition_matching_(
       "message",
@@ -239,6 +253,10 @@ expect_condition <- function(
   info = NULL,
   label = NULL
 ) {
+  check_string(regexp, allow_null = TRUE, allow_na = TRUE)
+  check_string(class, allow_null = TRUE)
+  check_bool(inherit)
+
   if (edition_get() >= 3) {
     expect_condition_matching_(
       "condition",

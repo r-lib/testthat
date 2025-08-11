@@ -73,7 +73,7 @@ teardown_run <- function(path = ".") {
   }
 
   old_dir <- setwd(path)
-  on.exit(setwd(old_dir), add = TRUE)
+  withr::defer(setwd(old_dir))
 
   lapply(file_teardown_env$queue, function(f) try(f()))
   teardown_reset()

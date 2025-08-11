@@ -6,7 +6,7 @@
 
     "OK" did not throw the expected error.
 
-# check type of class and pattern
+# expect_error validates its inputs
 
     Code
       expect_error(stop("!"), regexp = 1)
@@ -18,6 +18,11 @@
     Condition
       Error in `expect_error()`:
       ! `class` must be a single string or `NULL`, not the number 1.
+    Code
+      expect_error(stop("!"), inherit = "yes")
+    Condition
+      Error in `expect_error()`:
+      ! `inherit` must be `TRUE` or `FALSE`, not the string "yes".
 
 # message method is called when expecting error
 
@@ -25,9 +30,73 @@
     Message: dispatched!
     Class:   foobar/rlang_error/error/condition
 
+# expect_warning validates its inputs
+
+    Code
+      expect_warning(warning("!"), regexp = 1)
+    Condition
+      Error in `expect_warning()`:
+      ! `regexp` must be a single string, `NA`, or `NULL`, not the number 1.
+    Code
+      expect_warning(warning("!"), class = 1)
+    Condition
+      Error in `expect_warning()`:
+      ! `class` must be a single string or `NULL`, not the number 1.
+    Code
+      expect_warning(warning("!"), inherit = "yes")
+    Condition
+      Error in `expect_warning()`:
+      ! `inherit` must be `TRUE` or `FALSE`, not the string "yes".
+    Code
+      expect_warning(warning("!"), all = "yes")
+    Condition
+      Error in `expect_warning()`:
+      ! `all` must be `TRUE` or `FALSE`, not the string "yes".
+
+# expect_message validates its inputs
+
+    Code
+      expect_message(message("!"), regexp = 1)
+    Condition
+      Error in `expect_message()`:
+      ! `regexp` must be a single string, `NA`, or `NULL`, not the number 1.
+    Code
+      expect_message(message("!"), class = 1)
+    Condition
+      Error in `expect_message()`:
+      ! `class` must be a single string or `NULL`, not the number 1.
+    Code
+      expect_message(message("!"), inherit = "yes")
+    Condition
+      Error in `expect_message()`:
+      ! `inherit` must be `TRUE` or `FALSE`, not the string "yes".
+    Code
+      expect_message(message("!"), all = "yes")
+    Condition
+      Error in `expect_message()`:
+      ! `all` must be `TRUE` or `FALSE`, not the string "yes".
+
 # condition class is included in failure
 
     `f1()` did not throw a condition with class <bar>.
+
+# expect_condition validates its inputs
+
+    Code
+      expect_condition(stop("!"), regexp = 1)
+    Condition
+      Error in `expect_condition()`:
+      ! `regexp` must be a single string, `NA`, or `NULL`, not the number 1.
+    Code
+      expect_condition(stop("!"), class = 1)
+    Condition
+      Error in `expect_condition()`:
+      ! `class` must be a single string or `NULL`, not the number 1.
+    Code
+      expect_condition(stop("!"), inherit = "yes")
+    Condition
+      Error in `expect_condition()`:
+      ! `inherit` must be `TRUE` or `FALSE`, not the string "yes".
 
 # unused arguments generate an error
 

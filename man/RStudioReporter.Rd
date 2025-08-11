@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-rstudio.R
 \name{RStudioReporter}
 \alias{RStudioReporter}
-\title{Test reporter: RStudio}
+\title{Report results to RStudio}
 \description{
 This reporter is designed for output to RStudio. It produces results in
 any easily parsed form.
@@ -20,6 +20,7 @@ Other reporters:
 \code{\link{ProgressReporter}},
 \code{\link{Reporter}},
 \code{\link{SilentReporter}},
+\code{\link{SlowReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},
