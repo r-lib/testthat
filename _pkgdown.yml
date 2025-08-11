@@ -33,7 +33,6 @@ reference:
   - expect_named
   - expect_null
   - expect_setequal
-  - expect_shape
   - expect_type
   - expect_vector
 
