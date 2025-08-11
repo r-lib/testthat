@@ -39,15 +39,13 @@ test_that("expect_snapshot_file works with variant", {
 })
 
 test_that("expect_snapshot_file finds duplicate snapshot files", {
-  # Save to the same file as in previous test
-  expect_error(
+  expect_snapshot(
     expect_snapshot_file(
       write_tmp_lines(r_version()),
       "version.txt",
-      compare = compare_file_text,
       variant = r_version()
     ),
-    "provide a unique snapshot file name"
+    error = TRUE
   )
 })
 
