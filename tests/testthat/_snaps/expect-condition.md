@@ -1,16 +1,28 @@
 # regexp = NULL checks for presence of error
 
-    Expected `f()` to throw a error.
+    Code
+      expect_error(f())
+    Condition
+      Error:
+      ! Expected `f()` to throw a error.
 
 # regexp = NA checks for absence of error
 
-    Expected `stop("Yes")` to not throw a error.
-    Actual <simpleError/error/condition>:
-    Yes
+    Code
+      expect_error(stop("Yes"), NA)
+    Condition
+      Error:
+      ! Expected `stop("Yes")` to not throw a error.
+      Actual <simpleError/error/condition>:
+      Yes
 
 # regexp = string matches for error message
 
-    Expected "OK" to throw a error.
+    Code
+      expect_error("OK", "No")
+    Condition
+      Error:
+      ! Expected "OK" to throw a error.
 
 # expect_error validates its inputs
 
@@ -32,9 +44,13 @@
 
 # message method is called when expecting error
 
-    Expected `fb()` to not throw a error.
-    Actual <foobar/rlang_error/error/condition>:
-    dispatched!
+    Code
+      expect_error(fb(), NA)
+    Condition
+      Error:
+      ! Expected `fb()` to not throw a error.
+      Actual <foobar/rlang_error/error/condition>:
+      dispatched!
 
 # expect_warning validates its inputs
 
@@ -61,10 +77,13 @@
 
 # regexp = NA checks for absence of message
 
-    Expected `message("!")` to not throw a message.
-    Actual <simpleMessage/message/condition>:
-    !
-    
+    Code
+      expect_message(message("!"), NA)
+    Condition
+      Error:
+      ! Expected `message("!")` to not throw a message.
+      Actual <simpleMessage/message/condition>:
+      !
 
 # expect_message validates its inputs
 
@@ -91,7 +110,11 @@
 
 # condition class is included in failure
 
-    Expected `f1()` to throw a condition with class <bar>.
+    Code
+      expect_condition(f1(), class = "bar")
+    Condition
+      Error:
+      ! Expected `f1()` to throw a condition with class <bar>.
 
 # expect_condition validates its inputs
 
@@ -151,43 +174,65 @@
 
 # other conditions are swallowed
 
-    `f("error")` threw an error with unexpected message.
-    Expected match: "not a match"
-    Actual message: "error"
+    Code
+      expect_error(f("error"), "not a match")
+    Condition
+      Error:
+      ! `f("error")` threw an error with unexpected message.
+      Expected match: "not a match"
+      Actual message: "error"
 
 ---
 
-    `f("warning")` produced unexpected warnings.
-    Expected match: not a match
-    Actual values:
-    * warning
+    Code
+      expect_warning(f("warning"), "not a match")
+    Condition
+      Error:
+      ! `f("warning")` produced unexpected warnings.
+      Expected match: not a match
+      Actual values:
+      * warning
 
 ---
 
-    `f("message")` produced unexpected messages.
-    Expected match: not a match
-    Actual values:
-    * message
-    
+    Code
+      expect_message(f("message"), "not a match")
+    Condition
+      Error:
+      ! `f("message")` produced unexpected messages.
+      Expected match: not a match
+      Actual values:
+      * message
 
 ---
 
-    `f("condition")` threw an condition with unexpected message.
-    Expected match: "not a match"
-    Actual message: "signal"
+    Code
+      expect_condition(f("condition"), "not a match")
+    Condition
+      Error:
+      ! `f("condition")` threw an condition with unexpected message.
+      Expected match: "not a match"
+      Actual message: "signal"
 
 ---
 
-    `f("error")` threw an error with unexpected class.
-    Expected class: not a match
-    Actual class:   simpleError/error/condition
-    Message:        error
+    Code
+      expect_error(f("error"), class = "not a match")
+    Condition
+      Error:
+      ! `f("error")` threw an error with unexpected class.
+      Expected class: not a match
+      Actual class:   simpleError/error/condition
+      Message:        error
 
 ---
 
-    `f("message")` threw an condition with unexpected class.
-    Expected class: not a match
-    Actual class:   simpleMessage/message/condition
-    Message:        message
-    
+    Code
+      expect_condition(f("message"), class = "not a match")
+    Condition
+      Error:
+      ! `f("message")` threw an condition with unexpected class.
+      Expected class: not a match
+      Actual class:   simpleMessage/message/condition
+      Message:        message
 

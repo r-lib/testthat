@@ -1,53 +1,82 @@
 # expected_named verifies presence of names
 
-    Expected `1:10` to have names.
+    Code
+      expect_named(1:10)
+    Condition
+      Error:
+      ! Expected `1:10` to have names.
 
 # expected_named verifies actual of names
 
-    Expected names(`c(a = 1)`) to be equal to "b".
-    
-    `actual`:   "a"
-    `expected`: "b"
+    Code
+      expect_named(c(a = 1), "b")
+    Condition
+      Error:
+      ! Expected names(`c(a = 1)`) to be equal to "b".
+      
+      `actual`:   "a"
+      `expected`: "b"
 
 # provide useful feedback on failure
 
-    names(`x1`) doesn't have the same values as `c("a", "b")`.
-    * Only in `expected`: "b"
-    
+    Code
+      expect_named(x1, c("a", "b"), ignore.order = TRUE)
+    Condition
+      Error:
+      ! Expected names(`x1`) to have the same values as `c("a", "b")`.
+      Extra: "b"
 
 ---
 
-    names(`x2`) doesn't have the same values as "a".
-    * Only in `actual`: "b"
-    
+    Code
+      expect_named(x2, "a", ignore.order = TRUE)
+    Condition
+      Error:
+      ! Expected names(`x2`) to have the same values as "a".
+      Needs: "b"
 
 ---
 
-    names(`x1`) doesn't have the same values as "b".
-    * Only in `actual`: "a"
-    * Only in `expected`: "b"
-    
+    Code
+      expect_named(x1, "b", ignore.order = TRUE)
+    Condition
+      Error:
+      ! Expected names(`x1`) to have the same values as "b".
+      Needs: "a"
+      Extra: "b"
 
 ---
 
-    Expected names(`x1`) to be equal to `c("a", "b")`.
-    
-    `actual`:   "a"    
-    `expected`: "a" "b"
+    Code
+      expect_named(x1, c("a", "b"), ignore.order = FALSE)
+    Condition
+      Error:
+      ! Expected names(`x1`) to be equal to `c("a", "b")`.
+      
+      `actual`:   "a"    
+      `expected`: "a" "b"
 
 ---
 
-    Expected names(`x2`) to be equal to "a".
-    
-    `actual`:   "a" "b"
-    `expected`: "a"    
+    Code
+      expect_named(x2, "a", ignore.order = FALSE)
+    Condition
+      Error:
+      ! Expected names(`x2`) to be equal to "a".
+      
+      `actual`:   "a" "b"
+      `expected`: "a"    
 
 ---
 
-    Expected names(`x1`) to be equal to `c("b")`.
-    
-    `actual`:   "a"
-    `expected`: "b"
+    Code
+      expect_named(x1, c("b"), ignore.order = FALSE)
+    Condition
+      Error:
+      ! Expected names(`x1`) to be equal to `c("b")`.
+      
+      `actual`:   "a"
+      `expected`: "b"
 
 # expect_named validates its inputs
 

@@ -1,22 +1,38 @@
 # expect = NA checks for no output
 
-    Expected `g()` to produce no output.
-    Actual output:
-    !
+    Code
+      expect_output(g(), NA)
+    Condition
+      Error:
+      ! Expected `g()` to produce no output.
+      Actual output:
+      !
 
 # expect = NULL checks for some output
 
-    Expected `f()` to produce output.
+    Code
+      expect_output(f(), NULL)
+    Condition
+      Error:
+      ! Expected `f()` to produce output.
 
 # expect = string checks for match
 
-    Expected `g()` to match regexp "x".
-    Actual output:
-    !
+    Code
+      expect_output(g(), "x")
+    Condition
+      Error:
+      ! Expected `g()` to match regexp "x".
+      Actual output:
+      !
 
 ---
 
-    Expected "a" to produce output.
+    Code
+      expect_output("a", "x")
+    Condition
+      Error:
+      ! Expected "a" to produce output.
 
 # expect_output validates its inputs
 

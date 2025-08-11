@@ -98,7 +98,11 @@
 
 # always checks error status
 
-    Expected `print("!")` to throw a error.
+    Code
+      expect_snapshot(print("!"), error = TRUE)
+    Condition
+      Error:
+      ! Expected `print("!")` to throw a error.
 
 # can capture error/warning messages
 

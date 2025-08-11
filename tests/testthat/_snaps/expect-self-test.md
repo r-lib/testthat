@@ -1,43 +1,92 @@
 # expect_failure() requires 1 failure and zero successes
 
-    Expectation did not fail
+    Code
+      expect_failure({ })
+    Condition
+      Error:
+      ! Expectation did not fail
 
 ---
 
-    Expectation did not fail
+    Code
+      expect_failure(pass(NULL))
+    Condition
+      Error:
+      ! Expectation did not fail
 
 ---
 
-    Expected expectation to never succeed.
-    Actually succeeded: 1 times
+    Code
+      expect_failure({
+        pass(NULL)
+        fail()
+      })
+    Condition
+      Error:
+      ! Expected expectation to never succeed.
+      Actually succeeded: 1 times
 
 ---
 
-    Expectation failed more than once
+    Code
+      expect_failure({
+        fail()
+        pass(NULL)
+        fail()
+      })
+    Condition
+      Error:
+      ! Expectation failed more than once
 
 # expect_failure() can optionally match message
 
-    Expected Failure message to match regexp "banana".
-    Actual text:
-    apple
+    Code
+      expect_failure(fail("apple"), "banana")
+    Condition
+      Error:
+      ! Expected Failure message to match regexp "banana".
+      Actual text:
+      apple
 
 # expect_success() requires 1 success and zero failures
 
-    Expectation did not succeed
+    Code
+      expect_success({ })
+    Condition
+      Error:
+      ! Expectation did not succeed
 
 ---
 
-    Expectation did not succeed
+    Code
+      expect_success(fail())
+    Condition
+      Error:
+      ! Expectation did not succeed
 
 ---
 
-    Expected expectation to not fail.
-    Actually failed: 1 times
+    Code
+      expect_success({
+        pass(NULL)
+        fail()
+      })
+    Condition
+      Error:
+      ! Expected expectation to not fail.
+      Actually failed: 1 times
 
 ---
 
-    Expected expectation to succeed once.
-    Actually succeeded: 2 times
+    Code
+      expect_success({
+        pass(NULL)
+        pass(NULL)
+      })
+    Condition
+      Error:
+      ! Expected expectation to succeed once.
+      Actually succeeded: 2 times
 
 # errors in expect_success bubble up
 
@@ -75,9 +124,17 @@
 
 # expect_no still work
 
-    Expectation failed
+    Code
+      expect_no_failure(fail())
+    Condition
+      Error:
+      ! Expectation failed
 
 ---
 
-    Expectation succeeded
+    Code
+      expect_no_success(pass(NULL))
+    Condition
+      Error:
+      ! Expectation succeeded
 

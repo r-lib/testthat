@@ -60,7 +60,7 @@ test_that("labelling compound {} expression gives single string", {
 test_that("can label multiline functions", {
   expect_equal(
     expr_label(quote(function(x, y) {})),
-    "function(x, y) ..."
+    "`function(x, y) ...`"
   )
 })
 

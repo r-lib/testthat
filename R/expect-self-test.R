@@ -94,7 +94,8 @@ expect_failure <- function(expr, message = NULL, ...) {
 #' @export
 #' @rdname expect_success
 expect_snapshot_failure <- function(expr) {
-  expect_snapshot_condition_("expectation_failure", expr)
+  expr <- enquo0(expr)
+  expect_snapshot_(expr, error = TRUE, error_class = "expectation_failure")
 }
 
 #' Test for absence of success or failure

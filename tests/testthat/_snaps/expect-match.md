@@ -1,28 +1,44 @@
 # generates useful failure messages
 
-    Expected `zero` to not be empty.
+    Code
+      expect_match(zero, "asdf")
+    Condition
+      Error:
+      ! Expected `zero` to not be empty.
 
 ---
 
-    Expected `one` to match regexp "asdf".
-    Actual text:
-    bcde
+    Code
+      expect_match(one, "asdf")
+    Condition
+      Error:
+      ! Expected `one` to match regexp "asdf".
+      Actual text:
+      bcde
 
 ---
 
-    Expected every element of `many` to match regexp "a".
-    Actual text:
-    a
-    a
-    b
+    Code
+      expect_match(many, "a")
+    Condition
+      Error:
+      ! Expected every element of `many` to match regexp "a".
+      Actual text:
+      a
+      a
+      b
 
 ---
 
-    Expected some element of `many` to match regexp "c".
-    Actual text:
-    a
-    a
-    b
+    Code
+      expect_match(many, "c", all = FALSE)
+    Condition
+      Error:
+      ! Expected some element of `many` to match regexp "c".
+      Actual text:
+      a
+      a
+      b
 
 # expect_match validates its inputs
 
@@ -82,25 +98,41 @@
 
 # extra arguments passed onto grepl
 
-    Expected "\\s" to match regexp "\\s".
-    Actual text:
-    \\s
+    Code
+      expect_match("\\s", "\\s")
+    Condition
+      Error:
+      ! Expected "\\s" to match regexp "\\s".
+      Actual text:
+      \\s
 
 ---
 
-    Expected "test" to match regexp "TEST".
-    Actual text:
-    test
+    Code
+      expect_match("test", "TEST")
+    Condition
+      Error:
+      ! Expected "test" to match regexp "TEST".
+      Actual text:
+      test
 
 # expect_no_match works
 
-    Expected `x` not to match string "e*".
-    Actual text:
-    te*st
+    Code
+      expect_no_match(x, "e*", fixed = TRUE)
+    Condition
+      Error:
+      ! Expected `x` not to match string "e*".
+      Actual text:
+      te*st
 
 ---
 
-    Expected `x` not to match regexp "TEST".
-    Actual text:
-    test
+    Code
+      expect_no_match(x, "TEST", ignore.case = TRUE)
+    Condition
+      Error:
+      ! Expected `x` not to match regexp "TEST".
+      Actual text:
+      test
 

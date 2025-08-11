@@ -1,7 +1,11 @@
 # expect_type checks typeof
 
-    Expected `x` to have type 'double'.
-    Actual type: 'integer'
+    Code
+      expect_type(x, "double")
+    Condition
+      Error:
+      ! Expected `x` to have type 'double'.
+      Actual type: 'integer'
 
 # expect_type validates its inputs
 
@@ -13,36 +17,64 @@
 
 # expect_is checks class
 
-    Expected `factor("a")` to inherit from `'character'`.
-    Actual inheritance: `'factor'`
+    Code
+      expect_is(factor("a"), "integer")
+    Condition
+      Error:
+      ! Expected `factor("a")` to inherit from `'character'`.
+      Actual inheritance: `'factor'`
 
 # expect_s3/s4_class fails if appropriate type
 
-    Expected `x1` to be an S3 object.
-    Actually is a base object.
+    Code
+      expect_s3_class(x1, "double")
+    Condition
+      Error:
+      ! Expected `x1` to be an S3 object.
+      Actually is a base object.
 
 ---
 
-    Expected `x2` to be an S3 object.
-    Actually is a S4 object.
+    Code
+      expect_s3_class(x2, "double")
+    Condition
+      Error:
+      ! Expected `x2` to be an S3 object.
+      Actually is a S4 object.
 
 ---
 
-    Expected `x3` to be an S4 object.
-    Actually is a S3 object.
+    Code
+      expect_s4_class(x3, "double")
+    Condition
+      Error:
+      ! Expected `x3` to be an S4 object.
+      Actually is a S3 object.
 
 # expect_s[34]_class can check not S3/S4
 
-    Expected `factor()` to not be an S3 object.
+    Code
+      expect_s3_class(factor(), NA)
+    Condition
+      Error:
+      ! Expected `factor()` to not be an S3 object.
 
 ---
 
-    Expected `A()` to not be an S4 object.
+    Code
+      expect_s4_class(A(), NA)
+    Condition
+      Error:
+      ! Expected `A()` to not be an S4 object.
 
 # test_s4_class respects class hierarchy
 
-    Expected `C()` to inherit from 'D'.
-    Actual class: 'C'/'A'/'B'/'list'/'vector'
+    Code
+      expect_s4_class(C(), "D")
+    Condition
+      Error:
+      ! Expected `C()` to inherit from 'D'.
+      Actual class: 'C'/'A'/'B'/'list'/'vector'
 
 # expect_s3_class validates its inputs
 
@@ -59,18 +91,30 @@
 
 # test_s3_class respects class hierarchy
 
-    Expected `x` to inherit from 'c'.
-    Actual class: 'a'/'b'
+    Code
+      expect_s3_class(x, "c")
+    Condition
+      Error:
+      ! Expected `x` to inherit from 'c'.
+      Actual class: 'a'/'b'
 
 ---
 
-    Expected `x` to inherit from 'c'/'d'.
-    Actual class: 'a'/'b'
+    Code
+      expect_s3_class(x, c("c", "d"))
+    Condition
+      Error:
+      ! Expected `x` to inherit from 'c'/'d'.
+      Actual class: 'a'/'b'
 
 # test_s3_class can request exact match
 
-    Expected `x` to have class 'a'.
-    Actual class: 'a'/'b'
+    Code
+      expect_s3_class(x, "a", exact = TRUE)
+    Condition
+      Error:
+      ! Expected `x` to have class 'a'.
+      Actual class: 'a'/'b'
 
 # expect_s4_class validates its inputs
 
@@ -82,8 +126,18 @@
 
 # expect_r6_class generates useful failures
 
-    Expected `x` to be an R6 object.
-    Actually is a base object.
+    Code
+      expect_r6_class(x, "Student")
+    Condition
+      Error:
+      ! Expected `x` to be an R6 object.
+      Actually is a base object.
+    Code
+      expect_r6_class(person, "Student")
+    Condition
+      Error:
+      ! Expected `person` to inherit from 'Student'.
+      Actual class: 'Person'/'R6'
 
 # expect_r6_class validates its inputs
 
@@ -95,13 +149,21 @@
 
 # can check with actual class
 
-    Expected `Foo()` to inherit from <Bar>.
-    Actual class: <Foo>
+    Code
+      expect_s7_class(Foo(), class = Bar)
+    Condition
+      Error:
+      ! Expected `Foo()` to inherit from <Bar>.
+      Actual class: <Foo>
 
 ---
 
-    Expected `Baz()` to inherit from <Bar>.
-    Actual class: <Baz>/<Foo>
+    Code
+      expect_s7_class(Baz(), class = Bar)
+    Condition
+      Error:
+      ! Expected `Baz()` to inherit from <Bar>.
+      Actual class: <Baz>/<Foo>
 
 # expect_s7_class validates its inputs
 
