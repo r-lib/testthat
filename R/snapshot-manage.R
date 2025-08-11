@@ -73,15 +73,16 @@ review_app <- function(name, old_path, new_path, ...) {
   ui <- shiny::fluidPage(
     style = "margin: 0.5em",
     shiny::fluidRow(
-      style = "display: flex",
+      style = "display: flex; margin-bottom: 0.5em",
       shiny::div(
         style = "flex: 1 1",
-        shiny::selectInput("cases", NULL, case_index, width = "100%")
+        if (n > 1) shiny::selectInput("cases", NULL, case_index, width = "100%")
       ),
       shiny::div(
         class = "btn-group",
         style = "margin-left: 1em; flex: 0 0 auto",
-        shiny::actionButton("skip", "Skip"),
+        shiny::actionButton("reject", "Reject", class = "btn-danger"),
+        if (n > 1) shiny::actionButton("skip", "Skip"),
         shiny::actionButton("accept", "Accept", class = "btn-success"),
       )
     ),
@@ -90,7 +91,7 @@ review_app <- function(name, old_path, new_path, ...) {
     )
   )
   server <- function(input, output, session) {
-    i <- shiny::reactive(as.numeric(input$cases))
+    i <- shiny::reactive(if (n == 1) 1L else as.numeric(input$cases))
     output$diff <- diffviewer::visual_diff_render({
       diffviewer::visual_diff(old_path[[i()]], new_path[[i()]])
     })

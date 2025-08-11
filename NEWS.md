@@ -1,6 +1,6 @@
 # testthat (development version)
 
-* `snapshot_review()` disables the skip button if there's only one snapshot to review (#2025).
+* `snapshot_review()` includes a reject button and only displays the file navigation and the skip button if there are multiple files to review (#2025).
 * `test_dir()`, `test_file()`, `test_package()`, `test_check()`, `test_local()`, `source_file()` gain a `shuffle` argument uses `sample()` to randomly reorder the top-level expressions in each test file (#1942). This random reordering surfaces dependencies between tests and code outside of any test, as well as dependencies between tests. This helps you find and eliminate unintentional dependencies.
 * `snapshot_accept(test)` now works when the test file name contains `.` (#1669).
 * `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
