@@ -1,4 +1,4 @@
-#' Test reporter: interactive progress bar of errors.
+#' Report progress interactively
 #'
 #' @description
 #' `ProgressReporter` is designed for interactive use. Its goal is to
@@ -221,16 +221,20 @@ ProgressReporter <- R6::R6Class(
       self$report_issues(self$ctxt_issues)
 
       if (self$is_full()) {
-        snapshotter <- get_snapshotter()
-        if (!is.null(snapshotter)) {
-          snapshotter$end_file()
-        }
-
-        stop_reporter(c(
-          "Maximum number of failures exceeded; quitting at end of file.",
-          i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
-        ))
+        self$report_full()
       }
+    },
+
+    report_full = function() {
+      snapshotter <- get_snapshotter()
+      if (!is.null(snapshotter)) {
+        snapshotter$end_file()
+      }
+
+      stop_reporter(c(
+        "Maximum number of failures exceeded; quitting at end of file.",
+        i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
+      ))
     },
 
     add_result = function(context, test, result) {
@@ -258,6 +262,10 @@ ProgressReporter <- R6::R6Class(
     },
 
     end_reporter = function() {
+      if (self$is_full()) {
+        return()
+      }
+
       self$cat_line()
 
       colour_if <- function(n, type) {
@@ -306,7 +314,7 @@ ProgressReporter <- R6::R6Class(
         self$rule()
 
         issues <- issues$as_list()
-        summary <- vapply(issues, issue_summary, FUN.VALUE = character(1))
+        summary <- map_chr(issues, issue_summary)
         self$cat_tight(paste(summary, collapse = "\n\n"))
 
         self$cat_line()
@@ -374,12 +382,7 @@ CompactProgressReporter <- R6::R6Class(
       self$cat_line()
 
       issues <- self$ctxt_issues$as_list()
-      summary <- vapply(
-        issues,
-        issue_summary,
-        rule = TRUE,
-        FUN.VALUE = character(1)
-      )
+      summary <- map_chr(issues, issue_summary, rule = TRUE)
       self$cat_tight(paste(summary, collapse = "\n\n"))
 
       self$cat_line()
@@ -470,7 +473,13 @@ ParallelProgressReporter <- R6::R6Class(
       self$report_issues(fsts$issues)
 
       self$files[[self$file_name]] <- NULL
-      if (length(self$files)) self$update(force = TRUE)
+      if (length(self$files)) {
+        self$update(force = TRUE)
+      }
+
+      if (self$is_full()) {
+        self$report_full()
+      }
     },
 
     end_reporter = function() {

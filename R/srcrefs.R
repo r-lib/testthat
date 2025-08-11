@@ -72,13 +72,13 @@ sys_index <- function(bottom = NULL, top = caller_env()) {
   } else {
     bottom_idx <- Position(function(env) identical(bottom, env), frames)
     if (is.na(bottom_idx)) {
-      abort("Can't find `bottom` on stack")
+      cli::cli_abort("Can't find {.arg bottom} on stack.")
     }
   }
 
   top_idx <- Position(function(env) identical(top, env), frames)
   if (is.na(top_idx)) {
-    abort("Can't find `top` on stack")
+    cli::cli_abort("Can't find {.arg top} on stack.")
   }
 
   seq2(bottom_idx, top_idx)

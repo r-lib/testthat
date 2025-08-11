@@ -1,10 +1,11 @@
-#' Does a string match a regular expression?
+#' Do you expect a string to match this pattern?
 #'
 #' @details
-#' `expect_match()` is a wrapper around [grepl()]. See its documentation for
-#' more detail about the individual arguments. `expect_no_match()` provides
-#' the complementary case, checking that a string *does not* match a regular
-#' expression.
+#' `expect_match()` checks if a character vector matches a regular expression,
+#' powered by [grepl()].
+#'
+#' `expect_no_match()` provides the complementary case, checking that a
+#' character vector *does not* match a regular expression.
 #'
 #' @inheritParams expect_that
 #' @inheritParams base::grepl
@@ -21,12 +22,11 @@
 #' expect_match("Testing is fun", "f.n")
 #' expect_no_match("Testing is fun", "horrible")
 #'
-#' \dontrun{
-#' expect_match("Testing is fun", "horrible")
+#' show_failure(expect_match("Testing is fun", "horrible"))
+#' show_failure(expect_match("Testing is fun", "horrible", fixed = TRUE))
 #'
 #' # Zero-length inputs always fail
-#' expect_match(character(), ".")
-#' }
+#' show_failure(expect_match(character(), "."))
 expect_match <- function(
   object,
   regexp,
@@ -37,11 +37,14 @@ expect_match <- function(
   info = NULL,
   label = NULL
 ) {
-  # Capture here to avoid environment-related messiness
-  act <- quasi_label(enquo(object), label, arg = "object")
-  stopifnot(is.character(regexp), length(regexp) == 1)
+  act <- quasi_label(enquo(object), label)
 
-  stopifnot(is.character(act$val))
+  check_character(object)
+  check_string(regexp)
+  check_bool(perl)
+  check_bool(fixed)
+  check_bool(all)
+
   if (length(object) == 0) {
     return(fail(sprintf("%s is empty.", act$lab), info = info))
   }
@@ -73,13 +76,12 @@ expect_no_match <- function(
   label = NULL
 ) {
   # Capture here to avoid environment-related messiness
-  act <- quasi_label(enquo(object), label, arg = "object")
-  stopifnot(is.character(regexp), length(regexp) == 1)
-
-  stopifnot(is.character(act$val))
-  if (length(object) == 0) {
-    return(fail(sprintf("%s is empty.", act$lab), info = info))
-  }
+  act <- quasi_label(enquo(object), label)
+  check_character(object)
+  check_string(regexp)
+  check_bool(perl)
+  check_bool(fixed)
+  check_bool(all)
 
   expect_match_(
     act = act,
@@ -104,6 +106,7 @@ expect_match_ <- function(
   info = NULL,
   label = NULL,
   negate = FALSE,
+  title = "Text",
   trace_env = caller_env()
 ) {
   matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
@@ -114,20 +117,27 @@ expect_match_ <- function(
     return(pass(act$val))
   }
 
-  escape <- if (fixed) identity else escape_regex
-
+  text <- encodeString(act$val)
   if (length(act$val) == 1) {
-    values <- paste0("Actual value: \"", escape(encodeString(act$val)), "\"")
+    values <- paste0(title, ': "', text, '"')
+    which <- ""
   } else {
-    values <- paste0(
-      "Actual values:\n",
-      paste0("* ", escape(encodeString(act$val)), collapse = "\n")
+    bullet <- ifelse(
+      condition,
+      cli::col_green(cli::symbol$tick),
+      cli::col_red(cli::symbol$cross)
     )
+    values <- paste0(title, ":\n", paste0(bullet, " ", text, collapse = "\n"))
+    which <- if (all) "Every element of " else "Some element of "
   }
+  match <- if (negate) "matches" else "does not match"
 
   msg <- sprintf(
-    if (negate) "%s does match %s.\n%s" else "%s does not match %s.\n%s",
-    escape(act$lab),
+    "%s%s %s %s %s.\n%s",
+    which,
+    act$lab,
+    match,
+    if (fixed) "string" else "regexp",
     encodeString(regexp, quote = '"'),
     values
   )

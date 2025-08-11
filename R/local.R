@@ -1,4 +1,4 @@
-#' Locally set options for maximal test reproducibility
+#' Temporarily set options for maximum reproducibility
 #'
 #' @description
 #' `local_test_context()` is run automatically by `test_that()` but you may
@@ -153,8 +153,9 @@ waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
   # Need to very carefully isolate this change to this function - can not set
   # in expectation functions because part of expectation handling bubbles
   # up through calling handlers, which are run before on.exit()
-  local_reporter_output()
-
+  if (!is_snapshot()) {
+    local_reporter_output()
+  }
   waldo::compare(x, y, ..., x_arg = x_arg, y_arg = y_arg)
 }
 
@@ -199,6 +200,7 @@ local_interactive_reporter <- function(.env = parent.frame()) {
   # Use StopReporter
   reporter <- StopReporter$new()
   old <- set_reporter(reporter)
+  withr::defer(reporter$end_reporter(), envir = .env)
   withr::defer(reporter$stop_if_needed(), envir = .env)
   withr::defer(set_reporter(old), envir = .env)
 

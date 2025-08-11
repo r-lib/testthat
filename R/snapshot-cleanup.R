@@ -6,7 +6,7 @@ snapshot_cleanup <- function(
   outdated <- snapshot_outdated(path, test_files_seen, snap_files_seen)
 
   if (length(outdated) > 0) {
-    inform(c("Deleting unused snapshots:", outdated))
+    cli::cli_inform("Deleting unused snapshots: {.path {outdated}}")
     unlink(file.path(path, outdated), recursive = TRUE)
   }
 

@@ -1,4 +1,4 @@
-#' Does code print output to the console?
+#' Do you expect printed output to match this pattern?
 #'
 #' Test for output produced by `print()` or `cat()`. This is best used for
 #' very simple output; for more complex cases use [expect_snapshot()].
@@ -30,6 +30,8 @@ expect_output <- function(
   label = NULL,
   width = 80
 ) {
+  check_number_whole(width, min = 1)
+
   act <- quasi_capture(enquo(object), label, capture_output, width = width)
 
   if (identical(regexp, NA)) {
@@ -45,7 +47,7 @@ expect_output <- function(
     }
     pass(act$val)
   } else {
-    act <- new_actual(act$cap, act$lab)
-    expect_match_(act, enc2native(regexp), ...)
+    act <- labelled_value(act$cap, act$lab)
+    expect_match_(act, enc2native(regexp), ..., title = "Output")
   }
 }

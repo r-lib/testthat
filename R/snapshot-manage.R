@@ -1,6 +1,7 @@
-#' Snapshot management
+#' Accept or reject modified snapshots
 #'
 #' * `snapshot_accept()` accepts all modified snapshots.
+#' * `snapshot_reject()` rejects all modified snapshots by deleting the `.new` variants.
 #' * `snapshot_review()` opens a Shiny app that shows a visual diff of each
 #'    modified snapshot. This is particularly useful for whole file snapshots
 #'    created by `expect_snapshot_file()`.
@@ -14,11 +15,11 @@
 snapshot_accept <- function(files = NULL, path = "tests/testthat") {
   changed <- snapshot_meta(files, path)
   if (nrow(changed) == 0) {
-    inform("No snapshots to update")
+    cli::cli_inform("No snapshots to update.")
     return(invisible())
   }
 
-  inform(c("Updating snapshots:", changed$name))
+  cli::cli_inform("Updating snapshots: {.path {changed$name}}.")
   unlink(changed$cur)
   file.rename(changed$new, changed$cur)
 
@@ -28,21 +29,38 @@ snapshot_accept <- function(files = NULL, path = "tests/testthat") {
 
 #' @rdname snapshot_accept
 #' @export
-snapshot_review <- function(files = NULL, path = "tests/testthat") {
-  check_installed(c("shiny", "diffviewer"), "to use snapshot_review()")
-
+snapshot_reject <- function(files = NULL, path = "tests/testthat") {
   changed <- snapshot_meta(files, path)
   if (nrow(changed) == 0) {
-    inform("No snapshots to update")
+    inform("No snapshots to reject")
     return(invisible())
   }
 
-  review_app(changed$name, changed$cur, changed$new)
+  inform(c("Rejecting snapshots:", changed$name))
+  unlink(changed$new)
+
   rstudio_tickle()
   invisible()
 }
 
-review_app <- function(name, old_path, new_path) {
+#' @rdname snapshot_accept
+#' @param ... Additional arguments passed on to [shiny::runApp()].
+#' @export
+snapshot_review <- function(files = NULL, path = "tests/testthat", ...) {
+  check_installed(c("shiny", "diffviewer"), "to use snapshot_review()")
+
+  changed <- snapshot_meta(files, path)
+  if (nrow(changed) == 0) {
+    cli::cli_inform("No snapshots to update.")
+    return(invisible())
+  }
+
+  review_app(changed$name, changed$cur, changed$new, ...)
+  rstudio_tickle()
+  invisible()
+}
+
+review_app <- function(name, old_path, new_path, ...) {
   stopifnot(
     length(name) == length(old_path),
     length(old_path) == length(new_path)
@@ -80,12 +98,12 @@ review_app <- function(name, old_path, new_path) {
     # Handle buttons - after clicking update move input$cases to next case,
     # and remove current case (for accept/reject). If no cases left, close app
     shiny::observeEvent(input$reject, {
-      inform(paste0("Rejecting snapshot: '", new_path[[i()]], "'"))
+      cli::cli_inform("Rejecting snapshot: {.path {new_path[[i()]]}}.")
       unlink(new_path[[i()]])
       update_cases()
     })
     shiny::observeEvent(input$accept, {
-      inform(paste0("Accepting snapshot: '", old_path[[i()]], "'"))
+      cli::cli_inform("Accepting snapshot: {.path {old_path[[i()]]}}.")
       file.rename(new_path[[i()]], old_path[[i()]])
       update_cases()
     })
@@ -107,7 +125,7 @@ review_app <- function(name, old_path, new_path) {
     }
     next_case <- function() {
       if (all(handled)) {
-        inform("Review complete")
+        cli::cli_inform("Review complete.")
         shiny::stopApp()
         return()
       }
@@ -123,14 +141,15 @@ review_app <- function(name, old_path, new_path) {
     }
   }
 
-  inform(c(
-    "Starting Shiny app for snapshot review",
-    i = "Use Ctrl + C to quit"
+  cli::cli_inform(c(
+    "Starting Shiny app for snapshot review.",
+    i = "Use {.kbd Ctrl + C} to quit."
   ))
   shiny::runApp(
     shiny::shinyApp(ui, server),
     quiet = TRUE,
-    launch.browser = shiny::paneViewer()
+    launch.browser = shiny::paneViewer(),
+    ...
   )
   invisible()
 }
@@ -177,7 +196,8 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     files <- files[!is_dir]
 
     dirs <- substr(dirs, 1, nchar(dirs) - 1)
-    files <- ifelse(tools::file_ext(files) == "", paste0(files, ".md"), files)
+    # Match regardless of whether user include .md or not
+    files <- c(files, paste0(files, ".md"))
 
     out <- out[out$name %in% files | out$test %in% dirs, , drop = FALSE]
   }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-check.R
 \name{CheckReporter}
 \alias{CheckReporter}
-\title{Check reporter: 13 line summary of problems}
+\title{Report results for \verb{R CMD check}}
 \description{
 \verb{R CMD check} displays only the last 13 lines of the result, so this
 report is designed to ensure that you see something useful there.
@@ -20,6 +20,7 @@ Other reporters:
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
 \code{\link{SilentReporter}},
+\code{\link{SlowReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},

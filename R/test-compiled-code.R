@@ -2,6 +2,8 @@
 #' @rdname run_cpp_tests
 #' @export
 expect_cpp_tests_pass <- function(package) {
+  check_string(package)
+
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
   output <- ""
@@ -12,10 +14,9 @@ expect_cpp_tests_pass <- function(package) {
       tests_passed <- .Call(run_testthat_tests, FALSE)
     ),
     error = function(e) {
-      warning(sprintf(
-        "failed to call test entrypoint '%s'",
-        run_testthat_tests
-      ))
+      cli::cli_warn(
+        "Failed to call test entrypoint {.fn {run_testthat_tests}}."
+      )
     }
   )
 
@@ -40,6 +41,8 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
+  check_string(package)
+
   skip_on_os("solaris")
   check_installed("xml2", "to run run_cpp_tests()")
 
@@ -166,7 +169,7 @@ run_cpp_tests <- function(package) {
   }
 }
 
-#' Use Catch for C++ Unit Testing
+#' Use Catch for C++ unit testing
 #'
 #' Add the necessary infrastructure to enable C++ unit testing
 #' in \R packages with [Catch](https://github.com/catchorg/Catch2) and
@@ -253,6 +256,28 @@ run_cpp_tests <- function(package) {
 #'     run_testthat_tests
 #' }
 #'
+#' Assuming you have `useDynLib(<pkg>, .registration = TRUE)` in your package's
+#' `NAMESPACE` file, this implies having routine registration code of the form:
+#'
+#' ```
+#' // The definition for this function comes from the file 'src/test-runner.cpp',
+#' // which is generated via `testthat::use_catch()`.
+#' extern SEXP run_testthat_tests();
+#'
+#' static const R_CallMethodDef callMethods[] = {
+#'   // other .Call method definitions,
+#'   {"run_testthat_tests", (DL_FUNC) &run_testthat_tests, 0},
+#'   {NULL, NULL, 0}
+#' };
+#'
+#' void R_init_<pkg>(DllInfo* dllInfo) {
+#'   R_registerRoutines(dllInfo, NULL, callMethods, NULL, NULL);
+#'   R_useDynamicSymbols(dllInfo, FALSE);
+#' }
+#' ```
+#'
+#' replacing `<pkg>` above with the name of your package, as appropriate.
+#'
 #' See [Controlling Visibility](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility)
 #' and [Registering Symbols](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols)
 #' in the **Writing R Extensions** manual for more information.
@@ -298,23 +323,20 @@ run_cpp_tests <- function(package) {
 use_catch <- function(dir = getwd()) {
   desc_path <- file.path(dir, "DESCRIPTION")
   if (!file.exists(desc_path)) {
-    stop("no DESCRIPTION file at path '", desc_path, "'", call. = FALSE)
+    cli::cli_abort("No DESCRIPTION file at path {.path {desc_path}}.")
   }
 
   desc <- read.dcf(desc_path, all = TRUE)
   pkg <- desc$Package
   if (!nzchar(pkg)) {
-    stop(
-      "no 'Package' field in DESCRIPTION file '",
-      desc_path,
-      "'",
-      call. = FALSE
+    cli::cli_abort(
+      "No {.field Package} field in DESCRIPTION file {.path {desc_path}}."
     )
   }
 
   src_dir <- file.path(dir, "src")
   if (!file.exists(src_dir) && !dir.create(src_dir)) {
-    stop("failed to create 'src/' directory '", src_dir, "'", call. = FALSE)
+    cli::cli_abort("Failed to create {.path src/} directory {.path {src_dir}}.")
   }
 
   test_runner_path <- file.path(src_dir, "test-runner.cpp")
@@ -327,7 +349,9 @@ use_catch <- function(dir = getwd()) {
   )
 
   if (!success) {
-    stop("failed to copy 'test-runner.cpp' to '", src_dir, "'", call. = FALSE)
+    cli::cli_abort(
+      "Failed to copy {.file test-runner.cpp} to {.path {src_dir}}."
+    )
   }
 
   # Copy the test example.
@@ -338,17 +362,16 @@ use_catch <- function(dir = getwd()) {
   )
 
   if (!success) {
-    stop("failed to copy 'test-example.cpp' to '", src_dir, "'", call. = FALSE)
+    cli::cli_abort(
+      "Failed to copy {.file test-example.cpp} to {.path {src_dir}}."
+    )
   }
 
   # Copy the 'test-cpp.R' file.
   test_dir <- file.path(dir, "tests", "testthat")
   if (!file.exists(test_dir) && !dir.create(test_dir, recursive = TRUE)) {
-    stop(
-      "failed to create 'tests/testthat/' directory '",
-      test_dir,
-      "'",
-      call. = FALSE
+    cli::cli_abort(
+      "Failed to create {.path tests/testthat/} directory {.path {test_dir}}."
     )
   }
 
@@ -369,14 +392,11 @@ use_catch <- function(dir = getwd()) {
   output_path <- file.path(dir, "R", "catch-routine-registration.R")
   cat(transformed, file = output_path)
 
-  message("> Added C++ unit testing infrastructure.")
-  message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION.")
-  message("> Please ensure you have 'Suggests: xml2' in your DESCRIPTION.")
-  message(
-    "> Please ensure you have 'useDynLib(",
-    pkg,
-    ", .registration = TRUE)' in your NAMESPACE."
-  )
+  cli::cli_inform(c(
+    v = "Added C++ unit testing infrastructure.",
+    i = "Please ensure you have {.field LinkingTo: testthat} in your DESCRIPTION.",
+    i = "Please ensure you have {.field Suggests: xml2} in your DESCRIPTION."
+  ))
 }
 
 get_routine <- function(package, routine) {
@@ -409,8 +429,9 @@ get_routine <- function(package, routine) {
   }
 
   # if we got here, we failed to find the symbol -- throw an error
-  fmt <- "failed to locate routine '%s' in package '%s'"
-  stop(sprintf(fmt, routine, package), call. = FALSE)
+  cli::cli_abort(
+    "Failed to locate routine {.code {routine}} in package {.pkg {package}}."
+  )
 }
 
 (function() {

@@ -1,4 +1,4 @@
-#' Does code return a vector with the specified length or shape?
+#' Do you expect an object with this length or shape?
 #'
 #' `expect_length()` inspects the [length()] of an object; `expect_shape()`
 #' inspects the "shape" (i.e. [nrow()], [ncol()], or [dim()]) of
@@ -22,9 +22,9 @@
 #' expect_shape(x, dim = c(3, 3))
 #' show_failure(expect_shape(x, dim = c(3, 4, 5)))
 expect_length <- function(object, n) {
-  stopifnot(is.numeric(n), length(n) == 1)
+  check_number_whole(n, min = 0)
 
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
   act$n <- length(act$val)
 
   if (act$n != n) {
@@ -42,7 +42,7 @@ expect_length <- function(object, n) {
 expect_shape = function(object, ..., nrow, ncol, dim) {
   check_dots_empty()
   check_exclusive(nrow, ncol, dim)
-  act <- quasi_label(enquo(object), arg = "object")
+  act <- quasi_label(enquo(object))
 
   dim_object <- base::dim(object)
   if (is.null(dim_object)) {

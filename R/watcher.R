@@ -70,10 +70,11 @@ dir_state <- function(path, pattern = NULL, hash = TRUE) {
   # gracefully, but digest::digest doesn't -- so we wrap it. Both
   # cases will return NA for files that have gone missing.
   if (hash) {
-    file_states <- vapply(files, safe_digest, character(1))
+    file_states <- map_chr(files, safe_digest)
   } else {
-    file_states <- stats::setNames(file.info(files)$mtime, files)
+    file_states <- file.info(files)$mtime
   }
+  file_states <- stats::setNames(file_states, files)
   file_states[!is.na(file_states)]
 }
 

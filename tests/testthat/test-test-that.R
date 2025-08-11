@@ -9,7 +9,7 @@ test_that("can't access variables from other tests (2)", {
 test_that("messages are suppressed", {
   local_edition(2)
   message("YOU SHOULDN'T SEE ME")
-  succeed()
+  pass(NULL)
 })
 
 test_that("errors are captured", {
@@ -50,7 +50,7 @@ test_that("failures are errors", {
     expect_false(TRUE)
   }
 
-  expect_error(f(), "is not TRUE", class = "expectation_failure")
+  expect_error(f(), class = "expectation_failure")
 })
 
 test_that("infinite recursion is captured", {
@@ -72,7 +72,7 @@ test_that("return value from test_that", {
   with_reporter(
     "",
     success <- test_that("success", {
-      succeed()
+      pass(NULL)
     })
   )
   expect_true(success)
@@ -121,9 +121,24 @@ test_that("return value from test_that", {
     })
   )
   expect_false(skip)
-  # No tests = automatically generated skip
-  with_reporter("", skip <- test_that("success", {}))
+})
+
+test_that("empty test skips automatically", {
+  expectations <- capture_expectations(skip <- test_that("success", {}))
   expect_false(skip)
+  expect_s3_class(expectations[[1]], "expectation_skip")
+})
+
+test_that("nested tests skipped correctly", {
+  expectations <- capture_expectations({
+    describe("outer", {
+      it("1")
+      it("2", expect_true(TRUE))
+    })
+  })
+  expect_length(expectations, 2)
+  expect_s3_class(expectations[[1]], "expectation_skip")
+  expect_s3_class(expectations[[2]], "expectation_success")
 })
 
 test_that("can signal warnings and messages without restart", {
@@ -133,12 +148,6 @@ test_that("can signal warnings and messages without restart", {
   expect_null(signalCondition(warning_cnd("foo")))
 })
 
-test_that("braces required in testthat 3e", {
-  local_edition(3)
-  expect_warning(
-    test_that("", expect_true(TRUE))
-  )
-})
 
 test_that("no braces required in testthat 2e", {
   local_edition(2)
@@ -146,4 +155,21 @@ test_that("no braces required in testthat 2e", {
     test_that("", expect_true(TRUE)),
     NA
   )
+})
+
+test_that("missing packages cause a skip on CRAN", {
+  local_on_cran(TRUE)
+
+  expectations <- capture_expectations(test_that("", {
+    library(notinstalled)
+  }))
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_skip")
+
+  local_on_cran(FALSE)
+  expectations <- capture_expectations(test_that("", {
+    library(notinstalled)
+  }))
+  expect_length(expectations, 1)
+  expect_s3_class(expectations[[1]], "expectation_error")
 })

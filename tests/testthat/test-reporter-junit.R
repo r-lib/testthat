@@ -7,3 +7,37 @@ test_that("permit Java-style class names", {
   class <- "package_name_or_domain.ClassName"
   expect_equal(classnameOK(class), class)
 })
+
+test_that("ANSI escapes are stripped from all user text in XML", {
+  skip_if_not_installed("xml2")
+
+  tmp <- withr::local_tempfile(fileext = ".xml")
+  reporter <- JunitReporterMock$new(file = tmp)
+  reporter$start_reporter()
+
+  text_with_ansi <- "\033[33mFirst line\033[0m\nSecond line"
+  reporter$start_context("c")
+  reporter$start_test("c", "t")
+  reporter$add_result("c", "t", new_expectation("error", text_with_ansi))
+  reporter$add_result("c", "t", new_expectation("failure", text_with_ansi))
+  reporter$add_result("c", "t", new_expectation("skip", text_with_ansi))
+  reporter$end_test()
+  reporter$end_context()
+  reporter$end_reporter()
+
+  expect_no_error(xml2::read_xml(tmp))
+})
+
+test_that("warnings outside context don't cause xml_add_child errors", {
+  skip_if_not_installed("xml2")
+
+  tmp <- withr::local_tempfile(fileext = ".xml")
+  reporter <- JunitReporterMock$new(file = tmp)
+  reporter$start_reporter()
+
+  # This would previously fail with "no applicable method for 'xml_add_child'"
+  expect_no_error({
+    reporter$add_result(NULL, "test", new_expectation("warning", "test"))
+  })
+  reporter$end_reporter()
+})

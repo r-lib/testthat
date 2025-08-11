@@ -3,7 +3,7 @@
 \name{expect_length}
 \alias{expect_length}
 \alias{expect_shape}
-\title{Does code return a vector with the specified length or shape?}
+\title{Do you expect an object with this length or shape?}
 \usage{
 expect_length(object, n)
 

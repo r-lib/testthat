@@ -1,12 +1,12 @@
-#' Test reporter: summary of errors.
+#' Report a summary of failures
 #'
-#' This is a reporter designed for interactive usage: it lets you know which
-#' tests have run successfully and as well as fully reporting information about
+#' @description
+#' This is designed for interactive usage: it lets you know which tests have
+#' run successfully and as well as fully reporting information about
 #' failures and errors.
 #'
 #' You can use the `max_reports` field to control the maximum number
-#' of detailed reports produced by this reporter. This is useful when running
-#' with [auto_test()]
+#' of detailed reports produced by this reporter.
 #'
 #' As an additional benefit, this reporter will praise you from time-to-time
 #' if all your tests pass.
@@ -137,11 +137,7 @@ SummaryReporter <- R6::R6Class(
       exp_summary <- function(i) {
         summary_fun(expectations[[i]], labels[i])
       }
-      report_summary <- vapply(
-        seq_along(expectations),
-        exp_summary,
-        character(1)
-      )
+      report_summary <- map_chr(seq_along(expectations), exp_summary)
 
       self$cat_tight(paste(report_summary, collapse = collapse))
       if (n > max_n) {

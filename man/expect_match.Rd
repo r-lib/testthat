@@ -3,7 +3,7 @@
 \name{expect_match}
 \alias{expect_match}
 \alias{expect_no_match}
-\title{Does a string match a regular expression?}
+\title{Do you expect a string to match this pattern?}
 \usage{
 expect_match(
   object,
@@ -60,13 +60,14 @@ alternatives in \link{quasi_label}.}
 \item{label}{Used to customise failure messages. For expert use only.}
 }
 \description{
-Does a string match a regular expression?
+Do you expect a string to match this pattern?
 }
 \details{
-\code{expect_match()} is a wrapper around \code{\link[=grepl]{grepl()}}. See its documentation for
-more detail about the individual arguments. \code{expect_no_match()} provides
-the complementary case, checking that a string \emph{does not} match a regular
-expression.
+\code{expect_match()} checks if a character vector matches a regular expression,
+powered by \code{\link[=grepl]{grepl()}}.
+
+\code{expect_no_match()} provides the complementary case, checking that a
+character vector \emph{does not} match a regular expression.
 }
 \section{Functions}{
 \itemize{
@@ -79,12 +80,11 @@ expect_match("Testing is fun", "fun")
 expect_match("Testing is fun", "f.n")
 expect_no_match("Testing is fun", "horrible")
 
-\dontrun{
-expect_match("Testing is fun", "horrible")
+show_failure(expect_match("Testing is fun", "horrible"))
+show_failure(expect_match("Testing is fun", "horrible", fixed = TRUE))
 
 # Zero-length inputs always fail
-expect_match(character(), ".")
-}
+show_failure(expect_match(character(), "."))
 }
 \seealso{
 Other expectations: 

@@ -17,6 +17,13 @@ test_that("returns input", {
   expect_identical(out, x)
 })
 
+test_that("expect_length validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_length(1:5, "a")
+  })
+})
+
+
 test_that("dim compared correctly", {
   expect_success(expect_shape(matrix(nrow = 5, ncol = 4), dim = c(5L, 4L)))
   expect_snapshot_failure(expect_shape(

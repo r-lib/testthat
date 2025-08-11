@@ -1,26 +1,38 @@
-#' `pass()` or `fail()` a test
+#' Declare that an expectation either passes or fails
 #'
 #' @description
 #' These are the primitives that you can use to implement your own expectations.
-#' Every branch of code inside an expectation must call either `pass()` or
-#' `fail()`; learn more in `vignette("custom-expectation")`.
+#' Regardless of how it's called an expectation should either return `pass()`,
+#' `fail()`, or throw an error (if for example, the arguments are invalid).
 #'
-#' @param message a string to display.
+#' Learn more about creating your own expectations in
+#' `vignette("custom-expectation")`.
+#'
+#' @param message Failure message to send to the user. It's best practice to
+#'   describe both what is expected and what was actually received.
 #' @param info Character vector continuing additional information. Included
 #'   for backward compatibility only and new expectations should not use it.
 #' @param srcref Location of the failure. Should only needed to be explicitly
 #'   supplied when you need to forward a srcref captured elsewhere.
+#' @param trace_env If `trace` is not specified, this is used to generate an
+#'   informative traceack for failures. You should only need to set this if
+#'   you're calling `fail()` from a helper function; see
+#'   `vignette("custom-expectation")` for details.
 #' @param trace An optional backtrace created by [rlang::trace_back()].
 #'   When supplied, the expectation is displayed with the backtrace.
-#' @param trace_env If `is.null(trace)`, this is used to automatically
-#'   generate a traceback running from `test_code()`/`test_file()` to
-#'   `trace_env`. You'll generally only need to set this if you're wrapping
-#'   an expectation inside another function.
+#'   Expert use only.
 #' @export
 #' @examples
-#' \dontrun{
-#' test_that("this test fails", fail())
-#' test_that("this test succeeds", succeed())
+#' expect_length <- function(object, n) {
+#'   act <- quasi_label(rlang::enquo(object), arg = "object")
+#'
+#'   act_n <- length(act$val)
+#'   if (act_n != n) {
+#'     msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
+#'     return(fail(msg))
+#'   }
+#'
+#'   pass(act$val)
 #' }
 fail <- function(
   message = "Failure has been forced",
@@ -53,7 +65,7 @@ pass <- function(value) {
 #' Mark a test as successful
 #'
 #' This is an older version of [pass()] that exists for backwards compatibility.
-#' You should now use `pass()` instead`
+#' You should now use `pass()` instead.
 #'
 #' @export
 #' @inheritParams fail

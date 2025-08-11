@@ -1,4 +1,4 @@
-#' Snapshot testing
+#' Do you expect this code to run the same way as last time?
 #'
 #' @description
 #' Snapshot tests (aka golden tests) are similar to unit tests except that the
@@ -68,6 +68,10 @@ expect_snapshot <- function(
   variant = NULL,
   cnd_class = FALSE
 ) {
+  check_bool(cran)
+  check_bool(error)
+  check_bool(cnd_class)
+
   edition_require(3, "expect_snapshot()")
   variant <- check_variant(variant)
   if (!is.null(transform)) {
@@ -194,6 +198,8 @@ snap_header <- function(state, header) {
 #' @keywords internal
 #' @export
 expect_snapshot_output <- function(x, cran = FALSE, variant = NULL) {
+  check_bool(cran)
+
   edition_require(3, "expect_snapshot_output()")
   variant <- check_variant(variant)
 
@@ -224,6 +230,9 @@ expect_snapshot_error <- function(
   cran = FALSE,
   variant = NULL
 ) {
+  check_string(class)
+  check_bool(cran)
+
   edition_require(3, "expect_snapshot_error()")
   expect_snapshot_condition_(
     "error",
@@ -242,6 +251,9 @@ expect_snapshot_warning <- function(
   cran = FALSE,
   variant = NULL
 ) {
+  check_string(class)
+  check_bool(cran)
+
   edition_require(3, "expect_snapshot_warning()")
   expect_snapshot_condition_(
     "warning",
@@ -268,21 +280,16 @@ expect_snapshot_condition_ <- function(
   )
   if (is.null(val)) {
     if (base_class == class) {
-      return(fail(
-        sprintf("%s did not generate %s", lab, base_class),
-        trace_env = trace_env
-      ))
+      msg <- sprintf("%s did not generate %s", lab, base_class)
     } else {
-      return(fail(
-        sprintf(
-          "%s did not generate %s with class '%s'",
-          lab,
-          base_class,
-          class
-        ),
-        trace_env = trace_env
-      ))
+      msg <- sprintf(
+        "%s did not generate %s with class '%s'",
+        lab,
+        base_class,
+        class
+      )
     }
+    return(fail(msg, trace_env = trace_env))
   }
 
   expect_snapshot_helper(
@@ -306,7 +313,7 @@ expect_snapshot_helper <- function(
   trace_env = caller_env()
 ) {
   if (!cran && on_cran()) {
-    skip("On CRAN")
+    return(invisible())
   }
 
   snapshotter <- get_snapshotter()
@@ -324,6 +331,9 @@ expect_snapshot_helper <- function(
     variant = variant,
     trace_env = trace_env
   )
+  if (inherits(comp, "expectation_failure")) {
+    return(comp)
+  }
 
   if (!identical(variant, "_default")) {
     variant_lab <- paste0(" (variant '", variant, "')")
@@ -401,13 +411,13 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
 # if transform() wiped out the full message, don't indent, #1487
 indent <- function(x) if (length(x)) paste0("  ", x) else x
 
-check_variant <- function(x) {
+check_variant <- function(x, call = caller_env()) {
   if (is.null(x)) {
     "_default"
   } else if (is_string(x)) {
     x
   } else {
-    abort("If supplied, `variant` must be a string")
+    cli::cli_abort("If supplied, {.arg variant} must be a string.", call = call)
   }
 }
 

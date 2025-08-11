@@ -1,4 +1,4 @@
-#' State inspected
+#' Check for global state changes
 #'
 #' @description
 #' One of the most pernicious challenges to debug is when a test runs fine

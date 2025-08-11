@@ -24,13 +24,15 @@ test_that("reparse handles common cases", {
   expect_equal(roundtrip(c(1, 2, 3)), c(1, 2, 3))
   expect_equal(roundtrip(list(1, 2, 3)), list(1, 2, 3))
   expect_equal(roundtrip(mtcars), mtcars)
+  expect_equal(roundtrip(1:10), 1:10)
+  expect_equal(roundtrip(numeric()), numeric())
 
   f <- function(x) x + 1
   expect_equal(roundtrip(f), f, ignore_function_env = TRUE)
 })
 
 test_that("errors if can't roundtrip", {
-  snapper <- local_snapshotter()
+  snapper <- local_snapshotter(fail_on_new = FALSE)
   snapper$start_file("snapshot-4", "test")
 
   expect_error(expect_snapshot_value(NULL), "safely serialized")
@@ -45,4 +47,11 @@ test_that("check_roundtrip() gives nice error", {
     wrapper(NULL, list(), label = "foo", style = "json"),
     error = TRUE
   )
+})
+
+test_that("expect_snapshot_value validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_value(123, cran = "yes")
+    expect_snapshot_value(123, tolerance = "high")
+  })
 })

@@ -4,3 +4,9 @@ test_that("basic properties upheld", {
   expect_success(expect_vector(1:10, size = 10))
   expect_failure(expect_vector(1:10, size = 5))
 })
+
+test_that("expect_vector validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_vector(1:5, size = "large")
+  })
+})
