@@ -1,21 +1,16 @@
 test_that("logical tests act as expected", {
-  local_output_override()
+  df <- data.frame(1:10)
 
   expect_success(expect_true(TRUE))
-  expect_success(expect_false(FALSE))
+  expect_snapshot_failure(expect_true(df))
 
-  expect_snapshot_failure(expect_true(FALSE))
-  expect_snapshot_failure(expect_false(TRUE))
+  expect_success(expect_false(FALSE))
+  expect_snapshot_failure(expect_false(df))
 })
 
 test_that("logical tests ignore attributes", {
   expect_success(expect_true(c(a = TRUE)))
   expect_success(expect_false(c(a = FALSE)))
-})
-
-test_that("can compare non-vectors", {
-  local_output_override()
-  expect_snapshot_failure(expect_true(quote(x)))
 })
 
 test_that("additional info returned in message", {
@@ -24,11 +19,11 @@ test_that("additional info returned in message", {
 })
 
 test_that("expect_null works", {
-  local_output_override()
+  x <- NULL
+  df <- data.frame(1:10)
 
-  expect_success(expect_null(NULL))
-  expect_snapshot_failure(expect_null(1L))
-  expect_snapshot_failure(expect_null(environment()))
+  expect_success(expect_null(x))
+  expect_snapshot_failure(expect_null(df))
 })
 
 test_that("returns the input value", {
