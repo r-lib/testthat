@@ -1,3 +1,7 @@
+# generates actionable failure message
+
+    `x` has length 10, not length 2.
+
 # expect_length validates its inputs
 
     Code
