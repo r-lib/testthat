@@ -5,8 +5,8 @@
     Condition
       Error:
       ! Expected `x` < 10.
-      Actual 10.0 >= 10.0
-      Difference 0.0 >= 0
+      Actual comparison: 10.0 >= 10.0
+      Difference: 0.0 >= 0
 
 ---
 
@@ -15,8 +15,8 @@
     Condition
       Error:
       ! Expected `x` > 10.
-      Actual 10.0 <= 10.0
-      Difference 0.0 <= 0
+      Actual comparison: 10.0 <= 10.0
+      Difference: 0.0 <= 0
 
 # useful output when numbers are very small
 
@@ -25,8 +25,8 @@
     Condition
       Error:
       ! Expected `1.1 * x` <= `x`.
-      Actual 0.0000110 > 0.0000100
-      Difference 0.0000010 > 0
+      Actual comparison: 0.0000110 > 0.0000100
+      Difference: 0.0000010 > 0
 
 ---
 
@@ -35,8 +35,8 @@
     Condition
       Error:
       ! Expected `x` > `1.1 * x`.
-      Actual 0.0000100 <= 0.0000110
-      Difference -0.0000010 <= 0
+      Actual comparison: 0.0000100 <= 0.0000110
+      Difference: -0.0000010 <= 0
 
 # useful output when difference is zero
 
@@ -45,8 +45,8 @@
     Condition
       Error:
       ! Expected `x` < 100.
-      Actual 100.0 >= 100.0
-      Difference 0.0 >= 0
+      Actual comparison: 100.0 >= 100.0
+      Difference: 0.0 >= 0
 
 # useful output when differnce is large
 
@@ -55,98 +55,28 @@
     Condition
       Error:
       ! Expected `x` < 0.001.
-      Actual 100.000 >= 0.001
-      Difference 99.999 >= 0
+      Actual comparison: 100.000 >= 0.001
+      Difference: 99.999 >= 0
 
 # comparisons with Inf work
 
     Code
-      expect_lt(Inf, Inf)
+      expect_lt(x, Inf)
     Condition
       Error:
-      ! Expected Inf < Inf.
-      Actual values are incomparable.
-
----
-
-    Code
-      expect_gt(Inf, Inf)
-    Condition
-      Error:
-      ! Expected Inf > Inf.
-      Actual values are incomparable.
+      ! Expected `x` < Inf.
+      Actual comparison: Inf >= Inf
+      Difference: incomparable.
 
 # comparisons with NA work
 
     Code
-      expect_lt(10, NA_real_)
+      expect_lt(x, 10)
     Condition
       Error:
-      ! Expected 10 < NA_real_.
-      Actual comparison is NA.
-
----
-
-    Code
-      expect_lt(NA_real_, 10)
-    Condition
-      Error:
-      ! Expected NA_real_ < 10.
-      Actual comparison is NA.
-
----
-
-    Code
-      expect_lt(NA_real_, NA_real_)
-    Condition
-      Error:
-      ! Expected NA_real_ < NA_real_.
-      Actual comparison is NA.
-
----
-
-    Code
-      expect_lte(NA_real_, NA_real_)
-    Condition
-      Error:
-      ! Expected NA_real_ <= NA_real_.
-      Actual comparison is NA.
-
----
-
-    Code
-      expect_gt(10, NA_real_)
-    Condition
-      Error:
-      ! Expected 10 > NA_real_.
-      Actual comparison is NA.
-
----
-
-    Code
-      expect_gt(NA_real_, 10)
-    Condition
-      Error:
-      ! Expected NA_real_ > 10.
-      Actual comparison is NA.
-
----
-
-    Code
-      expect_gt(NA_real_, NA_real_)
-    Condition
-      Error:
-      ! Expected NA_real_ > NA_real_.
-      Actual comparison is NA.
-
----
-
-    Code
-      expect_gte(NA_real_, NA_real_)
-    Condition
-      Error:
-      ! Expected NA_real_ >= NA_real_.
-      Actual comparison is NA.
+      ! Expected `x` < 10.
+      Actual comparison: NA >= 10.0
+      Difference: NA.
 
 # comparison must yield a single logical
 

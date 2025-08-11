@@ -41,28 +41,31 @@ expect_compare_ <- function(
     diff <- act$val - exp$val
     msg_exp <- sprintf("Expected %s %s %s.", act$lab, operator, exp$lab)
 
-    if (is.nan(diff)) {
-      msg_act <- "Actual values are incomparable."
-    } else if (is.na(diff)) {
-      msg_act <- "Actual comparison is NA."
-    } else {
-      digits <- max(
-        digits(act$val),
-        digits(exp$val),
-        min_digits(act$val, exp$val)
-      )
+    digits <- max(
+      digits(act$val),
+      digits(exp$val),
+      min_digits(act$val, exp$val)
+    )
 
-      msg_act <- c(
-        sprintf(
-          "Actual %s %s %s",
-          num_exact(act$val, digits),
-          actual_op,
-          num_exact(exp$val, digits)
-        ),
-        sprintf("Difference %s %s 0", num_exact(diff, digits), actual_op)
+    msg_act <- sprintf(
+      "Actual comparison: %s %s %s",
+      num_exact(act$val, digits),
+      actual_op,
+      num_exact(exp$val, digits)
+    )
+
+    if (is.nan(diff)) {
+      msg_diff <- "Difference: incomparable."
+    } else if (is.na(diff)) {
+      msg_diff <- "Difference: NA."
+    } else {
+      msg_diff <- sprintf(
+        "Difference: %s %s 0",
+        num_exact(diff, digits),
+        actual_op
       )
     }
-    return(fail(c(msg_exp, msg_act), trace_env = trace_env))
+    return(fail(c(msg_exp, msg_act, msg_diff), trace_env = trace_env))
   }
   pass(act$val)
 }
