@@ -1,3 +1,8 @@
+test_that("diagonstics", {
+  expect_snapshot(str(as.list(Sys.getenv())))
+  expect_snapshot(readLines("/github/workflow/event.json"))
+})
+
 test_that("expect_snapshot_file works", {
   path <- write_tmp_lines(letters)
   expect_snapshot_file(path, "foo.r", compare = compare_file_text)
