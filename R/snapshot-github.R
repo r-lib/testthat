@@ -54,7 +54,7 @@ gh_find_job <- function(repository, run_id) {
   )
   jobs <- jobs[order(jobs$name), ]
 
-  idx <- menu(jobs$name, title = "Which job?")
+  idx <- utils::menu(jobs$name, title = "Which job?")
   if (idx == 0) {
     cli::cli_abort("Selection cancelled.")
   }

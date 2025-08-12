@@ -9,9 +9,9 @@ snapshot_download_gh(repository, run_id, dest_dir = ".")
 \arguments{
 \item{repository}{Repository name, e.g. \code{"r-lib/testthat"}.}
 
-\item{dest_dir}{Directory to download to. Defaults to the current directory.}
+\item{run_id}{Run ID, e.g. \code{"47905180716"}. You can find this in the action url.}
 
-\item{job_id}{Job ID, e.g. \code{"47905180716"}. You can find this in the job url.}
+\item{dest_dir}{Directory to download to. Defaults to the current directory.}
 }
 \description{
 If your snapshots fail on GitHub, it can be a pain to figure out exactly
