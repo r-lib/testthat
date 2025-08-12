@@ -34,10 +34,6 @@ snap_download_hint <- function() {
   repository <- Sys.getenv("GITHUB_REPOSITORY")
   job_id <- Sys.getenv("GITHUB_JOB")
 
-  if (repository == "" || job_id == "") {
-    return()
-  }
-
   sprintf(
     "* Call `gh_download_snaps(\"%s\", %s)` to download the snapshots from GitHub.\n",
     repository,
@@ -118,4 +114,8 @@ dir_copy <- function(src_dir, dst_dir) {
 
 same_file <- function(x, y) {
   file.exists(x) && file.exists(y) && hash_file(x) == hash_file(y)
+}
+
+on_gh <- function() {
+  Sys.getenv("GITHUB_ACTIONS") == "true"
 }

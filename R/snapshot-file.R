@@ -181,11 +181,8 @@ snapshot_review_hint <- function(
   path <- paste0("tests/testthat/_snaps/", test, "/", new_name(name))
 
   if (check) {
-    gh_hint <- snap_download_hint()
-    on_gh <- !is.null(gh_hint)
-
-    if (on_gh) {
-      bullets <- gh_hint
+    if (on_gh()) {
+      bullets <- snap_download_hint()
     } else {
       bullets <- c(
         if (ci) "* Download and unzip run artifact\n",

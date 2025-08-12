@@ -181,7 +181,11 @@ test_that("snapshot_hint output differs in R CMD check", {
     ci = TRUE
   )))
 
-  withr::local_envvar(GITHUB_REPOSITORY = "r-lib/testthat", GITHUB_JOB = "123")
+  withr::local_envvar(
+    GITHUB_ACTIONS = "true",
+    GITHUB_REPOSITORY = "r-lib/testthat",
+    GITHUB_JOB = "123"
+  )
   expect_snapshot(cat(snapshot_review_hint(
     "lala",
     "foo.r",
