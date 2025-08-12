@@ -52,6 +52,7 @@
     Code
       cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = TRUE))
     Output
+      * Call `snapshot_download_gh("r-lib/testthat", 123)` to download the snapshots from GitHub.
       * Run `testthat::snapshot_review('lala/')` to review changes
 
 # expect_snapshot_file validates its inputs

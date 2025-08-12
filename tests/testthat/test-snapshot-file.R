@@ -1,6 +1,3 @@
-test_that("diagonstics", {
-})
-
 test_that("expect_snapshot_file works", {
   path <- write_tmp_lines(letters)
   expect_snapshot_file(path, "foo.r", compare = compare_file_text)
@@ -164,6 +161,7 @@ test_that("snapshot_hint output differs in R CMD check", {
   snapshot_review_hint <- function(...) {
     testthat:::snapshot_review_hint(..., reset_output = FALSE)
   }
+  withr::local_envvar(GITHUB_ACTIONS = "false")
 
   expect_snapshot(cat(snapshot_review_hint(
     "lala",
@@ -187,7 +185,7 @@ test_that("snapshot_hint output differs in R CMD check", {
   withr::local_envvar(
     GITHUB_ACTIONS = "true",
     GITHUB_REPOSITORY = "r-lib/testthat",
-    GITHUB_JOB = "123"
+    GITHUB_RUN_ID = "123"
   )
   expect_snapshot(cat(snapshot_review_hint(
     "lala",

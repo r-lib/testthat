@@ -368,7 +368,7 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
   }
 
   paste0(
-    snap_download_hint(),
+    if (on_gh()) snap_download_hint(),
     cli::format_inline(
       "* Run {.run testthat::snapshot_accept('{name}')} to accept the change."
     ),

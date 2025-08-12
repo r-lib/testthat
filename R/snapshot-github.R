@@ -36,7 +36,7 @@ snap_download_hint <- function() {
   run_id <- Sys.getenv("GITHUB_RUN_ID")
 
   sprintf(
-    "* Call `gh_download_snaps(\"%s\", %s)` to download the snapshots from GitHub.\n",
+    "* Call `snapshot_download_gh(\"%s\", %s)` to download the snapshots from GitHub.\n",
     repository,
     run_id
   )
