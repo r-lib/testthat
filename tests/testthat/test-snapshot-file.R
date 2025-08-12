@@ -1,5 +1,4 @@
 test_that("diagonstics", {
-  expect_snapshot(readLines(Sys.getenv("GITHUB_EVENT_PATH")))
 })
 
 test_that("expect_snapshot_file works", {

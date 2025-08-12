@@ -9,10 +9,10 @@
 #' instead copy and paste from the hint emitted on GitHub.
 #'
 #' @param repository Repository name, e.g. `"r-lib/testthat"`.
-#' @param job_id Job ID, e.g. `"47905180716"`. You can find this in the job url.
+#' @param run_id Run ID, e.g. `"47905180716"`. You can find this in the action url.
 #' @param dest_dir Directory to download to. Defaults to the current directory.
 #' @export
-snapshot_download_gh <- function(repository, job_id, dest_dir = ".") {
+snapshot_download_gh <- function(repository, run_id, dest_dir = ".") {
   check_installed("gh")
 
   dest_snaps <- file.path(dest_dir, "tests", "testthat", "_snaps")
@@ -20,6 +20,7 @@ snapshot_download_gh <- function(repository, job_id, dest_dir = ".") {
     cli::cli_abort("No snapshot directory found in {.file {dest_dir}}.")
   }
 
+  job_id <- gh_find_job(repository, run_id)
   artifact_id <- gh_find_artifact(repository, job_id)
 
   path <- withr::local_tempfile(pattern = "gh-snaps-")
@@ -32,15 +33,33 @@ snapshot_download_gh <- function(repository, job_id, dest_dir = ".") {
 
 snap_download_hint <- function() {
   repository <- Sys.getenv("GITHUB_REPOSITORY")
-  job_id <- Sys.getenv("GITHUB_JOB")
+  run_id <- Sys.getenv("GITHUB_RUN_ID")
 
   sprintf(
     "* Call `gh_download_snaps(\"%s\", %s)` to download the snapshots from GitHub.\n",
     repository,
-    job_id
+    run_id
   )
 }
 
+gh_find_job <- function(repository, run_id) {
+  jobs_json <- gh::gh(
+    "/repos/{repository}/actions/runs/{run_id}/jobs",
+    repository = repository,
+    run_id = run_id
+  )
+  jobs <- data.frame(
+    id = map_dbl(jobs_json$jobs, \(x) x$id),
+    name = map_chr(jobs_json$jobs, \(x) x$name)
+  )
+  jobs <- jobs[order(jobs$name), ]
+
+  idx <- menu(jobs$name, title = "Which job?")
+  if (idx == 0) {
+    cli::cli_abort("Selection cancelled.")
+  }
+  jobs$id[[idx]]
+}
 
 gh_find_artifact <- function(repository, job_id) {
   job_logs <- gh::gh(
