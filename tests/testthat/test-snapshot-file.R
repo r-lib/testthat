@@ -180,6 +180,14 @@ test_that("snapshot_hint output differs in R CMD check", {
     check = TRUE,
     ci = TRUE
   )))
+
+  withr::local_envvar(GITHUB_REPOSITORY = "r-lib/testthat", GITHUB_JOB = "123")
+  expect_snapshot(cat(snapshot_review_hint(
+    "lala",
+    "foo.r",
+    check = TRUE,
+    ci = TRUE
+  )))
 })
 
 test_that("expect_snapshot_file validates its inputs", {
