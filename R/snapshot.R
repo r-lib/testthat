@@ -340,7 +340,13 @@ expect_snapshot_helper <- function(
   } else {
     variant_lab <- ""
   }
-  hint <- snapshot_accept_hint(variant, snapshotter$file)
+  # Suppress hints when using CheckReporter - it will show a summary hint instead
+  reporter <- get_reporter()
+  if (!is.null(reporter) && inherits(reporter, "CheckReporter")) {
+    hint <- ""
+  } else {
+    hint <- snapshot_accept_hint(variant, snapshotter$file)
+  }
 
   if (length(comp) != 0) {
     msg <- sprintf(

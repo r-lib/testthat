@@ -13,6 +13,7 @@ CheckReporter <- R6::R6Class(
     skips = NULL,
     warnings = NULL,
     n_ok = 0L,
+    has_snapshot_failures = FALSE,
 
     initialize = function(...) {
       self$capabilities$parallel_support <- TRUE
@@ -26,6 +27,10 @@ CheckReporter <- R6::R6Class(
     add_result = function(context, test, result) {
       if (expectation_broken(result)) {
         self$problems$push(result)
+        # Check if this is a snapshot failure
+        if (grepl("^Snapshot of .* has changed", result$message)) {
+          self$has_snapshot_failures <- TRUE
+        }
       } else if (expectation_warning(result)) {
         self$warnings$push(result)
       } else if (expectation_skip(result)) {
@@ -75,6 +80,20 @@ CheckReporter <- R6::R6Class(
         n_skip = self$skips$size(),
         n_pass = self$n_ok
       ))
+
+      # Show snapshot hint if any snapshots failed
+      if (self$has_snapshot_failures) {
+        self$cat_line()
+        self$cat_line(paste0(
+          cli::format_inline(
+            "* Run {.run testthat::snapshot_accept()} to accept all snapshot changes."
+          ),
+          "\n",
+          cli::format_inline(
+            "* Run {.run testthat::snapshot_reject()} to reject all snapshot changes."
+          )
+        ))
+      }
     }
   )
 )
