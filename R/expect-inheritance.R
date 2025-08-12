@@ -255,7 +255,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 
   if (!inherits(act$val, class)) {
     msg <- sprintf(
-      "Expected %s to inherit from `%s`.\nActual inheritance: `%s`",
+      "Expected %s to inherit from %s.\nActual inheritance: %s",
       act$lab,
       exp_lab,
       act$class
@@ -270,7 +270,7 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 isS3 <- function(x) is.object(x) && !isS4(x)
 
 format_class <- function(x) {
-  paste0(encodeString(x, quote = "'"), collapse = "/")
+  paste0(encodeString(x, quote = '"'), collapse = "/")
 }
 
 oo_type <- function(x) {

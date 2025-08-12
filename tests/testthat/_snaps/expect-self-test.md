@@ -1,92 +1,30 @@
-# expect_failure() requires 1 failure and zero successes
+# expect_failure() generates a useful error messages
 
     Code
-      expect_failure({ })
+      expect_failure(expect_no_failure())
     Condition
       Error:
-      ! Expectation did not fail
-
----
-
+      ! Expected code to fail exactly once.
+      Actually failed 0 times
     Code
-      expect_failure(pass(NULL))
+      expect_failure(expect_many_failures())
     Condition
       Error:
-      ! Expectation did not fail
-
----
-
+      ! Expected code to fail exactly once.
+      Actually failed 2 times
     Code
-      expect_failure({
-        pass(NULL)
-        fail()
-      })
+      expect_failure(expect_has_success())
     Condition
       Error:
-      ! Expected expectation to never succeed.
-      Actually succeeded: 1 times
-
----
-
+      ! Expected code to succeed exactly once.
+      Actually succeeded 1 times
     Code
-      expect_failure({
-        fail()
-        pass(NULL)
-        fail()
-      })
+      expect_failure(expect_failure_foo(), "bar")
     Condition
       Error:
-      ! Expectation failed more than once
-
-# expect_failure() can optionally match message
-
-    Code
-      expect_failure(fail("apple"), "banana")
-    Condition
-      Error:
-      ! Expected Failure message to match regexp "banana".
-      Actual text:
-      apple
-
-# expect_success() requires 1 success and zero failures
-
-    Code
-      expect_success({ })
-    Condition
-      Error:
-      ! Expectation did not succeed
-
----
-
-    Code
-      expect_success(fail())
-    Condition
-      Error:
-      ! Expectation did not succeed
-
----
-
-    Code
-      expect_success({
-        pass(NULL)
-        fail()
-      })
-    Condition
-      Error:
-      ! Expected expectation to not fail.
-      Actually failed: 1 times
-
----
-
-    Code
-      expect_success({
-        pass(NULL)
-        pass(NULL)
-      })
-    Condition
-      Error:
-      ! Expected expectation to succeed once.
-      Actually succeeded: 2 times
+      ! Expected failure message to match regexp "bar".
+      Actual message:
+      foo
 
 # errors in expect_success bubble up
 
@@ -108,6 +46,27 @@
       `expected`: TRUE 
       
 
+# expect_success() generates a useful error messages
+
+    Code
+      expect_success(expect_no_success())
+    Condition
+      Error:
+      ! Expected code to succeed exactly once.
+      Actually succeeded 0 times
+    Code
+      expect_success(expect_many_successes())
+    Condition
+      Error:
+      ! Expected code to succeed exactly once.
+      Actually succeeded 2 times
+    Code
+      expect_success(expect_has_failure())
+    Condition
+      Error:
+      ! Expected code to not fail.
+      Actually failed 1 times
+
 # expect_no are deprecated
 
     Code
@@ -122,20 +81,4 @@
       Warning:
       `expect_no_success()` was deprecated in testthat 3.3.0.
       i Please use `expect_failure()` instead.
-
-# expect_no still work
-
-    Code
-      expect_no_failure(fail())
-    Condition
-      Error:
-      ! Expectation failed
-
----
-
-    Code
-      expect_no_success(pass(NULL))
-    Condition
-      Error:
-      ! Expectation succeeded
 

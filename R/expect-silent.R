@@ -29,7 +29,7 @@ expect_silent <- function(object) {
   if (length(outputs) != 0) {
     msg <- c(
       sprintf("Expected %s to run silently.", act$lab),
-      sprintf("Actually produced: %s.", paste(outputs, collapse = ", "))
+      sprintf("Actual noise: %s.", paste(outputs, collapse = ", "))
     )
     return(fail(msg))
   }

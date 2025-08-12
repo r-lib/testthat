@@ -5,6 +5,6 @@
     Condition
       Error:
       ! Expected `x` > `expected`.
-      Actual 10.0 <= 11.0
-      Difference -1.0 <= 0
+      Actual comparison: 10.0 <= 11.0
+      Difference: -1.0 <= 0
 

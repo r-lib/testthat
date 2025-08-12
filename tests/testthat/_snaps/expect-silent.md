@@ -1,27 +1,9 @@
-# checks for any type of output
+# generates useful failure message
 
     Code
-      expect_silent(warning("!"))
+      expect_silent(f())
     Condition
       Error:
-      ! Expected `warning("!")` to run silently.
-      Actually produced: warnings.
-
----
-
-    Code
-      expect_silent(message("!"))
-    Condition
-      Error:
-      ! Expected `message("!")` to run silently.
-      Actually produced: messages.
-
----
-
-    Code
-      expect_silent(print("!"))
-    Condition
-      Error:
-      ! Expected `print("!")` to run silently.
-      Actually produced: output.
+      ! Expected `f()` to run silently.
+      Actual noise: output, warnings, messages.
 

@@ -27,6 +27,7 @@
     Condition
       Error:
       ! Expected `x` to be identical to "a".
+      Differences:
       Types not compatible: double is not character
 
 ---
@@ -36,7 +37,7 @@
     Condition
       Error:
       ! Expected `x` to equal "a".
-      Actual:
+      Differences:
       Types not compatible: double is not character
 
 # default labels use unquoting
@@ -46,7 +47,7 @@
     Condition
       Error:
       ! Expected 1 to equal 2.
-      Actual:
+      Differences:
       1/1 mismatches
       [1] 1 - 2 == -1
 
@@ -57,6 +58,7 @@
     Condition
       Error:
       ! Expected `f` to be identical to `g`.
+      Differences:
       Objects equal but not identical
 
 # attributes for object (#452)
@@ -66,7 +68,7 @@
     Condition
       Error:
       ! Expected `oops` to equal 0.
-      Actual:
+      Differences:
       Attributes: < Modes: list, NULL >
       Attributes: < Lengths: 1, 0 >
       Attributes: < names for target but not for current >

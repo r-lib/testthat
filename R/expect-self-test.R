@@ -46,20 +46,20 @@ capture_success_failure <- function(expr) {
 expect_success <- function(expr) {
   status <- capture_success_failure(expr)
 
-  if (status$n_success == 0) {
-    return(fail("Expectation did not succeed"))
-  } else if (status$n_success > 1) {
-    return(fail(sprintf(
-      "Expected expectation to succeed once.\nActually succeeded: %i times",
-      status$n_success
-    )))
+  if (status$n_success != 1) {
+    msg <- c(
+      "Expected code to succeed exactly once.",
+      sprintf("Actually succeeded %i times", status$n_success)
+    )
+    return(fail(msg))
   }
 
   if (status$n_failure > 0) {
-    return(fail(sprintf(
-      "Expected expectation to not fail.\nActually failed: %i times",
-      status$n_failure
-    )))
+    msg <- c(
+      "Expected code to not fail.",
+      sprintf("Actually failed %i times", status$n_failure)
+    )
+    return(fail(msg))
   }
 
   pass(NULL)
@@ -70,23 +70,25 @@ expect_success <- function(expr) {
 expect_failure <- function(expr, message = NULL, ...) {
   status <- capture_success_failure(expr)
 
-  if (status$n_failure == 0) {
-    return(fail("Expectation did not fail"))
-  } else if (status$n_failure > 1) {
-    # This should be impossible, but including for completeness
-    return(fail("Expectation failed more than once"))
+  if (status$n_failure != 1) {
+    msg <- c(
+      "Expected code to fail exactly once.",
+      sprintf("Actually failed %i times", status$n_failure)
+    )
+    return(fail(msg))
   }
 
   if (status$n_success != 0) {
-    return(fail(sprintf(
-      "Expected expectation to never succeed.\nActually succeeded: %i times",
-      status$n_success
-    )))
+    msg <- c(
+      "Expected code to succeed exactly once.",
+      sprintf("Actually succeeded %i times", status$n_success)
+    )
+    return(fail(msg))
   }
 
   if (!is.null(message)) {
-    act <- labelled_value(status$last_failure$message, "Failure message")
-    return(expect_match_(act, message, ...))
+    act <- labelled_value(status$last_failure$message, "failure message")
+    return(expect_match_(act, message, ..., title = "message"))
   }
   pass(NULL)
 }

@@ -123,11 +123,11 @@ expect_in <- function(object, expected) {
   act_miss <- !act$val %in% exp$val
   if (any(act_miss)) {
     msg_exp <- sprintf(
-      "Expected all values in %s to be in %s.",
+      "Expected %s to only contain values from %s.",
       act$lab,
       exp$lab
     )
-    msg_act <- sprintf("Extra: %s", values(act$val[act_miss]))
+    msg_act <- sprintf("Invalid: %s", values(act$val[act_miss]))
     fail(c(msg_exp, msg_act))
   }
 

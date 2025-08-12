@@ -455,7 +455,7 @@ compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
   } else {
     if (!is.null(cond)) {
       c(
-        sprintf("Expected %s to not throw a %s.", lab, cond_type),
+        sprintf("Expected %s to not throw any %ss.", lab, cond_type),
         actual_condition(cond)
       )
     } else {

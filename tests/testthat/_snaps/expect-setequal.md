@@ -1,21 +1,3 @@
-# checks both directions of containment
-
-    Code
-      expect_setequal(letters, letters[-1])
-    Condition
-      Error:
-      ! Expected `letters` to have the same values as `letters[-1]`.
-      Needs: "a"
-
----
-
-    Code
-      expect_setequal(letters[-1], letters)
-    Condition
-      Error:
-      ! Expected `letters[-1]` to have the same values as `letters`.
-      Extra: "a"
-
 # warns if both inputs are named
 
     Code
@@ -103,119 +85,6 @@
       ! Expected `x` to have the same values as `y`.
       Extra: 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
 
-# error if any names are duplicated
-
-    Code
-      expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1))
-    Condition
-      Error:
-      ! Expected `list(a = 1, b = 2, b = 3)` to be equal to `list(b = 2, a = 1)`.
-      Differences:
-      `actual` is length 3
-      `expected` is length 2
-      
-      `names(actual)`:   "a" "b" "b"
-      `names(expected)`: "a" "b"    
-      
-      `actual[[3]]` is a double vector (3)
-      `expected[[3]]` is absent
-
----
-
-    Code
-      expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1))
-    Condition
-      Error:
-      ! Expected `list(a = 1, b = 2)` to be equal to `list(b = 3, b = 2, a = 1)`.
-      Differences:
-      `actual` is length 2
-      `expected` is length 3
-      
-      `names(actual)`:   "a" "b"    
-      `names(expected)`: "a" "b" "b"
-      
-        `actual[[2]]`: 2.0
-      `expected[[2]]`: 3.0
-      
-      `actual[[3]]` is absent
-      `expected[[3]]` is a double vector (2)
-
----
-
-    Code
-      expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 3, b = 2, a = 1))
-    Condition
-      Error:
-      ! Expected `list(a = 1, b = 2, b = 3)` to be equal to `list(b = 3, b = 2, a = 1)`.
-      Differences:
-        `actual[[2]]`: 2.0
-      `expected[[2]]`: 3.0
-      
-        `actual[[3]]`: 3.0
-      `expected[[3]]`: 2.0
-
-# fail if names don't match
-
-    Code
-      expect_mapequal(list(a = 1, b = 2), list(a = 1))
-    Condition
-      Error:
-      ! Expected `list(a = 1, b = 2)` to be equal to `list(a = 1)`.
-      Differences:
-      `actual` is length 2
-      `expected` is length 1
-      
-      `names(actual)`:   "a" "b"
-      `names(expected)`: "a"    
-      
-      `actual$b` is a double vector (2)
-      `expected$b` is absent
-
----
-
-    Code
-      expect_mapequal(list(a = 1), list(a = 1, b = 2))
-    Condition
-      Error:
-      ! Expected `list(a = 1)` to be equal to `list(a = 1, b = 2)`.
-      Differences:
-      `actual` is length 1
-      `expected` is length 2
-      
-      `names(actual)`:   "a"    
-      `names(expected)`: "a" "b"
-      
-      `actual$b` is absent
-      `expected$b` is a double vector (2)
-
-# fails if values don't match
-
-    Code
-      expect_mapequal(list(a = 1, b = 2), list(a = 1, b = 3))
-    Condition
-      Error:
-      ! Expected `list(a = 1, b = 2)` to be equal to `list(a = 1, b = 3)`.
-      Differences:
-        `actual$b`: 2.0
-      `expected$b`: 3.0
-
-# fails if unnamed values in different location if any unnamed values
-
-    Code
-      expect_mapequal(list(1, b = 2, c = 3), list(b = 2, 1, c = 3))
-    Condition
-      Error:
-      ! Expected `list(1, b = 2, c = 3)` to be equal to `list(b = 2, 1, c = 3)`.
-      Differences:
-      `names(actual)`:   ""  "b" "c"
-      `names(expected)`: "b" ""  "c"
-      
-        `actual[[1]]`: 1.0
-      `expected[[1]]`: 2.0
-      
-        `actual[[2]]`: 2.0
-      `expected[[2]]`: 1.0
-
 # expect_contains() gives useful message on failure
 
     Code
@@ -240,8 +109,8 @@
       expect_in(x1, x2)
     Condition
       Error:
-      ! Expected all values in `x1` to be in `x2`.
-      Extra: "a"
+      ! Expected `x1` to only contain values from `x2`.
+      Invalid: "a"
 
 ---
 
@@ -249,6 +118,6 @@
       expect_in(x1, x3)
     Condition
       Error:
-      ! Expected all values in `x1` to be in `x3`.
-      Extra: "a", "b"
+      ! Expected `x1` to only contain values from `x3`.
+      Invalid: "a", "b"
 

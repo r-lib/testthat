@@ -77,10 +77,9 @@ expect_equal <- function(
     }
 
     if (!comp$equal) {
-      msg <- sprintf(
-        "Expected %s to equal %s.\nActual:\n%s",
-        act$lab,
-        exp$lab,
+      msg <- c(
+        sprintf("Expected %s to equal %s.", act$lab, exp$lab),
+        "Differences:",
         comp$message
       )
       return(fail(msg, info = info))
@@ -88,6 +87,7 @@ expect_equal <- function(
     pass(act$val)
   }
 }
+
 
 #' @export
 #' @rdname equality-expectations
@@ -120,6 +120,7 @@ expect_identical <- function(
     if (!ident) {
       msg <- c(
         sprintf("Expected %s to be identical to %s.", act$lab, exp$lab),
+        "Differences:",
         msg_act
       )
       return(fail(msg, info = info))

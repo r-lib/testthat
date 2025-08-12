@@ -12,7 +12,7 @@
       expect_error(stop("Yes"), NA)
     Condition
       Error:
-      ! Expected `stop("Yes")` to not throw a error.
+      ! Expected `stop("Yes")` to not throw any errors.
       Actually got a <simpleError> with message:
         Yes
 
@@ -48,7 +48,7 @@
       expect_error(fb(), NA)
     Condition
       Error:
-      ! Expected `fb()` to not throw a error.
+      ! Expected `fb()` to not throw any errors.
       Actually got a <foobar> with message:
         dispatched!
 
@@ -78,10 +78,10 @@
 # regexp = NA checks for absence of message
 
     Code
-      expect_message(message("!"), NA)
+      expect_message(f(), NA)
     Condition
       Error:
-      ! Expected `message("!")` to not throw a message.
+      ! Expected `f()` to not throw any messages.
       Actually got a <simpleMessage> with message:
         !
         
@@ -172,68 +172,4 @@
       ! Can't supply `...` unless `regexp` is set.
       * Unused arguments: `pattern` and `fixed`.
       i Did you mean to use `regexp` so `...` is passed to `grepl()`?
-
-# other conditions are swallowed
-
-    Code
-      expect_error(f("error"), "not a match")
-    Condition
-      Error:
-      ! `f("error")` threw an error with unexpected message.
-      Expected match: "not a match"
-      Actual message: "error"
-
----
-
-    Code
-      expect_warning(f("warning"), "not a match")
-    Condition
-      Error:
-      ! `f("warning")` produced unexpected warnings.
-      Expected match: not a match
-      Actual values:
-      * warning
-
----
-
-    Code
-      expect_message(f("message"), "not a match")
-    Condition
-      Error:
-      ! `f("message")` produced unexpected messages.
-      Expected match: not a match
-      Actual values:
-      * message
-
----
-
-    Code
-      expect_condition(f("condition"), "not a match")
-    Condition
-      Error:
-      ! `f("condition")` threw an condition with unexpected message.
-      Expected match: "not a match"
-      Actual message: "signal"
-
----
-
-    Code
-      expect_error(f("error"), class = "not a match")
-    Condition
-      Error:
-      ! `f("error")` threw an error with unexpected class.
-      Expected class: not a match
-      Actual class:   simpleError/error/condition
-      Message:        error
-
----
-
-    Code
-      expect_condition(f("message"), class = "not a match")
-    Condition
-      Error:
-      ! `f("message")` threw an condition with unexpected class.
-      Expected class: not a match
-      Actual class:   simpleMessage/message/condition
-      Message:        message
 

@@ -21,7 +21,7 @@ test_that("expect_no_* pass with pure code", {
 
 test_that("expect_no_ continues execution", {
   b <- 1
-  expect_snapshot_failure(expect_no_warning({
+  expect_failure(expect_no_warning({
     warning("x")
     b <- 2
   }))

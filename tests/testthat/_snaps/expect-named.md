@@ -1,18 +1,18 @@
 # expected_named verifies presence of names
 
     Code
-      expect_named(1:10)
+      expect_named(x)
     Condition
       Error:
-      ! Expected `1:10` to have names.
+      ! Expected `x` to have names.
 
 # expected_named verifies actual of names
 
     Code
-      expect_named(c(a = 1), "b")
+      expect_named(x, "b")
     Condition
       Error:
-      ! Expected names(`c(a = 1)`) to be equal to "b".
+      ! Expected names(`x`) to be equal to "b".
       Differences:
       `actual`:   "a"
       `expected`: "b"

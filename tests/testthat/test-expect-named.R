@@ -1,11 +1,15 @@
 test_that("expected_named verifies presence of names", {
   expect_success(expect_named(c(a = 1)))
-  expect_snapshot_failure(expect_named(1:10))
+
+  x <- 1:10
+  expect_snapshot_failure(expect_named(x))
 })
 
 test_that("expected_named verifies actual of names", {
   expect_success(expect_named(c(a = 1), "a"))
-  expect_snapshot_failure(expect_named(c(a = 1), "b"))
+
+  x <- c(a = 1)
+  expect_snapshot_failure(expect_named(x, "b"))
 })
 
 test_that("expected_named optionally ignores order and case", {

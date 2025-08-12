@@ -58,7 +58,7 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' show_failure(expect_null(y))
 expect_null <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label)
-  exp <- labelled_value(NULL, "FALSE")
+  exp <- labelled_value(NULL, "NULL")
   expect_waldo_constant_(act, exp, info = info)
 }
 

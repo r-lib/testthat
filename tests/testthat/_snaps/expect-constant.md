@@ -52,7 +52,7 @@
       expect_null(df)
     Condition
       Error:
-      ! Expected `df` to be FALSE.
+      ! Expected `df` to be NULL.
       Differences:
       `actual` is an S3 object of class <data.frame>, a list
       `expected` is NULL

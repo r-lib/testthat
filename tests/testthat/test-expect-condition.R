@@ -149,7 +149,9 @@ test_that("expect_warning validates its inputs", {
 
 test_that("regexp = NA checks for absence of message", {
   expect_success(expect_message({}, NA))
-  expect_snapshot_failure(expect_message(message("!"), NA))
+
+  f <- \() message("!")
+  expect_snapshot_failure(expect_message(f(), NA))
 })
 
 test_that("expect_message validates its inputs", {
@@ -308,14 +310,14 @@ test_that("other conditions are swallowed", {
 
   local_edition(2)
   # if condition text doesn't match, expectation fails (not errors)
-  expect_snapshot_failure(expect_error(f("error"), "not a match"))
-  expect_snapshot_failure(expect_warning(f("warning"), "not a match"))
-  expect_snapshot_failure(expect_message(f("message"), "not a match"))
-  expect_snapshot_failure(expect_condition(f("condition"), "not a match"))
+  expect_failure(expect_error(f("error"), "not a match"))
+  expect_failure(expect_warning(f("warning"), "not a match"))
+  expect_failure(expect_message(f("message"), "not a match"))
+  expect_failure(expect_condition(f("condition"), "not a match"))
 
   # if error/condition class doesn't match, expectation fails
-  expect_snapshot_failure(expect_error(f("error"), class = "not a match"))
-  expect_snapshot_failure(expect_condition(f("message"), class = "not a match"))
+  expect_failure(expect_error(f("error"), class = "not a match"))
+  expect_failure(expect_condition(f("message"), class = "not a match"))
 
   # expect_message() and expect_warning() swallow all messages/warnings
   expect_message(expect_message(f("message", "message")), NA)

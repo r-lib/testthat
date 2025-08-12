@@ -4,8 +4,8 @@
       expect_type(x, "double")
     Condition
       Error:
-      ! Expected `x` to have type 'double'.
-      Actual type: 'integer'
+      ! Expected `x` to have type "double".
+      Actual type: "integer"
 
 # expect_type validates its inputs
 
@@ -21,8 +21,8 @@
       expect_is(factor("a"), "integer")
     Condition
       Error:
-      ! Expected `factor("a")` to inherit from `'character'`.
-      Actual inheritance: `'factor'`
+      ! Expected `factor("a")` to inherit from "character".
+      Actual inheritance: "factor"
 
 # expect_s3/s4_class fails if appropriate type
 
@@ -73,8 +73,8 @@
       expect_s4_class(C(), "D")
     Condition
       Error:
-      ! Expected `C()` to inherit from 'D'.
-      Actual class: 'C'/'A'/'B'/'list'/'vector'
+      ! Expected `C()` to inherit from "D".
+      Actual class: "C"/"A"/"B"/"list"/"vector"
 
 # expect_s3_class validates its inputs
 
@@ -95,8 +95,8 @@
       expect_s3_class(x, "c")
     Condition
       Error:
-      ! Expected `x` to inherit from 'c'.
-      Actual class: 'a'/'b'
+      ! Expected `x` to inherit from "c".
+      Actual class: "a"/"b"
 
 ---
 
@@ -104,8 +104,8 @@
       expect_s3_class(x, c("c", "d"))
     Condition
       Error:
-      ! Expected `x` to inherit from 'c'/'d'.
-      Actual class: 'a'/'b'
+      ! Expected `x` to inherit from "c"/"d".
+      Actual class: "a"/"b"
 
 # test_s3_class can request exact match
 
@@ -113,8 +113,8 @@
       expect_s3_class(x, "a", exact = TRUE)
     Condition
       Error:
-      ! Expected `x` to have class 'a'.
-      Actual class: 'a'/'b'
+      ! Expected `x` to have class "a".
+      Actual class: "a"/"b"
 
 # expect_s4_class validates its inputs
 
@@ -136,8 +136,8 @@
       expect_r6_class(person, "Student")
     Condition
       Error:
-      ! Expected `person` to inherit from 'Student'.
-      Actual class: 'Person'/'R6'
+      ! Expected `person` to inherit from "Student".
+      Actual class: "Person"/"R6"
 
 # expect_r6_class validates its inputs
 
