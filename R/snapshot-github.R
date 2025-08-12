@@ -77,7 +77,7 @@ gh_download_artifact <- function(repository, artifact_id, path) {
     archive_format = "zip",
     .destfile = zip_path
   )
-  unzip(zip_path, exdir = path)
+  utils::unzip(zip_path, exdir = path)
   invisible(path)
 }
 
