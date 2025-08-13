@@ -8,6 +8,7 @@ local_snapshotter(
   reporter = SnapshotReporter,
   snap_dir = "_snaps",
   cleanup = FALSE,
+  desc = NULL,
   fail_on_new = NULL,
   frame = caller_env()
 )
