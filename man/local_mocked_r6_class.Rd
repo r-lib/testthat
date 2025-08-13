@@ -14,15 +14,15 @@ local_mocked_r6_class(
 \arguments{
 \item{class}{An R6 class definition.}
 
-\item{public, private}{A named list of public and private methods/data..}
+\item{public, private}{A named list of public and private methods/data.}
 
 \item{frame}{Calling frame which determines the scope of the mock.
 Only needed when wrapping in another local helper.}
 }
 \description{
 This function allows you to temporarily override an R6 class definition.
-It works by creating a sublcass then using \code{\link[=local_mocked_bindings]{local_mocked_bindings()}} to
-temporarily replace the original defintion. This means that it will not
+It works by creating a subclass then using \code{\link[=local_mocked_bindings]{local_mocked_bindings()}} to
+temporarily replace the original definition. This means that it will not
 affect subclasses of the original class; please file an issue if you need
 this.
 }
