@@ -137,7 +137,6 @@ expect_snapshot_file <- function(
     path,
     file_equal = compare,
     variant = variant,
-    trace_env = caller_env()
   )
   if (inherits(equal, "expectation_failure")) {
     return(equal)
@@ -181,14 +180,28 @@ snapshot_review_hint <- function(
 
   path <- paste0("tests/testthat/_snaps/", test, "/", new_name(name))
 
+  if (check) {
+    if (on_gh()) {
+      bullets <- snap_download_hint()
+    } else {
+      bullets <- c(
+        if (ci) "* Download and unzip run artifact\n",
+        if (!ci) "* Locate check directory\n",
+        paste0("* Copy '", path, "' to local test directory\n")
+      )
+    }
+  } else {
+    bullets <- NULL
+  }
+
   paste0(
-    if (check && ci) "* Download and unzip run artifact\n",
-    if (check && !ci) "* Locate check directory\n",
-    if (check) paste0("* Copy '", path, "' to local test directory\n"),
-    if (check) "* ",
-    cli::format_inline(
-      "Run {.run testthat::snapshot_review('{test}/')} to review changes"
-    )
+    c(
+      bullets,
+      cli::format_inline(
+        "* Run {.run testthat::snapshot_review('{test}/')} to review changes"
+      )
+    ),
+    collapse = ""
   )
 }
 
@@ -204,7 +217,7 @@ snapshot_file_equal <- function(
   trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
-    cli::cli_abort("{.path {path}} not found.")
+    cli::cli_abort("{.path {path}} not found.", call = trace_env)
   }
 
   if (is.null(snap_variant)) {

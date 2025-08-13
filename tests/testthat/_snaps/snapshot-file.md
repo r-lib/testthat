@@ -1,3 +1,11 @@
+# expect_snapshot_file finds duplicate snapshot files
+
+    Code
+      expect_snapshot_file(write_tmp_lines(r_version()), "version.txt", variant = r_version())
+    Condition
+      Error in `expect_snapshot_file()`:
+      ! Snapshot file names must be unique. `name` has already been used.
+
 # warns on first creation
 
     Code
@@ -11,7 +19,7 @@
     Code
       snapshot_file_equal_("doesnt-exist.txt")
     Condition
-      Error in `snapshot_file_equal()`:
+      Error in `snapshot_file_equal_()`:
       ! 'doesnt-exist.txt' not found.
 
 # snapshot_hint output differs in R CMD check
@@ -19,7 +27,7 @@
     Code
       cat(snapshot_review_hint("lala", "foo.r", check = FALSE, ci = FALSE))
     Output
-      Run `testthat::snapshot_review('lala/')` to review changes
+      * Run `testthat::snapshot_review('lala/')` to review changes
 
 ---
 
@@ -37,6 +45,14 @@
     Output
       * Download and unzip run artifact
       * Copy 'tests/testthat/_snaps/lala/foo.new.r' to local test directory
+      * Run `testthat::snapshot_review('lala/')` to review changes
+
+---
+
+    Code
+      cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = TRUE))
+    Output
+      * Call `snapshot_download_gh("r-lib/testthat", "123")` to download the snapshots from GitHub.
       * Run `testthat::snapshot_review('lala/')` to review changes
 
 # expect_snapshot_file validates its inputs

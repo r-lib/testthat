@@ -7,6 +7,7 @@ SnapshotReporter <- R6::R6Class(
     test = NULL,
     test_file_seen = character(),
     snap_file_seen = character(),
+    snap_file_saved = character(),
     variants_changed = FALSE,
     fail_on_new = NULL,
 
@@ -22,6 +23,7 @@ SnapshotReporter <- R6::R6Class(
     start_file = function(path, test = NULL) {
       self$file <- context_name(path)
       self$test_file_seen <- c(self$test_file_seen, self$file)
+      self$snap_file_saved <- character()
 
       self$variants_changed <- character()
 
@@ -107,6 +109,15 @@ SnapshotReporter <- R6::R6Class(
     ) {
       self$announce_file_snapshot(name)
 
+      save_path <- paste0(c(self$file, variant, name), collapse = "/")
+      if (save_path %in% self$snap_file_saved) {
+        cli::cli_abort(
+          "Snapshot file names must be unique. {.arg name} has already been used.",
+          call = trace_env
+        )
+      }
+      self$snap_file_saved <- c(self$snap_file_saved, save_path)
+
       snapshot_file_equal(
         snap_dir = self$snap_dir,
         snap_test = self$file,
@@ -129,7 +140,7 @@ SnapshotReporter <- R6::R6Class(
         return()
       }
 
-      # If expectation errors or skips, need to reset remaining snapshots
+      # If expectation errors or skips, need to copy snapshots from old to cur
       if (expectation_error(result) || expectation_skip(result)) {
         self$cur_snaps$reset(self$test, self$old_snaps)
       }
@@ -193,23 +204,19 @@ get_snapshotter <- function() {
 #' @export
 #' @keywords internal
 local_snapshotter <- function(
-  snap_dir = NULL,
+  reporter = SnapshotReporter,
+  snap_dir = "_snaps",
   cleanup = FALSE,
   fail_on_new = NULL,
-  .env = parent.frame()
+  frame = caller_env()
 ) {
-  snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
-  reporter <- SnapshotReporter$new(
-    snap_dir = snap_dir,
-    fail_on_new = fail_on_new
-  )
-  if (!identical(cleanup, FALSE)) {
-    cli::cli_warn("{.arg cleanup} is deprecated.")
-  }
+  reporter <- reporter$new(snap_dir = snap_dir, fail_on_new = fail_on_new)
+  withr::local_options("testthat.snapshotter" = reporter, .local_envir = frame)
 
-  withr::local_options(
-    "testthat.snapshotter" = reporter,
-    .local_envir = .env
-  )
   reporter
+}
+
+local_test_snapshotter <- function(snap_dir = NULL, frame = caller_env()) {
+  snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = frame)
+  local_snapshotter(snap_dir = snap_dir, fail_on_new = FALSE, frame = frame)
 }

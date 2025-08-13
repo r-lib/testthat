@@ -5,23 +5,39 @@
 ---
 
     `one` does not match regexp "asdf".
-    Text: "bcde"
+    Text:
+    ✖ │ bcde
 
 ---
 
     Every element of `many` does not match regexp "a".
     Text:
-    ✔ a
-    ✔ a
-    ✖ b
+    ✔ │ a
+    ✔ │ a
+    ✖ │ b
 
 ---
 
     Some element of `many` does not match regexp "c".
     Text:
-    ✖ a
-    ✖ a
-    ✖ b
+    ✖ │ a
+    ✖ │ a
+    ✖ │ b
+
+---
+
+    Every element of `paragraph` does not match regexp "paragraph".
+    Text:
+    ✔ │ This is a multiline
+      │ paragraph.
+    ✖ │ Second element.
+
+---
+
+    Every element of `na` does not match regexp "NA".
+    Text:
+    ✔ │ NA
+    ✖ │ <NA>
 
 # expect_match validates its inputs
 
@@ -82,10 +98,12 @@
 # expect_no_match works
 
     `x` matches string "e*".
-    Text: "te*st"
+    Text:
+    x | te*st
 
 ---
 
     `x` matches regexp "TEST".
-    Text: "test"
+    Text:
+    x | test
 
