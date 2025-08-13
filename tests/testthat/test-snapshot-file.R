@@ -161,6 +161,7 @@ test_that("snapshot_hint output differs in R CMD check", {
   snapshot_review_hint <- function(...) {
     testthat:::snapshot_review_hint(..., reset_output = FALSE)
   }
+  withr::local_envvar(GITHUB_ACTIONS = "false")
 
   expect_snapshot(cat(snapshot_review_hint(
     "lala",
@@ -174,6 +175,18 @@ test_that("snapshot_hint output differs in R CMD check", {
     check = TRUE,
     ci = FALSE
   )))
+  expect_snapshot(cat(snapshot_review_hint(
+    "lala",
+    "foo.r",
+    check = TRUE,
+    ci = TRUE
+  )))
+
+  withr::local_envvar(
+    GITHUB_ACTIONS = "true",
+    GITHUB_REPOSITORY = "r-lib/testthat",
+    GITHUB_RUN_ID = "123"
+  )
   expect_snapshot(cat(snapshot_review_hint(
     "lala",
     "foo.r",
