@@ -74,7 +74,7 @@ CheckReporter <- R6::R6Class(
         self$cat_line()
 
         if (some(problems, \(x) isTRUE(attr(x, "snapshot")))) {
-          self$rule("To resolve snapshot failures", line = 1)
+          self$rule("Snapshots", line = 1)
           self$cat_line(snapshot_check_hint())
         }
       } else {
@@ -120,6 +120,8 @@ summary_line <- function(n_fail, n_warn, n_skip, n_pass) {
 }
 
 snapshot_check_hint <- function() {
+  intro <- "To review and process snapshots locally:"
+
   if (on_gh()) {
     repository <- Sys.getenv("GITHUB_REPOSITORY")
     run_id <- Sys.getenv("GITHUB_RUN_ID")
@@ -145,7 +147,7 @@ snapshot_check_hint <- function() {
     "* Run `testthat::snapshot_accept()` to accept all changes.",
     "* Run `testthat::snapshot_review()` to review all changes."
   )
-  c(copy, action)
+  c(intro, copy, action)
 }
 
 run <- function(x) {
