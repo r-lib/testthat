@@ -13,7 +13,6 @@ CheckReporter <- R6::R6Class(
     skips = NULL,
     warnings = NULL,
     n_ok = 0L,
-    has_snapshot_failure = FALSE,
 
     initialize = function(...) {
       self$capabilities$parallel_support <- TRUE

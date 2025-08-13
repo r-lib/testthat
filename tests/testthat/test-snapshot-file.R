@@ -1,5 +1,5 @@
 test_that("expect_snapshot_file works", {
-  path <- write_tmp_lines(letters[-1])
+  path <- write_tmp_lines(letters)
   expect_snapshot_file(path, "foo.r", compare = compare_file_text)
 
   path <- withr::local_tempfile()
