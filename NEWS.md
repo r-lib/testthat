@@ -1,6 +1,9 @@
 # testthat (development version)
 
 * New `local_mocked_s3_method()`, `local_mocked_s4_method()`, and `local_mocked_r6_class()` allow you to mock S3 and S4 methods and R6 classes (#1892, #1916)
+* `expect_snapshot_file(name=)` must have a unique file path. If a snapshot file attempts to be saved with a duplicate `name`, an error will be thrown. (#1592)
+* `test_dir()`, `test_file()`, `test_package()`, `test_check()`, `test_local()`, `source_file()` gain a `shuffle` argument uses `sample()` to randomly reorder the top-level expressions in each test file (#1942). This random reordering surfaces dependencies between tests and code outside of any test, as well as dependencies between tests. This helps you find and eliminate unintentional dependencies.
+* `snapshot_accept(test)` now works when the test file name contains `.` (#1669).
 * `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
 * `snapshot_review()` now passes `...` on to `shiny::runApp()` (#1928).
 * `expect_named()` now gives more informative errors (#2091).
@@ -42,7 +45,7 @@
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
 * New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require, say, `...names` (@MichaelChirico, #2022)
 * `skip_on_os()` gains an option `"emscripten"` of the `os` argument to skip tests on Emscripten (@eitsupi, #2103).
-* New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`, `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
+* New expectation, `expect_shape()`, for testing the shape (i.e., the `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
 
 # testthat 3.2.3
 

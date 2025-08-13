@@ -7,10 +7,12 @@
 #' @param env Environment in which to evaluate code.
 #' @param desc A character vector used to filter tests. This is used to
 #'   (recursively) filter the content of the file, so that only the non-test
-#'   code up to and including the match test is run.
+#'   code up to and including the matching test is run.
 #' @param chdir Change working directory to `dirname(path)`?
 #' @param wrap Automatically wrap all code within [test_that()]? This ensures
 #'   that all expectations are reported, even if outside a test block.
+#' @param shuffle If `TRUE`, randomly reorder the top-level expressions
+#'   in the file.
 #' @export
 #' @keywords internal
 source_file <- function(
@@ -19,6 +21,7 @@ source_file <- function(
   chdir = TRUE,
   desc = NULL,
   wrap = TRUE,
+  shuffle = FALSE,
   error_call = caller_env()
 ) {
   check_string(path, call = error_call)
@@ -43,6 +46,9 @@ source_file <- function(
   con <- textConnection(lines, encoding = "UTF-8")
   withr::defer(try(close(con), silent = TRUE))
   exprs <- parse(con, n = -1, srcfile = srcfile, encoding = "UTF-8")
+  if (shuffle) {
+    exprs <- sample(exprs)
+  }
   exprs <- filter_desc(exprs, desc, error_call = error_call)
 
   n <- length(exprs)
@@ -119,7 +125,8 @@ source_dir <- function(
   pattern = "\\.[rR]$",
   env = test_env(),
   chdir = TRUE,
-  wrap = TRUE
+  wrap = TRUE,
+  shuffle = FALSE
 ) {
   files <- sort(dir(path, pattern, full.names = TRUE))
 
@@ -130,6 +137,7 @@ source_dir <- function(
       env = env,
       chdir = chdir,
       wrap = wrap,
+      shuffle = shuffle,
       error_call = error_call
     )
   })

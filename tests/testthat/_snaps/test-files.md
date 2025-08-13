@@ -3,7 +3,7 @@
     Code
       test_dir(test_path("test_dir"), reporter = "silent")
     Condition
-      Error in `test_files_check()`:
+      Error:
       ! Test failures.
 
 # runs all tests and records output
@@ -40,7 +40,7 @@
     Code
       test_error(stop_on_failure = TRUE)
     Condition
-      Error in `test_files_check()`:
+      Error:
       ! Test failures.
 
 # can control if warnings errors
@@ -48,7 +48,7 @@
     Code
       test_warning(stop_on_warning = TRUE)
     Condition
-      Error in `test_files_check()`:
+      Error:
       ! Tests generated warnings.
 
 # complains if file doesn't exist
