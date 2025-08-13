@@ -35,6 +35,20 @@ test_that("can accept files created by expect_snapshot()", {
   expect_equal(dir(file.path(path, "_snaps")), c("a.md", "b.md"))
 })
 
+test_that("can accept files created by dotted tests in name", {
+  # e.g. test-data.frame.R will create _snaps/data.frame.md
+
+  # without extension
+  path <- local_snapshot_dir(c("data.frame.md", "data.frame.new.md"))
+  suppressMessages(snapshot_accept("data.frame", path = path))
+  expect_equal(dir(file.path(path, "_snaps")), "data.frame.md")
+
+  # with extension
+  path <- local_snapshot_dir(c("data.frame.md", "data.frame.new.md"))
+  suppressMessages(snapshot_accept("data.frame.md", path = path))
+  expect_equal(dir(file.path(path, "_snaps")), "data.frame.md")
+})
+
 test_that("can accept files created by expect_snapshot_file()", {
   path <- local_snapshot_dir(c("test/a.txt", "test/a.new.txt"))
   suppressMessages(snapshot_accept("test/a.txt", path = path))

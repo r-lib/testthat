@@ -1,3 +1,11 @@
+# expect_length validates its inputs
+
+    Code
+      expect_length(1:5, "a")
+    Condition
+      Error in `expect_length()`:
+      ! `n` must be a whole number, not the string "a".
+
 # dim compared correctly
 
     matrix(nrow = 6, ncol = 3) has dim (6, 3), not (6, 2).

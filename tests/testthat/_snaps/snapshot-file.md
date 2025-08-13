@@ -1,3 +1,11 @@
+# expect_snapshot_file finds duplicate snapshot files
+
+    Code
+      expect_snapshot_file(write_tmp_lines(r_version()), "version.txt", variant = r_version())
+    Condition
+      Error in `expect_snapshot_file()`:
+      ! Snapshot file names must be unique. `name` has already been used.
+
 # warns on first creation
 
     Code
@@ -11,7 +19,7 @@
     Code
       snapshot_file_equal_("doesnt-exist.txt")
     Condition
-      Error in `snapshot_file_equal()`:
+      Error in `snapshot_file_equal_()`:
       ! 'doesnt-exist.txt' not found.
 
 # snapshot_hint output differs in R CMD check

@@ -7,7 +7,8 @@
 local_snapshotter(
   reporter = SnapshotReporter,
   snap_dir = NULL,
-  fail_on_new = FALSE,
+  cleanup = FALSE,
+  fail_on_new = NULL,
   .env = parent.frame()
 )
 }

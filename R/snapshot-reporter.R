@@ -7,14 +7,15 @@ SnapshotReporter <- R6::R6Class(
     test = NULL,
     test_file_seen = character(),
     snap_file_seen = character(),
+    snap_file_saved = character(),
     variants_changed = FALSE,
-    fail_on_new = FALSE,
+    fail_on_new = NULL,
 
     old_snaps = NULL,
     cur_snaps = NULL,
     new_snaps = NULL,
 
-    initialize = function(snap_dir = "_snaps", fail_on_new = FALSE) {
+    initialize = function(snap_dir = "_snaps", fail_on_new = NULL) {
       self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
       self$fail_on_new <- fail_on_new
     },
@@ -22,6 +23,7 @@ SnapshotReporter <- R6::R6Class(
     start_file = function(path, test = NULL) {
       self$file <- context_name(path)
       self$test_file_seen <- c(self$test_file_seen, self$file)
+      self$snap_file_saved <- character()
 
       self$variants_changed <- character()
 
@@ -82,19 +84,18 @@ SnapshotReporter <- R6::R6Class(
         value_enc <- save(value)
 
         self$cur_snaps$append(self$test, variant, value_enc)
+        fail_on_new <- self$fail_on_new %||% on_ci()
 
         message <- paste0(
           "Adding new snapshot",
           if (variant != "_default") paste0(" for variant '", variant, "'"),
-          if (self$fail_on_new) " in CI",
           ":\n",
           value_enc
         )
-        if (self$fail_on_new) {
+        if (fail_on_new) {
           return(fail(message, trace_env = trace_env))
-        } else {
-          testthat_warn(message)
         }
+        testthat_warn(message)
         character()
       }
     },
@@ -107,6 +108,15 @@ SnapshotReporter <- R6::R6Class(
       trace_env = caller_env()
     ) {
       self$announce_file_snapshot(name)
+
+      save_path <- paste0(c(self$file, variant, name), collapse = "/")
+      if (save_path %in% self$snap_file_saved) {
+        cli::cli_abort(
+          "Snapshot file names must be unique. {.arg name} has already been used.",
+          call = trace_env
+        )
+      }
+      self$snap_file_saved <- c(self$snap_file_saved, save_path)
 
       snapshot_file_equal(
         snap_dir = self$snap_dir,
@@ -196,7 +206,8 @@ get_snapshotter <- function() {
 local_snapshotter <- function(
   reporter = SnapshotReporter,
   snap_dir = NULL,
-  fail_on_new = FALSE,
+  cleanup = FALSE,
+  fail_on_new = NULL,
   .env = parent.frame()
 ) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
