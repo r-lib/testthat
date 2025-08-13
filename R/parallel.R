@@ -316,7 +316,7 @@ queue_teardown <- function(queue) {
 
   clean_fn <- function() {
     withr::deferred_run(.GlobalEnv)
-    quit(save = "no", status = 1L, runLast = TRUE)
+    quit(save = "no", status = 0L, runLast = TRUE)
   }
 
   topoll <- list()
@@ -327,7 +327,7 @@ queue_teardown <- function(queue) {
       tryCatch(
         {
           tasks$worker[[i]]$call(clean_fn)
-          topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
+          topoll <- c(topoll, tasks$worker[[i]])
         },
         error = function(e) tasks$worker[i] <- list(NULL)
       )
@@ -340,10 +340,16 @@ queue_teardown <- function(queue) {
   } else {
     grace <- 3L
   }
+  first_error <- NULL
   limit <- Sys.time() + grace
   while (length(topoll) > 0 && (timeout <- limit - Sys.time()) > 0) {
     timeout <- as.double(timeout, units = "secs") * 1000
-    pr <- processx::poll(topoll, as.integer(timeout))
+    conns <- lapply(topoll, function(x) x$get_poll_connection())
+    pr <- unlist(processx::poll(conns, as.integer(timeout)))
+    for (i in which(pr == "ready")) {
+      msg <- topoll[[i]]$read()
+      first_error <- first_error %||% msg$error
+    }
     topoll <- topoll[pr != "ready"]
   }
 
@@ -359,6 +365,13 @@ queue_teardown <- function(queue) {
         tasks$worker[[i]]$kill()
       }
     }
+  }
+
+  if (!is.null(first_error)) {
+    cli::cli_abort(
+      "At least one parallel worker failed to run teardown",
+      parent = first_error
+    )
   }
 }
 
