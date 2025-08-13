@@ -166,7 +166,7 @@ test_that("errors and warnings are folded", {
 # })
 
 test_that("hint is informative", {
-  withr::local_envvar("GITHUB_ACTIONS" = "false")
+  withr::local_envvar(GITHUB_ACTIONS = "false", TESTTHAT_WD = NA)
 
   expect_snapshot({
     cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
