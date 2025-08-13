@@ -142,7 +142,7 @@ expect_snapshot_file <- function(
     return(equal)
   }
 
-  if (in_rcmd_check()) {
+  if (in_check_reporter()) {
     hint <- ""
   } else {
     hint <- snapshot_review_hint(snapshotter$file, name)

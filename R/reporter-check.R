@@ -13,6 +13,7 @@ CheckReporter <- R6::R6Class(
     skips = NULL,
     warnings = NULL,
     n_ok = 0L,
+    old_in_check_reporter = NULL,
 
     initialize = function(...) {
       self$capabilities$parallel_support <- TRUE
@@ -35,7 +36,14 @@ CheckReporter <- R6::R6Class(
       }
     },
 
+    start_reporter = function() {
+      self$old_in_check_reporter <- in_check_reporter()
+      the$in_check_reporter <- TRUE
+    },
+
     end_reporter = function() {
+      the$in_check_reporter <- self$old_in_check_reporter
+
       if (self$skips$size() || self$warnings$size() || self$problems$size()) {
         self$cat_line(summary_line(
           n_fail = self$problems$size(),

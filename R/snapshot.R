@@ -340,7 +340,7 @@ expect_snapshot_helper <- function(
   } else {
     variant_lab <- ""
   }
-  if (in_rcmd_check()) {
+  if (in_check_reporter()) {
     hint <- ""
   } else {
     hint <- snapshot_accept_hint(variant, snapshotter$file)

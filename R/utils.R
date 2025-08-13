@@ -51,8 +51,8 @@ first_upper <- function(x) {
   x
 }
 
-in_rcmd_check <- function() {
-  nzchar(Sys.getenv("_R_CHECK_PACKAGE_NAME_", ""))
+in_check_reporter <- function() {
+  isTRUE(the$in_check_reporter)
 }
 
 r_version <- function() paste0("R", getRversion()[, 1:2])
