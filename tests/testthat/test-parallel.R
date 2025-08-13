@@ -26,6 +26,7 @@ test_that("good error if bad option", {
 })
 
 test_that("ok", {
+  skip_on_covr()
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
   # we cannot run these with the silent reporter, because it is not
   # parallel compatible, and they'll not run in parallel
@@ -43,6 +44,7 @@ test_that("ok", {
 })
 
 test_that("fail", {
+  skip_on_covr()
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
   # we cannot run these with the silent reporter, because it is not
   # parallel compatible, and they'll not run in parallel
@@ -59,9 +61,9 @@ test_that("fail", {
 })
 
 test_that("snapshots", {
+  skip_on_covr()
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
-  withr::defer(unlink(tmp, recursive = TRUE))
-  dir.create(tmp <- tempfile("testthat-snap-"))
+  tmp <- withr::local_tempdir("testthat-snap-")
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   # we cannot run these with the silent reporter, because it is not
   # parallel compatible, and they'll not run in parallel
@@ -82,11 +84,12 @@ test_that("snapshots", {
 })
 
 test_that("new snapshots are added", {
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
-  withr::defer(unlink(tmp, recursive = TRUE))
-  dir.create(tmp <- tempfile("testthat-snap-"))
+  skip_on_covr()
+  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE", CI = "false"))
+  tmp <- withr::local_tempdir("testthat-snap-")
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   unlink(file.path(tmp, "snap", "tests", "testthat", "_snaps", "snap-2.md"))
+
   # we cannot run these with the silent reporter, because it is not
   # parallel compatible, and they'll not run in parallel
   capture.output(suppressMessages(
@@ -106,14 +109,15 @@ test_that("new snapshots are added", {
 })
 
 test_that("snapshots are removed if test file has no snapshots", {
+  skip_on_covr()
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
-  withr::defer(unlink(tmp, recursive = TRUE))
-  dir.create(tmp <- tempfile("testthat-snap-"))
+  tmp <- withr::local_tempdir("testthat-snap-")
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   writeLines(
     "test_that(\"2\", { expect_true(TRUE) })",
     file.path(tmp, "snap", "tests", "testthat", "test-snap-2.R")
   )
+
   # we cannot run these with the silent reporter, because it is not
   # parallel compatible, and they'll not run in parallel
   capture.output(suppressMessages(
@@ -133,6 +137,7 @@ test_that("snapshots are removed if test file has no snapshots", {
 })
 
 test_that("snapshots are removed if test file is removed", {
+  skip_on_covr()
   withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
   withr::defer(unlink(tmp, recursive = TRUE))
   dir.create(tmp <- tempfile("testthat-snap-"))

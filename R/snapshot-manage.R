@@ -73,15 +73,16 @@ review_app <- function(name, old_path, new_path, ...) {
   ui <- shiny::fluidPage(
     style = "margin: 0.5em",
     shiny::fluidRow(
-      style = "display: flex",
+      style = "display: flex; margin-bottom: 0.5em",
       shiny::div(
         style = "flex: 1 1",
-        shiny::selectInput("cases", NULL, case_index, width = "100%")
+        if (n > 1) shiny::selectInput("cases", NULL, case_index, width = "100%")
       ),
       shiny::div(
         class = "btn-group",
         style = "margin-left: 1em; flex: 0 0 auto",
-        shiny::actionButton("skip", "Skip"),
+        shiny::actionButton("reject", "Reject", class = "btn-danger"),
+        if (n > 1) shiny::actionButton("skip", "Skip"),
         shiny::actionButton("accept", "Accept", class = "btn-success"),
       )
     ),
@@ -90,10 +91,13 @@ review_app <- function(name, old_path, new_path, ...) {
     )
   )
   server <- function(input, output, session) {
-    i <- shiny::reactive(as.numeric(input$cases))
+    i <- shiny::reactive(if (n == 1) 1L else as.numeric(input$cases))
     output$diff <- diffviewer::visual_diff_render({
       diffviewer::visual_diff(old_path[[i()]], new_path[[i()]])
     })
+
+    # Can't skip if there's only one file to review
+    shiny::updateActionButton(session, "skip", disabled = (n <= 1))
 
     # Handle buttons - after clicking update move input$cases to next case,
     # and remove current case (for accept/reject). If no cases left, close app
@@ -122,6 +126,10 @@ review_app <- function(name, old_path, new_path, ...) {
         choices = case_index[!handled],
         selected = i
       )
+
+      n_left <- sum(!handled)
+      # Disable skip button if only one case remains
+      shiny::updateActionButton(session, "skip", disabled = (n_left <= 1))
     }
     next_case <- function() {
       if (all(handled)) {
@@ -196,7 +204,8 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     files <- files[!is_dir]
 
     dirs <- substr(dirs, 1, nchar(dirs) - 1)
-    files <- ifelse(tools::file_ext(files) == "", paste0(files, ".md"), files)
+    # Match regardless of whether user include .md or not
+    files <- c(files, paste0(files, ".md"))
 
     out <- out[out$name %in% files | out$test %in% dirs, , drop = FALSE]
   }

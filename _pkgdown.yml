@@ -33,7 +33,6 @@ reference:
   - expect_named
   - expect_null
   - expect_setequal
-  - expect_shape
   - expect_type
   - expect_vector
 
@@ -69,8 +68,10 @@ reference:
 
 - title: Mocking
   contents:
-  - with_mocked_bindings
-  - starts_with("mock_")
+  - local_mocked_bindings
+  - local_mocked_s3_method
+  - local_mocked_r6_class
+  - mock_output_sequence
 
 - title: Custom expectations
   contents:

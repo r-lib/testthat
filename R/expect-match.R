@@ -117,29 +117,73 @@ expect_match_ <- function(
     return(pass(act$val))
   }
 
-  text <- encodeString(act$val)
   if (length(act$val) == 1) {
-    values <- paste0(title, ': "', text, '"')
     which <- ""
   } else {
-    bullet <- ifelse(
-      condition,
-      cli::col_green(cli::symbol$tick),
-      cli::col_red(cli::symbol$cross)
-    )
-    values <- paste0(title, ":\n", paste0(bullet, " ", text, collapse = "\n"))
     which <- if (all) "Every element of " else "Some element of "
   }
   match <- if (negate) "matches" else "does not match"
 
   msg <- sprintf(
-    "%s%s %s %s %s.\n%s",
+    "%s%s %s %s %s.\n%s:\n%s",
     which,
     act$lab,
     match,
     if (fixed) "string" else "regexp",
     encodeString(regexp, quote = '"'),
-    values
+    title,
+    paste0(show_text(act$val, condition), collapse = "\n")
   )
   return(fail(msg, info = info, trace_env = trace_env))
+}
+
+
+# Adapted from print.ellmer_prompt
+show_text <- function(
+  x,
+  condition,
+  ...,
+  max_items = 20,
+  max_lines = max_items * 25
+) {
+  n <- length(x)
+  n_extra <- length(x) - max_items
+  if (n_extra > 0) {
+    x <- x[seq_len(max_items)]
+    condition <- condition[seq_len(max_items)]
+  }
+
+  if (length(x) == 0) {
+    return(character())
+  }
+
+  bar <- if (cli::is_utf8_output()) "\u2502" else "|"
+
+  id <- ifelse(
+    condition,
+    cli::col_green(cli::symbol$tick),
+    cli::col_red(cli::symbol$cross)
+  )
+
+  indent <- paste0(id, " ", bar, " ")
+  exdent <- paste0("  ", cli::col_grey(bar), " ")
+
+  x[is.na(x)] <- cli::col_red("<NA>")
+  x <- paste0(indent, x)
+  x <- gsub("\n", paste0("\n", exdent), x)
+
+  lines <- strsplit(x, "\n")
+  ids <- rep(seq_along(x), length(lines))
+  lines <- unlist(lines)
+
+  if (length(lines) > max_lines) {
+    lines <- lines[seq_len(max_lines)]
+    lines <- c(lines, paste0(exdent, "..."))
+    n_extra <- n - ids[max_lines - 1]
+  }
+
+  if (n_extra > 0) {
+    lines <- c(lines, paste0("... and ", n_extra, " more.\n"))
+  }
+  lines
 }
