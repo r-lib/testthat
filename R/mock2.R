@@ -23,8 +23,8 @@
 #'
 #' They are described in turn below.
 #'
-#' (To mock S3 & S4 methods and R6 classes see [local_mocked_s3_method()], 
-#' [local_mocked_s4_method()], and [local_mocked_r6_class()].s)
+#' (To mock S3 & S4 methods and R6 classes see [local_mocked_s3_method()],
+#' [local_mocked_s4_method()], and [local_mocked_r6_class()].)
 #'
 #' ## Internal & imported functions
 #'

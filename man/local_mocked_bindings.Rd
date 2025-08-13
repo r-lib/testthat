@@ -48,7 +48,7 @@ come from:
 They are described in turn below.
 
 (To mock S3 & S4 methods and R6 classes see \code{\link[=local_mocked_s3_method]{local_mocked_s3_method()}},
-\code{\link[=local_mocked_s4_method]{local_mocked_s4_method()}}, and \code{\link[=local_mocked_r6_class]{local_mocked_r6_class()}}.s)
+\code{\link[=local_mocked_s4_method]{local_mocked_s4_method()}}, and \code{\link[=local_mocked_r6_class]{local_mocked_r6_class()}}.)
 \subsection{Internal & imported functions}{
 
 You mock internal and imported functions the same way. For example, take
