@@ -50,7 +50,7 @@ test_that("expect_snapshot_file finds duplicate snapshot files", {
 })
 
 test_that("basic workflow", {
-  snapper <- local_snapshotter(fail_on_new = FALSE)
+  snapper <- local_test_snapshotter()
 
   path <- write_tmp_lines(letters)
   # warns on first run
@@ -71,7 +71,7 @@ test_that("basic workflow", {
 })
 
 test_that("can announce snapshot file", {
-  snapper <- local_snapshotter(fail_on_new = FALSE)
+  snapper <- local_test_snapshotter()
   snapper$start_file("snapshot-announce", "test")
   announce_snapshot_file(name = "bar.svg")
   expect_equal(snapper$snap_file_seen, "snapshot-announce/bar.svg")
