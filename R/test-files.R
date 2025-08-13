@@ -318,25 +318,23 @@ test_files_setup_state <- function(
 test_files_reporter <- function(
   reporter,
   mode = c("serial", "parallel"),
-  .env = parent.frame()
+  frame = caller_env()
 ) {
+  mode <- arg_match(mode)
+
   # User selected reporter
   user <- find_reporter(reporter)
 
-  # Track all
+  # Reporter that collect test results
   lister <- ListReporter$new()
 
-  snap_base <- if (mode == "parallel") {
-    MainprocessSnapshotReporter
+  # Snapshot reporter
+  if (mode == "parallel") {
+    snap_base <- MainprocessSnapshotReporter
   } else {
-    SnapshotReporter
+    snap_base <- SnapshotReporter
   }
-  snap <- local_snapshotter(
-    snap_base,
-    snap_dir = "_snaps",
-    fail_on_new = on_ci(),
-    .env = .env
-  )
+  snap <- local_snapshotter(snap_base, fail_on_new = on_ci(), frame = frame)
 
   reporters <- compact(list(user, lister, snap))
   list(

@@ -6,10 +6,10 @@
 \usage{
 local_snapshotter(
   reporter = SnapshotReporter,
-  snap_dir = NULL,
+  snap_dir = "_snaps",
   cleanup = FALSE,
   fail_on_new = NULL,
-  .env = parent.frame()
+  frame = caller_env()
 )
 }
 \description{

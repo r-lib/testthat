@@ -205,20 +205,18 @@ get_snapshotter <- function() {
 #' @keywords internal
 local_snapshotter <- function(
   reporter = SnapshotReporter,
-  snap_dir = NULL,
+  snap_dir = "_snaps",
   cleanup = FALSE,
   fail_on_new = NULL,
-  .env = parent.frame()
+  frame = caller_env()
 ) {
-  snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
-  reporter <- reporter$new(
-    snap_dir = snap_dir,
-    fail_on_new = fail_on_new
-  )
+  reporter <- reporter$new(snap_dir = snap_dir, fail_on_new = fail_on_new)
+  withr::local_options("testthat.snapshotter" = reporter, .local_envir = frame)
 
-  withr::local_options(
-    "testthat.snapshotter" = reporter,
-    .local_envir = .env
-  )
   reporter
+}
+
+local_test_snapshotter <- function(snap_dir = NULL, frame = caller_env()) {
+  snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = frame)
+  local_snapshotter(snap_dir = snap_dir, fail_on_new = FALSE, frame = frame)
 }
