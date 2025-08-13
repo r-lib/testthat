@@ -44,8 +44,9 @@ snapshot_reject <- function(files = NULL, path = "tests/testthat") {
 }
 
 #' @rdname snapshot_accept
+#' @param ... Additional arguments passed on to [shiny::runApp()].
 #' @export
-snapshot_review <- function(files = NULL, path = "tests/testthat") {
+snapshot_review <- function(files = NULL, path = "tests/testthat", ...) {
   check_installed(c("shiny", "diffviewer"), "to use snapshot_review()")
 
   changed <- snapshot_meta(files, path)
@@ -54,12 +55,12 @@ snapshot_review <- function(files = NULL, path = "tests/testthat") {
     return(invisible())
   }
 
-  review_app(changed$name, changed$cur, changed$new)
+  review_app(changed$name, changed$cur, changed$new, ...)
   rstudio_tickle()
   invisible()
 }
 
-review_app <- function(name, old_path, new_path) {
+review_app <- function(name, old_path, new_path, ...) {
   stopifnot(
     length(name) == length(old_path),
     length(old_path) == length(new_path)
@@ -147,7 +148,8 @@ review_app <- function(name, old_path, new_path) {
   shiny::runApp(
     shiny::shinyApp(ui, server),
     quiet = TRUE,
-    launch.browser = shiny::paneViewer()
+    launch.browser = shiny::paneViewer(),
+    ...
   )
   invisible()
 }
@@ -194,7 +196,8 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     files <- files[!is_dir]
 
     dirs <- substr(dirs, 1, nchar(dirs) - 1)
-    files <- ifelse(tools::file_ext(files) == "", paste0(files, ".md"), files)
+    # Match regardless of whether user include .md or not
+    files <- c(files, paste0(files, ".md"))
 
     out <- out[out$name %in% files | out$test %in% dirs, , drop = FALSE]
   }

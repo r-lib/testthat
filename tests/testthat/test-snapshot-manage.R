@@ -1,25 +1,76 @@
 test_that("informs about files being accepted", {
-  path <- local_snapshot_dir(c("a.md", "a.new.md", "b.md", "b.new.md"))
+  path <- local_snapshot_dir(c(
+    "a.md",
+    "a.new.md",
+    "test/b.txt",
+    "test/b.new.txt"
+  ))
 
   expect_snapshot(snapshot_accept(path = path))
-  expect_equal(dir(file.path(path, "_snaps")), c("a.md", "b.md"))
+  expect_equal(
+    dir(file.path(path, "_snaps"), recursive = TRUE),
+    c("a.md", "test/b.txt")
+  )
+})
 
+test_that("useful mesasge if no files to accept", {
+  path <- local_snapshot_dir(character())
   expect_snapshot(snapshot_accept(path = path))
 })
 
-test_that("can accept specific files", {
+test_that("can accept files created by expect_snapshot()", {
+  # without extension
   path <- local_snapshot_dir(c("a.md", "a.new.md", "b.md", "b.new.md"))
-  expect_snapshot(snapshot_accept("a", path = path))
+  suppressMessages(snapshot_accept("a", path = path))
   expect_equal(dir(file.path(path, "_snaps")), c("a.md", "b.md", "b.new.md"))
 
-  path <- local_snapshot_dir(c("test/a.txt", "test/a.new.txt"))
-  expect_snapshot(snapshot_accept("test/a.txt", path = path))
-  expect_equal(dir(file.path(path, "_snaps"), recursive = TRUE), "test/a.txt")
+  # with extension
+  path <- local_snapshot_dir(c("a.md", "a.new.md", "b.md", "b.new.md"))
+  suppressMessages(snapshot_accept("a.md", path = path))
+  expect_equal(dir(file.path(path, "_snaps")), c("a.md", "b.md", "b.new.md"))
 
   # or whole directory
+  path <- local_snapshot_dir(c("a.md", "a.new.md", "b.md", "b.new.md"))
+  suppressMessages(snapshot_accept(path = path))
+  expect_equal(dir(file.path(path, "_snaps")), c("a.md", "b.md"))
+})
+
+test_that("can accept files created by dotted tests in name", {
+  # e.g. test-data.frame.R will create _snaps/data.frame.md
+
+  # without extension
+  path <- local_snapshot_dir(c("data.frame.md", "data.frame.new.md"))
+  suppressMessages(snapshot_accept("data.frame", path = path))
+  expect_equal(dir(file.path(path, "_snaps")), "data.frame.md")
+
+  # with extension
+  path <- local_snapshot_dir(c("data.frame.md", "data.frame.new.md"))
+  suppressMessages(snapshot_accept("data.frame.md", path = path))
+  expect_equal(dir(file.path(path, "_snaps")), "data.frame.md")
+})
+
+test_that("can accept files created by expect_snapshot_file()", {
   path <- local_snapshot_dir(c("test/a.txt", "test/a.new.txt"))
-  expect_snapshot(snapshot_accept("test/", path = path))
+  suppressMessages(snapshot_accept("test/a.txt", path = path))
   expect_equal(dir(file.path(path, "_snaps"), recursive = TRUE), "test/a.txt")
+
+  # including markdown files
+  path <- local_snapshot_dir(c("test/a.md", "test/a.new.md"))
+  suppressMessages(snapshot_accept("test/", path = path))
+  expect_equal(dir(file.path(path, "_snaps"), recursive = TRUE), "test/a.md")
+
+  # or the whole directory
+  path <- local_snapshot_dir(c(
+    "test/a.md",
+    "test/a.new.md",
+    "test/b.txt",
+    "test/b.new.txt"
+  ))
+  suppressMessages(snapshot_accept("test/", path = path))
+  expect_equal(
+    dir(file.path(path, "_snaps"), recursive = TRUE),
+    c("test/a.md", "test/b.txt")
+  )
 })
 
 test_that("can work with variants", {

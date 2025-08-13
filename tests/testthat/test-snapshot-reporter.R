@@ -1,5 +1,5 @@
 test_that("can establish local snapshotter for testing", {
-  snapper <- local_snapshotter(fail_on_new = FALSE)
+  snapper <- local_test_snapshotter()
 
   snapper$start_file("snapshot-1", "test")
   expect_true(snapper$is_active())
@@ -9,7 +9,7 @@ test_that("can establish local snapshotter for testing", {
 
 test_that("basic workflow", {
   path <- withr::local_tempdir()
-  snapper <- local_snapshotter(path, fail_on_new = FALSE)
+  snapper <- local_test_snapshotter(snap_dir = path)
   snapper$start_file("snapshot-2")
   # output if not active (because test not set here)
   expect_snapshot_output("x") |>
@@ -38,8 +38,19 @@ test_that("basic workflow", {
   expect_true(file.exists(file.path(path, "snapshot-2.new.md")))
 })
 
+test_that("defaults to failing on CI", {
+  withr::local_envvar(CI = "true")
+
+  path <- withr::local_tempdir()
+  snapper <- local_snapshotter(snap_dir = path)
+  snapper$start_file("snapshot-2")
+  # warns on first creation
+  snapper$start_file("snapshot-2", "test")
+  expect_error(expect_snapshot_output("x"), "Adding new")
+})
+
 test_that("only create new files for changed variants", {
-  snapper <- local_snapshotter(fail_on_new = FALSE)
+  snapper <- local_test_snapshotter()
   snapper$start_file("variants", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   expect_warning(expect_snapshot_output("x", variant = "a"), "Adding new")
@@ -75,7 +86,7 @@ test_that("only create new files for changed variants", {
 })
 
 test_that("only reverting change in variant deletes .new", {
-  snapper <- local_snapshotter(fail_on_new = FALSE)
+  snapper <- local_test_snapshotter()
   snapper$start_file("v", "test")
   expect_warning(expect_snapshot_output("x", variant = "a"), "Adding new")
   expect_warning(expect_snapshot_output("x", variant = "b"), "Adding new")
@@ -98,7 +109,7 @@ test_that("only reverting change in variant deletes .new", {
 
 test_that("removing tests removes snap file", {
   path <- withr::local_tempdir()
-  snapper <- local_snapshotter(path, fail_on_new = FALSE)
+  snapper <- local_test_snapshotter(snap_dir = path)
   snapper$start_file("snapshot-3", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   snapper$end_file()
@@ -110,7 +121,7 @@ test_that("removing tests removes snap file", {
 })
 
 test_that("errors in test doesn't change snapshot", {
-  snapper <- local_snapshotter(fail_on_new = FALSE)
+  snapper <- local_test_snapshotter()
 
   # First run
   snapper$start_file("snapshot-5", "test")
