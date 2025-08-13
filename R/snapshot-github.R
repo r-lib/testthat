@@ -3,7 +3,8 @@
 #' @description
 #' If your snapshots fail on GitHub, it can be a pain to figure out exactly
 #' why, or to incorporate them into your local package. This function makes it
-#' easy.
+#' easy, only requiring you to interactively select which job you want to
+#' take the artifacts from.
 #'
 #' Note that you should not generally need to use this function manually;
 #' instead copy and paste from the hint emitted on GitHub.
@@ -13,6 +14,10 @@
 #' @param dest_dir Directory to download to. Defaults to the current directory.
 #' @export
 snapshot_download_gh <- function(repository, run_id, dest_dir = ".") {
+  check_string(repository)
+  check_number_whole(run_id)
+  check_string(dest_dir)
+
   check_installed("gh")
 
   dest_snaps <- file.path(dest_dir, "tests", "testthat", "_snaps")
@@ -26,7 +31,11 @@ snapshot_download_gh <- function(repository, run_id, dest_dir = ".") {
   path <- withr::local_tempfile(pattern = "gh-snaps-")
   gh_download_artifact(repository, artifact_id, path)
 
-  inner_dir <- dir(path, full.names = TRUE)[1]
+  files <- dir(path, full.names = TRUE)
+  if (length(files) != 1) {
+    cli::cli_abort("Unexpected artifact format.")
+  }
+  inner_dir <- files[[1]]
   src_snaps <- file.path(inner_dir, "tests", "testthat", "_snaps")
   dir_copy(src_snaps, dest_snaps)
 }
@@ -72,9 +81,8 @@ gh_find_artifact <- function(repository, job_id) {
   log_lines <- strsplit(job_logs$message, "\r?\n")[[1]]
   matches <- re_match(log_lines, "Artifact download URL: (?<artifact_url>.*)")
   matches <- matches[!is.na(matches$artifact_url), ]
-
-  if (!nrow(matches)) {
-    cli::cli_abort("Failed to find artifact")
+  if (nrow(matches) == 0) {
+    cli::cli_abort("Failed to find artifact.")
   }
 
   # Take last artifact URL; if the job has failed the previous artifact will
