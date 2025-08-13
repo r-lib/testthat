@@ -57,7 +57,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-<ul><li>
+<ul><li>In <code>R CMD check</code>, snapshots now only advise on how to resolve failures once (<a href="https://github.com/r-lib/testthat/issues/2207" class="external-link">#2207</a>).</li>
+<li>
 <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> includes a reject button and only displays the file navigation and the skip button if there are multiple files to review (<a href="https://github.com/r-lib/testthat/issues/2025" class="external-link">#2025</a>).</li>
 <li>New <code><a href="../reference/snapshot_download_gh.html">snapshot_download_gh()</a></code> makes it easy to get snapshots off GitHub and into your local package (<a href="https://github.com/r-lib/testthat/issues/1779" class="external-link">#1779</a>).</li>
 <li>New <code><a href="../reference/local_mocked_s3_method.html">local_mocked_s3_method()</a></code>, <code><a href="../reference/local_mocked_s3_method.html">local_mocked_s4_method()</a></code>, and <code><a href="../reference/local_mocked_r6_class.html">local_mocked_r6_class()</a></code> allow you to mock S3 and S4 methods and R6 classes (<a href="https://github.com/r-lib/testthat/issues/1892" class="external-link">#1892</a>, <a href="https://github.com/r-lib/testthat/issues/1916" class="external-link">#1916</a>)</li>

@@ -74,7 +74,7 @@ it. <code>expectation()</code> does both.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">expectation</span><span class="op">(</span><span class="va">type</span>, <span class="va">message</span>, srcref <span class="op">=</span> <span class="cn">NULL</span>, trace <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">expectation</span><span class="op">(</span><span class="va">type</span>, <span class="va">message</span>, <span class="va">...</span>, srcref <span class="op">=</span> <span class="cn">NULL</span>, trace <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">new_expectation</span><span class="op">(</span></span>
 <span>  <span class="va">type</span>,</span>
@@ -103,6 +103,10 @@ it. <code>expectation()</code> does both.</p>
 <dd><p>Message describing test failure</p></dd>
 
 
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Additional attributes for the expectation object.</p></dd>
+
+
 <dt id="arg-srcref">srcref<a class="anchor" aria-label="anchor" href="#arg-srcref"></a></dt>
 <dd><p>Optional <code>srcref</code> giving location of test.</p></dd>
 
@@ -111,10 +115,6 @@ it. <code>expectation()</code> does both.</p>
 <dd><p>An optional backtrace created by <code><a href="https://rlang.r-lib.org/reference/trace_back.html" class="external-link">rlang::trace_back()</a></code>.
 When supplied, the expectation is displayed with the backtrace.
 Expert use only.</p></dd>
-
-
-<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Additional attributes for the expectation object.</p></dd>
 
 
 <dt id="arg--subclass">.subclass<a class="anchor" aria-label="anchor" href="#arg--subclass"></a></dt>
