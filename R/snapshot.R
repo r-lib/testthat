@@ -331,6 +331,9 @@ expect_snapshot_helper <- function(
     variant = variant,
     trace_env = trace_env
   )
+  if (inherits(comp, "expectation_failure")) {
+    return(comp)
+  }
 
   if (!identical(variant, "_default")) {
     variant_lab <- paste0(" (variant '", variant, "')")

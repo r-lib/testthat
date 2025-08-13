@@ -9,14 +9,13 @@ test_that("expect_snapshot_file works", {
   expect_snapshot_file(path, "foo.png")
 
   path <- withr::local_tempfile()
-  mtcars2 <- mtcars
-  # mtcars2$wt[10] <- NA
+  mtcars2 <- mtcars[1:5, 1:4]
   write.csv(mtcars2, path)
   expect_snapshot_file(path, "foo.csv", compare = compare_file_text)
 
   # Deprecated `binary` argument still works
   withr::local_options(lifecycle_verbosity = "quiet")
-  expect_snapshot_file(path, "foo.csv", binary = FALSE)
+  expect_snapshot_file(path, "foo-not-binary.csv", binary = FALSE)
 })
 
 
@@ -36,6 +35,17 @@ test_that("expect_snapshot_file works with variant", {
     "version.txt",
     compare = compare_file_text,
     variant = r_version()
+  )
+})
+
+test_that("expect_snapshot_file finds duplicate snapshot files", {
+  expect_snapshot(
+    expect_snapshot_file(
+      write_tmp_lines(r_version()),
+      "version.txt",
+      variant = r_version()
+    ),
+    error = TRUE
   )
 })
 
@@ -86,7 +96,8 @@ test_that("warns on first creation", {
       snap_test = "my-test",
       snap_name = "test.txt",
       snap_variant = NULL,
-      path = path
+      path = path,
+      fail_on_new = FALSE
     )
   }
 
