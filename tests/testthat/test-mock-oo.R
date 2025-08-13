@@ -2,7 +2,6 @@
 
 test_that("can mock S3 methods", {
   x <- as.POSIXlt(Sys.time())
-  df <- data.frame(x = 1:3)
 
   local({
     local_mocked_s3_method("length", "POSIXlt", function(x) 42)
