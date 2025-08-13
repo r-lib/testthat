@@ -27,7 +27,7 @@
     Code
       cat(snapshot_review_hint("lala", "foo.r", check = FALSE, ci = FALSE))
     Output
-      Run `testthat::snapshot_review('lala/')` to review changes
+      * Run `testthat::snapshot_review('lala/')` to review changes
 
 ---
 
