@@ -79,6 +79,8 @@
 <url><loc>https://testthat.r-lib.org/dev/reference/is_testing.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/local_edition.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/local_mocked_bindings.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/reference/local_mocked_r6_class.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/reference/local_mocked_s3_method.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/local_snapshotter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/local_test_context.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/local_test_directory.html</loc></url>
