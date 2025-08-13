@@ -7,7 +7,7 @@
 snapshot_download_gh(repository, run_id, dest_dir = ".")
 }
 \arguments{
-\item{repository}{Repository name, e.g. \code{"r-lib/testthat"}.}
+\item{repository}{Repository owner/name, e.g. \code{"r-lib/testthat"}.}
 
 \item{run_id}{Run ID, e.g. \code{"47905180716"}. You can find this in the action url.}
 
@@ -15,9 +15,9 @@ snapshot_download_gh(repository, run_id, dest_dir = ".")
 }
 \description{
 If your snapshots fail on GitHub, it can be a pain to figure out exactly
-why, or to incporate them into your local package. This function makes it
+why, or to incorporate them into your local package. This function makes it
 easy.
 
-Note that you should not generally need to fill out this function yourself;
+Note that you should not generally need to use this function manually;
 instead copy and paste from the hint emitted on GitHub.
 }
