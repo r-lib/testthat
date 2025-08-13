@@ -140,7 +140,7 @@ SnapshotReporter <- R6::R6Class(
         return()
       }
 
-      # If expectation errors or skips, need to reset remaining snapshots
+      # If expectation errors or skips, need to copy snapshots from old to cur
       if (expectation_error(result) || expectation_skip(result)) {
         self$cur_snaps$reset(self$test, self$old_snaps)
       }
@@ -204,23 +204,19 @@ get_snapshotter <- function() {
 #' @export
 #' @keywords internal
 local_snapshotter <- function(
-  snap_dir = NULL,
+  reporter = SnapshotReporter,
+  snap_dir = "_snaps",
   cleanup = FALSE,
   fail_on_new = NULL,
-  .env = parent.frame()
+  frame = caller_env()
 ) {
-  snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = .env)
-  reporter <- SnapshotReporter$new(
-    snap_dir = snap_dir,
-    fail_on_new = fail_on_new
-  )
-  if (!identical(cleanup, FALSE)) {
-    cli::cli_warn("{.arg cleanup} is deprecated.")
-  }
+  reporter <- reporter$new(snap_dir = snap_dir, fail_on_new = fail_on_new)
+  withr::local_options("testthat.snapshotter" = reporter, .local_envir = frame)
 
-  withr::local_options(
-    "testthat.snapshotter" = reporter,
-    .local_envir = .env
-  )
   reporter
+}
+
+local_test_snapshotter <- function(snap_dir = NULL, frame = caller_env()) {
+  snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = frame)
+  local_snapshotter(snap_dir = snap_dir, fail_on_new = FALSE, frame = frame)
 }
