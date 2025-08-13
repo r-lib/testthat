@@ -1,6 +1,5 @@
 # produces useful output
 
-    Test passed 
     -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
     FALSE (`actual`) is not equal to TRUE (`expected`).
     
@@ -54,5 +53,5 @@
       r$stop_if_needed()
     Condition
       Error:
-      ! Test failed
+      ! Test failed.
 

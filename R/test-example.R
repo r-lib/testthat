@@ -15,7 +15,7 @@
 test_examples <- function(path = "../..") {
   res <- test_examples_source(path) %||% test_examples_installed()
   if (is.null(res)) {
-    stop("Could not find examples", call. = FALSE)
+    cli::cli_abort("Could not find examples.")
   }
   invisible(res)
 }

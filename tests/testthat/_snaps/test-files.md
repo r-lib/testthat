@@ -4,7 +4,7 @@
       test_dir(test_path("test_dir"), reporter = "silent")
     Condition
       Error:
-      ! Test failures
+      ! Test failures.
 
 # runs all tests and records output
 
@@ -33,7 +33,7 @@
       test_dir(path)
     Condition
       Error in `test_dir()`:
-      ! No test files found
+      ! No test files found.
 
 # can control if failures generate errors
 
@@ -41,7 +41,7 @@
       test_error(stop_on_failure = TRUE)
     Condition
       Error:
-      ! Test failures
+      ! Test failures.
 
 # can control if warnings errors
 
@@ -49,13 +49,13 @@
       test_warning(stop_on_warning = TRUE)
     Condition
       Error:
-      ! Tests generated warnings
+      ! Tests generated warnings.
 
 # complains if file doesn't exist
 
     Code
       test_file("DOESNTEXIST")
     Condition
-      Error:
-      ! `path` does not exist
+      Error in `test_file()`:
+      ! `path` does not exist.
 

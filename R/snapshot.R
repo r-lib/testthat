@@ -289,7 +289,7 @@ expect_snapshot_condition_ <- function(
         class
       )
     }
-    return(fail(msg, trace_env = trace_env))
+    return(snapshot_fail(msg, trace_env = trace_env))
   }
 
   expect_snapshot_helper(
@@ -331,13 +331,20 @@ expect_snapshot_helper <- function(
     variant = variant,
     trace_env = trace_env
   )
+  if (inherits(comp, "expectation_failure")) {
+    return(comp)
+  }
 
   if (!identical(variant, "_default")) {
     variant_lab <- paste0(" (variant '", variant, "')")
   } else {
     variant_lab <- ""
   }
-  hint <- snapshot_accept_hint(variant, snapshotter$file)
+  if (in_check_reporter()) {
+    hint <- ""
+  } else {
+    hint <- snapshot_accept_hint(variant, snapshotter$file)
+  }
 
   if (length(comp) != 0) {
     msg <- sprintf(
@@ -347,7 +354,7 @@ expect_snapshot_helper <- function(
       paste0(comp, collapse = "\n\n"),
       hint
     )
-    return(fail(msg, trace_env = trace_env))
+    return(snapshot_fail(msg, trace_env = trace_env))
   }
 
   pass(NULL)
@@ -380,7 +387,7 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
     ),
     "\n",
     cli::format_inline(
-      "* Run {.run testthat::snapshot_review({args})} to interactively review the change."
+      "* Run {.run testthat::snapshot_review({args})} to review the change."
     )
   )
 }
@@ -418,13 +425,13 @@ local_snapshot_dir <- function(snap_names, .env = parent.frame()) {
 # if transform() wiped out the full message, don't indent, #1487
 indent <- function(x) if (length(x)) paste0("  ", x) else x
 
-check_variant <- function(x) {
+check_variant <- function(x, call = caller_env()) {
   if (is.null(x)) {
     "_default"
   } else if (is_string(x)) {
     x
   } else {
-    abort("If supplied, `variant` must be a string")
+    cli::cli_abort("If supplied, {.arg variant} must be a string.", call = call)
   }
 }
 

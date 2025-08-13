@@ -14,5 +14,13 @@ test_that("validates inputs", {
   })
 })
 
+test_that("useful messaging", {
+  path <- withr::local_tempdir()
+  writeLines("Package: foo", file.path(path, "DESCRIPTION"))
+  dir.create(file.path(path, "R"))
+
+  expect_snapshot(use_catch(path))
+})
+
 skip_if_not_installed("xml2")
 run_cpp_tests("testthat")

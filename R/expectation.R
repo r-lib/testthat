@@ -49,8 +49,8 @@ expect <- function(
 #' @keywords internal
 #' @inheritParams expect
 #' @export
-expectation <- function(type, message, srcref = NULL, trace = NULL) {
-  exp <- new_expectation(type, message, srcref = srcref, trace = trace)
+expectation <- function(type, message, ..., srcref = NULL, trace = NULL) {
+  exp <- new_expectation(type, message, ..., srcref = srcref, trace = trace)
   exp_signal(exp)
 }
 #' @rdname expectation
@@ -189,11 +189,9 @@ as.expectation.skip <- function(x, ..., srcref = NULL) {
 
 #' @export
 as.expectation.default <- function(x, srcref = NULL) {
-  stop(
-    "Don't know how to convert '",
-    paste(class(x), collapse = "', '"),
-    "' to expectation.",
-    call. = FALSE
+  cli::cli_abort(
+    "Don't know how to convert {.cls {class(x)}} to expectation.",
+    call = NULL
   )
 }
 

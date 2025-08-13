@@ -166,7 +166,7 @@ JunitReporter <- R6::R6Class(
         xml2::write_xml(self$doc, file, format = TRUE)
         cat(brio::read_file(file), file = self$out)
       } else {
-        stop("unsupported output type: ", toString(self$out))
+        cli::cli_abort("Unsupported output type: {toString(self$out)}.")
       }
     } # end_reporter
   ), # public

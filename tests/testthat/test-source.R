@@ -82,20 +82,106 @@ test_that("checks its inputs", {
   })
 })
 
+# filter_desc -------------------------------------------------------------
 
-# filter_label -------------------------------------------------------------
+test_that("works with all subtest types", {
+  code <- exprs(
+    test_that("foo", {}),
+    describe("bar", {}),
+    it("baz", {})
+  )
+  expect_equal(filter_desc(code, "foo"), code[1])
+  expect_equal(filter_desc(code, "bar"), code[2])
+  expect_equal(filter_desc(code, "baz"), code[3])
+})
 
-test_that("can find only matching test", {
+test_that("only returns non-subtest code before subtest", {
   code <- exprs(
     f(),
-    test_that("foo", {}),
+    test_that("bar", {}),
+    describe("foo", {}),
     g(),
-    describe("bar", {}),
     h()
   )
-  expect_equal(filter_desc(code, "foo"), code[c(1, 2)])
-  expect_equal(filter_desc(code, "bar"), code[c(1, 3, 4)])
-  expect_snapshot(filter_desc(code, "baz"), error = TRUE)
+  expect_equal(filter_desc(code, "foo"), code[c(1, 3)])
+})
+
+test_that("can select recursively", {
+  code <- exprs(
+    x <- 1,
+    describe("a", {
+      y <- 1
+      describe("b", {
+        z <- 1
+      })
+      y <- 2
+    }),
+    x <- 2
+  )
+
+  expect_equal(
+    filter_desc(code, c("a", "b")),
+    exprs(
+      x <- 1,
+      describe("a", {
+        y <- 1
+        describe("b", {
+          z <- 1
+        })
+      })
+    )
+  )
+})
+
+test_that("works on code like the describe() example", {
+  code <- exprs(
+    describe("math library", {
+      x1 <- 1
+      x2 <- 1
+      describe("addition()", {
+        it("can add two numbers", {
+          expect_equal(x1 + x2, addition(x1, x2))
+        })
+      })
+      describe("division()", {
+        x1 <- 10
+        x2 <- 2
+        it("can divide two numbers", {
+          expect_equal(x1 / x2, division(x1, x2))
+        })
+        it("can handle division by 0") #not yet implemented
+      })
+    })
+  )
+
+  expect_equal(
+    filter_desc(
+      code,
+      c("math library", "division()", "can divide two numbers")
+    ),
+    exprs(
+      describe("math library", {
+        x1 <- 1
+        x2 <- 1
+        describe("division()", {
+          x1 <- 10
+          x2 <- 2
+          it("can divide two numbers", {
+            expect_equal(x1 / x2, division(x1, x2))
+          })
+        })
+      })
+    )
+  )
+
+  # what happens for an unimplemented specification?
+  expect_snapshot(
+    error = TRUE,
+    filter_desc(
+      code,
+      c("math library", "division()", "can handle division by 0")
+    )
+  )
 })
 
 test_that("preserve srcrefs", {
@@ -110,8 +196,7 @@ test_that("preserve srcrefs", {
   expect_snapshot(filter_desc(code, "foo"))
 })
 
-
-test_that("errors if duplicate labels", {
+test_that("errors if zero or duplicate labels", {
   code <- exprs(
     f(),
     test_that("baz", {}),
@@ -119,7 +204,10 @@ test_that("errors if duplicate labels", {
     g()
   )
 
-  expect_snapshot(filter_desc(code, "baz"), error = TRUE)
+  expect_snapshot(error = TRUE, {
+    filter_desc(code, "baz")
+    filter_desc(code, "missing")
+  })
 })
 
 test_that("source_dir()", {

@@ -20,6 +20,9 @@ NULL
 
 the <- new.env(parent = emptyenv())
 the$description <- character()
+the$top_level_test <- TRUE
+the$test_expectations <- 0
+the$in_check_reporter <- FALSE
 
 # The following block is used by usethis to automatically manage
 # roxygen namespace tags. Modify with care!

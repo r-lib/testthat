@@ -15,11 +15,11 @@
 snapshot_accept <- function(files = NULL, path = "tests/testthat") {
   changed <- snapshot_meta(files, path)
   if (nrow(changed) == 0) {
-    inform("No snapshots to update")
+    cli::cli_inform("No snapshots to update.")
     return(invisible())
   }
 
-  inform(c("Updating snapshots:", changed$name))
+  cli::cli_inform("Updating snapshots: {.path {changed$name}}.")
   unlink(changed$cur)
   file.rename(changed$new, changed$cur)
 
@@ -44,22 +44,23 @@ snapshot_reject <- function(files = NULL, path = "tests/testthat") {
 }
 
 #' @rdname snapshot_accept
+#' @param ... Additional arguments passed on to [shiny::runApp()].
 #' @export
-snapshot_review <- function(files = NULL, path = "tests/testthat") {
+snapshot_review <- function(files = NULL, path = "tests/testthat", ...) {
   check_installed(c("shiny", "diffviewer"), "to use snapshot_review()")
 
   changed <- snapshot_meta(files, path)
   if (nrow(changed) == 0) {
-    inform("No snapshots to update")
+    cli::cli_inform("No snapshots to update.")
     return(invisible())
   }
 
-  review_app(changed$name, changed$cur, changed$new)
+  review_app(changed$name, changed$cur, changed$new, ...)
   rstudio_tickle()
   invisible()
 }
 
-review_app <- function(name, old_path, new_path) {
+review_app <- function(name, old_path, new_path, ...) {
   stopifnot(
     length(name) == length(old_path),
     length(old_path) == length(new_path)
@@ -72,15 +73,16 @@ review_app <- function(name, old_path, new_path) {
   ui <- shiny::fluidPage(
     style = "margin: 0.5em",
     shiny::fluidRow(
-      style = "display: flex",
+      style = "display: flex; margin-bottom: 0.5em",
       shiny::div(
         style = "flex: 1 1",
-        shiny::selectInput("cases", NULL, case_index, width = "100%")
+        if (n > 1) shiny::selectInput("cases", NULL, case_index, width = "100%")
       ),
       shiny::div(
         class = "btn-group",
         style = "margin-left: 1em; flex: 0 0 auto",
-        shiny::actionButton("skip", "Skip"),
+        shiny::actionButton("reject", "Reject", class = "btn-danger"),
+        if (n > 1) shiny::actionButton("skip", "Skip"),
         shiny::actionButton("accept", "Accept", class = "btn-success"),
       )
     ),
@@ -89,20 +91,23 @@ review_app <- function(name, old_path, new_path) {
     )
   )
   server <- function(input, output, session) {
-    i <- shiny::reactive(as.numeric(input$cases))
+    i <- shiny::reactive(if (n == 1) 1L else as.numeric(input$cases))
     output$diff <- diffviewer::visual_diff_render({
       diffviewer::visual_diff(old_path[[i()]], new_path[[i()]])
     })
 
+    # Can't skip if there's only one file to review
+    shiny::updateActionButton(session, "skip", disabled = (n <= 1))
+
     # Handle buttons - after clicking update move input$cases to next case,
     # and remove current case (for accept/reject). If no cases left, close app
     shiny::observeEvent(input$reject, {
-      inform(paste0("Rejecting snapshot: '", new_path[[i()]], "'"))
+      cli::cli_inform("Rejecting snapshot: {.path {new_path[[i()]]}}.")
       unlink(new_path[[i()]])
       update_cases()
     })
     shiny::observeEvent(input$accept, {
-      inform(paste0("Accepting snapshot: '", old_path[[i()]], "'"))
+      cli::cli_inform("Accepting snapshot: {.path {old_path[[i()]]}}.")
       file.rename(new_path[[i()]], old_path[[i()]])
       update_cases()
     })
@@ -121,10 +126,14 @@ review_app <- function(name, old_path, new_path) {
         choices = case_index[!handled],
         selected = i
       )
+
+      n_left <- sum(!handled)
+      # Disable skip button if only one case remains
+      shiny::updateActionButton(session, "skip", disabled = (n_left <= 1))
     }
     next_case <- function() {
       if (all(handled)) {
-        inform("Review complete")
+        cli::cli_inform("Review complete.")
         shiny::stopApp()
         return()
       }
@@ -140,14 +149,15 @@ review_app <- function(name, old_path, new_path) {
     }
   }
 
-  inform(c(
-    "Starting Shiny app for snapshot review",
-    i = "Use Ctrl + C to quit"
+  cli::cli_inform(c(
+    "Starting Shiny app for snapshot review.",
+    i = "Use {.kbd Ctrl + C} to quit."
   ))
   shiny::runApp(
     shiny::shinyApp(ui, server),
     quiet = TRUE,
-    launch.browser = shiny::paneViewer()
+    launch.browser = shiny::paneViewer(),
+    ...
   )
   invisible()
 }
@@ -194,7 +204,8 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     files <- files[!is_dir]
 
     dirs <- substr(dirs, 1, nchar(dirs) - 1)
-    files <- ifelse(tools::file_ext(files) == "", paste0(files, ".md"), files)
+    # Match regardless of whether user include .md or not
+    files <- c(files, paste0(files, ".md"))
 
     out <- out[out$name %in% files | out$test %in% dirs, , drop = FALSE]
   }

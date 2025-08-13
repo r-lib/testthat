@@ -75,12 +75,11 @@
       wrapper(NULL, list(), label = "foo", style = "json")
     Condition
       Error in `wrapper()`:
-      ! `foo` could not be safely serialized with `style = "json"`.
+      ! `foo` could not be safely serialized with `style` = "json".
         Serializing then deserializing the object returned something new:
-      
-      `original` is NULL
-      `new` is a list
-      
+        
+        `original` is NULL
+        `new` is a list
       i You may need to try a different `style`.
 
 # expect_snapshot_value validates its inputs
