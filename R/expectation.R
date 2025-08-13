@@ -213,6 +213,9 @@ expectation_broken <- function(exp) {
 expectation_ok <- function(exp) {
   expectation_type(exp) %in% c("success", "warning")
 }
+expectation_snapshot_failure <- function(exp) {
+  inherits(exp, "expectation_snapshot_failure")
+}
 
 single_letter_summary <- function(x) {
   switch(

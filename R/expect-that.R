@@ -75,3 +75,35 @@ succeed <- function(message = "Success has been forced", info = NULL) {
 
   expectation("success", message)
 }
+
+#' Mark a test as failed due to snapshot mismatch
+#'
+#' This creates a specialized failure expectation that can be detected
+#' by reporters as a snapshot failure.
+#'
+#' @inheritParams fail
+#' @keywords internal
+fail_snapshot <- function(
+  message = "Snapshot failure has been forced",
+  info = NULL,
+  srcref = NULL,
+  trace_env = caller_env(),
+  trace = NULL
+) {
+  if (is.null(trace)) {
+    trace <- trace_back(top = getOption("testthat_topenv"), bottom = trace_env)
+  }
+  # Only show if there's at least one function apart from the expectation
+  if (trace_length(trace) <= 1) {
+    trace <- NULL
+  }
+
+  message <- paste(c(message, info), collapse = "\n")
+  new_expectation(
+    "failure",
+    message,
+    srcref = srcref,
+    trace = trace,
+    .subclass = "expectation_snapshot_failure"
+  )
+}

@@ -343,14 +343,25 @@ expect_snapshot_helper <- function(
   hint <- snapshot_accept_hint(variant, snapshotter$file)
 
   if (length(comp) != 0) {
-    msg <- sprintf(
-      "Snapshot of %s has changed%s:\n%s\n\n%s",
-      lab,
-      variant_lab,
-      paste0(comp, collapse = "\n\n"),
-      hint
-    )
-    return(fail(msg, trace_env = trace_env))
+    # Suppress individual hints when CheckReporter is active
+    reporter <- get_reporter()
+    if (inherits(reporter, "CheckReporter")) {
+      msg <- sprintf(
+        "Snapshot of %s has changed%s:\n%s",
+        lab,
+        variant_lab,
+        paste0(comp, collapse = "\n\n")
+      )
+    } else {
+      msg <- sprintf(
+        "Snapshot of %s has changed%s:\n%s\n\n%s",
+        lab,
+        variant_lab,
+        paste0(comp, collapse = "\n\n"),
+        hint
+      )
+    }
+    return(fail_snapshot(msg, trace_env = trace_env))
   }
 
   pass(NULL)
