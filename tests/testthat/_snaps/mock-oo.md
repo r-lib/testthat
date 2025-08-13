@@ -44,3 +44,21 @@
       Error in `local_mocked_s4_method()`:
       ! Can't find existing S4 method `mean(bar)`.
 
+---
+
+    Code
+      local_mocked_r6_class(mean)
+    Condition
+      Error in `local_mocked_r6_class()`:
+      ! `class` must be an R6 class definition, not a function.
+    Code
+      local_mocked_r6_class(TestMockClass, public = 1)
+    Condition
+      Error in `local_mocked_r6_class()`:
+      ! `public` must be a list, not the number 1.
+    Code
+      local_mocked_r6_class(TestMockClass, private = 1)
+    Condition
+      Error in `local_mocked_r6_class()`:
+      ! `private` must be a list, not the number 1.
+

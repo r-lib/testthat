@@ -2,7 +2,7 @@
 #'
 #' These functions allow you to temporarily override S3 and S4 methods that
 #' already exist. It works by using [registerS3method()]/[setMethod()] to
-#' temporarily replace the original defintion.
+#' temporarily replace the original definition.
 #'
 #' @param generic A string giving the name of the generic.
 #' @param signature A character vector giving the signature of the method.
@@ -83,12 +83,15 @@ local_mocked_r6_class <- function(
   if (!inherits(class, "R6ClassGenerator")) {
     stop_input_type(class, "an R6 class definition")
   }
+  if (!is.list(public)) {
+    stop_input_type(public, "a list")
+  }
+  if (!is.list(private)) {
+    stop_input_type(private, "a list")
+  }
 
   mocked_class <- mock_r6_class(class, public, private)
-  local_mocked_bindings(
-    "{class$classname}" := mocked_class,
-    .env = caller_env()
-  )
+  local_mocked_bindings("{class$classname}" := mocked_class, .env = frame)
 }
 
 mock_r6_class <- function(class, public = list(), private = list()) {

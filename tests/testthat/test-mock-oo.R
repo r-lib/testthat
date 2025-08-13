@@ -65,3 +65,11 @@ test_that("can mock all R6 components", {
   obj <- TestMockClass$new()
   expect_equal(obj$sum(), 0)
 })
+
+test_that("validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    local_mocked_r6_class(mean)
+    local_mocked_r6_class(TestMockClass, public = 1)
+    local_mocked_r6_class(TestMockClass, private = 1)
+  })
+})
