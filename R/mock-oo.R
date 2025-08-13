@@ -65,14 +65,14 @@ local_mocked_s4_method <- function(
 #' Mock an R6 class
 #'
 #' This function allows you to temporarily override an R6 class definition.
-#' It works by creating a sublcass then using [local_mocked_bindings()] to
-#' temporarily replace the original defintion. This means that it will not
+#' It works by creating a subclass then using [local_mocked_bindings()] to
+#' temporarily replace the original definition. This means that it will not
 #' affect subclasses of the original class; please file an issue if you need
 #' this.
 #'
 #' @export
 #' @param class An R6 class definition.
-#' @param public,private A named list of public and private methods/data..
+#' @param public,private A named list of public and private methods/data.
 #' @inheritParams local_mocked_s3_method
 local_mocked_r6_class <- function(
   class,
