@@ -155,7 +155,7 @@ expect_snapshot_file <- function(
       paste0(snapshotter$file, "/", name),
       hint
     )
-    return(fail(msg, snapshot = TRUE))
+    return(snapshot_fail(msg))
   }
   pass(NULL)
 }
@@ -229,7 +229,7 @@ snapshot_file_equal <- function(
     # We want to fail on CI since this suggests that the user has failed
     # to record the value locally
     if (fail_on_new) {
-      return(fail(message, snapshot = TRUE, trace_env = trace_env))
+      return(snapshot_fail(message, trace_env = trace_env))
     }
     testthat_warn(message)
     TRUE

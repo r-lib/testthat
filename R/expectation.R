@@ -49,20 +49,8 @@ expect <- function(
 #' @keywords internal
 #' @inheritParams expect
 #' @export
-expectation <- function(
-  type,
-  message,
-  snapshot = FALSE,
-  srcref = NULL,
-  trace = NULL
-) {
-  exp <- new_expectation(
-    type,
-    message,
-    snapshot = snapshot,
-    srcref = srcref,
-    trace = trace
-  )
+expectation <- function(type, message, ..., srcref = NULL, trace = NULL) {
+  exp <- new_expectation(type, message, ..., srcref = srcref, trace = trace)
   exp_signal(exp)
 }
 #' @rdname expectation

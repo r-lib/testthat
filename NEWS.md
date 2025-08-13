@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* In `R CMD check`, snapshots now only advise on how to resolve failures once (#2207).
 * `snapshot_review()` includes a reject button and only displays the file navigation and the skip button if there are multiple files to review (#2025).
 * New `snapshot_download_gh()` makes it easy to get snapshots off GitHub and into your local package (#1779).
 * New `local_mocked_s3_method()`, `local_mocked_s4_method()`, and `local_mocked_r6_class()` allow you to mock S3 and S4 methods and R6 classes (#1892, #1916)

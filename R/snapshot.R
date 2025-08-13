@@ -289,7 +289,7 @@ expect_snapshot_condition_ <- function(
         class
       )
     }
-    return(fail(msg, snapshot = TRUE, trace_env = trace_env))
+    return(snapshot_fail(msg, trace_env = trace_env))
   }
 
   expect_snapshot_helper(
@@ -354,7 +354,7 @@ expect_snapshot_helper <- function(
       paste0(comp, collapse = "\n\n"),
       hint
     )
-    return(fail(msg, snapshot = TRUE, trace_env = trace_env))
+    return(snapshot_fail(msg, trace_env = trace_env))
   }
 
   pass(NULL)

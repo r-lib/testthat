@@ -40,25 +40,25 @@ fail <- function(
   info = NULL,
   srcref = NULL,
   trace_env = caller_env(),
-  trace = NULL,
-  snapshot = FALSE
+  trace = NULL
 ) {
-  if (is.null(trace)) {
-    trace <- trace_back(top = getOption("testthat_topenv"), bottom = trace_env)
-  }
-  # Only show if there's at least one function apart from the expectation
-  if (trace_length(trace) <= 1) {
+  trace <- trace %||% capture_trace(trace_env)
+  message <- paste(c(message, info), collapse = "\n")
+  expectation("failure", message, srcref = srcref, trace = trace)
+}
+
+snapshot_fail <- function(message, trace_env = caller_env()) {
+  trace <- capture_trace(trace_env)
+  expectation("failure", message, trace = trace, snapshot = TRUE)
+}
+
+capture_trace <- function(trace_env) {
+  trace <- trace_back(top = getOption("testthat_topenv"), bottom = trace_env)
+  # Only include trace if there's at least one function apart from the expectation
+  if (!is.null(trace) && trace_length(trace) <= 1) {
     trace <- NULL
   }
-
-  message <- paste(c(message, info), collapse = "\n")
-  expectation(
-    "failure",
-    message,
-    srcref = srcref,
-    trace = trace,
-    snapshot = snapshot
-  )
+  trace
 }
 
 #' @rdname fail

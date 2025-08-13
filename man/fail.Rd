@@ -10,8 +10,7 @@ fail(
   info = NULL,
   srcref = NULL,
   trace_env = caller_env(),
-  trace = NULL,
-  snapshot = FALSE
+  trace = NULL
 )
 
 pass(value)
@@ -35,10 +34,10 @@ you're calling \code{fail()} from a helper function; see
 When supplied, the expectation is displayed with the backtrace.
 Expert use only.}
 
-\item{snapshot}{Is this a snapshot failure?}
-
 \item{value}{Value to return, typically the result of evaluating the
 \code{object} argument to the expectation.}
+
+\item{snapshot}{Is this a snapshot failure?}
 }
 \description{
 These are the primitives that you can use to implement your own expectations.
