@@ -15,7 +15,7 @@
 #' @export
 snapshot_download_gh <- function(repository, run_id, dest_dir = ".") {
   check_string(repository)
-  check_number_whole(run_id)
+  check_string(run_id)
   check_string(dest_dir)
 
   check_installed("gh")
@@ -45,7 +45,7 @@ snap_download_hint <- function() {
   run_id <- Sys.getenv("GITHUB_RUN_ID")
 
   sprintf(
-    "* Call `snapshot_download_gh(\"%s\", %s)` to download the snapshots from GitHub.\n",
+    "* Call `snapshot_download_gh(\"%s\", \"%s\")` to download the snapshots from GitHub.\n",
     repository,
     run_id
   )
