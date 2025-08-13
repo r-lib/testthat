@@ -28,7 +28,7 @@ local_mocked_s3_method <- function(
   check_string(signature)
   check_function(definition)
 
-  old <- getS3method(generic, signature, optional = TRUE)
+  old <- utils::getS3method(generic, signature, optional = TRUE)
   if (is.null(old)) {
     cli::cli_abort(
       "Can't find existing S3 method {.code {generic}.{signature}()}."
@@ -50,15 +50,18 @@ local_mocked_s4_method <- function(
   check_character(signature)
   check_function(definition)
 
-  old <- getMethod(generic, signature, optional = TRUE)
+  old <- methods::getMethod(generic, signature, optional = TRUE)
   if (is.null(old)) {
     name <- paste0(generic, "(", paste0(signature, collapse = ","), ")")
     cli::cli_abort(
       "Can't find existing S4 method {.code {name}}."
     )
   }
-  setMethod(generic, signature, definition, where = topenv(frame))
-  withr::defer(setMethod(generic, signature, old, where = topenv(frame)), frame)
+  methods::setMethod(generic, signature, definition, where = topenv(frame))
+  withr::defer(
+    methods::setMethod(generic, signature, old, where = topenv(frame)),
+    frame
+  )
 }
 
 
@@ -123,6 +126,9 @@ TestMockClass <- R6::R6Class(
   )
 )
 
+# Silence R CMD check NOTE: I think it's because TestMockPerson is a claas
+# constructor
+#' @importFrom methods new
 TestMockPerson <- methods::setClass(
   "TestMockPerson",
   slots = c(name = "character", age = "numeric")
