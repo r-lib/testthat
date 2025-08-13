@@ -18,6 +18,7 @@
 #'   informative traceack for failures. You should only need to set this if
 #'   you're calling `fail()` from a helper function; see
 #'   `vignette("custom-expectation")` for details.
+#' @param snapshot Is this a snapshot failure?
 #' @param trace An optional backtrace created by [rlang::trace_back()].
 #'   When supplied, the expectation is displayed with the backtrace.
 #'   Expert use only.
@@ -39,7 +40,8 @@ fail <- function(
   info = NULL,
   srcref = NULL,
   trace_env = caller_env(),
-  trace = NULL
+  trace = NULL,
+  snapshot = FALSE
 ) {
   if (is.null(trace)) {
     trace <- trace_back(top = getOption("testthat_topenv"), bottom = trace_env)
@@ -50,7 +52,13 @@ fail <- function(
   }
 
   message <- paste(c(message, info), collapse = "\n")
-  expectation("failure", message, srcref = srcref, trace = trace)
+  expectation(
+    "failure",
+    message,
+    srcref = srcref,
+    trace = trace,
+    snapshot = snapshot
+  )
 }
 
 #' @rdname fail

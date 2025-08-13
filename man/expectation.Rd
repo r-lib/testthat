@@ -7,7 +7,7 @@
 \alias{is.expectation}
 \title{Construct an expectation object}
 \usage{
-expectation(type, message, srcref = NULL, trace = NULL)
+expectation(type, message, snapshot = FALSE, srcref = NULL, trace = NULL)
 
 new_expectation(
   type,

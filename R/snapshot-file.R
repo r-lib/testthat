@@ -142,7 +142,11 @@ expect_snapshot_file <- function(
     return(equal)
   }
 
-  hint <- snapshot_review_hint(snapshotter$file, name)
+  if (in_rcmd_check()) {
+    hint <- ""
+  } else {
+    hint <- snapshot_review_hint(snapshotter$file, name)
+  }
 
   if (!equal) {
     msg <- sprintf(
@@ -151,7 +155,7 @@ expect_snapshot_file <- function(
       paste0(snapshotter$file, "/", name),
       hint
     )
-    return(fail(msg))
+    return(fail(msg, snapshot = TRUE))
   }
   pass(NULL)
 }
@@ -167,44 +171,15 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   }
 }
 
-snapshot_review_hint <- function(
-  test,
-  name,
-  ci = on_ci(),
-  check = in_rcmd_check(),
-  reset_output = TRUE
-) {
+snapshot_review_hint <- function(test, name, reset_output = TRUE) {
   if (reset_output) {
     local_reporter_output()
   }
 
-  path <- paste0("tests/testthat/_snaps/", test, "/", new_name(name))
-
-  if (check) {
-    if (on_gh()) {
-      bullets <- snap_download_hint()
-    } else {
-      bullets <- c(
-        if (ci) "* Download and unzip run artifact\n",
-        if (!ci) "* Locate check directory\n",
-        paste0("* Copy '", path, "' to local test directory\n")
-      )
-    }
-  } else {
-    bullets <- NULL
-  }
-
-  paste0(
-    c(
-      bullets,
-      cli::format_inline(
-        "* Run {.run testthat::snapshot_review('{test}/')} to review changes"
-      )
-    ),
-    collapse = ""
+  cli::format_inline(
+    "* Run {.run testthat::snapshot_review('{test}/{name}')} to review the change."
   )
 }
-
 
 snapshot_file_equal <- function(
   snap_dir, # _snaps/
@@ -254,7 +229,7 @@ snapshot_file_equal <- function(
     # We want to fail on CI since this suggests that the user has failed
     # to record the value locally
     if (fail_on_new) {
-      return(fail(message, trace_env = trace_env))
+      return(fail(message, snapshot = TRUE, trace_env = trace_env))
     }
     testthat_warn(message)
     TRUE

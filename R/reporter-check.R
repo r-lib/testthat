@@ -13,6 +13,7 @@ CheckReporter <- R6::R6Class(
     skips = NULL,
     warnings = NULL,
     n_ok = 0L,
+    has_snapshot_failure = FALSE,
 
     initialize = function(...) {
       self$capabilities$parallel_support <- TRUE
@@ -64,6 +65,11 @@ CheckReporter <- R6::R6Class(
         self$rule("Failed tests", line = 2)
         self$cat_line(map_chr(problems, issue_summary, rule = TRUE))
         self$cat_line()
+
+        if (some(problems, \(x) isTRUE(attr(x, "snapshot")))) {
+          self$rule("To resolve snapshot failures", line = 1)
+          self$cat_line(snapshot_check_hint())
+        }
       } else {
         # clean up
         unlink("testthat-problems.rds")
@@ -104,4 +110,37 @@ summary_line <- function(n_fail, n_warn, n_skip, n_pass) {
     n_pass,
     " ]"
   )
+}
+
+snapshot_check_hint <- function() {
+  if (on_gh()) {
+    repository <- Sys.getenv("GITHUB_REPOSITORY")
+    run_id <- Sys.getenv("GITHUB_RUN_ID")
+
+    call <- sprintf(
+      "testthat::snapshot_download_gh(\"%s\", \"%s\")",
+      repository,
+      run_id
+    )
+    copy <- sprintf("* Run `%s` to download snapshots.", call)
+  } else {
+    copy <- c(
+      if (on_ci()) {
+        "* Download and unzip artifact."
+      } else {
+        "* Locate check directory."
+      },
+      "* Copy 'tests/testthat/_snaps' to local package."
+    )
+  }
+
+  action <- c(
+    "* Run `testthat::snapshot_accept()` to accept all changes.",
+    "* Run `testthat::snapshot_review()` to review all changes."
+  )
+  c(copy, action)
+}
+
+run <- function(x) {
+  cli::format_inline(paste0("{.run testthat::", x, "}"))
 }

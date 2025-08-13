@@ -96,3 +96,32 @@
     
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
 
+# generates informative snapshot hints
+
+    Code
+      base::writeLines(snapshot_check_hint())
+    Output
+      * Locate check directory.
+      * Copy 'tests/testthat/_snaps' to local package.
+      * Run `testthat::snapshot_accept()` to accept all changes.
+      * Run `testthat::snapshot_review()` to review all changes.
+
+---
+
+    Code
+      base::writeLines(snapshot_check_hint())
+    Output
+      * Download and unzip artifact.
+      * Copy 'tests/testthat/_snaps' to local package.
+      * Run `testthat::snapshot_accept()` to accept all changes.
+      * Run `testthat::snapshot_review()` to review all changes.
+
+---
+
+    Code
+      base::writeLines(snapshot_check_hint())
+    Output
+      * Run `testthat::snapshot_download_gh("r-lib/testthat", "123")` to download snapshots.
+      * Run `testthat::snapshot_accept()` to accept all changes.
+      * Run `testthat::snapshot_review()` to review all changes.
+

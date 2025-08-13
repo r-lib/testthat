@@ -15,7 +15,7 @@ test_that("can snapshot everything", {
     print("1")
     message("2")
     warning("3")
-    stop("4")
+    stop("5")
   }
   expect_snapshot(f(), error = TRUE)
 })

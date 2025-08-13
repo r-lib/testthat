@@ -1,5 +1,5 @@
 test_that("expect_snapshot_file works", {
-  path <- write_tmp_lines(letters)
+  path <- write_tmp_lines(letters[-1])
   expect_snapshot_file(path, "foo.r", compare = compare_file_text)
 
   path <- withr::local_tempfile()
@@ -157,41 +157,11 @@ test_that("split_path handles edge cases", {
   expect_equal(split_path("x/.b.c"), list(dir = "x", name = "", ext = "b.c"))
 })
 
-test_that("snapshot_hint output differs in R CMD check", {
-  snapshot_review_hint <- function(...) {
-    testthat:::snapshot_review_hint(..., reset_output = FALSE)
-  }
-  withr::local_envvar(GITHUB_ACTIONS = "false")
-
+test_that("generates informative hint", {
   expect_snapshot(cat(snapshot_review_hint(
     "lala",
     "foo.r",
-    check = FALSE,
-    ci = FALSE
-  )))
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = TRUE,
-    ci = FALSE
-  )))
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = TRUE,
-    ci = TRUE
-  )))
-
-  withr::local_envvar(
-    GITHUB_ACTIONS = "true",
-    GITHUB_REPOSITORY = "r-lib/testthat",
-    GITHUB_RUN_ID = "123"
-  )
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = TRUE,
-    ci = TRUE
+    reset_output = FALSE
   )))
 })
 
