@@ -40,17 +40,6 @@ snapshot_download_gh <- function(repository, run_id, dest_dir = ".") {
   dir_copy(src_snaps, dest_snaps)
 }
 
-snap_download_hint <- function() {
-  repository <- Sys.getenv("GITHUB_REPOSITORY")
-  run_id <- Sys.getenv("GITHUB_RUN_ID")
-
-  sprintf(
-    "* Call `snapshot_download_gh(\"%s\", \"%s\")` to download the snapshots from GitHub.\n",
-    repository,
-    run_id
-  )
-}
-
 gh_find_job <- function(repository, run_id) {
   jobs_json <- gh::gh(
     "/repos/{repository}/actions/runs/{run_id}/jobs",
