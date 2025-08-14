@@ -131,7 +131,8 @@
     `actual`:   FALSE
     `expected`: TRUE 
     --------------------------------------------------------------------------------
-    Maximum number of failures exceeded; quitting at end of file.
+    
+    Maximum number of failures exceeded; quitting.
     i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
 
 # can fully suppress incremental updates
@@ -564,7 +565,7 @@
     v | F W  S  OK | Context
     
     - [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ] Starting up...                          
-    x | 11        0 | reporters/fail-many                                           
+    \ [ FAIL 11 | WARN 0 | SKIP 0 | PASS 0 ] @ reporters/fail-many                  
     --------------------------------------------------------------------------------
     Failure ('reporters/fail-many.R:3:5'): Example
     FALSE (`actual`) is not equal to TRUE (`expected`).
@@ -631,8 +632,8 @@
     
     `actual`:   FALSE
     `expected`: TRUE 
-    --------------------------------------------------------------------------------
-    Maximum number of failures exceeded; quitting at end of file.
+    
+    Maximum number of failures exceeded; quitting.
     i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
     
                                                                                     

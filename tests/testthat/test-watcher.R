@@ -1,8 +1,3 @@
-test_that("fails", {
-  for (i in 1:5) {
-    test_that(paste0(i), fail())
-  }
-})
 test_that("compare state works correctly", {
   loc <- withr::local_tempfile(pattern = "watcher")
   dir.create(loc)

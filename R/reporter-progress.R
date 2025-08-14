@@ -233,9 +233,8 @@ ProgressReporter <- R6::R6Class(
 
       # Separate from the progress bar
       self$cat_line()
-      self$cat_line()
       stop_reporter(c(
-        "Maximum number of failures exceeded; quitting at end of file.",
+        "Maximum number of failures exceeded; quitting.",
         i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
       ))
     },
@@ -481,7 +480,9 @@ ParallelProgressReporter <- R6::R6Class(
           self$update(force = TRUE)
         }
       } else {
+        self$update(force = TRUE)
         self$cat_line()
+        self$rule()
 
         issues <- unlist(
           map(self$files, \(x) x$issues$as_list()),
@@ -490,6 +491,7 @@ ParallelProgressReporter <- R6::R6Class(
         summary <- map_chr(issues, issue_summary)
         self$cat_tight(paste(summary, collapse = "\n\n"))
 
+        self$cat_line()
         self$report_full()
       }
     },
