@@ -79,10 +79,22 @@ testthat automatically detects dangling snapshots that have been
 written to the \verb{_snaps} directory but which no longer have
 corresponding R code to generate them. These dangling files are
 automatically deleted so they don't clutter the snapshot
-directory. However we want to preserve snapshot files when the R
-code wasn't executed because of an unexpected error or because of a
-\code{\link[=skip]{skip()}}. Let testthat know about these files by calling
-\code{announce_snapshot_file()} before \code{expect_snapshot_file()}.
+directory.
+
+This can cause problems if youre test is conditionally executed, either
+because of an \code{if} statement or a \code{\link[=skip]{skip()}}. To avoid files being deleted in
+this case, you can call \code{announce_snapshot_file()} before the conditional
+code.
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{test_that("can save a file", \{
+  if (!can_save()) \{
+    announce_snapshot_file("data.txt")
+    skip("Can't save file")
+  \}
+  path <- withr::local_tempfile()
+  expect_snasphot_file(save_file(path, mydata()), "data.txt")
+\})
+}\if{html}{\out{</div>}}
 }
 
 \examples{

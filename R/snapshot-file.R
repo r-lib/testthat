@@ -41,10 +41,23 @@
 #' written to the `_snaps` directory but which no longer have
 #' corresponding R code to generate them. These dangling files are
 #' automatically deleted so they don't clutter the snapshot
-#' directory. However we want to preserve snapshot files when the R
-#' code wasn't executed because of an unexpected error or because of a
-#' [skip()]. Let testthat know about these files by calling
-#' `announce_snapshot_file()` before `expect_snapshot_file()`.
+#' directory.
+#'
+#' This can cause problems if youre test is conditionally executed, either
+#' because of an `if` statement or a [skip()]. To avoid files being deleted in
+#' this case, you can call `announce_snapshot_file()` before the conditional
+#' code.
+#'
+#' ```R
+#' test_that("can save a file", {
+#'   if (!can_save()) {
+#'     announce_snapshot_file("data.txt")
+#'     skip("Can't save file")
+#'   }
+#'   path <- withr::local_tempfile()
+#'   expect_snasphot_file(save_file(path, mydata()), "data.txt")
+#' })
+#' ```
 #'
 #' @export
 #' @examples
