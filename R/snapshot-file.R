@@ -51,7 +51,7 @@
 #' ```R
 #' test_that("can save a file", {
 #'   if (!can_save()) {
-#'     announce_snapshot_file("data.txt")
+#'     announce_snapshot_file(name = "data.txt")
 #'     skip("Can't save file")
 #'   }
 #'   path <- withr::local_tempfile()
@@ -80,20 +80,19 @@
 #' }
 #'
 #' # You'd then also provide a helper that skips tests where you can't
-#' # be sure of producing exactly the same output
+#' # be sure of producing exactly the same output.
 #' expect_snapshot_plot <- function(name, code) {
+#'   # Announce the file before touching skips or running `code`. This way,
+#'   # if the skips are active, testthat will not auto-delete the corresponding
+#'   # snapshot file.
+#'   name <- paste0(name, ".png")
+#'   announce_snapshot_file(name = name)
+#'
 #'   # Other packages might affect results
 #'   skip_if_not_installed("ggplot2", "2.0.0")
 #'   # Or maybe the output is different on some operation systems
 #'   skip_on_os("windows")
 #'   # You'll need to carefully think about and experiment with these skips
-#'
-#'   name <- paste0(name, ".png")
-#'
-#'   # Announce the file before touching `code`. This way, if `code`
-#'   # unexpectedly fails or skips, testthat will not auto-delete the
-#'   # corresponding snapshot file.
-#'   announce_snapshot_file(name = name)
 #'
 #'   path <- save_png(code)
 #'   expect_snapshot_file(path, name)
@@ -110,13 +109,14 @@ expect_snapshot_file <- function(
   check_string(path)
   check_string(name)
   check_bool(cran)
+  check_variant(variant)
 
   edition_require(3, "expect_snapshot_file()")
-  if (!cran && on_cran()) {
-    skip("On CRAN")
-  }
 
-  check_variant(variant)
+  announce_snapshot_file(name = name)
+  if (!cran && on_cran()) {
+    return(invisible())
+  }
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
