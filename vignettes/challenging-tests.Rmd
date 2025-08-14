@@ -14,111 +14,105 @@ knitr::opts_chunk$set(
 )
 ```
 
-Testing is easy when your functions are pure: they take some inputs and return predictable outputs. But real-world code often involves randomness, external state, graphics, user interaction, and other challenging elements. This vignette provides practical solutions for testing these tricky scenarios.
+Testing is easy when your functions are pure: they take some inputs and return predictable outputs. But real-world code often involves randomness, external state, graphics, user interaction, and other challenging elements. This vignette provides practical solutions these tricky scenarios.
 
-Other packages:
+In principle, it's often possible to test these things by explicitly parameterising them as arguments to your functions so you can more easily override the default values. And where possible you should do so, especially when testing internal functions. But it's often impractical to provide arguments to explicitly control every last feature without exploding user-facing interfaces. So the techniques in this vignette will help you test all your code, regardless of where it lives and what it does.
 
-* For testing graphical output, we recommend vdiffr.
-* For testing code that uses HTTP requests we recommend vcr or httptest2.
+This vignette is divided into sections based on the underlying tool you'll use:
+
+* External state shows you how to use the withr package to handle options, environment variables, the working direction, and random number generation.
+* Snapshotting shows you how to handle functions that produce user facing output including text, warnings, and errors.
+* Mocking is general purpose tool when all else fails; it allows you to temporarily replace a function or method with a mockup that you can control.
+* Subtests shows you how to use functions and for-loops to reduce duplication in your test code, making it easier to test that multiple part of your package have the same behaviour or follow the same interface.
+
+To begin, there are a couple of scenarios that testthat doesn't help with, but we can happily suggest other suggest:
+
+* If you need to test graphical output, {vdiffr}. vdiffr is used to test ggplot2, and incorporates everything we know about high-quality graphics tests that minimise false positives.
+
+* If you need to test HTTP requests, we recommend using {vcr} or {httptest2}.
 
 ```{r setup}
 library(testthat)
 ```
 
-## External state
+## External state (withr)
 
-Tests should be isolated from global options, environment variables, and other external state that might affect behavior.
+### Options, env vars, and working directory
 
-### Output affected by RNG
+If your code depends on global options, environment variables, or the working directory. In most cases, it's good practice to make these dependencies explicit by making them the default value of an argument so you can control directly in your tests. However, sometimes you are testing deeply embedded code and it would be painful to thread the values all the way through to the right place. In this case can temporarily override with withr functions:
 
-Random number generation can make tests non-deterministic. Use `withr::local_seed()` to ensure reproducible results within your tests.
-
-```{r, eval = FALSE}
-simulate_data <- function(n) {
-  rnorm(n, mean = 0, sd = 1)
-}
-
-test_that("simulate_data returns correct structure", {
-  result <- simulate_data(5)
-  expect_length(result, 5)
-  expect_type(result, "double")
-  expect_equal(result[1], 1.048, tolerance = 0.001)
-})
-```
+* Temporarily change options with `withr::local_options()`.
+* Temporarily change env vars with `withr::local_envvar()`.
+* Temporarily change the working directory with `withr::local_dir()`.
 
 ```{r}
-test_that("random sample has expected properties", {
-  withr::local_seed(123)
-  x <- sample(1:100, 10)
-  expect_length(x, 10)
-  expect_true(all(x %in% 1:100))
-  # This will always pass now:
-  expect_equal(x[1], 31)
-})
-```
-
-### Global options
-
-```{r}
-# Function that depends on global options
 format_number <- function(x) {
   format(x, digits = getOption("digits"))
 }
 
 test_that("format_number respects digits option", {
-  # Save and restore the original option
+  x <- 1.23456
   withr::local_options(digits = 3)
-  expect_equal(format_number(pi), "3.14")
+  expect_equal(format_number(x), "1.23")
   
   withr::local_options(digits = 5)
-  expect_equal(format_number(pi), "3.1416")
+  expect_equal(format_number(x), "1.2346")
 })
 ```
 
-### Environment variables
+### Random numbers
+
+Random number generation also falls into the same bucket because it depends on the value of the special `.Random.seed` variable which is updated whenever you generate a random number. You can temporarily change this seed and reproducibly generate "random" numbers with `withr::local_seed()`.
 
 ```{r}
-# Function that depends on environment variables
-get_api_url <- function() {
-  Sys.getenv("API_URL", default = "https://api.example.com")
+dice <- function() {
+  sample(6, 1)
 }
 
-test_that("get_api_url uses environment variable", {
-  withr::local_envvar(API_URL = "https://test-api.example.com")
-  expect_equal(get_api_url(), "https://test-api.example.com")
-})
+test_that("dice returns different numbers", {
+  withr::local_seed(1234)
 
-test_that("get_api_url uses default when env var not set", {
-  withr::local_envvar(API_URL = NA)
-  expect_equal(get_api_url(), "https://api.example.com")
+  expect_equal(dice(), 4)
+  expect_equal(dice(), 2)
+  expect_equal(dice(), 6)
 })
 ```
 
-### Reading and writing files
+### Local helpers
+
+If you find yourself using the same `local_` calls in multiple places, you may want to create your own helper function. This is straightforward once you know how these functions. The most important thing to know is that they are all wrappers around `on.exit()` which runs code when a function exits. The question is: which function? By default, it's the function that calls `withr::local_*()`. But obvious that's not going to work if you write a helper function:
 
 ```{r}
-test_that("function works in different directories", {
-  withr::local_dir(withr::local_tempdir())
-  # Test code that depends on working directory
-  writeLines("test content", "temp_file.txt")
-  expect_true(file.exists("temp_file.txt"))
-  # File will be cleaned up automatically
+local_my_helper <- function() {
+  withr::local_options(x = 10)
+}
+
+local({
+  local_my_helper()
+  getOption("x")
 })
 ```
 
-### Local wrappers
-
-If you want to make your own function, you should take a `frame` argument. frame is an environment on the call stack, i.e. it's the execution environment of some function, and the local effects will be undone when that function is completed. Underneath the hood this is all wrappers around `on.exit()`.
+To resolve this problem we need to capture the calling frame for our helper function. A **frame** is an environment on the call stack, i.e. the execution environment of some function that lead to the current call.
 
 ```{r}
+local_my_helper <- function(frame = parent.frame()) {
+  withr::local_options(x = 10, .local_envir = frame)
+}
+local({
+  local_my_helper()
+  getOption("x")
+})
 
 ```
+
+We strongly recommend giving such functions a `local_` prefix to clearly communicate that they have "local" effects.
 
 ## Errors and user-facing text
 
-Error messages, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Snapshots are perfect for this.
+Error messages, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs, so another human can take a look. This is exactly the point of snapshot tests.
 
-### Testing error messages
+Snapshot tets are particularly important when testing complex error messages.
 
 ```{r}
 divide_positive <- function(x, y) {
@@ -131,6 +125,32 @@ divide_positive <- function(x, y) {
 test_that("divide_positive gives helpful error", {
   expect_snapshot_error(divide_positive(10, -2))
   expect_snapshot_error(divide_positive(10, 0))
+})
+```
+
+### Complex error messages with cli
+
+When generating sophisticated error messages that use cli's interpolation and formatting features, snapshot tests are essential for ensuring the messages render correctly with proper styling and content.
+
+```{r}
+process_order <- function(item_count, price, discount_code, shipping_country) {
+  if (item_count <= 0 || price <= 0 || nchar(shipping_country) != 2) {
+    cli::cli_abort(c(
+      "Invalid order parameters:",
+      "x" = "Item count: {.val {item_count}} (must be > 0)",
+      "x" = "Price: {.val {price}} (must be > 0)", 
+      "x" = "Shipping country: {.val {shipping_country}} (must be 2-letter code)",
+      "x" = "Discount code: {.val {discount_code}} ({length(discount_code)} character{?s})",
+      "i" = "Order processing failed for {.pkg {Sys.info()[['user']]}} at {.timestamp {Sys.time()}}"
+    ))
+  }
+  
+  list(items = item_count, total = price, country = shipping_country)
+}
+
+test_that("process_order shows complex cli interpolated errors", {
+  expect_snapshot_error(process_order(0, -10, "INVALID", "USA"))
+  expect_snapshot_error(process_order(-5, 25.99, "", "X"))
 })
 ```
 
@@ -153,9 +173,15 @@ The same idea applies to messages and warnings.
 
 ### `local_reproducible_output()`
 
+By default, testthat sets a number of options that simplify and standardise output:
 
+* The console width is set to 80.
+* Crayon/cli ANSI colouring and hyperlinks are suppressed.
+* Unicode characters are suppressed.
 
-### Transformations
+These are sound defaults that we have found useful to minimise spurious diffs between tests run in different environment. But it's sometimes necessary to override them in order to test various output features. So, if necessary, you can override these settings by calling `local_reproducible_output()`. Read its docs to learn more.
+
+### Transforms
 
 Sometimes part of the output varies in ways that you can't easily control. There are two techniques you can use: mocking (described next) or the `transform` output. 
 
@@ -172,42 +198,28 @@ Sometimes part of the output varies in ways that you can't easily control. There
 * Sometimes easier or more clear to mock a function rather than setting options/env vars. And generally just tickling some branch that would otherwise be hard to reach.
 * Record internal state with `<<-`.
 
-    ```{r}
-    unix_time <- function() unclass(Sys.time())
-    
-    time <- 0
-    local_mocked_bindings(unix_time = function(time) time)
-    time <- 1
-    time <- 10
-    ```
+### Managing time
+
+```{r}
+#| eval: false
+unix_time <- function() unclass(Sys.time())
+
+time <- 0
+local_mocked_bindings(unix_time = function(time) time)
+time <- 1
+time <- 10
+```
 
 ### Interactivity and user input
 
 ```{r}
+#| eval: false
 local_mocked_bindings(interactive = function() FALSE)
 ```
 
-But we generally recommend using `rlang::is_interactive()`. Can be manually overridden by `rlang_interactive` option, whih is automatically set inside of tests.
+But we generally recommend using `rlang::is_interactive()`. Can be manually overridden by `rlang_interactive` option, whih is automatically set inside of tests.More
 
-```{r}
-ask_yes_no <- function(question) {
-  response <- readline(paste0(question, " (y/n): "))
-  tolower(response) %in% c("y", "yes")
-}
-
-test_that("ask_yes_no handles yes response", {
-  mockery::stub(ask_yes_no, "readline", "y")
-  expect_true(ask_yes_no("Continue?"))
-})
-
-test_that("ask_yes_no handles no response", {
-  mockery::stub(ask_yes_no, "readline", "n")
-  expect_false(ask_yes_no("Continue?"))
-})
-```
-
-
-## Reducing duplication
+## Subtests
 
 ### Using helper functions
 
