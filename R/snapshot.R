@@ -313,6 +313,7 @@ expect_snapshot_helper <- function(
   trace_env = caller_env()
 ) {
   if (!cran && on_cran()) {
+    signal(class = "snapshot_on_cran")
     return(invisible())
   }
 

@@ -99,8 +99,11 @@ expect_snapshot_file <- function(
   check_bool(cran)
 
   edition_require(3, "expect_snapshot_file()")
+
+  announce_snapshot_file(name = name)
   if (!cran && on_cran()) {
-    skip("On CRAN")
+    signal(class = "snapshot_on_cran")
+    return(invisible())
   }
 
   check_variant(variant)
