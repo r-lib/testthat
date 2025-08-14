@@ -81,7 +81,7 @@ corresponding R code to generate them. These dangling files are
 automatically deleted so they don't clutter the snapshot
 directory.
 
-This can cause problems if youre test is conditionally executed, either
+This can cause problems if your test is conditionally executed, either
 because of an \code{if} statement or a \code{\link[=skip]{skip()}}. To avoid files being deleted in
 this case, you can call \code{announce_snapshot_file()} before the conditional
 code.
@@ -92,7 +92,7 @@ code.
     skip("Can't save file")
   \}
   path <- withr::local_tempfile()
-  expect_snasphot_file(save_file(path, mydata()), "data.txt")
+  expect_snapshot_file(save_file(path, mydata()), "data.txt")
 \})
 }\if{html}{\out{</div>}}
 }
@@ -127,7 +127,7 @@ expect_snapshot_plot <- function(name, code) {
 
   # Other packages might affect results
   skip_if_not_installed("ggplot2", "2.0.0")
-  # Or maybe the output is different on some operation systems
+  # Or maybe the output is different on some operating systems
   skip_on_os("windows")
   # You'll need to carefully think about and experiment with these skips
 

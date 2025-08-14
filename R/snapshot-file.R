@@ -55,7 +55,7 @@
 #'     skip("Can't save file")
 #'   }
 #'   path <- withr::local_tempfile()
-#'   expect_snasphot_file(save_file(path, mydata()), "data.txt")
+#'   expect_snapshot_file(save_file(path, mydata()), "data.txt")
 #' })
 #' ```
 #'
