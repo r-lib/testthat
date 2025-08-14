@@ -153,6 +153,10 @@ Sometimes part of the output varies in ways that you can't easily control. There
 
 ## Mocking
 
+Mocking is a useful technique when all else fails: for the duration of your test, you make some function return whatever you need it to. 
+
+Note that mocking works best on your own functions and functions that you import. But it's possible to mock base R functions and functions that you don't import. See `?local_mocked_bindings` for more details.
+
 <!-- https://github.com/search?q=%28org%3Ar-lib+OR+org%3Atidyverse%29+local_mocked+bindings+path%3Atests%2Ftestthat&type=code -->
 
 * Package versions and installed status
