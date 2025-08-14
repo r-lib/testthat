@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 Testing is easy when your functions are pure: they take some inputs and return predictable outputs. But real-world code often involves randomness, external state, graphics, user interaction, and other challenging elements. This vignette provides practical solutions these tricky scenarios.
 
-In principle, it's often possible to test these things by explicitly parameterising them as arguments to your functions so you can more easily override the default values. And where possible you should do so, especially when testing internal functions. But it's often impractical to provide arguments to explicitly control every last feature without exploding user-facing interfaces. So the techniques in this vignette will help you test all your code, regardless of where it lives and what it does.
+In principle, it's often possible to test these things by explicitly parameterising them as arguments to your functions so you can more easily override the default values. And where possible you should do so, especially when testing internal functions. But it's often impractical to provide arguments to explicitly control every last feature without exploding user-facing interfaces. So the techniques in this vignette will help you test all your code, regardless of where it lives and what it does. In other situations, it might not be your function that is the problem, but some other function that you can't edit directly.
 
 This vignette is divided into sections based on the underlying tool you'll use:
 
@@ -39,7 +39,7 @@ library(testthat)
 
 ### Options, env vars, and working directory
 
-If your code depends on global options, environment variables, or the working directory. In most cases, it's good practice to make these dependencies explicit by making them the default value of an argument so you can control directly in your tests. However, sometimes you are testing deeply embedded code and it would be painful to thread the values all the way through to the right place. In this case can temporarily override with withr functions:
+In this case can temporarily override with withr functions:
 
 * Temporarily change options with `withr::local_options()`.
 * Temporarily change env vars with `withr::local_envvar()`.
@@ -59,6 +59,8 @@ test_that("format_number respects digits option", {
   expect_equal(format_number(x), "1.2346")
 })
 ```
+
+{withr} provides a number of other `local_` helpers; see the package docs for me.
 
 ### Random numbers
 
@@ -103,7 +105,6 @@ local({
   local_my_helper()
   getOption("x")
 })
-
 ```
 
 We strongly recommend giving such functions a `local_` prefix to clearly communicate that they have "local" effects.
@@ -132,42 +133,7 @@ test_that("divide_positive gives helpful error", {
 
 When generating sophisticated error messages that use cli's interpolation and formatting features, snapshot tests are essential for ensuring the messages render correctly with proper styling and content.
 
-```{r}
-process_order <- function(item_count, price, discount_code, shipping_country) {
-  if (item_count <= 0 || price <= 0 || nchar(shipping_country) != 2) {
-    cli::cli_abort(c(
-      "Invalid order parameters:",
-      "x" = "Item count: {.val {item_count}} (must be > 0)",
-      "x" = "Price: {.val {price}} (must be > 0)", 
-      "x" = "Shipping country: {.val {shipping_country}} (must be 2-letter code)",
-      "x" = "Discount code: {.val {discount_code}} ({length(discount_code)} character{?s})",
-      "i" = "Order processing failed for {.pkg {Sys.info()[['user']]}} at {.timestamp {Sys.time()}}"
-    ))
-  }
-  
-  list(items = item_count, total = price, country = shipping_country)
-}
-
-test_that("process_order shows complex cli interpolated errors", {
-  expect_snapshot_error(process_order(0, -10, "INVALID", "USA"))
-  expect_snapshot_error(process_order(-5, 25.99, "", "X"))
-})
-```
-
-### Testing complex output
-
-```{r}
-summarize_data <- function(x) {
-  cat("Summary of data:\n")
-  cat("Length:", length(x), "\n")
-  cat("Mean:", mean(x), "\n")
-  cat("Range:", range(x), "\n")
-}
-
-test_that("summarize_data output is correct", {
-  expect_snapshot(summarize_data(1:10))
-})
-```
+TODO: insert complex `cli::cli_abort()` example.
 
 The same idea applies to messages and warnings.
 
