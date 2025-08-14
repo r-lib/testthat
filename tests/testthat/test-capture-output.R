@@ -1,3 +1,9 @@
+test_that("fails", {
+  for (i in 1:5) {
+    test_that(paste0(i), fail())
+  }
+})
+
 test_that("multiplication works", {
   utf8 <- "M\u00e4chler"
   latin1 <- "M\xe4chler"

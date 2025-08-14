@@ -231,6 +231,9 @@ ProgressReporter <- R6::R6Class(
         snapshotter$end_file()
       }
 
+      # Separate from the progress bar
+      self$cat_line()
+      self$cat_line()
       stop_reporter(c(
         "Maximum number of failures exceeded; quitting at end of file.",
         i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
@@ -462,22 +465,31 @@ ParallelProgressReporter <- R6::R6Class(
     },
 
     end_file = function() {
-      fsts <- self$files[[self$file_name]]
-      time <- proc.time() - fsts$start_time
+      if (!self$is_full()) {
+        fsts <- self$files[[self$file_name]]
+        time <- proc.time() - fsts$start_time
 
-      # Workaround for https://github.com/rstudio/rstudio/issues/7649
-      if (self$is_rstudio) {
-        self$cat_tight(strpad(self$cr(), self$width + 1)) # +1 for \r
-      }
-      self$show_status(complete = TRUE, time = time[[3]], pad = TRUE)
-      self$report_issues(fsts$issues)
+        # Workaround for https://github.com/rstudio/rstudio/issues/7649
+        if (self$is_rstudio) {
+          self$cat_tight(strpad(self$cr(), self$width + 1)) # +1 for \r
+        }
+        self$show_status(complete = TRUE, time = time[[3]], pad = TRUE)
+        self$report_issues(fsts$issues)
 
-      self$files[[self$file_name]] <- NULL
-      if (length(self$files)) {
-        self$update(force = TRUE)
-      }
+        self$files[[self$file_name]] <- NULL
+        if (length(self$files)) {
+          self$update(force = TRUE)
+        }
+      } else {
+        self$cat_line()
 
-      if (self$is_full()) {
+        issues <- unlist(
+          map(self$files, \(x) x$issues$as_list()),
+          recursive = FALSE
+        )
+        summary <- map_chr(issues, issue_summary)
+        self$cat_tight(paste(summary, collapse = "\n\n"))
+
         self$report_full()
       }
     },
