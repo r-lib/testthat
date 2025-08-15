@@ -52,8 +52,10 @@ expect_setequal_ <- function(
       exp$lab
     )
     msg_act <- c(
+      sprintf("Actual: %s", values(act$val)),
+      sprintf("Expected: %s", values(exp$val)),
       if (length(act_miss)) sprintf("Needs: %s", values(act_miss)),
-      if (length(exp_miss)) sprintf("Extra: %s", values(exp_miss))
+      if (length(exp_miss)) sprintf("Absent: %s", values(exp_miss))
     )
 
     return(fail(c(msg_exp, msg_act), trace_env = trace_env))
@@ -104,7 +106,11 @@ expect_contains <- function(object, expected) {
       act$lab,
       exp$lab
     )
-    msg_act <- sprintf("Missing: %s", values(exp$val[exp_miss]))
+    msg_act <- c(
+      sprintf("Actual: %s", values(act$val)),
+      sprintf("Expected: %s", values(exp$val)),
+      sprintf("Missing: %s", values(exp$val[exp_miss]))
+    )
     fail(c(msg_exp, msg_act))
   }
 
@@ -127,7 +133,11 @@ expect_in <- function(object, expected) {
       act$lab,
       exp$lab
     )
-    msg_act <- sprintf("Invalid: %s", values(act$val[act_miss]))
+    msg_act <- c(
+      sprintf("Actual: %s", values(act$val)),
+      sprintf("Expected: %s", values(exp$val)),
+      sprintf("Invalid: %s", values(act$val[act_miss]))
+    )
     fail(c(msg_exp, msg_act))
   }
 

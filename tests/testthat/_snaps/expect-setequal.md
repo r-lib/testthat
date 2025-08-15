@@ -26,8 +26,10 @@
     Condition
       Error:
       ! Expected "actual" to have the same values as "expected".
+      Actual: "actual"
+      Expected: "expected"
       Needs: "actual"
-      Extra: "expected"
+      Absent: "expected"
 
 ---
 
@@ -36,6 +38,8 @@
     Condition
       Error:
       ! Expected `x` to have the same values as `y`.
+      Actual: 1, 2
+      Expected: 2
       Needs: 1
 
 ---
@@ -45,7 +49,9 @@
     Condition
       Error:
       ! Expected `x` to have the same values as `y`.
-      Extra: 3
+      Actual: 2
+      Expected: 2, 3
+      Absent: 3
 
 ---
 
@@ -54,8 +60,10 @@
     Condition
       Error:
       ! Expected `x` to have the same values as `y`.
+      Actual: 1, 2
+      Expected: 2, 3
       Needs: 1
-      Extra: 3
+      Absent: 3
 
 ---
 
@@ -64,8 +72,10 @@
     Condition
       Error:
       ! Expected `x` to have the same values as `y`.
+      Actual: "a", "a"
+      Expected: "b", "b", "b"
       Needs: "a"
-      Extra: "b"
+      Absent: "b"
 
 ---
 
@@ -74,7 +84,9 @@
     Condition
       Error:
       ! Expected `x` to have the same values as `c("a", "b", "c", "d")`.
-      Extra: "d"
+      Actual: "a", "b", "c"
+      Expected: "a", "b", "c", "d"
+      Absent: "d"
 
 # truncates long vectors
 
@@ -83,7 +95,9 @@
     Condition
       Error:
       ! Expected `x` to have the same values as `y`.
-      Extra: 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
+      Actual: 1, 2
+      Expected: 1, 2, 3, 4, 5, 6, 7, 8, 9, ...
+      Absent: 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
 
 # expect_contains() gives useful message on failure
 
@@ -92,6 +106,8 @@
     Condition
       Error:
       ! Expected `x1` to contain all values in `x2`.
+      Actual: "a", "b", "c"
+      Expected: "c", "d"
       Missing: "d"
 
 ---
@@ -101,6 +117,8 @@
     Condition
       Error:
       ! Expected `x1` to contain all values in `x3`.
+      Actual: "a", "b", "c"
+      Expected: "d", "e"
       Missing: "d", "e"
 
 # expect_in() gives useful message on failure
@@ -110,6 +128,8 @@
     Condition
       Error:
       ! Expected `x1` to only contain values from `x2`.
+      Actual: "a", "b"
+      Expected: "b", "c"
       Invalid: "a"
 
 ---
@@ -119,5 +139,7 @@
     Condition
       Error:
       ! Expected `x1` to only contain values from `x3`.
+      Actual: "a", "b"
+      Expected: "d", "e"
       Invalid: "a", "b"
 

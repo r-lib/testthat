@@ -24,7 +24,9 @@
     Condition
       Error:
       ! Expected names(`x1`) to have the same values as `c("a", "b")`.
-      Extra: "b"
+      Actual: "a"
+      Expected: "a", "b"
+      Absent: "b"
 
 ---
 
@@ -33,6 +35,8 @@
     Condition
       Error:
       ! Expected names(`x2`) to have the same values as "a".
+      Actual: "a", "b"
+      Expected: "a"
       Needs: "b"
 
 ---
@@ -42,8 +46,10 @@
     Condition
       Error:
       ! Expected names(`x1`) to have the same values as "b".
+      Actual: "a"
+      Expected: "b"
       Needs: "a"
-      Extra: "b"
+      Absent: "b"
 
 ---
 
