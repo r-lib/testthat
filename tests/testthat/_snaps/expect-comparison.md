@@ -66,7 +66,6 @@
       Error:
       ! Expected `x` < Inf.
       Actual comparison: Inf >= Inf
-      Difference: incomparable.
 
 # comparisons with NA work
 
@@ -76,7 +75,6 @@
       Error:
       ! Expected `x` < 10.
       Actual comparison: NA >= 10.0
-      Difference: NA.
 
 # comparison must yield a single logical
 

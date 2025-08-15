@@ -54,10 +54,8 @@ expect_compare_ <- function(
       num_exact(exp$val, digits)
     )
 
-    if (is.nan(diff)) {
-      msg_diff <- "Difference: incomparable."
-    } else if (is.na(diff)) {
-      msg_diff <- "Difference: NA."
+    if (is.na(diff)) {
+      msg_diff <- NULL
     } else {
       msg_diff <- sprintf(
         "Difference: %s %s 0",
