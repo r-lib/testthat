@@ -12,7 +12,7 @@
     ##teamcity[testSuiteStarted name='Failures']
     ##teamcity[testSuiteStarted name='Failure:1']
     ##teamcity[testStarted name='expectation 1']
-    ##teamcity[testFailed name='expectation 1' message='Expected FALSE to be TRUE.' details='Differences:|n`actual`:   FALSE|n`expected`: TRUE ']
+    ##teamcity[testFailed name='expectation 1' message='Expected `x` to be TRUE.' details='Differences:|n`actual`:   FALSE|n`expected`: TRUE ']
     ##teamcity[testFinished name='expectation 1']
     ##teamcity[testSuiteFinished name='Failure:1']
     

@@ -1,6 +1,6 @@
 # produces consistent output
 
-    1: expect_true(FALSE)
+    1: expect_true(x)
     2: expect_waldo_constant_(act, exp, info = info, ignore_attr = TRUE)
     3: fail(msg, info = info, trace_env = trace_env)
     

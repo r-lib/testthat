@@ -1,11 +1,3 @@
-# basic properties upheld
-
-    Code
-      expect_vector(1:10, size = 5)
-    Condition
-      Error:
-      ! `\`1:10\`` must have size 5, not size 10.
-
 # expect_vector validates its inputs
 
     Code

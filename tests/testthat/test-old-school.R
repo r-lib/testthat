@@ -14,7 +14,7 @@ test_that("old school comparisons still work", {
   local_edition(2L)
 
   expect_success(expect_that(10, is_less_than(11)))
-  expect_snapshot_failure(expect_that(10, is_more_than(11)))
+  expect_failure(expect_that(10, is_more_than(11)))
 })
 
 test_that("old school equality tests still work", {
