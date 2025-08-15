@@ -8,6 +8,8 @@ test_that("can establish local snapshotter for testing", {
 })
 
 test_that("basic workflow", {
+  local_on_cran(FALSE)
+
   path <- withr::local_tempdir()
   snapper <- local_test_snapshotter(snap_dir = path)
   snapper$start_file("snapshot-2")
@@ -39,6 +41,7 @@ test_that("basic workflow", {
 })
 
 test_that("defaults to failing on CI", {
+  local_on_cran(FALSE)
   withr::local_envvar(CI = "true")
 
   path <- withr::local_tempdir()
@@ -50,6 +53,8 @@ test_that("defaults to failing on CI", {
 })
 
 test_that("only create new files for changed variants", {
+  local_on_cran(FALSE)
+
   snapper <- local_test_snapshotter()
   snapper$start_file("variants", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
@@ -86,6 +91,8 @@ test_that("only create new files for changed variants", {
 })
 
 test_that("only reverting change in variant deletes .new", {
+  local_on_cran(FALSE)
+
   snapper <- local_test_snapshotter()
   snapper$start_file("v", "test")
   expect_warning(expect_snapshot_output("x", variant = "a"), "Adding new")
@@ -108,6 +115,8 @@ test_that("only reverting change in variant deletes .new", {
 
 
 test_that("removing tests removes snap file", {
+  local_on_cran(FALSE)
+
   path <- withr::local_tempdir()
   snapper <- local_test_snapshotter(snap_dir = path)
   snapper$start_file("snapshot-3", "test")
@@ -121,6 +130,7 @@ test_that("removing tests removes snap file", {
 })
 
 test_that("errors in test doesn't change snapshot", {
+  local_on_cran(FALSE)
   snapper <- local_test_snapshotter()
 
   # First run
