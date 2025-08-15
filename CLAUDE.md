@@ -17,9 +17,7 @@ General advice:
 - Use `devtools::test()` to run all tests
 - Use `devtools::test_file("tests/testthat/test-filename.R")` to run tests in a specific file
 - DO NOT USE `devtools::test_active_file()`
-- All testing functions automatically loads code; you don't have to.
-
-- You can accept 
+- All testing functions automatically load code; you don't needs to.
 
 - All new code should have an accompanying test.
 - Tests for `R/{name}.R` go in `tests/testthat/test-{name}.R`. 
@@ -29,7 +27,8 @@ General advice:
 
 - Always run `devtools::document()` after changing any roxygen2 docs.
 - Every user facing function should be exported and have roxygen2 documentation.
-- Whenever you add a new documentation file, make sure to also add it to `_pkgdown.yml`. Run `pkgdown::check_pkgdown()` to check that it was added correctly.
+- Whenever you add a new documentation file, make sure to also add the topic name to `_pkgdown.yml`. 
+- Run `pkgdown::check_pkgdown()` to check that all topics are included in the reference index.
 
 ## Core Architecture
 
