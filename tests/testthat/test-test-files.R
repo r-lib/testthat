@@ -108,6 +108,11 @@ test_that("can filter test scripts", {
 # ----------------------------------------------------------------------
 
 test_that("can configure `load_all()` (#1636)", {
+  withr::local_envvar(
+    TESTTHAT_PARALLEL = "FALSE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  )
+
   path <- test_path("testConfigLoadAll")
 
   args <- find_load_all_args(path)

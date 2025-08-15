@@ -106,9 +106,7 @@ test_that("new snapshots are added", {
 })
 
 test_that("snapshots are removed if test file has no snapshots", {
-  skip_on_covr()
-  skip_on_cran()
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  local_parallel_test_config()
 
   tmp <- withr::local_tempdir("testthat-snap-")
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
