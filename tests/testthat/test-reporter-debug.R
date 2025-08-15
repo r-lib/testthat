@@ -1,9 +1,13 @@
 test_that("produces consistent output", {
   withr::local_options(testthat.edition_ignore = TRUE)
   local_edition(2)
-  local_mock(
+  local_mocked_bindings(
     show_menu = function(choices, title = NULL) {
-      cat(paste0(format(seq_along(choices)), ": ", choices, sep = "\n"), "\n", sep = "")
+      cat(
+        paste0(format(seq_along(choices)), ": ", choices, sep = "\n"),
+        "\n",
+        sep = ""
+      )
       0L
     },
     sink_number = function() 0L
@@ -22,7 +26,7 @@ get_frame_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
   force(choice)
   test_debug_reporter_parent_frame <- NULL
 
-  with_mock(
+  with_mocked_bindings(
     show_menu = function(choices, title = NULL) {
       # if (choice > 0) print(choices)
       my_choice <- choice
@@ -35,7 +39,9 @@ get_frame_from_debug_reporter <- function(choice, fun, envir = parent.frame()) {
     sink_number = function() 0L,
     with_reporter(
       "debug",
-      test_that("debug_reporter_test", { fun() })
+      test_that("debug_reporter_test", {
+        fun()
+      })
     )
   )
 
@@ -178,4 +184,3 @@ test_that("browser() is called for the correct frame for skips", {
   expect_equal(get_vars_from_debug_reporter(3, fun_3), "g")
   expect_equal(get_vars_from_debug_reporter(4, fun_3), character())
 })
-

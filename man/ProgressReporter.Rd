@@ -4,7 +4,7 @@
 \alias{ProgressReporter}
 \alias{CompactProgressReporter}
 \alias{ParallelProgressReporter}
-\title{Test reporter: interactive progress bar of errors.}
+\title{Report progress interactively}
 \description{
 \code{ProgressReporter} is designed for interactive use. Its goal is to
 give you actionable insights to help you understand the status of your
@@ -31,6 +31,7 @@ Other reporters:
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
 \code{\link{SilentReporter}},
+\code{\link{SlowReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},

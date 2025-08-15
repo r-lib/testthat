@@ -26,6 +26,7 @@
 #'
 #' @param description description of the feature
 #' @param code test code containing the specs
+#' @keywords internal
 #' @export
 #' @examples
 #' describe("matrix()", {
@@ -56,42 +57,18 @@
 #'     it("can handle division by 0") #not yet implemented
 #'   })
 #' })
-
 describe <- function(description, code) {
-  check_string(description, allow_empty = FALSE)
-  describe_description <- description
+  local_description_push(description)
 
-  # prepares a new environment for each it-block
-  describe_environment <- new.env(parent = parent.frame())
-  describe_environment$it <- function(description, code = NULL) {
-    check_string(description, allow_empty = FALSE)
-    code <- substitute(code)
-
-    description <- paste0(describe_description, ": ", description)
-    describe_it(description, code, describe_environment)
-  }
-
-  eval(substitute(code), describe_environment)
-  invisible()
-}
-
-describe_it <- function(description, code, env = parent.frame()) {
-  local_test_context()
-
-  test_code(
-    description,
-    code,
-    env = env,
-    default_reporter = local_interactive_reporter(),
-    skip_on_empty = FALSE
-  )
+  code <- substitute(code)
+  test_code(code, parent.frame())
 }
 
 #' @export
 #' @rdname describe
 it <- function(description, code = NULL) {
-  check_string(description, allow_empty = FALSE)
+  local_description_push(description)
 
   code <- substitute(code)
-  describe_it(description, code)
+  test_code(code, parent.frame())
 }

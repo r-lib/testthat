@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-vector.R
 \name{expect_vector}
 \alias{expect_vector}
-\title{Does code return a vector with the expected size and/or prototype?}
+\title{Do you expect a vector with this size and/or prototype?}
 \usage{
 expect_vector(object, ptype = NULL, size = NULL)
 }
@@ -24,9 +24,9 @@ means that it used the vctrs of \code{ptype} (prototype) and \code{size}. See
 details in \url{https://vctrs.r-lib.org/articles/type-size.html}
 }
 \examples{
-if (requireNamespace("vctrs") && packageVersion("vctrs") > "0.1.0.9002") {
+\dontshow{if (requireNamespace("vctrs")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 expect_vector(1:10, ptype = integer(), size = 10)
 show_failure(expect_vector(1:10, ptype = integer(), size = 5))
 show_failure(expect_vector(1:10, ptype = character(), size = 5))
-}
+\dontshow{\}) # examplesIf}
 }

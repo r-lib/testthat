@@ -30,12 +30,23 @@ test_that("empty lines are preserved", {
   expect_snapshot(f(), error = TRUE)
 })
 
+test_that("line-endings fixed before comparison", {
+  x <- "a\n\rb"
+  expect_snapshot(cat(x))
+})
+
 test_that("multiple outputs of same type are collapsed", {
   expect_snapshot({
     x <- 1
     y <- 1
-    {message("a"); message("b")}
-    {warning("a"); warning("b")}
+    {
+      message("a")
+      message("b")
+    }
+    {
+      warning("a")
+      warning("b")
+    }
   })
 })
 
@@ -50,7 +61,7 @@ test_that("can scrub output/messages/warnings/errors", {
   expect_snapshot(secret(), transform = redact, error = TRUE)
 
   # Or with an inline fun
-  expect_snapshot(print("secret"), transform = ~ gsub("secret", "****", .x))
+  expect_snapshot(print("secret"), transform = \(x) gsub("secret", "****", x))
 })
 
 test_that("always checks error status", {
@@ -155,10 +166,61 @@ test_that("errors and warnings are folded", {
 # })
 
 test_that("hint is informative", {
-  local_reproducible_output(crayon = TRUE, hyperlinks = TRUE, rstudio = TRUE)
+  withr::local_envvar("GITHUB_ACTIONS" = "false")
 
   expect_snapshot({
     cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
     cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
   })
+})
+
+test_that("expect_snapshot requires a non-empty test label", {
+  local_description_set()
+  local_on_cran(FALSE)
+
+  test_that("", {
+    expect_error(expect_snapshot(1 + 1))
+  })
+
+  pass(NULL) # quiet message about this test being empty
+})
+
+test_that("expect_snapshot validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot(1 + 1, cran = "yes")
+    expect_snapshot(1 + 1, error = "yes")
+    expect_snapshot(1 + 1, cnd_class = "yes")
+  })
+})
+
+test_that("expect_snapshot_output validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_output(cat("test"), cran = "yes")
+  })
+})
+
+test_that("expect_snapshot_error validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_error(stop("!"), class = 123)
+    expect_snapshot_error(stop("!"), cran = "yes")
+  })
+})
+
+test_that("expect_snapshot_warning validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_snapshot_warning(warning("!"), class = 123)
+    expect_snapshot_warning(warning("!"), cran = "yes")
+  })
+})
+
+test_that("on CRAN, snapshots generate skip at end of test", {
+  local_on_cran(TRUE)
+
+  expectations <- capture_expectations(test_that("", {
+    expect_snapshot(1 + 1)
+    expect_true(TRUE)
+  }))
+  expect_length(expectations, 2)
+  expect_s3_class(expectations[[1]], "expectation_success")
+  expect_s3_class(expectations[[2]], "expectation_skip")
 })

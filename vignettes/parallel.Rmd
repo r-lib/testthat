@@ -26,6 +26,8 @@ Then add the following line to the `DESCRIPTION`:
 Config/testthat/parallel: true
 ```
 
+If needed (for example, for debugging) you can temporarily suppress parallel testing with `Sys.setenv(TESTTHAT_PARALLEL = "false")`.
+
 By default, testthat will use `getOption("Ncpus", 2)` cores.
 To increase that value for your development machine we recommend setting `TESTTHAT_CPUS` in your `.Renviron`.
 The easiest way to do that is call `usethis::edit_r_environ()` and then add something like the following:
@@ -111,11 +113,7 @@ The other built-in reporters all support parallel tests, with some subtle differ
     `ProgressReporter` does not update its display until a test file is complete.
 
 -   The standard output and standard error, i.e. `print()`, `cat()`, `message()`, etc. output from the test files are lost currently.
-    If you want to use `cat()` or `message()` for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the `Config` entry in `DESCRIPTION` or selecting a non-parallel reporter, e.g. the `CheckReporter`:
-
-    ``` r
-    devtools::test(filter = "badtest", reporter = "check")
-    ```
+    If you want to use `cat()` or `message()` for print-debugging test cases, then the best is to temporarily run tests sequentially, by changing the `Config` entry in `DESCRIPTION` or setting `Sys.setenv(TESTTHAT_PARALLEL = "false")`.
 
 ### Writing parallel reporters
 

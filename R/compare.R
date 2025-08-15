@@ -16,8 +16,8 @@ compare <- function(x, y, ...) {
 }
 
 comparison <- function(equal = TRUE, message = "Equal") {
-  stopifnot(is.logical(equal), length(equal) == 1)
-  stopifnot(is.character(message))
+  check_bool(equal)
+  check_character(message)
 
   structure(
     list(
@@ -64,10 +64,14 @@ print_out <- function(x, ...) {
 # Common helpers ---------------------------------------------------------------
 
 same_length <- function(x, y) length(x) == length(y)
-diff_length <- function(x, y) difference(fmt = "Lengths differ: %i is not %i", length(x), length(y))
+diff_length <- function(x, y) {
+  difference(fmt = "Lengths differ: %i is not %i", length(x), length(y))
+}
 
 same_type <- function(x, y) identical(typeof(x), typeof(y))
-diff_type <- function(x, y) difference(fmt = "Types not compatible: %s is not %s", typeof(x), typeof(y))
+diff_type <- function(x, y) {
+  difference(fmt = "Types not compatible: %s is not %s", typeof(x), typeof(y))
+}
 
 same_class <- function(x, y) {
   if (!is.object(x) && !is.object(y)) {
@@ -76,7 +80,11 @@ same_class <- function(x, y) {
   identical(class(x), class(y))
 }
 diff_class <- function(x, y) {
-  difference(fmt = "Classes differ: %s is not %s", format_class(class(x)), format_class(class(y)))
+  difference(
+    fmt = "Classes differ: %s is not %s",
+    format_class(class(x)),
+    format_class(class(y))
+  )
 }
 
 same_attr <- function(x, y) {
@@ -91,10 +99,9 @@ vector_equal <- function(x, y) {
   (is.na(x) & is.na(y)) | (!is.na(x) & !is.na(y) & x == y)
 }
 
-vector_equal_tol <- function(x, y, tolerance = .Machine$double.eps ^ 0.5) {
+vector_equal_tol <- function(x, y, tolerance = .Machine$double.eps^0.5) {
   (is.na(x) & is.na(y)) |
     (!is.na(x) & !is.na(y)) & (x == y | abs(x - y) < tolerance)
-
 }
 
 
@@ -125,9 +132,15 @@ vector_equal_tol <- function(x, y, tolerance = .Machine$double.eps ^ 0.5) {
 #' compare(x, y)
 #' compare(c(x, x), c(y, y))
 #'
-compare.character <- function(x, y, check.attributes = TRUE, ...,
-                              max_diffs = 5, max_lines = 5,
-                              width = cli::console_width()) {
+compare.character <- function(
+  x,
+  y,
+  check.attributes = TRUE,
+  ...,
+  max_diffs = 5,
+  max_lines = 5,
+  width = cli::console_width()
+) {
   if (identical(x, y)) {
     return(no_difference())
   }
@@ -174,10 +187,13 @@ mismatch_character <- function(x, y, diff = !vector_equal(x, y)) {
 }
 
 #' @export
-format.mismatch_character <- function(x, ...,
-                                      max_diffs = 5,
-                                      max_lines = 5,
-                                      width = cli::console_width()) {
+format.mismatch_character <- function(
+  x,
+  ...,
+  max_diffs = 5,
+  max_lines = 5,
+  width = cli::console_width()
+) {
   width <- width - 6 # allocate space for labels
   n_show <- seq_len(min(x$n_diff, max_diffs))
 
@@ -186,11 +202,16 @@ format.mismatch_character <- function(x, ...,
   show_y <- str_trunc(encode(x$y[n_show]), width * max_lines)
   show_i <- x$i[n_show]
 
-  sidebyside <- Map(function(x, y, pos) {
-    x <- paste0("x[", pos, "]: ", str_chunk(x, width))
-    y <- paste0("y[", pos, "]: ", str_chunk(y, width))
-    paste(c(x, y), collapse = "\n")
-  }, show_x, show_y, show_i)
+  sidebyside <- Map(
+    function(x, y, pos) {
+      x <- paste0("x[", pos, "]: ", str_chunk(x, width))
+      y <- paste0("y[", pos, "]: ", str_chunk(y, width))
+      paste(c(x, y), collapse = "\n")
+    },
+    show_x,
+    show_y,
+    show_i
+  )
 
   summary <- paste0(x$n_diff, "/", x$n, " mismatches")
   paste0(summary, "\n", paste0(sidebyside, collapse = "\n\n"))
@@ -238,13 +259,20 @@ str_chunk <- function(x, length) {
 #' # Compare ignores minor numeric differences in the same way
 #' # as all.equal.
 #' compare(x, x + 1e-9)
-compare.numeric <- function(x, y,
-                            tolerance = testthat_tolerance(),
-                            check.attributes = TRUE,
-                            ..., max_diffs = 9) {
+compare.numeric <- function(
+  x,
+  y,
+  tolerance = testthat_tolerance(),
+  check.attributes = TRUE,
+  ...,
+  max_diffs = 9
+) {
   all_equal <- all.equal(
-    x, y, tolerance = tolerance,
-    check.attributes = check.attributes, ...
+    x,
+    y,
+    tolerance = tolerance,
+    check.attributes = check.attributes,
+    ...
   )
   if (isTRUE(all_equal)) {
     return(no_difference())
@@ -284,7 +312,7 @@ testthat_tolerance <- function() {
     skip("Long doubles not available and `tolerance` not supplied")
   }
 
-  .Machine$double.eps ^ 0.5
+  .Machine$double.eps^0.5
 }
 
 mismatch_numeric <- function(x, y, diff = !vector_equal(x, y)) {
@@ -312,7 +340,8 @@ format.mismatch_numeric <- function(x, ..., max_diffs = 9, digits = 3) {
   n_show <- seq_len(min(x$n_diff, max_diffs))
 
   diffs <- paste0(
-    format(paste0("[", x$i[n_show], "]")), " ",
+    format(paste0("[", x$i[n_show], "]")),
+    " ",
     format(x$x[n_show], digits = digits),
     " - ",
     format(x$y[n_show], digits = digits),
@@ -362,10 +391,11 @@ compare.POSIXt <- function(x, y, tolerance = 0.001, ..., max_diffs = 9) {
 }
 
 standardise_tzone <- function(x) {
-  if (is.null(attr(x, "tzone")) || identical(attr(x, "tzone"), Sys.timezone())) {
+  if (
+    is.null(attr(x, "tzone")) || identical(attr(x, "tzone"), Sys.timezone())
+  ) {
     attr(x, "tzone") <- ""
   }
 
   x
 }
-

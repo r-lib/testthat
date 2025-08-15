@@ -12,20 +12,20 @@
     
     2. empty tests are implicitly skipped ('reporters/tests.R:40:1') - Reason: empty test
     
-    3. warnings get backtraces ('reporters/tests.R:45:1') - Reason: empty test
+    3. warnings get backtraces ('reporters/tests.R:44:1') - Reason: empty test
     
     == Warnings ====================================================================
-    1. warnings get backtraces ('reporters/tests.R:47:5') - def
+    1. warnings get backtraces ('reporters/tests.R:46:5') - def
     
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -61,20 +61,20 @@
     
     2. empty tests are implicitly skipped ('reporters/tests.R:40:1') - Reason: empty test
     
-    3. warnings get backtraces ('reporters/tests.R:45:1') - Reason: empty test
+    3. warnings get backtraces ('reporters/tests.R:44:1') - Reason: empty test
     
     == Warnings ====================================================================
-    1. warnings get backtraces ('reporters/tests.R:47:5') - def
+    1. warnings get backtraces ('reporters/tests.R:46:5') - def
     
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -110,20 +110,20 @@
     
     2. empty tests are implicitly skipped ('reporters/tests.R:40:1') - Reason: empty test
     
-    3. warnings get backtraces ('reporters/tests.R:45:1') - Reason: empty test
+    3. warnings get backtraces ('reporters/tests.R:44:1') - Reason: empty test
     
     == Warnings ====================================================================
-    1. warnings get backtraces ('reporters/tests.R:47:5') - def
+    1. warnings get backtraces ('reporters/tests.R:46:5') - def
     
     == Failed ======================================================================
     -- 1. Failure ('reporters/tests.R:12:3'): Failure:1 ----------------------------
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
     
     -- 2. Failure ('reporters/tests.R:16:8'): Failure:2a ---------------------------
-    FALSE is not TRUE
+    FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 

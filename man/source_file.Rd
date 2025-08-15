@@ -14,6 +14,7 @@ source_file(
   chdir = TRUE,
   desc = NULL,
   wrap = TRUE,
+  shuffle = FALSE,
   error_call = caller_env()
 )
 
@@ -22,7 +23,8 @@ source_dir(
   pattern = "\\\\.[rR]$",
   env = test_env(),
   chdir = TRUE,
-  wrap = TRUE
+  wrap = TRUE,
+  shuffle = FALSE
 )
 
 source_test_helpers(path = "tests/testthat", env = test_env())
@@ -38,10 +40,15 @@ source_test_teardown(path = "tests/testthat", env = test_env())
 
 \item{chdir}{Change working directory to \code{dirname(path)}?}
 
-\item{desc}{If not-\code{NULL}, will run only test with this \code{desc}ription.}
+\item{desc}{A character vector used to filter tests. This is used to
+(recursively) filter the content of the file, so that only the non-test
+code up to and including the matching test is run.}
 
 \item{wrap}{Automatically wrap all code within \code{\link[=test_that]{test_that()}}? This ensures
 that all expectations are reported, even if outside a test block.}
+
+\item{shuffle}{If \code{TRUE}, randomly reorder the top-level expressions
+in the file.}
 
 \item{pattern}{Regular expression used to filter files.}
 }

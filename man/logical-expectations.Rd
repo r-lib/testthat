@@ -4,7 +4,7 @@
 \alias{logical-expectations}
 \alias{expect_true}
 \alias{expect_false}
-\title{Does code return \code{TRUE} or \code{FALSE}?}
+\title{Do you expect \code{TRUE} or \code{FALSE}?}
 \usage{
 expect_true(object, info = NULL, label = NULL)
 
@@ -26,8 +26,7 @@ alternatives in \link{quasi_label}.}
 These are fall-back expectations that you can use when none of the other
 more specific expectations apply. The disadvantage is that you may get
 a less informative error message.
-}
-\details{
+
 Attributes are ignored.
 }
 \examples{
@@ -46,8 +45,6 @@ expect_true(length(a) == 3)
 expect_equal(length(a), 3)
 }
 \seealso{
-\code{\link[=is_false]{is_false()}} for complement
-
 Other expectations: 
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},

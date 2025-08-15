@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-fail.R
 \name{FailReporter}
 \alias{FailReporter}
-\title{Test reporter: fail at end.}
+\title{Fail if any tests fail}
 \description{
 This reporter will simply throw an error if any of the tests failed. It is
 best combined with another reporter, such as the
@@ -21,6 +21,7 @@ Other reporters:
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
 \code{\link{SilentReporter}},
+\code{\link{SlowReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},

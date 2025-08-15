@@ -1,87 +1,84 @@
-#' Expect that a condition holds.
+#' Declare that an expectation either passes or fails
 #'
 #' @description
-#' `r lifecycle::badge("superseded")`
+#' These are the primitives that you can use to implement your own expectations.
+#' Regardless of how it's called an expectation should either return `pass()`,
+#' `fail()`, or throw an error (if for example, the arguments are invalid).
 #'
-#' An old style of testing that's no longer encouraged.
+#' Learn more about creating your own expectations in
+#' `vignette("custom-expectation")`.
 #'
-#' @section 3rd edition:
-#' `r lifecycle::badge("deprecated")`
-#'
-#' This style of testing is formally deprecated as of the 3rd edition.
-#' Use a more specific `expect_` function instead.
-#'
-#' @param object Object to test.
-#'
-#'   Supports limited unquoting to make it easier to generate readable failures
-#'   within a function or for loop. See [quasi_label] for more details.
-#' @param condition, a function that returns whether or not the condition
-#'   is met, and if not, an error message to display.
-#' @param label Used to customise failure messages. For expert use only.
-#' @param info Extra information to be included in the message. This argument
-#'   is soft-deprecated and should not be used in new code. Instead see
-#'   alternatives in [quasi_label].
-#' @return the (internal) expectation result as an invisible list
-#' @keywords internal
+#' @param message Failure message to send to the user. It's best practice to
+#'   describe both what is expected and what was actually received.
+#' @param info Character vector continuing additional information. Included
+#'   for backward compatibility only and new expectations should not use it.
+#' @param srcref Location of the failure. Should only needed to be explicitly
+#'   supplied when you need to forward a srcref captured elsewhere.
+#' @param trace_env If `trace` is not specified, this is used to generate an
+#'   informative traceack for failures. You should only need to set this if
+#'   you're calling `fail()` from a helper function; see
+#'   `vignette("custom-expectation")` for details.
+#' @param trace An optional backtrace created by [rlang::trace_back()].
+#'   When supplied, the expectation is displayed with the backtrace.
+#'   Expert use only.
 #' @export
-#' @seealso [fail()] for an expectation that always fails.
 #' @examples
-#' expect_that(5 * 2, equals(10))
-#' expect_that(sqrt(2) ^ 2, equals(2))
-#' \dontrun{
-#' expect_that(sqrt(2) ^ 2, is_identical_to(2))
+#' expect_length <- function(object, n) {
+#'   act <- quasi_label(rlang::enquo(object), arg = "object")
+#'
+#'   act_n <- length(act$val)
+#'   if (act_n != n) {
+#'     msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
+#'     return(fail(msg))
+#'   }
+#'
+#'   pass(act$val)
 #' }
-expect_that <- function(object, condition, info = NULL, label = NULL) {
-  edition_deprecate(3, "expect_that()")
-  condition(object)
+fail <- function(
+  message = "Failure has been forced",
+  info = NULL,
+  srcref = NULL,
+  trace_env = caller_env(),
+  trace = NULL
+) {
+  trace <- trace %||% capture_trace(trace_env)
+  message <- paste(c(message, info), collapse = "\n")
+  expectation("failure", message, srcref = srcref, trace = trace)
 }
 
-#' Default expectations that always succeed or fail.
-#'
-#' These allow you to manually trigger success or failure. Failure is
-#' particularly useful to a pre-condition or mark a test as not yet
-#' implemented.
-#'
-#' @param message a string to display.
-#' @inheritParams expect
-#' @export
-#' @examples
-#' \dontrun{
-#' test_that("this test fails", fail())
-#' test_that("this test succeeds", succeed())
-#' }
-fail <- function(message = "Failure has been forced", info = NULL, trace_env = caller_env()) {
-  expect(FALSE, message, info = info, trace_env = trace_env)
+snapshot_fail <- function(message, trace_env = caller_env()) {
+  trace <- capture_trace(trace_env)
+  expectation("failure", message, trace = trace, snapshot = TRUE)
+}
+
+capture_trace <- function(trace_env) {
+  trace <- trace_back(top = getOption("testthat_topenv"), bottom = trace_env)
+  # Only include trace if there's at least one function apart from the expectation
+  if (!is.null(trace) && trace_length(trace) <= 1) {
+    trace <- NULL
+  }
+  trace
 }
 
 #' @rdname fail
+#' @param value Value to return, typically the result of evaluating the
+#'   `object` argument to the expectation.
 #' @export
-succeed <- function(message = "Success has been forced", info = NULL) {
-  expect(TRUE, message, info = info)
+pass <- function(value) {
+  expectation("success", "success")
+  invisible(value)
 }
 
-#' Negate an expectation
+#' Mark a test as successful
 #'
-#' This negates an expectation, making it possible to express that you
-#' want the opposite of a standard expectation. This function is deprecated
-#' and will be removed in a future version.
+#' This is an older version of [pass()] that exists for backwards compatibility.
+#' You should now use `pass()` instead.
 #'
-#' @param f an existing expectation function
-#' @keywords internal
 #' @export
-not <- function(f) {
-  warning("`not()` is deprecated.", call. = FALSE)
-  stopifnot(is.function(f))
+#' @inheritParams fail
+#' @keywords internal
+succeed <- function(message = "Success has been forced", info = NULL) {
+  message <- paste(c(message, info), collapse = "\n")
 
-  negate <- function(expt) {
-    expect(
-      !expectation_success(expt),
-      failure_message = paste0("NOT(", expt$message, ")"),
-      srcref = expt$srcref
-    )
-  }
-
-  function(...) {
-    negate(capture_expectation(f(...)))
-  }
+  expectation("success", message)
 }

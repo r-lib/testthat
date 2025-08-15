@@ -6,6 +6,11 @@ test_that("basic principles of visibility hold", {
   expect_failure(expect_visible(x <- 1))
 })
 
+test_that("generates useful failure messages", {
+  expect_snapshot_failure(expect_visible(invisible(1)))
+  expect_snapshot_failure(expect_invisible(1))
+})
+
 test_that("invisibly returns evaluated value", {
   out <- expect_invisible(expect_invisible(x <- 2 + 2))
   expect_equal(out, 4)

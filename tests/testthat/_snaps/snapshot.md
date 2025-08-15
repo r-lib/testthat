@@ -44,6 +44,14 @@
       Error in `f()`:
       ! 4
 
+# line-endings fixed before comparison
+
+    Code
+      cat(x)
+    Output
+      a
+      b
+
 # multiple outputs of same type are collapsed
 
     Code
@@ -250,11 +258,63 @@
     Code
       cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
     Output
-      * Run ]8;;ide:run:testthat::snapshot_accept('bar.R')testthat::snapshot_accept('bar.R')]8;; to accept the change.
-      * Run ]8;;ide:run:testthat::snapshot_review('bar.R')testthat::snapshot_review('bar.R')]8;; to interactively review the change.
+      * Run `testthat::snapshot_accept('bar.R')` to accept the change.
+      * Run `testthat::snapshot_review('bar.R')` to review the change.
     Code
       cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
     Output
-      * Run ]8;;ide:run:testthat::snapshot_accept('foo/bar.R')testthat::snapshot_accept('foo/bar.R')]8;; to accept the change.
-      * Run ]8;;ide:run:testthat::snapshot_review('foo/bar.R')testthat::snapshot_review('foo/bar.R')]8;; to interactively review the change.
+      * Run `testthat::snapshot_accept('foo/bar.R')` to accept the change.
+      * Run `testthat::snapshot_review('foo/bar.R')` to review the change.
+
+# expect_snapshot validates its inputs
+
+    Code
+      expect_snapshot(1 + 1, cran = "yes")
+    Condition
+      Error in `expect_snapshot()`:
+      ! `cran` must be `TRUE` or `FALSE`, not the string "yes".
+    Code
+      expect_snapshot(1 + 1, error = "yes")
+    Condition
+      Error in `expect_snapshot()`:
+      ! `error` must be `TRUE` or `FALSE`, not the string "yes".
+    Code
+      expect_snapshot(1 + 1, cnd_class = "yes")
+    Condition
+      Error in `expect_snapshot()`:
+      ! `cnd_class` must be `TRUE` or `FALSE`, not the string "yes".
+
+# expect_snapshot_output validates its inputs
+
+    Code
+      expect_snapshot_output(cat("test"), cran = "yes")
+    Condition
+      Error in `expect_snapshot_output()`:
+      ! `cran` must be `TRUE` or `FALSE`, not the string "yes".
+
+# expect_snapshot_error validates its inputs
+
+    Code
+      expect_snapshot_error(stop("!"), class = 123)
+    Condition
+      Error in `expect_snapshot_error()`:
+      ! `class` must be a single string, not the number 123.
+    Code
+      expect_snapshot_error(stop("!"), cran = "yes")
+    Condition
+      Error in `expect_snapshot_error()`:
+      ! `cran` must be `TRUE` or `FALSE`, not the string "yes".
+
+# expect_snapshot_warning validates its inputs
+
+    Code
+      expect_snapshot_warning(warning("!"), class = 123)
+    Condition
+      Error in `expect_snapshot_warning()`:
+      ! `class` must be a single string, not the number 123.
+    Code
+      expect_snapshot_warning(warning("!"), cran = "yes")
+    Condition
+      Error in `expect_snapshot_warning()`:
+      ! `cran` must be `TRUE` or `FALSE`, not the string "yes".
 

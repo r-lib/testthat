@@ -1,24 +1,9 @@
 library(testthat)
 
 local({
-
-  # Disable test on Windows, pending devtools
-  # compatibility with new toolchain
-  isWindows <- Sys.info()[["sysname"]] == "Windows"
-  if (isWindows)
+  if (!requireNamespace("usethis", quietly = TRUE)) {
     return()
-
-  # Disable tests on Solaris, because we don't use Catch there.
-  isSolaris <- Sys.info()[["sysname"]] == "SunOS"
-  if (isSolaris)
-    return()
-
-  if (!requireNamespace("usethis", quietly = TRUE))
-    return()
-
-  # devel <- try(pkgbuild::has_compiler(), silent = TRUE)
-  # if (!isTRUE(devel))
-  #   return()
+  }
 
   quietly <- function(expr) {
     suppressMessages(capture_output(result <- expr))
@@ -26,28 +11,30 @@ local({
   }
 
   perform_test <- function(pkgName, catchEnabled) {
-
     owd <- setwd(tempdir())
-    on.exit(setwd(owd), add = TRUE)
+    withr::defer(setwd(owd))
 
     pkgPath <- file.path(tempdir(), pkgName)
     libPath <- file.path(tempdir(), "rlib")
-    if (!utils::file_test("-d", libPath))
+    if (!utils::file_test("-d", libPath)) {
       dir.create(libPath)
+    }
     .libPaths(c(libPath, .libPaths()))
 
-    on.exit({
+    withr::defer({
       unlink(pkgPath, recursive = TRUE)
       unlink(libPath, recursive = TRUE)
-    }, add = TRUE)
+    })
 
     quietly(usethis::create_package(pkgPath, open = FALSE))
     quietly(testthat::use_catch(pkgPath))
 
-    cat("LinkingTo: testthat",
-        file = file.path(pkgPath, "DESCRIPTION"),
-        append = TRUE,
-        sep = "\n")
+    cat(
+      "LinkingTo: testthat",
+      file = file.path(pkgPath, "DESCRIPTION"),
+      append = TRUE,
+      sep = "\n"
+    )
 
     cat(
       sprintf("useDynLib(%s, .registration=TRUE)", pkgName),
@@ -57,7 +44,7 @@ local({
     )
 
     if (!catchEnabled) {
-
+      isWindows <- Sys.info()[["sysname"]] == "Windows"
       makevarsPath <- file.path(
         pkgPath,
         "src",
@@ -69,7 +56,6 @@ local({
         file = makevarsPath,
         sep = "\n"
       )
-
     }
 
     install.packages(pkgs = pkgPath, repos = NULL, type = "source")
@@ -78,6 +64,7 @@ local({
     pkgload::unload(pkgName)
   }
 
-  withr::with_envvar(c(R_TESTS = ''), perform_test("testthatclient1",  TRUE))
-  withr::with_envvar(c(R_TESTS = ''), perform_test("testthatclient2", FALSE))
+  withr::local_envvar(R_TESTS = '')
+  perform_test("testthatclient1", TRUE)
+  perform_test("testthatclient2", FALSE)
 })
