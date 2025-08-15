@@ -111,7 +111,7 @@ expect_no_ <- function(
     msg_exp <- paste0(
       "Expected ",
       act$lab,
-      " to not throw any ",
+      " not to throw any ",
       base_class,
       "s",
       if (!is.null(class)) paste0(" of class '", class, "'"),

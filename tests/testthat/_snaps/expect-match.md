@@ -4,7 +4,7 @@
       expect_match(zero, "asdf")
     Condition
       Error:
-      ! Expected `zero` to not be empty.
+      ! Expected `zero` not to be empty.
 
 ---
 
@@ -145,7 +145,7 @@
       expect_no_match(x, "e*", fixed = TRUE)
     Condition
       Error:
-      ! Expected `x` to not match string "e*".
+      ! Expected `x` not to match string "e*".
       Actual text:
       x | te*st
 
@@ -155,7 +155,7 @@
       expect_no_match(x, "TEST", ignore.case = TRUE)
     Condition
       Error:
-      ! Expected `x` to not match regexp "TEST".
+      ! Expected `x` not to match regexp "TEST".
       Actual text:
       x | test
 

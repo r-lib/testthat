@@ -12,7 +12,7 @@
       expect_error(stop("Yes"), NA)
     Condition
       Error:
-      ! Expected `stop("Yes")` to not throw any errors.
+      ! Expected `stop("Yes")` not to throw any errors.
       Actually got a <simpleError> with message:
         Yes
 
@@ -48,7 +48,7 @@
       expect_error(fb(), NA)
     Condition
       Error:
-      ! Expected `fb()` to not throw any errors.
+      ! Expected `fb()` not to throw any errors.
       Actually got a <foobar> with message:
         dispatched!
 
@@ -81,7 +81,7 @@
       expect_message(f(), NA)
     Condition
       Error:
-      ! Expected `f()` to not throw any messages.
+      ! Expected `f()` not to throw any messages.
       Actually got a <simpleMessage> with message:
         !
         

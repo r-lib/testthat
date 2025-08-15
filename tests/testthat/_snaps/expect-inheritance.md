@@ -57,7 +57,7 @@
       expect_s3_class(factor(), NA)
     Condition
       Error:
-      ! Expected `factor()` to not be an S3 object.
+      ! Expected `factor()` not to be an S3 object.
 
 ---
 
@@ -65,7 +65,7 @@
       expect_s4_class(A(), NA)
     Condition
       Error:
-      ! Expected `A()` to not be an S4 object.
+      ! Expected `A()` not to be an S4 object.
 
 # test_s4_class respects class hierarchy
 

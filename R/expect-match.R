@@ -46,7 +46,7 @@ expect_match <- function(
   check_bool(all)
 
   if (length(object) == 0) {
-    return(fail(sprintf("Expected %s to not be empty.", act$lab), info = info))
+    return(fail(sprintf("Expected %s not to be empty.", act$lab), info = info))
   }
 
   expect_match_(
@@ -123,7 +123,7 @@ expect_match_ <- function(
   } else {
     which <- if (all) "every element of " else "some element of "
   }
-  match <- if (negate) "to not match" else "to match"
+  match <- if (negate) "not to match" else "to match"
 
   msg_exp <- sprintf(
     "Expected %s%s %s %s %s.",

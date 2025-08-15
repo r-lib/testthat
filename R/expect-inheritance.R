@@ -93,7 +93,7 @@ expect_s3_class <- function(object, class, exact = FALSE) {
 
   if (identical(class, NA)) {
     if (isS3(object)) {
-      msg <- sprintf("Expected %s to not be an S3 object.", act$lab)
+      msg <- sprintf("Expected %s not to be an S3 object.", act$lab)
       return(fail(msg))
     }
   } else if (is.character(class)) {
@@ -136,7 +136,7 @@ expect_s4_class <- function(object, class) {
 
   if (identical(class, NA)) {
     if (isS4(object)) {
-      msg <- sprintf("Expected %s to not be an S4 object.", act$lab)
+      msg <- sprintf("Expected %s not to be an S4 object.", act$lab)
       return(fail(msg))
     }
   } else if (is.character(class)) {
