@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 testthat is R's most popular unit testing framework, used by thousands of CRAN packages. It provides functions to make testing R code as fun and addictive as possible, with clear expectations, visual progress indicators, and seamless integration with R package development workflows.
 
-## Key Development Commands
+## Key development commands
 
 General advice:
 * When running R from the console, always run it with `--quiet --vanilla`
@@ -23,7 +23,8 @@ General advice:
 
 ### Documentation
 
-- Always run `devtools::document()` after changing any roxygen2 docs.
+- Run `devtools::document()` after changing any roxygen2 docs.
+- Use sentence case for all headings
 
 ## Core Architecture
 
