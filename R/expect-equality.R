@@ -77,12 +77,17 @@ expect_equal <- function(
     }
 
     if (!comp$equal) {
-      msg <- sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message)
+      msg <- c(
+        sprintf("Expected %s to equal %s.", act$lab, exp$lab),
+        "Differences:",
+        comp$message
+      )
       return(fail(msg, info = info))
     }
     pass(act$val)
   }
 }
+
 
 #' @export
 #' @rdname equality-expectations
@@ -102,18 +107,22 @@ expect_identical <- function(
   } else {
     ident <- identical(act$val, exp$val, ...)
     if (ident) {
-      msg <- ""
+      msg_act <- NULL
     } else {
       compare <- compare(act$val, exp$val)
       if (compare$equal) {
-        msg <- "Objects equal but not identical"
+        msg_act <- "Objects equal but not identical"
       } else {
-        msg <- compare$message
+        msg_act <- compare$message
       }
     }
 
     if (!ident) {
-      msg <- sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg)
+      msg <- c(
+        sprintf("Expected %s to be identical to %s.", act$lab, exp$lab),
+        "Differences:",
+        msg_act
+      )
       return(fail(msg, info = info))
     }
     pass(act$val)
@@ -126,8 +135,7 @@ expect_waldo_equal_ <- function(
   exp,
   info = NULL,
   ...,
-  trace_env = caller_env(),
-  error_prefix = NULL
+  trace_env = caller_env()
 ) {
   comp <- waldo_compare(
     act$val,
@@ -137,16 +145,11 @@ expect_waldo_equal_ <- function(
     y_arg = "expected"
   )
   if (length(comp) != 0) {
-    msg <- sprintf(
-      "%s (%s) is not %s to %s (%s).\n\n%s",
-      act$lab,
-      "`actual`",
-      type,
-      exp$lab,
-      "`expected`",
-      paste0(comp, collapse = "\n\n")
+    msg <- c(
+      sprintf("Expected %s to be %s to %s.", act$lab, type, exp$lab),
+      "Differences:",
+      paste0(comp, collpase = "\n")
     )
-    msg <- paste0(error_prefix, msg)
     return(fail(msg, info = info, trace_env = trace_env))
   }
   pass(act$val)
@@ -195,7 +198,7 @@ expect_equivalent <- function(
   comp <- compare(act$val, exp$val, ..., check.attributes = FALSE)
   if (!comp$equal) {
     msg <- sprintf(
-      "%s not equivalent to %s.\n%s",
+      "Expected %s to be equivalent to %s.\n%s",
       act$lab,
       exp$lab,
       comp$message

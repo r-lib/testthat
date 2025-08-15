@@ -35,16 +35,32 @@ test_that("checks inputs", {
 test_that("useful message on failure", {
   expect_snapshot_failure(expect_setequal("actual", "expected"))
 
-  expect_snapshot_failure(expect_setequal(1:2, 2))
-  expect_snapshot_failure(expect_setequal(2, 2:3))
-  expect_snapshot_failure(expect_setequal(1:2, 2:3))
+  x <- 1:2
+  y <- 2
+  expect_snapshot_failure(expect_setequal(x, y))
+
+  x <- 2
+  y <- 2:3
+  expect_snapshot_failure(expect_setequal(x, y))
+
+  x <- 1:2
+  y <- 2:3
+  expect_snapshot_failure(expect_setequal(x, y))
 
   # doesn't repeat values
-  expect_snapshot_failure(expect_setequal(c("a", "a"), c("b", "b", "b")))
+  x <- c("a", "a")
+  y <- c("b", "b", "b")
+  expect_snapshot_failure(expect_setequal(x, y))
+
+  # still looks good when expected is inlined
+  x <- c("a", "b", "c")
+  expect_snapshot_failure(expect_setequal(x, c("a", "b", "c", "d")))
 })
 
 test_that("truncates long vectors", {
-  expect_snapshot_failure(expect_setequal(1:2, 1:50))
+  x <- 1:2
+  y <- 1:50
+  expect_snapshot_failure(expect_setequal(x, y))
 })
 
 # mapequal ----------------------------------------------------------------
@@ -59,9 +75,15 @@ test_that("ignores order recursively", {
   expect_success(expect_mapequal(x, y))
 })
 
-test_that("error if any names are duplicated", {
-  expect_failure(expect_mapequal(list(a = 1, b = 2, b = 3), list(b = 2, a = 1)))
-  expect_failure(expect_mapequal(list(a = 1, b = 2), list(b = 3, b = 2, a = 1)))
+test_that("fails when any names are duplicated", {
+  expect_failure(expect_mapequal(
+    list(a = 1, b = 2, b = 3),
+    list(b = 2, a = 1)
+  ))
+  expect_failure(expect_mapequal(
+    list(a = 1, b = 2),
+    list(b = 3, b = 2, a = 1)
+  ))
   expect_failure(expect_mapequal(
     list(a = 1, b = 2, b = 3),
     list(b = 3, b = 2, a = 1)
@@ -78,12 +100,18 @@ test_that("fail if names don't match", {
 })
 
 test_that("fails if values don't match", {
-  expect_failure(expect_mapequal(list(a = 1, b = 2), list(a = 1, b = 3)))
+  expect_failure(expect_mapequal(
+    list(a = 1, b = 2),
+    list(a = 1, b = 3)
+  ))
 })
 
 test_that("fails if unnamed values in different location if any unnamed values", {
   expect_success(expect_mapequal(list(1, b = 2, c = 3), list(1, c = 3, b = 2)))
-  expect_failure(expect_mapequal(list(1, b = 2, c = 3), list(b = 2, 1, c = 3)))
+  expect_failure(expect_mapequal(
+    list(1, b = 2, c = 3),
+    list(b = 2, 1, c = 3)
+  ))
 })
 
 # contains ----------------------------------------------------------------

@@ -1,8 +1,12 @@
 test_that("length computed correctly", {
   expect_success(expect_length(1, 1))
-  expect_failure(expect_length(1, 2), "has length 1, not length 2.")
   expect_success(expect_length(1:10, 10))
   expect_success(expect_length(letters[1:5], 5))
+})
+
+test_that("generates actionable failure message", {
+  x <- 1:10
+  expect_snapshot_failure(expect_length(x, 2))
 })
 
 test_that("uses S4 length method", {

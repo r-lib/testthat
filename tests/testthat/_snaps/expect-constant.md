@@ -1,35 +1,33 @@
 # logical tests act as expected
 
-    FALSE (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual`:   FALSE
-    `expected`: TRUE 
+    Code
+      expect_true(df)
+    Condition
+      Error:
+      ! Expected `df` to be TRUE.
+      Differences:
+      `actual` is an S3 object of class <data.frame>, a list
+      `expected` is a logical vector (TRUE)
 
 ---
 
-    TRUE (`actual`) is not equal to FALSE (`expected`).
-    
-    `actual`:   TRUE 
-    `expected`: FALSE
-
-# can compare non-vectors
-
-    quote(x) (`actual`) is not equal to TRUE (`expected`).
-    
-    `actual` is a symbol
-    `expected` is a logical vector (TRUE)
+    Code
+      expect_false(df)
+    Condition
+      Error:
+      ! Expected `df` to be FALSE.
+      Differences:
+      `actual` is an S3 object of class <data.frame>, a list
+      `expected` is a logical vector (FALSE)
 
 # expect_null works
 
-    1L (`actual`) is not equal to FALSE (`expected`).
-    
-    `actual` is an integer vector (1)
-    `expected` is NULL
-
----
-
-    environment() (`actual`) is not equal to FALSE (`expected`).
-    
-    `actual` is an environment
-    `expected` is NULL
+    Code
+      expect_null(df)
+    Condition
+      Error:
+      ! Expected `df` to be NULL.
+      Differences:
+      `actual` is an S3 object of class <data.frame>, a list
+      `expected` is NULL
 

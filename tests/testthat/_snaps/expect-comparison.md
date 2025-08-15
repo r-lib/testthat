@@ -1,22 +1,80 @@
-# useful output when numbers are very small
+# basic comparisons work
 
-    1.1 * x is not less than `x`.
-    0.0000110 - 0.0000100 = 0.0000010 > 0
+    Code
+      expect_lt(x, 10)
+    Condition
+      Error:
+      ! Expected `x` < 10.
+      Actual comparison: 10.0 >= 10.0
+      Difference: 0.0 >= 0
 
 ---
 
-    `x` is not strictly greater than 1.1 * x.
-    0.0000100 - 0.0000110 = -0.0000010 <= 0
+    Code
+      expect_gt(x, 10)
+    Condition
+      Error:
+      ! Expected `x` > 10.
+      Actual comparison: 10.0 <= 10.0
+      Difference: 0.0 <= 0
+
+# useful output when numbers are very small
+
+    Code
+      expect_lte(1.1 * x, x)
+    Condition
+      Error:
+      ! Expected `1.1 * x` <= `x`.
+      Actual comparison: 0.0000110 > 0.0000100
+      Difference: 0.0000010 > 0
+
+---
+
+    Code
+      expect_gt(x, 1.1 * x)
+    Condition
+      Error:
+      ! Expected `x` > `1.1 * x`.
+      Actual comparison: 0.0000100 <= 0.0000110
+      Difference: -0.0000010 <= 0
 
 # useful output when difference is zero
 
-    `x` is not strictly less than 100.
-    100.0 - 100.0 = 0.0 >= 0
+    Code
+      expect_lt(x, 100)
+    Condition
+      Error:
+      ! Expected `x` < 100.
+      Actual comparison: 100.0 >= 100.0
+      Difference: 0.0 >= 0
 
 # useful output when differnce is large
 
-    `x` is not strictly less than 0.001.
-    100.000 - 0.001 = 99.999 >= 0
+    Code
+      expect_lt(x, 0.001)
+    Condition
+      Error:
+      ! Expected `x` < 0.001.
+      Actual comparison: 100.000 >= 0.001
+      Difference: 99.999 >= 0
+
+# comparisons with Inf work
+
+    Code
+      expect_lt(x, Inf)
+    Condition
+      Error:
+      ! Expected `x` < Inf.
+      Actual comparison: Inf >= Inf
+
+# comparisons with NA work
+
+    Code
+      expect_lt(x, 10)
+    Condition
+      Error:
+      ! Expected `x` < 10.
+      Actual comparison: NA >= 10.0
 
 # comparison must yield a single logical
 

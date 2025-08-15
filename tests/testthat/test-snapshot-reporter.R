@@ -184,7 +184,7 @@ test_that("`expect_error()` can fail inside `expect_snapshot()`", {
     reporter = NULL
   )
   err <- out[[1]]$results[[1]]
-  expect_match(err$message, "did not throw the expected error")
+  expect_snapshot(err$message)
 })
 
 

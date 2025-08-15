@@ -27,7 +27,7 @@ expect_reference <- function(
   exp <- quasi_label(enquo(expected), expected.label)
 
   if (!is_reference(act$val, exp$val)) {
-    msg <- sprintf("%s not a reference to %s.", act$lab, exp$lab)
+    msg <- sprintf("Expected %s to be a reference to %s.", act$lab, exp$lab)
     return(fail(msg, info = info))
   }
   pass(act$val)

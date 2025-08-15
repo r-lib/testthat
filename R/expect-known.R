@@ -235,7 +235,11 @@ expect_known_hash <- function(object, hash = NULL) {
     cli::cli_warn("No recorded hash: use {substr(act_hash, 1, 10)}.")
   } else {
     if (hash != act_hash) {
-      msg <- sprintf("Value hashes to %s, not %s", act_hash, hash)
+      msg <- sprintf(
+        "Expected value to hash to %s.\nActual hash: %s",
+        hash,
+        act_hash
+      )
       return(fail(msg))
     }
   }

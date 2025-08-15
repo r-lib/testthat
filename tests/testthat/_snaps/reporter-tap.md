@@ -5,15 +5,17 @@
     ok 1 Success
     # Context Failures
     not ok 2 Failure:1
-      FALSE (`actual`) is not equal to TRUE (`expected`).
-      
+      Expected `x` to be TRUE.
+      Differences:
       `actual`:   FALSE
       `expected`: TRUE 
+      
     not ok 3 Failure:2a
-      FALSE (`actual`) is not equal to TRUE (`expected`).
-      
+      Expected FALSE to be TRUE.
+      Differences:
       `actual`:   FALSE
       `expected`: TRUE 
+      
       Backtrace:
           x
        1. \-f()

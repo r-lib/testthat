@@ -1,6 +1,8 @@
 test_that("expect_type checks typeof", {
   expect_success(expect_type(factor("a"), "integer"))
-  expect_failure(expect_type(factor("a"), "double"))
+
+  x <- factor("a")
+  expect_snapshot_failure(expect_type(x, "double"))
 })
 
 test_that("expect_type validates its inputs", {
@@ -13,15 +15,19 @@ test_that("expect_is checks class", {
   local_edition(2)
 
   expect_success(expect_is(factor("a"), "factor"))
-  expect_failure(expect_is(factor("a"), "integer"))
+  expect_snapshot_failure(expect_is(factor("a"), "integer"))
 })
 
 test_that("expect_s3/s4_class fails if appropriate type", {
   A <- methods::setClass("A", contains = "list")
 
-  expect_failure(expect_s3_class(1, "double"), "not an S3 object")
-  expect_failure(expect_s3_class(A(), "double"), "not an S3 object")
-  expect_failure(expect_s4_class(factor(), "double"), "not an S4 object")
+  x1 <- 1
+  x2 <- A()
+  x3 <- factor("a")
+
+  expect_snapshot_failure(expect_s3_class(x1, "double"))
+  expect_snapshot_failure(expect_s3_class(x2, "double"))
+  expect_snapshot_failure(expect_s4_class(x3, "double"))
 })
 
 test_that("expect_s[34]_class can check not S3/S4", {
@@ -65,7 +71,7 @@ test_that("test_s3_class respects class hierarchy", {
 
 test_that("test_s3_class can request exact match", {
   x <- structure(list(), class = c("a", "b"))
-  expect_failure(expect_s3_class(x, "a", exact = TRUE))
+  expect_snapshot_failure(expect_s3_class(x, "a", exact = TRUE))
   expect_success(expect_s3_class(x, c("a", "b"), exact = TRUE))
 })
 
@@ -121,7 +127,6 @@ test_that("expect_r6_class validates its inputs", {
 # expect_s7_class --------------------------------------------------------
 
 test_that("can check with actual class", {
-  skip_if_not_installed("S7")
   Foo <- S7::new_class("Foo", package = NULL)
   Bar <- S7::new_class("Bar", package = NULL)
   expect_success(expect_s7_class(Foo(), class = Foo))
@@ -129,6 +134,13 @@ test_that("can check with actual class", {
 
   Baz <- S7::new_class("Baz", parent = Foo, package = NULL)
   expect_snapshot_failure(expect_s7_class(Baz(), class = Bar))
+})
+
+test_that("informative failure if not S7", {
+  Foo <- S7::new_class("Foo", package = NULL)
+
+  x <- factor()
+  expect_snapshot_failure(expect_s7_class(x, Foo))
 })
 
 test_that("expect_s7_class validates its inputs", {

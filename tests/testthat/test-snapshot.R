@@ -66,7 +66,7 @@ test_that("can scrub output/messages/warnings/errors", {
 
 test_that("always checks error status", {
   expect_error(expect_snapshot(stop("!"), error = FALSE))
-  expect_failure(expect_snapshot(print("!"), error = TRUE))
+  expect_snapshot_failure(expect_snapshot(print("!"), error = TRUE))
 })
 
 test_that("can capture error/warning messages", {

@@ -3,11 +3,11 @@ g <- function() cat("!")
 
 test_that("expect = NA checks for no output", {
   expect_success(expect_output(f(), NA))
-  expect_failure(expect_output(g(), NA), "produced output")
+  expect_snapshot_failure(expect_output(g(), NA))
 })
 
 test_that("expect = NULL checks for some output", {
-  expect_failure(expect_output(f(), NULL), "produced no output")
+  expect_snapshot_failure(expect_output(f(), NULL))
   expect_success(expect_output(g(), NULL))
 })
 
