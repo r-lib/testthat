@@ -75,11 +75,10 @@ gha_path <- function() {
     return()
   }
 
-  stdout()
-  # if ((out <- Sys.getenv("GITHUB_STEP_SUMMARY")) == "") {
-  #   return()
-  # }
-  # out
+  if ((out <- Sys.getenv("GITHUB_STEP_SUMMARY")) == "") {
+    return()
+  }
+  out
 }
 
 

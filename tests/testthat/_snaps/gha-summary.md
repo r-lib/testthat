@@ -10,8 +10,8 @@
       ||||0|0.00|
       
       <details>
+      <summary>Test details</summary>
       
-      ### Test details
       
       | File | Test | FAIL | WARN | SKIP | PASS | Time |
       |:-----|:-----|-----:|-----:|-----:|-----:|:-----|
