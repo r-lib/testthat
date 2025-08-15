@@ -1,14 +1,20 @@
 # test_dir() --------------------------------------------------------------
 
 test_that("stops on failure", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "FALSE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   expect_snapshot(error = TRUE, {
     test_dir(test_path("test_dir"), reporter = "silent")
   })
 })
 
 test_that("runs all tests and records output", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "FALSE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   res <- test_dir(
     test_path("test_dir"),
     reporter = "silent",
@@ -23,7 +29,10 @@ test_that("runs all tests and records output", {
 })
 
 test_that("complains if no files", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(
+    TESTTHAT_PARALLEL = "FALSE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  )
   path <- withr::local_tempfile()
   dir.create(path)
 
@@ -31,7 +40,10 @@ test_that("complains if no files", {
 })
 
 test_that("can control if failures generate errors", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "FALSE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   test_error <- function(...) {
     test_dir(test_path("test-error"), reporter = "silent", ...)
   }
@@ -41,7 +53,11 @@ test_that("can control if failures generate errors", {
 })
 
 test_that("can control if warnings errors", {
-  withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "FALSE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
+
   test_warning <- function(...) {
     test_dir(test_path("test-warning"), reporter = "silent", ...)
   }
@@ -53,6 +69,10 @@ test_that("can control if warnings errors", {
 # test_file ---------------------------------------------------------------
 
 test_that("can test single file", {
+  withr::local_envvar(c(
+    TESTTHAT_PARALLEL = "FALSE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  ))
   out <- test_file(test_path("test_dir/test-basic.R"), reporter = "silent")
   expect_length(out, 5)
 })
@@ -88,6 +108,11 @@ test_that("can filter test scripts", {
 # ----------------------------------------------------------------------
 
 test_that("can configure `load_all()` (#1636)", {
+  withr::local_envvar(
+    TESTTHAT_PARALLEL = "FALSE",
+    TESTTHAT_GHA_SUMMARY = "FALSE"
+  )
+
   path <- test_path("testConfigLoadAll")
 
   args <- find_load_all_args(path)

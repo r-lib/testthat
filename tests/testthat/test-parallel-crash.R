@@ -1,9 +1,7 @@
 test_that("crash", {
+  local_parallel_test_config()
   skip_on_cran()
-  skip_on_covr()
   skip_if_not(getRversion() >= "4.4.0")
-
-  withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")
 
   pkg <- test_path("test-parallel", "crash")
   err <- callr::r(
