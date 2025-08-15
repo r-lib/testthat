@@ -216,10 +216,10 @@ local_description_set <- function(
   invisible(old)
 }
 
-test_description <- function() {
-  if (length(the$description) == 0) {
+test_description <- function(desc = the$description) {
+  if (length(desc) == 0) {
     NULL
   } else {
-    paste(the$description, collapse = " / ")
+    paste(desc, collapse = " / ")
   }
 }
