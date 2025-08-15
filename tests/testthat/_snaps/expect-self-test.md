@@ -4,19 +4,19 @@
       expect_failure(expect_no_failure())
     Condition
       Error:
-      ! Expected code to fail exactly once.
+      ! Expected one failure.
       Actually failed 0 times
     Code
       expect_failure(expect_many_failures())
     Condition
       Error:
-      ! Expected code to fail exactly once.
+      ! Expected one failure.
       Actually failed 2 times
     Code
       expect_failure(expect_has_success())
     Condition
       Error:
-      ! Expected code to succeed exactly once.
+      ! Expected zero successes.
       Actually succeeded 1 times
     Code
       expect_failure(expect_failure_foo(), "bar")
@@ -52,19 +52,19 @@
       expect_success(expect_no_success())
     Condition
       Error:
-      ! Expected code to succeed exactly once.
+      ! Expected one success.
       Actually succeeded 0 times
     Code
       expect_success(expect_many_successes())
     Condition
       Error:
-      ! Expected code to succeed exactly once.
+      ! Expected one success.
       Actually succeeded 2 times
     Code
       expect_success(expect_has_failure())
     Condition
       Error:
-      ! Expected code to not fail.
+      ! Expected zero failures.
       Actually failed 1 times
 
 # expect_no are deprecated

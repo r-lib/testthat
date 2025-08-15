@@ -48,7 +48,7 @@ expect_success <- function(expr) {
 
   if (status$n_success != 1) {
     msg <- c(
-      "Expected code to succeed exactly once.",
+      "Expected one success.",
       sprintf("Actually succeeded %i times", status$n_success)
     )
     return(fail(msg))
@@ -56,7 +56,7 @@ expect_success <- function(expr) {
 
   if (status$n_failure > 0) {
     msg <- c(
-      "Expected code to not fail.",
+      "Expected zero failures.",
       sprintf("Actually failed %i times", status$n_failure)
     )
     return(fail(msg))
@@ -72,7 +72,7 @@ expect_failure <- function(expr, message = NULL, ...) {
 
   if (status$n_failure != 1) {
     msg <- c(
-      "Expected code to fail exactly once.",
+      "Expected one failure.",
       sprintf("Actually failed %i times", status$n_failure)
     )
     return(fail(msg))
@@ -80,7 +80,7 @@ expect_failure <- function(expr, message = NULL, ...) {
 
   if (status$n_success != 0) {
     msg <- c(
-      "Expected code to succeed exactly once.",
+      "Expected zero successes.",
       sprintf("Actually succeeded %i times", status$n_success)
     )
     return(fail(msg))
