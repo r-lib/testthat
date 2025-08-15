@@ -46,7 +46,8 @@ expect_match <- function(
   check_bool(all)
 
   if (length(object) == 0) {
-    return(fail(sprintf("Expected %s not to be empty.", act$lab), info = info))
+    msg <- sprintf("Expected %s to have at least one element.", act$lab)
+    return(fail(msg, info = info))
   }
 
   expect_match_(

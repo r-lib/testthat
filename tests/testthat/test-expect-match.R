@@ -1,11 +1,18 @@
-test_that("generates useful failure messages", {
-  local_reproducible_output(unicode = TRUE)
-
+test_that("useful failure if empty", {
   zero <- character(0)
   expect_snapshot_failure(expect_match(zero, 'asdf'))
+})
+
+test_that("useful failure messages for scalars", {
+  local_reproducible_output(unicode = TRUE)
 
   one <- "bcde"
   expect_snapshot_failure(expect_match(one, 'asdf'))
+  expect_snapshot_failure(expect_match(one, 'asdf', fixed = TRUE))
+})
+
+test_that("useful failure messages for vectors", {
+  local_reproducible_output(unicode = TRUE)
 
   many <- c("a", "a", "b")
   expect_snapshot_failure(expect_match(many, "a"))
@@ -39,10 +46,10 @@ test_that("expect_no_match validates its inputs", {
 })
 
 test_that("extra arguments passed onto grepl", {
-  expect_snapshot_failure(expect_match("\\s", "\\s"))
+  expect_failure(expect_match("\\s", "\\s"))
   expect_success(expect_match("\\s", "\\s", fixed = TRUE))
 
-  expect_snapshot_failure(expect_match("test", "TEST"))
+  expect_failure(expect_match("test", "TEST"))
   expect_success(expect_match("test", "TEST", ignore.case = TRUE))
 })
 

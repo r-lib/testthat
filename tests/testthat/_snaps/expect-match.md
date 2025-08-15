@@ -1,12 +1,12 @@
-# generates useful failure messages
+# useful failure if empty
 
     Code
       expect_match(zero, "asdf")
     Condition
       Error:
-      ! Expected `zero` not to be empty.
+      ! Expected `zero` to have at least one element.
 
----
+# useful failure messages for scalars
 
     Code
       expect_match(one, "asdf")
@@ -17,6 +17,16 @@
       ✖ │ bcde
 
 ---
+
+    Code
+      expect_match(one, "asdf", fixed = TRUE)
+    Condition
+      Error:
+      ! Expected `one` to match string "asdf".
+      Actual text:
+      ✖ │ bcde
+
+# useful failure messages for vectors
 
     Code
       expect_match(many, "a")
@@ -118,26 +128,6 @@
     Condition
       Error in `expect_no_match()`:
       ! `all` must be `TRUE` or `FALSE`, not the number 1.
-
-# extra arguments passed onto grepl
-
-    Code
-      expect_match("\\s", "\\s")
-    Condition
-      Error:
-      ! Expected "\\s" to match regexp "\\s".
-      Actual text:
-      x | \s
-
----
-
-    Code
-      expect_match("test", "TEST")
-    Condition
-      Error:
-      ! Expected "test" to match regexp "TEST".
-      Actual text:
-      x | test
 
 # expect_no_match works
 
