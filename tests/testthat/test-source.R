@@ -11,11 +11,39 @@ test_that("source_file always uses UTF-8 encoding", {
 
   ## Some text in UTF-8
   tmp <- tempfile()
-  on.exit(unlink(tmp), add = TRUE)
+  withr::defer(unlink(tmp))
   utf8 <- as.raw(c(
-    0xc3, 0xa1, 0x72, 0x76, 0xc3, 0xad, 0x7a, 0x74, 0xc5, 0xb1, 0x72, 0xc5,
-    0x91, 0x20, 0x74, 0xc3, 0xbc, 0x6b, 0xc3, 0xb6, 0x72, 0x66, 0xc3, 0xba,
-    0x72, 0xc3, 0xb3, 0x67, 0xc3, 0xa9, 0x70
+    0xc3,
+    0xa1,
+    0x72,
+    0x76,
+    0xc3,
+    0xad,
+    0x7a,
+    0x74,
+    0xc5,
+    0xb1,
+    0x72,
+    0xc5,
+    0x91,
+    0x20,
+    0x74,
+    0xc3,
+    0xbc,
+    0x6b,
+    0xc3,
+    0xb6,
+    0x72,
+    0x66,
+    0xc3,
+    0xba,
+    0x72,
+    0xc3,
+    0xb3,
+    0x67,
+    0xc3,
+    0xa9,
+    0x70
   ))
   writeBin(c(charToRaw("x <- \""), utf8, charToRaw("\"\n")), tmp)
 
@@ -46,33 +74,129 @@ test_that("source_file wraps error", {
   })
 })
 
+test_that("checks its inputs", {
+  expect_snapshot(error = TRUE, {
+    source_file(1)
+    source_file("x")
+    source_file(".", "x")
+  })
+})
 
-# filter_label -------------------------------------------------------------
+# filter_desc -------------------------------------------------------------
 
-test_that("can find only matching test", {
+test_that("works with all subtest types", {
+  code <- exprs(
+    test_that("foo", {}),
+    describe("bar", {}),
+    it("baz", {})
+  )
+  expect_equal(filter_desc(code, "foo"), code[1])
+  expect_equal(filter_desc(code, "bar"), code[2])
+  expect_equal(filter_desc(code, "baz"), code[3])
+})
+
+test_that("only returns non-subtest code before subtest", {
   code <- exprs(
     f(),
-    test_that("foo", {}),
+    test_that("bar", {}),
+    describe("foo", {}),
     g(),
-    describe("bar", {}),
     h()
   )
-  expect_equal(filter_desc(code, "foo"), code[c(1, 2)])
-  expect_equal(filter_desc(code, "bar"), code[c(1, 3, 4)])
-  expect_snapshot(filter_desc(code, "baz"), error = TRUE)
+  expect_equal(filter_desc(code, "foo"), code[c(1, 3)])
+})
+
+test_that("can select recursively", {
+  code <- exprs(
+    x <- 1,
+    describe("a", {
+      y <- 1
+      describe("b", {
+        z <- 1
+      })
+      y <- 2
+    }),
+    x <- 2
+  )
+
+  expect_equal(
+    filter_desc(code, c("a", "b")),
+    exprs(
+      x <- 1,
+      describe("a", {
+        y <- 1
+        describe("b", {
+          z <- 1
+        })
+      })
+    )
+  )
+})
+
+test_that("works on code like the describe() example", {
+  code <- exprs(
+    describe("math library", {
+      x1 <- 1
+      x2 <- 1
+      describe("addition()", {
+        it("can add two numbers", {
+          expect_equal(x1 + x2, addition(x1, x2))
+        })
+      })
+      describe("division()", {
+        x1 <- 10
+        x2 <- 2
+        it("can divide two numbers", {
+          expect_equal(x1 / x2, division(x1, x2))
+        })
+        it("can handle division by 0") #not yet implemented
+      })
+    })
+  )
+
+  expect_equal(
+    filter_desc(
+      code,
+      c("math library", "division()", "can divide two numbers")
+    ),
+    exprs(
+      describe("math library", {
+        x1 <- 1
+        x2 <- 1
+        describe("division()", {
+          x1 <- 10
+          x2 <- 2
+          it("can divide two numbers", {
+            expect_equal(x1 / x2, division(x1, x2))
+          })
+        })
+      })
+    )
+  )
+
+  # what happens for an unimplemented specification?
+  expect_snapshot(
+    error = TRUE,
+    filter_desc(
+      code,
+      c("math library", "division()", "can handle division by 0")
+    )
+  )
 })
 
 test_that("preserve srcrefs", {
-  code <- parse(keep.source = TRUE, text = '
+  code <- parse(
+    keep.source = TRUE,
+    text = '
     test_that("foo", {
       # this is a comment
     })
-  ')
+  '
+  )
   expect_snapshot(filter_desc(code, "foo"))
 })
 
-
-test_that("errors if duplicate labels", {
+test_that("errors if zero or duplicate labels", {
   code <- exprs(
     f(),
     test_that("baz", {}),
@@ -80,5 +204,32 @@ test_that("errors if duplicate labels", {
     g()
   )
 
-  expect_snapshot(filter_desc(code, "baz"), error = TRUE)
+  expect_snapshot(error = TRUE, {
+    filter_desc(code, "baz")
+    filter_desc(code, "missing")
+  })
+})
+
+test_that("source_dir()", {
+  res <- source_dir("test_dir", pattern = "hello", chdir = TRUE, wrap = FALSE)
+  expect_equal(res[[1]](), "Hello World")
+
+  res <- source_dir(
+    normalizePath("test_dir"),
+    pattern = "hello",
+    chdir = TRUE,
+    wrap = FALSE
+  )
+  expect_equal(res[[1]](), "Hello World")
+
+  res <- source_dir("test_dir", pattern = "hello", chdir = FALSE, wrap = FALSE)
+  expect_equal(res[[1]](), "Hello World")
+
+  res <- source_dir(
+    normalizePath("test_dir"),
+    pattern = "hello",
+    chdir = FALSE,
+    wrap = FALSE
+  )
+  expect_equal(res[[1]](), "Hello World")
 })

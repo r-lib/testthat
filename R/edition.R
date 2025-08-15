@@ -27,18 +27,20 @@ edition_deprecate <- function(in_edition, what, instead = NULL) {
     return()
   }
 
-  warn(c(
-    paste0("`", what, "` was deprecated in ", edition_name(in_edition), "."),
+  cli::cli_warn(c(
+    "{.code {what}} was deprecated in {edition_name(in_edition)}.",
     i = instead
   ))
 }
 
 edition_require <- function(in_edition, what) {
-  if (edition_get() >= in_edition || isTRUE(getOption("testthat.edition_ignore"))) {
+  if (
+    edition_get() >= in_edition || isTRUE(getOption("testthat.edition_ignore"))
+  ) {
     return()
   }
 
-  stop(paste0("`", what, "` requires ", edition_name(in_edition), "."))
+  cli::cli_abort("{.code {what}} requires {edition_name(in_edition)}.")
 }
 
 edition_name <- function(x) {
@@ -60,10 +62,8 @@ edition_name <- function(x) {
 #' @export
 #' @param x Edition Should be a single integer.
 #' @param .env Environment that controls scope of changes. For expert use only.
-#' @keywords internal
 local_edition <- function(x, .env = parent.frame()) {
-  stopifnot(is_zap(x) || (is.numeric(x) && length(x) == 1))
-
+  check_number_whole(x, min = 2, max = 3)
   local_bindings(edition = x, .env = the, .frame = .env)
 }
 

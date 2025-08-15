@@ -1,6 +1,6 @@
-
 test_that("teardown error", {
   skip("teardown errors are ignored")
+  skip_on_covr()
   withr::local_envvar(c(
     TESTTHAT_PARALLEL = "TRUE",
     TESTTHAT_GHA_SUMMARY = "FALSE"

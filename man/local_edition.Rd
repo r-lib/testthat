@@ -19,4 +19,3 @@ edition_get()
 a single test file) change the active edition of testthat.
 \code{edition_get()} allows you to retrieve the currently active edition.
 }
-\keyword{internal}

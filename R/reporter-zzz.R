@@ -36,10 +36,12 @@ get_reporter <- function() {
 #' @rdname reporter-accessors
 #' @export
 with_reporter <- function(reporter, code, start_end_reporter = TRUE) {
+  # Ensure we don't propagate the local description to the new reporter
+  local_description_set()
   reporter <- find_reporter(reporter)
 
   old <- set_reporter(reporter)
-  on.exit(set_reporter(old), add = TRUE)
+  withr::defer(set_reporter(old))
 
   if (start_end_reporter) {
     reporter$start_reporter()
@@ -61,7 +63,7 @@ stop_reporter <- function(message) {
   cli::cli_abort(
     message,
     class = "testthat_abort_reporter",
-    error_call = NULL
+    call = NULL
   )
 }
 
@@ -75,32 +77,39 @@ stop_reporter <- function(message) {
 #' @param reporter name of reporter(s), or reporter object(s)
 #' @keywords internal
 find_reporter <- function(reporter) {
-  if (is.null(reporter)) return(NULL)
+  if (is.null(reporter)) {
+    return(NULL)
+  }
 
   if (inherits(reporter, "R6ClassGenerator")) {
     reporter$new()
   } else if (inherits(reporter, "Reporter")) {
     reporter
+  } else if (is_string(reporter)) {
+    find_reporter_one(reporter)
   } else if (is.character(reporter)) {
-    if (length(reporter) <= 1L) {
-      find_reporter_one(reporter)
-    } else {
-      MultiReporter$new(reporters = lapply(reporter, find_reporter_one))
-    }
+    reporters <- lapply(reporter, find_reporter_one, call = current_env())
+    MultiReporter$new(reporters)
   } else {
-    stop("Invalid input", call. = FALSE)
+    stop_input_type(
+      reporter,
+      c(
+        "a string",
+        "a character vector",
+        "a reporter object",
+        "a reporter class"
+      )
+    )
   }
 }
 
-find_reporter_one <- function(reporter, ...) {
-  stopifnot(is.character(reporter))
-
+find_reporter_one <- function(reporter, ..., call = caller_env()) {
   name <- reporter
   substr(name, 1, 1) <- toupper(substr(name, 1, 1))
   name <- paste0(name, "Reporter")
 
   if (!exists(name)) {
-    stop("Can not find test reporter ", reporter, call. = FALSE)
+    cli::cli_abort("Cannot find test reporter {.arg {reporter}}.", call = call)
   }
 
   get(name)$new(...)

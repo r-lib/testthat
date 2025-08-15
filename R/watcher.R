@@ -28,7 +28,9 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
     if (changes$n > 0) {
       # cat("C")
       keep_going <- TRUE
-      try(keep_going <- callback(changes$added, changes$deleted, changes$modified))
+      try(
+        keep_going <- callback(changes$added, changes$deleted, changes$modified)
+      )
 
       if (!isTRUE(keep_going)) return(invisible())
     } else {
@@ -40,11 +42,17 @@ watch <- function(path, callback, pattern = NULL, hash = TRUE) {
 }
 
 safe_digest <- function(path) {
-  if (!file.exists(path)) return(NA_character_)
-  if (is_directory(path)) return(NA_character_)
-  if (!is_readable(path)) return(NA_character_)
+  if (!file.exists(path)) {
+    return(NA_character_)
+  }
+  if (is_directory(path)) {
+    return(NA_character_)
+  }
+  if (!is_readable(path)) {
+    return(NA_character_)
+  }
 
-  digest::digest(path, file = TRUE)
+  rlang::hash_file(path)
 }
 
 #' Capture the state of a directory.
@@ -62,10 +70,11 @@ dir_state <- function(path, pattern = NULL, hash = TRUE) {
   # gracefully, but digest::digest doesn't -- so we wrap it. Both
   # cases will return NA for files that have gone missing.
   if (hash) {
-    file_states <- vapply(files, safe_digest, character(1))
+    file_states <- map_chr(files, safe_digest)
   } else {
-    file_states <- stats::setNames(file.info(files)$mtime, files)
+    file_states <- file.info(files)$mtime
   }
+  file_states <- stats::setNames(file_states, files)
   file_states[!is.na(file_states)]
 }
 

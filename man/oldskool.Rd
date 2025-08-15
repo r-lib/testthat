@@ -2,10 +2,7 @@
 % Please edit documentation in R/old-school.R
 \name{oldskool}
 \alias{oldskool}
-\alias{is_null}
 \alias{is_a}
-\alias{is_true}
-\alias{is_false}
 \alias{has_names}
 \alias{is_less_than}
 \alias{is_more_than}
@@ -17,16 +14,9 @@
 \alias{gives_warning}
 \alias{prints_text}
 \alias{throws_error}
-\alias{matches}
 \title{Old-style expectations.}
 \usage{
-is_null()
-
 is_a(class)
-
-is_true()
-
-is_false()
 
 has_names(expected, ignore.order = FALSE, ignore.case = FALSE)
 
@@ -49,8 +39,6 @@ gives_warning(regexp = NULL, all = FALSE, ...)
 prints_text(regexp = NULL, ...)
 
 throws_error(regexp = NULL, ...)
-
-matches(regexp, all = TRUE, ...)
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}

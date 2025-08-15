@@ -5,7 +5,7 @@
 \alias{expect_warning}
 \alias{expect_message}
 \alias{expect_condition}
-\title{Does code throw an error, warning, message, or other condition?}
+\title{Do you expect an error, warning, message, or other condition?}
 \usage{
 expect_error(
   object,

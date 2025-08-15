@@ -1,6 +1,4 @@
-
 test_that("expect_no_* conditions behave as expected", {
-
   # base R
   expect_snapshot_failure(expect_no_error(stop("error")))
   expect_snapshot_failure(expect_no_warning(warning("warning")))
@@ -10,14 +8,46 @@ test_that("expect_no_* conditions behave as expected", {
   expect_snapshot_failure(expect_no_error(abort("error")))
   expect_snapshot_failure(expect_no_warning(warn("warning")))
   expect_snapshot_failure(expect_no_message(inform("message")))
+})
 
+test_that("expect_no_* pass with pure code", {
+  expect_success(out <- expect_no_error(1))
+  expect_equal(out, 1)
+
+  expect_success(expect_no_warning(1))
+  expect_success(expect_no_message(1))
+  expect_success(expect_no_condition(1))
+})
+
+test_that("expect_no_ continues execution", {
+  b <- 1
+  expect_failure(expect_no_warning({
+    warning("x")
+    b <- 2
+  }))
+  expect_equal(b, 2)
+})
+
+test_that("expect_no_* don't emit success when they fail", {
+  expect_failure(expect_no_error(stop("!")))
+})
+
+test_that("capture correct trace_env (#1994)", {
+  status <- capture_success_failure(
+    expect_warning(expect_error(stop("oops")))
+  )
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
 })
 
 test_that("unmatched conditions bubble up", {
   expect_error(expect_no_error(abort("foo"), message = "bar"), "foo")
   expect_warning(expect_no_warning(warn("foo"), message = "bar"), "foo")
   expect_message(expect_no_message(inform("foo"), message = "bar"), "foo")
-  expect_condition(expect_no_condition(signal("foo", "x"), message = "bar"), "foo")
+  expect_condition(
+    expect_no_condition(signal("foo", "x"), message = "bar"),
+    "foo"
+  )
 })
 
 test_that("only matches conditions of specified type", {

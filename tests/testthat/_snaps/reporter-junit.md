@@ -7,13 +7,13 @@
       </testsuite>
       <testsuite name="Failures" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="2" errors="0" time="0">
         <testcase time="0" classname="Failures" name="Failure_1">
-          <failure type="failure" message="FALSE is not TRUE ('reporters/tests.R:12:3')">FALSE is not TRUE
+          <failure type="failure" message="FALSE (`actual`) is not equal to TRUE (`expected`). ('reporters/tests.R:12:3')">FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE </failure>
         </testcase>
         <testcase time="0" classname="Failures" name="Failure_2a">
-          <failure type="failure" message="FALSE is not TRUE ('reporters/tests.R:16:8')">FALSE is not TRUE
+          <failure type="failure" message="FALSE (`actual`) is not equal to TRUE (`expected`). ('reporters/tests.R:16:8')">FALSE (`actual`) is not equal to TRUE (`expected`).
     
     `actual`:   FALSE
     `expected`: TRUE 
@@ -45,9 +45,14 @@
         </testcase>
       </testsuite>
       <testsuite name="Warnings" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="1" failures="0" errors="0" time="0">
-        <testcase time="0" classname="Warnings" name="warnings_get_backtraces"/>
         <testcase time="0" classname="Warnings" name="warnings_get_backtraces">
-          <skipped message="Reason: empty test ('reporters/tests.R:45:1')"/>
+          <system-out>def
+    Backtrace:
+        x
+     1. \-f()</system-out>
+        </testcase>
+        <testcase time="0" classname="Warnings" name="warnings_get_backtraces">
+          <skipped message="Reason: empty test ('reporters/tests.R:44:1')"/>
         </testcase>
       </testsuite>
     </testsuites>

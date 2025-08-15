@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-constant.R
 \name{expect_null}
 \alias{expect_null}
-\title{Does code return \code{NULL}?}
+\title{Do you expect \code{NULL}?}
 \usage{
 expect_null(object, info = NULL, label = NULL)
 }
@@ -44,4 +44,3 @@ Other expectations:
 \code{\link{logical-expectations}}
 }
 \concept{expectations}
-\keyword{internal}

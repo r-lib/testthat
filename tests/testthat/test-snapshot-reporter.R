@@ -1,6 +1,5 @@
-
 test_that("can establish local snapshotter for testing", {
-  snapper <- local_snapshotter()
+  snapper <- local_test_snapshotter()
 
   snapper$start_file("snapshot-1", "test")
   expect_true(snapper$is_active())
@@ -10,12 +9,12 @@ test_that("can establish local snapshotter for testing", {
 
 test_that("basic workflow", {
   path <- withr::local_tempdir()
-  snapper <- local_snapshotter(path)
+  snapper <- local_test_snapshotter(snap_dir = path)
   snapper$start_file("snapshot-2")
   # output if not active (because test not set here)
-  expect_snapshot_output("x") %>%
-    expect_message("Can't compare") %>%
-    expect_output("Current value:\n[1] \"x\"", fixed = TRUE)
+  expect_snapshot_output("x") |>
+    expect_message("Can't save") |>
+    expect_output("[1] \"x\"", fixed = TRUE)
 
   # warns on first creation
   snapper$start_file("snapshot-2", "test")
@@ -39,8 +38,19 @@ test_that("basic workflow", {
   expect_true(file.exists(file.path(path, "snapshot-2.new.md")))
 })
 
+test_that("defaults to failing on CI", {
+  withr::local_envvar(CI = "true")
+
+  path <- withr::local_tempdir()
+  snapper <- local_snapshotter(snap_dir = path)
+  snapper$start_file("snapshot-2")
+  # warns on first creation
+  snapper$start_file("snapshot-2", "test")
+  expect_error(expect_snapshot_output("x"), "Adding new")
+})
+
 test_that("only create new files for changed variants", {
-  snapper <- local_snapshotter()
+  snapper <- local_test_snapshotter()
   snapper$start_file("variants", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   expect_warning(expect_snapshot_output("x", variant = "a"), "Adding new")
@@ -76,7 +86,7 @@ test_that("only create new files for changed variants", {
 })
 
 test_that("only reverting change in variant deletes .new", {
-  snapper <- local_snapshotter()
+  snapper <- local_test_snapshotter()
   snapper$start_file("v", "test")
   expect_warning(expect_snapshot_output("x", variant = "a"), "Adding new")
   expect_warning(expect_snapshot_output("x", variant = "b"), "Adding new")
@@ -99,7 +109,7 @@ test_that("only reverting change in variant deletes .new", {
 
 test_that("removing tests removes snap file", {
   path <- withr::local_tempdir()
-  snapper <- local_snapshotter(path)
+  snapper <- local_test_snapshotter(snap_dir = path)
   snapper$start_file("snapshot-3", "test")
   expect_warning(expect_snapshot_output("x"), "Adding new")
   snapper$end_file()
@@ -111,7 +121,7 @@ test_that("removing tests removes snap file", {
 })
 
 test_that("errors in test doesn't change snapshot", {
-  snapper <- local_snapshotter()
+  snapper <- local_test_snapshotter()
 
   # First run
   snapper$start_file("snapshot-5", "test")
@@ -154,8 +164,6 @@ test_that("skips and unexpected errors reset snapshots", {
   )
 
   path <- "test-snapshot/_snaps/snapshot.md"
-  stopifnot(file.exists(path))
-
   snaps <- snap_from_md(brio::read_lines(path))
   titles <- c("errors reset snapshots", "skips reset snapshots")
   expect_true(all(titles %in% names(snaps)))
@@ -169,4 +177,34 @@ test_that("`expect_error()` can fail inside `expect_snapshot()`", {
   )
   err <- out[[1]]$results[[1]]
   expect_match(err$message, "did not throw the expected error")
+})
+
+
+test_that("can filter with desc", {
+  path <- withr::local_tempdir()
+
+  # First record some results
+  suppressWarnings({
+    snapper <- local_test_snapshotter(snap_dir = path)
+    snapper$start_file("snapshot")
+    snapper$start_test(test = "x")
+    expect_snapshot_output(cat("x"))
+    snapper$end_test()
+    snapper$start_test(test = "y")
+    expect_snapshot_output(cat("y"))
+    snapper$end_test()
+    snapper$end_file()
+  })
+  snaps_all <- readLines(file.path(path, "snapshot.md"))
+
+  # Now pretend we just ran one
+  snapper <- local_test_snapshotter(snap_dir = path, desc = "x")
+  snapper$start_file("snapshot")
+  snapper$start_test(test = "x")
+  expect_snapshot_output(cat("x"))
+  snapper$end_test()
+  snapper$end_file()
+  snaps_filtered <- readLines(file.path(path, "snapshot.md"))
+
+  expect_equal(snaps_all, snaps_filtered)
 })

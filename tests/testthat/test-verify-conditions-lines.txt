@@ -3,10 +3,10 @@ Message: First.
 Second.
 
 > warning("First.\nSecond.")
-Warning in eval(expr, envir, enclos): First.
+Warning: First.
 Second.
 
 > stop("First.\nSecond.")
-Error in eval(expr, envir, enclos): First.
+Error: First.
 Second.
 

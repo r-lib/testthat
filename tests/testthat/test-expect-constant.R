@@ -13,6 +13,11 @@ test_that("logical tests ignore attributes", {
   expect_success(expect_false(c(a = FALSE)))
 })
 
+test_that("can compare non-vectors", {
+  local_output_override()
+  expect_snapshot_failure(expect_true(quote(x)))
+})
+
 test_that("additional info returned in message", {
   expect_failure(expect_true(FALSE, "NOPE"), "\nNOPE")
   expect_failure(expect_false(TRUE, "YUP"), "\nYUP")
@@ -26,3 +31,7 @@ test_that("expect_null works", {
   expect_snapshot_failure(expect_null(environment()))
 })
 
+test_that("returns the input value", {
+  res <- expect_true(TRUE)
+  expect_equal(res, TRUE)
+})

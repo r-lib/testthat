@@ -1,57 +1,143 @@
-#' Tools for testing expectations
+capture_success_failure <- function(expr) {
+  cnd <- NULL
+
+  n_success <- 0
+  n_failure <- 0
+
+  last_failure <- NULL
+
+  withCallingHandlers(
+    expr,
+    expectation_failure = function(cnd) {
+      last_failure <<- cnd
+      n_failure <<- n_failure + 1
+      # Don't bubble up to any other handlers
+      invokeRestart("continue_test")
+    },
+    expectation_success = function(cnd) {
+      n_success <<- n_success + 1
+      # Don't bubble up to any other handlers
+      invokeRestart("continue_test")
+    }
+  )
+
+  list(
+    n_success = n_success,
+    n_failure = n_failure,
+    last_failure = last_failure
+  )
+}
+
+#' Test your custom expectations
 #'
-#' Use these expectations to test other expectations.
+#' @description
+#' `expect_success()` checks that there's exactly one success and no failures;
+#' `expect_failure()` checks that there's exactly one failure and no successes.
+#' `expect_snapshot_failure()` records the failure message so that you can
+#' manually check that it is informative.
+#'
 #' Use `show_failure()` in examples to print the failure message without
 #' throwing an error.
 #'
-#' @param expr Expression that evaluates a single expectation.
+#' @param expr Code to evalute
 #' @param message Check that the failure message matches this regexp.
 #' @param ... Other arguments passed on to [expect_match()].
-#' @keywords internal
 #' @export
 expect_success <- function(expr) {
-  exp <- capture_expectation(expr)
+  status <- capture_success_failure(expr)
 
-  if (is.null(exp)) {
-    fail("no expectation used.")
-  } else if (!expectation_success(exp)) {
-    fail(paste0(
-      "Expectation did not succeed:\n",
-      exp$message
-    ))
-  } else {
-    succeed()
+  if (status$n_success == 0) {
+    return(fail("Expectation did not succeed"))
+  } else if (status$n_success > 1) {
+    return(fail(sprintf(
+      "Expectation succeeded %i times, instead of once",
+      status$n_success
+    )))
   }
-  invisible(NULL)
+
+  if (status$n_failure > 0) {
+    return(fail(sprintf(
+      "Expectation failed %i times, instead of zero",
+      status$n_failure
+    )))
+  }
+
+  pass(NULL)
 }
 
 #' @export
 #' @rdname expect_success
 expect_failure <- function(expr, message = NULL, ...) {
-  exp <- capture_expectation(expr)
+  status <- capture_success_failure(expr)
 
-  if (is.null(exp)) {
-    fail("No expectation used")
-    return()
+  if (status$n_failure == 0) {
+    return(fail("Expectation did not fail"))
+  } else if (status$n_failure > 1) {
+    # This should be impossible, but including for completeness
+    return(fail("Expectation failed more than once"))
   }
-  if (!expectation_failure(exp)) {
-    fail("Expectation did not fail")
-    return()
+
+  if (status$n_success != 0) {
+    return(fail(sprintf(
+      "Expectation succeeded %i times, instead of never",
+      status$n_success
+    )))
   }
 
   if (!is.null(message)) {
-    expect_match(exp$message, message, ...)
-  } else {
-    succeed()
+    act <- labelled_value(status$last_failure$message, "Failure message")
+    return(expect_match_(act, message, ...))
   }
-  invisible(NULL)
+  pass(NULL)
+}
+
+#' @export
+#' @rdname expect_success
+expect_snapshot_failure <- function(expr) {
+  expect_snapshot_condition_("expectation_failure", expr)
+}
+
+#' Test for absence of success or failure
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' These functions are deprecated because [expect_success()] and
+#' [expect_failure()] now test for exactly one success or no failures, and
+#' exactly one failure and no successes.
+#'
+#' @keywords internal
+#' @export
+expect_no_success <- function(expr) {
+  lifecycle::deprecate_warn("3.3.0", "expect_no_success()", "expect_failure()")
+  status <- capture_success_failure(expr)
+
+  if (status$n_success > 0) {
+    return(fail("Expectation succeeded"))
+  }
+  pass(NULL)
+}
+
+#' @export
+#' @rdname expect_no_success
+expect_no_failure <- function(expr) {
+  lifecycle::deprecate_warn("3.3.0", "expect_no_failure()", "expect_success()")
+  status <- capture_success_failure(expr)
+
+  if (status$n_failure > 0) {
+    return(fail("Expectation failed"))
+  }
+  pass(NULL)
 }
 
 expect_snapshot_skip <- function(x, cran = FALSE) {
-  expect_snapshot_error(x, class = "skip", cran = cran)
+  expect_snapshot_condition_("skip", x)
+}
+expect_skip <- function(code) {
+  expect_condition_matching_("skip", code)
 }
 expect_no_skip <- function(code) {
-  expect_no_condition(code, class = "skip")
+  expect_no_("skip", code)
 }
 
 
@@ -68,33 +154,30 @@ show_failure <- function(expr) {
   invisible()
 }
 
-expect_snapshot_failure <- function(x) {
-  expect_snapshot_error(x, "expectation_failure")
-}
-
-expect_snapshot_reporter <- function(reporter, paths = test_path("reporters/tests.R")) {
+expect_snapshot_reporter <- function(
+  reporter,
+  paths = test_path("reporters/tests.R")
+) {
   local_options(rlang_trace_format_srcrefs = FALSE)
-  local_rng_version("3.3")
-  set.seed(1014)
-  # withr::local_seed(1014)
+  withr::local_seed(1014)
 
   expect_snapshot_output(
     with_reporter(reporter, {
-      for (path in paths) test_one_file(path)
+      for (path in paths) {
+        test_one_file(path)
+      }
     })
   )
 }
 
-# to work around https://github.com/r-lib/withr/issues/167
-local_rng_version <- function(version, .local_envir = parent.frame()) {
-  withr::defer(RNGversion(as.character(getRversion())), envir = .local_envir)
-  suppressWarnings(RNGversion(version))
-}
-
 # Use specifically for testthat tests in order to override the
 # defaults found when starting the reporter
-local_output_override <- function(width = 80, crayon = TRUE, unicode = TRUE,
-                                  .env = parent.frame()) {
+local_output_override <- function(
+  width = 80,
+  crayon = TRUE,
+  unicode = TRUE,
+  .env = parent.frame()
+) {
   reporter <- get_reporter()
   if (is.null(reporter)) {
     return()
@@ -108,10 +191,12 @@ local_output_override <- function(width = 80, crayon = TRUE, unicode = TRUE,
   reporter$crayon <- crayon
   reporter$unicode <- unicode
 
-  withr::defer({
-    reporter$width <- old_width
-    reporter$crayon <- old_crayon
-    reporter$unicode <- old_unicode
-  }, .env)
+  withr::defer(
+    {
+      reporter$width <- old_width
+      reporter$crayon <- old_crayon
+      reporter$unicode <- old_unicode
+    },
+    .env
+  )
 }
-

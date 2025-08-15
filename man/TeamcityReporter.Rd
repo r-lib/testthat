@@ -2,7 +2,7 @@
 % Please edit documentation in R/reporter-teamcity.R
 \name{TeamcityReporter}
 \alias{TeamcityReporter}
-\title{Test reporter: Teamcity format.}
+\title{Report results in Teamcity format}
 \description{
 This reporter will output results in the Teamcity message format.
 For more information about Teamcity messages, see
@@ -22,6 +22,7 @@ Other reporters:
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
 \code{\link{SilentReporter}},
+\code{\link{SlowReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}}

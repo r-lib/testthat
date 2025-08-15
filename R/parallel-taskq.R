@@ -1,4 +1,3 @@
-
 # See https://www.tidyverse.org/blog/2019/09/callr-task-q/
 # for a detailed explanation on how the task queue works.
 #
@@ -10,12 +9,13 @@
 # * We do not need a pop() method, because poll() will just return
 #   every message.
 
-PROCESS_DONE    <- 200L
+PROCESS_DONE <- 200L
 PROCESS_STARTED <- 201L
-PROCESS_MSG     <- 301L
-PROCESS_EXITED  <- 500L
+PROCESS_MSG <- 301L
+PROCESS_OUTPUT <- 302L
+PROCESS_EXITED <- 500L
 PROCESS_CRASHED <- 501L
-PROCESS_CLOSED  <- 502L
+PROCESS_CLOSED <- 502L
 PROCESS_FAILURES <- c(PROCESS_EXITED, PROCESS_CRASHED, PROCESS_CLOSED)
 
 task_q <- R6::R6Class(
@@ -26,20 +26,34 @@ task_q <- R6::R6Class(
       invisible(self)
     },
     list_tasks = function() private$tasks,
-    get_num_waiting = function()
-      sum(!private$tasks$idle & private$tasks$state == "waiting"),
-    get_num_running = function()
-      sum(!private$tasks$idle & private$tasks$state == "running"),
+    get_num_waiting = function() {
+      sum(!private$tasks$idle & private$tasks$state == "waiting")
+    },
+    get_num_running = function() {
+      sum(!private$tasks$idle & private$tasks$state == "running")
+    },
     get_num_done = function() sum(private$tasks$state == "done"),
     is_idle = function() sum(!private$tasks$idle) == 0,
 
     push = function(fun, args = list(), id = NULL) {
-      if (is.null(id)) id <- private$get_next_id()
-      if (id %in% private$tasks$id) stop("Duplicate task id")
+      if (is.null(id)) {
+        id <- private$get_next_id()
+      }
+      if (id %in% private$tasks$id) {
+        cli::cli_abort("Duplicate task id.")
+      }
       before <- which(private$tasks$idle)[1]
-      private$tasks <- df_add_row(private$tasks, .before = before,
-        id = id, idle = FALSE, state = "waiting", fun = I(list(fun)),
-        args = I(list(args)), worker = I(list(NULL))
+      private$tasks <- df_add_row(
+        private$tasks,
+        .before = before,
+        id = id,
+        idle = FALSE,
+        state = "waiting",
+        fun = I(list(fun)),
+        args = I(list(args)),
+        worker = I(list(NULL)),
+        path = args[[1]],
+        startup = I(list(NULL))
       )
       private$schedule()
       invisible(id)
@@ -47,17 +61,53 @@ task_q <- R6::R6Class(
 
     poll = function(timeout = 0) {
       limit <- Sys.time() + timeout
-      as_ms <- function(x)
-        if (x==Inf) -1 else as.integer(as.double(x, "secs") * 1000)
-      repeat{
+      as_ms <- function(x) {
+        if (x == Inf) -1 else as.integer(as.double(x, "secs") * 1000)
+      }
+      repeat {
+        pr <- vector(mode = "list", nrow(private$tasks))
         topoll <- which(private$tasks$state == "running")
-        conns <- lapply(
+        pr[topoll] <- processx::poll(
           private$tasks$worker[topoll],
-          function(x) x$get_poll_connection())
-        pr <- processx::poll(conns, as_ms(timeout))
-        ready <- topoll[pr == "ready"]
-        results <- lapply(ready, function(i) {
-          msg <- private$tasks$worker[[i]]$read()
+          as_ms(timeout)
+        )
+        results <- lapply(seq_along(pr), function(i) {
+          # nothing from this worker?
+          if (is.null(pr[[i]]) || all(pr[[i]] != "ready")) {
+            return()
+          }
+
+          # there is a testthat message?
+          worker <- private$tasks$worker[[i]]
+          msg <- if (pr[[i]][["process"]] == "ready") {
+            worker$read()
+          }
+
+          # there is an output message?
+          has_output <- pr[[i]][["output"]] == "ready" ||
+            pr[[i]][["error"]] == "ready"
+          outmsg <- NULL
+          if (has_output) {
+            lns <- c(worker$read_output_lines(), worker$read_error_lines())
+            inc <- paste0(worker$read_output(), worker$read_error())
+            if (nchar(inc)) {
+              lns <- c(lns, strsplit(inc, "\n", fixed = TRUE)[[1]])
+            }
+            # startup message?
+            if (is.na(private$tasks$path[i])) {
+              private$tasks$startup[[i]] <- c(private$tasks$startup[[i]], lns)
+            } else {
+              outmsg <- structure(
+                list(
+                  code = PROCESS_OUTPUT,
+                  message = lns,
+                  path = private$tasks$path[i]
+                ),
+                class = "testthat_message"
+              )
+            }
+          }
+
           ## TODO: why can this be NULL?
           if (is.null(msg) || msg$code == PROCESS_MSG) {
             private$tasks$state[[i]] <- "running"
@@ -65,28 +115,33 @@ task_q <- R6::R6Class(
             private$tasks$state[[i]] <- "ready"
             msg <- NULL
           } else if (msg$code == PROCESS_DONE) {
+            if (!is.null(msg$error)) {
+              private$handle_error(msg, i)
+            }
             private$tasks$state[[i]] <- "ready"
           } else if (msg$code %in% PROCESS_FAILURES) {
             private$handle_error(msg, i)
           } else {
             file <- private$tasks$args[[i]][[1]]
-            errmsg <- paste0(
-              "unknown message from testthat subprocess: ", msg$code, ", ",
-              "in file `", file, "`"
-            )
-            abort(
-              errmsg,
+            cli::cli_abort(
+              c(
+                "Unknown message from testthat subprocess: {msg$code}.",
+                "i" = "In file {.file {file}}."
+              ),
               test_file = file,
               class = c("testthat_process_error", "testthat_error")
             )
           }
-          msg
+          compact(list(msg, outmsg))
         })
-        results <- results[! vapply(results, is.null, logical(1))]
+        # single list for all workers
+        results <- compact(unlist(results, recursive = FALSE))
 
         private$schedule()
-        if (is.finite(timeout)) timeout <- limit - Sys.time()
-        if (length(results) || timeout < 0) break;
+        if (is.finite(timeout)) {
+          timeout <- limit - Sys.time()
+        }
+        if (length(results) || timeout < 0) break
       }
       results
     }
@@ -110,8 +165,11 @@ task_q <- R6::R6Class(
         state = "running",
         fun = nl,
         args = nl,
-        worker = nl)
-      rsopts <- callr::r_session_options(...)
+        worker = nl,
+        path = NA_character_,
+        startup = nl
+      )
+      rsopts <- callr::r_session_options(stdout = "|", stderr = "|", ...)
       for (i in seq_len(concurrency)) {
         rs <- callr::r_session$new(rsopts, wait = FALSE)
         private$tasks$worker[[i]] <- rs
@@ -120,49 +178,59 @@ task_q <- R6::R6Class(
 
     schedule = function() {
       ready <- which(private$tasks$state == "ready")
-      if (!length(ready)) return()
+      if (!length(ready)) {
+        return()
+      }
       rss <- private$tasks$worker[ready]
 
       private$tasks$worker[ready] <- replicate(length(ready), NULL)
       private$tasks$state[ready] <-
         ifelse(private$tasks$idle[ready], "waiting", "done")
       done <- which(private$tasks$state == "done")
-      if (any(done)) private$tasks <- private$tasks[-done, ]
+      if (any(done)) {
+        private$tasks <- private$tasks[-done, ]
+      }
 
       waiting <- which(private$tasks$state == "waiting")[1:length(ready)]
       private$tasks$worker[waiting] <- rss
       private$tasks$state[waiting] <-
         ifelse(private$tasks$idle[waiting], "ready", "running")
       lapply(waiting, function(i) {
-        if (! private$tasks$idle[i]) {
-          private$tasks$worker[[i]]$call(private$tasks$fun[[i]],
-                                         private$tasks$args[[i]])
+        if (!private$tasks$idle[i]) {
+          private$tasks$worker[[i]]$call(
+            private$tasks$fun[[i]],
+            private$tasks$args[[i]]
+          )
         }
       })
     },
 
     handle_error = function(msg, task_no) {
-      inform("\n") # get out of the progress bar, if any
+      cat("\n") # get out of the progress bar, if any
       fun <- private$tasks$fun[[task_no]]
       file <- private$tasks$args[[task_no]][[1]]
       if (is.null(fun)) {
         msg$error$stdout <- msg$stdout
-        msg$error$stderr <- msg$stderr
-        abort(
-          paste0(
-            "testthat subprocess failed to start, stderr:\n",
-            msg$error$stderr
+        msg$error$stderr <- paste(
+          c(private$tasks$startup[[task_no]], msg$stderr),
+          collapse = "\n"
+        )
+        cli::cli_abort(
+          c(
+            "testthat subprocess failed to start.",
+            " " = "{no_wrap(msg$error$stderr)}"
           ),
           test_file = NULL,
-          parent = msg$error,
-          class = c("testthat_process_error", "testthat_error")
+          class = c("testthat_process_error", "testthat_error"),
+          call = NULL
         )
       } else {
-        abort(
-          paste0("testthat subprocess exited in file `", file, "`"),
+        cli::cli_abort(
+          "testthat subprocess exited in file {.file {file}}.",
           test_file = file,
           parent = msg$error,
-          class = c("testthat_process_error", "testthat_error")
+          class = c("testthat_process_error", "testthat_error"),
+          call = NULL
         )
       }
     }
@@ -177,7 +245,7 @@ df_add_row <- function(df, ..., .before = NULL) {
   } else if (before <= 1L) {
     rbind(row, df)
   } else {
-    rbind(df[1:(before-1), ], row, df[before:nrow(df), ])
+    rbind(df[1:(before - 1), ], row, df[before:nrow(df), ])
   }
 }
 

@@ -291,7 +291,7 @@ test_that("use_roxygen_md() adds DESCRIPTION fields", {
   use_roxygen_md()
   
   expect_true(uses_roxygen_md())
-  expect_equal(desc::desc_get("Roxygen", pkg)[[1]], "list(markdown = TRUE)"))
+  expect_equal(desc::desc_get("Roxygen", pkg)[[1]], "list(markdown = TRUE)")
   expect_true(desc::desc_has_fields("RoxygenNote", pkg))
 })
 ```
@@ -316,7 +316,7 @@ To run code before any test is run, you can create a file called `tests/testthat
 
 ```{r, eval = FALSE}
 # Run before any test
-write.csv("mtcars.csv", mtcars)
+write.csv(mtcars, "mtcars.csv")
 
 # Run after all tests
 withr::defer(unlink("mtcars.csv"), teardown_env())

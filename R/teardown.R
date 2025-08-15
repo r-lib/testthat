@@ -38,7 +38,9 @@ file_teardown_env$queue <- list()
 #' }
 #' # Then call local_test_data() in your tests
 teardown <- function(code, env = parent.frame()) {
-  edition_deprecate(3, "teardown()",
+  edition_deprecate(
+    3,
+    "teardown()",
     "Please use test fixtures instead see vignette('test-fixtures') for details"
   )
 
@@ -51,7 +53,9 @@ teardown <- function(code, env = parent.frame()) {
 #' @export
 #' @rdname teardown
 setup <- function(code, env = parent.frame()) {
-  edition_deprecate(3, "setup()",
+  edition_deprecate(
+    3,
+    "setup()",
     "Please use test fixtures instead see vignette('test-fixtures') for details"
   )
 
@@ -64,11 +68,12 @@ teardown_reset <- function() {
 }
 
 teardown_run <- function(path = ".") {
-  if (length(file_teardown_env$queue) == 0)
+  if (length(file_teardown_env$queue) == 0) {
     return()
+  }
 
   old_dir <- setwd(path)
-  on.exit(setwd(old_dir), add = TRUE)
+  withr::defer(setwd(old_dir))
 
   lapply(file_teardown_env$queue, function(f) try(f()))
   teardown_reset()

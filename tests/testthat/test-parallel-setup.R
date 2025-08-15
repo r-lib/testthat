@@ -1,4 +1,3 @@
-
 test_that("error in parallel setup code", {
   skip_on_covr()
   withr::local_envvar(c(
@@ -13,5 +12,5 @@ test_that("error in parallel setup code", {
     error = function(e) e
   )
   expect_s3_class(err, "testthat_process_error")
-  expect_match(err$message, "Error in setup", fixed = TRUE)
+  expect_match(conditionMessage(err), "Error in setup", fixed = TRUE)
 })

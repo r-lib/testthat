@@ -3,25 +3,31 @@
 \name{expect_success}
 \alias{expect_success}
 \alias{expect_failure}
+\alias{expect_snapshot_failure}
 \alias{show_failure}
-\title{Tools for testing expectations}
+\title{Test your custom expectations}
 \usage{
 expect_success(expr)
 
 expect_failure(expr, message = NULL, ...)
 
+expect_snapshot_failure(expr)
+
 show_failure(expr)
 }
 \arguments{
-\item{expr}{Expression that evaluates a single expectation.}
+\item{expr}{Code to evalute}
 
 \item{message}{Check that the failure message matches this regexp.}
 
 \item{...}{Other arguments passed on to \code{\link[=expect_match]{expect_match()}}.}
 }
 \description{
-Use these expectations to test other expectations.
+\code{expect_success()} checks that there's exactly one success and no failures;
+\code{expect_failure()} checks that there's exactly one failure and no successes.
+\code{expect_snapshot_failure()} records the failure message so that you can
+manually check that it is informative.
+
 Use \code{show_failure()} in examples to print the failure message without
 throwing an error.
 }
-\keyword{internal}

@@ -1,18 +1,19 @@
-#' Test reporter: start recovery.
+#' Interactively debug failing tests
 #'
 #' This reporter will call a modified version of [recover()] on all
 #' broken expectations.
 #'
 #' @export
 #' @family reporters
-DebugReporter <- R6::R6Class("DebugReporter",
+DebugReporter <- R6::R6Class(
+  "DebugReporter",
   inherit = Reporter,
   public = list(
     add_result = function(context, test, result) {
       if (!expectation_success(result) && !is.null(result$start_frame)) {
         if (sink_number() > 0) {
           sink(self$out)
-          on.exit(sink(), add = TRUE)
+          withr::defer(sink())
         }
 
         recover2(
@@ -52,13 +53,13 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
 
   if (.isMethodsDispatchOn()) {
     tState <- tracingState(FALSE)
-    on.exit(tracingState(tState))
+    withr::defer(tracingState(tState))
   }
   from <- min(end_frame, length(calls))
 
   calls <- calls[start_frame:from]
 
-  if (rlang::is_false(peek_option("testthat_format_srcrefs"))) {
+  if (is_false(peek_option("testthat_format_srcrefs"))) {
     calls <- lapply(calls, zap_srcref)
   }
   calls <- utils::limitedLabels(calls)
@@ -68,8 +69,7 @@ recover2 <- function(start_frame = 1L, end_frame = sys.nframe()) {
     if (which) {
       frame <- sys.frame(start_frame - 2 + which)
       browse_frame(frame, skip = 7 - which)
-    }
-    else {
+    } else {
       break
     }
   }

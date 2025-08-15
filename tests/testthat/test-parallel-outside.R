@@ -1,5 +1,5 @@
-
 test_that("error outside of test_that()", {
+  skip_on_covr()
   withr::local_envvar(c(
     TESTTHAT_PARALLEL = "TRUE",
     TESTTHAT_GHA_SUMMARY = "FALSE"

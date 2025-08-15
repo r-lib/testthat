@@ -7,7 +7,7 @@
 \alias{is.expectation}
 \title{Construct an expectation object}
 \usage{
-expectation(type, message, srcref = NULL, trace = NULL)
+expectation(type, message, ..., srcref = NULL, trace = NULL)
 
 new_expectation(
   type,
@@ -28,12 +28,13 @@ is.expectation(x)
 
 \item{message}{Message describing test failure}
 
+\item{...}{Additional attributes for the expectation object.}
+
 \item{srcref}{Optional \code{srcref} giving location of test.}
 
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
-When supplied, the expectation is displayed with the backtrace.}
-
-\item{...}{Additional attributes for the expectation object.}
+When supplied, the expectation is displayed with the backtrace.
+Expert use only.}
 
 \item{.subclass}{An optional subclass for the expectation object.}
 
@@ -44,11 +45,10 @@ When supplied, the expectation is displayed with the backtrace.}
 }
 \description{
 For advanced use only. If you are creating your own expectation, you should
-call \code{\link[=expect]{expect()}} instead. See \code{vignette("custom-expectation")} for more
+call \code{\link[=pass]{pass()}} or \code{\link[=fail]{fail()}}. See \code{vignette("custom-expectation")} for more
 details.
-}
-\details{
-Create an expectation with \code{expectation()} or \code{new_expectation()}
-and signal it with \code{exp_signal()}.
+
+\code{new_expectation()} creates an expectation object and \code{exp_signal()} signals
+it. \code{expectation()} does both.
 }
 \keyword{internal}
