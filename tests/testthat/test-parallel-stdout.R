@@ -1,6 +1,5 @@
 test_that("stdout/stderr in parallel code", {
-  skip_on_covr()
-  withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")
+  local_parallel_test_config()
 
   assemble_msgs <- function(txt, test_name) {
     prefix <- paste0("> ", test_name, ": ")

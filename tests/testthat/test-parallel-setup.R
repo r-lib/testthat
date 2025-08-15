@@ -1,16 +1,7 @@
 test_that("error in parallel setup code", {
-  skip_on_covr()
-  withr::local_envvar(c(
-    TESTTHAT_PARALLEL = "TRUE",
-    TESTTHAT_GHA_SUMMARY = "FALSE"
-  ))
-  err <- tryCatch(
-    capture.output(suppressMessages(testthat::test_local(
-      test_path("test-parallel", "setup"),
-      reporter = "summary"
-    ))),
-    error = function(e) e
-  )
+  local_parallel_test_config()
+
+  err <- capture_parallel_error(test_path("test-parallel", "setup"))
   expect_s3_class(err, "testthat_process_error")
   expect_match(conditionMessage(err), "Error in setup", fixed = TRUE)
 })
