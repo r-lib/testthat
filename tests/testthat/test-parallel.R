@@ -62,8 +62,8 @@ test_that("fail", {
 })
 
 test_that("snapshots", {
-  skip_on_covr()
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  local_parallel_test_config()
+
   tmp <- withr::local_tempdir("testthat-snap-")
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
   # we cannot run these with the silent reporter, because it is not
