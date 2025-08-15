@@ -69,7 +69,7 @@ JunitReporter <- R6::R6Class(
       self$file_name <- file
     },
 
-    start_test = function(context, test) {
+    start_test = function(context, test, srcref=NULL) {
       if (is.null(context)) {
         context_start_file(self$file_name)
       }

@@ -24,7 +24,7 @@ ListReporter <- R6::R6Class(
       self$results <- Stack$new()
     },
 
-    start_test = function(context, test) {
+    start_test = function(context, test, srcref=NULL) {
       if (
         !identical(self$current_context, context) ||
           !identical(self$current_test, test)

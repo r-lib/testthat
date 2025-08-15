@@ -377,10 +377,10 @@ SubprocessReporter <- R6::R6Class(
       private$filename <- filename
       private$event("start_file", filename)
     },
-    start_test = function(context, test) {
+    start_test = function(context, test, srcref=NULL) {
       private$context <- context
       private$test <- test
-      private$event("start_test", context, test)
+      private$event("start_test", context, test, srcref)
     },
     start_context = function(context) {
       private$context <- context
