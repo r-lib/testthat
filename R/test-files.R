@@ -444,6 +444,10 @@ find_test_scripts <- function(
   start_first = NULL
 ) {
   files <- dir(path, "^test.*\\.[rR]$", full.names = full.names)
+  if (env_var_is_true("CI") || env_var_is_true("NOT_CRAN")) {
+    devfiles <- dir(path, "^dev-test.*\\.[rR]$", full.names = full.names)
+    files <- c(files, devfiles)
+  }
   files <- filter_test_scripts(files, filter, invert, ...)
   order_test_scripts(files, start_first)
 }
