@@ -12,13 +12,17 @@ test_that("regexp = NULL checks for presence of error", {
 
 test_that("regexp = NA checks for absence of error", {
   expect_success(expect_error({}, NA))
-  expect_snapshot_failure(expect_error(stop("Yes"), NA))
+
+  f <- function() stop("Yes")
+  expect_snapshot_failure(expect_error(f(), NA))
 })
 
 test_that("regexp = string matches for error message", {
   expect_success(expect_error(stop("Yes"), "Yes"))
   expect_error(expect_error(stop("Yes"), "No"))
-  expect_snapshot_failure(expect_error("OK", "No"))
+
+  f <- function() {}
+  expect_snapshot_failure(expect_error(f(), "No"))
 })
 
 test_that("class = string matches class of error", {
@@ -27,6 +31,7 @@ test_that("class = string matches class of error", {
   }
 
   expect_success(expect_error(blah(), class = "blah"))
+  # otherwise bubbles up
   expect_error(expect_error(blah(), class = "blech"), class = "blah")
 })
 

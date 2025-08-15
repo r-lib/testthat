@@ -9,20 +9,20 @@
 # regexp = NA checks for absence of error
 
     Code
-      expect_error(stop("Yes"), NA)
+      expect_error(f(), NA)
     Condition
       Error:
-      ! Expected `stop("Yes")` not to throw any errors.
+      ! Expected `f()` not to throw any errors.
       Actually got a <simpleError> with message:
         Yes
 
 # regexp = string matches for error message
 
     Code
-      expect_error("OK", "No")
+      expect_error(f(), "No")
     Condition
       Error:
-      ! Expected "OK" to throw a error.
+      ! Expected `f()` to throw a error.
 
 # expect_error validates its inputs
 
