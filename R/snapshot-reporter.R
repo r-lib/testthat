@@ -10,14 +10,20 @@ SnapshotReporter <- R6::R6Class(
     snap_file_saved = character(),
     variants_changed = FALSE,
     fail_on_new = NULL,
+    desc = NULL,
 
     old_snaps = NULL,
     cur_snaps = NULL,
     new_snaps = NULL,
 
-    initialize = function(snap_dir = "_snaps", fail_on_new = NULL) {
+    initialize = function(
+      snap_dir = "_snaps",
+      fail_on_new = NULL,
+      desc = NULL
+    ) {
       self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
       self$fail_on_new <- fail_on_new
+      self$desc <- desc
     },
 
     start_file = function(path, test = NULL) {
@@ -30,6 +36,22 @@ SnapshotReporter <- R6::R6Class(
       self$old_snaps <- FileSnaps$new(self$snap_dir, self$file, type = "old")
       self$cur_snaps <- FileSnaps$new(self$snap_dir, self$file, type = "cur")
       self$new_snaps <- FileSnaps$new(self$snap_dir, self$file, type = "new")
+
+      if (!is.null(self$desc)) {
+        # When filtering tests, we need to copy over all of the old snapshots,
+        # apart from the one that matches the test
+        snaps <- self$old_snaps$snaps
+        test_name <- test_description(self$desc)
+        for (variant in names(snaps)) {
+          # In the case of subtests, snaps are named a / b / c1, a / b / c2 etc.
+          # So if we run a / b, we want to remove a / b, a / b / c, a / b / c2
+          # Subtests that use / in their names are not currently supported.
+          matches <- startsWith(names(snaps[[variant]]), test_name)
+          # Can't just remove because we want to preserve order
+          snaps[[variant]][matches] <- rep(list(NULL), sum(matches))
+        }
+        self$cur_snaps$snaps <- snaps
+      }
 
       if (!is.null(test)) {
         self$start_test(NULL, test)
@@ -207,16 +229,30 @@ local_snapshotter <- function(
   reporter = SnapshotReporter,
   snap_dir = "_snaps",
   cleanup = FALSE,
+  desc = NULL,
   fail_on_new = NULL,
   frame = caller_env()
 ) {
-  reporter <- reporter$new(snap_dir = snap_dir, fail_on_new = fail_on_new)
+  reporter <- reporter$new(
+    snap_dir = snap_dir,
+    fail_on_new = fail_on_new,
+    desc = desc
+  )
   withr::local_options("testthat.snapshotter" = reporter, .local_envir = frame)
 
   reporter
 }
 
-local_test_snapshotter <- function(snap_dir = NULL, frame = caller_env()) {
+local_test_snapshotter <- function(
+  snap_dir = NULL,
+  desc = NULL,
+  frame = caller_env()
+) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = frame)
-  local_snapshotter(snap_dir = snap_dir, fail_on_new = FALSE, frame = frame)
+  local_snapshotter(
+    snap_dir = snap_dir,
+    desc = desc,
+    fail_on_new = FALSE,
+    frame = frame
+  )
 }

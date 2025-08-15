@@ -186,3 +186,33 @@ test_that("`expect_error()` can fail inside `expect_snapshot()`", {
   err <- out[[1]]$results[[1]]
   expect_match(err$message, "did not throw the expected error")
 })
+
+
+test_that("can filter with desc", {
+  path <- withr::local_tempdir()
+
+  # First record some results
+  suppressWarnings({
+    snapper <- local_test_snapshotter(snap_dir = path)
+    snapper$start_file("snapshot")
+    snapper$start_test(test = "x")
+    expect_snapshot_output(cat("x"))
+    snapper$end_test()
+    snapper$start_test(test = "y")
+    expect_snapshot_output(cat("y"))
+    snapper$end_test()
+    snapper$end_file()
+  })
+  snaps_all <- readLines(file.path(path, "snapshot.md"))
+
+  # Now pretend we just ran one
+  snapper <- local_test_snapshotter(snap_dir = path, desc = "x")
+  snapper$start_file("snapshot")
+  snapper$start_test(test = "x")
+  expect_snapshot_output(cat("x"))
+  snapper$end_test()
+  snapper$end_file()
+  snaps_filtered <- readLines(file.path(path, "snapshot.md"))
+
+  expect_equal(snaps_all, snaps_filtered)
+})
