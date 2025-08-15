@@ -24,9 +24,9 @@ create_gha_summary <- function(results) {
   # issue details -----------------------------------------------------------
   gha_summary_write()
   gha_summary_write("<details>")
-  gha_summary_write()
+  gha_summary_write("<summary>Test details</summary>")
 
-  gha_summary_write("### Test details")
+  gha_summary_write("")
   gha_summary_write()
   gha_summary_write("| File | Test | FAIL | WARN | SKIP | PASS | Time |")
   gha_summary_write("|:-----|:-----|-----:|-----:|-----:|-----:|:-----|")
