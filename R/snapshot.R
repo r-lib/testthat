@@ -315,7 +315,7 @@ expect_snapshot_condition_ <- function(
         class
       )
     }
-    return(fail(msg, trace_env = trace_env))
+    return(snapshot_fail(msg, trace_env = trace_env))
   }
 
   expect_snapshot_helper(
@@ -339,6 +339,7 @@ expect_snapshot_helper <- function(
   trace_env = caller_env()
 ) {
   if (!cran && on_cran()) {
+    signal(class = "snapshot_on_cran")
     return(invisible())
   }
 
@@ -366,7 +367,11 @@ expect_snapshot_helper <- function(
   } else {
     variant_lab <- ""
   }
-  hint <- snapshot_accept_hint(variant, snapshotter$file)
+  if (in_check_reporter()) {
+    hint <- ""
+  } else {
+    hint <- snapshot_accept_hint(variant, snapshotter$file)
+  }
 
   if (length(comp) != 0) {
     msg <- sprintf(
@@ -376,7 +381,7 @@ expect_snapshot_helper <- function(
       paste0(comp, collapse = "\n\n"),
       hint
     )
-    return(fail(msg, trace_env = trace_env))
+    return(snapshot_fail(msg, trace_env = trace_env))
   }
 
   pass(NULL)
@@ -399,7 +404,7 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
     ),
     "\n",
     cli::format_inline(
-      "* Run {.run testthat::snapshot_review('{name}')} to interactively review the change."
+      "* Run {.run testthat::snapshot_review('{name}')} to review the change."
     )
   )
 }

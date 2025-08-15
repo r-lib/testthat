@@ -144,5 +144,6 @@ test_that("informative failure if not S7", {
 })
 
 test_that("expect_s7_class validates its inputs", {
+  skip_if_not_installed("S7")
   expect_snapshot(expect_s7_class(1, 1), error = TRUE)
 })

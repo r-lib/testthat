@@ -24,7 +24,7 @@
       Error:
       ! Expected failure message to match regexp "bar".
       Actual message:
-      foo
+      x | foo
 
 # errors in expect_success bubble up
 

@@ -14,7 +14,7 @@
       Error:
       ! Expected `one` to match regexp "asdf".
       Actual text:
-      bcde
+      ✖ │ bcde
 
 ---
 
@@ -24,9 +24,9 @@
       Error:
       ! Expected every element of `many` to match regexp "a".
       Actual text:
-      a
-      a
-      b
+      ✔ │ a
+      ✔ │ a
+      ✖ │ b
 
 ---
 
@@ -36,9 +36,32 @@
       Error:
       ! Expected some element of `many` to match regexp "c".
       Actual text:
-      a
-      a
-      b
+      ✖ │ a
+      ✖ │ a
+      ✖ │ b
+
+---
+
+    Code
+      expect_match(paragraph, "paragraph")
+    Condition
+      Error:
+      ! Expected every element of `paragraph` to match regexp "paragraph".
+      Actual text:
+      ✔ │ This is a multiline
+        │ paragraph.
+      ✖ │ Second element.
+
+---
+
+    Code
+      expect_match(na, "NA")
+    Condition
+      Error:
+      ! Expected every element of `na` to match regexp "NA".
+      Actual text:
+      ✔ │ NA
+      ✖ │ <NA>
 
 # expect_match validates its inputs
 
@@ -104,7 +127,7 @@
       Error:
       ! Expected "\\s" to match regexp "\\s".
       Actual text:
-      \\s
+      x | \s
 
 ---
 
@@ -114,7 +137,7 @@
       Error:
       ! Expected "test" to match regexp "TEST".
       Actual text:
-      test
+      x | test
 
 # expect_no_match works
 
@@ -122,9 +145,9 @@
       expect_no_match(x, "e*", fixed = TRUE)
     Condition
       Error:
-      ! Expected `x` not to match string "e*".
+      ! Expected `x` to not match string "e*".
       Actual text:
-      te*st
+      x | te*st
 
 ---
 
@@ -132,7 +155,7 @@
       expect_no_match(x, "TEST", ignore.case = TRUE)
     Condition
       Error:
-      ! Expected `x` not to match regexp "TEST".
+      ! Expected `x` to not match regexp "TEST".
       Actual text:
-      test
+      x | test
 

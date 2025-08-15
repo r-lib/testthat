@@ -10,6 +10,12 @@ test_that("generates useful failure messages", {
   many <- c("a", "a", "b")
   expect_snapshot_failure(expect_match(many, "a"))
   expect_snapshot_failure(expect_match(many, "c", all = FALSE))
+
+  paragraph <- c("This is a multiline\nparagraph.", "Second element.")
+  expect_snapshot_failure(expect_match(paragraph, "paragraph"))
+
+  na <- c("NA", NA)
+  expect_snapshot_failure(expect_match(na, "NA"))
 })
 
 test_that("expect_match validates its inputs", {

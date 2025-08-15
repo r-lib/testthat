@@ -24,7 +24,7 @@
       Error:
       ! Expected `g()` to match regexp "x".
       Actual output:
-      !
+      x | !
 
 ---
 

@@ -117,20 +117,13 @@ expect_match_ <- function(
     return(pass(act$val))
   }
 
-  text <- encodeString(act$val)
+  values <- show_text(act$val, condition)
   if (length(act$val) == 1) {
     which <- ""
-    values <- text
   } else {
-    bullet <- ifelse(
-      condition,
-      cli::col_green(cli::symbol$tick),
-      cli::col_red(cli::symbol$cross)
-    )
-    values <- paste0(bullet, " ", text, collapse = "\n")
     which <- if (all) "every element of " else "some element of "
   }
-  match <- if (negate) "not to match" else "to match"
+  match <- if (negate) "to not match" else "to match"
 
   msg_exp <- sprintf(
     "Expected %s%s %s %s %s.",
@@ -140,6 +133,108 @@ expect_match_ <- function(
     if (fixed) "string" else "regexp",
     encodeString(regexp, quote = '"')
   )
-  msg_act <- c(paste0("Actual ", title, ':'), text)
+  msg_act <- c(paste0("Actual ", title, ':'), values)
   return(fail(c(msg_exp, msg_act), info = info, trace_env = trace_env))
+}
+
+
+# Adapted from print.ellmer_prompt
+show_text <- function(
+  x,
+  condition,
+  ...,
+  max_items = 20,
+  max_lines = max_items * 25
+) {
+  n <- length(x)
+  n_extra <- length(x) - max_items
+  if (n_extra > 0) {
+    x <- x[seq_len(max_items)]
+    condition <- condition[seq_len(max_items)]
+  }
+
+  if (length(x) == 0) {
+    return(character())
+  }
+
+  bar <- if (cli::is_utf8_output()) "\u2502" else "|"
+
+  id <- ifelse(
+    condition,
+    cli::col_green(cli::symbol$tick),
+    cli::col_red(cli::symbol$cross)
+  )
+
+  indent <- paste0(id, " ", bar, " ")
+  exdent <- paste0("  ", cli::col_grey(bar), " ")
+
+  x[is.na(x)] <- cli::col_red("<NA>")
+  x <- paste0(indent, x)
+  x <- gsub("\n", paste0("\n", exdent), x)
+
+  lines <- strsplit(x, "\n")
+  ids <- rep(seq_along(x), length(lines))
+  lines <- unlist(lines)
+
+  if (length(lines) > max_lines) {
+    lines <- lines[seq_len(max_lines)]
+    lines <- c(lines, paste0(exdent, "..."))
+    n_extra <- n - ids[max_lines - 1]
+  }
+
+  if (n_extra > 0) {
+    lines <- c(lines, paste0("... and ", n_extra, " more.\n"))
+  }
+  lines
+}
+
+
+# Adapted from print.ellmer_prompt
+show_text <- function(
+  x,
+  condition,
+  ...,
+  max_items = 20,
+  max_lines = max_items * 25
+) {
+  n <- length(x)
+  n_extra <- length(x) - max_items
+  if (n_extra > 0) {
+    x <- x[seq_len(max_items)]
+    condition <- condition[seq_len(max_items)]
+  }
+
+  if (length(x) == 0) {
+    return(character())
+  }
+
+  bar <- if (cli::is_utf8_output()) "\u2502" else "|"
+
+  id <- ifelse(
+    condition,
+    cli::col_green(cli::symbol$tick),
+    cli::col_red(cli::symbol$cross)
+  )
+
+  indent <- paste0(id, " ", bar, " ")
+  exdent <- paste0("  ", cli::col_grey(bar), " ")
+
+  x[is.na(x)] <- cli::col_red("<NA>")
+  x <- paste0(indent, x)
+  x <- gsub("\n", paste0("\n", exdent), x)
+
+  lines <- strsplit(x, "\n")
+  ids <- rep(seq_along(x), length(lines))
+  lines <- unlist(lines)
+
+  if (length(lines) > max_lines) {
+    lines <- lines[seq_len(max_lines)]
+    lines <- c(lines, paste0(exdent, "..."))
+    n_extra <- n - ids[max_lines - 1]
+  }
+
+  if (n_extra > 0) {
+    lines <- c(lines, paste0("... and ", n_extra, " more.\n"))
+  }
+  lines
 }

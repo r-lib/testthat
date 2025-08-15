@@ -41,10 +41,23 @@
 #' written to the `_snaps` directory but which no longer have
 #' corresponding R code to generate them. These dangling files are
 #' automatically deleted so they don't clutter the snapshot
-#' directory. However we want to preserve snapshot files when the R
-#' code wasn't executed because of an unexpected error or because of a
-#' [skip()]. Let testthat know about these files by calling
-#' `announce_snapshot_file()` before `expect_snapshot_file()`.
+#' directory.
+#'
+#' This can cause problems if your test is conditionally executed, either
+#' because of an `if` statement or a [skip()]. To avoid files being deleted in
+#' this case, you can call `announce_snapshot_file()` before the conditional
+#' code.
+#'
+#' ```R
+#' test_that("can save a file", {
+#'   if (!can_save()) {
+#'     announce_snapshot_file(name = "data.txt")
+#'     skip("Can't save file")
+#'   }
+#'   path <- withr::local_tempfile()
+#'   expect_snapshot_file(save_file(path, mydata()), "data.txt")
+#' })
+#' ```
 #'
 #' @export
 #' @examples
@@ -67,20 +80,19 @@
 #' }
 #'
 #' # You'd then also provide a helper that skips tests where you can't
-#' # be sure of producing exactly the same output
+#' # be sure of producing exactly the same output.
 #' expect_snapshot_plot <- function(name, code) {
+#'   # Announce the file before touching skips or running `code`. This way,
+#'   # if the skips are active, testthat will not auto-delete the corresponding
+#'   # snapshot file.
+#'   name <- paste0(name, ".png")
+#'   announce_snapshot_file(name = name)
+#'
 #'   # Other packages might affect results
 #'   skip_if_not_installed("ggplot2", "2.0.0")
-#'   # Or maybe the output is different on some operation systems
+#'   # Or maybe the output is different on some operating systems
 #'   skip_on_os("windows")
 #'   # You'll need to carefully think about and experiment with these skips
-#'
-#'   name <- paste0(name, ".png")
-#'
-#'   # Announce the file before touching `code`. This way, if `code`
-#'   # unexpectedly fails or skips, testthat will not auto-delete the
-#'   # corresponding snapshot file.
-#'   announce_snapshot_file(name = name)
 #'
 #'   path <- save_png(code)
 #'   expect_snapshot_file(path, name)
@@ -97,13 +109,15 @@ expect_snapshot_file <- function(
   check_string(path)
   check_string(name)
   check_bool(cran)
+  check_variant(variant)
 
   edition_require(3, "expect_snapshot_file()")
-  if (!cran && on_cran()) {
-    skip("On CRAN")
-  }
 
-  check_variant(variant)
+  announce_snapshot_file(name = name)
+  if (!cran && on_cran()) {
+    signal(class = "snapshot_on_cran")
+    return(invisible())
+  }
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
@@ -137,13 +151,16 @@ expect_snapshot_file <- function(
     path,
     file_equal = compare,
     variant = variant,
-    trace_env = caller_env()
   )
   if (inherits(equal, "expectation_failure")) {
     return(equal)
   }
 
-  hint <- snapshot_review_hint(snapshotter$file, name)
+  if (in_check_reporter()) {
+    hint <- ""
+  } else {
+    hint <- snapshot_review_hint(snapshotter$file, name)
+  }
 
   if (!equal) {
     msg <- sprintf(
@@ -152,7 +169,7 @@ expect_snapshot_file <- function(
       paste0(snapshotter$file, "/", name),
       hint
     )
-    return(fail(msg))
+    return(snapshot_fail(msg))
   }
   pass(NULL)
 }
@@ -168,30 +185,15 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   }
 }
 
-snapshot_review_hint <- function(
-  test,
-  name,
-  ci = on_ci(),
-  check = in_rcmd_check(),
-  reset_output = TRUE
-) {
+snapshot_review_hint <- function(test, name, reset_output = TRUE) {
   if (reset_output) {
     local_reporter_output()
   }
 
-  path <- paste0("tests/testthat/_snaps/", test, "/", new_name(name))
-
-  paste0(
-    if (check && ci) "* Download and unzip run artifact\n",
-    if (check && !ci) "* Locate check directory\n",
-    if (check) paste0("* Copy '", path, "' to local test directory\n"),
-    if (check) "* ",
-    cli::format_inline(
-      "Run {.run testthat::snapshot_review('{test}/')} to review changes"
-    )
+  cli::format_inline(
+    "* Run {.run testthat::snapshot_review('{test}/{name}')} to review the change."
   )
 }
-
 
 snapshot_file_equal <- function(
   snap_dir, # _snaps/
@@ -204,7 +206,7 @@ snapshot_file_equal <- function(
   trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
-    cli::cli_abort("{.path {path}} not found.")
+    cli::cli_abort("{.path {path}} not found.", call = trace_env)
   }
 
   if (is.null(snap_variant)) {
@@ -241,7 +243,7 @@ snapshot_file_equal <- function(
     # We want to fail on CI since this suggests that the user has failed
     # to record the value locally
     if (fail_on_new) {
-      return(fail(message, trace_env = trace_env))
+      return(snapshot_fail(message, trace_env = trace_env))
     }
     testthat_warn(message)
     TRUE

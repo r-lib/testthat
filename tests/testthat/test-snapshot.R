@@ -166,6 +166,8 @@ test_that("errors and warnings are folded", {
 # })
 
 test_that("hint is informative", {
+  withr::local_envvar("GITHUB_ACTIONS" = "false")
+
   expect_snapshot({
     cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
     cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
@@ -174,6 +176,7 @@ test_that("hint is informative", {
 
 test_that("expect_snapshot requires a non-empty test label", {
   local_description_set()
+  local_on_cran(FALSE)
 
   test_that("", {
     expect_error(expect_snapshot(1 + 1))
@@ -210,13 +213,14 @@ test_that("expect_snapshot_warning validates its inputs", {
   })
 })
 
-test_that("on CRAN, snapshots are not run but don't skill entire test", {
+test_that("on CRAN, snapshots generate skip at end of test", {
   local_on_cran(TRUE)
 
   expectations <- capture_expectations(test_that("", {
     expect_snapshot(1 + 1)
     expect_true(TRUE)
   }))
-  expect_length(expectations, 1)
+  expect_length(expectations, 2)
   expect_s3_class(expectations[[1]], "expectation_success")
+  expect_s3_class(expectations[[2]], "expectation_skip")
 })
