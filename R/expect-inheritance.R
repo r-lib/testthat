@@ -107,7 +107,7 @@ expect_s3_class <- function(object, class, exact = FALSE) {
       if (!identical(class(act$val), class)) {
         msg <- c(
           sprintf("Expected %s to have class %s.", act$lab, exp_lab),
-          sprintf("Actual class: %s", act$class)
+          sprintf("Actual class: %s.", act$class)
         )
         return(fail(msg))
       }
@@ -115,7 +115,7 @@ expect_s3_class <- function(object, class, exact = FALSE) {
       if (!inherits(act$val, class)) {
         msg <- c(
           sprintf("Expected %s to inherit from %s.", act$lab, exp_lab),
-          sprintf("Actual class: %s", act$class)
+          sprintf("Actual class: %s.", act$class)
         )
         return(fail(msg))
       }
@@ -150,7 +150,7 @@ expect_s4_class <- function(object, class) {
       if (!methods::is(act$val, class)) {
         msg <- c(
           sprintf("Expected %s to inherit from %s.", act$lab, exp_lab),
-          sprintf("Actual class: %s", act$class)
+          sprintf("Actual class: %s.", act$class)
         )
         return(fail(msg))
       }
@@ -181,7 +181,7 @@ expect_r6_class <- function(object, class) {
     exp_class <- format_class(class)
     msg <- c(
       sprintf("Expected %s to inherit from %s.", act$lab, exp_class),
-      sprintf("Actual class: %s", act_class)
+      sprintf("Actual class: %s.", act_class)
     )
     return(fail(msg))
   }
@@ -214,7 +214,7 @@ expect_s7_class <- function(object, class) {
 
     msg <- c(
       sprintf("Expected %s to inherit from <%s>.", act$lab, exp_class),
-      sprintf("Actual class: %s", act_class_desc)
+      sprintf("Actual class: %s.", act_class_desc)
     )
     return(fail(msg))
   }

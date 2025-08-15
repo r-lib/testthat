@@ -74,7 +74,7 @@
     Condition
       Error:
       ! Expected `C()` to inherit from "D".
-      Actual class: "C"/"A"/"B"/"list"/"vector"
+      Actual class: "C"/"A"/"B"/"list"/"vector".
 
 # expect_s3_class validates its inputs
 
@@ -96,7 +96,7 @@
     Condition
       Error:
       ! Expected `x` to inherit from "c".
-      Actual class: "a"/"b"
+      Actual class: "a"/"b".
 
 ---
 
@@ -105,7 +105,7 @@
     Condition
       Error:
       ! Expected `x` to inherit from "c"/"d".
-      Actual class: "a"/"b"
+      Actual class: "a"/"b".
 
 # test_s3_class can request exact match
 
@@ -114,7 +114,7 @@
     Condition
       Error:
       ! Expected `x` to have class "a".
-      Actual class: "a"/"b"
+      Actual class: "a"/"b".
 
 # expect_s4_class validates its inputs
 
@@ -137,7 +137,7 @@
     Condition
       Error:
       ! Expected `person` to inherit from "Student".
-      Actual class: "Person"/"R6"
+      Actual class: "Person"/"R6".
 
 # expect_r6_class validates its inputs
 
@@ -154,7 +154,7 @@
     Condition
       Error:
       ! Expected `Foo()` to inherit from <Bar>.
-      Actual class: <Foo>
+      Actual class: <Foo>.
 
 ---
 
@@ -163,7 +163,7 @@
     Condition
       Error:
       ! Expected `Baz()` to inherit from <Bar>.
-      Actual class: <Baz>/<Foo>
+      Actual class: <Baz>/<Foo>.
 
 # informative failure if not S7
 
