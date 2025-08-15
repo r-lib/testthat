@@ -18,7 +18,7 @@ create_gha_summary <- function(results) {
     c("|", if (totals$n_warn > 0) totals$n_warn),
     c("|", if (totals$n_skip > 0) totals$n_skip),
     c("|", totals$n_ok),
-    c("|", num_exact(totals$real, 3), "|")
+    c("|", num_exact(totals$real, 2), "|")
   )
 
   # issue details -----------------------------------------------------------
@@ -40,7 +40,7 @@ create_gha_summary <- function(results) {
       c("|", if (totals$n_warn > 0) issue$n_warn),
       c("|", if (totals$n_skip > 0) issue$n_skip),
       c("|", issue$n_ok),
-      c("|", num_exact(issue$real, 3), "|")
+      c("|", num_exact(issue$real, 2), "|")
     )
   }
   gha_summary_write()
@@ -74,11 +74,14 @@ gha_path <- function() {
   if (tolower(Sys.getenv("TESTTHAT_GHA_SUMMARY")) %in% nope) {
     return()
   }
-  if ((out <- Sys.getenv("GITHUB_STEP_SUMMARY")) == "") {
-    return()
-  }
-  out
+
+  stdout()
+  # if ((out <- Sys.getenv("GITHUB_STEP_SUMMARY")) == "") {
+  #   return()
+  # }
+  # out
 }
+
 
 gha_summary_write <- function(...) {
   path <- gha_path()
