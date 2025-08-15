@@ -61,10 +61,7 @@ test_that("second edition only optionally sets tolerance", {
   expect_success(expect_equal(x, y))
 })
 
-test_that("provide useful feedback on failure", {
-  local_output_override()
-
-  local_edition(3)
+test_that("provide useful feedback on failure (3e)", {
   x <- 1
   expect_snapshot_failure(expect_identical(x, "a"))
   expect_snapshot_failure(expect_equal(x, "a"))
@@ -75,11 +72,19 @@ test_that("provide useful feedback on failure", {
   expect_snapshot_failure(expect_equal(x, "a"))
 })
 
-test_that("default labels use unquoting", {
+test_that("provide useful feedback on failure (2e)", {
   local_edition(2)
+  withr::local_options(testthat.edition_ignore = TRUE)
 
-  x <- 2
-  expect_snapshot_failure(expect_equal(1, !!x))
+  x <- 1
+  expect_snapshot_failure(expect_identical(x, "a"))
+  expect_snapshot_failure(expect_equal(x, "a"))
+})
+
+test_that("default labels use unquoting", {
+  x <- 1
+  y <- 2
+  expect_snapshot_failure(expect_equal(x, !!y))
 })
 
 test_that("% is not treated as sprintf format specifier (#445)", {

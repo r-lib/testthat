@@ -1,4 +1,4 @@
-# provide useful feedback on failure
+# provide useful feedback on failure (3e)
 
     Code
       expect_identical(x, "a")
@@ -40,16 +40,36 @@
       Differences:
       Types not compatible: double is not character
 
+# provide useful feedback on failure (2e)
+
+    Code
+      expect_identical(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to be identical to "a".
+      Differences:
+      Types not compatible: double is not character
+
+---
+
+    Code
+      expect_equal(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to equal "a".
+      Differences:
+      Types not compatible: double is not character
+
 # default labels use unquoting
 
     Code
-      expect_equal(1, !!x)
+      expect_equal(x, !!y)
     Condition
       Error:
-      ! Expected 1 to equal 2.
+      ! Expected `x` to be equal to 2.
       Differences:
-      1/1 mismatches
-      [1] 1 - 2 == -1
+        `actual`: 1.0
+      `expected`: 2.0
 
 # useful message if objects equal but not identical
 
