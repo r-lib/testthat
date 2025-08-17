@@ -20,6 +20,7 @@ NULL
 
 the <- new.env(parent = emptyenv())
 the$description <- character()
+the$selected_description <- character()
 the$top_level_test <- TRUE
 the$test_expectations <- 0
 the$in_check_reporter <- FALSE

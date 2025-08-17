@@ -33,16 +33,41 @@
 #'   expect_equal(sin(pi / 4), 1)
 #' })
 #' }
-test_that <- function(desc, code) {
-  local_description_push(desc)
+test_that <- function(description, code) {
+  for (desc in eval(description)) {
+    local_description_push(desc)
 
-  code <- substitute(code)
-  test_code(code, parent.frame())
+    code <- substitute(code)
+    test_code(code, parent.frame())
+  }
+}
+
+vgrepl <- function(x, pattern, ...) {
+  if (length(pattern) != length(x)) stop("pattern and x must have the same length")
+  mapply(function(p, s) grepl(p, s, ...), pattern, x, USE.NAMES = FALSE)
+}
+
+# This utility function checks if the left vector of labels is a prefix of the
+# right vector of labels.
+is_prefix <- function(a, b) {
+  if (length(a) == 0 || length(b) == 0) {
+    TRUE
+  } else if (length(a) <= length(b)) {
+    all(vgrepl(a, head(b, length(a))))
+  } else {
+    all(vgrepl(b, head(a, length(b))))
+   }
 }
 
 # Access error fields with `[[` rather than `$` because the
 # `$.Throwable` from the rJava package throws with unknown fields
 test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
+
+  # Check if the selected descriptions match the current stack
+  check <- !is_prefix(the$description, the$selected_description)
+  if (check) {
+    return()
+  }
   # Must initialise interactive reporter before local_test_context()
   reporter <- get_reporter() %||% local_interactive_reporter()
   local_test_context()

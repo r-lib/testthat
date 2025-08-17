@@ -24,6 +24,12 @@ source_file <- function(
   shuffle = FALSE,
   error_call = caller_env()
 ) {
+  old_description <- the$description
+  the$description <- character()
+  withr::defer(the$description <- old_description)
+  if (!is.null(desc)) {
+    the$selected_description <- desc
+  }
   check_string(path, call = error_call)
   if (!file.exists(path)) {
     cli::cli_abort("{.arg path} does not exist.", call = error_call)
@@ -49,7 +55,6 @@ source_file <- function(
   if (shuffle) {
     exprs <- sample(exprs)
   }
-  exprs <- filter_desc(exprs, desc, error_call = error_call)
 
   n <- length(exprs)
   if (n == 0L) {
@@ -80,38 +85,6 @@ source_file <- function(
       }
     )
   }
-}
-
-filter_desc <- function(exprs, descs, error_call = caller_env()) {
-  if (length(descs) == 0) {
-    return(exprs)
-  }
-  desc <- descs[[1]]
-
-  subtest_idx <- which(unname(map_lgl(exprs, is_subtest)))
-
-  matching_idx <- keep(subtest_idx, \(idx) exprs[[idx]][[2]] == desc)
-  if (length(matching_idx) == 0) {
-    cli::cli_abort(
-      "Failed to find test with description {.str {desc}}.",
-      call = error_call
-    )
-  } else if (length(matching_idx) > 1) {
-    cli::cli_abort(
-      "Found multiple tests with description {.str {desc}}.",
-      call = error_call
-    )
-  }
-
-  # Want all code up to and including the matching test, except for subtests
-  keep_idx <- setdiff(seq2(1, matching_idx), setdiff(subtest_idx, matching_idx))
-  # Recursively inspect the components of the subtest
-  exprs[[matching_idx]][[3]] <- filter_desc(
-    exprs[[matching_idx]][[3]],
-    descs[-1],
-    error_call = error_call
-  )
-  exprs[keep_idx]
 }
 
 is_subtest <- function(expr) {

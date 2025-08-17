@@ -82,134 +82,6 @@ test_that("checks its inputs", {
   })
 })
 
-# filter_desc -------------------------------------------------------------
-
-test_that("works with all subtest types", {
-  code <- exprs(
-    test_that("foo", {}),
-    describe("bar", {}),
-    it("baz", {})
-  )
-  expect_equal(filter_desc(code, "foo"), code[1])
-  expect_equal(filter_desc(code, "bar"), code[2])
-  expect_equal(filter_desc(code, "baz"), code[3])
-})
-
-test_that("only returns non-subtest code before subtest", {
-  code <- exprs(
-    f(),
-    test_that("bar", {}),
-    describe("foo", {}),
-    g(),
-    h()
-  )
-  expect_equal(filter_desc(code, "foo"), code[c(1, 3)])
-})
-
-test_that("can select recursively", {
-  code <- exprs(
-    x <- 1,
-    describe("a", {
-      y <- 1
-      describe("b", {
-        z <- 1
-      })
-      y <- 2
-    }),
-    x <- 2
-  )
-
-  expect_equal(
-    filter_desc(code, c("a", "b")),
-    exprs(
-      x <- 1,
-      describe("a", {
-        y <- 1
-        describe("b", {
-          z <- 1
-        })
-      })
-    )
-  )
-})
-
-test_that("works on code like the describe() example", {
-  code <- exprs(
-    describe("math library", {
-      x1 <- 1
-      x2 <- 1
-      describe("addition()", {
-        it("can add two numbers", {
-          expect_equal(x1 + x2, addition(x1, x2))
-        })
-      })
-      describe("division()", {
-        x1 <- 10
-        x2 <- 2
-        it("can divide two numbers", {
-          expect_equal(x1 / x2, division(x1, x2))
-        })
-        it("can handle division by 0") #not yet implemented
-      })
-    })
-  )
-
-  expect_equal(
-    filter_desc(
-      code,
-      c("math library", "division()", "can divide two numbers")
-    ),
-    exprs(
-      describe("math library", {
-        x1 <- 1
-        x2 <- 1
-        describe("division()", {
-          x1 <- 10
-          x2 <- 2
-          it("can divide two numbers", {
-            expect_equal(x1 / x2, division(x1, x2))
-          })
-        })
-      })
-    )
-  )
-
-  # what happens for an unimplemented specification?
-  expect_snapshot(
-    error = TRUE,
-    filter_desc(
-      code,
-      c("math library", "division()", "can handle division by 0")
-    )
-  )
-})
-
-test_that("preserve srcrefs", {
-  code <- parse(
-    keep.source = TRUE,
-    text = '
-    test_that("foo", {
-      # this is a comment
-    })
-  '
-  )
-  expect_snapshot(filter_desc(code, "foo"))
-})
-
-test_that("errors if zero or duplicate labels", {
-  code <- exprs(
-    f(),
-    test_that("baz", {}),
-    test_that("baz", {}),
-    g()
-  )
-
-  expect_snapshot(error = TRUE, {
-    filter_desc(code, "baz")
-    filter_desc(code, "missing")
-  })
-})
-
 test_that("source_dir()", {
   res <- source_dir("test_dir", pattern = "hello", chdir = TRUE, wrap = FALSE)
   expect_equal(res[[1]](), "Hello World")
@@ -233,3 +105,14 @@ test_that("source_dir()", {
   )
   expect_equal(res[[1]](), "Hello World")
 })
+
+test_that("source_file selects correct descriptions", {
+  reporter <- CheckReporter$new()
+      with_reporter(reporter, {
+      source_file("/home/kubajal/development/testthat/tests/testthat/test_dir/test-desc.R", desc = c("math library", "addition|division", "works for 4 and (1|7)"), wrap = FALSE)
+    })
+  expect_equal(reporter$problems$size(), 1)
+  expect_equal(reporter$skips$size(), 1)
+  expect_equal(reporter$n_ok, 3)
+})
+

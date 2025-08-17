@@ -58,17 +58,21 @@
 #'   })
 #' })
 describe <- function(description, code) {
-  local_description_push(description)
+  for (desc in eval(description)) {
+    local_description_push(desc)
 
-  code <- substitute(code)
-  test_code(code, parent.frame())
+    code <- substitute(code)
+    test_code(code, parent.frame())
+  }
 }
 
 #' @export
 #' @rdname describe
 it <- function(description, code = NULL) {
-  local_description_push(description)
+  for (desc in eval(description)) {
+    local_description_push(desc)
 
-  code <- substitute(code)
-  test_code(code, parent.frame())
+    code <- substitute(code)
+    test_code(code, parent.frame())
+  }
 }
