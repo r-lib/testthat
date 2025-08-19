@@ -30,6 +30,8 @@ test_that("expect_snapshot_file works in a different directory", {
 })
 
 test_that("expect_snapshot_file works with variant", {
+  local_on_cran(FALSE)
+
   expect_snapshot_file(
     write_tmp_lines(r_version()),
     "version.txt",
@@ -39,6 +41,8 @@ test_that("expect_snapshot_file works with variant", {
 })
 
 test_that("expect_snapshot_file finds duplicate snapshot files", {
+  local_on_cran(FALSE)
+
   expect_snapshot(
     expect_snapshot_file(
       write_tmp_lines(r_version()),
@@ -50,6 +54,7 @@ test_that("expect_snapshot_file finds duplicate snapshot files", {
 })
 
 test_that("basic workflow", {
+  local_on_cran(FALSE)
   snapper <- local_test_snapshotter()
 
   path <- write_tmp_lines(letters)
@@ -66,7 +71,7 @@ test_that("basic workflow", {
   # fails if changed
   snapper$start_file("snapshot-6", "test")
   path2 <- write_tmp_lines(letters[-1])
-  expect_failure(expect_snapshot_file(path2, "letters.txt"))
+  expect_failure(expect_snapshot_file(path2, "letters.txt"), "has changed")
   snapper$end_file()
 })
 

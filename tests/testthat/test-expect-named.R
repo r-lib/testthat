@@ -1,45 +1,34 @@
 test_that("expected_named verifies presence of names", {
   expect_success(expect_named(c(a = 1)))
-  expect_failure(expect_named(1:10))
+
+  x <- 1:10
+  expect_snapshot_failure(expect_named(x))
 })
 
 test_that("expected_named verifies actual of names", {
   expect_success(expect_named(c(a = 1), "a"))
-  expect_failure(expect_named(c(a = 1), "b"))
+
+  x <- c(a = 1)
+  expect_snapshot_failure(expect_named(x, "b"))
 })
 
-test_that("expected_named optionally ignores case", {
-  expect_success(expect_named(c(a = 1), "A", ignore.case = TRUE))
-})
-
-test_that("expected_named optionally ignores order", {
-  expect_success(expect_named(
-    c(a = 1, b = 2),
-    c("b", "a"),
-    ignore.order = TRUE
-  ))
+test_that("expected_named optionally ignores order and case", {
+  x <- c(a = 1, b = 2)
+  expect_success(expect_named(x, c("A", "B"), ignore.case = TRUE))
+  expect_success(expect_named(x, c("b", "a"), ignore.order = TRUE))
 })
 
 test_that("provide useful feedback on failure", {
-  expect_snapshot_error(
-    expect_named(c(a = 1), c("a", "b"), ignore.order = TRUE)
-  )
-  expect_snapshot_error(
-    expect_named(c(a = 1, b = 1), c("a"), ignore.order = TRUE)
-  )
-  expect_snapshot_error(
-    expect_named(c(a = 1), c("b"), ignore.order = TRUE)
-  )
+  x1 <- c(a = 1)
+  x2 <- c(a = 1, b = 2)
 
-  expect_snapshot_error(
-    expect_named(c(a = 1), c("a", "b"), ignore.order = FALSE)
-  )
-  expect_snapshot_error(
-    expect_named(c(a = 1, b = 1), c("a"), ignore.order = FALSE)
-  )
-  expect_snapshot_error(
-    expect_named(c(a = 1), c("b"), ignore.order = FALSE)
-  )
+  expect_snapshot_failure(expect_named(x1, c("a", "b"), ignore.order = TRUE))
+  expect_snapshot_failure(expect_named(x2, "a", ignore.order = TRUE))
+  expect_snapshot_failure(expect_named(x1, "b", ignore.order = TRUE))
+
+  expect_snapshot_failure(expect_named(x1, c("a", "b"), ignore.order = FALSE))
+  expect_snapshot_failure(expect_named(x2, "a", ignore.order = FALSE))
+  expect_snapshot_failure(expect_named(x1, c("b"), ignore.order = FALSE))
 })
 
 test_that("expect_named validates its inputs", {

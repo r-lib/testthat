@@ -27,7 +27,10 @@ expect_silent <- function(object) {
   )
 
   if (length(outputs) != 0) {
-    msg <- sprintf("%s produced %s.", act$lab, paste(outputs, collapse = ", "))
+    msg <- c(
+      sprintf("Expected %s to run silently.", act$lab),
+      sprintf("Actual noise: %s.", paste(outputs, collapse = ", "))
+    )
     return(fail(msg))
   }
   pass(act$cap$result)
