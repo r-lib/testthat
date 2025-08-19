@@ -71,7 +71,7 @@ test_that("basic workflow", {
   # fails if changed
   snapper$start_file("snapshot-6", "test")
   path2 <- write_tmp_lines(letters[-1])
-  expect_failure(expect_snapshot_file(path2, "letters.txt"))
+  expect_failure(expect_snapshot_file(path2, "letters.txt"), "has changed")
   snapper$end_file()
 })
 
