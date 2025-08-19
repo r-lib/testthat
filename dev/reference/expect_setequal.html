@@ -126,16 +126,17 @@ more details.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">expect_setequal</span><span class="op">(</span><span class="va">letters</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_setequal</span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> letters[-1] (`actual`) and rev(letters) (`expected`) don't have the same values.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Only in `expected`: "a"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `letters[-1]` to have the same values as `rev(letters)`.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Actual: "b", "c", "d", "e", "f", "g", "h", "i", "j", ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected: "z", "y", "x", "w", "v", "u", "t", "s", "r", ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Absent: "a"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>b <span class="op">=</span> <span class="fl">2</span>, a <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">expect_mapequal</span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_mapequal</span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `x` (`actual`) is not equal to list(a = 1) (`expected`).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `x` to be equal to `list(a = 1)`.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `actual` is length 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `expected` is length 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -144,16 +145,18 @@ more details.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `actual$b` is <span style="color: #0000BB;">a double vector</span> (2)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `expected$b` is absent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_mapequal</span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `x` (`actual`) is not equal to list(a = 1, b = "x") (`expected`).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `x` to be equal to `list(a = 1, b = "x")`.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `actual$b` is <span style="color: #00BB00;">a double vector</span> (2)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `expected$b` is <span style="color: #00BB00;">a character vector</span> ('x')</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_mapequal</span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `x` (`actual`) is not equal to list(a = 1, b = 2, c = 3) (`expected`).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `x` to be equal to `list(a = 1, b = 2, c = 3)`.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `actual` is length 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `expected` is length 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -162,6 +165,7 @@ more details.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `actual$c` is absent</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `expected$c` is <span style="color: #BBBB00;">a double vector</span> (3)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

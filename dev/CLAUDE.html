@@ -66,23 +66,21 @@
 <h2 id="key-development-commands">Key Development Commands<a class="anchor" aria-label="anchor" href="#key-development-commands"></a></h2>
 <p>General advice: * When running R from the console, always run it with <code>--quiet --vanilla</code> * Always run <code>air format .</code> after generating code</p>
 <div class="section level3">
-<h3 id="development-tools">Development tools<a class="anchor" aria-label="anchor" href="#development-tools"></a></h3>
-<ul><li>
-<code>devtools::test()</code> - Run all tests</li>
-<li>
-<code>devtools::test_file("tests/testthat/test-filename.R")</code> - Run tests in a specific file</li>
-<li>DO NOT USE <code>devtools::test_active_file()</code>
-</li>
-<li>
-<code>devtools::load_all()</code> - Load package for development</li>
-<li>
-<code>devtools::check()</code> - Run R CMD check</li>
-<li>
-<code>devtools::install()</code> - Install package locally</li>
+<h3 id="testing">Testing<a class="anchor" aria-label="anchor" href="#testing"></a></h3>
+<ul><li><p>Use <code>devtools::test()</code> to run all tests</p></li>
+<li><p>Use <code>devtools::test_file("tests/testthat/test-filename.R")</code> to run tests in a specific file</p></li>
+<li><p>DO NOT USE <code>devtools::test_active_file()</code></p></li>
+<li><p>All testing functions automatically load code; you don’t needs to.</p></li>
+<li><p>All new code should have an accompanying test.</p></li>
+<li><p>Tests for <code>R/{name}.R</code> go in <code>tests/testthat/test-{name}.R</code>.</p></li>
+<li><p>If there are existing tests, place new tests next to similar existing tests.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a></h3>
 <ul><li>Always run <code>devtools::document()</code> after changing any roxygen2 docs.</li>
+<li>Every user facing function should be exported and have roxygen2 documentation.</li>
+<li>Whenever you add a new documentation file, make sure to also add the topic name to <code>_pkgdown.yml</code>.</li>
+<li>Run <code><a href="https://pkgdown.r-lib.org/reference/check_pkgdown.html" class="external-link">pkgdown::check_pkgdown()</a></code> to check that all topics are included in the reference index.</li>
 </ul></div>
 </div>
 <div class="section level2">

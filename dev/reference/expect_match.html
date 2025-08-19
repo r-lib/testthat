@@ -174,19 +174,19 @@ expression.</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_match</span><span class="op">(</span><span class="st">"Testing is fun"</span>, <span class="st">"horrible"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "Testing is fun" does not match regexp "horrible".</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Text:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected "Testing is fun" to match regexp "horrible".</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Actual text:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> │ Testing is fun</span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_match</span><span class="op">(</span><span class="st">"Testing is fun"</span>, <span class="st">"horrible"</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "Testing is fun" does not match string "horrible".</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Text:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected "Testing is fun" to match string "horrible".</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Actual text:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> │ Testing is fun</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Zero-length inputs always fail</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_match</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"."</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character() is empty.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `character()` to have at least one element.</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

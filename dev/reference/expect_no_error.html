@@ -125,8 +125,8 @@ use <code><a href="expect_snapshot.html">expect_snapshot()</a></code>.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># warning does match so causes a failure:</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">expect_no_warning</span><span class="op">(</span><span class="fu">foo</span><span class="op">(</span><span class="op">)</span>, message <span class="op">=</span> <span class="st">"problem"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error : Expected `foo()` to run without any warnings matching pattern 'problem'.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">ℹ</span> Actually got a &lt;simpleWarning&gt; with text:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error : Expected `foo()` not to throw any warnings matching pattern 'problem'.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Actually got a &lt;simpleWarning&gt; with message:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   This is a problem!</span>
 </code></pre></div>
     </div>

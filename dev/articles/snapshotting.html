@@ -316,7 +316,8 @@ output, a message, and a warning:</p>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Backtrace:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">    </span>▆</span></span>
 <span><span class="co">#&gt; <span style="color: #555555;"> 1. </span>└─<span style="font-weight: bold;">testthat</span>::expect_snapshot(1 + "a")</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> 2. </span>  └─<span style="font-weight: bold;">rlang</span>::cnd_signal(state$error)</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> 2. </span>  └─testthat:::expect_snapshot_(...)</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> 3. </span>    └─<span style="font-weight: bold;">rlang</span>::cnd_signal(state$error)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed.</span></span></code></pre></div>
 <p>This is a safety valve that ensures that you don’t accidentally write
