@@ -1,13 +1,6 @@
 test_that("error outside of test_that()", {
-  skip_on_covr()
-  withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")
-  err <- tryCatch(
-    capture.output(suppressMessages(testthat::test_local(
-      test_path("test-parallel", "outside"),
-      reporter = "summary"
-    ))),
-    error = function(e) e
-  )
+  local_parallel_test_config()
 
+  err <- capture_parallel_error(test_path("test-parallel", "outside"))
   expect_match(err$message, "Test failures")
 })

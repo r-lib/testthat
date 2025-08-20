@@ -26,10 +26,7 @@ test_that("good error if bad option", {
 })
 
 test_that("ok", {
-  skip_on_covr()
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
-  # we cannot run these with the silent reporter, because it is not
-  # parallel compatible, and they'll not run in parallel
+  local_parallel_test_config()
   capture.output(suppressMessages(
     ret <- test_local(
       test_path("test-parallel", "ok"),
@@ -44,8 +41,7 @@ test_that("ok", {
 })
 
 test_that("fail", {
-  skip_on_covr()
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  local_parallel_test_config()
   # we cannot run these with the silent reporter, because it is not
   # parallel compatible, and they'll not run in parallel
   capture.output(suppressMessages(
@@ -61,9 +57,7 @@ test_that("fail", {
 })
 
 test_that("snapshots", {
-  skip_on_covr()
-  skip_on_cran()
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  local_parallel_test_config()
 
   tmp <- withr::local_tempdir("testthat-snap-")
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
@@ -86,9 +80,8 @@ test_that("snapshots", {
 })
 
 test_that("new snapshots are added", {
-  skip_on_covr()
-  skip_on_cran()
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE", CI = "false"))
+  local_parallel_test_config()
+  withr::local_envvar(CI = "false")
 
   tmp <- withr::local_tempdir("testthat-snap-")
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
@@ -113,9 +106,7 @@ test_that("new snapshots are added", {
 })
 
 test_that("snapshots are removed if test file has no snapshots", {
-  skip_on_covr()
-  skip_on_cran()
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
+  local_parallel_test_config()
 
   tmp <- withr::local_tempdir("testthat-snap-")
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)
@@ -143,10 +134,8 @@ test_that("snapshots are removed if test file has no snapshots", {
 })
 
 test_that("snapshots are removed if test file is removed", {
-  skip_on_covr()
-  skip_on_cran()
+  local_parallel_test_config()
 
-  withr::local_envvar(c(TESTTHAT_PARALLEL = "TRUE"))
   withr::defer(unlink(tmp, recursive = TRUE))
   dir.create(tmp <- tempfile("testthat-snap-"))
   file.copy(test_path("test-parallel", "snap"), tmp, recursive = TRUE)

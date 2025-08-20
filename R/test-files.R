@@ -129,6 +129,8 @@ test_file <- function(
     cli::cli_abort("{.arg path} does not exist.")
   }
 
+  withr::local_envvar(TESTTHAT_GHA_SUMMARY = "false")
+
   test_files(
     test_dir = dirname(path),
     test_package = package,
@@ -234,6 +236,8 @@ test_files_serial <- function(
       error_call = error_call
     )
   )
+
+  create_gha_summary(reporters$list$get_results())
 
   test_files_check(
     reporters$list$get_results(),
