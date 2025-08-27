@@ -34,3 +34,20 @@
     End test: warnings get backtraces
     
 
+---
+
+    Start test: x ('reporters/nested.R:1:15')
+    Start test: x / y ('reporters/nested.R:2:17')
+    Start test: x / y / z1 ('reporters/nested.R:3:20')
+      'reporters/nested.R:4:7' [success]
+    End test: x / y / z1
+    
+    Start test: x / y / z2 ('reporters/nested.R:7:20')
+      'reporters/nested.R:8:7' [failure]
+    End test: x / y / z2
+    
+    End test: x / y
+    
+    End test: x
+    
+
