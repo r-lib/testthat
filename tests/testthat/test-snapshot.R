@@ -66,7 +66,7 @@ test_that("can scrub output/messages/warnings/errors", {
 
 test_that("always checks error status", {
   expect_error(expect_snapshot(stop("!"), error = FALSE))
-  expect_failure(expect_snapshot(print("!"), error = TRUE))
+  expect_snapshot_failure(expect_snapshot(print("!"), error = TRUE))
 })
 
 test_that("can capture error/warning messages", {
@@ -185,6 +185,7 @@ test_that("hint includes path when WD is different", {
 
 test_that("expect_snapshot requires a non-empty test label", {
   local_description_set()
+  local_on_cran(FALSE)
 
   test_that("", {
     expect_error(expect_snapshot(1 + 1))
@@ -221,13 +222,14 @@ test_that("expect_snapshot_warning validates its inputs", {
   })
 })
 
-test_that("on CRAN, snapshots are not run but don't skill entire test", {
+test_that("on CRAN, snapshots generate skip at end of test", {
   local_on_cran(TRUE)
 
   expectations <- capture_expectations(test_that("", {
     expect_snapshot(1 + 1)
     expect_true(TRUE)
   }))
-  expect_length(expectations, 1)
+  expect_length(expectations, 2)
   expect_s3_class(expectations[[1]], "expectation_success")
+  expect_s3_class(expectations[[2]], "expectation_skip")
 })

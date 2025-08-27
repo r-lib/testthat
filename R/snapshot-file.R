@@ -41,10 +41,23 @@
 #' written to the `_snaps` directory but which no longer have
 #' corresponding R code to generate them. These dangling files are
 #' automatically deleted so they don't clutter the snapshot
-#' directory. However we want to preserve snapshot files when the R
-#' code wasn't executed because of an unexpected error or because of a
-#' [skip()]. Let testthat know about these files by calling
-#' `announce_snapshot_file()` before `expect_snapshot_file()`.
+#' directory.
+#'
+#' This can cause problems if your test is conditionally executed, either
+#' because of an `if` statement or a [skip()]. To avoid files being deleted in
+#' this case, you can call `announce_snapshot_file()` before the conditional
+#' code.
+#'
+#' ```R
+#' test_that("can save a file", {
+#'   if (!can_save()) {
+#'     announce_snapshot_file(name = "data.txt")
+#'     skip("Can't save file")
+#'   }
+#'   path <- withr::local_tempfile()
+#'   expect_snapshot_file(save_file(path, mydata()), "data.txt")
+#' })
+#' ```
 #'
 #' @export
 #' @examples
@@ -67,20 +80,19 @@
 #' }
 #'
 #' # You'd then also provide a helper that skips tests where you can't
-#' # be sure of producing exactly the same output
+#' # be sure of producing exactly the same output.
 #' expect_snapshot_plot <- function(name, code) {
+#'   # Announce the file before touching skips or running `code`. This way,
+#'   # if the skips are active, testthat will not auto-delete the corresponding
+#'   # snapshot file.
+#'   name <- paste0(name, ".png")
+#'   announce_snapshot_file(name = name)
+#'
 #'   # Other packages might affect results
 #'   skip_if_not_installed("ggplot2", "2.0.0")
-#'   # Or maybe the output is different on some operation systems
+#'   # Or maybe the output is different on some operating systems
 #'   skip_on_os("windows")
 #'   # You'll need to carefully think about and experiment with these skips
-#'
-#'   name <- paste0(name, ".png")
-#'
-#'   # Announce the file before touching `code`. This way, if `code`
-#'   # unexpectedly fails or skips, testthat will not auto-delete the
-#'   # corresponding snapshot file.
-#'   announce_snapshot_file(name = name)
 #'
 #'   path <- save_png(code)
 #'   expect_snapshot_file(path, name)
@@ -94,16 +106,20 @@ expect_snapshot_file <- function(
   transform = NULL,
   variant = NULL
 ) {
+  lab <- quo_label(enquo(path))
+
   check_string(path)
   check_string(name)
   check_bool(cran)
+  check_variant(variant)
 
   edition_require(3, "expect_snapshot_file()")
-  if (!cran && on_cran()) {
-    skip("On CRAN")
-  }
 
-  check_variant(variant)
+  announce_snapshot_file(name = name)
+  if (!cran && on_cran()) {
+    signal(class = "snapshot_on_cran")
+    return(invisible())
+  }
 
   snapshotter <- get_snapshotter()
   if (is.null(snapshotter)) {
@@ -111,6 +127,7 @@ expect_snapshot_file <- function(
     return(invisible())
   }
 
+  is_text <- is_text_file(name)
   if (!is_missing(binary)) {
     lifecycle::deprecate_soft(
       "3.0.3",
@@ -120,8 +137,6 @@ expect_snapshot_file <- function(
     compare <- if (binary) compare_file_binary else compare_file_text
   }
   if (is.null(compare)) {
-    ext <- tools::file_ext(name)
-    is_text <- ext %in% c("r", "R", "txt", "md", "Rmd")
     compare <- if (is_text) compare_file_text else compare_file_binary
   }
 
@@ -131,7 +146,6 @@ expect_snapshot_file <- function(
     brio::write_lines(lines, path)
   }
 
-  lab <- quo_label(enquo(path))
   equal <- snapshotter$take_file_snapshot(
     name,
     path,
@@ -142,22 +156,44 @@ expect_snapshot_file <- function(
     return(equal)
   }
 
+  file <- snapshotter$file
   if (in_check_reporter()) {
     hint <- ""
   } else {
-    hint <- snapshot_review_hint(snapshotter$file, name)
+    hint <- snapshot_review_hint(file, name, is_text = is_text)
   }
 
   if (!equal) {
-    msg <- sprintf(
-      "Snapshot of %s to '%s' has changed\n%s",
-      lab,
-      paste0(snapshotter$file, "/", name),
+    if (is_text) {
+      base <- paste0(c(snapshotter$snap_dir, file, variant), collapse = "/")
+      old_path <- paste0(c(base, name), collapse = "/")
+      new_path <- paste0(c(base, new_name(name)), collapse = "/")
+
+      comp <- waldo_compare(
+        x = brio::read_lines(old_path),
+        x_arg = "old",
+        y = brio::read_lines(new_path),
+        y_arg = "new",
+        quote_strings = FALSE
+      )
+      comp <- c("Differences:", comp)
+    } else {
+      comp <- NULL
+    }
+
+    msg <- c(
+      sprintf("Snapshot of %s has changed.", lab),
+      comp,
       hint
     )
     return(snapshot_fail(msg))
   }
   pass(NULL)
+}
+
+is_text_file <- function(path) {
+  ext <- tools::file_ext(path)
+  ext %in% c("r", "R", "txt", "md", "Rmd", "qmd", "json")
 }
 
 #' @rdname expect_snapshot_file
@@ -171,13 +207,25 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   }
 }
 
-snapshot_review_hint <- function(test, name, reset_output = TRUE) {
+snapshot_review_hint <- function(
+  test,
+  name,
+  is_text = FALSE,
+  reset_output = TRUE
+) {
   if (reset_output) {
     local_reporter_output()
   }
 
-  cli::format_inline(
-    "* Run {.run testthat::snapshot_review('{test}/{name}')} to review the change."
+  c(
+    if (is_text) {
+      cli::format_inline(
+        "* Run {.run testthat::snapshot_accept('{test}/{name}')} to accept the change."
+      )
+    },
+    cli::format_inline(
+      "* Run {.run testthat::snapshot_review('{test}/{name}')} to review the change."
+    )
   )
 }
 
