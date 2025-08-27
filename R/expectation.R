@@ -227,13 +227,14 @@ single_letter_summary <- function(x) {
 }
 
 expectation_location <- function(x, prefix = "", suffix = "") {
-  srcref <- x$srcref
+  srcref_location(x$srcref, prefix = prefix, suffix = suffix)
+}
+srcref_location <- function(srcref, prefix = "", suffix = "") {
   if (!inherits(srcref, "srcref")) {
     return("")
   }
 
   filename <- attr(srcref, "srcfile")$filename
-  cli::format_inline(
-    "{prefix}{.file {filename}:{srcref[1]}:{srcref[2]}}{suffix}"
-  )
+  link <- cli::format_inline("{.file {filename}:{srcref[1]}:{srcref[2]}}")
+  paste0(prefix, link, suffix)
 }

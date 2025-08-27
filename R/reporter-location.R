@@ -11,20 +11,11 @@ LocationReporter <- R6::R6Class(
   inherit = Reporter,
   public = list(
     start_test = function(context, test, srcref = NULL) {
-      if (!is.null(srcref)) {
-        filename <- attr(srcref, "srcfile")$filename
-        line_number <- as.integer(srcref[[1]])
-        self$cat_line(
-          "Start test: '",
-          test,
-          "' at ",
-          filename,
-          ":",
-          line_number
-        )
-      } else {
-        self$cat_line("Start test: ", test)
-      }
+      self$cat_line(
+        "Start test: ",
+        test,
+        srcref_location(srcref, prefix = " at ")
+      )
     },
 
     add_result = function(context, test, result) {
