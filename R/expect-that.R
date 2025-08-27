@@ -48,6 +48,7 @@ fail <- function(
 
 snapshot_fail <- function(message, trace_env = caller_env()) {
   trace <- capture_trace(trace_env)
+  message <- paste(message, collapse = "\n")
   expectation("failure", message, trace = trace, snapshot = TRUE)
 }
 
