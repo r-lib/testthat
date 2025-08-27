@@ -31,7 +31,7 @@ SlowReporter <- R6::R6Class(
       self$current_file <- file
     },
 
-    start_test = function(context, test, srcref=NULL) {
+    start_test = function(context, test, srcref = NULL) {
       self$current_test_start <- proc.time()[[3]]
     },
 

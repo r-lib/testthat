@@ -26,7 +26,7 @@ MultiReporter <- R6::R6Class(
     start_context = function(context) {
       o_apply(self$reporters, "start_context", context)
     },
-    start_test = function(context, test, srcref=NULL) {
+    start_test = function(context, test, srcref = NULL) {
       o_apply(self$reporters, "start_test", context, test, srcref)
     },
     add_result = function(context, test, result) {

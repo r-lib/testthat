@@ -34,7 +34,7 @@ SubprocessSnapshotReporter <- R6::R6Class(
       super$end_test(context, test)
     },
 
-    start_test = function(context, test, srcref=NULL) {
+    start_test = function(context, test, srcref = NULL) {
       private$context <- context
       private$test <- test
       super$start_test(context, test, srcref)

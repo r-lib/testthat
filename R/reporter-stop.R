@@ -31,7 +31,7 @@ StopReporter <- R6::R6Class(
       self$stop_reporter <- stop_reporter
     },
 
-    start_test = function(context, test, srcref=NULL) {
+    start_test = function(context, test, srcref = NULL) {
       self$issues <- Stack$new()
     },
 

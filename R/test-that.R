@@ -52,7 +52,11 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
   test <- test_description()
   if (!is.null(test)) {
     srcref <- attr(code, "srcref")[[1]]
-    reporter$start_test(context = reporter$.context, test = test, srcref = srcref)
+    reporter$start_test(
+      context = reporter$.context,
+      test = test,
+      srcref = srcref
+    )
     withr::defer(reporter$end_test(context = reporter$.context, test = test))
   }
 

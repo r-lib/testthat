@@ -58,7 +58,7 @@ SnapshotReporter <- R6::R6Class(
       }
     },
 
-    start_test = function(context, test, srcref=NULL) {
+    start_test = function(context, test, srcref = NULL) {
       if (is.null(test)) {
         return()
       }

@@ -27,7 +27,7 @@ TeamcityReporter <- R6::R6Class(
       self$cat_line()
     },
 
-    start_test = function(context, test, srcref=NULL) {
+    start_test = function(context, test, srcref = NULL) {
       private$report_event("testSuiteStarted", test)
       self$i <- 1L
     },

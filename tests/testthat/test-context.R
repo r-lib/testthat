@@ -15,7 +15,7 @@ CountReporter <- R6::R6Class(
       self$context_i <- self$context_i - 1
       stopifnot(self$context_i >= 0)
     },
-    start_test = function(context, test, srcref=NULL) {
+    start_test = function(context, test, srcref = NULL) {
       self$test_count <- self$test_count + 1
       self$test_i <- self$test_i + 1
     },
