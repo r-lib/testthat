@@ -14,7 +14,7 @@ LocationReporter <- R6::R6Class(
       self$cat_line(
         "Start test: ",
         test,
-        srcref_location(srcref, prefix = " at ")
+        srcref_location(srcref, prefix = " (", suffix = ")")
       )
     },
 
