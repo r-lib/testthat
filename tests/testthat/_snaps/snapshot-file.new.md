@@ -27,7 +27,7 @@
     Code
       base::writeLines(snapshot_review_hint("lala", reset_output = FALSE))
     Output
-      * Run `testthat::snapshot_review('lala/')` to review changes.
+      * Run `testthat::snapshot_review('lala/')` to review the change.
 
 ---
 
@@ -35,7 +35,7 @@
       base::writeLines(snapshot_review_hint("lala", is_text = TRUE, reset_output = FALSE))
     Output
       * Run `testthat::snapshot_accept('lala/')` to accept the change.
-      * Run `testthat::snapshot_review('lala/')` to review changes.
+      * Run `testthat::snapshot_review('lala/')` to review the change.
 
 # expect_snapshot_file validates its inputs
 
