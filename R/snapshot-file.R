@@ -160,7 +160,7 @@ expect_snapshot_file <- function(
   if (in_check_reporter()) {
     hint <- ""
   } else {
-    hint <- snapshot_review_hint(file, is_text = is_text)
+    hint <- snapshot_review_hint(file, name, is_text = is_text)
   }
 
   if (!equal) {
@@ -209,6 +209,7 @@ announce_snapshot_file <- function(path, name = basename(path)) {
 
 snapshot_review_hint <- function(
   test,
+  name,
   is_text = FALSE,
   reset_output = TRUE
 ) {
@@ -219,11 +220,11 @@ snapshot_review_hint <- function(
   c(
     if (is_text) {
       cli::format_inline(
-        "* Run {.run testthat::snapshot_accept('{test}/')} to accept the change."
+        "* Run {.run testthat::snapshot_accept('{test}/{name}')} to accept the change."
       )
     },
     cli::format_inline(
-      "* Run {.run testthat::snapshot_review('{test}/')} to review the change."
+      "* Run {.run testthat::snapshot_review('{test}/{name}')} to review the change."
     )
   )
 }

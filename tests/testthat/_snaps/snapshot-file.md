@@ -25,17 +25,18 @@
 # generates informative hint
 
     Code
-      base::writeLines(snapshot_review_hint("lala", reset_output = FALSE))
+      base::writeLines(snapshot_review_hint("lala", "foo.R", reset_output = FALSE))
     Output
-      * Run `testthat::snapshot_review('lala/')` to review the change.
+      * Run `testthat::snapshot_review('lala/foo.R')` to review the change.
 
 ---
 
     Code
-      base::writeLines(snapshot_review_hint("lala", is_text = TRUE, reset_output = FALSE))
+      base::writeLines(snapshot_review_hint("lala", "foo.R", is_text = TRUE,
+        reset_output = FALSE))
     Output
-      * Run `testthat::snapshot_accept('lala/')` to accept the change.
-      * Run `testthat::snapshot_review('lala/')` to review the change.
+      * Run `testthat::snapshot_accept('lala/foo.R')` to accept the change.
+      * Run `testthat::snapshot_review('lala/foo.R')` to review the change.
 
 # expect_snapshot_file validates its inputs
 
