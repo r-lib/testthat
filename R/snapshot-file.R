@@ -106,6 +106,8 @@ expect_snapshot_file <- function(
   transform = NULL,
   variant = NULL
 ) {
+  lab <- quo_label(enquo(path))
+
   check_string(path)
   check_string(name)
   check_bool(cran)
@@ -125,6 +127,7 @@ expect_snapshot_file <- function(
     return(invisible())
   }
 
+  is_text <- is_text_file(name)
   if (!is_missing(binary)) {
     lifecycle::deprecate_soft(
       "3.0.3",
@@ -134,8 +137,6 @@ expect_snapshot_file <- function(
     compare <- if (binary) compare_file_binary else compare_file_text
   }
   if (is.null(compare)) {
-    ext <- tools::file_ext(name)
-    is_text <- ext %in% c("r", "R", "txt", "md", "Rmd")
     compare <- if (is_text) compare_file_text else compare_file_binary
   }
 
@@ -145,7 +146,6 @@ expect_snapshot_file <- function(
     brio::write_lines(lines, path)
   }
 
-  lab <- quo_label(enquo(path))
   equal <- snapshotter$take_file_snapshot(
     name,
     path,
@@ -156,22 +156,44 @@ expect_snapshot_file <- function(
     return(equal)
   }
 
+  file <- snapshotter$file
   if (in_check_reporter()) {
     hint <- ""
   } else {
-    hint <- snapshot_review_hint(snapshotter$file, name)
+    hint <- snapshot_review_hint(file, name, is_text = is_text)
   }
 
   if (!equal) {
-    msg <- sprintf(
-      "Snapshot of %s to '%s' has changed\n%s",
-      lab,
-      paste0(snapshotter$file, "/", name),
+    if (is_text) {
+      base <- paste0(c(snapshotter$snap_dir, file, variant), collapse = "/")
+      old_path <- paste0(c(base, name), collapse = "/")
+      new_path <- paste0(c(base, new_name(name)), collapse = "/")
+
+      comp <- waldo_compare(
+        x = brio::read_lines(old_path),
+        x_arg = "old",
+        y = brio::read_lines(new_path),
+        y_arg = "new",
+        quote_strings = FALSE
+      )
+      comp <- c("Differences:", comp)
+    } else {
+      comp <- NULL
+    }
+
+    msg <- c(
+      sprintf("Snapshot of %s has changed.", lab),
+      comp,
       hint
     )
     return(snapshot_fail(msg))
   }
   pass(NULL)
+}
+
+is_text_file <- function(path) {
+  ext <- tools::file_ext(path)
+  ext %in% c("r", "R", "txt", "md", "Rmd", "qmd", "json")
 }
 
 #' @rdname expect_snapshot_file
@@ -185,13 +207,25 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   }
 }
 
-snapshot_review_hint <- function(test, name, reset_output = TRUE) {
+snapshot_review_hint <- function(
+  test,
+  name,
+  is_text = FALSE,
+  reset_output = TRUE
+) {
   if (reset_output) {
     local_reporter_output()
   }
 
-  cli::format_inline(
-    "* Run {.run testthat::snapshot_review('{test}/{name}')} to review the change."
+  c(
+    if (is_text) {
+      cli::format_inline(
+        "* Run {.run testthat::snapshot_accept('{test}/{name}')} to accept the change."
+      )
+    },
+    cli::format_inline(
+      "* Run {.run testthat::snapshot_review('{test}/{name}')} to review the change."
+    )
   )
 }
 

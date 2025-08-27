@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `expect_snapshot_file()` now considers `.json` to be a text file (#1593).
+* `expect_snapshot_file()` now shows differences for text files (#1593).
 * The failure messages for all `expect_` functions have been rewritten to first state what was expected and then what was actually received (#2142).
 * `test_file(desc = ...)` no longer loses snapshot results (#2066).
 * In `R CMD check`, snapshots now only advise on how to resolve failures once (#2207).

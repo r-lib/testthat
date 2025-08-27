@@ -163,9 +163,16 @@ test_that("split_path handles edge cases", {
 })
 
 test_that("generates informative hint", {
-  expect_snapshot(cat(snapshot_review_hint(
+  expect_snapshot(base::writeLines(snapshot_review_hint(
     "lala",
-    "foo.r",
+    "foo.R",
+    reset_output = FALSE
+  )))
+
+  expect_snapshot(base::writeLines(snapshot_review_hint(
+    "lala",
+    "foo.R",
+    is_text = TRUE,
     reset_output = FALSE
   )))
 })
