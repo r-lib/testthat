@@ -10,7 +10,11 @@ LocationReporter <- R6::R6Class(
   "LocationReporter",
   inherit = Reporter,
   public = list(
+    depth = 0,
+
     start_test = function(context, test, srcref = NULL) {
+      self$depth <- self$depth + 1
+
       self$cat_line(
         "Start test: ",
         test,
@@ -24,8 +28,12 @@ LocationReporter <- R6::R6Class(
     },
 
     end_test = function(context, test) {
+      self$depth <- self$depth - 1
       self$cat_line("End test: ", test)
-      self$cat_line()
+
+      if (self$depth == 0) {
+        self$cat_line()
+      }
     }
   )
 )

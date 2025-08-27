@@ -36,18 +36,19 @@
 
 ---
 
-    Start test: x ('reporters/nested.R:1:15')
-    Start test: x / y ('reporters/nested.R:2:17')
-    Start test: x / y / z1 ('reporters/nested.R:3:20')
+    Start test: x1 ('reporters/nested.R:1:16')
+    Start test: x1 / y1 ('reporters/nested.R:2:18')
+    Start test: x1 / y1 / z1 ('reporters/nested.R:3:20')
       'reporters/nested.R:4:7' [success]
-    End test: x / y / z1
-    
-    Start test: x / y / z2 ('reporters/nested.R:7:20')
+    End test: x1 / y1 / z1
+    Start test: x1 / y1 / z2 ('reporters/nested.R:7:20')
       'reporters/nested.R:8:7' [failure]
-    End test: x / y / z2
+    End test: x1 / y1 / z2
+    End test: x1 / y1
+    End test: x1
     
-    End test: x / y
-    
-    End test: x
+    Start test: x2 ('reporters/nested.R:13:16')
+      'reporters/nested.R:14:3' [success]
+    End test: x2
     
 
