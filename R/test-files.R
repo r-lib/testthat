@@ -221,7 +221,7 @@ test_files_serial <- function(
   local_testing_env(env)
 
   test_files_setup_state(test_dir, test_package, load_helpers, env)
-  reporters <- test_files_reporter(reporter)
+  reporters <- test_files_reporter(reporter, "serial", desc = desc)
 
   with_reporter(
     reporters$multi,
@@ -315,15 +315,36 @@ test_files_setup_state <- function(
   withr::defer(source_test_teardown(".", env), frame) # old school
 }
 
-test_files_reporter <- function(reporter, .env = parent.frame()) {
+test_files_reporter <- function(
+  reporter,
+  mode = c("serial", "parallel"),
+  desc = NULL,
+  frame = caller_env()
+) {
+  mode <- arg_match(mode)
+
+  # User selected reporter
+  user <- find_reporter(reporter)
+
+  # Reporter that collect test results
   lister <- ListReporter$new()
-  reporters <- list(
-    find_reporter(reporter),
-    lister, # track data
-    local_snapshotter("_snaps", .env = .env)
+
+  # Snapshot reporter
+  if (mode == "parallel") {
+    snap_base <- MainprocessSnapshotReporter
+  } else {
+    snap_base <- SnapshotReporter
+  }
+  snap <- local_snapshotter(
+    snap_base,
+    fail_on_new = on_ci(),
+    desc = desc,
+    frame = frame
   )
+
+  reporters <- compact(list(user, lister, snap))
   list(
-    multi = MultiReporter$new(reporters = compact(reporters)),
+    multi = MultiReporter$new(reporters = reporters),
     list = lister
   )
 }

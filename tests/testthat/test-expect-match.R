@@ -1,15 +1,28 @@
-test_that("generates useful failure messages", {
-  local_reproducible_output(unicode = TRUE)
-
+test_that("useful failure if empty", {
   zero <- character(0)
   expect_snapshot_failure(expect_match(zero, 'asdf'))
+})
+
+test_that("useful failure messages for scalars", {
+  local_reproducible_output(unicode = TRUE)
 
   one <- "bcde"
   expect_snapshot_failure(expect_match(one, 'asdf'))
+  expect_snapshot_failure(expect_match(one, 'asdf', fixed = TRUE))
+})
+
+test_that("useful failure messages for vectors", {
+  local_reproducible_output(unicode = TRUE)
 
   many <- c("a", "a", "b")
   expect_snapshot_failure(expect_match(many, "a"))
   expect_snapshot_failure(expect_match(many, "c", all = FALSE))
+
+  paragraph <- c("This is a multiline\nparagraph.", "Second element.")
+  expect_snapshot_failure(expect_match(paragraph, "paragraph"))
+
+  na <- c("NA", NA)
+  expect_snapshot_failure(expect_match(na, "NA"))
 })
 
 test_that("expect_match validates its inputs", {

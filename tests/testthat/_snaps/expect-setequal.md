@@ -21,68 +21,125 @@
 
 # useful message on failure
 
-    "actual" (`actual`) and "expected" (`expected`) don't have the same values.
-    * Only in `actual`: "actual"
-    * Only in `expected`: "expected"
-    
+    Code
+      expect_setequal("actual", "expected")
+    Condition
+      Error:
+      ! Expected "actual" to have the same values as "expected".
+      Actual: "actual"
+      Expected: "expected"
+      Needs: "actual"
+      Absent: "expected"
 
 ---
 
-    1:2 (`actual`) and 2 (`expected`) don't have the same values.
-    * Only in `actual`: 1
-    
+    Code
+      expect_setequal(x, y)
+    Condition
+      Error:
+      ! Expected `x` to have the same values as `y`.
+      Actual: 1, 2
+      Expected: 2
+      Needs: 1
 
 ---
 
-    2 (`actual`) and 2:3 (`expected`) don't have the same values.
-    * Only in `expected`: 3
-    
+    Code
+      expect_setequal(x, y)
+    Condition
+      Error:
+      ! Expected `x` to have the same values as `y`.
+      Actual: 2
+      Expected: 2, 3
+      Absent: 3
 
 ---
 
-    1:2 (`actual`) and 2:3 (`expected`) don't have the same values.
-    * Only in `actual`: 1
-    * Only in `expected`: 3
-    
+    Code
+      expect_setequal(x, y)
+    Condition
+      Error:
+      ! Expected `x` to have the same values as `y`.
+      Actual: 1, 2
+      Expected: 2, 3
+      Needs: 1
+      Absent: 3
 
 ---
 
-    c("a", "a") (`actual`) and c("b", "b", "b") (`expected`) don't have the same values.
-    * Only in `actual`: "a"
-    * Only in `expected`: "b"
-    
+    Code
+      expect_setequal(x, y)
+    Condition
+      Error:
+      ! Expected `x` to have the same values as `y`.
+      Actual: "a", "a"
+      Expected: "b", "b", "b"
+      Needs: "a"
+      Absent: "b"
+
+---
+
+    Code
+      expect_setequal(x, c("a", "b", "c", "d"))
+    Condition
+      Error:
+      ! Expected `x` to have the same values as `c("a", "b", "c", "d")`.
+      Actual: "a", "b", "c"
+      Expected: "a", "b", "c", "d"
+      Absent: "d"
 
 # truncates long vectors
 
-    1:2 (`actual`) and 1:50 (`expected`) don't have the same values.
-    * Only in `expected`: 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
-    
+    Code
+      expect_setequal(x, y)
+    Condition
+      Error:
+      ! Expected `x` to have the same values as `y`.
+      Actual: 1, 2
+      Expected: 1, 2, 3, 4, 5, 6, 7, 8, 9, ...
+      Absent: 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
 
 # expect_contains() gives useful message on failure
 
-    `x1` (`actual`) doesn't fully contain all the values in `x2` (`expected`).
-    * Missing from `actual`: "d"
-    * Present in `actual`:   "a", "b", "c"
-    
+    Code
+      expect_contains(x1, x2)
+    Condition
+      Error:
+      ! Expected `x1` to contain all values in `x2`.
+      Actual: "a", "b", "c"
+      Expected: "c", "d"
+      Missing: "d"
 
 ---
 
-    `x1` (`actual`) doesn't fully contain all the values in `x3` (`expected`).
-    * Missing from `actual`: "d", "e"
-    * Present in `actual`:   "a", "b", "c"
-    
+    Code
+      expect_contains(x1, x3)
+    Condition
+      Error:
+      ! Expected `x1` to contain all values in `x3`.
+      Actual: "a", "b", "c"
+      Expected: "d", "e"
+      Missing: "d", "e"
 
 # expect_in() gives useful message on failure
 
-    `x1` (`actual`) isn't fully contained within `x2` (`expected`).
-    * Missing from `expected`: "a"
-    * Present in `expected`:   "b", "c"
-    
+    Code
+      expect_in(x1, x2)
+    Condition
+      Error:
+      ! Expected `x1` to only contain values from `x2`.
+      Actual: "a", "b"
+      Expected: "b", "c"
+      Invalid: "a"
 
 ---
 
-    `x1` (`actual`) isn't fully contained within `x3` (`expected`).
-    * Missing from `expected`: "a", "b"
-    * Present in `expected`:   "d", "e"
-    
+    Code
+      expect_in(x1, x3)
+    Condition
+      Error:
+      ! Expected `x1` to only contain values from `x3`.
+      Actual: "a", "b"
+      Expected: "d", "e"
+      Invalid: "a", "b"
 

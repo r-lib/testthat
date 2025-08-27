@@ -22,30 +22,12 @@
       Error in `snapshot_file_equal_()`:
       ! 'doesnt-exist.txt' not found.
 
-# snapshot_hint output differs in R CMD check
+# generates informative hint
 
     Code
-      cat(snapshot_review_hint("lala", "foo.r", check = FALSE, ci = FALSE))
+      cat(snapshot_review_hint("lala", "foo.r", reset_output = FALSE))
     Output
-      * Run `testthat::snapshot_review('lala/')` to review changes
-
----
-
-    Code
-      cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = FALSE))
-    Output
-      * Locate check directory
-      * Copy 'tests/testthat/_snaps/lala/foo.new.r' to local test directory
-      * Run `testthat::snapshot_review('lala/')` to review changes
-
----
-
-    Code
-      cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = TRUE))
-    Output
-      * Download and unzip run artifact
-      * Copy 'tests/testthat/_snaps/lala/foo.new.r' to local test directory
-      * Run `testthat::snapshot_review('lala/')` to review changes
+      * Run `testthat::snapshot_review('lala/')` to review changes.
 
 # expect_snapshot_file validates its inputs
 

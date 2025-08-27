@@ -35,6 +35,7 @@ expect_named <- function(
   check_bool(ignore.order)
   check_bool(ignore.case)
 
+  
   act <- quasi_label(enquo(object), label)
 
   if (missing(expected)) {
@@ -47,11 +48,11 @@ expect_named <- function(
   act_names <- normalise_names(names(act$val), ignore.order, ignore.case)
 
   if (ignore.order) {
-    act <- labelled_value(act_names, act$lab)
-    return(expect_setequal_(act, exp, error_prefix = "Names of "))
+    act <- labelled_value(act_names, paste0("names(", act$lab, ")"))
+    return(expect_setequal_(act, exp))
   } else {
-    act <- labelled_value(act_names, act$lab)
-    return(expect_waldo_equal_("equal", act, exp, error_prefix = "Names of "))
+    act <- labelled_value(act_names, paste0("names(", act$lab, ")"))
+    return(expect_waldo_equal_("equal", act, exp))
   }
 
   pass(act$val)
@@ -75,7 +76,7 @@ normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
 expect_has_names_ <- function(act, trace_env = caller_env()) {
   act_names <- names(act$val)
   if (identical(act_names, NULL)) {
-    msg <- sprintf("%s does not have names.", act$lab)
+    msg <- sprintf("Expected %s to have names.", act$lab)
     return(fail(msg, trace_env = trace_env))
   }
   return(pass(act$val))
