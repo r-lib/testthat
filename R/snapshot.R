@@ -399,15 +399,9 @@ snapshot_hint <- function(
   id <- c(file, if (!identical(variant, "_default")) variant, name)
   full_name <- paste0(id, collapse = "/")
 
-  args <- encodeString(full_name, quote = '"')
-  # Include path argument if we're in a different working directory
-  wd <- Sys.getenv("TESTTHAT_WD", unset = "")
-  if (wd != "") {
-    test_path <- file.path(wd, "tests/testthat")
-    if (test_path != getwd()) {
-      args <- paste0(args, ", ", encodeString(getwd(), quote = '"'))
-    }
-  }
+  args <- c(full_name, snapshot_hint_path())
+  args <- encodeString(args, quote = '"')
+  args <- paste0(args, collapse = ", ")
 
   accept_link <- cli::format_inline("{.run testthat::snapshot_accept({args})}")
   review_link <- cli::format_inline("{.run testthat::snapshot_review({args})}")
@@ -417,6 +411,21 @@ snapshot_hint <- function(
     sprintf("* Run %s to review the change.", review_link)
   )
   structure(out, class = "testthat_hint")
+}
+
+# Include path argument if we're in a different working directory
+snapshot_hint_path <- function() {
+  wd <- Sys.getenv("TESTTHAT_WD", unset = "")
+  if (wd == "") {
+    return()
+  }
+
+  test_path <- file.path(wd, "tests/testthat")
+  if (test_path == getwd()) {
+    return()
+  }
+
+  getwd()
 }
 
 #' @export
