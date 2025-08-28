@@ -179,6 +179,7 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
         },
         snapshot_on_cran = function(cnd) {
           snapshot_skipped <<- TRUE
+          invokeRestart("muffle_cran_snapshot")
         },
         skip = handle_skip,
         warning = handle_warning,

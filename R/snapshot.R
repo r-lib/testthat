@@ -344,7 +344,7 @@ expect_snapshot_helper <- function(
   trace_env = caller_env()
 ) {
   if (!cran && on_cran()) {
-    signal(class = "snapshot_on_cran")
+    signal_snapshot_on_cran()
     return(invisible())
   }
 
@@ -460,4 +460,11 @@ check_variant <- function(x, call = caller_env()) {
 with_is_snapshotting <- function(code) {
   withr::local_envvar(TESTTHAT_IS_SNAPSHOT = "true")
   code
+}
+
+signal_snapshot_on_cran <- function() {
+  withRestarts(
+    signal(class = "snapshot_on_cran"),
+    muffle_cran_snapshot = function() {}
+  )
 }

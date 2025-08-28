@@ -122,7 +122,7 @@ expect_snapshot_file <- function(
 
   announce_snapshot_file(name = name)
   if (!cran && on_cran()) {
-    signal(class = "snapshot_on_cran")
+    signal_snapshot_on_cran()
     return(invisible())
   }
 
