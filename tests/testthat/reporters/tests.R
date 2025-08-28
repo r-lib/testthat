@@ -9,7 +9,8 @@ test_that("Success", {
 context("Failures")
 
 test_that("Failure:1", {
-  expect_true(FALSE)
+  x <- FALSE
+  expect_true(x)
 })
 
 test_that("Failure:2a", {

@@ -1,26 +1,98 @@
-# provide useful feedback on failure
+# provide useful feedback on failure (3e)
 
-    1 (`actual`) is not identical to "a" (`expected`).
-    
-    `actual` is a double vector (1)
-    `expected` is a character vector ('a')
-
----
-
-    1 (`actual`) is not equal to "a" (`expected`).
-    
-    `actual` is a double vector (1)
-    `expected` is a character vector ('a')
+    Code
+      expect_identical(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to be identical to "a".
+      Differences:
+      `actual` is a double vector (1)
+      `expected` is a character vector ('a')
 
 ---
 
-    1 not identical to "a".
-    Types not compatible: double is not character
+    Code
+      expect_equal(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to be equal to "a".
+      Differences:
+      `actual` is a double vector (1)
+      `expected` is a character vector ('a')
 
 ---
 
-    1 not equal to "a".
-    Types not compatible: double is not character
+    Code
+      expect_identical(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to be identical to "a".
+      Differences:
+      Types not compatible: double is not character
+
+---
+
+    Code
+      expect_equal(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to equal "a".
+      Differences:
+      Types not compatible: double is not character
+
+# provide useful feedback on failure (2e)
+
+    Code
+      expect_identical(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to be identical to "a".
+      Differences:
+      Types not compatible: double is not character
+
+---
+
+    Code
+      expect_equal(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to equal "a".
+      Differences:
+      Types not compatible: double is not character
+
+# default labels use unquoting
+
+    Code
+      expect_equal(x, !!y)
+    Condition
+      Error:
+      ! Expected `x` to be equal to 2.
+      Differences:
+        `actual`: 1.0
+      `expected`: 2.0
+
+# useful message if objects equal but not identical
+
+    Code
+      expect_identical(f, g)
+    Condition
+      Error:
+      ! Expected `f` to be identical to `g`.
+      Differences:
+      Objects equal but not identical
+
+# attributes for object (#452)
+
+    Code
+      expect_equal(oops, 0)
+    Condition
+      Error:
+      ! Expected `oops` to equal 0.
+      Differences:
+      Attributes: < Modes: list, NULL >
+      Attributes: < Lengths: 1, 0 >
+      Attributes: < names for target but not for current >
+      Attributes: < current is not list-like >
 
 # expect_equal validates its inputs
 

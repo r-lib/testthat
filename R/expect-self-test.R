@@ -46,20 +46,20 @@ capture_success_failure <- function(expr) {
 expect_success <- function(expr) {
   status <- capture_success_failure(expr)
 
-  if (status$n_success == 0) {
-    return(fail("Expectation did not succeed"))
-  } else if (status$n_success > 1) {
-    return(fail(sprintf(
-      "Expectation succeeded %i times, instead of once",
-      status$n_success
-    )))
+  if (status$n_success != 1) {
+    msg <- c(
+      "Expected one success.",
+      sprintf("Actually succeeded %i times", status$n_success)
+    )
+    return(fail(msg))
   }
 
   if (status$n_failure > 0) {
-    return(fail(sprintf(
-      "Expectation failed %i times, instead of zero",
-      status$n_failure
-    )))
+    msg <- c(
+      "Expected zero failures.",
+      sprintf("Actually failed %i times", status$n_failure)
+    )
+    return(fail(msg))
   }
 
   pass(NULL)
@@ -70,23 +70,25 @@ expect_success <- function(expr) {
 expect_failure <- function(expr, message = NULL, ...) {
   status <- capture_success_failure(expr)
 
-  if (status$n_failure == 0) {
-    return(fail("Expectation did not fail"))
-  } else if (status$n_failure > 1) {
-    # This should be impossible, but including for completeness
-    return(fail("Expectation failed more than once"))
+  if (status$n_failure != 1) {
+    msg <- c(
+      "Expected one failure.",
+      sprintf("Actually failed %i times", status$n_failure)
+    )
+    return(fail(msg))
   }
 
   if (status$n_success != 0) {
-    return(fail(sprintf(
-      "Expectation succeeded %i times, instead of never",
-      status$n_success
-    )))
+    msg <- c(
+      "Expected zero successes.",
+      sprintf("Actually succeeded %i times", status$n_success)
+    )
+    return(fail(msg))
   }
 
   if (!is.null(message)) {
-    act <- labelled_value(status$last_failure$message, "Failure message")
-    return(expect_match_(act, message, ...))
+    act <- labelled_value(status$last_failure$message, "failure message")
+    return(expect_match_(act, message, ..., title = "message"))
   }
   pass(NULL)
 }
@@ -94,7 +96,8 @@ expect_failure <- function(expr, message = NULL, ...) {
 #' @export
 #' @rdname expect_success
 expect_snapshot_failure <- function(expr) {
-  expect_snapshot_condition_("expectation_failure", expr)
+  expr <- enquo0(expr)
+  expect_snapshot_(expr, error = TRUE, error_class = "expectation_failure")
 }
 
 #' Test for absence of success or failure

@@ -65,6 +65,7 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
   starting_expectations <- the$test_expectations
 
   ok <- TRUE
+  snapshot_skipped <- FALSE
 
   # @param debug_end How many frames should be skipped to find the
   #   last relevant frame call. Only useful for the DebugReporter.
@@ -164,7 +165,9 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
         {
           eval(code, test_env)
           new_expectations <- the$test_expectations > starting_expectations
-          if (!new_expectations && skip_on_empty) {
+          if (snapshot_skipped) {
+            skip("On CRAN")
+          } else if (!new_expectations && skip_on_empty) {
             skip_empty()
           }
         },
@@ -173,6 +176,10 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
           if (on_cran()) {
             skip(paste0("{", e$package, "} is not installed."))
           }
+        },
+        snapshot_on_cran = function(cnd) {
+          snapshot_skipped <<- TRUE
+          invokeRestart("muffle_cran_snapshot")
         },
         skip = handle_skip,
         warning = handle_warning,
@@ -216,10 +223,10 @@ local_description_set <- function(
   invisible(old)
 }
 
-test_description <- function() {
-  if (length(the$description) == 0) {
+test_description <- function(desc = the$description) {
+  if (length(desc) == 0) {
     NULL
   } else {
-    paste(the$description, collapse = " / ")
+    paste(desc, collapse = " / ")
   }
 }

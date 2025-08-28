@@ -53,6 +53,11 @@
 #'   carefully think about your testing strategy to ensure that all important
 #'   variants are covered by automated tests, and ensure that you have a way
 #'   to get snapshot changes out of your CI system and back into the repo.
+#'
+#'   Note that there's no way to declare all possible variants up front which
+#'   means that as soon as you start using variants, you are responsible for
+#'   deleting snapshot variants that are no longer used. (testthat will still
+#'   delete all variants if you delete the test.)
 #' @param transform Optionally, a function to scrub sensitive or stochastic
 #'   text from the output. Should take a character vector of lines as input
 #'   and return a modified character vector as output.
@@ -68,17 +73,37 @@ expect_snapshot <- function(
   variant = NULL,
   cnd_class = FALSE
 ) {
-  check_bool(cran)
-  check_bool(error)
-  check_bool(cnd_class)
-
   edition_require(3, "expect_snapshot()")
+
+  x <- enquo0(x)
+  expect_snapshot_(
+    x,
+    cran = cran,
+    error = error,
+    transform = transform,
+    variant = variant,
+    cnd_class = cnd_class
+  )
+}
+
+expect_snapshot_ <- function(
+  x,
+  cran = TRUE,
+  error = FALSE,
+  error_class = NULL,
+  transform = NULL,
+  variant = NULL,
+  cnd_class = FALSE,
+  error_frame = caller_env()
+) {
+  check_bool(cran, call = error_frame)
+  check_bool(error, call = error_frame)
+  check_bool(cnd_class, call = error_frame)
+
   variant <- check_variant(variant)
   if (!is.null(transform)) {
     transform <- as_function(transform)
   }
-
-  x <- enquo0(x)
 
   # Execute code, capturing last error
   state <- new_environment(list(error = NULL))
@@ -95,7 +120,13 @@ expect_snapshot <- function(
   )
 
   # Use expect_error() machinery to confirm that error is as expected
-  msg <- compare_condition_3e("error", NULL, state$error, quo_label(x), error)
+  msg <- compare_condition_3e(
+    cond_type = "error",
+    cond_class = error_class,
+    cond = state$error,
+    lab = quo_label(x),
+    expected = error
+  )
   if (!is.null(msg)) {
     if (error) {
       return(fail(msg, trace = state$error[["trace"]]))
@@ -112,7 +143,7 @@ expect_snapshot <- function(
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]],
     variant = variant,
-    trace_env = caller_env()
+    trace_env = error_frame
   )
 }
 
@@ -313,6 +344,7 @@ expect_snapshot_helper <- function(
   trace_env = caller_env()
 ) {
   if (!cran && on_cran()) {
+    signal_snapshot_on_cran()
     return(invisible())
   }
 
@@ -428,4 +460,11 @@ check_variant <- function(x, call = caller_env()) {
 with_is_snapshotting <- function(code) {
   withr::local_envvar(TESTTHAT_IS_SNAPSHOT = "true")
   code
+}
+
+signal_snapshot_on_cran <- function() {
+  withRestarts(
+    signal(class = "snapshot_on_cran"),
+    muffle_cran_snapshot = function() {}
+  )
 }
