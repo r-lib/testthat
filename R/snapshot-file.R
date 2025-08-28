@@ -31,9 +31,14 @@
 #'   `compare_file_text()` compares lines-by-line, ignoring
 #'   the difference between Windows and Mac/Linux line endings.
 #' @param variant If not-`NULL`, results will be saved in
-#'   `_snaps/{variant}/{test}/{name}.{ext}`. This allows you to create
+#'   `_snaps/{variant}/{test}/{name}`. This allows you to create
 #'   different snapshots for different scenarios, like different operating
 #'   systems or different R versions.
+#'
+#'   Note that there's no way to declare all possible variants up front which
+#'   means that as soon as you start using variants, you are responsible for
+#'   deleting snapshot variants that are no longer used. (testthat will still
+#'   delete all variants if you delete the test.)
 #' @inheritParams expect_snapshot
 #'
 #' @section Announcing snapshots:
