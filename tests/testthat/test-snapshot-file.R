@@ -166,27 +166,16 @@ test_that("generates informative hint", {
   local_mocked_bindings(in_check_reporter = function() FALSE)
   withr::local_envvar(GITHUB_ACTIONS = "false", TESTTHAT_WD = NA)
 
-  expect_snapshot(snapshot_hint(
-    "lala",
-    NULL,
-    "foo.R",
-    show_accept = FALSE,
-    reset_output = FALSE
-  ))
-
-  expect_snapshot(snapshot_hint(
-    "lala",
-    NULL,
-    "foo.R",
-    show_accept = TRUE,
-    reset_output = FALSE
-  ))
+  expect_snapshot(snapshot_hint("lala", "foo.R", reset_output = FALSE))
 })
 
 test_that("expect_snapshot_file validates its inputs", {
+  path <- withr::local_tempfile(lines = "x")
+
   expect_snapshot(error = TRUE, {
-    expect_snapshot_file(123, "test.txt")
-    expect_snapshot_file("test.txt", 123)
-    expect_snapshot_file("test.txt", "test.txt", cran = "yes")
+    expect_snapshot_file(123)
+    expect_snapshot_file("doesnt-exist.txt")
+    expect_snapshot_file(path, 123)
+    expect_snapshot_file(path, "test.txt", cran = "yes")
   })
 })

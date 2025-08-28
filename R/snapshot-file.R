@@ -109,6 +109,9 @@ expect_snapshot_file <- function(
   lab <- quo_label(enquo(path))
 
   check_string(path)
+  if (!file.exists(path)) {
+    cli::cli_abort("{.path {path}} doesn't exist.")
+  }
   check_string(name)
   check_bool(cran)
   check_variant(variant)
@@ -160,7 +163,7 @@ expect_snapshot_file <- function(
 
   if (!equal) {
     if (is_text) {
-      base <- paste0(c(snapshotter$snap_dir, file, variant), collapse = "/")
+      base <- paste0(c(snapshotter$snap_dir, variant, file), collapse = "/")
       old_path <- paste0(c(base, name), collapse = "/")
       new_path <- paste0(c(base, new_name(name)), collapse = "/")
 
@@ -176,7 +179,7 @@ expect_snapshot_file <- function(
       comp <- NULL
     }
 
-    hint <- snapshot_hint(file, variant, file, show_accept = is_text)
+    hint <- snapshot_hint(file, name, show_accept = is_text)
 
     msg <- c(
       sprintf("Snapshot of %s has changed.", lab),

@@ -264,15 +264,10 @@
 # hint is informative
 
     Code
-      snapshot_hint(NULL, "_default", "bar.R", reset_output = FALSE)
+      snapshot_hint(NULL, "bar.R", reset_output = FALSE)
     Output
       * Run `testthat::snapshot_accept("bar.R")` to accept the change.
       * Run `testthat::snapshot_review("bar.R")` to review the change.
-    Code
-      snapshot_hint(NULL, "foo", "bar.R", reset_output = FALSE)
-    Output
-      * Run `testthat::snapshot_accept("foo/bar.R")` to accept the change.
-      * Run `testthat::snapshot_review("foo/bar.R")` to review the change.
 
 # expect_snapshot validates its inputs
 

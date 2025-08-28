@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_snapshot_file()` now clearly errors if the `path` doesnt exist (#2191).
 * `expect_snapshot_file()` now considers `.json` to be a text file (#1593).
 * `expect_snapshot_file()` now shows differences for text files (#1593).
 * The failure messages for all `expect_` functions have been rewritten to first state what was expected and then what was actually received (#2142).
