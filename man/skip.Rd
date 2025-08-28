@@ -30,7 +30,7 @@ skip_if_offline(host = "captive.apple.com")
 
 skip_on_cran()
 
-local_on_cran(on_cran, frame = caller_env())
+local_on_cran(on_cran = TRUE, frame = caller_env())
 
 skip_on_os(os, arch = NULL)
 

@@ -8,9 +8,9 @@
 # snapshot tests in describe / and in it
 
     Code
-      1 + 1
+      2 + 2
     Output
-      [1] 2
+      [1] 4
 
 # has to have a valid description for the block
 
