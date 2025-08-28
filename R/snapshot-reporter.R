@@ -63,7 +63,7 @@ SnapshotReporter <- R6::R6Class(
         return()
       }
 
-      self$test <- paste0(gsub("\n", "", test), collapse = " / ")
+      self$test <- gsub("\n", "", test)
     },
 
     # Called by expectation
@@ -163,6 +163,10 @@ SnapshotReporter <- R6::R6Class(
       }
 
       # If expectation errors or skips, need to copy snapshots from old to cur
+      # TODO: the logic is not correct here for subtests, probably because
+      # the code was not written under the assumption that start_test()
+      # generates a stack of tests. You can see the problem by running
+      # local_on_cran() then testing describe.R.
       if (expectation_error(result) || expectation_skip(result)) {
         self$cur_snaps$reset(self$test, self$old_snaps)
       }
