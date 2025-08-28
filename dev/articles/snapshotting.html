@@ -238,6 +238,10 @@ message and update the snapshots for that file by running
 <code>snapshot_accept("pizza")</code>; otherwise you can fix the bug and
 your tests will pass once more. (You can also accept snapshot for all
 files with <code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code>).</p>
+<p>If you delete the test, the corresponding snapshot will be removed
+the next time you run the tests. If you delete all snapshots in the
+file, the entire snapshot file will be deleted the next time you run all
+the tests.</p>
 <div class="section level3">
 <h3 id="snapshot-format">Snapshot format<a class="anchor" aria-label="anchor" href="#snapshot-format"></a>
 </h3>
