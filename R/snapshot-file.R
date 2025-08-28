@@ -157,11 +157,6 @@ expect_snapshot_file <- function(
   }
 
   file <- snapshotter$file
-  if (in_check_reporter()) {
-    hint <- ""
-  } else {
-    hint <- snapshot_review_hint(file, name, is_text = is_text)
-  }
 
   if (!equal) {
     if (is_text) {
@@ -180,6 +175,8 @@ expect_snapshot_file <- function(
     } else {
       comp <- NULL
     }
+
+    hint <- snapshot_hint(file, variant, file, show_accept = is_text)
 
     msg <- c(
       sprintf("Snapshot of %s has changed.", lab),
@@ -205,28 +202,6 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   if (!is.null(snapshotter)) {
     snapshotter$announce_file_snapshot(name)
   }
-}
-
-snapshot_review_hint <- function(
-  test,
-  name,
-  is_text = FALSE,
-  reset_output = TRUE
-) {
-  if (reset_output) {
-    local_reporter_output()
-  }
-
-  c(
-    if (is_text) {
-      cli::format_inline(
-        "* Run {.run testthat::snapshot_accept('{test}/{name}')} to accept the change."
-      )
-    },
-    cli::format_inline(
-      "* Run {.run testthat::snapshot_review('{test}/{name}')} to review the change."
-    )
-  )
 }
 
 snapshot_file_equal <- function(

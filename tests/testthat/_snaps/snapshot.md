@@ -264,12 +264,12 @@
 # hint is informative
 
     Code
-      cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
+      snapshot_hint(NULL, "_default", "bar.R", reset_output = FALSE)
     Output
       * Run `testthat::snapshot_accept("bar.R")` to accept the change.
       * Run `testthat::snapshot_review("bar.R")` to review the change.
     Code
-      cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
+      snapshot_hint(NULL, "foo", "bar.R", reset_output = FALSE)
     Output
       * Run `testthat::snapshot_accept("foo/bar.R")` to accept the change.
       * Run `testthat::snapshot_review("foo/bar.R")` to review the change.

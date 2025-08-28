@@ -367,18 +367,12 @@ expect_snapshot_helper <- function(
   } else {
     variant_lab <- ""
   }
-  if (in_check_reporter()) {
-    hint <- ""
-  } else {
-    hint <- snapshot_accept_hint(variant, snapshotter$file)
-  }
 
   if (length(comp) != 0) {
-    msg <- sprintf(
-      "Snapshot of %s has changed%s:\n%s\n\n%s",
-      lab,
-      variant_lab,
-      paste0(comp, collapse = "\n\n"),
+    hint <- snapshot_hint(NULL, variant, snapshotter$file)
+    msg <- c(
+      sprintf("Snapshot of %s has changed%s:", lab, variant_lab),
+      comp,
       hint
     )
     return(snapshot_fail(msg, trace_env = trace_env))
@@ -387,18 +381,25 @@ expect_snapshot_helper <- function(
   pass(NULL)
 }
 
-snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
+snapshot_hint <- function(
+  file,
+  variant,
+  name,
+  show_accept = TRUE,
+  reset_output = TRUE
+) {
+  if (in_check_reporter()) {
+    return("")
+  }
+
   if (reset_output) {
     local_reporter_output()
   }
 
-  if (is.null(variant) || variant == "_default") {
-    name <- file
-  } else {
-    name <- file.path(variant, file)
-  }
+  id <- c(file, if (!identical(variant, "_default")) variant, name)
+  full_name <- paste0(id, collapse = "/")
 
-  args <- encodeString(name, quote = '"')
+  args <- encodeString(full_name, quote = '"')
   # Include path argument if we're in a different working directory
   wd <- Sys.getenv("TESTTHAT_WD", unset = "")
   if (wd != "") {
@@ -408,16 +409,22 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
     }
   }
 
-  paste0(
-    cli::format_inline(
-      "* Run {.run testthat::snapshot_accept({args})} to accept the change."
-    ),
-    "\n",
-    cli::format_inline(
-      "* Run {.run testthat::snapshot_review({args})} to review the change."
-    )
+  accept_link <- cli::format_inline("{.run testthat::snapshot_accept({args})}")
+  review_link <- cli::format_inline("{.run testthat::snapshot_review({args})}")
+
+  out <- c(
+    if (show_accept) sprintf("* Run %s to accept the change.", accept_link),
+    sprintf("* Run %s to review the change.", review_link)
   )
+  structure(out, class = "testthat_hint")
 }
+
+#' @export
+print.testthat_hint <- function(x, ...) {
+  cat(paste0(x, "\n", collapse = ""))
+  invisible(x)
+}
+
 
 snapshot_not_available <- function(message) {
   local_reporter_output()
