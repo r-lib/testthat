@@ -28,7 +28,10 @@ expect_length <- function(object, n) {
   act$n <- length(act$val)
 
   if (act$n != n) {
-    msg <- sprintf("%s has length %i, not length %i.", act$lab, act$n, n)
+    msg <- c(
+      sprintf("Expected %s to have length %i.", act$lab, n),
+      sprintf("Actual length: %i.", act$n)
+    )
     return(fail(msg))
   }
   pass(act$val)
@@ -46,7 +49,7 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
 
   dim_object <- base::dim(object)
   if (is.null(dim_object)) {
-    return(fail(sprintf("%s has no dimensions.", act$lab)))
+    return(fail(sprintf("Expected %s to have dimensions.", act$lab)))
   }
 
   if (!missing(nrow)) {
@@ -54,20 +57,27 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
     act$nrow <- dim_object[1L]
 
     if (!identical(as.integer(act$nrow), as.integer(nrow))) {
-      msg <- sprintf("%s has %i rows, not %i.", act$lab, act$nrow, nrow)
+      msg <- c(
+        sprintf("Expected %s to have %i rows.", act$lab, nrow),
+        sprintf("Actual rows: %i.", act$nrow)
+      )
       return(fail(msg))
     }
   } else if (!missing(ncol)) {
     check_number_whole(ncol, allow_na = TRUE)
 
     if (length(dim_object) == 1L) {
-      return(fail(sprintf("%s has only one dimension.", act$lab)))
+      msg <- sprintf("Expected %s to have two or more dimensions.", act$lab)
+      return(fail(msg))
     }
 
     act$ncol <- dim_object[2L]
 
     if (!identical(as.integer(act$ncol), as.integer(ncol))) {
-      msg <- sprintf("%s has %i columns, not %i.", act$lab, act$ncol, ncol)
+      msg <- c(
+        sprintf("Expected %s to have %i columns.", act$lab, ncol),
+        sprintf("Actual columns: %i.", act$ncol)
+      )
       return(fail(msg))
     }
   } else {
@@ -78,20 +88,16 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
     act$dim <- dim_object
 
     if (length(act$dim) != length(dim)) {
-      return(fail(sprintf(
-        "%s has %i dimensions, not %i.",
-        act$lab,
-        length(act$dim),
-        length(dim)
-      )))
+      msg <- c(
+        sprintf("Expected %s to have %i dimensions.", act$lab, length(dim)),
+        sprintf("Actual dimensions: %i.", length(act$dim))
+      )
     }
 
     if (!identical(as.integer(act$dim), as.integer(dim))) {
-      msg <- sprintf(
-        "%s has dim (%s), not (%s).",
-        act$lab,
-        toString(act$dim),
-        toString(dim)
+      msg <- c(
+        sprintf("Expected %s to have dim (%s).", act$lab, toString(dim)),
+        sprintf("Actual dim: (%s).", toString(act$dim))
       )
       return(fail(msg))
     }

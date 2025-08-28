@@ -14,8 +14,8 @@
       i Expectation failed; trying again (1)...
     Condition
       Error:
-      ! `i` (`actual`) is not equal to 0 (`expected`).
-      
+      ! Expected `i` to be equal to 0.
+      Differences:
         `actual`: 1.0
       `expected`: 0.0
 

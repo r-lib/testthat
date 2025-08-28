@@ -96,6 +96,14 @@
     Output
       [1] "****"
 
+# always checks error status
+
+    Code
+      expect_snapshot(print("!"), error = TRUE)
+    Condition
+      Error:
+      ! Expected `print("!")` to throw a error.
+
 # can capture error/warning messages
 
     This is an error

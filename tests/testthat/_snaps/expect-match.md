@@ -1,43 +1,77 @@
-# generates useful failure messages
+# useful failure if empty
 
-    `zero` is empty.
+    Code
+      expect_match(zero, "asdf")
+    Condition
+      Error:
+      ! Expected `zero` to have at least one element.
 
----
+# useful failure messages for scalars
 
-    `one` does not match regexp "asdf".
-    Text:
-    ✖ │ bcde
-
----
-
-    Every element of `many` does not match regexp "a".
-    Text:
-    ✔ │ a
-    ✔ │ a
-    ✖ │ b
-
----
-
-    Some element of `many` does not match regexp "c".
-    Text:
-    ✖ │ a
-    ✖ │ a
-    ✖ │ b
+    Code
+      expect_match(one, "asdf")
+    Condition
+      Error:
+      ! Expected `one` to match regexp "asdf".
+      Actual text:
+      ✖ │ bcde
 
 ---
 
-    Every element of `paragraph` does not match regexp "paragraph".
-    Text:
-    ✔ │ This is a multiline
-      │ paragraph.
-    ✖ │ Second element.
+    Code
+      expect_match(one, "asdf", fixed = TRUE)
+    Condition
+      Error:
+      ! Expected `one` to match string "asdf".
+      Actual text:
+      ✖ │ bcde
+
+# useful failure messages for vectors
+
+    Code
+      expect_match(many, "a")
+    Condition
+      Error:
+      ! Expected every element of `many` to match regexp "a".
+      Actual text:
+      ✔ │ a
+      ✔ │ a
+      ✖ │ b
 
 ---
 
-    Every element of `na` does not match regexp "NA".
-    Text:
-    ✔ │ NA
-    ✖ │ <NA>
+    Code
+      expect_match(many, "c", all = FALSE)
+    Condition
+      Error:
+      ! Expected some element of `many` to match regexp "c".
+      Actual text:
+      ✖ │ a
+      ✖ │ a
+      ✖ │ b
+
+---
+
+    Code
+      expect_match(paragraph, "paragraph")
+    Condition
+      Error:
+      ! Expected every element of `paragraph` to match regexp "paragraph".
+      Actual text:
+      ✔ │ This is a multiline
+        │ paragraph.
+      ✖ │ Second element.
+
+---
+
+    Code
+      expect_match(na, "NA")
+    Condition
+      Error:
+      ! Expected every element of `na` to match regexp "NA".
+      Actual text:
+      ✔ │ NA
+      ✖ │ <NA>
 
 # expect_match validates its inputs
 
@@ -97,13 +131,21 @@
 
 # expect_no_match works
 
-    `x` matches string "e*".
-    Text:
-    x | te*st
+    Code
+      expect_no_match(x, "e*", fixed = TRUE)
+    Condition
+      Error:
+      ! Expected `x` not to match string "e*".
+      Actual text:
+      x | te*st
 
 ---
 
-    `x` matches regexp "TEST".
-    Text:
-    x | test
+    Code
+      expect_no_match(x, "TEST", ignore.case = TRUE)
+    Condition
+      Error:
+      ! Expected `x` not to match regexp "TEST".
+      Actual text:
+      x | test
 
