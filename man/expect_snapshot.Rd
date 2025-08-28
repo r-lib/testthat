@@ -41,8 +41,9 @@ variants are covered by automated tests, and ensure that you have a way
 to get snapshot changes out of your CI system and back into the repo.
 
 Note that there's no way to declare all possible variants up front which
-means that as soon as you start using variants, you, not testthat, is
-responsible for cleaning up old snapshots.}
+means that as soon as you start using variants, you are responsible for
+deleting snapshot variants that are no longer used. (testthat will still
+delete all variants if you delete the test.)}
 
 \item{cnd_class}{Whether to include the class of messages,
 warnings, and errors in the snapshot. Only the most specific

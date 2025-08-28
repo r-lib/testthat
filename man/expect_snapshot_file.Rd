@@ -51,9 +51,14 @@ text from the output. Should take a character vector of lines as input
 and return a modified character vector as output.}
 
 \item{variant}{If not-\code{NULL}, results will be saved in
-\verb{_snaps/\{variant\}/\{test\}/\{name\}.\{ext\}}. This allows you to create
+\verb{_snaps/\{variant\}/\{test\}/\{name\}}. This allows you to create
 different snapshots for different scenarios, like different operating
-systems or different R versions.}
+systems or different R versions.
+
+Note that there's no way to declare all possible variants up front which
+means that as soon as you start using variants, you are responsible for
+deleting snapshot variants that are no longer used. (testthat will still
+delete all variants if you delete the test.)}
 
 \item{old, new}{Paths to old and new snapshot files.}
 }
@@ -80,8 +85,8 @@ written to the \verb{_snaps} directory but which no longer have
 corresponding R code to generate them. These dangling files are
 automatically deleted so they don't clutter the snapshot
 directory. However we want to preserve snapshot files when the R
-code wasn't executed because of an unexpected error or because of a
-\code{\link[=skip]{skip()}}. Let testthat know about these files by calling
+code wasn't executed because of because of a \code{\link[=skip]{skip()}} or unexpected error.
+Let testthat know about these files by calling
 \code{announce_snapshot_file()} before \code{expect_snapshot_file()}.
 }
 
