@@ -1,11 +1,12 @@
 test_that("basic comparisons work", {
-  expect_success(expect_lt(10, 11))
-  expect_failure(expect_lt(10, 10))
-  expect_success(expect_lte(10, 10))
+  x <- 10
+  expect_success(expect_lt(x, 11))
+  expect_snapshot_failure(expect_lt(x, 10))
+  expect_success(expect_lte(x, 10))
 
   expect_success(expect_gt(11, 10))
-  expect_failure(expect_gt(10, 10))
-  expect_success(expect_gte(10, 10))
+  expect_snapshot_failure(expect_gt(x, 10))
+  expect_success(expect_gte(x, 10))
 })
 
 test_that("useful output when numbers are very small", {
@@ -37,6 +38,9 @@ test_that("comparisons with Inf work", {
   expect_success(expect_gt(Inf, 10))
   expect_failure(expect_gt(Inf, Inf))
   expect_success(expect_gte(Inf, Inf))
+
+  x <- Inf
+  expect_snapshot_failure(expect_lt(x, Inf))
 })
 
 test_that("comparisons with NA work", {
@@ -49,6 +53,9 @@ test_that("comparisons with NA work", {
   expect_failure(expect_gt(NA_real_, 10))
   expect_failure(expect_gt(NA_real_, NA_real_))
   expect_failure(expect_gte(NA_real_, NA_real_))
+
+  x <- NA_real_
+  expect_snapshot_failure(expect_lt(x, 10))
 })
 
 test_that("comparisons with more complicated objects work", {

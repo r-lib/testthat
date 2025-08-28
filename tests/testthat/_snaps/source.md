@@ -26,6 +26,14 @@
       Error:
       ! `env` must be an environment, not the string "x".
 
+# works on code like the describe() example
+
+    Code
+      filter_desc(code, c("math library", "division()", "can handle division by 0"))
+    Condition
+      Error:
+      ! Failed to find test with description "can handle division by 0".
+
 # preserve srcrefs
 
     Code

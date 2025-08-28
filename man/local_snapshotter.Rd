@@ -5,10 +5,12 @@
 \title{Instantiate local snapshotting context}
 \usage{
 local_snapshotter(
-  snap_dir = NULL,
+  reporter = SnapshotReporter,
+  snap_dir = "_snaps",
   cleanup = FALSE,
-  fail_on_new = FALSE,
-  .env = parent.frame()
+  desc = NULL,
+  fail_on_new = NULL,
+  frame = caller_env()
 )
 }
 \description{

@@ -10,7 +10,7 @@ snapshot_accept(files = NULL, path = "tests/testthat")
 
 snapshot_reject(files = NULL, path = "tests/testthat")
 
-snapshot_review(files = NULL, path = "tests/testthat")
+snapshot_review(files = NULL, path = "tests/testthat", ...)
 }
 \arguments{
 \item{files}{Optionally, filter effects to snapshots from specified files.
@@ -18,6 +18,8 @@ This can be a snapshot name (e.g. \code{foo} or \code{foo.md}), a snapshot file 
 (e.g. \code{testfile/foo.txt}), or a snapshot file directory (e.g. \verb{testfile/}).}
 
 \item{path}{Path to tests.}
+
+\item{...}{Additional arguments passed on to \code{\link[shiny:runApp]{shiny::runApp()}}.}
 }
 \description{
 \itemize{

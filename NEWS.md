@@ -1,5 +1,20 @@
 # testthat (development version)
 
+* `expect_snapshot_file()` now considers `.json` to be a text file (#1593).
+* `expect_snapshot_file()` now shows differences for text files (#1593).
+* The failure messages for all `expect_` functions have been rewritten to first state what was expected and then what was actually received (#2142).
+* `test_file(desc = ...)` no longer loses snapshot results (#2066).
+* In `R CMD check`, snapshots now only advise on how to resolve failures once (#2207).
+* `snapshot_review()` includes a reject button and only displays the file navigation and the skip button if there are multiple files to review (#2025).
+* New `snapshot_download_gh()` makes it easy to get snapshots off GitHub and into your local package (#1779).
+* New `local_mocked_s3_method()`, `local_mocked_s4_method()`, and `local_mocked_r6_class()` allow you to mock S3 and S4 methods and R6 classes (#1892, #1916)
+* `expect_snapshot_file(name=)` must have a unique file path. If a snapshot file attempts to be saved with a duplicate `name`, an error will be thrown. (#1592)
+* `test_dir()`, `test_file()`, `test_package()`, `test_check()`, `test_local()`, `source_file()` gain a `shuffle` argument uses `sample()` to randomly reorder the top-level expressions in each test file (#1942). This random reordering surfaces dependencies between tests and code outside of any test, as well as dependencies between tests. This helps you find and eliminate unintentional dependencies.
+* `snapshot_accept(test)` now works when the test file name contains `.` (#1669).
+* `local_mock()` and `with_mock()` have been deprecated because they are no longer permitted in R 4.5.
+* `snapshot_review()` now passes `...` on to `shiny::runApp()` (#1928).
+* `expect_named()` now gives more informative errors (#2091).
+* `expect_*()` functions consistently and rigorously check their inputs (#1754). 
 * `test_that()` no longer warns about the absence of `{}` since it no longer seems to be necessary.
 * `test_that()`, `describe()`, and `it()` can now be arbitrarily nested. Each component will skip only if it and its subtests don't contain any expectations. The interactive stop reporter has been fixed so it doesn't duplicate failures. (#2063, #2188).
 * Test filtering now works with `it()`, and the `desc` argument can take a character vector in order to recursively filter subtests (i.e. `it()` nested inside of `describe()`) (#2118).
@@ -37,7 +52,7 @@
 * Fixed an issue preventing compilation from succeeding due to deprecation / removal of `std::uncaught_exception()` (@kevinushey, #2047).
 * New `skip_unless_r()` to skip running tests on unsuitable versions of R, e.g. `skip_unless_r(">= 4.1.0")` to skip tests that require, say, `...names` (@MichaelChirico, #2022)
 * `skip_on_os()` gains an option `"emscripten"` of the `os` argument to skip tests on Emscripten (@eitsupi, #2103).
-* New expectation, `expect_shape()`, for testing the shape (i.e., the `length()`, `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
+* New expectation, `expect_shape()`, for testing the shape (i.e., the `nrow()`, `ncol()`, or `dim()`), all in one place (#1423, @michaelchirico).
 
 # testthat 3.2.3
 

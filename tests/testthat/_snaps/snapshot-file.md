@@ -1,3 +1,11 @@
+# expect_snapshot_file finds duplicate snapshot files
+
+    Code
+      expect_snapshot_file(write_tmp_lines(r_version()), "version.txt", variant = r_version())
+    Condition
+      Error in `expect_snapshot_file()`:
+      ! Snapshot file names must be unique. `name` has already been used.
+
 # warns on first creation
 
     Code
@@ -11,33 +19,24 @@
     Code
       snapshot_file_equal_("doesnt-exist.txt")
     Condition
-      Error in `snapshot_file_equal()`:
+      Error in `snapshot_file_equal_()`:
       ! 'doesnt-exist.txt' not found.
 
-# snapshot_hint output differs in R CMD check
+# generates informative hint
 
     Code
-      cat(snapshot_review_hint("lala", "foo.r", check = FALSE, ci = FALSE))
+      base::writeLines(snapshot_review_hint("lala", "foo.R", reset_output = FALSE))
     Output
-      Run `testthat::snapshot_review('lala/')` to review changes
+      * Run `testthat::snapshot_review('lala/foo.R')` to review the change.
 
 ---
 
     Code
-      cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = FALSE))
+      base::writeLines(snapshot_review_hint("lala", "foo.R", is_text = TRUE,
+        reset_output = FALSE))
     Output
-      * Locate check directory
-      * Copy 'tests/testthat/_snaps/lala/foo.new.r' to local test directory
-      * Run `testthat::snapshot_review('lala/')` to review changes
-
----
-
-    Code
-      cat(snapshot_review_hint("lala", "foo.r", check = TRUE, ci = TRUE))
-    Output
-      * Download and unzip run artifact
-      * Copy 'tests/testthat/_snaps/lala/foo.new.r' to local test directory
-      * Run `testthat::snapshot_review('lala/')` to review changes
+      * Run `testthat::snapshot_accept('lala/foo.R')` to accept the change.
+      * Run `testthat::snapshot_review('lala/foo.R')` to review the change.
 
 # expect_snapshot_file validates its inputs
 

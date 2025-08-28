@@ -83,7 +83,7 @@ auto_test_package <- function(
   test_path <- normalizePath(file.path(path, "tests", "testthat"))
 
   # Start by loading all code and running all tests
-  withr::local_envvar("NOT_CRAN" = "true")
+  local_assume_not_on_cran()
   pkgload::load_all(path)
   test_dir(
     test_path,

@@ -96,6 +96,14 @@
     Output
       [1] "****"
 
+# always checks error status
+
+    Code
+      expect_snapshot(print("!"), error = TRUE)
+    Condition
+      Error:
+      ! Expected `print("!")` to throw a error.
+
 # can capture error/warning messages
 
     This is an error
@@ -258,13 +266,13 @@
     Code
       cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
     Output
-      * Run ]8;;ide:run:testthat::snapshot_accept('bar.R')testthat::snapshot_accept('bar.R')]8;; to accept the change.
-      * Run ]8;;ide:run:testthat::snapshot_review('bar.R')testthat::snapshot_review('bar.R')]8;; to interactively review the change.
+      * Run `testthat::snapshot_accept('bar.R')` to accept the change.
+      * Run `testthat::snapshot_review('bar.R')` to review the change.
     Code
       cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
     Output
-      * Run ]8;;ide:run:testthat::snapshot_accept('foo/bar.R')testthat::snapshot_accept('foo/bar.R')]8;; to accept the change.
-      * Run ]8;;ide:run:testthat::snapshot_review('foo/bar.R')testthat::snapshot_review('foo/bar.R')]8;; to interactively review the change.
+      * Run `testthat::snapshot_accept('foo/bar.R')` to accept the change.
+      * Run `testthat::snapshot_review('foo/bar.R')` to review the change.
 
 # expect_snapshot validates its inputs
 

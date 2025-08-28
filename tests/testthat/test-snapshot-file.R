@@ -9,14 +9,13 @@ test_that("expect_snapshot_file works", {
   expect_snapshot_file(path, "foo.png")
 
   path <- withr::local_tempfile()
-  mtcars2 <- mtcars
-  # mtcars2$wt[10] <- NA
+  mtcars2 <- mtcars[1:5, 1:4]
   write.csv(mtcars2, path)
   expect_snapshot_file(path, "foo.csv", compare = compare_file_text)
 
   # Deprecated `binary` argument still works
   withr::local_options(lifecycle_verbosity = "quiet")
-  expect_snapshot_file(path, "foo.csv", binary = FALSE)
+  expect_snapshot_file(path, "foo-not-binary.csv", binary = FALSE)
 })
 
 
@@ -31,6 +30,8 @@ test_that("expect_snapshot_file works in a different directory", {
 })
 
 test_that("expect_snapshot_file works with variant", {
+  local_on_cran(FALSE)
+
   expect_snapshot_file(
     write_tmp_lines(r_version()),
     "version.txt",
@@ -39,8 +40,22 @@ test_that("expect_snapshot_file works with variant", {
   )
 })
 
+test_that("expect_snapshot_file finds duplicate snapshot files", {
+  local_on_cran(FALSE)
+
+  expect_snapshot(
+    expect_snapshot_file(
+      write_tmp_lines(r_version()),
+      "version.txt",
+      variant = r_version()
+    ),
+    error = TRUE
+  )
+})
+
 test_that("basic workflow", {
-  snapper <- local_snapshotter(fail_on_new = FALSE)
+  local_on_cran(FALSE)
+  snapper <- local_test_snapshotter()
 
   path <- write_tmp_lines(letters)
   # warns on first run
@@ -56,12 +71,12 @@ test_that("basic workflow", {
   # fails if changed
   snapper$start_file("snapshot-6", "test")
   path2 <- write_tmp_lines(letters[-1])
-  expect_failure(expect_snapshot_file(path2, "letters.txt"))
+  expect_failure(expect_snapshot_file(path2, "letters.txt"), "has changed")
   snapper$end_file()
 })
 
 test_that("can announce snapshot file", {
-  snapper <- local_snapshotter(fail_on_new = FALSE)
+  snapper <- local_test_snapshotter()
   snapper$start_file("snapshot-announce", "test")
   announce_snapshot_file(name = "bar.svg")
   expect_equal(snapper$snap_file_seen, "snapshot-announce/bar.svg")
@@ -86,7 +101,8 @@ test_that("warns on first creation", {
       snap_test = "my-test",
       snap_name = "test.txt",
       snap_variant = NULL,
-      path = path
+      path = path,
+      fail_on_new = FALSE
     )
   }
 
@@ -146,28 +162,18 @@ test_that("split_path handles edge cases", {
   expect_equal(split_path("x/.b.c"), list(dir = "x", name = "", ext = "b.c"))
 })
 
-test_that("snapshot_hint output differs in R CMD check", {
-  snapshot_review_hint <- function(...) {
-    testthat:::snapshot_review_hint(..., reset_output = FALSE)
-  }
+test_that("generates informative hint", {
+  expect_snapshot(base::writeLines(snapshot_review_hint(
+    "lala",
+    "foo.R",
+    reset_output = FALSE
+  )))
 
-  expect_snapshot(cat(snapshot_review_hint(
+  expect_snapshot(base::writeLines(snapshot_review_hint(
     "lala",
-    "foo.r",
-    check = FALSE,
-    ci = FALSE
-  )))
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = TRUE,
-    ci = FALSE
-  )))
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = TRUE,
-    ci = TRUE
+    "foo.R",
+    is_text = TRUE,
+    reset_output = FALSE
   )))
 })
 

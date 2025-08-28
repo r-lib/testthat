@@ -34,22 +34,31 @@ expect_setequal <- function(object, expected) {
     testthat_warn("expect_setequal() ignores names")
   }
 
+  expect_setequal_(act, exp)
+}
+
+expect_setequal_ <- function(
+  act,
+  exp,
+  trace_env = caller_env()
+) {
   act_miss <- unique(act$val[!act$val %in% exp$val])
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
   if (length(exp_miss) || length(act_miss)) {
-    return(fail(paste0(
+    msg_exp <- sprintf(
+      "Expected %s to have the same values as %s.",
       act$lab,
-      " (`actual`) and ",
-      exp$lab,
-      " (`expected`) don't have the same values.\n",
-      if (length(act_miss)) {
-        paste0("* Only in `actual`: ", values(act_miss), "\n")
-      },
-      if (length(exp_miss)) {
-        paste0("* Only in `expected`: ", values(exp_miss), "\n")
-      }
-    )))
+      exp$lab
+    )
+    msg_act <- c(
+      sprintf("Actual: %s", values(act$val)),
+      sprintf("Expected: %s", values(exp$val)),
+      if (length(act_miss)) sprintf("Needs: %s", values(act_miss)),
+      if (length(exp_miss)) sprintf("Absent: %s", values(exp_miss))
+    )
+
+    return(fail(c(msg_exp, msg_act), trace_env = trace_env))
   }
   pass(act$val)
 }
@@ -92,14 +101,17 @@ expect_contains <- function(object, expected) {
 
   exp_miss <- !exp$val %in% act$val
   if (any(exp_miss)) {
-    return(fail(paste0(
+    msg_exp <- sprintf(
+      "Expected %s to contain all values in %s.",
       act$lab,
-      " (`actual`) doesn't fully contain all the values in ",
-      exp$lab,
-      " (`expected`).\n",
-      paste0("* Missing from `actual`: ", values(exp$val[exp_miss]), "\n"),
-      paste0("* Present in `actual`:   ", values(act$val), "\n")
-    )))
+      exp$lab
+    )
+    msg_act <- c(
+      sprintf("Actual: %s", values(act$val)),
+      sprintf("Expected: %s", values(exp$val)),
+      sprintf("Missing: %s", values(exp$val[exp_miss]))
+    )
+    fail(c(msg_exp, msg_act))
   }
 
   pass(act$val)
@@ -116,14 +128,17 @@ expect_in <- function(object, expected) {
 
   act_miss <- !act$val %in% exp$val
   if (any(act_miss)) {
-    return(fail(paste0(
+    msg_exp <- sprintf(
+      "Expected %s to only contain values from %s.",
       act$lab,
-      " (`actual`) isn't fully contained within ",
-      exp$lab,
-      " (`expected`).\n",
-      paste0("* Missing from `expected`: ", values(act$val[act_miss]), "\n"),
-      paste0("* Present in `expected`:   ", values(exp$val), "\n")
-    )))
+      exp$lab
+    )
+    msg_act <- c(
+      sprintf("Actual: %s", values(act$val)),
+      sprintf("Expected: %s", values(exp$val)),
+      sprintf("Invalid: %s", values(act$val[act_miss]))
+    )
+    fail(c(msg_exp, msg_act))
   }
 
   pass(act$val)

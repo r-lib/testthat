@@ -40,6 +40,7 @@ Suggests:
     curl (>= 0.9.5),
     diffviewer (>= 0.1.0),
     digest (>= 0.6.33),
+    gh,
     knitr,
     rmarkdown,
     rstudioapi,

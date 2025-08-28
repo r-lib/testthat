@@ -73,17 +73,37 @@ expect_snapshot <- function(
   variant = NULL,
   cnd_class = FALSE
 ) {
-  check_bool(cran)
-  check_bool(error)
-  check_bool(cnd_class)
-
   edition_require(3, "expect_snapshot()")
+
+  x <- enquo0(x)
+  expect_snapshot_(
+    x,
+    cran = cran,
+    error = error,
+    transform = transform,
+    variant = variant,
+    cnd_class = cnd_class
+  )
+}
+
+expect_snapshot_ <- function(
+  x,
+  cran = TRUE,
+  error = FALSE,
+  error_class = NULL,
+  transform = NULL,
+  variant = NULL,
+  cnd_class = FALSE,
+  error_frame = caller_env()
+) {
+  check_bool(cran, call = error_frame)
+  check_bool(error, call = error_frame)
+  check_bool(cnd_class, call = error_frame)
+
   variant <- check_variant(variant)
   if (!is.null(transform)) {
     transform <- as_function(transform)
   }
-
-  x <- enquo0(x)
 
   # Execute code, capturing last error
   state <- new_environment(list(error = NULL))
@@ -100,7 +120,13 @@ expect_snapshot <- function(
   )
 
   # Use expect_error() machinery to confirm that error is as expected
-  msg <- compare_condition_3e("error", NULL, state$error, quo_label(x), error)
+  msg <- compare_condition_3e(
+    cond_type = "error",
+    cond_class = error_class,
+    cond = state$error,
+    lab = quo_label(x),
+    expected = error
+  )
   if (!is.null(msg)) {
     if (error) {
       return(fail(msg, trace = state$error[["trace"]]))
@@ -117,7 +143,7 @@ expect_snapshot <- function(
     save = function(x) paste0(x, collapse = "\n"),
     load = function(x) split_by_line(x)[[1]],
     variant = variant,
-    trace_env = caller_env()
+    trace_env = error_frame
   )
 }
 
@@ -294,7 +320,7 @@ expect_snapshot_condition_ <- function(
         class
       )
     }
-    return(fail(msg, trace_env = trace_env))
+    return(snapshot_fail(msg, trace_env = trace_env))
   }
 
   expect_snapshot_helper(
@@ -318,6 +344,7 @@ expect_snapshot_helper <- function(
   trace_env = caller_env()
 ) {
   if (!cran && on_cran()) {
+    signal(class = "snapshot_on_cran")
     return(invisible())
   }
 
@@ -336,13 +363,20 @@ expect_snapshot_helper <- function(
     variant = variant,
     trace_env = trace_env
   )
+  if (inherits(comp, "expectation_failure")) {
+    return(comp)
+  }
 
   if (!identical(variant, "_default")) {
     variant_lab <- paste0(" (variant '", variant, "')")
   } else {
     variant_lab <- ""
   }
-  hint <- snapshot_accept_hint(variant, snapshotter$file)
+  if (in_check_reporter()) {
+    hint <- ""
+  } else {
+    hint <- snapshot_accept_hint(variant, snapshotter$file)
+  }
 
   if (length(comp) != 0) {
     msg <- sprintf(
@@ -352,7 +386,7 @@ expect_snapshot_helper <- function(
       paste0(comp, collapse = "\n\n"),
       hint
     )
-    return(fail(msg, trace_env = trace_env))
+    return(snapshot_fail(msg, trace_env = trace_env))
   }
 
   pass(NULL)
@@ -375,7 +409,7 @@ snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
     ),
     "\n",
     cli::format_inline(
-      "* Run {.run testthat::snapshot_review('{name}')} to interactively review the change."
+      "* Run {.run testthat::snapshot_review('{name}')} to review the change."
     )
   )
 }

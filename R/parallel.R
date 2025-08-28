@@ -1,4 +1,4 @@
-# +-----------------------------+     +-------------------------------+
+# /-----------------------------\     /-------------------------------\
 # | Main R process              |     | Subprocess 1                  |
 # | +------------------------+  |     | +---------------------------+ |
 # | | test_dir_parallel()    |  |     | | test_file()               | |
@@ -11,17 +11,16 @@
 # | | | Progress2Reporter |  |  |  |  | | |    v                  | | |
 # | | +-------------------+  |  |  |  | | | +-------------------+ | | |
 # | +------------------------+  |  |--------| signalCondition() | | | |
-# +-----------------------------+  |  | | | +-------------------+ | | |
+# \-----------------------------/  |  | | | +-------------------+ | | |
 #                                  |  | | +-----------------------+ | |
 #                                  |  | +---------------------------+ |
-#                                  |  +-------------------------------+
-#                                  |  +-------------------------------+
+#                                  |  \-------------------------------/
+#                                  |  /-------------------------------\
 #                                  |--| Subprocess 2                  |
-#                                  |  +-------------------------------+
-#                                  |  +-------------------------------+
-#                                  +--| Subprocess 3                  |
-#                                     +-------------------------------+
-#                                       ...
+#                                  |  \-------------------------------/
+#                                  |  /-------------------------------\
+#                                  \--| Subprocess 3                  |
+#                                     \-------------------------------/
 #
 # ## Notes
 #
@@ -41,7 +40,8 @@ test_files_parallel <- function(
   stop_on_failure = FALSE,
   stop_on_warning = FALSE,
   wrap = TRUE, # unused, to match test_files signature
-  load_package = c("none", "installed", "source")
+  load_package = c("none", "installed", "source"),
+  shuffle = FALSE
 ) {
   # TODO: support timeouts. 20-30s for each file by default?
 
@@ -59,11 +59,12 @@ test_files_parallel <- function(
     test_dir = test_dir,
     load_helpers = load_helpers,
     num_workers = num_workers,
-    load_package = load_package
+    load_package = load_package,
+    shuffle = shuffle
   )
 
   withr::with_dir(test_dir, {
-    reporters <- test_files_reporter_parallel(reporter)
+    reporters <- test_files_reporter(reporter, "parallel")
     with_reporter(reporters$multi, {
       parallel_updates <- reporter$capabilities$parallel_updates
       if (parallel_updates) {
@@ -81,23 +82,6 @@ test_files_parallel <- function(
   })
 }
 
-test_files_reporter_parallel <- function(reporter, .env = parent.frame()) {
-  lister <- ListReporter$new()
-  snapshotter <- MainprocessSnapshotReporter$new("_snaps", fail_on_new = FALSE)
-  reporters <- list(
-    find_reporter(reporter),
-    lister, # track data
-    snapshotter
-  )
-  withr::local_options(
-    "testthat.snapshotter" = snapshotter,
-    .local_envir = .env
-  )
-  list(
-    multi = MultiReporter$new(reporters = compact(reporters)),
-    list = lister
-  )
-}
 
 default_num_cpus <- function() {
   # Use common option, if set
@@ -227,7 +211,8 @@ queue_setup <- function(
   test_dir,
   num_workers,
   load_helpers,
-  load_package
+  load_package,
+  shuffle = FALSE
 ) {
   # TODO: observe `load_package`, but the "none" default is not
   # OK for the subprocess, because it'll not have the tested package
@@ -266,9 +251,11 @@ queue_setup <- function(
   })
   queue <- task_q$new(concurrency = num_workers, load_hook = load_hook)
 
-  fun <- transport_fun(function(path) asNamespace("testthat")$queue_task(path))
+  fun <- transport_fun(function(path, shuffle) {
+    asNamespace("testthat")$queue_task(path, shuffle)
+  })
   for (path in test_paths) {
-    queue$push(fun, list(path))
+    queue$push(fun, list(path, shuffle))
   }
 
   queue
@@ -299,19 +286,19 @@ queue_process_setup <- function(
   the$testing_env <- env
 }
 
-queue_task <- function(path) {
+queue_task <- function(path, shuffle = FALSE) {
   withr::local_envvar("TESTTHAT_IS_PARALLEL" = "true")
-  snapshotter <- SubprocessSnapshotReporter$new(
-    snap_dir = "_snaps",
-    fail_on_new = FALSE
-  )
+  snapshotter <- SubprocessSnapshotReporter$new(snap_dir = "_snaps")
   withr::local_options(testthat.snapshotter = snapshotter)
   reporters <- list(
     SubprocessReporter$new(),
     snapshotter
   )
   multi <- MultiReporter$new(reporters = reporters)
-  with_reporter(multi, test_one_file(path, env = the$testing_env))
+  with_reporter(
+    multi,
+    test_one_file(path, env = the$testing_env, shuffle = shuffle)
+  )
   NULL
 }
 
