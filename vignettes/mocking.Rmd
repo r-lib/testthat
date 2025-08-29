@@ -7,55 +7,198 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+```{r}
+#| include: false
+library(testthat)
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+
+# Pretend we're snapshotting
+snapper <- local_snapshotter(fail_on_new = FALSE)
+snapper$start_file("snapshotting.Rmd", "test")
+
+# Pretend we're testing testthat so we can use mocking
+Sys.setenv(TESTTHAT_PKG = "testthat")
+```
+
+Mocking allows you to temporarily replace the implementation of a function something that makes it easier to test. It's useful when testing failure scenarios that are hard to generate organically (e.g. what happens if dependency X isn't installed?), making tests more reliable by eliminating potential variability, making tests faster, and generally to make it possible to test functions that would otherwise be very challenging or impossible to test.
+
+testthat implements mocking primarily with `local_mocked_bindings()` for mocking functions, and we'll focus on that function in this vignette. But testthat provides other methods for specialised cases: you can use `local_mocked_s3_method()` to mock an S3 method, `local_mocked_s4_method()` to mock a S4 method, and `local_mocked_r6_class()` to mock an R6 class. Once you understand the basic idea of mocking, I think it should be straightforward to apply these other functions to your problem.
+
+## Getting started with mocking
+
+Imagine you're writing a function like `rlang::check_installed()` that gives a nice error message if a package is required but not found. A simple base R implementation might look something like this:
+
+```{r}
+check_installed <- function(pkg, min_version = NULL) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    stop(sprintf("{%s} is not installed.", pkg))
+  }
+  if (!is.null(min_version)) {
+    pkg_version <- packageVersion(pkg)
+    if (pkg_version < min_version) {
+      stop(sprintf(
+        "{%s} version %s is installed, but %s is required.", 
+        pkg, 
+        pkg_version, 
+        min_version
+      ))
+    }
+  }
+
+  invisible()
+}
+```
+
+When thinking about testing this function there are three cases that you want to test: 
+
+* `pkg` is not installed.
+* `pkg` is installed but doesn't meet the specified minimum version.
+* `pkg` is installed and does meet the minimum version.
+
+You could write a test with fake data:
+
+```{r}
+test_that("check_installed() requires package to be installed", {
+  expect_no_error(check_installed("testthat"))
+  expect_snapshot(check_installed("doesntexist"), error = TRUE)
+})
+```
+
+This is probably fine but it feels a little fragile (i.e. it'll break in the unlikely event someone creates a package called `doesntexist`). Additionally, it's hard to test that the error messages are informative:
+
+```{r}
+test_that("check_installed() requires minimum version", {
+  expect_no_error(check_installed("testthat"))
+  expect_no_error(check_installed("testthat", "1.0.0"))
+  expect_snapshot(check_installed("testthat", "99.99.999"), error = TRUE)
+})
+```
+
+Because the error message includes the current package version. (You'll also have to hope I don't release a lot of new testthat versions 🤣.)
+
+We can make these tests more robust with mocking. First we need to add `requireNamspace` and `packageVersion` bindings in our package (this doesn't break existing function usage because of <https://adv-r.hadley.nz/functions.html#functions-versus-variables>):
+
+```{r}
+requireNamespace <- NULL
+packageVersion <- NULL
+```
+
+Now we can write some tests:
+
+```{r}
+test_that("check_installed() requires package to be installed", {
+  local_mocked_bindings(requireNamespace = function(...) TRUE)
+  expect_no_error(check_installed("package-name"))
+
+  local_mocked_bindings(requireNamespace = function(...) FALSE)
+  expect_snapshot(check_installed("package-name"), error = TRUE)
+})
+
+test_that("check_installed() requires minimum version", {
+  local_mocked_bindings(
+    requireNamespace = function(...) TRUE,
+    packageVersion = function(...) numeric_version("3.0.0")
+  )
+  
+  expect_no_error(check_installed("package-name"))
+  expect_no_error(check_installed("package-name", "1.0.0"))
+  expect_snapshot(check_installed("package-name", "4.0.1"), error = TRUE)
+})
+```
+
+## Case studies
+
+### Pretending we're on a different platform
+
+```{r}
+#| include: false
+system_os <- NULL
+```
+
+`testthat::skip_on_os()` allows to skip tests on different platforms. But how do we test this reliably, not knowing what platform the test suite is running on? We use mocking to pretend that we're always on windows:
+
+```{r}
+#| eval: false
+test_that("can skip on multiple oses", {
+  local_mocked_bindings(system_os = function() "windows")
+
+  expect_skip(skip_on_os("windows"))
+  expect_skip(skip_on_os(c("windows", "linux")))
+  expect_no_skip(skip_on_os("linux"))
+})
+```
+
+### Speeding up tests
+
+<https://github.com/r-lib/usethis/blob/main/tests/testthat/test-release.R>
+
+Context: `usethis::use_release_issue()` creates a GitHub issue with a bulleted list of actions that we recommend following when releasing your package. But some of the bullets depend on complex conditions that might either vary or take a while to compute. So blocks like this:
+
+```{r}
+#| eval: false
+local_mocked_bindings(
+  get_revdeps = function() character(),
+  gh_milestone_number = function(...) NA
 )
 ```
 
-```{r setup}
-library(testthat)
-```
-
-Mocking is a useful technique when all else fails: for the duration of your test, you make some function return whatever you need it to. 
-
-Note that mocking works best on your own functions and functions that you import. But it's possible to mock base R functions and functions that you don't import. See `?local_mocked_bindings` for more details.
-
-<!-- https://github.com/search?q=%28org%3Ar-lib+OR+org%3Atidyverse%29+local_mocked+bindings+path%3Atests%2Ftestthat&type=code -->
-
-* Package versions and installed status
-* User interaction (e.g. `readline()`)
-* Retrieving external state (vcr typically best) but sometimes better at higher level. e.g. token prices in ellemr.
-* Pretending that you're on a different operating system
-* Cause things to deliberately error
-* The passing of time
-* Slow functions that aren't important for specific test
-* Sometimes easier or more clear to mock a function rather than setting options/env vars. And generally just tickling some branch that would otherwise be hard to reach.
-* Record internal state with `<<-`.
-
-### Mocking variations
-
-
-## Examples
-
-### Interactivity and user input
-
-```{r}
-#| eval: false
-local_mocked_bindings(interactive = function() FALSE)
-```
-
-But we generally recommend using `rlang::is_interactive()`. Can be manually overridden by `rlang_interactive` option, whih is automatically set inside of tests.
+Assume that there are no revdeps for the package, which is both slow to compute and if we use a real package might vary over time, and assume there's no related GitHub milestone, which is also slow to compute and outside of our direct control.
 
 ### Managing time
 
+<https://github.com/r-lib/httr2/blob/main/tests/testthat/test-req-throttle.R>
+
+Context: `httr2::req_throttle()` prevents multiple requests from being made too quickly, using a tool called a leaky token bucket. This tool is inextricably tied to real time because you want to allow more requests as time elapses. So how do you test this? I started by using `Sys.sleep()` but this either made my tests both slow (because I'd sleep for a second or two) and unreliable (because sometime more time elapsed than I expected). Eventually I figured out that I could "manually control" time by using a mocked function that returns the value of a variable I control. This allows me to manual advance time and carefully test the implications.
+
+You might see the basic idea with this simpler example. Imagine I have a function factory that I can use to record how much time has elapsed since I first called the function.
+
 ```{r}
-#| eval: false
 unix_time <- function() unclass(Sys.time())
 
-time <- 0
-local_mocked_bindings(unix_time = function(time) time)
-time <- 1
-time <- 10
+elapsed <- function() {
+  start <- unix_time()
+  function() {
+    unix_time() - start
+  }
+}
+
+timer <- elapsed()
+Sys.sleep(0.5)
+timer()
 ```
+
+Hopefully you can see how hard this will be too test! But I can "manipulate time" by mocking `unix_time()` and creating a reliable test:
+
+```{r}
+test_that("elapsed() meausres elapsed time", {
+  time <- 1
+  local_mocked_bindings(unix_time = function() time)
+
+  timer <- elapsed()
+  expect_equal(timer(), 0)
+
+  time <- 2
+  expect_equal(timer(), 1)
+})
+```
+
+
+## How does mocking work?
+
+Before we go futher, it's worth discussing how mocking works. It took us some iteration (`testthat::with_mock()`, as well as {mockery}, {mockr}, and {mockthat} packages) to get to current state and understanding how it works will help you to understand some of the tradeoffs. The underlying principle of `local_mocked_bindings()` is that mocking should never touch code that you don't "own", or in other words mocking should only affect the operation of your code, not code in other packages.
+
+It's fairly straightforward to understand how this might work for functions in your package: `local_mocked_bindings()` just temporarily replaces your implementation with a different implementation. But what happens when you want to mock a function from another package? It would be unhygenic to reach into another package and change its code. 
+
+This brings us to the first important limiation of testthat's implementation of mocking: it doesn't work with `::`. If you need to mock a function called in this way you have two options:
+
+1. Switch from `pkg::fun()` to `fun()` by importing `fun` into your `NAMESPACE` (e.g. with `@importFrom pkg fun`).
+
+2. Write a wrapper around the function and mock that:
+
+```{r}
+pkg_fun <- function(...) {
+  pkg::fun(...)
+}
+```
+
+In our experience one of these two options generally feels natural. (And when it doesn't, it still feels like the right tradeoff to me.)
