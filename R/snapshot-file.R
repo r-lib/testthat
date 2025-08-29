@@ -114,6 +114,9 @@ expect_snapshot_file <- function(
   lab <- quo_label(enquo(path))
 
   check_string(path)
+  if (!file.exists(path)) {
+    cli::cli_abort("{.path {path}} doesn't exist.")
+  }
   check_string(name)
   check_bool(cran)
   check_variant(variant)
@@ -162,15 +165,10 @@ expect_snapshot_file <- function(
   }
 
   file <- snapshotter$file
-  if (in_check_reporter()) {
-    hint <- ""
-  } else {
-    hint <- snapshot_review_hint(file, name, is_text = is_text)
-  }
 
   if (!equal) {
     if (is_text) {
-      base <- paste0(c(snapshotter$snap_dir, file, variant), collapse = "/")
+      base <- paste0(c(snapshotter$snap_dir, variant, file), collapse = "/")
       old_path <- paste0(c(base, name), collapse = "/")
       new_path <- paste0(c(base, new_name(name)), collapse = "/")
 
@@ -185,6 +183,8 @@ expect_snapshot_file <- function(
     } else {
       comp <- NULL
     }
+
+    hint <- snapshot_hint(paste0(file, "/"), show_accept = is_text)
 
     msg <- c(
       sprintf("Snapshot of %s has changed.", lab),
@@ -210,28 +210,6 @@ announce_snapshot_file <- function(path, name = basename(path)) {
   if (!is.null(snapshotter)) {
     snapshotter$announce_file_snapshot(name)
   }
-}
-
-snapshot_review_hint <- function(
-  test,
-  name,
-  is_text = FALSE,
-  reset_output = TRUE
-) {
-  if (reset_output) {
-    local_reporter_output()
-  }
-
-  c(
-    if (is_text) {
-      cli::format_inline(
-        "* Run {.run testthat::snapshot_accept('{test}/{name}')} to accept the change."
-      )
-    },
-    cli::format_inline(
-      "* Run {.run testthat::snapshot_review('{test}/{name}')} to review the change."
-    )
-  )
 }
 
 snapshot_file_equal <- function(

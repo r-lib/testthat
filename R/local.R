@@ -177,14 +177,15 @@ local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
   # Set edition before changing working directory in case path is relative
   local_edition(find_edition(path, package), .env = .env)
 
-  withr::local_dir(
-    path,
-    .local_envir = .env
-  )
+  # Capture current working directory so we can use for relative paths
+  wd <- getwd()
+
+  withr::local_dir(path, .local_envir = .env)
   withr::local_envvar(
     R_TESTS = "",
     TESTTHAT = "true",
     TESTTHAT_PKG = package,
+    TESTTHAT_WD = wd,
     .local_envir = .env
   )
 }

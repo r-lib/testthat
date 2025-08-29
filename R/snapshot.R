@@ -372,18 +372,12 @@ expect_snapshot_helper <- function(
   } else {
     variant_lab <- ""
   }
-  if (in_check_reporter()) {
-    hint <- ""
-  } else {
-    hint <- snapshot_accept_hint(variant, snapshotter$file)
-  }
 
   if (length(comp) != 0) {
-    msg <- sprintf(
-      "Snapshot of %s has changed%s:\n%s\n\n%s",
-      lab,
-      variant_lab,
-      paste0(comp, collapse = "\n\n"),
+    hint <- snapshot_hint(snapshotter$file)
+    msg <- c(
+      sprintf("Snapshot of %s has changed%s:", lab, variant_lab),
+      comp,
       hint
     )
     return(snapshot_fail(msg, trace_env = trace_env))
@@ -392,27 +386,58 @@ expect_snapshot_helper <- function(
   pass(NULL)
 }
 
-snapshot_accept_hint <- function(variant, file, reset_output = TRUE) {
+snapshot_hint <- function(id, show_accept = TRUE, reset_output = TRUE) {
+  if (in_check_reporter()) {
+    return("")
+  }
+
   if (reset_output) {
     local_reporter_output()
   }
 
-  if (is.null(variant) || variant == "_default") {
-    name <- file
-  } else {
-    name <- file.path(variant, file)
+  full_name <- paste0(id, collapse = "/")
+  args <- c(full_name, snapshot_hint_path())
+  args <- encodeString(args, quote = '"')
+  args <- paste0(args, collapse = ", ")
+
+  accept_link <- cli::format_inline("{.run testthat::snapshot_accept({args})}")
+  review_link <- cli::format_inline("{.run testthat::snapshot_review({args})}")
+
+  out <- c(
+    if (show_accept) sprintf("* Run %s to accept the change.", accept_link),
+    sprintf("* Run %s to review the change.", review_link)
+  )
+  structure(out, class = "testthat_hint")
+}
+
+# Include path argument if we're in a different working directory
+snapshot_hint_path <- function() {
+  wd <- Sys.getenv("TESTTHAT_WD", unset = "")
+  if (wd == "") {
+    return()
   }
 
-  paste0(
-    cli::format_inline(
-      "* Run {.run testthat::snapshot_accept('{name}')} to accept the change."
-    ),
-    "\n",
-    cli::format_inline(
-      "* Run {.run testthat::snapshot_review('{name}')} to review the change."
-    )
-  )
+  test_path <- file.path(wd, "tests/testthat")
+  if (test_path == getwd()) {
+    return()
+  }
+
+  old <- normalizePath(wd)
+  new <- normalizePath(getwd())
+
+  if (startsWith(new, old)) {
+    substr(new, nchar(old) + 2, nchar(new))
+  } else {
+    new
+  }
 }
+
+#' @export
+print.testthat_hint <- function(x, ...) {
+  cat(paste0(x, "\n", collapse = ""))
+  invisible(x)
+}
+
 
 snapshot_not_available <- function(message) {
   local_reporter_output()

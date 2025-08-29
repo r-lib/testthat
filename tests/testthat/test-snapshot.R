@@ -166,12 +166,24 @@ test_that("errors and warnings are folded", {
 # })
 
 test_that("hint is informative", {
-  withr::local_envvar("GITHUB_ACTIONS" = "false")
+  local_mocked_bindings(in_check_reporter = function() FALSE)
+  withr::local_envvar(GITHUB_ACTIONS = "false", TESTTHAT_WD = NA)
 
-  expect_snapshot({
-    cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
-    cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
-  })
+  expect_snapshot(snapshot_hint("bar.R", reset_output = FALSE))
+})
+
+test_that("hint includes path when WD is different", {
+  local_mocked_bindings(in_check_reporter = function() FALSE)
+  withr::local_envvar(TESTTHAT_WD = "..")
+
+  hint <- snapshot_hint("bar.R", reset_output = FALSE)
+  # Can't use snapshot here because its hint will get the wrong path
+  expect_match(
+    hint,
+    'snapshot_accept("bar.R", "testthat")',
+    fixed = TRUE,
+    all = FALSE
+  )
 })
 
 test_that("expect_snapshot requires a non-empty test label", {
