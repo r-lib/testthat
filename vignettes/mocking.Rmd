@@ -1,0 +1,61 @@
+---
+title: "mocking"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mocking}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(testthat)
+```
+
+Mocking is a useful technique when all else fails: for the duration of your test, you make some function return whatever you need it to. 
+
+Note that mocking works best on your own functions and functions that you import. But it's possible to mock base R functions and functions that you don't import. See `?local_mocked_bindings` for more details.
+
+<!-- https://github.com/search?q=%28org%3Ar-lib+OR+org%3Atidyverse%29+local_mocked+bindings+path%3Atests%2Ftestthat&type=code -->
+
+* Package versions and installed status
+* User interaction (e.g. `readline()`)
+* Retrieving external state (vcr typically best) but sometimes better at higher level. e.g. token prices in ellemr.
+* Pretending that you're on a different operating system
+* Cause things to deliberately error
+* The passing of time
+* Slow functions that aren't important for specific test
+* Sometimes easier or more clear to mock a function rather than setting options/env vars. And generally just tickling some branch that would otherwise be hard to reach.
+* Record internal state with `<<-`.
+
+### Mocking variations
+
+
+## Examples
+
+### Interactivity and user input
+
+```{r}
+#| eval: false
+local_mocked_bindings(interactive = function() FALSE)
+```
+
+But we generally recommend using `rlang::is_interactive()`. Can be manually overridden by `rlang_interactive` option, whih is automatically set inside of tests.
+
+### Managing time
+
+```{r}
+#| eval: false
+unix_time <- function() unclass(Sys.time())
+
+time <- 0
+local_mocked_bindings(unix_time = function(time) time)
+time <- 1
+time <- 10
+```

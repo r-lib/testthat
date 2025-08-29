@@ -1,0 +1,68 @@
+---
+title: "nested-tests"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{nested-tests}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(testthat)
+```
+
+
+
+## Functions
+
+```{r}
+# Function to test
+power_function <- function(x, n) {
+  if (n < 0) stop("Negative exponents not supported")
+  if (x == 0 && n == 0) stop("0^0 is undefined")
+  x^n
+}
+
+# Helper function for testing
+test_power <- function(x, n, expected) {
+  test_that(paste0("power_function(", x, ", ", n, ") equals ", expected), {
+    expect_equal(power_function(x, n), expected)
+  })
+}
+
+# Test many combinations
+test_that("power combinations work", {
+  test_power(2, 3, 8)
+  test_power(5, 2, 25)
+  test_power(10, 0, 1)
+  test_power(-3, 2, 9)
+})
+```
+
+## For loops
+
+```{r}
+test_that("power_function works for multiple bases and exponents", {
+  test_cases <- data.frame(
+    x = c(2, 3, 4, 5),
+    n = c(2, 2, 2, 2),
+    expected = c(4, 9, 16, 25)
+  )
+  
+  for (i in seq_len(nrow(test_cases))) {
+    test_that(paste("x =", test_cases$x[i], "n =", test_cases$n[i]), {
+      expect_equal(
+        power_function(test_cases$x[i], test_cases$n[i]),
+        test_cases$expected[i]
+      )
+    })
+  }
+})
+```

@@ -1,70 +1,82 @@
 ---
-title: "Challenging testing problems"
+title: "Testing challenging functions"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Challenging testing problems}
+  %\VignetteIndexEntry{Testing challenging functions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
-Testing is easy when your functions are pure: they take some inputs and return predictable outputs. But real-world code often involves randomness, external state, graphics, user interaction, and other challenging elements. This vignette provides practical solutions these tricky scenarios.
-
-In principle, it's often possible to test these things by explicitly parameterising them as arguments to your functions so you can more easily override the default values. And where possible you should do so, especially when testing internal functions. But it's often impractical to provide arguments to explicitly control every last feature without exploding user-facing interfaces. So the techniques in this vignette will help you test all your code, regardless of where it lives and what it does. In other situations, it might not be your function that is the problem, but some other function that you can't edit directly.
-
-This vignette is divided into sections based on the underlying tool you'll use:
-
-* External state shows you how to use the withr package to handle options, environment variables, the working direction, and random number generation.
-* Snapshotting shows you how to handle functions that produce user facing output including text, warnings, and errors.
-* Mocking is general purpose tool when all else fails; it allows you to temporarily replace a function or method with a mockup that you can control.
-* Subtests shows you how to use functions and for-loops to reduce duplication in your test code, making it easier to test that multiple part of your package have the same behaviour or follow the same interface.
-
-To begin, there are a couple of scenarios that testthat doesn't help with, but we can happily suggest other suggest:
-
-* If you need to test graphical output, {vdiffr}. vdiffr is used to test ggplot2, and incorporates everything we know about high-quality graphics tests that minimise false positives.
-
-* If you need to test HTTP requests, we recommend using {vcr} or {httptest2}.
-
-```{r setup}
+```{r}
+#| include: false
 library(testthat)
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+
+# Pretend we're snapshotting
+snapper <- local_snapshotter(fail_on_new = FALSE)
+snapper$start_file("snapshotting.Rmd", "test")
+
+# Pretend we're testing testthat so we can use mocking
+Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-## External state (withr)
+Index to tools to solving challenging problems, organised by the problem, not the technique used to solve it. Designed to short so you can skim the whole thing, spot the problem your facing, and then see the tools you can use to solve it. 
 
-### Options, env vars, and working directory
+## Options and environment variables
 
 In this case can temporarily override with withr functions:
 
 * Temporarily change options with `withr::local_options()`.
 * Temporarily change env vars with `withr::local_envvar()`.
-* Temporarily change the working directory with `withr::local_dir()`.
+
+`vignette("test-fixtures")`
+
+## HTTP requests
+
+* If you need to test HTTP requests, we recommend using {vcr} or {httptest2}.
+
+## User interaction
+
+Mock away the function that the user returns.
+
+`vignette("mocking")`
+
+For example, if your code uses `readline` to get feedback from the user, you can mock it. This is a good place to `mock_output_sequence()` if you want to simulate the user answering multiple questions.
 
 ```{r}
-format_number <- function(x) {
-  format(x, digits = getOption("digits"))
+readline <- NULL
+
+continue <- function() {
+  repeat{
+   val <- readline("Do you want to continue? (y/n) ")
+   if (val %in% c("y", "n")) {
+     return(val == "y")
+   }
+   cat("! You must enter y or n\n")
+  }  
 }
 
-test_that("format_number respects digits option", {
-  x <- 1.23456
-  withr::local_options(digits = 3)
-  expect_equal(format_number(x), "1.23")
-  
-  withr::local_options(digits = 5)
-  expect_equal(format_number(x), "1.2346")
+test_that("user must respond y or n", {
+  mock_readline <- local({
+    i <- 0
+    function(prompt) {
+      i <<- i + 1
+      cat(prompt)
+      val <- if (i == 1) "x" else "y"
+      cat(val, "\n", sep = "")
+      val
+    }
+  })
+
+  local_mocked_bindings(readline = mock_readline)
+  expect_snapshot(val <- continue())
+  expect_true(val)
 })
 ```
 
-{withr} provides a number of other `local_` helpers; see the package docs for me.
+## Random numbers
 
-### Random numbers
-
-Random number generation also falls into the same bucket because it depends on the value of the special `.Random.seed` variable which is updated whenever you generate a random number. You can temporarily change this seed and reproducibly generate "random" numbers with `withr::local_seed()`.
+Random number generation is a special case of test fixures (`vignette("test-fixtures")`) on the value of the special `.Random.seed` variable which is updated whenever you generate a random number. You can temporarily change this seed and reproducibly generate "random" numbers with `withr::local_seed()`.
 
 ```{r}
 dice <- function() {
@@ -80,160 +92,12 @@ test_that("dice returns different numbers", {
 })
 ```
 
-### Local helpers
+## Errors
 
-If you find yourself using the same `local_` calls in multiple places, you may want to create your own helper function. This is straightforward once you know how these functions. The most important thing to know is that they are all wrappers around `on.exit()` which runs code when a function exits. The question is: which function? By default, it's the function that calls `withr::local_*()`. But obvious that's not going to work if you write a helper function:
+Errors, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs, so another human can take a look. This is exactly the point of snapshot tests.
 
-```{r}
-local_my_helper <- function() {
-  withr::local_options(x = 10)
-}
+Test with snapshot tests: `vignette("snapshotting")`.
 
-local({
-  local_my_helper()
-  getOption("x")
-})
-```
+## Testing interfaces
 
-To resolve this problem we need to capture the calling frame for our helper function. A **frame** is an environment on the call stack, i.e. the execution environment of some function that lead to the current call.
-
-```{r}
-local_my_helper <- function(frame = parent.frame()) {
-  withr::local_options(x = 10, .local_envir = frame)
-}
-local({
-  local_my_helper()
-  getOption("x")
-})
-```
-
-We strongly recommend giving such functions a `local_` prefix to clearly communicate that they have "local" effects.
-
-## Errors and user-facing text
-
-Error messages, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs, so another human can take a look. This is exactly the point of snapshot tests.
-
-Snapshot tets are particularly important when testing complex error messages.
-
-```{r}
-divide_positive <- function(x, y) {
-  if (y <= 0) {
-    stop("Divisor must be positive, got: ", y)
-  }
-  x / y
-}
-
-test_that("divide_positive gives helpful error", {
-  expect_snapshot_error(divide_positive(10, -2))
-  expect_snapshot_error(divide_positive(10, 0))
-})
-```
-
-### Complex error messages with cli
-
-When generating sophisticated error messages that use cli's interpolation and formatting features, snapshot tests are essential for ensuring the messages render correctly with proper styling and content.
-
-TODO: insert complex `cli::cli_abort()` example.
-
-The same idea applies to messages and warnings.
-
-### `local_reproducible_output()`
-
-By default, testthat sets a number of options that simplify and standardise output:
-
-* The console width is set to 80.
-* Crayon/cli ANSI colouring and hyperlinks are suppressed.
-* Unicode characters are suppressed.
-
-These are sound defaults that we have found useful to minimise spurious diffs between tests run in different environment. But it's sometimes necessary to override them in order to test various output features. So, if necessary, you can override these settings by calling `local_reproducible_output()`. Read its docs to learn more.
-
-### Transforms
-
-Sometimes part of the output varies in ways that you can't easily control. There are two techniques you can use: mocking (described next) or the `transform` output. 
-
-## Mocking
-
-Mocking is a useful technique when all else fails: for the duration of your test, you make some function return whatever you need it to. 
-
-Note that mocking works best on your own functions and functions that you import. But it's possible to mock base R functions and functions that you don't import. See `?local_mocked_bindings` for more details.
-
-<!-- https://github.com/search?q=%28org%3Ar-lib+OR+org%3Atidyverse%29+local_mocked+bindings+path%3Atests%2Ftestthat&type=code -->
-
-* Package versions and installed status
-* Retrieving external state (vcr typically best) but sometimes better at higher level. e.g. token prices in ellemr.
-* Pretending that you're on a different operating system
-* Cause things to deliberately error
-* The passing of time
-* Slow functions that aren't important for specific test
-* Sometimes easier or more clear to mock a function rather than setting options/env vars. And generally just tickling some branch that would otherwise be hard to reach.
-* Record internal state with `<<-`.
-
-### Managing time
-
-```{r}
-#| eval: false
-unix_time <- function() unclass(Sys.time())
-
-time <- 0
-local_mocked_bindings(unix_time = function(time) time)
-time <- 1
-time <- 10
-```
-
-### Interactivity and user input
-
-```{r}
-#| eval: false
-local_mocked_bindings(interactive = function() FALSE)
-```
-
-But we generally recommend using `rlang::is_interactive()`. Can be manually overridden by `rlang_interactive` option, whih is automatically set inside of tests.More
-
-## Subtests
-
-### Using helper functions
-
-```{r}
-# Function to test
-power_function <- function(x, n) {
-  if (n < 0) stop("Negative exponents not supported")
-  if (x == 0 && n == 0) stop("0^0 is undefined")
-  x^n
-}
-
-# Helper function for testing
-test_power <- function(x, n, expected) {
-  test_that(paste0("power_function(", x, ", ", n, ") equals ", expected), {
-    expect_equal(power_function(x, n), expected)
-  })
-}
-
-# Test many combinations
-test_that("power combinations work", {
-  test_power(2, 3, 8)
-  test_power(5, 2, 25)
-  test_power(10, 0, 1)
-  test_power(-3, 2, 9)
-})
-```
-
-### Using loops
-
-```{r}
-test_that("power_function works for multiple bases and exponents", {
-  test_cases <- data.frame(
-    x = c(2, 3, 4, 5),
-    n = c(2, 2, 2, 2),
-    expected = c(4, 9, 16, 25)
-  )
-  
-  for (i in seq_len(nrow(test_cases))) {
-    test_that(paste("x =", test_cases$x[i], "n =", test_cases$n[i]), {
-      expect_equal(
-        power_function(test_cases$x[i], test_cases$n[i]),
-        test_cases$expected[i]
-      )
-    })
-  }
-})
-```
+Sometimes you want to ensure multiple functions obey the same interface (e.g. they have the same arguments, or all error in the same way). You can use nested tests for this: see `vignette("nested-tests")`.

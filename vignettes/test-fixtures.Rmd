@@ -190,13 +190,14 @@ print(exp(1))
 
 We always call these helper functions `local_`; "local" here refers to the fact that the state change persists only locally, for the lifetime of the associated function or test.
 
-### Pre-existing helpers
+## Pre-existing helpers
 
 But before you write your own helper function, make sure to check out the wide range of local functions already provided by withr:
 
 | Do / undo this              | withr function    |
 |-----------------------------|-------------------|
-| Create a file               | `local_file()`    |
+| Create a file               | `local_tempfile()`|
+| Create a directory          | `local_tempdir()` |
 | Set an R option             | `local_options()` |
 | Set an environment variable | `local_envvar()`  |
 | Change working directory    | `local_dir()`     |
@@ -212,6 +213,7 @@ neatest(pi, 3)
 ```
 
 Each `local_*()` function has a companion `with_()` function, which is a nod to `with()`, and the inspiration for withr's name. We won't use the `with_*()` functions here, but you can learn more about them at [withr.r-lib.org](https://withr.r-lib.org).
+
 
 ## Test fixtures
 
