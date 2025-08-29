@@ -20,41 +20,77 @@ snapper$start_file("snapshotting.Rmd", "test")
 Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-Index to tools to solving challenging problems, organised by the problem, not the technique used to solve it. Designed to short so you can skim the whole thing, spot the problem your facing, and then see the tools you can use to solve it. 
+This vignette is a quick reference guide for testing challenging functions. It's organised by the problem, rather than technique used to solve it, so you can quickly skim the whole vignette, spot the problem your facing, then learn more about useful tools for solving it.
 
 ## Options and environment variables
 
-In this case can temporarily override with withr functions:
+If your function depends on options or environment variables, first try refactoring the functions to make the [inputs explicit](https://design.tidyverse.org/inputs-explicit.html). If that's not possible, then you can use a function like `withr::local_options()` or `withr::local_envvar()` to temporarily change options and environment values within a test. Learn more in `vignette("test-fixtures")`.
 
-* Temporarily change options with `withr::local_options()`.
-* Temporarily change env vars with `withr::local_envvar()`.
+## Random numbers
 
-`vignette("test-fixtures")`
+Random number generators generate different numbers each time you can them because they update a special `.Random.seed` variable. You can temporarily set this seed to a known value to make your random numbers reproducible with `withr::local_seed()`, making random numbers a special case of test fixtures.
+
+```{r}
+#| label: random-local-seed
+
+dice <- function() {
+  sample(6, 1)
+}
+
+test_that("dice returns different numbers", {
+  withr::local_seed(1234)
+
+  expect_equal(dice(), 4)
+  expect_equal(dice(), 2)
+  expect_equal(dice(), 6)
+})
+```
+
+Alternatively, you might want to mock your function that wraps a random number generator:
+
+```{r}
+#| label: random-mock
+
+roll_three <- function() {
+  sum(dice(), dice(), dice())
+}
+
+test_that("three dice adds values of individual calls", {
+  local_mocked_bindings(dice = mock_output_sequence(1, 2, 3))
+  expect_equal(roll_three(), 6)
+})
+```
 
 ## HTTP requests
 
-* If you need to test HTTP requests, we recommend using {vcr} or {httptest2}.
+If you're trying to test functions that rely on HTTP requests, we recommend using {vcr} or {httptest2}. These packages provide the ability to record and then later reply HTTP requests so that you can test without an active internet connection. If your package is going to CRAN, we highly recommend either using one of these packages or using `skip_on_cran()` for your internet facing tests. This ensures that your package won't break on CRAN just because the service you're using is temporarily down.
 
 ## User interaction
 
-Mock away the function that the user returns.
-
-`vignette("mocking")`
-
-For example, if your code uses `readline` to get feedback from the user, you can mock it. This is a good place to `mock_output_sequence()` if you want to simulate the user answering multiple questions.
+If you're testing a function that relies on user feedback from `readline()` or `menu()` or similar, you can use mocking (`vignette("mocking")`) to temporarily make those functions return fixed values. For example, imagine that you have the following function that asks the user if they want to continue:
 
 ```{r}
-readline <- NULL
+#| label: continue
 
-continue <- function() {
-  repeat{
-   val <- readline("Do you want to continue? (y/n) ")
-   if (val %in% c("y", "n")) {
-     return(val == "y")
-   }
-   cat("! You must enter y or n\n")
+continue <- function(prompt) {
+  cat(prompt, "\n", sep = "")
+
+  repeat {
+    val <- readline("Do you want to continue? (y/n) ")
+    if (val %in% c("y", "n")) {
+      return(val == "y")
+    }
+    cat("! You must enter y or n\n")
   }  
 }
+
+readline <- NULL
+```
+
+You can test its behaviour by mocking `readline()` and using a snapshot test:
+
+```{r}
+#| label: mock-readline
 
 test_that("user must respond y or n", {
   mock_readline <- local({
@@ -69,35 +105,41 @@ test_that("user must respond y or n", {
   })
 
   local_mocked_bindings(readline = mock_readline)
-  expect_snapshot(val <- continue())
+  expect_snapshot(val <- continue("This is dangerous"))
   expect_true(val)
 })
 ```
 
-## Random numbers
-
-Random number generation is a special case of test fixures (`vignette("test-fixtures")`) on the value of the special `.Random.seed` variable which is updated whenever you generate a random number. You can temporarily change this seed and reproducibly generate "random" numbers with `withr::local_seed()`.
+If you were testing the behaviour of some function that used `continue()`, you might choose to mock it directly:
 
 ```{r}
-dice <- function() {
-  sample(6, 1)
+#| label: mock-continue
+
+save_file <- function(path, data) {
+  if (file.exists(path)) {
+    if (!continue("`path` already exists")) {
+      stop("Failed to continue")
+    }
+  }
+  writeLines(data, path)
 }
 
-test_that("dice returns different numbers", {
-  withr::local_seed(1234)
+test_that("save_file() requires confirmation to overwrite file", {
+  path <- withr::local_tempfile(lines = letters)
 
-  expect_equal(dice(), 4)
-  expect_equal(dice(), 2)
-  expect_equal(dice(), 6)
+  local_mocked_bindings(continue = function(...) TRUE)
+  save_file(path, "a")
+  expect_equal(readLines(path), "a")
+
+  local_mocked_bindings(continue = function(...) FALSE)
+  expect_snapshot(save_file(path, "a"), error = TRUE)
 })
 ```
 
-## Errors
+## User-facing text
 
-Errors, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs, so another human can take a look. This is exactly the point of snapshot tests.
-
-Test with snapshot tests: `vignette("snapshotting")`.
+Errors, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs, so another human can take a look. This is exactly the point of snapshot tests; learn more in `vignette("snapshotting")`.
 
 ## Testing interfaces
 
-Sometimes you want to ensure multiple functions obey the same interface (e.g. they have the same arguments, or all error in the same way). You can use nested tests for this: see `vignette("nested-tests")`.
+Sometimes you want to ensure multiple functions obey the same interface (e.g. they have the same arguments, or all error in the same way). In this case you can write a helper function that calls `test_that()` and then use this inside your other tests. This works because testthat (as of 3.3.0) supports nested tests, which you can learn more about in `vignette("nested-tests")`.
