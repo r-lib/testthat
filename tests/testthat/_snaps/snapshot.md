@@ -264,7 +264,7 @@
 # hint is informative
 
     Code
-      snapshot_hint(NULL, "bar.R", reset_output = FALSE)
+      snapshot_hint("bar.R", reset_output = FALSE)
     Output
       * Run `testthat::snapshot_accept("bar.R")` to accept the change.
       * Run `testthat::snapshot_review("bar.R")` to review the change.

@@ -179,7 +179,7 @@ expect_snapshot_file <- function(
       comp <- NULL
     }
 
-    hint <- snapshot_hint(file, name, show_accept = is_text)
+    hint <- snapshot_hint(paste0(file, "/"), show_accept = is_text)
 
     msg <- c(
       sprintf("Snapshot of %s has changed.", lab),

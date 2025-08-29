@@ -369,7 +369,7 @@ expect_snapshot_helper <- function(
   }
 
   if (length(comp) != 0) {
-    hint <- snapshot_hint(NULL, snapshotter$file)
+    hint <- snapshot_hint(snapshotter$file)
     msg <- c(
       sprintf("Snapshot of %s has changed%s:", lab, variant_lab),
       comp,
@@ -381,12 +381,7 @@ expect_snapshot_helper <- function(
   pass(NULL)
 }
 
-snapshot_hint <- function(
-  file,
-  name,
-  show_accept = TRUE,
-  reset_output = TRUE
-) {
+snapshot_hint <- function(id, show_accept = TRUE, reset_output = TRUE) {
   if (in_check_reporter()) {
     return("")
   }
@@ -395,9 +390,7 @@ snapshot_hint <- function(
     local_reporter_output()
   }
 
-  id <- c(file, name)
   full_name <- paste0(id, collapse = "/")
-
   args <- c(full_name, snapshot_hint_path())
   args <- encodeString(args, quote = '"')
   args <- paste0(args, collapse = ", ")

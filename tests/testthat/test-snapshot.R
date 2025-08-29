@@ -169,14 +169,14 @@ test_that("hint is informative", {
   local_mocked_bindings(in_check_reporter = function() FALSE)
   withr::local_envvar(GITHUB_ACTIONS = "false", TESTTHAT_WD = NA)
 
-  expect_snapshot(snapshot_hint(NULL, "bar.R", reset_output = FALSE))
+  expect_snapshot(snapshot_hint("bar.R", reset_output = FALSE))
 })
 
 test_that("hint includes path when WD is different", {
   local_mocked_bindings(in_check_reporter = function() FALSE)
   withr::local_envvar(TESTTHAT_WD = "..")
 
-  hint <- snapshot_hint(NULL, "bar.R", reset_output = FALSE)
+  hint <- snapshot_hint("bar.R", reset_output = FALSE)
   # Can't use snapshot here because its hint will get the wrong path
   expect_match(
     hint,
