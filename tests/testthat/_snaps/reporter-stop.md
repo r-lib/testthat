@@ -1,6 +1,6 @@
 # produces useful output
 
-    Test passed with 1 successes 
+    Test passed with 1 success .
     -- Failure ('reporters/tests.R:13:3'): Failure:1 -------------------------------
     Expected `x` to be TRUE.
     Differences:

@@ -56,14 +56,9 @@ StopReporter <- R6::R6Class(
 
       if (self$praise && self$n_fail == 0 && self$n_success > 0) {
         emoji <- praise_emoji()
-        self$cat_line(
-          "Test ",
-          colourise("passed", "success"),
-          " with ",
-          self$n_success,
-          " successes ",
-          emoji
-        )
+        self$cat_line(cli::format_inline(
+          "Test passed with {self$n_success} success{?es} {emoji}."
+        ))
       }
 
       if (self$n_fail > 0) {
