@@ -21,18 +21,18 @@ StopReporter <- R6::R6Class(
     n_fail = 0L,
     # Successful expectations
     n_success = 0L,
-    stop_reporter = TRUE,
     praise = TRUE,
 
-    initialize = function(stop_reporter = TRUE, praise = TRUE) {
+    initialize = function(praise = TRUE) {
       super$initialize()
       self$issues <- Stack$new()
       self$praise <- praise
-      self$stop_reporter <- stop_reporter
     },
 
     start_test = function(context, test) {
       self$issues <- Stack$new()
+      self$n_fail <- 0L
+      self$n_success <- 0L
     },
 
     add_result = function(context, test, result) {
@@ -45,25 +45,32 @@ StopReporter <- R6::R6Class(
         self$n_fail <- self$n_fail + 1
       }
       self$issues$push(result)
-
-      self$local_user_output()
-      self$cat_line(issue_summary(result, rule = TRUE), "\n")
     },
 
-    end_reporter = function(context, test) {
+    end_test = function(context, test) {
       self$local_user_output()
 
-      if (self$issues$size() == 0) {
-        if (self$praise && self$n_success > 0) {
-          emoji <- praise_emoji()
-          self$cat_line(colourise("Test passed", "success"), " ", emoji)
-        }
+      for (issue in self$issues$as_list()) {
+        self$cat_line(issue_summary(issue, rule = TRUE), "\n")
       }
-    },
 
-    stop_if_needed = function() {
-      if (self$stop_reporter && self$n_fail > 0) {
-        cli::cli_abort("Test failed.", call = NULL)
+      if (self$praise && self$n_fail == 0 && self$n_success > 0) {
+        emoji <- praise_emoji()
+        self$cat_line(
+          "Test ",
+          colourise("passed", "success"),
+          " with ",
+          self$n_success,
+          " successes ",
+          emoji
+        )
+      }
+
+      if (self$n_fail > 0) {
+        cli::cli_abort(
+          "Test failed with {self$n_fail} failure{?s} and {self$n_success} success{?es}.",
+          call = NULL
+        )
       }
     }
   )

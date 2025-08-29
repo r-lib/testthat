@@ -9,11 +9,11 @@ test_that("can suppress praise", {
   )
 })
 
-test_that("stop if needed errors when needed", {
+test_that("errors when needed", {
   r <- StopReporter$new()
-  expect_no_error(r$stop_if_needed())
+  expect_no_error(r$end_test())
+
   r$n_fail <- 1
-  expect_snapshot(error = TRUE, r$stop_if_needed())
-  r$stop_reporter <- FALSE
-  expect_no_error(r$stop_if_needed())
+  r$n_success <- 0
+  expect_snapshot(error = TRUE, r$end_test())
 })
