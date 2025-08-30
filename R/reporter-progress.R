@@ -558,7 +558,7 @@ spinner <- function(frames, i) {
   frames[((i - 1) %% length(frames)) + 1]
 }
 
-issue_header <- function(x, pad = FALSE) {
+issue_header <- function(x, pad = FALSE, location = TRUE) {
   type <- expectation_type(x)
   if (has_colour()) {
     type <- colourise(first_upper(type), type)
@@ -569,11 +569,11 @@ issue_header <- function(x, pad = FALSE) {
     type <- strpad(type, 7)
   }
 
-  paste0(type, expectation_location(x, " (", ")"), ": ", x$test)
+  paste0(type, if (location) expectation_location(x, " (", ")"), ": ", x$test)
 }
 
-issue_summary <- function(x, rule = FALSE) {
-  header <- cli::style_bold(issue_header(x))
+issue_summary <- function(x, rule = FALSE, location = TRUE) {
+  header <- cli::style_bold(issue_header(x, location = location))
   if (rule) {
     # Don't truncate long test names
     width <- max(cli::ansi_nchar(header) + 6, getOption("width"))
