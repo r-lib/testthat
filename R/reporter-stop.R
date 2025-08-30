@@ -2,12 +2,8 @@
 #'
 #' @description
 #' The default reporter used when [expect_that()] is run interactively.
-#' It responds by [stop()]ping on failures and doing nothing otherwise. This
-#' will ensure that a failing test will raise an error.
-#'
-#' This should be used when doing a quick and dirty test, or during the final
-#' automated testing of R CMD check.  Otherwise, use a reporter that runs all
-#' tests and gives you more context about the problem.
+#' It responds by displaying a summary of the number of successes and faiures
+#' and [stop()]ping on if there are any failures.
 #'
 #' @export
 #' @family reporters
@@ -22,6 +18,7 @@ StopReporter <- R6::R6Class(
     # Successful expectations
     n_success = 0L,
     praise = TRUE,
+    depth = 0,
 
     initialize = function(praise = TRUE) {
       super$initialize()
@@ -30,9 +27,12 @@ StopReporter <- R6::R6Class(
     },
 
     start_test = function(context, test) {
-      self$issues <- Stack$new()
-      self$n_fail <- 0L
-      self$n_success <- 0L
+      if (self$depth == 0) {
+        self$n_fail <- 0L
+        self$n_success <- 0L
+        self$issues <- Stack$new()
+      }
+      self$depth <- self$depth + 1
     },
 
     add_result = function(context, test, result) {
@@ -48,16 +48,21 @@ StopReporter <- R6::R6Class(
     },
 
     end_test = function(context, test) {
+      self$depth <- self$depth - 1
+      if (self$depth > 0) {
+        return()
+      }
+
       self$local_user_output()
 
       for (issue in self$issues$as_list()) {
-        self$cat_line(issue_summary(issue, rule = TRUE), "\n")
+        self$cat_line(issue_summary(issue, rule = TRUE, location = FALSE))
       }
 
       if (self$praise && self$n_fail == 0 && self$n_success > 0) {
         emoji <- praise_emoji()
         self$cat_line(cli::format_inline(
-          "Test passed with {self$n_success} success{?es} {emoji}."
+          "{.strong Test passed with {self$n_success} success{?es}{emoji}}."
         ))
       }
 
