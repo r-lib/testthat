@@ -163,6 +163,8 @@ Since they can't automatically find the reference output, they instead just prin
 
 ## Other types of output
 
+### Messages and warnings
+
 So far we've focussed on snapshot tests for output printed to the console.
 But `expect_snapshot()` also captures messages, errors, and warnings[^1].
 The following function generates a some output, a message, and a warning:
@@ -185,6 +187,8 @@ test_that("f() makes lots of noise", {
   expect_snapshot(f())
 })
 ```
+
+### Errors
 
 Capturing errors is *slightly* more difficult because `expect_snapshot()` will fail when there's an error:
 
@@ -215,7 +219,48 @@ test_that("you can't add weird things", {
 })
 ```
 
-## Snapshotting values
+
+Snapshot tetss are particularly important when testing complex error messages.
+
+```{r}
+divide_positive <- function(x, y) {
+  if (y <= 0) {
+    stop("Divisor must be positive, got: ", y)
+  }
+  x / y
+}
+
+test_that("divide_positive gives helpful error", {
+  expect_snapshot_error(divide_positive(10, -2))
+  expect_snapshot_error(divide_positive(10, 0))
+})
+```
+
+### Human facing outputs
+
+When generating sophisticated error messages that use cli's interpolation and formatting features, snapshot tests are essential for ensuring the messages render correctly with proper styling and content.
+
+If you're not familiar with `expect_snapshot()` already, start by reading `vignette("snapshotting")`.
+
+TODO: insert complex `cli::cli_abort()` example.
+
+The same idea applies to messages and warnings.
+
+### `local_reproducible_output()`
+
+By default, testthat sets a number of options that simplify and standardise output:
+
+* The console width is set to 80.
+* Crayon/cli ANSI colouring and hyperlinks are suppressed.
+* Unicode characters are suppressed.
+
+These are sound defaults that we have found useful to minimise spurious diffs between tests run in different environment. But it's sometimes necessary to override them in order to test various output features. So, if necessary, you can override these settings by calling `local_reproducible_output()`.
+
+### Snapshotting graphics
+
+If you need to test graphical output, {vdiffr}. vdiffr is used to test ggplot2, and incorporates everything we know about high-quality graphics tests that minimise false positives.
+
+### Snapshotting values
 
 `expect_snapshot()` is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors.
 If you care about the return value rather than any side-effects, you may might to use `expect_snapshot_value()` instead.
@@ -227,6 +272,12 @@ test_that("can snapshot a simple list", {
   expect_snapshot_value(x)
 })
 ```
+
+## Varying outputs
+
+Sometimes part of the output varies in ways that you can't easily control.
+
+There are two techniques you can use: mocking or the `transform` output. 
 
 ## Whole file snapshotting
 

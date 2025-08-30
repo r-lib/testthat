@@ -7,7 +7,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{r setup}
+#| include: false
 library(testthat)
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 

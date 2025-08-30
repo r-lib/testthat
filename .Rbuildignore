@@ -25,3 +25,4 @@
 ^\.git-blame-ignore-rev$
 ^CLAUDE\.md$
 ^\.claude$
+^vignettes/articles$
