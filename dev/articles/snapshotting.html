@@ -147,7 +147,7 @@ exactly what it’s supposed to return.</p>
 <span>  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="st">"&lt;ul&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, id <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span>, <span class="st">"&lt;ul id=\"x\"&gt;\n  &lt;li&gt;a&lt;/li&gt;\n&lt;/ul&gt;\n"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🥇</span>.</span></span></code></pre></div>
 <p>This is a great place to use snapshot testing. To do this we make two
 changes to our code:</p>
 <ul>
@@ -170,7 +170,6 @@ in the output, like in my first interactive example).</p></li>
 <span><span class="co">#&gt;   &lt;ul&gt;</span></span>
 <span><span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span></span>
 <span><span class="co">#&gt;   &lt;/ul&gt;</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;">: bullets</span> ───────────────────────────────────────────────────</span></span>
 <span><span class="co">#&gt; Adding new snapshot:</span></span>
 <span><span class="co">#&gt; Code</span></span>
@@ -178,7 +177,8 @@ in the output, like in my first interactive example).</p></li>
 <span><span class="co">#&gt; Output</span></span>
 <span><span class="co">#&gt;   &lt;ul id="b"&gt;</span></span>
 <span><span class="co">#&gt;     &lt;li&gt;a&lt;/li&gt;</span></span>
-<span><span class="co">#&gt;   &lt;/ul&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;   &lt;/ul&gt;</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🎊</span>.</span></span></code></pre></div>
 <p>When we run the test for the first time, it automatically generates
 reference output, and prints it, so that you can visually confirm that
 it’s correct. The output is automatically saved in
@@ -193,7 +193,7 @@ this is a markdown file, which I’ll explain shortly.</p>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">bullets</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎊</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🌈</span>.</span></span></code></pre></div>
 <p>But if you change the underlying code, say to tweak the indenting,
 the test will fail:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -218,7 +218,6 @@ the test will fail:</p>
 <span><span class="co">#&gt; [6] <span style="color: #555555;">  &lt;/ul&gt;</span>             | <span style="color: #555555;">  &lt;/ul&gt;</span>             [6]</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_accept("snapshotting.Rmd")` to accept the change.</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_review("snapshotting.Rmd")` to review the change.</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;">: bullets</span> ───────────────────────────────────────────────────</span></span>
 <span><span class="co">#&gt; Snapshot of code has changed:</span></span>
 <span><span class="co">#&gt;     old                      | new                         </span></span>
@@ -230,7 +229,7 @@ the test will fail:</p>
 <span><span class="co">#&gt; * Run `testthat::snapshot_accept("snapshotting.Rmd")` to accept the change.</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_review("snapshotting.Rmd")` to review the change.</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed with 2 failures and 0 successes.</span></span></code></pre></div>
 <p>If this is a deliberate change, you can follow the advice in the
 message and update the snapshots for that file by running
 <code>snapshot_accept("pizza")</code>; otherwise you can fix the bug and
@@ -306,7 +305,8 @@ output, a message, and a warning:</p>
 <span><span class="co">#&gt;   Hi!</span></span>
 <span><span class="co">#&gt; Condition</span></span>
 <span><span class="co">#&gt;   Warning in `f()`:</span></span>
-<span><span class="co">#&gt;   How are you?</span></span></code></pre></div>
+<span><span class="co">#&gt;   How are you?</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
 <p>Capturing errors is <em>slightly</em> more difficult because
 <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> will fail when there’s an error:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -321,7 +321,7 @@ output, a message, and a warning:</p>
 <span><span class="co">#&gt; <span style="color: #555555;"> 2. </span>  └─testthat:::expect_snapshot_(...)</span></span>
 <span><span class="co">#&gt; <span style="color: #555555;"> 3. </span>    └─<span style="font-weight: bold;">rlang</span>::cnd_signal(state$error)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed with 1 failure and 0 successes.</span></span></code></pre></div>
 <p>This is a safety valve that ensures that you don’t accidentally write
 broken code. To deliberately snapshot an error, you’ll have to
 specifically request it with <code>error = TRUE</code>:</p>
@@ -335,7 +335,8 @@ specifically request it with <code>error = TRUE</code>:</p>
 <span><span class="co">#&gt;   1 + "a"</span></span>
 <span><span class="co">#&gt; Condition</span></span>
 <span><span class="co">#&gt;   Error in `1 + "a"`:</span></span>
-<span><span class="co">#&gt;   ! non-numeric argument to binary operator</span></span></code></pre></div>
+<span><span class="co">#&gt;   ! non-numeric argument to binary operator</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🥇</span>.</span></span></code></pre></div>
 <p>When the code gets longer, I like to put <code>error = TRUE</code> up
 front so it’s a little more obvious:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -362,7 +363,8 @@ front so it’s a little more obvious:</p>
 <span><span class="co">#&gt;   mean + sum</span></span>
 <span><span class="co">#&gt; Condition</span></span>
 <span><span class="co">#&gt;   Error in `mean + sum`:</span></span>
-<span><span class="co">#&gt;   ! non-numeric argument to binary operator</span></span></code></pre></div>
+<span><span class="co">#&gt;   ! non-numeric argument to binary operator</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎉</span>.</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="snapshotting-values">Snapshotting values<a class="anchor" aria-label="anchor" href="#snapshotting-values"></a>
@@ -391,7 +393,8 @@ human readability.</p>
 <span><span class="co">#&gt;     "elephant",</span></span>
 <span><span class="co">#&gt;     "banana"</span></span>
 <span><span class="co">#&gt;   ]</span></span>
-<span><span class="co">#&gt; }</span></span></code></pre></div>
+<span><span class="co">#&gt; }</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="whole-file-snapshotting">Whole file snapshotting<a class="anchor" aria-label="anchor" href="#whole-file-snapshotting"></a>

@@ -205,7 +205,7 @@ restore the previous options.</p>
 <span>  </span>
 <span>  <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pi</span><span class="op">)</span>, <span class="st">"3"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🥇</span>.</span></span>
 <span><span class="va">pi</span></span>
 <span><span class="co">#&gt; [1] 3.141593</span></span></code></pre></div>
 <p>There are three main drawbacks to <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code>:</p>
@@ -310,7 +310,7 @@ also works within tests:</p>
 <span>  <span class="fu">local_digits</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_output.html">expect_output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>, <span class="st">"2.72"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎊</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🎊</span>.</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2.718282</span></span></code></pre></div>
@@ -417,7 +417,7 @@ For example, here’s how you could use
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; now dyn.load("/home/runner/work/_temp/Library/glue/libs/glue.so") ...</span></span>
 <span><span class="co">#&gt; now dyn.load("/home/runner/work/_temp/Library/vctrs/libs/vctrs.so") ...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🌈</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🌈</span>.</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="case-study-usethis">Case study: usethis<a class="anchor" aria-label="anchor" href="#case-study-usethis"></a>
 </h3>
