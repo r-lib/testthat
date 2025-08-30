@@ -25,33 +25,30 @@
 # generates informative hint
 
     Code
-      base::writeLines(snapshot_review_hint("lala", "foo.R", reset_output = FALSE))
+      snapshot_hint("lala", reset_output = FALSE)
     Output
-      * Run `testthat::snapshot_review('lala/foo.R')` to review the change.
-
----
-
-    Code
-      base::writeLines(snapshot_review_hint("lala", "foo.R", is_text = TRUE,
-        reset_output = FALSE))
-    Output
-      * Run `testthat::snapshot_accept('lala/foo.R')` to accept the change.
-      * Run `testthat::snapshot_review('lala/foo.R')` to review the change.
+      * Run `testthat::snapshot_accept("lala")` to accept the change.
+      * Run `testthat::snapshot_review("lala")` to review the change.
 
 # expect_snapshot_file validates its inputs
 
     Code
-      expect_snapshot_file(123, "test.txt")
+      expect_snapshot_file(123)
     Condition
       Error in `expect_snapshot_file()`:
       ! `path` must be a single string, not the number 123.
     Code
-      expect_snapshot_file("test.txt", 123)
+      expect_snapshot_file("doesnt-exist.txt")
+    Condition
+      Error in `expect_snapshot_file()`:
+      ! 'doesnt-exist.txt' doesn't exist.
+    Code
+      expect_snapshot_file(path, 123)
     Condition
       Error in `expect_snapshot_file()`:
       ! `name` must be a single string, not the number 123.
     Code
-      expect_snapshot_file("test.txt", "test.txt", cran = "yes")
+      expect_snapshot_file(path, "test.txt", cran = "yes")
     Condition
       Error in `expect_snapshot_file()`:
       ! `cran` must be `TRUE` or `FALSE`, not the string "yes".
