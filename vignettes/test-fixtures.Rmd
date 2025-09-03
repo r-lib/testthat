@@ -86,7 +86,7 @@ This is particularly useful when you need to chain together multiple `local_` fu
 
 ## Foundations
 
-Before we go further, lets lay some foundations to help you understand how `local_` functions work. We'll motivate the discussion with a `sloppy()` function that prints a number with a specific number of significant digits by adjusting an R option:
+Before we go further, let's lay some foundations to help you understand how `local_` functions work. We'll motivate the discussion with a `sloppy()` function that prints a number with a specific number of significant digits by adjusting an R option:
 
 ```{r include = FALSE}
 op <- options()

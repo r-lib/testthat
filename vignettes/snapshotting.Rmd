@@ -220,7 +220,7 @@ test_that("you can't add weird things", {
 ```
 
 
-Snapshot tetss are particularly important when testing complex error messages.
+Snapshot tests are particularly important when testing complex error messages.
 
 ```{r}
 divide_positive <- function(x, y) {
