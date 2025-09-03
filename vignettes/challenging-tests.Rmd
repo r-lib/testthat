@@ -139,7 +139,3 @@ test_that("save_file() requires confirmation to overwrite file", {
 ## User-facing text
 
 Errors, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs, so another human can take a look. This is exactly the point of snapshot tests; learn more in `vignette("snapshotting")`.
-
-## Testing interfaces
-
-Sometimes you want to ensure multiple functions obey the same interface (e.g. they have the same arguments, or all error in the same way). In this case you can write a helper function that calls `test_that()` and then use this inside your other tests. This works because testthat (as of 3.3.0) supports nested tests, which you can learn more about in `vignette("nested-tests")`.
