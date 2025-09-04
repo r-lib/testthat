@@ -271,7 +271,7 @@ message3 <- function(..., verbose = getOption("verbose")) {
 }
 ```
 
-Making external state explicit is often worthwhile, because it makes it more clear exactly what inputs determine the outputs of your function. But it's simply not possible in many cases. That's where test fixtures come in: they allow you to temporarily change global state in order to test your function. Test fixture is a pre-existing term in the software engineering world (and beyond):
+Making external state explicit is often worthwhile because it makes it clearer exactly what inputs determine the outputs of your function. But it's simply not possible in many cases. That's where test fixtures come in: they allow you to temporarily change global state to test your function. Test fixture is a pre-existing term in the software engineering world (and beyond):
 
 > A test fixture is something used to consistently test some item, device, or piece of software.
 >
@@ -360,7 +360,7 @@ Setup code is typically best used to create external resources that are needed b
 
 ## Other challenges
 
-A collection of miscellaneous problems that I don't know where else to describe:
+A collection of miscellaneous problems that don't fit elsewhere:
 
 -   There are a few base functions that are hard to test because they depend on state that you can't control. One such example is `interactive()`: there's no way to write a test fixture that allows you to pretend that interactive is either `TRUE` or `FALSE`. So we now usually use `rlang::is_interactive()` which can be controlled by the `rlang_interactive` option.
 

@@ -237,7 +237,7 @@ test_that("actionable feedback if some or all arguments named", {
 
 Sometimes part of the output varies in ways that you can't easily control. In many cases, it's convenient to use mocking (`vignette("mocking")`) to ensure that every run of the function always produces the same output. In other cases, it's easier to manipulate the text output with a regular expression or similar. That's the job of the `transform` argument which should be passed a function that takes a character vector of lines, and returns a modified vector.
 
-This type of problem often crops up when you are testing a function that gives feedback about a path. In your tests, you'll typically use a temporary path (e.g. from `withr::local_tempfile()`) so if you display the path in a snapshot, it will be different every time.
+This type of problem often crops up when you are testing a function that gives feedback about a path. In your tests, you'll typically use a temporary path (e.g., from `withr::local_tempfile()`) so if you display the path in a snapshot, it will be different every time.
 For example, consider this "safe" version of `writeLines()` that requires you to explicitly opt-in to overwriting an existing file:
 
 ```{r}
@@ -308,20 +308,20 @@ Now even though the path varies, the snapshot does not.
 By default, testthat sets a number of options that simplify and standardise output:
 
 * The console width is set to 80.
-* Crayon/cli ANSI colouring and hyperlinks are suppressed.
+* Crayon/cli ANSI coloring and hyperlinks are suppressed.
 * Unicode characters are suppressed.
 
-These are sound defaults that we have found useful to minimise spurious difference between tests run in different environments. However, there are times when you want to deliberately test different widths, or ANSI escapes, or unicode characters, so you can override the defaults with `local_reproducible_output()`.
+These are sound defaults that we have found useful to minimize spurious differences between tests run in different environments. However, there are times when you want to deliberately test different widths, or ANSI escapes, or Unicode characters, so you can override the defaults with `local_reproducible_output()`.
 
 ### Snapshotting graphics
 
-If you need to test graphical output, use {vdiffr}. vdiffr is used to test ggplot2, and incorporates everything we know about high-quality graphics tests that minimise false positives. Graphics testing is still often fragile, but using vdiffr means you will avoid all the problems we know how to avoid.
+If you need to test graphical output, use {vdiffr}. vdiffr is used to test ggplot2, and incorporates everything we know about high-quality graphics tests that minimize false positives. Graphics testing is still often fragile, but using vdiffr means you will avoid all the problems we know how to avoid.
 
 ### Snapshotting values
 
 `expect_snapshot()` is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors.
-If you care about the return value rather than any side-effects, you might want to use `expect_snapshot_value()` instead.
-It offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.
+If you care about the return value rather than any side effects, you might want to use `expect_snapshot_value()` instead.
+It offers a number of serialization approaches that provide a tradeoff between accuracy and human readability.
 
 ```{r}
 test_that("can snapshot a simple list", {

@@ -43,7 +43,7 @@ expect_length <- function(object, n) {
 }
 ```
 
-The first step in any expectation is to use `quasi_label()` to capture a "labelled value", i.e., a list that contains both the value (`$val`) for testing and a label (`$lab`) for messaging. This is a pattern that exists for fairly esoteric reasons; you don't need to understand it, just copy and paste it 🙂.
+The first step in any expectation is to use `quasi_label()` to capture a "labeled value", i.e., a list that contains both the value (`$val`) for testing and a label (`$lab`) for messaging. This is a pattern that exists for fairly esoteric reasons; you don't need to understand it, just copy and paste it 🙂.
 
 Next you need to check each way that `object` could violate the expectation. In this case, there's only one check, but in more complicated cases there can be multiple checks. In most cases, it's easier to check for violations one by one, using early returns to `fail()`. This makes it easier to write informative failure messages that first describe what was expected and then what was actually seen.
 
@@ -217,5 +217,5 @@ expect_length <- function(object, n) {
 A few recommendations:
 
 * The helper shouldn't be user facing, so we give it a `_` suffix to make that clear. 
-* It's typically easiest for a helper to take the labelled value produced by `quasi_label()`.
+* It's typically easiest for a helper to take the labeled value produced by `quasi_label()`.
 * Your helper should usually call both `fail()` and `pass()` and be returned from the wrapping expectation.

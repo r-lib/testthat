@@ -61,7 +61,7 @@ You should keep an eye on this when developing interactively to make sure that y
 
 ## Helpers
 
-If you find yourself using the same `skip_if()`/`skip_if_not()` expression across multiple tests, it's a good idea to create a helper function.
+If you find yourself using the same `skip_if()` or `skip_if_not()` expression across multiple tests, it's a good idea to create a helper function.
 This function should start with `skip_` and live in a `tests/testthat/helper-{something}.R` file:
 
 ```{r}
@@ -98,7 +98,7 @@ convert_markdown_to_html <- function(in_path, out_path, ...) {
 ```
 
 If Pandoc is not available when `convert_markdown_to_html()` executes, it throws an error *unless* it appears to be part of a test run, in which case the test is skipped.
-This is an alternative to implementing a custom skipper, e.g. `skip_if_no_pandoc()`, and inserting it into many of pkgdown's tests.
+This is an alternative to implementing a custom skipper, e.g., `skip_if_no_pandoc()`, and inserting it into many of pkgdown's tests.
 
 We don't want pkgdown to have a runtime dependency on testthat, so pkgdown includes a copy of `testthat::is_testing()`:
 

@@ -201,9 +201,9 @@ test_that("elapsed() measures elapsed time", {
 
 ## How does mocking work?
 
-To finish up, it's worth discussing how mocking works. It took us some iteration (`testthat::with_mock()`, as well as {mockery}, {mockr}, and {mockthat} packages) to get to current state and understanding how it works will help you to understand some of the tradeoffs. 
+To finish up, it's worth discussing how mocking works. It took us some iteration (`testthat::with_mock()`, as well as {mockery}, {mockr}, and {mockthat} packages) to get to the current state, and understanding how it works will help you understand some of the tradeoffs. 
 
-The fundamental tension of mocking is that you want it to actually work (i.e. temporarily modify the implementation of a function), but also be "hygienic", i.e. it should only allow you to modify functions that you own, not arbitrarily affect any code. To achieve this goal `local_mocked_bindings()` works by modifying an environment that you own: your package's namespace environment. (If you've forgotten exactly what these are, you can refresh your memory at <https://adv-r.hadley.nz/environments.html#special-environments>.) So you can imagine mocking works something like this if you're temporarily replacing the value of `my_function` with a `new` implementation:
+The fundamental tension of mocking is that you want it to actually work (i.e., temporarily modify the implementation of a function), but also be "hygienic", i.e., it should only allow you to modify functions that you own, not arbitrarily affect any code. To achieve this goal, `local_mocked_bindings()` works by modifying an environment that you own: your package's namespace environment. (If you've forgotten exactly what these are, you can refresh your memory at <https://adv-r.hadley.nz/environments.html#special-environments>.) So you can imagine mocking works something like this if you're temporarily replacing the value of `my_function` with a `new` implementation:
 
 ```{r}
 #| eval: false
@@ -219,8 +219,8 @@ assignInNamespace("my_function", old, "mypackage")
 
 This leads to the two limitations of `local_mocked_bindings()`:
 
-1. The package namespace is locked, which means that you can't add new bindings to it. That means if you want to mock base functions, you have to provide some binding that can be overridden. The easiest way to do this is (e.g.) `mean <- NULL`. This creates a binding that `local_mocked_bindings()` can modify, but because of R's [lexical scoping rules](https://adv-r.hadley.nz/functions.html#functions-versus-variables) this doesn't affect ordinary calls to `mean()`.
+1. The package namespace is locked, which means that you can't add new bindings to it. That means if you want to mock base functions, you have to provide some binding that can be overridden. The easiest way to do this is (e.g., `mean <- NULL`). This creates a binding that `local_mocked_bindings()` can modify, but because of R's [lexical scoping rules](https://adv-r.hadley.nz/functions.html#functions-versus-variables) this doesn't affect ordinary calls to `mean()`.
 
-1. `::` doesn't use the package namespace, so if you want to mock a function from another package that you call with `::`, you either have to switch from `pkg::fun()` to `fun()` by importing `fun` into your `NAMESPACE` (e.g. with `@importFrom pkg fun`), or create your own wrapper function that you can mock. Typically, one of these options will feel fairly natural.
+1. `::` doesn't use the package namespace, so if you want to mock a function from another package that you call with `::`, you either have to switch from `pkg::fun()` to `fun()` by importing `fun` into your `NAMESPACE` (e.g., with `@importFrom pkg fun`), or create your own wrapper function that you can mock. Typically, one of these options will feel fairly natural.
 
 Overall these limitations feel correct to me: `local_mocked_bindings()` makes it easy to temporarily change the implementation of functions that you have written, while offering workarounds to override the implementations of functions that others have written in the scope of your package.

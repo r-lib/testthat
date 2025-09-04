@@ -92,7 +92,7 @@ continue <- function(prompt) {
 readline <- NULL
 ```
 
-You can test its behaviour by mocking `readline()` and using a snapshot test:
+You can test its behavior by mocking `readline()` and using a snapshot test:
 
 ```{r}
 #| label: mock-readline
