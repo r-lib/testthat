@@ -319,7 +319,7 @@ If you need to test graphical output, {vdiffr}. vdiffr is used to test ggplot2, 
 ### Snapshotting values
 
 `expect_snapshot()` is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors.
-If you care about the return value rather than any side-effects, you may might to use `expect_snapshot_value()` instead.
+If you care about the return value rather than any side-effects, you might want to use `expect_snapshot_value()` instead.
 It offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.
 
 ```{r}

@@ -184,7 +184,7 @@ withr::deferred_run()
 #> [1] "hi"
 ```
 
-Finally, `withr::defer()` lets you pick which function to bind the clean up behaviour too. This makes it possible to create helper functions.
+Finally, `withr::defer()` lets you pick which function to bind the clean up behaviour to. This makes it possible to create helper functions.
 
 ### "Local" helpers
 

@@ -20,7 +20,7 @@ snapper$start_file("snapshotting.Rmd", "test")
 Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-Mocking allows you to temporarily replace the implementation of a function with something that makes it easier to test. It's useful when testing failure scenarios that are hard to generate organically (e.g. what happens if dependency X isn't installed?), making tests more reliable by eliminating potential variability, and making tests faster. It's also general escape hatch for to resolve pretty much any challenging testing problem.
+Mocking allows you to temporarily replace the implementation of a function with something that makes it easier to test. It's useful when testing failure scenarios that are hard to generate organically (e.g. what happens if dependency X isn't installed?), making tests more reliable by eliminating potential variability, and making tests faster. It's also a general escape hatch to resolve pretty much any challenging testing problem.
 
 (If, like me, you're confused as to why you'd want to cruelly make fun of your tests, here mocking is used in the sense of making a fake or simulated version of something, i.e. a mock-up.)
 
@@ -187,7 +187,7 @@ Imagine trying to test this function without mocking! You'd probably think it's 
 With mocking, however, I can "manipulate time" by mocking `unix_time()` so that it returns the value of a variable I control. Now I can write a reliable test:
 
 ```{r}
-test_that("elapsed() meausres elapsed time", {
+test_that("elapsed() measures elapsed time", {
   time <- 1
   local_mocked_bindings(unix_time = function() time)
 
@@ -219,8 +219,8 @@ assignInNamespace("my_function", old, "mypackage")
 
 This leads to the two limitations of `local_mocked_bindings()`:
 
-1. The package namespace is locked, which means that you can't add new bindings to it. That means if you want to mock base functions, you have to provide some binding that can be overriden. The easiest way to do this is (e.g.) `mean <- NULL`. This creates a binding that `local_mocked_bindings()` can modify, but because of R's [lexical scoping rules](https://adv-r.hadley.nz/functions.html#functions-versus-variables) this doesn't affect ordinary calls to `mean()`.
+1. The package namespace is locked, which means that you can't add new bindings to it. That means if you want to mock base functions, you have to provide some binding that can be overridden. The easiest way to do this is (e.g.) `mean <- NULL`. This creates a binding that `local_mocked_bindings()` can modify, but because of R's [lexical scoping rules](https://adv-r.hadley.nz/functions.html#functions-versus-variables) this doesn't affect ordinary calls to `mean()`.
 
 1. `::` doesn't use the package namespace, so if you want to mock a function from another package that you call with `::`, you either have to switch from `pkg::fun()` to `fun()` by importing `fun` into your `NAMESPACE` (e.g. with `@importFrom pkg fun`), or create your own wrapper function that you can mock. Typically, one of these options will feel fairly natural.
 
-Overall these limitations feel correct to me: `local_mocked_bindings()` makes it easy to temporarily change the implementation of functions that you have written, while offering workarounds to override the implementations of functions that you others have written in the scope of your package.
+Overall these limitations feel correct to me: `local_mocked_bindings()` makes it easy to temporarily change the implementation of functions that you have written, while offering workarounds to override the implementations of functions that others have written in the scope of your package.

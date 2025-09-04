@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Some times you have tests that you don't want to run in certain circumstances.
+Sometimes you have tests that you don't want to run in certain circumstances.
 This vignette describes how to **skip** tests to avoid execution in undesired environments.
 Skipping is a relatively advanced topic because in most cases you want all your tests to run everywhere.
 The most common exceptions are:
@@ -47,7 +47,7 @@ testthat comes with a variety of helpers for the most common situations:
 
 You can also easily implement your own using either `skip_if()` or `skip_if_not()`, which both take an expression that should yield a single `TRUE` or `FALSE`.
 
-All reporters show which tests as skipped.
+All reporters show which tests are skipped.
 As of testthat 3.0.0, ProgressReporter (used interactively) and CheckReporter (used inside of `R CMD check`) also display a summary of skips across all tests.
 It looks something like this:
 
@@ -57,12 +57,12 @@ It looks something like this:
 ● On CRAN (1)
 ```
 
-You should keep an on eye this when developing interactively to make sure that you're not accidentally skipping the wrong things.
+You should keep an eye on this when developing interactively to make sure that you're not accidentally skipping the wrong things.
 
 ## Helpers
 
 If you find yourself using the same `skip_if()`/`skip_if_not()` expression across multiple tests, it's a good idea to create a helper function.
-This function should start with `skip_` and live in a `test/helper-{something}.R` file:
+This function should start with `skip_` and live in a `tests/testthat/helper-{something}.R` file:
 
 ```{r}
 skip_if_dangerous <- function() {

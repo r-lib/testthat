@@ -28,7 +28,7 @@ If your function depends on options or environment variables, first try refactor
 
 ## Random numbers
 
-Random number generators generate different numbers each time you can them because they update a special `.Random.seed` variable stored in the global environment. You can temporarily set this seed to a known value to make your random numbers reproducible with `withr::local_seed()`, making random numbers a special case of test fixtures. Learn more in `vignette("test-fixtures")`.
+Random number generators generate different numbers each time you call them because they update a special `.Random.seed` variable stored in the global environment. You can temporarily set this seed to a known value to make your random numbers reproducible with `withr::local_seed()`, making random numbers a special case of test fixtures. Learn more in `vignette("test-fixtures")`.
 
 ```{r}
 #| label: random-local-seed
