@@ -51,7 +51,7 @@ check_installed <- function(pkg, min_version = NULL) {
 }
 ```
 
-Now that we've written this function, we want to test it. There a lot of ways we might tackle this, but I think it's reasonable to start by testing the case without `min_version`. To do this we need to come up with a package we know is installed, and a package we know isn't installed:
+Now that we've written this function, we want to test it. There are a lot of ways we might tackle this, but I think it's reasonable to start by testing the case without `min_version`. To do this we need to come up with a package we know is installed, and a package we know isn't installed:
 
 ```{r}
 test_that("check_installed() checks package is installed", {
@@ -84,7 +84,7 @@ test_that("check_installed() checks minimum version", {
 })
 ```
 
-But it's starting to feel like we've accumulated a bunch of potentially fragile hacks. So let's see how we could could make these tests more robust with mocking. First we need to add `requireNamspace` and `packageVersion` bindings in our package. This is needed because `requireNamespace` and `packageVersion` are base functions: 
+But it's starting to feel like we've accumulated a bunch of potentially fragile hacks. So let's see how we could make these tests more robust with mocking. First we need to add `requireNamespace` and `packageVersion` bindings in our package. This is needed because `requireNamespace` and `packageVersion` are base functions: 
 ```{r}
 requireNamespace <- NULL
 packageVersion <- NULL
@@ -102,7 +102,7 @@ test_that("check_installed() checks package is installed", {
 })
 ```
 
-For the second test, we mock `requireNamepace()` to return `TRUE`, and then `packageVersion()` to return a fixed version number. Together this simulates that version 2.0.0 of any package is installed and makes our snapshot rely only on the state set within the test.
+For the second test, we mock `requireNamespace()` to return `TRUE`, and then `packageVersion()` to return a fixed version number. Together this simulates that version 2.0.0 of any package is installed and makes our snapshot rely only on the state set within the test.
 
 ```{r}
 test_that("check_installed() checks minimum version", {
@@ -158,7 +158,7 @@ Here we pretend that there are no reverse dependencies (revdeps) for the package
 
 ### Managing time
 
-`httr2::req_throttle()` prevents multiple requests from being made too quickly, using a tool called a leaky token bucket. This tool is inextricably tied to real time because you want to allow more requests as time elapses. So how do you test this? I started by using `Sys.sleep()` but this either made my tests both slow (because I'd sleep for a second or two) and unreliable (because sometime more time elapsed than I expected). Eventually I figured out that I could "manually control" time by using a [mocked function](https://github.com/r-lib/httr2/blob/main/tests/testthat/test-req-throttle.R) that returns the value of a variable I control. This allows me to manually advance time and carefully test the implications.
+but this either made my tests both slow (because I'd sleep for a second or two) and unreliable (because sometimes more time elapsed than I expected). Eventually I figured out that I could "manually control" time by using a [mocked function](https://github.com/r-lib/httr2/blob/main/tests/testthat/test-req-throttle.R) that returns the value of a variable I control. This allows me to manually advance time and carefully test the implications.
 
 You can see the basic idea with a simpler example. Let's first begin with a function that returns the "unix time", the number of seconds elapsed since midnight on Jan 1 1970. This is easy to compute, but will make some computations simpler later as well as providing a convenient function to mock.
 

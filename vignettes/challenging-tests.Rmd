@@ -20,7 +20,7 @@ snapper$start_file("snapshotting.Rmd", "test")
 Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-This vignette is a quick reference guide for testing challenging functions. It's organised by the problem, rather than technique used to solve it, so you can quickly skim the whole vignette, spot the problem you're facing, then learn more about useful tools for solving it.
+This vignette is a quick reference guide for testing challenging functions. It's organised by the problem, rather the than technique used to solve it, so you can quickly skim the whole vignette, spot the problem you're facing, then learn more about useful tools for solving it.
 
 ## Options and environment variables
 
@@ -67,7 +67,8 @@ You can skip a test without passing or failing if it's not possible to run it in
 
 ## HTTP requests
 
-If you're trying to test functions that rely on HTTP requests, we recommend using {vcr} or {httptest2}. These packages provide the ability to record and then later reply HTTP requests so that you can test without an active internet connection. If your package is going to CRAN, we highly recommend either using one of these packages or using `skip_on_cran()` for your internet-facing tests. This ensures that your package won't break on CRAN just because the service you're using is temporarily down.
+If you're trying to test functions that rely on HTTP requests, we recommend using {vcr} or {httptest2}.
+These packages provide the ability to record and then later replay HTTP requests so that you can test without an active internet connection. If your package is going to CRAN, we highly recommend either using one of these packages or using `skip_on_cran()` for your internet-facing tests. This ensures that your package won't break on CRAN just because the service you're using is temporarily down.
 
 ## User interaction
 
@@ -144,4 +145,4 @@ Learn more in `vignette("mocking")`.
 
 ## User-facing text
 
-Errors, warnings, and other user-facing text should be tested to ensure they're consistent and actionable. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs so another human can take a look. This is point of snapshot tests; learn more in `vignette("snapshotting")`.
+Errors, warnings, and other user-facing text should be tested to ensure they're consistent and actionable. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs so another human can take a look. This is the point of snapshot tests; learn more in `vignette("snapshotting")`.

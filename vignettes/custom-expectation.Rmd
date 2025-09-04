@@ -193,7 +193,7 @@ expect_s3_class(x1, 1)
 
 ## Repeated code
 
-As you write more expectations, you might discover repeated code that you want to extract out into a helper. Unfortunately, creating helper functions is not straightforward in testthat because every `fail()` captures the calling environment in order to give maximally useful tracebacks. Because getting this right is not critical (you'll just get a slightly suboptimal traceback in the case of failure), we don't recommend bothering. However, we document it here because it's important to get it right in testthat itself.
+As you write more expectations, you might discover repeated code that you want to extract out into a helper. Unfortunately, creating helper functions is not straightforward in testthat because every `fail()` captures the calling environment in order to give maximally useful tracebacks. Because getting this right is not critical (you'll just get a slightly suboptimal traceback in the case of failure), we don't recommend bothering in most cases. However, we document it here because it's important to get it right in testthat itself.
 
 The key challenge is that `fail()` captures a `trace_env` which should be the execution environment of the expectation. This usually works, because the default value of `trace_env` is `caller_env()`. But when you introduce a helper, you'll need to explicitly pass it along:
 

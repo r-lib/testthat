@@ -76,7 +76,7 @@ skip_if_dangerous <- function() {
 
 ## Embedding `skip()` in package functions
 
-Another useful technique that can sometimes be useful is to build a `skip()` directly into a package function.
+Another potentially useful technique is to build a `skip()` directly into a package function.
 For example take a look at [`pkgdown:::convert_markdown_to_html()`](https://github.com/r-lib/pkgdown/blob/v2.0.7/R/markdown.R#L95-L106), which absolutely, positively cannot work if the Pandoc tool is unavailable:
 
 ```{r eval = FALSE}

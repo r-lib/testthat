@@ -42,7 +42,7 @@ snapper$start_file("snapshotting.Rmd", "test")
 
 ## Basic workflow
 
-We'll illustrate the basic workflow with a simple function that generates an HTML heading.
+We'll illustrate the basic workflow with a simple function that generates an HTML bullets.
 It can optionally include an `id` attribute, which allows you to construct a link directly to that heading.
 
 ```{r}
@@ -237,7 +237,8 @@ test_that("actionable feedback if some or all arguments named", {
 
 Sometimes part of the output varies in ways that you can't easily control. In many cases, it's convenient to use mocking (`vignette("mocking")`) to ensure that every run of the function always produces the same output. In other cases, it's easier to manipulate the text output with a regular expression or similar. That's the job of the `transform` argument which should be passed a function that takes a character vector of lines, and returns a modified vector.
 
-This type of problem often crops up when you are testing a function that gives feedback about a path. In your tests, you'll typically use a temporary path (e.g. from `withr::local_tempfile()`) so if you display the path in a snapshot, it will be different every time. For example, consider this "safe" version of `writeLines()` that requires to explicitly opt-in to overwriting an existing file:
+This type of problem often crops up when you are testing a function that gives feedback about a path. In your tests, you'll typically use a temporary path (e.g. from `withr::local_tempfile()`) so if you display the path in a snapshot, it will be different every time.
+For example, consider this "safe" version of `writeLines()` that requires you to explicitly opt-in to overwriting an existing file:
 
 ```{r}
 safe_write_lines <- function(lines, path, overwrite = FALSE) {
@@ -314,7 +315,7 @@ These are sound defaults that we have found useful to minimise spurious differen
 
 ### Snapshotting graphics
 
-If you need to test graphical output, {vdiffr}. vdiffr is used to test ggplot2, and incorporates everything we know about high-quality graphics tests that minimise false positives.
+If you need to test graphical output, use {vdiffr}. vdiffr is used to test ggplot2, and incorporates everything we know about high-quality graphics tests that minimise false positives. Graphics testing is still often fragile, but using vdiffr means you will avoid all the problems we know how to avoid.
 
 ### Snapshotting values
 
@@ -384,7 +385,7 @@ This section describes some of the previous attempts and why we believe the new 
 
     -   It's relatively coarse grained, which means tests that use it tend to keep growing and growing.
 
--   `expect_known_output()` is finer grained version of `verify_output()` that captures output from a single function.
+-   `expect_known_output()` is a finer grained version of `verify_output()` that captures output from a single function.
     The requirement to produce a path for each individual expectation makes it even more painful to use.
 
 -   `expect_known_value()` and `expect_known_hash()` have all the disadvantages of `expect_known_output()`, but also produce binary output meaning that you can't easily review test differences in pull requests.

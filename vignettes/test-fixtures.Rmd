@@ -71,7 +71,7 @@ test_that("print() respects digits option", {
 })
 ```
 
-If you write a lot of code like this in your tests, you might decide you want a helper function or **test fixture** that reduces the duplication. Fortunately withr's local functions us to solve this problem by providing an `.local_envir` or `envir` argument that controls when cleanup occurs. The exact details of how this works are rather complicated, but fortunately there's a common pattern you can use without understanding all the details. Your helper function should always have an `env` argument that defaults to `parent.frame()`, which you pass to the `.local_envir` argument of `local_()`:
+If you write a lot of code like this in your tests, you might decide you want a helper function or **test fixture** that reduces the duplication. Fortunately withr's local functions allow us to solve this problem by providing an `.local_envir` or `envir` argument that controls when cleanup occurs. The exact details of how this works are rather complicated, but fortunately there's a common pattern you can use without understanding all the details. Your helper function should always have an `env` argument that defaults to `parent.frame()`, which you pass to the `.local_envir` argument of `local_()`:
 
 ```{r}
 local_digits <- function(sig_digits, env = parent.frame()) {
@@ -113,7 +113,7 @@ Notice how `pi` prints differently before and after the call to `sloppy()`. Call
 
 ### `on.exit()`
 
-The first function you need to know about is base R's `on.exit()`. `on.exit()` calls the code to supplied to its first argument when the current function exits, regardless of whether it returns a value or errors. You can use `on.exit()` to clean up after yourself by ensuring that every mess-making function call is paired with an `on.exit()` call that cleans up.
+The first function you need to know about is base R's `on.exit()`. `on.exit()` calls the code supplied to its first argument when the current function exits, regardless of whether it returns a value or errors. You can use `on.exit()` to clean up after yourself by ensuring that every mess-making function call is paired with an `on.exit()` call that cleans up.
 
 We can use this idea to turn `sloppy()` into `neat()`:
 
@@ -145,7 +145,7 @@ pi
 
 There are three main drawbacks to `on.exit()`:
 
--   You should always call it with `add = TRUE` and `after = FALSE`. These ensure that the call is **added** to the list of deferred tasks (instead of replaces) and is added to the **front** of the stack (not the back, so that cleanup occurs in reverse order to setup). These arguments only matter if you're using multiple `on.exit()` calls, but it's a good habit to always use them to avoid potential problems down the road.
+-   You should always call it with `add = TRUE` and `after = FALSE`. These ensure that the call is **added** to the list of deferred tasks (instead of replacing them) and is added to the **front** of the stack (not the back, so that cleanup occurs in reverse order to setup). These arguments only matter if you're using multiple `on.exit()` calls, but it's a good habit to always use them to avoid potential problems down the road.
 
 -   It doesn't work outside a function or test. If you run the following code in the global environment, you won't get an error, but the cleanup code will never be run:
 
@@ -293,7 +293,7 @@ test_that("message2() output depends on verbose option", {
 
 One place that we use test fixtures extensively is in the usethis package ([usethis.r-lib.org](https://usethis.r-lib.org)), which provides functions for looking after the files and folders in R projects, especially packages. Many of these functions only make sense in the context of a package, which means to test them, we also have to be working inside an R package. We need a way to quickly spin up a minimal package in a temporary directory, then test some functions against it, then destroy it.
 
-To solve this problem we create a test fixture, which we place in `R/test-helpers.R` so that's it's available for both testing and interactive experimentation:
+To solve this problem we create a test fixture, which we place in `R/test-helpers.R` so that it's available for both testing and interactive experimentation:
 
 ```{r, eval = FALSE}
 local_create_package <- function(dir = file_temp(), env = parent.frame()) {
