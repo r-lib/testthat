@@ -97,7 +97,6 @@ articles:
   contents:
   - challenging-tests
   - mocking
-  - nested-tests
   - skipping
   - snapshotting
   - test-fixtures
