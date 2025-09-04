@@ -33,7 +33,7 @@ expect_length <- function(object, n) {
   if (act_n != n) {
     msg <- c(
       sprintf("Expected %s to have length %i.", act$lab, n),
-      sprintf("Actual length: %i.", act$n)
+      sprintf("Actual length: %i.", act_n)
     )
     return(fail(msg))
   }

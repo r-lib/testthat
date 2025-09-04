@@ -20,7 +20,7 @@ snapper$start_file("snapshotting.Rmd", "test")
 Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-This vignette is a quick reference guide for testing challenging functions. It's organised by the problem, rather the than technique used to solve it, so you can quickly skim the whole vignette, spot the problem you're facing, then learn more about useful tools for solving it.
+This vignette is a quick reference guide for testing challenging functions. It's organised by the problem, rather than the technique used to solve it, so you can quickly skim the whole vignette, spot the problem you're facing, then learn more about useful tools for solving it.
 
 ## Options and environment variables
 

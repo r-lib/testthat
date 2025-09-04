@@ -42,8 +42,8 @@ snapper$start_file("snapshotting.Rmd", "test")
 
 ## Basic workflow
 
-We'll illustrate the basic workflow with a simple function that generates an HTML bullets.
-It can optionally include an `id` attribute, which allows you to construct a link directly to that heading.
+We'll illustrate the basic workflow with a simple function that generates HTML bullets.
+It can optionally include an `id` attribute, which allows you to construct a link directly to that list.
 
 ```{r}
 bullets <- function(text, id = NULL) {
@@ -198,7 +198,7 @@ test_that("you can't add weird things", {
 
 Just be careful: when you set `error = TRUE`, `expect_snapshot()` checks that at least one expression throws an error, not that every expression throws an error. For example, look above and notice that adding a date and factor generated a warning, not an error.
 
-Snapshot tests are particularly important when testing complex error messages, such as those that you might generate with cli. Here's a more realistic example illustrating how you might test `check_unnamed()`, a function that ensures all arguments in `...` are unnnamed.
+Snapshot tests are particularly important when testing complex error messages, such as those that you might generate with cli. Here's a more realistic example illustrating how you might test `check_unnamed()`, a function that ensures all arguments in `...` are unnamed.
 
 ```{r}
 check_unnamed <- function(..., call = parent.frame()) {

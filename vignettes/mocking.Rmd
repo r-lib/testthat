@@ -158,7 +158,7 @@ Here we pretend that there are no reverse dependencies (revdeps) for the package
 
 ### Managing time
 
-but this either made my tests both slow (because I'd sleep for a second or two) and unreliable (because sometimes more time elapsed than I expected). Eventually I figured out that I could "manually control" time by using a [mocked function](https://github.com/r-lib/httr2/blob/main/tests/testthat/test-req-throttle.R) that returns the value of a variable I control. This allows me to manually advance time and carefully test the implications.
+`httr2::req_throttle()` prevents multiple requests from being made too quickly, using a tool called a leaky token bucket. This tool is inextricably tied to real time because you want to allow more requests as time elapses. So how do you test this? I started by using `Sys.sleep()` but this either made my tests both slow (because I'd sleep for a second or two) and unreliable (because sometimes more time elapsed than I expected). Eventually I figured out that I could "manually control" time by using a [mocked function](https://github.com/r-lib/httr2/blob/main/tests/testthat/test-req-throttle.R) that returns the value of a variable I control. This allows me to manually advance time and carefully test the implications.
 
 You can see the basic idea with a simpler example. Let's first begin with a function that returns the "unix time", the number of seconds elapsed since midnight on Jan 1 1970. This is easy to compute, but will make some computations simpler later as well as providing a convenient function to mock.
 
