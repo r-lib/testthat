@@ -28,7 +28,7 @@ If your function depends on options or environment variables, first try refactor
 
 ## Random numbers
 
-Random number generators generate different numbers each time you can them because they update a special `.Random.seed` variable. You can temporarily set this seed to a known value to make your random numbers reproducible with `withr::local_seed()`, making random numbers a special case of test fixtures.
+Random number generators generate different numbers each time you can them because they update a special `.Random.seed` variable stored in the global environment. You can temporarily set this seed to a known value to make your random numbers reproducible with `withr::local_seed()`, making random numbers a special case of test fixtures. Learn more in `vignette("test-fixtures")`.
 
 ```{r}
 #| label: random-local-seed
@@ -46,7 +46,7 @@ test_that("dice returns different numbers", {
 })
 ```
 
-Alternatively, you might want to mock your function that wraps a random number generator:
+Alternatively, you might want to mock the function to eliminate randomness. Learn more in `vignette("mocking")`.
 
 ```{r}
 #| label: random-mock
@@ -67,7 +67,7 @@ If you're trying to test functions that rely on HTTP requests, we recommend usin
 
 ## User interaction
 
-If you're testing a function that relies on user feedback from `readline()` or `menu()` or similar, you can use mocking (`vignette("mocking")`) to temporarily make those functions return fixed values. For example, imagine that you have the following function that asks the user if they want to continue:
+If you're testing a function that relies on user feedback from `readline()` or `menu()` or similar, you can use mocking to temporarily make those functions return fixed values. For example, imagine that you have the following function that asks the user if they want to continue:
 
 ```{r}
 #| label: continue
@@ -136,6 +136,8 @@ test_that("save_file() requires confirmation to overwrite file", {
 })
 ```
 
+Learn more in `vignette("mocking")`.
+
 ## User-facing text
 
-Errors, warnings, and other user-facing text should be tested to ensure they're helpful and consistent. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs, so another human can take a look. This is exactly the point of snapshot tests; learn more in `vignette("snapshotting")`.
+Errors, warnings, and other user-facing text should be tested to ensure they're consistent and actionable. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs so another human can take a look. This is point of snapshot tests; learn more in `vignette("snapshotting")`.
