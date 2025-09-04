@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 >
 > ― Chief Si'ahl
 
-Ideally, a test should leave the world exactly as it found it. But you often need to make some changes in order to exercise every part of your code:
+Ideally, a test should leave the world exactly as it found it. But you often need to make some changes to exercise every part of your code:
 
 -   Create a file or directory
 -   Create a resource on an external system
@@ -31,9 +31,9 @@ Ideally, a test should leave the world exactly as it found it. But you often nee
 
 How can you clean up these changes to get back to a clean slate? Scrupulous attention to cleanup is more than just courtesy or being fastidious. It is also self-serving. The state of the world after test `i` is the starting state for test `i + 1`. Tests that change state willy-nilly eventually end up interfering with each other in ways that can be very difficult to debug.
 
-Most tests are written with an implicit assumption about the starting state, usually whatever *tabula rasa* means for the target domain of your package. If you accumulate enough sloppy tests, you will eventually find yourself asking the programming equivalent of questions like "Who forgot to turn off the oven?" and "Who didn't clean up after the dog?". (If you've got yourself into this state, testthat provides another tool to help you figure out exactly what test is to blame: `set_state_inspector()`.)
+Most tests are written with an implicit assumption about the starting state, usually whatever *tabula rasa* means for the target domain of your package. If you accumulate enough sloppy tests, you will eventually find yourself asking the programming equivalent of questions like "Who forgot to turn off the oven?" and "Who didn't clean up after the dog?" (If you've got yourself into this state, testthat provides another tool to help you figure out exactly what test is to blame: `set_state_inspector()`.)
 
-It's also important that your setup and cleanup is easy to use when working interactively. When a test fails, you want to be able to quickly recreate the exact environment in which the test is run so you can interactively experiment to figure out what went wrong.
+It's also important that your setup and cleanup are easy to use when working interactively. When a test fails, you want to be able to quickly recreate the exact environment in which the test is run so you can interactively experiment to figure out what went wrong.
 
 This article introduces a powerful technique that allows you to solve both problems: **test fixtures**. We'll begin by discussing some pre-existing tools, then learn about the tools that make fixtures possible, talk about exactly what a test fixture is, and show a few examples.
 
@@ -45,7 +45,7 @@ library(testthat)
 
 ## `local_` helpers
 
-We'll begin by giving you the bare minimum of knowledge to change global state _just_ within your test. The withr package provides a number of functions that temporarily change the state of the world, carefully undoing the changes when the current function finishes:
+We'll begin by giving you the bare minimum of knowledge to change global state *just* within your test. The withr package provides a number of functions that temporarily change the state of the world, carefully undoing the changes when the current function finishes:
 
 | Do / undo this              | withr function    |
 |-----------------------------|-------------------|
@@ -57,7 +57,7 @@ We'll begin by giving you the bare minimum of knowledge to change global state _
 
 (You can see a full list at <https://withr.r-lib.org/> but these five are by far the most commonly used.)
 
-These allow you to control options that would otherwise be painful. For example, imagine you were testing the base R code that rounds numbers to a fixed number of places when printing. You could write code like this:
+These allow you to control options that would otherwise be painful. For example, imagine you were testing base R code that rounds numbers to a fixed number of places when printing. You could write code like this:
 
 ```{r}
 test_that("print() respects digits option", {
@@ -202,7 +202,7 @@ neater <- function(x, sig_digits) {
 neater(pi)
 ```
 
-This code doesn't work because the cleanup happens too soon, when `local_digits()` exits, not when `neat()` finishes.
+This code doesn't work because the cleanup happens too soon, when `local_digits()` exits, not when `neater()` finishes.
 
 Fortunately, `withr::defer()` allows us to solve this problem by providing an `envir` argument that allows you to control when cleanup occurs. The exact details of how this works are rather complicated, but fortunately there's a common pattern you can use without understanding all the details. Your helper function should always have an `env` argument that defaults to `parent.frame()`, which you pass to the second argument of `defer()`:
 

@@ -20,15 +20,15 @@ snapper$start_file("snapshotting.Rmd", "test")
 Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-Mocking allows you to temporarily replace the implementation of a function with something that makes it easier to test. It's useful when testing failure scenarios that are hard to generate organically (e.g. what happens if dependency X isn't installed?), making tests more reliable by eliminating potential variability, and making tests faster. It's also a general escape hatch to resolve pretty much any challenging testing problem.
+Mocking allows you to temporarily replace the implementation of a function with something that makes it easier to test. It's useful when testing failure scenarios that are hard to generate organically (e.g., what happens if dependency X isn't installed?), making tests more reliable by eliminating potential variability, and making tests faster. It's also a general escape hatch to resolve pretty much any challenging testing problem.
 
-(If, like me, you're confused as to why you'd want to cruelly make fun of your tests, here mocking is used in the sense of making a fake or simulated version of something, i.e. a mock-up.)
+(If, like me, you're confused as to why you'd want to cruelly make fun of your tests, here mocking is used in the sense of making a fake or simulated version of something, i.e., a mock-up.)
 
-testthat supports mocking primarily through `local_mocked_bindings()` for mocking functions, and we'll focus on that function in this vignette. But it also provides other methods for specialised cases: you can use `local_mocked_s3_method()` to mock an S3 method, `local_mocked_s4_method()` to mock a S4 method, and `local_mocked_r6_class()` to mock an R6 class. Once you understand the basic idea of mocking, I think it should be straightforward to apply these other functions where needed.
+testthat supports mocking primarily through `local_mocked_bindings()` for mocking functions, and we'll focus on that function in this vignette. But it also provides other methods for specialized cases: you can use `local_mocked_s3_method()` to mock an S3 method, `local_mocked_s4_method()` to mock an S4 method, and `local_mocked_r6_class()` to mock an R6 class. Once you understand the basic idea of mocking, I think it should be straightforward to apply these other functions where needed.
 
 ## Getting started with mocking
 
-Let's begin by motivating mocking with a simple example. Imagine you're writing a function like `rlang::check_installed()`. The goal of this function is to check if a package is installed, and if not, give a nice error message. It also takes an option `min_version` argument which you can use to enforce a version constraint. A simple base R implementation might look something like this:
+Let's begin by motivating mocking with a simple example. Imagine you're writing a function like `rlang::check_installed()`. The goal of this function is to check if a package is installed, and if not, give a nice error message. It also takes an optional `min_version` argument which you can use to enforce a version constraint. A simple base R implementation might look something like this:
 
 ```{r}
 check_installed <- function(pkg, min_version = NULL) {
@@ -84,13 +84,13 @@ test_that("check_installed() checks minimum version", {
 })
 ```
 
-But it's starting to feel like we've accumulated a bunch of potentially fragile hacks. So let's see how we could make these tests more robust with mocking. First we need to add `requireNamespace` and `packageVersion` bindings in our package. This is needed because `requireNamespace` and `packageVersion` are base functions: 
+But it's starting to feel like we've accumulated a bunch of potentially fragile hacks. So let's see how we could make these tests more robust with mocking. First, we need to add `requireNamespace` and `packageVersion` bindings in our package. This is needed because `requireNamespace` and `packageVersion` are base functions: 
 ```{r}
 requireNamespace <- NULL
 packageVersion <- NULL
 ```
 
-For the first test, we mock `requireNamespace()` twice, first returning `TRUE`, pretending every package is installed, and then returning `FALSE` pretending that no packages are installed.
+For the first test, we mock `requireNamespace()` twice, first returning `TRUE`, pretending every package is installed, and then returning `FALSE`, pretending that no packages are installed.
 
 ```{r}
 test_that("check_installed() checks package is installed", {

@@ -43,7 +43,7 @@ expect_length <- function(object, n) {
 }
 ```
 
-The first step in any expectation is to use `quasi_label()` to capture a "labelled value", i.e. a list that contains both the value (`$val`) for testing and a label (`$lab`) for messaging. This is a pattern that exists for fairly esoteric reasons; you don't need to understand it, just copy and paste it 🙂.
+The first step in any expectation is to use `quasi_label()` to capture a "labelled value", i.e., a list that contains both the value (`$val`) for testing and a label (`$lab`) for messaging. This is a pattern that exists for fairly esoteric reasons; you don't need to understand it, just copy and paste it 🙂.
 
 Next you need to check each way that `object` could violate the expectation. In this case, there's only one check, but in more complicated cases there can be multiple checks. In most cases, it's easier to check for violations one by one, using early returns to `fail()`. This makes it easier to write informative failure messages that first describe what was expected and then what was actually seen.
 
@@ -87,7 +87,7 @@ The following sections show you a few more variations, loosely based on existing
 
 ### `expect_vector_length()`
 
-Let's make `expect_length()` a bit more strict by also checking that the input is a vector. R is a bit weird in that it gives a length to pretty much every object, and you can imagine not wanting this code to succeed:
+Let's make `expect_length()` a bit more strict by also checking that the input is a vector. R is a bit unusual in that it gives a length to pretty much every object, and you can imagine not wanting this code to succeed:
 
 ```{r}
 expect_length(mean, 1)
@@ -182,7 +182,7 @@ Note the variety of messages:
 
 * When `object` isn't an object, we only need to say what we expect.
 * When `object` isn't an S3 object, we know it's an S4 object.
-* When `inherits()` is `FALSE`, we provide the actual _class_, since that's most informative.
+* When `inherits()` is `FALSE`, we provide the actual *class*, since that's most informative.
 
 I also check that the `class` argument must be a string. This is an error, not a failure, because it suggests you're using the function incorrectly.
 

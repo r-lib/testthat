@@ -20,7 +20,7 @@ snapper$start_file("snapshotting.Rmd", "test")
 Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-This vignette is a quick reference guide for testing challenging functions. It's organised by the problem, rather than the technique used to solve it, so you can quickly skim the whole vignette, spot the problem you're facing, then learn more about useful tools for solving it.
+This vignette is a quick reference guide for testing challenging functions. It's organized by the problem, rather than the technique used to solve it, so you can quickly skim the whole vignette, spot the problem you're facing, then learn more about useful tools for solving it.
 
 ## Options and environment variables
 
@@ -63,7 +63,7 @@ test_that("three dice adds values of individual calls", {
 
 ## Some tests can't be run in some circumstances
 
-You can skip a test without passing or failing if it's not possible to run it in the current environment (e.g. it's OS dependent, or it only works interactively, or it shouldn't be tested on CRAN). Learn more in `vignette("skipping")`.
+You can skip a test without passing or failing if it's not possible to run it in the current environment (e.g., it's OS dependent, or it only works interactively, or it shouldn't be tested on CRAN). Learn more in `vignette("skipping")`.
 
 ## HTTP requests
 
@@ -145,4 +145,4 @@ Learn more in `vignette("mocking")`.
 
 ## User-facing text
 
-Errors, warnings, and other user-facing text should be tested to ensure they're consistent and actionable. Obviously you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs so another human can take a look. This is the point of snapshot tests; learn more in `vignette("snapshotting")`.
+Errors, warnings, and other user-facing text should be tested to ensure they're consistent and actionable. Obviously, you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs so another human can take a look. This is the point of snapshot tests; learn more in `vignette("snapshotting")`.

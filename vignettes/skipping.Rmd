@@ -20,14 +20,14 @@ Skipping is a relatively advanced topic because in most cases you want all your 
 The most common exceptions are:
 
 -   You're testing a web service that occasionally fails, and you don't want to run the tests on CRAN.
-    Or maybe the API requires authentication, and you can only run the tests when you've [securely distributed](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) some secrets.
+    Or the API requires authentication, and you can only run the tests when you've [securely distributed](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) some secrets.
 
 -   You're relying on features that not all operating systems possess, and want to make sure your code doesn't run on a platform where it doesn't work.
-    This platform tends to be Windows, since amongst other things, it lacks full utf8 support.
+    This platform tends to be Windows, since among other things, it lacks full UTF-8 support.
 
 -   You're writing your tests for multiple versions of R or multiple versions of a dependency and you want to skip when a feature isn't available.
     You generally don't need to skip tests if a suggested package is not installed.
-    This is only needed in exceptional circumstances, e.g. when a package is not available on some operating system.
+    This is only needed in exceptional circumstances, e.g., when a package is not available on some operating system.
 
 ```{r setup}
 library(testthat)
@@ -43,12 +43,12 @@ testthat comes with a variety of helpers for the most common situations:
 -   `skip_on_os()` allows you to skip tests on a specific operating system.
     Generally, you should strive to avoid this as much as possible (so your code works the same on all platforms), but sometimes it's just not possible.
 
--   `skip_on_ci()` skips tests on most continuous integration platforms (e.g. GitHub Actions, Travis, Appveyor).
+-   `skip_on_ci()` skips tests on most continuous integration platforms (e.g., GitHub Actions, Travis, Appveyor).
 
 You can also easily implement your own using either `skip_if()` or `skip_if_not()`, which both take an expression that should yield a single `TRUE` or `FALSE`.
 
 All reporters show which tests are skipped.
-As of testthat 3.0.0, ProgressReporter (used interactively) and CheckReporter (used inside of `R CMD check`) also display a summary of skips across all tests.
+As of testthat 3.0.0, ProgressReporter (used interactively) and CheckReporter (used inside `R CMD check`) also display a summary of skips across all tests.
 It looks something like this:
 
 ```         
@@ -77,7 +77,7 @@ skip_if_dangerous <- function() {
 ## Embedding `skip()` in package functions
 
 Another potentially useful technique is to build a `skip()` directly into a package function.
-For example, take a look at [`pkgdown:::convert_markdown_to_html()`](https://github.com/r-lib/pkgdown/blob/v2.0.7/R/markdown.R#L95-L106), which absolutely, positively cannot work if the Pandoc tool is unavailable:
+For example, take a look at [`pkgdown:::convert_markdown_to_html()`](https://github.com/r-lib/pkgdown/blob/v2.0.7/R/markdown.R#L95-L106), which absolutely cannot work if the Pandoc tool is unavailable:
 
 ```{r eval = FALSE}
 convert_markdown_to_html <- function(in_path, out_path, ...) {
