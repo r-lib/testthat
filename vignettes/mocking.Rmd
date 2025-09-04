@@ -20,15 +20,17 @@ snapper$start_file("snapshotting.Rmd", "test")
 Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-Mocking allows you to temporarily replace the implementation of a function with something that makes it easier to test. It's useful when testing failure scenarios that are hard to generate organically (e.g., what happens if dependency X isn't installed?), making tests more reliable by eliminating potential variability, and making tests faster. It's also a general escape hatch to resolve pretty much any challenging testing problem.
+Mocking allows you to temporarily replace the implementation of a function with something that makes it easier to test. It's useful when testing failure scenarios that are hard to generate organically (e.g., what happens if dependency X isn't installed?), making tests more reliable by eliminating potential variability, and making tests faster. It's also a general escape hatch to resolve almost any challenging testing problem. That said, mocking comes with downsides too: it's an advanced technique that can lead to brittle tests, or tests that silently conceal problems. You should only use it when all other approaches fail.
 
-(If, like me, you're confused as to why you'd want to cruelly make fun of your tests, here mocking is used in the sense of making a fake or simulated version of something, i.e., a mock-up.)
+(If, like me, you're confused as to why you'd want to cruelly make fun of your tests, mocking here is used in the sense of making a fake or simulated version of something, i.e., a mock-up.)
 
-testthat supports mocking primarily through `local_mocked_bindings()` for mocking functions, and we'll focus on that function in this vignette. But it also provides other methods for specialized cases: you can use `local_mocked_s3_method()` to mock an S3 method, `local_mocked_s4_method()` to mock an S4 method, and `local_mocked_r6_class()` to mock an R6 class. Once you understand the basic idea of mocking, I think it should be straightforward to apply these other functions where needed.
+testthat supports mocking primarily through `local_mocked_bindings()` for mocking functions, and we'll focus on that function in this vignette. But it also provides other methods for specialized cases: you can use `local_mocked_s3_method()` to mock an S3 method, `local_mocked_s4_method()` to mock an S4 method, and `local_mocked_r6_class()` to mock an R6 class. Once you understand the basic idea of mocking, it should be straightforward to apply these other functions where needed.
+
+In this vignette, we'll start by illustrating the basics of mocking with a few examples, then continue on to some real-world case studies from throughout the tidyverse. We'll finish up with the technical details so you can understand the tradeoffs of the current implementation.
 
 ## Getting started with mocking
 
-Let's begin by motivating mocking with a simple example. Imagine you're writing a function like `rlang::check_installed()`. The goal of this function is to check if a package is installed, and if not, give a nice error message. It also takes an optional `min_version` argument which you can use to enforce a version constraint. A simple base R implementation might look something like this:
+Let's begin by motivating mocking with a simple example. Imagine you're writing a function like `rlang::check_installed()`. The goal of this function is to check if a package is installed, and if not, give a nice error message. It also takes an optional `min_version` argument that you can use to enforce a version constraint. A simple base R implementation might look something like this:
 
 ```{r}
 check_installed <- function(pkg, min_version = NULL) {
@@ -51,7 +53,7 @@ check_installed <- function(pkg, min_version = NULL) {
 }
 ```
 
-Now that we've written this function, we want to test it. There are a lot of ways we might tackle this, but I think it's reasonable to start by testing the case without `min_version`. To do this we need to come up with a package we know is installed, and a package we know isn't installed:
+Now that we've written this function, we want to test it. There are a lot of ways we might tackle this, but it's reasonable to start by testing the case without `min_version`. To do this we need to come up with a package we know is installed, and a package we know isn't installed:
 
 ```{r}
 test_that("check_installed() checks package is installed", {
@@ -60,7 +62,7 @@ test_that("check_installed() checks package is installed", {
 })
 ```
 
-This is probably fine but it feels a little fragile. It's pretty unlikely, but this test will no longer work if someone creates a package called `doesntexist`. 
+This is probably fine, but it feels a little fragile as it depends on external state that we don't control. While it's pretty unlikely, if someone does create a `doesntexist` package, this test will no longer work. And in general, the less your tests rely on state outside of your control, the more robust and reliably they'll be.
 
 Next we want to check the case where we specify a minimum version, and again we need to make up some version:
 
@@ -71,7 +73,7 @@ test_that("check_installed() checks minimum version", {
 })
 ```
 
-Again, this is probably safe (since I'm unlikely to release 90+ new versions of testthat), but if you look at the snapshot message carefully, you'll notice that it includes the current version of testthat. That means every time a new version of testthat comes out, we'll have to update the snapshot. We could use the `transform` argument to fix that:
+Again, this is probably safe (since I'm unlikely to release 90+ new versions of testthat), but if you look at the snapshot message carefully, you'll notice that it includes the current version of testthat. That means every time a new version of testthat is released, we'll have to update the snapshot. We could use the `transform` argument to fix that:
 
 ```{r}
 test_that("check_installed() checks minimum version", {
@@ -84,13 +86,14 @@ test_that("check_installed() checks minimum version", {
 })
 ```
 
-But it's starting to feel like we've accumulated a bunch of potentially fragile hacks. So let's see how we could make these tests more robust with mocking. First, we need to add `requireNamespace` and `packageVersion` bindings in our package. This is needed because `requireNamespace` and `packageVersion` are base functions: 
+But it's starting to feel like we've accumulated a bunch of potentially fragile hacks. So let's see how we could make these tests more robust with mocking. First, because `requireNamespace` and `packageVersion` are base functions, we need to add bindings in our package namespace (we'll come back to why later).
+
 ```{r}
 requireNamespace <- NULL
 packageVersion <- NULL
 ```
 
-For the first test, we mock `requireNamespace()` twice, first returning `TRUE`, pretending every package is installed, and then returning `FALSE`, pretending that no packages are installed.
+For the first test, we mock `requireNamespace()` twice: first returning `TRUE` (pretending every package is installed), and then returning `FALSE` (pretending that no packages are installed). Now the test is completely self-contained and doesn't depend on what packages happen to be installed.
 
 ```{r}
 test_that("check_installed() checks package is installed", {
@@ -102,7 +105,7 @@ test_that("check_installed() checks package is installed", {
 })
 ```
 
-For the second test, we mock `requireNamespace()` to return `TRUE`, and then `packageVersion()` to return a fixed version number. Together this simulates that version 2.0.0 of any package is installed and makes our snapshot rely only on the state set within the test.
+For the second test, we mock `requireNamespace()` to return `TRUE`, and then `packageVersion()` to return a fixed version number. Together this simulates that version 2.0.0 of any package is installed and again ensuring our test is independent of system state.
 
 ```{r}
 test_that("check_installed() checks minimum version", {
@@ -118,7 +121,13 @@ test_that("check_installed() checks minimum version", {
 
 ## Case studies
 
-To give you a bit more experience with mocking, this section looks at a few places where we use mocking throughout the tidyverse. Note that these are all a little complex; this is the nature of mocking: if you can use a simpler technique, you should. So mocking only comes up for otherwise intractable problems.
+To give you a bit more experience with mocking, this section looks at a few places where we use mocking throughout the tidyverse:
+
+* Testing `testthat::skip_on_os()` regardless of what operating system is running the test.
+* Speeding up `usethis::use_release_issue()`.
+* Testing the passage of time in `httr2::req_throttle()`.
+
+These situations are all a little complex as this is the nature of mocking: if you can use a simpler technique, you should. Mocking is only needed for otherwise intractable problems. 
 
 ### Pretending we're on a different platform
 
@@ -140,12 +149,12 @@ test_that("can skip on multiple oses", {
 })
 ```
 
-(The logic of `skip_on_os()` is simple enough that I feel confident we only need to simulate with one platform.)
+(The logic of `skip_on_os()` is simple enough that I feel confident we only need to simulate one platform.)
 
 ### Speeding up tests
 
 `usethis::use_release_issue()` creates a GitHub issue with a bulleted list of actions that we recommend you follow when you release your package. But some of the bullets depend on complex conditions that can take a while to compute. So the [tests for this function](https://github.com/r-lib/usethis/blob/main/tests/testthat/test-release.R) use mocks like this:
- 
+
 ```{r}
 #| eval: false
 local_mocked_bindings(
@@ -154,7 +163,7 @@ local_mocked_bindings(
 )
 ```
 
-Here we pretend that there are no reverse dependencies (revdeps) for the package, which is both slow to compute and might vary over time if we use a real package. We also pretend that there are no related GitHub milestones, which otherwise requires an API call and again might vary over time. All together, these mocks keep the tests fast and self-contained, not relying on any state outside of our direct control.
+Here we pretend that there are no reverse dependencies (revdeps) for the package, which is both slow to compute and might vary over time if we use a real package. We also pretend that there are no related GitHub milestones, which otherwise requires an API call and might vary over time. Together, these mocks keep the tests fast and self-contained, not relying on any state outside of our direct control.
 
 ### Managing time
 
@@ -201,9 +210,9 @@ test_that("elapsed() measures elapsed time", {
 
 ## How does mocking work?
 
-To finish up, it's worth discussing how mocking works. It took us some iteration (`testthat::with_mock()`, as well as {mockery}, {mockr}, and {mockthat} packages) to get to the current state, and understanding how it works will help you understand some of the tradeoffs. 
+To finish up, it's worth discussing how mocking works. It took us some iteration (`testthat::with_mock()`, as well as {mockery}, {mockr}, and {mockthat} packages) to get to the current state, and understanding how it works will help you understand some of the trade-offs.
 
-The fundamental tension of mocking is that you want it to actually work (i.e., temporarily modify the implementation of a function), but also be "hygienic", i.e., it should only allow you to modify functions that you own, not arbitrarily affect any code. To achieve this goal, `local_mocked_bindings()` works by modifying an environment that you own: your package's namespace environment. (If you've forgotten exactly what these are, you can refresh your memory at <https://adv-r.hadley.nz/environments.html#special-environments>.) So you can imagine mocking works something like this if you're temporarily replacing the value of `my_function` with a `new` implementation:
+The fundamental tension of mocking is that you want it to actually work (i.e., temporarily modify the implementation of a function), but also be "hygienic"—it should only allow you to modify functions that you own, not arbitrarily affect any code. You can see why this might be problematic if you imagine mocking a function that testthat itself uses: you don't want to accidentally break testthat while trying to test your code! To achieve this goal, `local_mocked_bindings()` works by modifying an environment that you own: your package's namespace environment. (If you've forgotten exactly what these are, you can refresh your memory at <https://adv-r.hadley.nz/environments.html#special-environments>.) So you can imagine mocking works something like this if you're temporarily replacing the value of `my_function` with a `new` implementation:
 
 ```{r}
 #| eval: false
@@ -217,10 +226,10 @@ assignInNamespace("my_function", new, "mypackage")
 assignInNamespace("my_function", old, "mypackage")
 ```
 
-This leads to the two limitations of `local_mocked_bindings()`:
+This implementation leads to two limitations of `local_mocked_bindings()`:
 
-1. The package namespace is locked, which means that you can't add new bindings to it. That means if you want to mock base functions, you have to provide some binding that can be overridden. The easiest way to do this is (e.g., `mean <- NULL`). This creates a binding that `local_mocked_bindings()` can modify, but because of R's [lexical scoping rules](https://adv-r.hadley.nz/functions.html#functions-versus-variables) this doesn't affect ordinary calls to `mean()`.
+1. The package namespace is locked, which means that you can't add new bindings to it. That means if you want to mock base functions, you have to provide some binding that can be overridden. The easiest way to do this is with something like `mean <- NULL`. This creates a binding that `local_mocked_bindings()` can modify, but because of R's [lexical scoping rules](https://adv-r.hadley.nz/functions.html#functions-versus-variables) this doesn't affect ordinary calls to `mean()`.
 
-1. `::` doesn't use the package namespace, so if you want to mock a function from another package that you call with `::`, you either have to switch from `pkg::fun()` to `fun()` by importing `fun` into your `NAMESPACE` (e.g., with `@importFrom pkg fun`), or create your own wrapper function that you can mock. Typically, one of these options will feel fairly natural.
+2. `::` doesn't use the package namespace, so if you want to mock a function from another package that you call with `::`, you either have to switch from `pkg::fun()` to `fun()` by importing `fun` into your `NAMESPACE` (e.g., with `@importFrom pkg fun`), or create your own wrapper function that you can mock. Typically, one of these options will feel fairly natural.
 
-Overall these limitations feel correct to me: `local_mocked_bindings()` makes it easy to temporarily change the implementation of functions that you have written, while offering workarounds to override the implementations of functions that others have written in the scope of your package.
+Overall, these limitations feel correct to me: `local_mocked_bindings()` makes it easy to temporarily change the implementation of functions that you have written, while offering workarounds to override the implementations of functions that others have written in the scope of your package.

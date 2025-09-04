@@ -20,19 +20,32 @@ snapper$start_file("snapshotting.Rmd", "test")
 Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-This vignette is a quick reference guide for testing challenging functions. It's organized by the problem, rather than the technique used to solve it, so you can quickly skim the whole vignette, spot the problem you're facing, then learn more about useful tools for solving it.
+This vignette is a quick reference guide for testing challenging functions. It's organized by problem type rather than technique, so you can quickly skim the whole vignette, spot the problem you're facing, then learn more about useful tools for solving it. In it you'll learn how to overcome the following challenges:
+
+* Functions that depend on options and environment variables.
+* Random number generators.
+* Tests that can't be run in some environments.
+* Testing web APIs.
+* User interaction.
+* User-facing text.
+* Repeated code.
 
 ## Options and environment variables
 
-If your function depends on options or environment variables, first try refactoring the functions to make the [inputs explicit](https://design.tidyverse.org/inputs-explicit.html). If that's not possible, then you can use a function like `withr::local_options()` or `withr::local_envvar()` to temporarily change options and environment values within a test. Learn more in `vignette("test-fixtures")`.
+If your function depends on options or environment variables, first try refactoring the function to make the [inputs explicit](https://design.tidyverse.org/inputs-explicit.html). If that's not possible, then you can use functions like `withr::local_options()` or `withr::local_envvar()` to temporarily change options and environment values within a test. Learn more in `vignette("test-fixtures")`.
+
+<!-- FIXME: Consider adding a brief example showing the difference between implicit and explicit approaches - this would make the recommendation more concrete -->
 
 ## Random numbers
 
-Random number generators generate different numbers each time you call them because they update a special `.Random.seed` variable stored in the global environment. You can temporarily set this seed to a known value to make your random numbers reproducible with `withr::local_seed()`, making random numbers a special case of test fixtures. Learn more in `vignette("test-fixtures")`.
+What happens if you want to test a function that relies on randomness in some way? If you're writing a random number generator, you probably want to generate large quantities of random numbers and apply some statistical test. But what if your function just happens to use a little bit of pre-existing randomness? How do you make your tests repeatable and reproducible?
+
+Under the hood, random number generators generate different numbers each time you call them because they update a special `.Random.seed` variable stored in the global environment. You can temporarily set this seed to a known value to make your random numbers reproducible with `withr::local_seed()`, making random numbers a special case of test fixtures (`vignette("test-fixtures")`).
+
+Here's a simple example showing how you might test the basic operation of function that rolls a dice:
 
 ```{r}
 #| label: random-local-seed
-
 dice <- function() {
   sample(6, 1)
 }
@@ -46,7 +59,7 @@ test_that("dice returns different numbers", {
 })
 ```
 
-Alternatively, you might want to mock the function to eliminate randomness. Learn more in `vignette("mocking")`.
+Alternatively, you might want to mock (`vignette("mocking")`) the function to eliminate randomness.
 
 ```{r}
 #| label: random-mock
@@ -61,18 +74,21 @@ test_that("three dice adds values of individual calls", {
 })
 ```
 
+When should you set the seed and when should you use mocking? As a general rule of thumb, set the seed when you want to test the actual random behavior, and use mocking when you want to test the logic that uses the random results.
+
 ## Some tests can't be run in some circumstances
 
-You can skip a test without passing or failing if it's not possible to run it in the current environment (e.g., it's OS dependent, or it only works interactively, or it shouldn't be tested on CRAN). Learn more in `vignette("skipping")`.
+You can skip a test without it passing or failing if it's not possible to run it in the current environment (e.g., it's OS dependent, it only works interactively, or it shouldn't be tested on CRAN). Learn more in `vignette("skipping")`.
 
 ## HTTP requests
 
-If you're trying to test functions that rely on HTTP requests, we recommend using {vcr} or {httptest2}.
-These packages provide the ability to record and then later replay HTTP requests so that you can test without an active internet connection. If your package is going to CRAN, we highly recommend either using one of these packages or using `skip_on_cran()` for your internet-facing tests. This ensures that your package won't break on CRAN just because the service you're using is temporarily down.
+If you're trying to test functions that rely on HTTP requests, we recommend using {vcr} or {httptest2}. These packages both allow you to interactively record HTTP responses, and then later replay them in tests. This is a specialised type of mocking, which allows your tests to run without the internet and isolates your tests from failures in the underlying service. 
+
+If your package is going to CRAN, you **must** either one of these packages or using `skip_on_cran()` for internet-facing tests. Otherwise you are at high risk of failing `R CMD check` if the API you are binding is temporarily down. This sort of failure causes extra work for the CRAN maintainers and extra hassle for you.
 
 ## User interaction
 
-If you're testing a function that relies on user feedback from `readline()` or `menu()` or similar, you can use mocking to temporarily make those functions return fixed values. For example, imagine that you have the following function that asks the user if they want to continue:
+If you're testing a function that relies on user feedback from `readline()`, `utils::menu()`, or `utils::askYesNo()` or similar, you can use mocking (`vignette("mocking")`) to have those functions return fixed values within the test. For example, imagine that you have the following function that asks the user if they want to continue:
 
 ```{r}
 #| label: continue
@@ -115,7 +131,7 @@ test_that("user must respond y or n", {
 })
 ```
 
-If you were testing the behaviour of some function that used `continue()`, you might choose to mock it directly:
+If you were testing the behavior of some function that used `continue()`, you might choose to mock that function instead of `continue()`. For example, the function below requires user confirmation before overwriting an existing file. In order to focus our tests on the behaviour of just this function, we mock `continue()` to return either `TRUE` or `FALSE` without any user messaging.
 
 ```{r}
 #| label: mock-continue
@@ -141,8 +157,10 @@ test_that("save_file() requires confirmation to overwrite file", {
 })
 ```
 
-Learn more in `vignette("mocking")`.
-
 ## User-facing text
 
-Errors, warnings, and other user-facing text should be tested to ensure they're consistent and actionable. Obviously, you can't test this 100% automatically, but you can ensure that such messaging is clearly shown in PRs so another human can take a look. This is the point of snapshot tests; learn more in `vignette("snapshotting")`.
+Errors, warnings, and other user-facing text should be tested to ensure they're consistent and actionable. Obviously, you can't test this 100% automatically, but you use snapshots (`vignette("snapshotting")`) to ensure that user-facing messages are clearly shown in PRs and easily reviewed by another human.
+
+## Repeated code
+
+If you find yourself repeating the same set of expectations again and again across your test suite, it may be a sign that you should design your own expectation. Learn how in `vignette("custom-expectations")`.
