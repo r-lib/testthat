@@ -17,9 +17,9 @@ snapper <- local_snapshotter(fail_on_new = FALSE)
 snapper$start_file("snapshotting.Rmd", "test")
 ```
 
-This vignette shows you how to write your own expectations. Custom expectations allow you to extend testthat to meet your own specialised testing needs, creating new `expect_` functions that work exactly the same way as the built-ins. Custom expectations are particularly useful if you want to produce expectations tailored for domain-specific data structures, combining multiple checks into a single expectation, or creating more actionable feedback when an expectation fails. You can use them within your package by putting them in a helper file, or share them with others by exporting them from your package. 
+This vignette shows you how to write your own expectations. Custom expectations allow you to extend testthat to meet your own specialized testing needs, creating new `expect_*` functions that work exactly the same way as the built-ins. Custom expectations are particularly useful if you want to produce expectations tailored for domain-specific data structures, combine multiple checks into a single expectation, or create more actionable feedback when an expectation fails. You can use them within your package by putting them in a helper file, or share them with others by exporting them from your package. 
 
-In this vignette, you'll learn about the three-part structure of expectations, how to test your custom expectations, see a few examples, and, if you're writing a lot of expectation, learn how to reduce repeated code.
+In this vignette, you'll learn about the three-part structure of expectations, how to test your custom expectations, see a few examples, and, if you're writing a lot of expectations, learn how to reduce repeated code.
 
 ## Expectation basics
 
@@ -49,7 +49,7 @@ The first step in any expectation is to use `quasi_label()` to capture a "labele
 
 Next you need to check each way that `object` could violate the expectation. In this case, there's only one check, but in more complicated cases there can be multiple checks. In most cases, it's easier to check for violations one by one, using early returns to `fail()`. This makes it easier to write informative failure messages that first describe what was expected and then what was actually seen.
 
-Note that you need to use `return(fail())` here. If you don't, your expectation might end up failing multiple times or both failing and succeeeding. You won't see these problems when interactively testing your expectation, but forgetting to `return()` can lead to incorrect fail and pass counts in typical usage. In the next section, you'll learn how to test your expecatation to avoid this issue.
+Note that you need to use `return(fail())` here. If you don't, your expectation might end up failing multiple times or both failing and succeeding. You won't see these problems when interactively testing your expectation, but forgetting to `return()` can lead to incorrect fail and pass counts in typical usage. In the next section, you'll learn how to test your expectation to avoid this issue.
 
 Finally, if the object is as expected, call `pass()` with `act$val`. This is good practice because expectation functions are called primarily for their side-effects (triggering a failure), and returning the value allows expectations to be piped together:
 
@@ -184,10 +184,10 @@ expect_s3_class(x3, "integer")
 expect_s3_class(x3, "factor")
 ```
 
-Note the variety of error messages. We always print what was expected, and where possible, also display what was actually recieved:
+Note the variety of error messages. We always print what was expected, and where possible, also display what was actually received:
 
 * When `object` isn't an object, we can only say what we expected.
-* When `object` is an S4  object, we can report that.
+* When `object` is an S4 object, we can report that.
 * When `inherits()` is `FALSE`, we provide the actual class, since that's most informative.
 
 The general principle is to tailor error messages to what the user can act on based on what you know about the input.
@@ -199,13 +199,11 @@ Also note that I check that the `class` argument is a string. If it's not a stri
 expect_s3_class(x1, 1)
 ```
 
-### An optional class
-
 ## Repeated code
 
-As you write more expectations, you might discover repeated code that you want to extract into a helper. Unfortunately, creating 100% correct helper functions is not straightforward in testthat because `fail()` captures the calling environment in order to give useful tracebacks, and testthat's own expectations don't expose this an argument. Fortunately, getting this right is not critical (you'll just get a slightly suboptimal traceback in the case of failure), so we don't recommend bothering in most cases. We document it here, however, because it's important to get it right in testthat itself.
+As you write more expectations, you might discover repeated code that you want to extract into a helper. Unfortunately, creating 100% correct helper functions is not straightforward in testthat because `fail()` captures the calling environment in order to give useful tracebacks, and testthat's own expectations don't expose this as an argument. Fortunately, getting this right is not critical (you'll just get a slightly suboptimal traceback in the case of failure), so we don't recommend bothering in most cases. We document it here, however, because it's important to get it right in testthat itself.
 
-The key challenge is that `fail()` captures a `trace_env` which should be the execution environment of the expectation. This usually works, because the default value of `trace_env` is `caller_env()`. But when you introduce a helper, you'll need to explicitly pass it along:
+The key challenge is that `fail()` captures a `trace_env`, which should be the execution environment of the expectation. This usually works because the default value of `trace_env` is `caller_env()`. But when you introduce a helper, you'll need to explicitly pass it along:
 
 ```{r}
 expect_length_ <- function(act, n, trace_env = caller_env()) {
@@ -226,8 +224,8 @@ expect_length <- function(object, n) {
 
 A few recommendations:
 
-* The helper shouldn't be user facing, so we give it a `_` suffix to make that clear. 
+* The helper shouldn't be user-facing, so we give it a `_` suffix to make that clear. 
 * It's typically easiest for a helper to take the labeled value produced by `quasi_label()`.
 * Your helper should usually call both `fail()` and `pass()` and be returned from the wrapping expectation.
 
-Again, you're probably not writing so many expectations that it makes sense for you to go to this effort, but it is important for testthat to get correct.
+Again, you're probably not writing so many expectations that it makes sense for you to go to this effort, but it is important for testthat to get it right.

@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 >
 > ― Chief Si'ahl
 
-Ideally, a test should leave the world exactly as it found it. But you often need to make some changes to exercise every part of your code:
+Ideally, a test should leave the world exactly as it found it. But you often need to make changes to exercise every part of your code:
 
 -   Create a file or directory
 -   Create a resource on an external system
@@ -29,13 +29,13 @@ Ideally, a test should leave the world exactly as it found it. But you often nee
 -   Change working directory
 -   Change an aspect of the tested package's state
 
-How can you clean up these changes to get back to a clean slate? Scrupulous attention to cleanup is more than just courtesy or being fastidious. It is also self-serving. The state of the world after test `i` is the starting state for test `i + 1`. Tests that change state willy-nilly eventually end up interfering with each other in ways that can be very difficult to debug.
+How can you clean up these changes to get back to a clean slate? Scrupulous attention to cleanup is more than just courtesy or being fastidious. It's also self-serving. The state of the world after test `i` is the starting state for test `i + 1`. Tests that change state willy-nilly eventually end up interfering with each other in ways that can be very difficult to debug.
 
-Most tests are written with an implicit assumption about the starting state, usually whatever *tabula rasa* means for the target domain of your package. If you accumulate enough sloppy tests, you will eventually find yourself asking the programming equivalent of questions like "Who forgot to turn off the oven?" and "Who didn't clean up after the dog?" (If you've got yourself into this state, testthat provides another tool to help you figure out exactly what test is to blame: `set_state_inspector()`.)
+Most tests are written with an implicit assumption about the starting state, usually whatever *tabula rasa* means for the target domain of your package. If you accumulate enough sloppy tests, you will eventually find yourself asking the programming equivalent of questions like "Who forgot to turn off the oven?" and "Who didn't clean up after the dog?" (If you've got yourself into this state, testthat provides another tool to help you figure out exactly which test is to blame: `set_state_inspector()`.)
 
 It's also important that your setup and cleanup are easy to use when working interactively. When a test fails, you want to be able to quickly recreate the exact environment in which the test is run so you can interactively experiment to figure out what went wrong.
 
-This article introduces a powerful technique that allows you to solve both problems: **test fixtures**. We'll begin by discussing some pre-existing tools, then learn about the tools that make fixtures possible, talk about exactly what a test fixture is, and show a few examples.
+This article introduces a powerful technique that allows you to solve both problems: **test fixtures**. We'll begin by discussing some pre-existing tools, then learn about the tools that make fixtures possible, discuss exactly what a test fixture is, and show a few examples.
 
 Much of this vignette is derived from <https://www.tidyverse.org/blog/2020/04/self-cleaning-test-fixtures/>; if this is your first encounter with `on.exit()` or `withr::defer()`, I'd recommend starting with that blog as it gives a gentler introduction. This vignette moves a little faster since it's designed as more of a reference doc.
 
@@ -45,7 +45,7 @@ library(testthat)
 
 ## `local_` helpers
 
-We'll begin by giving you the bare minimum of knowledge to change global state *just* within your test. The withr package provides a number of functions that temporarily change the state of the world, carefully undoing the changes when the current function finishes:
+We'll begin by giving you the bare minimum knowledge to change global state *just* within your test. The withr package provides a number of functions that temporarily change the state of the world, carefully undoing the changes when the current function finishes:
 
 | Do / undo this              | withr function    |
 |-----------------------------|-------------------|
@@ -57,7 +57,7 @@ We'll begin by giving you the bare minimum of knowledge to change global state *
 
 (You can see a full list at <https://withr.r-lib.org/> but these five are by far the most commonly used.)
 
-These allow you to control options that would otherwise be painful. For example, imagine you were testing base R code that rounds numbers to a fixed number of places when printing. You could write code like this:
+These allow you to control options that would otherwise be painful. For example, imagine you're testing base R code that rounds numbers to a fixed number of places when printing. You could write code like this:
 
 ```{r}
 test_that("print() respects digits option", {
@@ -107,13 +107,13 @@ pi
 options(op)
 ```
 
-Notice how `pi` prints differently before and after the call to `sloppy()`. Calling `sloppy()` has a side effect: it changes the `digits` option globally, not just within its own scope of operations. This is what we want to avoid[^1].
+Notice how `pi` prints differently before and after the call to `sloppy()`. Calling `sloppy()` has a side effect: it changes the `digits` option globally, not just within its own scope. This is what we want to avoid[^1].
 
 [^1]: Don't worry, I'm restoring global state (specifically, the `digits` option) behind the scenes here.
 
 ### `on.exit()`
 
-The first function you need to know about is base R's `on.exit()`. `on.exit()` calls the code supplied to its first argument when the current function exits, regardless of whether it returns a value or errors. You can use `on.exit()` to clean up after yourself by ensuring that every mess-making function call is paired with an `on.exit()` call that cleans up.
+The first function you need to know about is base R's `on.exit()`. `on.exit()` calls the code supplied to its first argument when the current function exits, regardless of whether it returns a value or throws an error. You can use `on.exit()` to clean up after yourself by ensuring that every mess-making function call is paired with an `on.exit()` call that cleans up.
 
 We can use this idea to turn `sloppy()` into `neat()`:
 
@@ -129,7 +129,7 @@ neat(pi, 2)
 pi
 ```
 
-Here we make use of a useful pattern `options()` implements: when you call `options(digits = sig_digits)` it both sets the `digits` option *and* (invisibly) returns the previous value of digits. We can then use that value to restore the previous options.
+Here we make use of a useful pattern that `options()` implements: when you call `options(digits = sig_digits)`, it both sets the `digits` option *and* (invisibly) returns the previous value of digits. We can then use that value to restore the previous options.
 
 `on.exit()` also works in tests:
 
@@ -145,7 +145,7 @@ pi
 
 There are three main drawbacks to `on.exit()`:
 
--   You should always call it with `add = TRUE` and `after = FALSE`. These ensure that the call is **added** to the list of deferred tasks (instead of replacing them) and is added to the **front** of the stack (not the back, so that cleanup occurs in reverse order to setup). These arguments only matter if you're using multiple `on.exit()` calls, but it's a good habit to always use them to avoid potential problems down the road.
+-   You should always call it with `add = TRUE` and `after = FALSE`. These ensure that the call is **added** to the list of deferred tasks (instead of replacing them) and is added to the **front** of the stack (not the back), so that cleanup occurs in reverse order to setup. These arguments only matter if you're using multiple `on.exit()` calls, but it's a good habit to always use them to avoid potential problems down the road.
 
 -   It doesn't work outside a function or test. If you run the following code in the global environment, you won't get an error, but the cleanup code will never be run:
 
@@ -156,13 +156,13 @@ There are three main drawbacks to `on.exit()`:
 
     This is annoying when you are running tests interactively.
 
--   You can't program with it; `on.exit()` always works inside the *current* function so you can't wrap up repeated `on.exit()` code in a helper function.
+-   You can't program with it; `on.exit()` always works inside the *current* function, so you can't wrap up repeated `on.exit()` code in a helper function.
 
 To resolve these drawbacks, we use `withr::defer()`.
 
 ### `withr::defer()`
 
-`withr::defer()` resolves the main drawbacks of `on.exit()`. First, it has the behaviour we want by default; no extra arguments needed:
+`withr::defer()` resolves the main drawbacks of `on.exit()`. First, it has the behavior we want by default; no extra arguments needed:
 
 ```{r}
 neat <- function(x, sig_digits) {
@@ -184,11 +184,11 @@ withr::deferred_run()
 #> [1] "hi"
 ```
 
-Finally, `withr::defer()` lets you pick which function to bind the clean up behaviour to. This makes it possible to create helper functions.
+Finally, `withr::defer()` lets you pick which function to bind the cleanup behavior to. This makes it possible to create helper functions.
 
 ### "Local" helpers
 
-Imagine we have many functions where we want to temporarily set the digits option. Wouldn't it be nice if we could write a helper function to automate? Unfortunately we can't write a helper with `on.exit()`:
+Imagine we have many functions where we want to temporarily set the digits option. Wouldn't it be nice if we could write a helper function to automate this? Unfortunately, we can't write a helper with `on.exit()`:
 
 ```{r}
 local_digits <- function(sig_digits) {
@@ -229,7 +229,7 @@ test_that("withr lets us write custom helpers for local state manipulation", {
 print(exp(1))
 ```
 
-We always call these helper functions `local_`; "local" here refers to the fact that the state change persists only locally, for the lifetime of the associated function or test. Another reason we call them "local" is that you can also use the `local()` function if you want to scope their effect to a smaller part of the test:
+We always call these helper functions `local_*`; "local" here refers to the fact that the state change persists only locally, for the lifetime of the associated function or test. Another reason we call them "local" is that you can also use the `local()` function if you want to scope their effect to a smaller part of the test:
 
 ```{r}
 test_that("local_options() only affects a minimal amount of code", {
@@ -249,7 +249,7 @@ getOption("x")
 
 ## Test fixtures
 
-Testing is often demonstrated with cute little tests and functions where all the inputs and expected results can be inlined. But in real packages, things aren't always so simple and functions often depend on other global state. For example, take this variant on `message()` that only shows a message if the `verbose` option is `TRUE`. How would you test that setting the option does indeed silence the message?
+Testing is often demonstrated with cute little tests and functions where all the inputs and expected results can be inlined. But in real packages, things aren't always so simple, and functions often depend on global state. For example, take this variant on `message()` that only shows a message if the `verbose` option is `TRUE`. How would you test that setting the option does indeed silence the message?
 
 ```{r}
 message2 <- function(...) {
@@ -271,13 +271,13 @@ message3 <- function(..., verbose = getOption("verbose")) {
 }
 ```
 
-Making external state explicit is often worthwhile because it makes it clearer exactly what inputs determine the outputs of your function. But it's simply not possible in many cases. That's where test fixtures come in: they allow you to temporarily change global state to test your function. Test fixture is a pre-existing term in the software engineering world (and beyond):
+Making external state explicit is often worthwhile because it makes clearer exactly what inputs determine the outputs of your function. But it's simply not possible in many cases. That's where test fixtures come in: they allow you to temporarily change global state to test your function. Test fixture is a pre-existing term in the software engineering world (and beyond):
 
 > A test fixture is something used to consistently test some item, device, or piece of software.
 >
 > --- [Wikipedia](https://en.wikipedia.org/wiki/Test_fixture)
 
-A **test fixture** is just a `local_` function that you use to change state in such a way that you can reach inside and test parts of your code that would otherwise be challenging. For example, here's how you could use `withr::local_options()` as a test fixture to test `message2()`:
+A **test fixture** is just a `local_*` function that you use to change state in such a way that you can reach inside and test parts of your code that would otherwise be challenging. For example, here's how you could use `withr::local_options()` as a test fixture to test `message2()`:
 
 ```{r}
 test_that("message2() output depends on verbose option", {
@@ -315,7 +315,7 @@ local_create_package <- function(dir = file_temp(), env = parent.frame()) {
 }
 ```
 
-Note that the cleanup automatically unfolds in the opposite order from the setup. Setup is `A`, then `B`, then `C`; cleanup is `-C`, then `-B`, then `-A`. This is important because we must create directory `dir` before we can make it the working directory; and we must restore the original working directory before we can delete `dir`; we can't delete `dir` while it's still the working directory!
+Note that the cleanup automatically unfolds in the opposite order from the setup. Setup is `A`, then `B`, then `C`; cleanup is `-C`, then `-B`, then `-A`. This is important because we must create directory `dir` before we can make it the working directory, and we must restore the original working directory before we can delete `dir`—we can't delete `dir` while it's still the working directory!
 
 `local_create_package()` is used in over 170 tests. Here's one example that checks that `usethis::use_roxygen_md()` does the setup necessary to use roxygen2 in a package, with markdown support turned on. All 3 expectations consult the DESCRIPTION file, directly or indirectly. So it's very convenient that `local_create_package()` creates a minimal package, with a valid `DESCRIPTION` file, for us to test against. And when the test is done --- poof! --- the package is gone.
 
@@ -336,7 +336,7 @@ So far we have applied our test fixture to individual tests, but it's also possi
 
 ### File
 
-If you move the `local_()` call outside of a `test_that()` block, it will affect all tests that come after it. This means that by calling the test fixture at the top of the file you can change the behaviour for all tests. This has both advantages and disadvantages:
+If you move the `local_*()` call outside of a `test_that()` block, it will affect all tests that come after it. This means that by calling the test fixture at the top of the file, you can change the behavior for all tests. This has both advantages and disadvantages:
 
 -   If you would otherwise have called the fixture in every test, you've saved yourself a bunch of work and duplicate code.
 
@@ -362,6 +362,6 @@ Setup code is typically best used to create external resources that are needed b
 
 A collection of miscellaneous problems that don't fit elsewhere:
 
--   There are a few base functions that are hard to test because they depend on state that you can't control. One such example is `interactive()`: there's no way to write a test fixture that allows you to pretend that interactive is either `TRUE` or `FALSE`. So we now usually use `rlang::is_interactive()` which can be controlled by the `rlang_interactive` option.
+-   There are a few base functions that are hard to test because they depend on state that you can't control. One such example is `interactive()`: there's no way to write a test fixture that allows you to pretend that interactive is either `TRUE` or `FALSE`. So we now usually use `rlang::is_interactive()`, which can be controlled by the `rlang_interactive` option.
 
--   If you're using a test fixture in a function, be careful about what you return. For example, if you write a function that does `dir <- create_local_package()` you shouldn't return `dir`, because after the function returns the directory will no longer exist.
+-   If you're using a test fixture in a function, be careful about what you return. For example, if you write a function that does `dir <- create_local_package()`, you shouldn't return `dir`, because after the function returns, the directory will no longer exist.

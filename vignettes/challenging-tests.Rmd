@@ -20,7 +20,7 @@ snapper$start_file("snapshotting.Rmd", "test")
 Sys.setenv(TESTTHAT_PKG = "testthat")
 ```
 
-This vignette is a quick reference guide for testing challenging functions. It's organized by problem type rather than technique, so you can quickly skim the whole vignette, spot the problem you're facing, then learn more about useful tools for solving it. In it you'll learn how to overcome the following challenges:
+This vignette is a quick reference guide for testing challenging functions. It's organized by problem type rather than technique, so you can quickly skim the whole vignette, spot the problem you're facing, and then learn more about useful tools for solving it. In it, you'll learn how to overcome the following challenges:
 
 * Functions that depend on options and environment variables.
 * Random number generators.
@@ -42,7 +42,7 @@ What happens if you want to test a function that relies on randomness in some wa
 
 Under the hood, random number generators generate different numbers each time you call them because they update a special `.Random.seed` variable stored in the global environment. You can temporarily set this seed to a known value to make your random numbers reproducible with `withr::local_seed()`, making random numbers a special case of test fixtures (`vignette("test-fixtures")`).
 
-Here's a simple example showing how you might test the basic operation of function that rolls a dice:
+Here's a simple example showing how you might test the basic operation of a function that rolls a die:
 
 ```{r}
 #| label: random-local-seed
@@ -82,9 +82,9 @@ You can skip a test without it passing or failing if it's not possible to run it
 
 ## HTTP requests
 
-If you're trying to test functions that rely on HTTP requests, we recommend using {vcr} or {httptest2}. These packages both allow you to interactively record HTTP responses, and then later replay them in tests. This is a specialised type of mocking, which allows your tests to run without the internet and isolates your tests from failures in the underlying service. 
+If you're trying to test functions that rely on HTTP requests, we recommend using {vcr} or {httptest2}. These packages both allow you to interactively record HTTP responses and then later replay them in tests. This is a specialized type of mocking that allows your tests to run without the internet and isolates your tests from failures in the underlying service. 
 
-If your package is going to CRAN, you **must** either one of these packages or using `skip_on_cran()` for internet-facing tests. Otherwise you are at high risk of failing `R CMD check` if the API you are binding is temporarily down. This sort of failure causes extra work for the CRAN maintainers and extra hassle for you.
+If your package is going to CRAN, you **must** either use one of these packages or use `skip_on_cran()` for internet-facing tests. Otherwise, you are at high risk of failing `R CMD check` if the API you are binding is temporarily down. This sort of failure causes extra work for the CRAN maintainers and extra hassle for you.
 
 ## User interaction
 
@@ -131,7 +131,7 @@ test_that("user must respond y or n", {
 })
 ```
 
-If you were testing the behavior of some function that used `continue()`, you might choose to mock that function instead of `continue()`. For example, the function below requires user confirmation before overwriting an existing file. In order to focus our tests on the behaviour of just this function, we mock `continue()` to return either `TRUE` or `FALSE` without any user messaging.
+If you were testing the behavior of some function that used `continue()`, you might choose to mock that function instead. For example, the function below requires user confirmation before overwriting an existing file. In order to focus our tests on the behavior of just this function, we mock `continue()` to return either `TRUE` or `FALSE` without any user messaging.
 
 ```{r}
 #| label: mock-continue
@@ -159,7 +159,7 @@ test_that("save_file() requires confirmation to overwrite file", {
 
 ## User-facing text
 
-Errors, warnings, and other user-facing text should be tested to ensure they're consistent and actionable. Obviously, you can't test this 100% automatically, but you use snapshots (`vignette("snapshotting")`) to ensure that user-facing messages are clearly shown in PRs and easily reviewed by another human.
+Errors, warnings, and other user-facing text should be tested to ensure they're consistent and actionable. Obviously, you can't test this 100% automatically, but you can use snapshots (`vignette("snapshotting")`) to ensure that user-facing messages are clearly shown in PRs and easily reviewed by another human.
 
 ## Repeated code
 

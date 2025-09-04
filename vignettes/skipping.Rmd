@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 Sometimes you have tests that you can't or don't want to run in certain circumstances.
 This vignette describes how to **skip** tests to avoid execution in undesired environments.
-The most common exceptions are:
+The most common scenarios are:
 
 -   You're testing a web service that occasionally fails, and you don't want to run the tests on CRAN.
     Or the API requires authentication, and you can only run the tests when you've [securely distributed](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) secrets.
@@ -36,7 +36,7 @@ library(testthat)
 
 testthat comes with a variety of helpers for the most common situations:
 
--   `skip_if_not_installed()` skips if a required package is not installed. You can optional supply a minimal version too.
+-   `skip_if_not_installed()` skips if a required package is not installed. You can optionally supply a minimal version too.
 
 -   `skip_on_cran()` skips tests on CRAN. `skip_on_bioc()` skips tests on Bioconductor.
     This is useful for slow tests and tests that occasionally fail for reasons outside of your control.
@@ -46,7 +46,7 @@ testthat comes with a variety of helpers for the most common situations:
 
 -   `skip_on_ci()` skips tests on most CI platforms (e.g., GitHub Actions).
 
--   `skip_on_covr()` skips test during code coverage.
+-   `skip_on_covr()` skips tests during code coverage.
 
 -   `skip_unless_r(">= 4.2")` only runs tests for newer R versions. 
     `skip_unless_r("< 4.2")` only runs tests for older R versions.
@@ -59,7 +59,7 @@ You can implement your own using skips `skip_if()` or `skip_if_not()`:
 # Only run test if a token file is available
 skip_if_not(file.exists("secure-token.json"))
 
-# Only run test if R has memory profiling capabililties
+# Only run test if R has memory profiling capabilities
 skip_if_not(capabilities("profmem"))
 
 # Only run if we've opted-in to slow tests with an env var
@@ -76,7 +76,7 @@ It looks something like this:
 ● On CRAN (1)
 ```
 
-This display is really important and you should keep an eye on it when working on your test suite. If you accidentally skip too many tests you can trick yourself into believing your code is working correctly, when actually you're just not testing it.
+This display is really important, and you should keep an eye on it when working on your test suite. If you accidentally skip too many tests, you can trick yourself into believing your code is working correctly, when actually you're just not testing it.
 
 ## Helpers
 
@@ -95,7 +95,7 @@ skip_if_dangerous <- function() {
 
 ## Embedding `skip()` in package functions
 
-Another useful technique is to build a `skip()` directly into a package function.
+Another useful technique is to embed a `skip()` directly into a package function.
 For example, take a look at [`pkgdown:::convert_markdown_to_html()`](https://github.com/r-lib/pkgdown/blob/v2.0.7/R/markdown.R#L95-L106), which absolutely cannot work if the Pandoc tool is unavailable:
 
 ```{r eval = FALSE}
@@ -128,7 +128,7 @@ is_testing <- function() {
 ```
 
 It might look like the code still has a runtime dependency on testthat, because of the call to `testthat::skip()`.
-But `testthat::skip()` is only executed during a test run, which implies that testthat is installed.
+But `testthat::skip()` is only executed during a test run, which means that testthat is installed.
 
 We have mixed feelings about this approach.
 On the one hand, it feels elegant and concise, and it absolutely guarantees that you'll never miss a needed skip in one of your tests.
