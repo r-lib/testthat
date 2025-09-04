@@ -23,9 +23,9 @@ Some challenges include:
 
 -   Text output that includes many characters like quotes and newlines that require special handling in a string.
 
--   Output that is large, making it painful to define the reference output, and bloating the size of the test file and making it hard to navigate.
+-   Output that is large, making it painful to define the reference output and bloating the size of the test file.
 
--   Binary formats like plots or images, which are very difficult to describe in code: i.e. the plot looks right, the error message is useful to a human, the print method uses colour effectively.
+-   Binary formats like plots or images, which are very difficult to describe in code: e.g. the plot looks right, the error message is actionable, or the print method uses colour effectively.
 
 For these situations, testthat provides an alternative mechanism: snapshot tests.
 Instead of using code to describe expected output, snapshot tests (also known as [golden tests](https://ro-che.info/articles/2017-12-04-golden-tests)) record results in a separate human readable file.
@@ -103,8 +103,9 @@ test_that("bullets", {
 })
 ```
 
-```{r, include = FALSE}
-# Reset snapshot test
+```{r}
+#| include: false
+# finalise snapshot to in order to get an error
 snapper$end_file()
 snapper$start_file("snapshotting.Rmd", "test")
 ```
@@ -161,38 +162,14 @@ Within a test, each snapshot expectation is indented by four spaces, i.e. as cod
 Because the snapshot output uses the name of the current test file and the current test, snapshot expectations don't really work when run interactively at the console.
 Since they can't automatically find the reference output, they instead just print the current value for manual inspection.
 
-## Other types of output
-
-### Messages and warnings
+## Testing errors
 
 So far we've focussed on snapshot tests for output printed to the console.
 But `expect_snapshot()` also captures messages, errors, and warnings[^1].
-The following function generates a some output, a message, and a warning:
-
-[^1]: We no longer recommend `expect_snapshot_output()`, `expect_snapshot_warning()`, or `expect_snapshot_error()`.
-    Just use `expect_snapshot()`.
+Messages and warnings are straightforward, but capturing errors is *slightly* more difficult because `expect_snapshot()` will fail if there's an error:
 
 ```{r}
-f <- function() {
-  print("Hello")
-  message("Hi!")
-  warning("How are you?")
-}
-```
-
-And `expect_snapshot()` captures them all:
-
-```{r}
-test_that("f() makes lots of noise", {
-  expect_snapshot(f())
-})
-```
-
-### Errors
-
-Capturing errors is *slightly* more difficult because `expect_snapshot()` will fail when there's an error:
-
-```{r, error = TRUE}
+#| error: true
 test_that("you can't add a number and a letter", {
   expect_snapshot(1 + "a")
 })
@@ -214,37 +191,116 @@ test_that("you can't add weird things", {
   expect_snapshot(error = TRUE, {
     1 + "a"
     mtcars + iris
-    mean + sum
+    Sys.Date() + factor()
   })
 })
 ```
 
+Just be careful: when you set `error = TRUE`, `expect_snapshot()` checks that at least one expression throws an error, not that every expression throws an error. For example, look above and notice that adding a date and factor generated a warning, not an error.
 
-Snapshot tests are particularly important when testing complex error messages.
+Snapshot tests are particularly important when testing complex error messages, such as those that you might generate with cli. Here's a more realistic example illustrating how you might test `check_unnamed()`, a function that ensures all arguments in `...` are unnnamed.
 
 ```{r}
-divide_positive <- function(x, y) {
-  if (y <= 0) {
-    stop("Divisor must be positive, got: ", y)
+check_unnamed <- function(..., call = parent.frame()) {
+  names <- ...names()
+  has_name <- names != ""
+  if (!any(has_name)) {
+    return(invisible())
   }
-  x / y
+
+  named <- names[has_name]
+  cli::cli_abort(
+    c(
+      "All elements of {.arg ...} must be unnamed.",
+      i = "You supplied argument{?s} {.arg {named}}."
+    ), 
+    call = call
+  )
 }
 
-test_that("divide_positive gives helpful error", {
-  expect_snapshot_error(divide_positive(10, -2))
-  expect_snapshot_error(divide_positive(10, 0))
+test_that("no errors if all arguments unnamed", {
+  expect_no_error(check_unnamed())
+  expect_no_error(check_unnamed(1, 2, 3))
+})
+
+test_that("actionable feedback if some or all arguments named", {
+  expect_snapshot(error = TRUE, {
+    check_unnamed(x = 1, 2)
+    check_unnamed(x = 1, y = 2)
+  })
 })
 ```
 
-### Human facing outputs
+## Other challenges
 
-When generating sophisticated error messages that use cli's interpolation and formatting features, snapshot tests are essential for ensuring the messages render correctly with proper styling and content.
+### Varying outputs
 
-If you're not familiar with `expect_snapshot()` already, start by reading `vignette("snapshotting")`.
+Sometimes part of the output varies in ways that you can't easily control. In many cases, it's convenient to use mocking (`vignette("mocking")`) to ensure that every run of the function always produces the same output. In other cases, it's easier to manipulate the text output with a regular expression or similar. That's the job of the `transform` argument which should be passed a function that takes a character vector of lines, and returns a modified vector.
 
-TODO: insert complex `cli::cli_abort()` example.
+This type of problem often crops up when you are testing a function that gives feedback about a path. In your tests, you'll typically use a temporary path (e.g. from `withr::local_tempfile()`) so if you display the path in a snapshot, it will be different every time. For example, consider this "safe" version of `writeLines()` that requires to explicitly opt-in to overwriting an existing file:
 
-The same idea applies to messages and warnings.
+```{r}
+safe_write_lines <- function(lines, path, overwrite = FALSE) {
+  if (file.exists(path) && !overwrite) {
+    cli::cli_abort(c(
+      "{.path {path}} already exists.", 
+      i = "Set {.code overwrite = TRUE} to overwrite"
+    ))
+  }
+
+  writeLines(lines, path)
+}
+```
+
+If you use a snapshot test to confirm that the error message is useful, the snapshot will be different every time the test is run:
+
+```{r}
+#| include: false
+snapper$end_file()
+snapper$start_file("snapshotting.Rmd", "safe-write-lines")
+```
+
+```{r}
+test_that("generates actionable error message", {
+  path <- withr::local_tempfile(lines = "")
+  expect_snapshot(safe_write_lines(letters, path), error = TRUE)
+})
+```
+
+```{r}
+#| include: false
+snapper$end_file()
+snapper$start_file("snapshotting.Rmd", "safe-write-lines")
+```
+
+```{r}
+#| error: true
+test_that("generates actionable error message", {
+  path <- withr::local_tempfile(lines = "")
+  expect_snapshot(safe_write_lines(letters, path), error = TRUE)
+})
+```
+
+```{r}
+#| include: false
+snapper$end_file()
+snapper$start_file("snapshotting.Rmd", "test-2")
+```
+
+One way to fix this problem is to use the `transform` argument to replace the temporary path with a fixed value:
+
+```{r}
+test_that("generates actionable error message", {
+  path <- withr::local_tempfile(lines = "")
+  expect_snapshot(
+    safe_write_lines(letters, path), 
+    error = TRUE,
+    transform = \(lines) gsub(path, "<path>", lines, fixed = TRUE)
+  )
+})
+```
+
+Now even though the path varies, the snapshot does not.
 
 ### `local_reproducible_output()`
 
@@ -254,7 +310,7 @@ By default, testthat sets a number of options that simplify and standardise outp
 * Crayon/cli ANSI colouring and hyperlinks are suppressed.
 * Unicode characters are suppressed.
 
-These are sound defaults that we have found useful to minimise spurious diffs between tests run in different environment. But it's sometimes necessary to override them in order to test various output features. So, if necessary, you can override these settings by calling `local_reproducible_output()`.
+These are sound defaults that we have found useful to minimise spurious difference between tests run in different environments. However, there are times when you want to deliberately test different widths, or ANSI escapes, or unicode characters, so you can override the defaults with `local_reproducible_output()`.
 
 ### Snapshotting graphics
 
@@ -272,12 +328,6 @@ test_that("can snapshot a simple list", {
   expect_snapshot_value(x)
 })
 ```
-
-## Varying outputs
-
-Sometimes part of the output varies in ways that you can't easily control.
-
-There are two techniques you can use: mocking or the `transform` output. 
 
 ## Whole file snapshotting
 
@@ -313,10 +363,11 @@ The display varies based on the file type (currently text files, common image fi
 
 Sometimes the failure occurs in a non-interactive environment where you can't run `snapshot_review()`, e.g. in `R CMD check`.
 In this case, the easiest fix is to retrieve the `.new` file, copy it into the appropriate directory, then run `snapshot_review()` locally.
-If your code was run on a CI platform, you'll need to start by downloading the run "artifact", which contains the check folder.
+If this happens on GitHub, testthat provides some tools to help you in the form of `gh_download_artifact()`.
 
 In most cases, we don't expect you to use `expect_snapshot_file()` directly.
 Instead, you'll use it via a wrapper that does its best to gracefully skip tests when differences in platform or package versions make it unlikely to generate perfectly reproducible output.
+That wrapper should also typically call `announce_snapshot_file()` to avoid snapshots being incorrectly cleaned up; see the documentation for more details.
 
 ## Previous work
 
