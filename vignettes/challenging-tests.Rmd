@@ -61,6 +61,10 @@ test_that("three dice adds values of individual calls", {
 })
 ```
 
+## Some tests can't be run in some circumstances
+
+You can skip a test without passing or failing if it's not possible to run it in the current environment (e.g. it's OS dependent, or it only works interactively, or it shouldn't be tested on CRAN). Learn more in `vignette("skipping")`.
+
 ## HTTP requests
 
 If you're trying to test functions that rely on HTTP requests, we recommend using {vcr} or {httptest2}. These packages provide the ability to record and then later reply HTTP requests so that you can test without an active internet connection. If your package is going to CRAN, we highly recommend either using one of these packages or using `skip_on_cran()` for your internet-facing tests. This ensures that your package won't break on CRAN just because the service you're using is temporarily down.
