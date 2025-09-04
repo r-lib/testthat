@@ -45,7 +45,7 @@ library(testthat)
 
 ## `local_` helpers
 
-We'll begin by giving you the bare minimum knowledge to change global state *just* within your test. The withr package provides a number of functions that temporarily change the state of the world, carefully undoing the changes when the current function finishes:
+We'll begin by giving you the bare minimum knowledge to change global state *just* within your test. The withr package provides a number of functions that temporarily change the state of the world, carefully undoing the changes when the current function or test finishes:
 
 | Do / undo this              | withr function    |
 |-----------------------------|-------------------|
@@ -81,8 +81,6 @@ local_digits <- function(sig_digits, env = parent.frame()) {
   invisible() 
 }
 ```
-
-This is particularly useful when you need to chain together multiple `local_` functions to achieve the desired state.
 
 ## Foundations
 
