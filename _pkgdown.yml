@@ -83,6 +83,24 @@ reference:
   - ends_with("Reporter")
   - -Reporter
 
+articles:
+- title: Setup and configuration
+  navbar: Setup
+  contents:
+  - third-edition
+  - parallel
+  - special-files
+  - custom-expectation
+
+- title: Testing techniques
+  navbar: Techniques
+  contents:
+  - challenging-tests
+  - mocking
+  - skipping
+  - snapshotting
+  - test-fixtures
+  
 news:
   releases:
   - text: "Version 3.2.0"

@@ -16,19 +16,19 @@ set.seed(1014)
 ```
 
 The goal of a unit test is to record the expected output of a function using code.
-This is a powerful technique because not only does it ensure that code doesn't change unexpectedly, it also expresses the desired behaviour in a way that a human can understand.
+This is a powerful technique because it not only ensures that code doesn't change unexpectedly, but it also expresses the desired behavior in a way that a human can understand.
 
-However, it's not always convenient to record the expected behaviour with code.
+However, it's not always convenient to record the expected behavior with code.
 Some challenges include:
 
 -   Text output that includes many characters like quotes and newlines that require special handling in a string.
 
--   Output that is large, making it painful to define the reference output, and bloating the size of the test file and making it hard to navigate.
+-   Output that is large, making it painful to define the reference output and bloating the size of the test file.
 
--   Binary formats like plots or images, which are very difficult to describe in code: i.e. the plot looks right, the error message is useful to a human, the print method uses colour effectively.
+-   Binary formats like plots or images, which are very difficult to describe in code: e.g., the plot looks right, the error message is actionable, or the print method uses color effectively.
 
 For these situations, testthat provides an alternative mechanism: snapshot tests.
-Instead of using code to describe expected output, snapshot tests (also known as [golden tests](https://ro-che.info/articles/2017-12-04-golden-tests)) record results in a separate human readable file.
+Instead of using code to describe expected output, snapshot tests (also known as [golden tests](https://ro-che.info/articles/2017-12-04-golden-tests)) record results in a separate human-readable file.
 Snapshot tests in testthat are inspired primarily by [Jest](https://jestjs.io/docs/en/snapshot-testing), thanks to a number of very useful discussions with Joe Cheng.
 
 ```{r setup}
@@ -42,8 +42,8 @@ snapper$start_file("snapshotting.Rmd", "test")
 
 ## Basic workflow
 
-We'll illustrate the basic workflow with a simple function that generates an HTML heading.
-It can optionally include an `id` attribute, which allows you to construct a link directly to that heading.
+We'll illustrate the basic workflow with a simple function that generates HTML bullets.
+It can optionally include an `id` attribute, which allows you to construct a link directly to that list.
 
 ```{r}
 bullets <- function(text, id = NULL) {
@@ -72,7 +72,7 @@ To do this we make two changes to our code:
 
 -   We use `expect_snapshot()` instead of `expect_equal()`
 
--   We wrap the call in `cat()` (to avoid `[1]` in the output, like in my first interactive example).
+-   We wrap the call in `cat()` (to avoid `[1]` in the output, like in the first interactive example above).
 
 This yields the following test:
 
@@ -89,9 +89,9 @@ snapper$end_file()
 snapper$start_file("snapshotting.Rmd", "test")
 ```
 
-When we run the test for the first time, it automatically generates reference output, and prints it, so that you can visually confirm that it's correct.
+When we run the test for the first time, it automatically generates reference output and prints it, so that you can visually confirm that it's correct.
 The output is automatically saved in `_snaps/{name}.md`.
-The name of the snapshot matches your test file name --- e.g. if your test is `test-pizza.R` then your snapshot will be saved in `test/testthat/_snaps/pizza.md`.
+The name of the snapshot matches your test file name --- e.g. if your test is `test-pizza.R` then your snapshot will be saved in `tests/testthat/_snaps/pizza.md`.
 As the file name suggests, this is a markdown file, which I'll explain shortly.
 
 If you run the test again, it'll succeed:
@@ -103,8 +103,9 @@ test_that("bullets", {
 })
 ```
 
-```{r, include = FALSE}
-# Reset snapshot test
+```{r}
+#| include: false
+# finalise snapshot to in order to get an error
 snapper$end_file()
 snapper$start_file("snapshotting.Rmd", "test")
 ```
@@ -125,16 +126,16 @@ test_that("bullets", {
 })
 ```
 
-If this is a deliberate change, you can follow the advice in the message and update the snapshots for that file by running `snapshot_accept("pizza")`; otherwise you can fix the bug and your tests will pass once more.
-(You can also accept snapshot for all files with `snapshot_accept()`).
+If this is a deliberate change, you can follow the advice in the message and update the snapshots for that file by running `snapshot_accept("pizza")`; otherwise, you can fix the bug and your tests will pass once more.
+(You can also accept snapshots for all files with `snapshot_accept()`.)
 
 If you delete the test, the corresponding snapshot will be removed the next time you run the tests. If you delete all snapshots in the file, the entire snapshot file will be deleted the next time you run all the tests.
 
 ### Snapshot format
 
 Snapshots are recorded using a subset of markdown.
-You might wonder why we use markdown?
-It's important that snapshots be readable by humans, because humans have to look at it during code reviews.
+You might wonder why we use markdown.
+We use it because it's important that snapshots be human-readable because humans have to read them during code reviews.
 Reviewers often don't run your code but still want to understand the changes.
 
 Here's the snapshot file generated by the test above:
@@ -154,41 +155,21 @@ Here's the snapshot file generated by the test above:
 ```
 
 Each test starts with `# {test name}`, a level 1 heading.
-Within a test, each snapshot expectation is indented by four spaces, i.e. as code, and are separated by `---`, a horizontal rule.
+Within a test, each snapshot expectation is indented by four spaces, i.e., as code, and they are separated by `---`, a horizontal rule.
 
 ### Interactive usage
 
 Because the snapshot output uses the name of the current test file and the current test, snapshot expectations don't really work when run interactively at the console.
 Since they can't automatically find the reference output, they instead just print the current value for manual inspection.
 
-## Other types of output
+## Testing errors
 
-So far we've focussed on snapshot tests for output printed to the console.
+So far we've focused on snapshot tests for output printed to the console.
 But `expect_snapshot()` also captures messages, errors, and warnings[^1].
-The following function generates a some output, a message, and a warning:
-
-[^1]: We no longer recommend `expect_snapshot_output()`, `expect_snapshot_warning()`, or `expect_snapshot_error()`.
-    Just use `expect_snapshot()`.
+Messages and warnings are straightforward, but capturing errors is *slightly* more difficult because `expect_snapshot()` will fail if there's an error:
 
 ```{r}
-f <- function() {
-  print("Hello")
-  message("Hi!")
-  warning("How are you?")
-}
-```
-
-And `expect_snapshot()` captures them all:
-
-```{r}
-test_that("f() makes lots of noise", {
-  expect_snapshot(f())
-})
-```
-
-Capturing errors is *slightly* more difficult because `expect_snapshot()` will fail when there's an error:
-
-```{r, error = TRUE}
+#| error: true
 test_that("you can't add a number and a letter", {
   expect_snapshot(1 + "a")
 })
@@ -210,16 +191,137 @@ test_that("you can't add weird things", {
   expect_snapshot(error = TRUE, {
     1 + "a"
     mtcars + iris
-    mean + sum
+    Sys.Date() + factor()
   })
 })
 ```
 
-## Snapshotting values
+Just be careful: when you set `error = TRUE`, `expect_snapshot()` checks that at least one expression throws an error, not that every expression throws an error. For example, look above and notice that adding a date and a factor generated a warning, not an error.
+
+Snapshot tests are particularly important when testing complex error messages, such as those that you might generate with cli. Here's a more realistic example illustrating how you might test `check_unnamed()`, a function that ensures all arguments in `...` are unnamed.
+
+```{r}
+check_unnamed <- function(..., call = parent.frame()) {
+  names <- ...names()
+  has_name <- names != ""
+  if (!any(has_name)) {
+    return(invisible())
+  }
+
+  named <- names[has_name]
+  cli::cli_abort(
+    c(
+      "All elements of {.arg ...} must be unnamed.",
+      i = "You supplied argument{?s} {.arg {named}}."
+    ), 
+    call = call
+  )
+}
+
+test_that("no errors if all arguments unnamed", {
+  expect_no_error(check_unnamed())
+  expect_no_error(check_unnamed(1, 2, 3))
+})
+
+test_that("actionable feedback if some or all arguments named", {
+  expect_snapshot(error = TRUE, {
+    check_unnamed(x = 1, 2)
+    check_unnamed(x = 1, y = 2)
+  })
+})
+```
+
+## Other challenges
+
+### Varying outputs
+
+Sometimes part of the output varies in ways that you can't easily control. In many cases, it's convenient to use mocking (`vignette("mocking")`) to ensure that every run of the function always produces the same output. In other cases, it's easier to manipulate the text output with a regular expression or similar. That's the job of the `transform` argument, which should be passed a function that takes a character vector of lines and returns a modified vector.
+
+This type of problem often crops up when you are testing a function that gives feedback about a path. In your tests, you'll typically use a temporary path (e.g., from `withr::local_tempfile()`), so if you display the path in a snapshot, it will be different every time.
+For example, consider this "safe" version of `writeLines()` that requires you to explicitly opt in to overwriting an existing file:
+
+```{r}
+safe_write_lines <- function(lines, path, overwrite = FALSE) {
+  if (file.exists(path) && !overwrite) {
+    cli::cli_abort(c(
+      "{.path {path}} already exists.", 
+      i = "Set {.code overwrite = TRUE} to overwrite"
+    ))
+  }
+
+  writeLines(lines, path)
+}
+```
+
+If you use a snapshot test to confirm that the error message is useful, the snapshot will be different every time the test is run:
+
+```{r}
+#| include: false
+snapper$end_file()
+snapper$start_file("snapshotting.Rmd", "safe-write-lines")
+```
+
+```{r}
+test_that("generates actionable error message", {
+  path <- withr::local_tempfile(lines = "")
+  expect_snapshot(safe_write_lines(letters, path), error = TRUE)
+})
+```
+
+```{r}
+#| include: false
+snapper$end_file()
+snapper$start_file("snapshotting.Rmd", "safe-write-lines")
+```
+
+```{r}
+#| error: true
+test_that("generates actionable error message", {
+  path <- withr::local_tempfile(lines = "")
+  expect_snapshot(safe_write_lines(letters, path), error = TRUE)
+})
+```
+
+```{r}
+#| include: false
+snapper$end_file()
+snapper$start_file("snapshotting.Rmd", "test-2")
+```
+
+One way to fix this problem is to use the `transform` argument to replace the temporary path with a fixed value:
+
+```{r}
+test_that("generates actionable error message", {
+  path <- withr::local_tempfile(lines = "")
+  expect_snapshot(
+    safe_write_lines(letters, path), 
+    error = TRUE,
+    transform = \(lines) gsub(path, "<path>", lines, fixed = TRUE)
+  )
+})
+```
+
+Now even though the path varies, the snapshot does not.
+
+### `local_reproducible_output()`
+
+By default, testthat sets a number of options that simplify and standardize output:
+
+* The console width is set to 80.
+* {cli} ANSI coloring and hyperlinks are suppressed.
+* Unicode characters are suppressed.
+
+These are sound defaults that we have found useful to minimize spurious differences between tests run in different environments. However, there are times when you want to deliberately test different widths, ANSI escapes, or Unicode characters, so you can override the defaults with `local_reproducible_output()`.
+
+### Snapshotting graphics
+
+If you need to test graphical output, use {vdiffr}. vdiffr is used to test ggplot2 and incorporates everything we know about high-quality graphics tests that minimize false positives. Graphics testing is still often fragile, but using vdiffr means you will avoid all the problems we know how to avoid.
+
+### Snapshotting values
 
 `expect_snapshot()` is the most used snapshot function because it records everything: the code you run, printed output, messages, warnings, and errors.
-If you care about the return value rather than any side-effects, you may might to use `expect_snapshot_value()` instead.
-It offers a number of serialisation approaches that provide a tradeoff between accuracy and human readability.
+If you care about the return value rather than any side effects, you might want to use `expect_snapshot_value()` instead.
+It offers a number of serialization approaches that provide a tradeoff between accuracy and human readability.
 
 ```{r}
 test_that("can snapshot a simple list", {
@@ -231,13 +333,13 @@ test_that("can snapshot a simple list", {
 ## Whole file snapshotting
 
 `expect_snapshot()`, `expect_snapshot_output()`, `expect_snapshot_error()`, and `expect_snapshot_value()` use one snapshot file per test file.
-But that doesn't work for all file types --- for example, what happens if you want to snapshot an image?
+But that doesn't work for all file types—for example, what happens if you want to snapshot an image?
 `expect_snapshot_file()` provides an alternative workflow that generates one snapshot per expectation, rather than one file per test.
-Assuming you're in `test-burger.R` then the snapshot created by `expect_snapshot_file(code_that_returns_path_to_file(), "toppings.png")` would be saved in `tests/testthat/_snaps/burger/toppings.png`.
-If a future change in the code creates a different file it will be saved in `tests/testthat/_snaps/burger/toppings.new.png`.
+Assuming you're in `test-burger.R`, then the snapshot created by `expect_snapshot_file(code_that_returns_path_to_file(), "toppings.png")` would be saved in `tests/testthat/_snaps/burger/toppings.png`.
+If a future change in the code creates a different file, it will be saved in `tests/testthat/_snaps/burger/toppings.new.png`.
 
 Unlike `expect_snapshot()` and friends, `expect_snapshot_file()` can't provide an automatic diff when the test fails.
-Instead you'll need to call `snapshot_review()`.
+Instead, you'll need to call `snapshot_review()`.
 This launches a Shiny app that allows you to visually review each change and approve it if it's deliberate:
 
 ```{r}
@@ -260,12 +362,13 @@ knitr::include_graphics("review-text.png")
 
 The display varies based on the file type (currently text files, common image files, and csv files are supported).
 
-Sometimes the failure occurs in a non-interactive environment where you can't run `snapshot_review()`, e.g. in `R CMD check`.
-In this case, the easiest fix is to retrieve the `.new` file, copy it into the appropriate directory, then run `snapshot_review()` locally.
-If your code was run on a CI platform, you'll need to start by downloading the run "artifact", which contains the check folder.
+Sometimes the failure occurs in a non-interactive environment where you can't run `snapshot_review()`, e.g., in `R CMD check`.
+In this case, the easiest fix is to retrieve the `.new` file, copy it into the appropriate directory, and then run `snapshot_review()` locally.
+If this happens on GitHub, testthat provides some tools to help you in the form of `gh_download_artifact()`.
 
 In most cases, we don't expect you to use `expect_snapshot_file()` directly.
 Instead, you'll use it via a wrapper that does its best to gracefully skip tests when differences in platform or package versions make it unlikely to generate perfectly reproducible output.
+That wrapper should also typically call `announce_snapshot_file()` to avoid snapshots being incorrectly cleaned up—see the documentation for more details.
 
 ## Previous work
 
@@ -277,12 +380,12 @@ This section describes some of the previous attempts and why we believe the new 
     -   You have to supply a path where the output will be saved.
         This seems like a small issue, but thinking of a good name, and managing the difference between interactive and test-time paths introduces a surprising amount of friction.
 
-    -   It always overwrites the previous result; automatically assuming that the changes are correct.
-        That means you have to use it with git and it's easy to accidentally accept unwanted changes.
+    -   It always overwrites the previous result, automatically assuming that the changes are correct.
+        That means you have to use it with git, and it's easy to accidentally accept unwanted changes.
 
     -   It's relatively coarse grained, which means tests that use it tend to keep growing and growing.
 
--   `expect_known_output()` is finer grained version of `verify_output()` that captures output from a single function.
+-   `expect_known_output()` is a finer-grained version of `verify_output()` that captures output from a single function.
     The requirement to produce a path for each individual expectation makes it even more painful to use.
 
--   `expect_known_value()` and `expect_known_hash()` have all the disadvantages of `expect_known_output()`, but also produce binary output meaning that you can't easily review test differences in pull requests.
+-   `expect_known_value()` and `expect_known_hash()` have all the disadvantages of `expect_known_output()`, but also produce binary output, meaning that you can't easily review test differences in pull requests.
