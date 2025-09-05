@@ -42,13 +42,19 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/custom-expectation.html">Custom expectations</a></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Setup</h6></li>
+    <li><a class="dropdown-item" href="../articles/third-edition.html">testthat 3e</a></li>
     <li><a class="dropdown-item" href="../articles/parallel.html">Running tests in parallel</a></li>
+    <li><a class="dropdown-item" href="../articles/special-files.html">Special files</a></li>
+    <li><a class="dropdown-item" href="../articles/custom-expectation.html">Custom expectations</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Techniques</h6></li>
+    <li><a class="dropdown-item" href="../articles/challenging-tests.html">Testing challenging functions</a></li>
+    <li><a class="dropdown-item" href="../articles/mocking.html">Mocking</a></li>
     <li><a class="dropdown-item" href="../articles/skipping.html">Skipping tests</a></li>
     <li><a class="dropdown-item" href="../articles/snapshotting.html">Snapshot tests</a></li>
-    <li><a class="dropdown-item" href="../articles/special-files.html">Special files</a></li>
     <li><a class="dropdown-item" href="../articles/test-fixtures.html">Test fixtures</a></li>
-    <li><a class="dropdown-item" href="../articles/third-edition.html">testthat 3e</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
@@ -96,25 +102,24 @@
     
     
 <p>The goal of a unit test is to record the expected output of a
-function using code. This is a powerful technique because not only does
-it ensure that code doesn’t change unexpectedly, it also expresses the
-desired behaviour in a way that a human can understand.</p>
-<p>However, it’s not always convenient to record the expected behaviour
+function using code. This is a powerful technique because it not only
+ensures that code doesn’t change unexpectedly, but it also expresses the
+desired behavior in a way that a human can understand.</p>
+<p>However, it’s not always convenient to record the expected behavior
 with code. Some challenges include:</p>
 <ul>
 <li><p>Text output that includes many characters like quotes and
 newlines that require special handling in a string.</p></li>
 <li><p>Output that is large, making it painful to define the reference
-output, and bloating the size of the test file and making it hard to
-navigate.</p></li>
+output and bloating the size of the test file.</p></li>
 <li><p>Binary formats like plots or images, which are very difficult to
-describe in code: i.e. the plot looks right, the error message is useful
-to a human, the print method uses colour effectively.</p></li>
+describe in code: e.g., the plot looks right, the error message is
+actionable, or the print method uses color effectively.</p></li>
 </ul>
 <p>For these situations, testthat provides an alternative mechanism:
 snapshot tests. Instead of using code to describe expected output,
 snapshot tests (also known as <a href="https://ro-che.info/articles/2017-12-04-golden-tests" class="external-link">golden
-tests</a>) record results in a separate human readable file. Snapshot
+tests</a>) record results in a separate human-readable file. Snapshot
 tests in testthat are inspired primarily by <a href="https://jestjs.io/docs/en/snapshot-testing" class="external-link">Jest</a>, thanks to a
 number of very useful discussions with Joe Cheng.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -123,9 +128,9 @@ number of very useful discussions with Joe Cheng.</p>
 <h2 id="basic-workflow">Basic workflow<a class="anchor" aria-label="anchor" href="#basic-workflow"></a>
 </h2>
 <p>We’ll illustrate the basic workflow with a simple function that
-generates an HTML heading. It can optionally include an <code>id</code>
+generates HTML bullets. It can optionally include an <code>id</code>
 attribute, which allows you to construct a link directly to that
-heading.</p>
+list.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bullets</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">text</span>, <span class="va">id</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
@@ -154,7 +159,7 @@ changes to our code:</p>
 <li><p>We use <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> instead of
 <code><a href="../reference/equality-expectations.html">expect_equal()</a></code></p></li>
 <li><p>We wrap the call in <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code> (to avoid <code>[1]</code>
-in the output, like in my first interactive example).</p></li>
+in the output, like in the first interactive example above).</p></li>
 </ul>
 <p>This yields the following test:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -180,12 +185,12 @@ in the output, like in my first interactive example).</p></li>
 <span><span class="co">#&gt;   &lt;/ul&gt;</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🎊</span>.</span></span></code></pre></div>
 <p>When we run the test for the first time, it automatically generates
-reference output, and prints it, so that you can visually confirm that
+reference output and prints it, so that you can visually confirm that
 it’s correct. The output is automatically saved in
 <code>_snaps/{name}.md</code>. The name of the snapshot matches your
 test file name — e.g. if your test is <code>test-pizza.R</code> then
 your snapshot will be saved in
-<code>test/testthat/_snaps/pizza.md</code>. As the file name suggests,
+<code>tests/testthat/_snaps/pizza.md</code>. As the file name suggests,
 this is a markdown file, which I’ll explain shortly.</p>
 <p>If you run the test again, it’ll succeed:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -232,9 +237,9 @@ the test will fail:</p>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed with 2 failures and 0 successes.</span></span></code></pre></div>
 <p>If this is a deliberate change, you can follow the advice in the
 message and update the snapshots for that file by running
-<code>snapshot_accept("pizza")</code>; otherwise you can fix the bug and
-your tests will pass once more. (You can also accept snapshot for all
-files with <code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code>).</p>
+<code>snapshot_accept("pizza")</code>; otherwise, you can fix the bug
+and your tests will pass once more. (You can also accept snapshots for
+all files with <code><a href="../reference/snapshot_accept.html">snapshot_accept()</a></code>.)</p>
 <p>If you delete the test, the corresponding snapshot will be removed
 the next time you run the tests. If you delete all snapshots in the
 file, the entire snapshot file will be deleted the next time you run all
@@ -243,9 +248,10 @@ the tests.</p>
 <h3 id="snapshot-format">Snapshot format<a class="anchor" aria-label="anchor" href="#snapshot-format"></a>
 </h3>
 <p>Snapshots are recorded using a subset of markdown. You might wonder
-why we use markdown? It’s important that snapshots be readable by
-humans, because humans have to look at it during code reviews. Reviewers
-often don’t run your code but still want to understand the changes.</p>
+why we use markdown. We use it because it’s important that snapshots be
+human-readable because humans have to read them during code reviews.
+Reviewers often don’t run your code but still want to understand the
+changes.</p>
 <p>Here’s the snapshot file generated by the test above:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu"># bullets</span></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
@@ -260,7 +266,7 @@ often don’t run your code but still want to understand the changes.</p>
 <span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="in">    &lt;/ul&gt;</span></span></code></pre></div>
 <p>Each test starts with <code># {test name}</code>, a level 1 heading.
 Within a test, each snapshot expectation is indented by four spaces,
-i.e. as code, and are separated by <code>---</code>, a horizontal
+i.e., as code, and they are separated by <code>---</code>, a horizontal
 rule.</p>
 </div>
 <div class="section level3">
@@ -274,42 +280,14 @@ inspection.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="other-types-of-output">Other types of output<a class="anchor" aria-label="anchor" href="#other-types-of-output"></a>
+<h2 id="testing-errors">Testing errors<a class="anchor" aria-label="anchor" href="#testing-errors"></a>
 </h2>
-<p>So far we’ve focussed on snapshot tests for output printed to the
+<p>So far we’ve focused on snapshot tests for output printed to the
 console. But <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> also captures messages,
-errors, and warnings<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;We no longer recommend
-&lt;code&gt;&lt;a href="../reference/expect_snapshot_output.html"&gt;expect_snapshot_output()&lt;/a&gt;&lt;/code&gt;,
-&lt;code&gt;&lt;a href="../reference/expect_snapshot_output.html"&gt;expect_snapshot_warning()&lt;/a&gt;&lt;/code&gt;, or
-&lt;code&gt;&lt;a href="../reference/expect_snapshot_output.html"&gt;expect_snapshot_error()&lt;/a&gt;&lt;/code&gt;. Just use
-&lt;code&gt;&lt;a href="../reference/expect_snapshot.html"&gt;expect_snapshot()&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;'><sup>1</sup></a>. The following function generates a some
-output, a message, and a warning:</p>
+errors, and warnings[^1]. Messages and warnings are straightforward, but
+capturing errors is <em>slightly</em> more difficult because
+<code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> will fail if there’s an error:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"Hi!"</span><span class="op">)</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/warning.html" class="external-link">warning</a></span><span class="op">(</span><span class="st">"How are you?"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-<p>And <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> captures them all:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() makes lots of noise"</span>, <span class="op">{</span></span>
-<span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;">: f() makes lots of noise</span> ───────────────────────────────────</span></span>
-<span><span class="co">#&gt; Adding new snapshot:</span></span>
-<span><span class="co">#&gt; Code</span></span>
-<span><span class="co">#&gt;   f()</span></span>
-<span><span class="co">#&gt; Output</span></span>
-<span><span class="co">#&gt;   [1] "Hello"</span></span>
-<span><span class="co">#&gt; Message</span></span>
-<span><span class="co">#&gt;   Hi!</span></span>
-<span><span class="co">#&gt; Condition</span></span>
-<span><span class="co">#&gt;   Warning in `f()`:</span></span>
-<span><span class="co">#&gt;   How are you?</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
-<p>Capturing errors is <em>slightly</em> more difficult because
-<code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> will fail when there’s an error:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -325,7 +303,7 @@ output, a message, and a warning:</p>
 <p>This is a safety valve that ensures that you don’t accidentally write
 broken code. To deliberately snapshot an error, you’ll have to
 specifically request it with <code>error = TRUE</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add a number and a letter"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span>, error <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -336,15 +314,15 @@ specifically request it with <code>error = TRUE</code>:</p>
 <span><span class="co">#&gt; Condition</span></span>
 <span><span class="co">#&gt;   Error in `1 + "a"`:</span></span>
 <span><span class="co">#&gt;   ! non-numeric argument to binary operator</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🥇</span>.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
 <p>When the code gets longer, I like to put <code>error = TRUE</code> up
 front so it’s a little more obvious:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"you can't add weird things"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span>error <span class="op">=</span> <span class="cn">TRUE</span>, <span class="op">{</span></span>
 <span>    <span class="fl">1</span> <span class="op">+</span> <span class="st">"a"</span></span>
 <span>    <span class="va">mtcars</span> <span class="op">+</span> <span class="va">iris</span></span>
-<span>    <span class="va">mean</span> <span class="op">+</span> <span class="va">sum</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;">: you can't add weird things</span> ────────────────────────────────</span></span>
@@ -360,23 +338,193 @@ front so it’s a little more obvious:</p>
 <span><span class="co">#&gt;   Error in `Ops.data.frame()`:</span></span>
 <span><span class="co">#&gt;   ! '+' only defined for equally-sized data frames</span></span>
 <span><span class="co">#&gt; Code</span></span>
-<span><span class="co">#&gt;   mean + sum</span></span>
+<span><span class="co">#&gt;   Sys.Date() + factor()</span></span>
 <span><span class="co">#&gt; Condition</span></span>
-<span><span class="co">#&gt;   Error in `mean + sum`:</span></span>
-<span><span class="co">#&gt;   ! non-numeric argument to binary operator</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎉</span>.</span></span></code></pre></div>
+<span><span class="co">#&gt;   Warning:</span></span>
+<span><span class="co">#&gt;   Incompatible methods ("+.Date", "Ops.factor") for "+"</span></span>
+<span><span class="co">#&gt; Output</span></span>
+<span><span class="co">#&gt;   numeric(0)</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🥇</span>.</span></span></code></pre></div>
+<p>Just be careful: when you set <code>error = TRUE</code>,
+<code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> checks that at least one expression
+throws an error, not that every expression throws an error. For example,
+look above and notice that adding a date and a factor generated a
+warning, not an error.</p>
+<p>Snapshot tests are particularly important when testing complex error
+messages, such as those that you might generate with cli. Here’s a more
+realistic example illustrating how you might test
+<code>check_unnamed()</code>, a function that ensures all arguments in
+<code>...</code> are unnamed.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">check_unnamed</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span>, <span class="va">call</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/dots.html" class="external-link">...names</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">has_name</span> <span class="op">&lt;-</span> <span class="va">names</span> <span class="op">!=</span> <span class="st">""</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="va">has_name</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="va">named</span> <span class="op">&lt;-</span> <span class="va">names</span><span class="op">[</span><span class="va">has_name</span><span class="op">]</span></span>
+<span>  <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli_abort</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"All elements of {.arg ...} must be unnamed."</span>,</span>
+<span>      i <span class="op">=</span> <span class="st">"You supplied argument{?s} {.arg {named}}."</span></span>
+<span>    <span class="op">)</span>, </span>
+<span>    call <span class="op">=</span> <span class="va">call</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"no errors if all arguments unnamed"</span>, <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/expect_no_error.html">expect_no_error</a></span><span class="op">(</span><span class="fu">check_unnamed</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/expect_no_error.html">expect_no_error</a></span><span class="op">(</span><span class="fu">check_unnamed</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🎉</span>.</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"actionable feedback if some or all arguments named"</span>, <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span>error <span class="op">=</span> <span class="cn">TRUE</span>, <span class="op">{</span></span>
+<span>    <span class="fu">check_unnamed</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span>    <span class="fu">check_unnamed</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;">: actionable feedback if some or all arguments named</span> ────────</span></span>
+<span><span class="co">#&gt; Adding new snapshot:</span></span>
+<span><span class="co">#&gt; Code</span></span>
+<span><span class="co">#&gt;   check_unnamed(x = 1, 2)</span></span>
+<span><span class="co">#&gt; Condition</span></span>
+<span><span class="co">#&gt;   Error:</span></span>
+<span><span class="co">#&gt;   ! All elements of `...` must be unnamed.</span></span>
+<span><span class="co">#&gt;   i You supplied argument `x`.</span></span>
+<span><span class="co">#&gt; Code</span></span>
+<span><span class="co">#&gt;   check_unnamed(x = 1, y = 2)</span></span>
+<span><span class="co">#&gt; Condition</span></span>
+<span><span class="co">#&gt;   Error:</span></span>
+<span><span class="co">#&gt;   ! All elements of `...` must be unnamed.</span></span>
+<span><span class="co">#&gt;   i You supplied arguments `x` and `y`.</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="snapshotting-values">Snapshotting values<a class="anchor" aria-label="anchor" href="#snapshotting-values"></a>
+<h2 id="other-challenges">Other challenges<a class="anchor" aria-label="anchor" href="#other-challenges"></a>
 </h2>
+<div class="section level3">
+<h3 id="varying-outputs">Varying outputs<a class="anchor" aria-label="anchor" href="#varying-outputs"></a>
+</h3>
+<p>Sometimes part of the output varies in ways that you can’t easily
+control. In many cases, it’s convenient to use mocking
+(<code><a href="../articles/mocking.html">vignette("mocking")</a></code>) to ensure that every run of the
+function always produces the same output. In other cases, it’s easier to
+manipulate the text output with a regular expression or similar. That’s
+the job of the <code>transform</code> argument, which should be passed a
+function that takes a character vector of lines and returns a modified
+vector.</p>
+<p>This type of problem often crops up when you are testing a function
+that gives feedback about a path. In your tests, you’ll typically use a
+temporary path (e.g., from <code><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">withr::local_tempfile()</a></code>), so if
+you display the path in a snapshot, it will be different every time. For
+example, consider this “safe” version of <code><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines()</a></code> that
+requires you to explicitly opt in to overwriting an existing file:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">safe_write_lines</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lines</span>, <span class="va">path</span>, <span class="va">overwrite</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="va">overwrite</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli_abort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"{.path {path}} already exists."</span>, </span>
+<span>      i <span class="op">=</span> <span class="st">"Set {.code overwrite = TRUE} to overwrite"</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="va">lines</span>, <span class="va">path</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>If you use a snapshot test to confirm that the error message is
+useful, the snapshot will be different every time the test is run:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"generates actionable error message"</span>, <span class="op">{</span></span>
+<span>  <span class="va">path</span> <span class="op">&lt;-</span> <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">local_tempfile</a></span><span class="op">(</span>lines <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">safe_write_lines</span><span class="op">(</span><span class="va">letters</span>, <span class="va">path</span><span class="op">)</span>, error <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;">: generates actionable error message</span> ────────────────────────</span></span>
+<span><span class="co">#&gt; Adding new snapshot:</span></span>
+<span><span class="co">#&gt; Code</span></span>
+<span><span class="co">#&gt;   safe_write_lines(letters, path)</span></span>
+<span><span class="co">#&gt; Condition</span></span>
+<span><span class="co">#&gt;   Error in `safe_write_lines()`:</span></span>
+<span><span class="co">#&gt;   ! '/tmp/RtmpxDZt11/file2a0013d3658d' already exists.</span></span>
+<span><span class="co">#&gt;   i Set `overwrite = TRUE` to overwrite</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"generates actionable error message"</span>, <span class="op">{</span></span>
+<span>  <span class="va">path</span> <span class="op">&lt;-</span> <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">local_tempfile</a></span><span class="op">(</span>lines <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">safe_write_lines</span><span class="op">(</span><span class="va">letters</span>, <span class="va">path</span><span class="op">)</span>, error <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;">: generates actionable error message</span> ────────────────────────</span></span>
+<span><span class="co">#&gt; Snapshot of code has changed:</span></span>
+<span><span class="co">#&gt; old[2:6] vs new[2:6]</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">    safe_write_lines(letters, path)</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">  Condition</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">    Error in `safe_write_lines()`:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">-   ! '/tmp/RtmpxDZt11/file2a0013d3658d' already exists.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">+   ! '/tmp/RtmpxDZt11/file2a0052324d57' already exists.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">    i Set `overwrite = TRUE` to overwrite</span></span></span>
+<span><span class="co">#&gt; * Run `testthat::snapshot_accept("snapshotting.Rmd")` to accept the change.</span></span>
+<span><span class="co">#&gt; * Run `testthat::snapshot_review("snapshotting.Rmd")` to review the change.</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed with 1 failure and 0 successes.</span></span></code></pre></div>
+<p>One way to fix this problem is to use the <code>transform</code>
+argument to replace the temporary path with a fixed value:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"generates actionable error message"</span>, <span class="op">{</span></span>
+<span>  <span class="va">path</span> <span class="op">&lt;-</span> <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">local_tempfile</a></span><span class="op">(</span>lines <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span></span>
+<span>    <span class="fu">safe_write_lines</span><span class="op">(</span><span class="va">letters</span>, <span class="va">path</span><span class="op">)</span>, </span>
+<span>    error <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    transform <span class="op">=</span> \<span class="op">(</span><span class="va">lines</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"&lt;path&gt;"</span>, <span class="va">lines</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;">: generates actionable error message</span> ────────────────────────</span></span>
+<span><span class="co">#&gt; Adding new snapshot:</span></span>
+<span><span class="co">#&gt; Code</span></span>
+<span><span class="co">#&gt;   safe_write_lines(letters, path)</span></span>
+<span><span class="co">#&gt; Condition</span></span>
+<span><span class="co">#&gt;   Error in `safe_write_lines()`:</span></span>
+<span><span class="co">#&gt;   ! '&lt;path&gt;' already exists.</span></span>
+<span><span class="co">#&gt;   i Set `overwrite = TRUE` to overwrite</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
+<p>Now even though the path varies, the snapshot does not.</p>
+</div>
+<div class="section level3">
+<h3 id="local_reproducible_output">
+<code>local_reproducible_output()</code><a class="anchor" aria-label="anchor" href="#local_reproducible_output"></a>
+</h3>
+<p>By default, testthat sets a number of options that simplify and
+standardize output:</p>
+<ul>
+<li>The console width is set to 80.</li>
+<li>{cli} ANSI coloring and hyperlinks are suppressed.</li>
+<li>Unicode characters are suppressed.</li>
+</ul>
+<p>These are sound defaults that we have found useful to minimize
+spurious differences between tests run in different environments.
+However, there are times when you want to deliberately test different
+widths, ANSI escapes, or Unicode characters, so you can override the
+defaults with <code><a href="../reference/local_test_context.html">local_reproducible_output()</a></code>.</p>
+</div>
+<div class="section level3">
+<h3 id="snapshotting-graphics">Snapshotting graphics<a class="anchor" aria-label="anchor" href="#snapshotting-graphics"></a>
+</h3>
+<p>If you need to test graphical output, use {vdiffr}. vdiffr is used to
+test ggplot2 and incorporates everything we know about high-quality
+graphics tests that minimize false positives. Graphics testing is still
+often fragile, but using vdiffr means you will avoid all the problems we
+know how to avoid.</p>
+</div>
+<div class="section level3">
+<h3 id="snapshotting-values">Snapshotting values<a class="anchor" aria-label="anchor" href="#snapshotting-values"></a>
+</h3>
 <p><code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> is the most used snapshot function
 because it records everything: the code you run, printed output,
 messages, warnings, and errors. If you care about the return value
-rather than any side-effects, you may might to use
+rather than any side effects, you might want to use
 <code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> instead. It offers a number of
-serialisation approaches that provide a tradeoff between accuracy and
+serialization approaches that provide a tradeoff between accuracy and
 human readability.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"can snapshot a simple list"</span>, <span class="op">{</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span><span class="op">)</span>, b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"elephant"</span>, <span class="st">"banana"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot_value.html">expect_snapshot_value</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -394,7 +542,8 @@ human readability.</p>
 <span><span class="co">#&gt;     "banana"</span></span>
 <span><span class="co">#&gt;   ]</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🌈</span>.</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="whole-file-snapshotting">Whole file snapshotting<a class="anchor" aria-label="anchor" href="#whole-file-snapshotting"></a>
@@ -403,20 +552,19 @@ human readability.</p>
 <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_output()</a></code>,
 <code><a href="../reference/expect_snapshot_output.html">expect_snapshot_error()</a></code>, and
 <code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> use one snapshot file per test
-file. But that doesn’t work for all file types — for example, what
-happens if you want to snapshot an image?
-<code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> provides an alternative workflow
-that generates one snapshot per expectation, rather than one file per
-test. Assuming you’re in <code>test-burger.R</code> then the snapshot
-created by
+file. But that doesn’t work for all file types—for example, what happens
+if you want to snapshot an image? <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code>
+provides an alternative workflow that generates one snapshot per
+expectation, rather than one file per test. Assuming you’re in
+<code>test-burger.R</code>, then the snapshot created by
 <code>expect_snapshot_file(code_that_returns_path_to_file(), "toppings.png")</code>
 would be saved in
 <code>tests/testthat/_snaps/burger/toppings.png</code>. If a future
-change in the code creates a different file it will be saved in
+change in the code creates a different file, it will be saved in
 <code>tests/testthat/_snaps/burger/toppings.new.png</code>.</p>
 <p>Unlike <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> and friends,
 <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> can’t provide an automatic diff when
-the test fails. Instead you’ll need to call
+the test fails. Instead, you’ll need to call
 <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code>. This launches a Shiny app that allows
 you to visually review each change and approve it if it’s
 deliberate:</p>
@@ -425,17 +573,19 @@ deliberate:</p>
 <p>The display varies based on the file type (currently text files,
 common image files, and csv files are supported).</p>
 <p>Sometimes the failure occurs in a non-interactive environment where
-you can’t run <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code>, e.g. in
+you can’t run <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code>, e.g., in
 <code>R CMD check</code>. In this case, the easiest fix is to retrieve
-the <code>.new</code> file, copy it into the appropriate directory, then
-run <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> locally. If your code was run on a CI
-platform, you’ll need to start by downloading the run “artifact”, which
-contains the check folder.</p>
+the <code>.new</code> file, copy it into the appropriate directory, and
+then run <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code> locally. If this happens on
+GitHub, testthat provides some tools to help you in the form of
+<code>gh_download_artifact()</code>.</p>
 <p>In most cases, we don’t expect you to use
 <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> directly. Instead, you’ll use it via
 a wrapper that does its best to gracefully skip tests when differences
 in platform or package versions make it unlikely to generate perfectly
-reproducible output.</p>
+reproducible output. That wrapper should also typically call
+<code><a href="../reference/expect_snapshot_file.html">announce_snapshot_file()</a></code> to avoid snapshots being
+incorrectly cleaned up—see the documentation for more details.</p>
 </div>
 <div class="section level2">
 <h2 id="previous-work">Previous work<a class="anchor" aria-label="anchor" href="#previous-work"></a>
@@ -452,25 +602,24 @@ attempts and why we believe the new approach is better.</p>
 seems like a small issue, but thinking of a good name, and managing the
 difference between interactive and test-time paths introduces a
 surprising amount of friction.</p></li>
-<li><p>It always overwrites the previous result; automatically assuming
-that the changes are correct. That means you have to use it with git and
-it’s easy to accidentally accept unwanted changes.</p></li>
+<li><p>It always overwrites the previous result, automatically assuming
+that the changes are correct. That means you have to use it with git,
+and it’s easy to accidentally accept unwanted changes.</p></li>
 <li><p>It’s relatively coarse grained, which means tests that use it
 tend to keep growing and growing.</p></li>
 </ul>
 </li>
-<li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code> is finer grained version of
+<li><p><code><a href="../reference/expect_known_output.html">expect_known_output()</a></code> is a finer-grained version of
 <code><a href="../reference/verify_output.html">verify_output()</a></code> that captures output from a single
 function. The requirement to produce a path for each individual
 expectation makes it even more painful to use.</p></li>
 <li><p><code><a href="../reference/expect_known_output.html">expect_known_value()</a></code> and
 <code><a href="../reference/expect_known_output.html">expect_known_hash()</a></code> have all the disadvantages of
-<code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>, but also produce binary output
+<code><a href="../reference/expect_known_output.html">expect_known_output()</a></code>, but also produce binary output,
 meaning that you can’t easily review test differences in pull
 requests.</p></li>
 </ul>
 </div>
-
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>

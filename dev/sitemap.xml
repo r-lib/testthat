@@ -3,8 +3,10 @@
 <url><loc>https://testthat.r-lib.org/dev/CODE_OF_CONDUCT.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/LICENSE-text.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/LICENSE.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/articles/challenging-tests.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/articles/custom-expectation.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/articles/index.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/articles/mocking.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/articles/parallel.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/articles/skipping.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/articles/snapshotting.html</loc></url>
