@@ -35,9 +35,7 @@ Most tests are written with an implicit assumption about the starting state, usu
 
 It's also important that your setup and cleanup are easy to use when working interactively. When a test fails, you want to be able to quickly recreate the exact environment in which the test is run so you can interactively experiment to figure out what went wrong.
 
-This article introduces a powerful technique that allows you to solve both problems: **test fixtures**. We'll begin by discussing some pre-existing tools, then learn about the tools that make fixtures possible, discuss exactly what a test fixture is, and show a few examples.
-
-Much of this vignette is derived from <https://www.tidyverse.org/blog/2020/04/self-cleaning-test-fixtures/>; if this is your first encounter with `on.exit()` or `withr::defer()`, I'd recommend starting with that blog as it gives a gentler introduction. This vignette moves a little faster since it's designed as more of a reference doc.
+This article introduces a powerful technique that allows you to solve both problems: **test fixtures**. We'll begin by discussing some canned tools, then learn about the underlying theory, discuss exactly what a test fixture is, and finish with a few examples.
 
 ```{r}
 library(testthat)
@@ -45,7 +43,7 @@ library(testthat)
 
 ## `local_` helpers
 
-We'll begin by giving you the bare minimum knowledge to change global state *just* within your test. The withr package provides a number of functions that temporarily change the state of the world, carefully undoing the changes when the current function or test finishes:
+We'll begin by giving you the minimal knowledge needed to change global state *just* within your test. The withr package provides a number of functions that temporarily change the state of the world, carefully undoing the changes when the current function or test finishes:
 
 | Do / undo this              | withr function    |
 |-----------------------------|-------------------|
@@ -302,8 +300,7 @@ local_create_package <- function(dir = file_temp(), env = parent.frame()) {
   withr::defer(fs::dir_delete(dir), envir = env) # -A
   
   # change working directory
-  setwd(dir) # B
-  withr::defer(setwd(old_project), envir = env) # -B
+  withr::local_dir(dir, .local_envir = env) # B + -B
   
   # switch to new usethis project
   proj_set(dir) # C

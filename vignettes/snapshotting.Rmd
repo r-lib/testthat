@@ -308,7 +308,7 @@ Now even though the path varies, the snapshot does not.
 By default, testthat sets a number of options that simplify and standardize output:
 
 * The console width is set to 80.
-* Crayon/cli ANSI coloring and hyperlinks are suppressed.
+* {cli} ANSI coloring and hyperlinks are suppressed.
 * Unicode characters are suppressed.
 
 These are sound defaults that we have found useful to minimize spurious differences between tests run in different environments. However, there are times when you want to deliberately test different widths, ANSI escapes, or Unicode characters, so you can override the defaults with `local_reproducible_output()`.

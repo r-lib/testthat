@@ -199,6 +199,43 @@ Also note that I check that the `class` argument is a string. If it's not a stri
 expect_s3_class(x1, 1)
 ```
 
+### Optional `class`
+
+A common pattern in testthat's own expectations it to use arguments to control the level of detail in the test. Here it would be nice if we check that an object is an S3 object without checking for a specific class. I think we could do that by renaming `expect_s3_class()` to `expect_s3_object()`. Now `expect_s3_object(x)` would verify that `x` is an S3 object, and `expect_s3_object(x, class = "foo")` to verify that `x` is an S3 object with the given class. The implementation of this is straightforward: we also allow `class` to be `NULL` and then only verify inheritance when non-`NULL`.
+
+```{r}
+expect_s3_object <- function(object, class = NULL) {
+  if (!rlang::is_string(class) && is.null(class)) {
+    rlang::abort("`class` must be a string or NULL.")
+  }
+
+  act <- quasi_label(rlang::enquo(object))
+
+  if (!is.object(act$val)) {
+    msg <- sprintf("Expected %s to be an object.", act$lab)
+    return(fail(msg))
+  }
+
+  if (isS4(act$val)) {
+    msg <- c(
+      sprintf("Expected %s to be an S3 object.", act$lab),
+      "Actual OO type: S4"
+    )
+    return(fail(msg))
+  }
+
+  if (!is.null(class) && !inherits(act$val, class)) {
+    msg <- c(
+      sprintf("Expected %s to inherit from %s.", act$lab, class),
+      sprintf("Actual class: %s", class(act$val))
+    )
+    return(fail(msg))
+  }
+
+  pass(act$val)
+}
+```
+
 ## Repeated code
 
 As you write more expectations, you might discover repeated code that you want to extract into a helper. Unfortunately, creating 100% correct helper functions is not straightforward in testthat because `fail()` captures the calling environment in order to give useful tracebacks, and testthat's own expectations don't expose this as an argument. Fortunately, getting this right is not critical (you'll just get a slightly suboptimal traceback in the case of failure), so we don't recommend bothering in most cases. We document it here, however, because it's important to get it right in testthat itself.
