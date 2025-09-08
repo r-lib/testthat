@@ -23,6 +23,9 @@ expect_vector <- function(object, ptype = NULL, size = NULL) {
   message <- NULL
   tryCatch(
     vctrs::vec_assert(act$val, ptype = ptype, size = size, arg = act$lab),
+    vctrs_error_scalar_type = function(e) {
+      message <<- e$message
+    },
     vctrs_error_assert = function(e) {
       message <<- e$message
     }
