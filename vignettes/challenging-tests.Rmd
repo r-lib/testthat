@@ -166,4 +166,4 @@ Errors, warnings, and other user-facing text should be tested to ensure they're 
 
 ## Repeated code
 
-If you find yourself repeating the same set of expectations again and again across your test suite, it may be a sign that you should design your own expectation. Learn how in `vignette("custom-expectations")`.
+If you find yourself repeating the same set of expectations again and again across your test suite, it may be a sign that you should design your own expectation. Learn how in `vignette("custom-expectation")`.
