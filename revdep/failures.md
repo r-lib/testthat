@@ -1,3 +1,151 @@
+# apa
+
+<details>
+
+* Version: 0.3.4
+* GitHub: https://github.com/dgromer/apa
+* Source code: https://github.com/cran/apa
+* Date/Publication: 2023-10-06 15:00:02 UTC
+* Number of recursive dependencies: 115
+
+Run `revdepcheck::cloud_details(, "apa")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/apa/new/apa.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘apa/DESCRIPTION’ ... OK
+...
+* this is package ‘apa’ version ‘0.3.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/apa/old/apa.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘apa/DESCRIPTION’ ... OK
+...
+* this is package ‘apa’ version ‘0.3.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# apaTables
+
+<details>
+
+* Version: 2.0.8
+* GitHub: https://github.com/dstanley4/apaTables
+* Source code: https://github.com/cran/apaTables
+* Date/Publication: 2021-01-04 19:00:02 UTC
+* Number of recursive dependencies: 97
+
+Run `revdepcheck::cloud_details(, "apaTables")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/apaTables/new/apaTables.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘apaTables/DESCRIPTION’ ... OK
+* this is package ‘apaTables’ version ‘2.0.8’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/apaTables/old/apaTables.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘apaTables/DESCRIPTION’ ... OK
+* this is package ‘apaTables’ version ‘2.0.8’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
 # arealDB
 
 <details>
@@ -71,7 +219,7 @@ ERROR: lazy loading failed for package ‘arealDB’
 * Version: NA
 * GitHub: NA
 * Source code: https://github.com/cran/arules
-* Number of recursive dependencies: 122
+* Number of recursive dependencies: 121
 
 Run `revdepcheck::cloud_details(, "arules")` for more info
 
@@ -103,10 +251,10 @@ Run `revdepcheck::cloud_details(, "arules")` for more info
 
 <details>
 
-* Version: 0.3-3
+* Version: 0.3-4
 * GitHub: https://github.com/eblondel/atom4R
 * Source code: https://github.com/cran/atom4R
-* Date/Publication: 2022-11-18 14:40:15 UTC
+* Date/Publication: 2025-09-01 10:10:08 UTC
 * Number of recursive dependencies: 66
 
 Run `revdepcheck::cloud_details(, "atom4R")` for more info
@@ -161,6 +309,117 @@ ERROR: lazy loading failed for package ‘atom4R’
 
 
 ```
+# auxvecLASSO
+
+<details>
+
+* Version: NA
+* GitHub: NA
+* Source code: https://github.com/cran/auxvecLASSO
+* Number of recursive dependencies: 71
+
+Run `revdepcheck::cloud_details(, "auxvecLASSO")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# bark
+
+<details>
+
+* Version: 1.0.5
+* GitHub: https://github.com/merliseclyde/bark
+* Source code: https://github.com/cran/bark
+* Date/Publication: 2024-10-05 22:40:28 UTC
+* Number of recursive dependencies: 160
+
+Run `revdepcheck::cloud_details(, "bark")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/bark/new/bark.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘bark/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: OK
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/bark/old/bark.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘bark/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: OK
+
+
+
+
+
+```
 # bayesdfa
 
 <details>
@@ -210,6 +469,111 @@ Calls: loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
 Execution halted
 ERROR: configuration failed for package ‘bayesdfa’
 * removing ‘/tmp/workdir/bayesdfa/old/bayesdfa.Rcheck/bayesdfa’
+
+
+```
+# Boom
+
+<details>
+
+* Version: NA
+* GitHub: NA
+* Source code: https://github.com/cran/Boom
+* Number of recursive dependencies: 25
+
+Run `revdepcheck::cloud_details(, "Boom")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# BoomSpikeSlab
+
+<details>
+
+* Version: NA
+* GitHub: NA
+* Source code: https://github.com/cran/BoomSpikeSlab
+* Number of recursive dependencies: 33
+
+Run `revdepcheck::cloud_details(, "BoomSpikeSlab")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
+
+
+```
+# bsts
+
+<details>
+
+* Version: NA
+* GitHub: NA
+* Source code: https://github.com/cran/bsts
+* Number of recursive dependencies: 30
+
+Run `revdepcheck::cloud_details(, "bsts")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
 
 
 ```
@@ -420,82 +784,6 @@ ERROR: lazy loading failed for package ‘datapack’
 
 
 ```
-# DSMolgenisArmadillo
-
-<details>
-
-* Version: 2.0.9
-* GitHub: https://github.com/molgenis/molgenis-r-datashield
-* Source code: https://github.com/cran/DSMolgenisArmadillo
-* Date/Publication: 2024-07-09 07:50:08 UTC
-* Number of recursive dependencies: 76
-
-Run `revdepcheck::cloud_details(, "DSMolgenisArmadillo")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-* using log directory ‘/tmp/workdir/DSMolgenisArmadillo/new/DSMolgenisArmadillo.Rcheck’
-* using R version 4.4.0 (2024-04-24)
-* using platform: x86_64-pc-linux-gnu
-* R was compiled by
-    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
-    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
-* running under: Ubuntu 24.04.2 LTS
-* using session charset: UTF-8
-* using option ‘--no-manual’
-* checking for file ‘DSMolgenisArmadillo/DESCRIPTION’ ... OK
-...
-   12.       └─rlang::cnd_signal(...)
-  
-  [ FAIL 55 | WARN 0 | SKIP 1 | PASS 9 ]
-  Error: Test failures
-  Execution halted
-* checking for unstated dependencies in vignettes ... OK
-* checking package vignettes ... OK
-* checking re-building of vignette outputs ... OK
-* DONE
-Status: 1 ERROR, 1 NOTE
-
-
-
-
-
-```
-### CRAN
-
-```
-* using log directory ‘/tmp/workdir/DSMolgenisArmadillo/old/DSMolgenisArmadillo.Rcheck’
-* using R version 4.4.0 (2024-04-24)
-* using platform: x86_64-pc-linux-gnu
-* R was compiled by
-    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
-    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
-* running under: Ubuntu 24.04.2 LTS
-* using session charset: UTF-8
-* using option ‘--no-manual’
-* checking for file ‘DSMolgenisArmadillo/DESCRIPTION’ ... OK
-...
-* checking files in ‘vignettes’ ... OK
-* checking examples ... NONE
-* checking for unstated dependencies in ‘tests’ ... OK
-* checking tests ... OK
-  Running ‘testthat.R’
-* checking for unstated dependencies in vignettes ... OK
-* checking package vignettes ... OK
-* checking re-building of vignette outputs ... OK
-* DONE
-Status: 1 NOTE
-
-
-
-
-
-```
 # dsTidyverse
 
 <details>
@@ -504,7 +792,7 @@ Status: 1 NOTE
 * GitHub: NA
 * Source code: https://github.com/cran/dsTidyverse
 * Date/Publication: 2025-02-27 09:40:06 UTC
-* Number of recursive dependencies: 134
+* Number of recursive dependencies: 46
 
 Run `revdepcheck::cloud_details(, "dsTidyverse")` for more info
 
@@ -580,7 +868,7 @@ Status: 1 NOTE
 * GitHub: NA
 * Source code: https://github.com/cran/dsTidyverseClient
 * Date/Publication: 2025-02-27 09:30:06 UTC
-* Number of recursive dependencies: 151
+* Number of recursive dependencies: 63
 
 Run `revdepcheck::cloud_details(, "dsTidyverseClient")` for more info
 
@@ -642,6 +930,82 @@ Status: 1 NOTE
 * checking re-building of vignette outputs ... OK
 * DONE
 Status: 1 NOTE
+
+
+
+
+
+```
+# dySEM
+
+<details>
+
+* Version: 1.1.1
+* GitHub: https://github.com/jsakaluk/dySEM
+* Source code: https://github.com/cran/dySEM
+* Date/Publication: 2025-01-07 22:20:02 UTC
+* Number of recursive dependencies: 140
+
+Run `revdepcheck::cloud_details(, "dySEM")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/dySEM/new/dySEM.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘dySEM/DESCRIPTION’ ... OK
+...
+* this is package ‘dySEM’ version ‘1.1.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/dySEM/old/dySEM.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘dySEM/DESCRIPTION’ ... OK
+...
+* this is package ‘dySEM’ version ‘1.1.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
 
 
 
@@ -740,49 +1104,65 @@ Run `revdepcheck::cloud_details(, "FAfA")` for more info
 
 </details>
 
-## In both
-
-*   checking whether package ‘FAfA’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/tmp/workdir/FAfA/new/FAfA.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
+## Error before installation
 
 ### Devel
 
 ```
-* installing *source* package ‘FAfA’ ...
-** package ‘FAfA’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
-  there is no package called ‘OpenMx’
-Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
-Execution halted
-ERROR: lazy loading failed for package ‘FAfA’
-* removing ‘/tmp/workdir/FAfA/new/FAfA.Rcheck/FAfA’
+* using log directory ‘/tmp/workdir/FAfA/new/FAfA.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘FAfA/DESCRIPTION’ ... OK
+...
+* this is package ‘FAfA’ version ‘0.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available: 'MBESS', 'semPlot'
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘FAfA’ ...
-** package ‘FAfA’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
-  there is no package called ‘OpenMx’
-Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
-Execution halted
-ERROR: lazy loading failed for package ‘FAfA’
-* removing ‘/tmp/workdir/FAfA/old/FAfA.Rcheck/FAfA’
+* using log directory ‘/tmp/workdir/FAfA/old/FAfA.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘FAfA/DESCRIPTION’ ... OK
+...
+* this is package ‘FAfA’ version ‘0.3’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available: 'MBESS', 'semPlot'
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
 
 
 ```
@@ -934,7 +1314,7 @@ ERROR: compilation failed for package ‘fdaPDE’
 * GitHub: https://github.com/albersonmiranda/fio
 * Source code: https://github.com/cran/fio
 * Date/Publication: 2025-04-06 07:50:02 UTC
-* Number of recursive dependencies: 87
+* Number of recursive dependencies: 88
 
 Run `revdepcheck::cloud_details(, "fio")` for more info
 
@@ -983,6 +1363,236 @@ Calls: source -> withVisible -> eval -> eval
 Execution halted
 ERROR: configuration failed for package ‘fio’
 * removing ‘/tmp/workdir/fio/old/fio.Rcheck/fio’
+
+
+```
+# fungible
+
+<details>
+
+* Version: 2.4.4
+* GitHub: NA
+* Source code: https://github.com/cran/fungible
+* Date/Publication: 2024-03-09 22:30:08 UTC
+* Number of recursive dependencies: 107
+
+Run `revdepcheck::cloud_details(, "fungible")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/fungible/new/fungible.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘fungible/DESCRIPTION’ ... OK
+...
+* this is package ‘fungible’ version ‘2.4.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/fungible/old/fungible.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘fungible/DESCRIPTION’ ... OK
+...
+* this is package ‘fungible’ version ‘2.4.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# gadjid
+
+<details>
+
+* Version: 0.1.0
+* GitHub: https://github.com/CausalDisco/gadjid
+* Source code: https://github.com/cran/gadjid
+* Date/Publication: 2025-08-29 11:00:08 UTC
+* Number of recursive dependencies: 24
+
+Run `revdepcheck::cloud_details(, "gadjid")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘gadjid’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/gadjid/new/gadjid.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘gadjid’ ...
+** package ‘gadjid’ successfully unpacked and MD5 sums checked
+** using staged installation
+Using cargo 1.75.0
+Using rustc 1.75.0 (82e1608df 2023-12-21) (built from a source tarball)
+Building for CRAN.
+Writing `src/Makevars`.
+`tools/config.R` has finished.
+** libs
+using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+...
+export CARGO_HOME=/tmp/workdir/gadjid/new/gadjid.Rcheck/00_pkg_src/gadjid/src/.cargo && \
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.cargo/bin" && \
+RUSTFLAGS=" --print=native-static-libs" cargo build -j 2 --offline --lib --release --manifest-path=./rust/Cargo.toml --target-dir ./rust/target 
+error: failed to parse lock file at: /tmp/workdir/gadjid/new/gadjid.Rcheck/00_pkg_src/gadjid/src/rust/Cargo.lock
+
+Caused by:
+  lock file version 4 requires `-Znext-lockfile-bump`
+make: *** [Makevars:26: rust/target/release/libgadjid.a] Error 101
+ERROR: compilation failed for package ‘gadjid’
+* removing ‘/tmp/workdir/gadjid/new/gadjid.Rcheck/gadjid’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘gadjid’ ...
+** package ‘gadjid’ successfully unpacked and MD5 sums checked
+** using staged installation
+Using cargo 1.75.0
+Using rustc 1.75.0 (82e1608df 2023-12-21) (built from a source tarball)
+Building for CRAN.
+Writing `src/Makevars`.
+`tools/config.R` has finished.
+** libs
+using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+...
+export CARGO_HOME=/tmp/workdir/gadjid/old/gadjid.Rcheck/00_pkg_src/gadjid/src/.cargo && \
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.cargo/bin" && \
+RUSTFLAGS=" --print=native-static-libs" cargo build -j 2 --offline --lib --release --manifest-path=./rust/Cargo.toml --target-dir ./rust/target 
+error: failed to parse lock file at: /tmp/workdir/gadjid/old/gadjid.Rcheck/00_pkg_src/gadjid/src/rust/Cargo.lock
+
+Caused by:
+  lock file version 4 requires `-Znext-lockfile-bump`
+make: *** [Makevars:26: rust/target/release/libgadjid.a] Error 101
+ERROR: compilation failed for package ‘gadjid’
+* removing ‘/tmp/workdir/gadjid/old/gadjid.Rcheck/gadjid’
+
+
+```
+# GDINA
+
+<details>
+
+* Version: 2.9.12
+* GitHub: https://github.com/Wenchao-Ma/GDINA
+* Source code: https://github.com/cran/GDINA
+* Date/Publication: 2025-07-02 17:00:02 UTC
+* Number of recursive dependencies: 150
+
+Run `revdepcheck::cloud_details(, "GDINA")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/GDINA/new/GDINA.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘GDINA/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/GDINA/old/GDINA.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘GDINA/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 1 NOTE
+
+
+
 
 
 ```
@@ -1103,10 +1713,10 @@ ERROR: compilation failed for package ‘gllvm’
 
 <details>
 
-* Version: 1.6.1
+* Version: 1.6.2
 * GitHub: https://github.com/fabsig/GPBoost
 * Source code: https://github.com/cran/gpboost
-* Date/Publication: 2025-07-23 08:30:02 UTC
+* Date/Publication: 2025-08-27 14:20:02 UTC
 * Number of recursive dependencies: 28
 
 Run `revdepcheck::cloud_details(, "gpboost")` for more info
@@ -1137,7 +1747,7 @@ config.status: creating src/Makevars
 ** libs
 using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
 ...
-./include/GPBoost/re_model_template.h:1456:6:   required from ‘void GPBoost::REModelTemplate<T_mat, T_chol>::OptimLinRegrCoefCovPar(const double*, const double*, int, double*, double*, int&, double*, double*, double*, double*, bool, const double*, bool, bool, bool, bool, bool) [with T_mat = Eigen::SparseMatrix<double>; T_chol = Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, 1, Eigen::AMDOrdering<int> >]’
+./include/GPBoost/re_model_template.h:1503:6:   required from ‘void GPBoost::REModelTemplate<T_mat, T_chol>::OptimLinRegrCoefCovPar(const double*, const double*, int, double*, double*, int&, double*, double*, double*, double*, bool, const double*, bool, bool, bool, bool, bool) [with T_mat = Eigen::SparseMatrix<double>; T_chol = Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, 1, Eigen::AMDOrdering<int> >]’
 re_model.cpp:312:40:   required from here
 ./include/Eigen/src/Core/CoreEvaluators.h:1064:54: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__m128d’} [-Wignored-attributes]
  1064 |     PacketAlignment = unpacket_traits<PacketScalar>::alignment,
@@ -1164,7 +1774,7 @@ config.status: creating src/Makevars
 ** libs
 using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
 ...
-./include/GPBoost/re_model_template.h:1456:6:   required from ‘void GPBoost::REModelTemplate<T_mat, T_chol>::OptimLinRegrCoefCovPar(const double*, const double*, int, double*, double*, int&, double*, double*, double*, double*, bool, const double*, bool, bool, bool, bool, bool) [with T_mat = Eigen::SparseMatrix<double>; T_chol = Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, 1, Eigen::AMDOrdering<int> >]’
+./include/GPBoost/re_model_template.h:1503:6:   required from ‘void GPBoost::REModelTemplate<T_mat, T_chol>::OptimLinRegrCoefCovPar(const double*, const double*, int, double*, double*, int&, double*, double*, double*, double*, bool, const double*, bool, bool, bool, bool, bool) [with T_mat = Eigen::SparseMatrix<double>; T_chol = Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, 1, Eigen::AMDOrdering<int> >]’
 re_model.cpp:312:40:   required from here
 ./include/Eigen/src/Core/CoreEvaluators.h:1064:54: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__m128d’} [-Wignored-attributes]
  1064 |     PacketAlignment = unpacket_traits<PacketScalar>::alignment,
@@ -1252,6 +1862,466 @@ collect2: error: ld returned 1 exit status
 make: *** [/opt/R/4.4.0/lib/R/share/make/shlib.mk:10: gpuR.so] Error 1
 ERROR: compilation failed for package ‘gpuR’
 * removing ‘/tmp/workdir/gpuR/old/gpuR.Rcheck/gpuR’
+
+
+```
+# greta.censored
+
+<details>
+
+* Version: 0.1.0
+* GitHub: https://github.com/mtwesley/greta.censored
+* Source code: https://github.com/cran/greta.censored
+* Date/Publication: 2024-11-29 09:30:06 UTC
+* Number of recursive dependencies: 123
+
+Run `revdepcheck::cloud_details(, "greta.censored")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘greta.censored’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/greta.censored/new/greta.censored.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘greta.censored’ ...
+** package ‘greta.censored’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘greta’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘tensorflow’ 2.20.0 is being loaded, but == 2.16.0 is required
+Execution halted
+ERROR: lazy loading failed for package ‘greta.censored’
+* removing ‘/tmp/workdir/greta.censored/new/greta.censored.Rcheck/greta.censored’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘greta.censored’ ...
+** package ‘greta.censored’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘greta’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘tensorflow’ 2.20.0 is being loaded, but == 2.16.0 is required
+Execution halted
+ERROR: lazy loading failed for package ‘greta.censored’
+* removing ‘/tmp/workdir/greta.censored/old/greta.censored.Rcheck/greta.censored’
+
+
+```
+# greta.dynamics
+
+<details>
+
+* Version: 0.2.2
+* GitHub: https://github.com/greta-dev/greta.dynamics
+* Source code: https://github.com/cran/greta.dynamics
+* Date/Publication: 2024-11-14 04:50:02 UTC
+* Number of recursive dependencies: 83
+
+Run `revdepcheck::cloud_details(, "greta.dynamics")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘greta.dynamics’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/greta.dynamics/new/greta.dynamics.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘greta.dynamics’ ...
+** package ‘greta.dynamics’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘greta’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘tensorflow’ 2.20.0 is being loaded, but == 2.16.0 is required
+Execution halted
+ERROR: lazy loading failed for package ‘greta.dynamics’
+* removing ‘/tmp/workdir/greta.dynamics/new/greta.dynamics.Rcheck/greta.dynamics’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘greta.dynamics’ ...
+** package ‘greta.dynamics’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘greta’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘tensorflow’ 2.20.0 is being loaded, but == 2.16.0 is required
+Execution halted
+ERROR: lazy loading failed for package ‘greta.dynamics’
+* removing ‘/tmp/workdir/greta.dynamics/old/greta.dynamics.Rcheck/greta.dynamics’
+
+
+```
+# greta.gam
+
+<details>
+
+* Version: 0.2.0
+* GitHub: https://github.com/greta-dev/greta.gam
+* Source code: https://github.com/cran/greta.gam
+* Date/Publication: 2024-12-17 10:40:02 UTC
+* Number of recursive dependencies: 76
+
+Run `revdepcheck::cloud_details(, "greta.gam")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘greta.gam’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/greta.gam/new/greta.gam.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘greta.gam’ ...
+** package ‘greta.gam’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘greta’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘tensorflow’ 2.20.0 is being loaded, but == 2.16.0 is required
+Execution halted
+ERROR: lazy loading failed for package ‘greta.gam’
+* removing ‘/tmp/workdir/greta.gam/new/greta.gam.Rcheck/greta.gam’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘greta.gam’ ...
+** package ‘greta.gam’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘greta’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘tensorflow’ 2.20.0 is being loaded, but == 2.16.0 is required
+Execution halted
+ERROR: lazy loading failed for package ‘greta.gam’
+* removing ‘/tmp/workdir/greta.gam/old/greta.gam.Rcheck/greta.gam’
+
+
+```
+# greta.gp
+
+<details>
+
+* Version: 0.2.2
+* GitHub: https://github.com/greta-dev/greta.gp
+* Source code: https://github.com/cran/greta.gp
+* Date/Publication: 2024-11-13 06:50:02 UTC
+* Number of recursive dependencies: 82
+
+Run `revdepcheck::cloud_details(, "greta.gp")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘greta.gp’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/greta.gp/new/greta.gp.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘greta.gp’ ...
+** package ‘greta.gp’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘greta’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘tensorflow’ 2.20.0 is being loaded, but == 2.16.0 is required
+Execution halted
+ERROR: lazy loading failed for package ‘greta.gp’
+* removing ‘/tmp/workdir/greta.gp/new/greta.gp.Rcheck/greta.gp’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘greta.gp’ ...
+** package ‘greta.gp’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘greta’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘tensorflow’ 2.20.0 is being loaded, but == 2.16.0 is required
+Execution halted
+ERROR: lazy loading failed for package ‘greta.gp’
+* removing ‘/tmp/workdir/greta.gp/old/greta.gp.Rcheck/greta.gp’
+
+
+```
+# insight
+
+<details>
+
+* Version: 1.4.2
+* GitHub: https://github.com/easystats/insight
+* Source code: https://github.com/cran/insight
+* Date/Publication: 2025-09-02 11:20:02 UTC
+* Number of recursive dependencies: 433
+
+Run `revdepcheck::cloud_details(, "insight")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/insight/new/insight.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘insight/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: OK
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/insight/old/insight.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘insight/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: OK
+
+
+
+
+
+```
+# jmv
+
+<details>
+
+* Version: 2.7.0
+* GitHub: https://github.com/jamovi/jmv
+* Source code: https://github.com/cran/jmv
+* Date/Publication: 2025-06-11 10:50:02 UTC
+* Number of recursive dependencies: 189
+
+Run `revdepcheck::cloud_details(, "jmv")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/jmv/new/jmv.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘jmv/DESCRIPTION’ ... OK
+...
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 3 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/jmv/old/jmv.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘jmv/DESCRIPTION’ ... OK
+...
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 3 NOTEs
+
+
+
+
+
+```
+# lcsm
+
+<details>
+
+* Version: 0.3.2
+* GitHub: https://github.com/milanwiedemann/lcsm
+* Source code: https://github.com/cran/lcsm
+* Date/Publication: 2023-02-25 23:40:02 UTC
+* Number of recursive dependencies: 137
+
+Run `revdepcheck::cloud_details(, "lcsm")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/lcsm/new/lcsm.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘lcsm/DESCRIPTION’ ... OK
+...
+* this is package ‘lcsm’ version ‘0.3.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/lcsm/old/lcsm.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘lcsm/DESCRIPTION’ ... OK
+...
+* this is package ‘lcsm’ version ‘0.3.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
 
 
 ```
@@ -1407,6 +2477,82 @@ Status: 1 ERROR
 
 
 ```
+# manymome
+
+<details>
+
+* Version: 0.3.1
+* GitHub: https://github.com/sfcheung/manymome
+* Source code: https://github.com/cran/manymome
+* Date/Publication: 2025-08-22 05:40:02 UTC
+* Number of recursive dependencies: 159
+
+Run `revdepcheck::cloud_details(, "manymome")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/manymome/new/manymome.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘manymome/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/manymome/old/manymome.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘manymome/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
 # metajam
 
 <details>
@@ -1466,6 +2612,236 @@ Calls: <Anonymous> ... namespaceImport -> loadNamespace -> library.dynam -> dyn.
 Execution halted
 ERROR: lazy loading failed for package ‘metajam’
 * removing ‘/tmp/workdir/metajam/old/metajam.Rcheck/metajam’
+
+
+```
+# metaSEM
+
+<details>
+
+* Version: 1.5.0
+* GitHub: https://github.com/mikewlcheung/metasem
+* Source code: https://github.com/cran/metaSEM
+* Date/Publication: 2024-09-26 02:30:02 UTC
+* Number of recursive dependencies: 135
+
+Run `revdepcheck::cloud_details(, "metaSEM")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/metaSEM/new/metaSEM.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘metaSEM/DESCRIPTION’ ... OK
+...
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘OpenMx’
+
+Package suggested but not available for checking: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/metaSEM/old/metaSEM.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘metaSEM/DESCRIPTION’ ... OK
+...
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘OpenMx’
+
+Package suggested but not available for checking: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# minimaxALT
+
+<details>
+
+* Version: 1.0.0
+* GitHub: https://github.com/hoanglinh171/minimaxALT
+* Source code: https://github.com/cran/minimaxALT
+* Date/Publication: 2025-09-01 09:30:02 UTC
+* Number of recursive dependencies: 45
+
+Run `revdepcheck::cloud_details(, "minimaxALT")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘minimaxALT’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/minimaxALT/new/minimaxALT.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘minimaxALT’ ...
+** package ‘minimaxALT’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+g++ -std=gnu++17 -I"/opt/R/4.4.0/lib/R/include" -DNDEBUG -I. -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppArmadillo/include' -I'/usr/local/lib/R/site-library/RcppGSL/include' -I/usr/local/include   -fopenmp -fpic  -g -O2   -c NelderMead.cpp -o NelderMead.o
+In file included from /usr/local/lib/R/site-library/RcppArmadillo/include/RcppArmadillo.h:29,
+                 from common.h:5,
+                 from NelderMead.h:9,
+                 from NelderMead.cpp:3:
+...
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+Error: package or namespace load failed for ‘minimaxALT’ in dyn.load(file, DLLpath = DLLpath, ...):
+ unable to load shared object '/tmp/workdir/minimaxALT/new/minimaxALT.Rcheck/00LOCK-minimaxALT/00new/minimaxALT/libs/minimaxALT.so':
+  /tmp/workdir/minimaxALT/new/minimaxALT.Rcheck/00LOCK-minimaxALT/00new/minimaxALT/libs/minimaxALT.so: undefined symbol: wrapper2_dgemv_
+Error: loading failed
+Execution halted
+ERROR: loading failed
+* removing ‘/tmp/workdir/minimaxALT/new/minimaxALT.Rcheck/minimaxALT’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘minimaxALT’ ...
+** package ‘minimaxALT’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+g++ -std=gnu++17 -I"/opt/R/4.4.0/lib/R/include" -DNDEBUG -I. -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppArmadillo/include' -I'/usr/local/lib/R/site-library/RcppGSL/include' -I/usr/local/include   -fopenmp -fpic  -g -O2   -c NelderMead.cpp -o NelderMead.o
+In file included from /usr/local/lib/R/site-library/RcppArmadillo/include/RcppArmadillo.h:29,
+                 from common.h:5,
+                 from NelderMead.h:9,
+                 from NelderMead.cpp:3:
+...
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+Error: package or namespace load failed for ‘minimaxALT’ in dyn.load(file, DLLpath = DLLpath, ...):
+ unable to load shared object '/tmp/workdir/minimaxALT/old/minimaxALT.Rcheck/00LOCK-minimaxALT/00new/minimaxALT/libs/minimaxALT.so':
+  /tmp/workdir/minimaxALT/old/minimaxALT.Rcheck/00LOCK-minimaxALT/00new/minimaxALT/libs/minimaxALT.so: undefined symbol: wrapper2_dgemv_
+Error: loading failed
+Execution halted
+ERROR: loading failed
+* removing ‘/tmp/workdir/minimaxALT/old/minimaxALT.Rcheck/minimaxALT’
+
+
+```
+# ModStatR
+
+<details>
+
+* Version: 1.4.0
+* GitHub: https://github.com/fbertran/ModStatR
+* Source code: https://github.com/cran/ModStatR
+* Date/Publication: 2025-08-28 02:20:07 UTC
+* Number of recursive dependencies: 302
+
+Run `revdepcheck::cloud_details(, "ModStatR")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/ModStatR/new/ModStatR.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘ModStatR/DESCRIPTION’ ... OK
+...
+* checking data for non-ASCII characters ... NOTE
+  Note: found 20578 marked UTF-8 strings
+* checking LazyData ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 4 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/ModStatR/old/ModStatR.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘ModStatR/DESCRIPTION’ ... OK
+...
+* checking data for non-ASCII characters ... NOTE
+  Note: found 20578 marked UTF-8 strings
+* checking LazyData ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 4 NOTEs
+
+
+
 
 
 ```
@@ -1582,6 +2958,310 @@ Run `revdepcheck::cloud_details(, "OpenMx")` for more info
 
 
 ```
+# papaja
+
+<details>
+
+* Version: 0.1.3
+* GitHub: https://github.com/crsh/papaja
+* Source code: https://github.com/cran/papaja
+* Date/Publication: 2024-10-24 11:10:02 UTC
+* Number of recursive dependencies: 156
+
+Run `revdepcheck::cloud_details(, "papaja")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/papaja/new/papaja.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘papaja/DESCRIPTION’ ... OK
+...
+  
+  [ FAIL 6 | WARN 0 | SKIP 10 | PASS 2512 ]
+  Error:
+  ! Test failures.
+  Execution halted
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 1 ERROR, 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/papaja/old/papaja.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘papaja/DESCRIPTION’ ... OK
+...
+  y[5]: ".86 [0.82, 0.89]"
+  
+  [ FAIL 6 | WARN 0 | SKIP 10 | PASS 2512 ]
+  Error: Test failures
+  Execution halted
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 1 ERROR, 2 NOTEs
+
+
+
+
+
+```
+# parameters
+
+<details>
+
+* Version: 0.28.1
+* GitHub: https://github.com/easystats/parameters
+* Source code: https://github.com/cran/parameters
+* Date/Publication: 2025-08-30 11:20:02 UTC
+* Number of recursive dependencies: 479
+
+Run `revdepcheck::cloud_details(, "parameters")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/parameters/new/parameters.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘parameters/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/parameters/old/parameters.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘parameters/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+# phylosem
+
+<details>
+
+* Version: 1.1.4
+* GitHub: https://github.com/James-Thorson-NOAA/phylosem
+* Source code: https://github.com/cran/phylosem
+* Date/Publication: 2024-04-02 21:15:03 UTC
+* Number of recursive dependencies: 218
+
+Run `revdepcheck::cloud_details(, "phylosem")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/phylosem/new/phylosem.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘phylosem/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/phylosem/old/phylosem.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘phylosem/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+# psycModel
+
+<details>
+
+* Version: 0.5.0
+* GitHub: https://github.com/jasonmoy28/psycModel
+* Source code: https://github.com/cran/psycModel
+* Date/Publication: 2023-11-01 06:00:02 UTC
+* Number of recursive dependencies: 203
+
+Run `revdepcheck::cloud_details(, "psycModel")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/psycModel/new/psycModel.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘psycModel/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/psycModel/old/psycModel.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘psycModel/DESCRIPTION’ ... OK
+...
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 NOTEs
+
+
+
+
+
+```
 # rdflib
 
 <details>
@@ -1590,7 +3270,7 @@ Run `revdepcheck::cloud_details(, "OpenMx")` for more info
 * GitHub: https://github.com/ropensci/rdflib
 * Source code: https://github.com/cran/rdflib
 * Date/Publication: 2024-08-17 06:00:05 UTC
-* Number of recursive dependencies: 92
+* Number of recursive dependencies: 91
 
 Run `revdepcheck::cloud_details(, "rdflib")` for more info
 
@@ -1641,6 +3321,41 @@ Calls: <Anonymous> ... asNamespace -> loadNamespace -> library.dynam -> dyn.load
 Execution halted
 ERROR: lazy loading failed for package ‘rdflib’
 * removing ‘/tmp/workdir/rdflib/old/rdflib.Rcheck/rdflib’
+
+
+```
+# recmap
+
+<details>
+
+* Version: NA
+* GitHub: NA
+* Source code: https://github.com/cran/recmap
+* Number of recursive dependencies: 58
+
+Run `revdepcheck::cloud_details(, "recmap")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+
+
+
+
 
 
 ```
@@ -1749,6 +3464,82 @@ ERROR: configuration failed for package ‘redland’
 
 
 ```
+# rosetta
+
+<details>
+
+* Version: 0.3.12
+* GitHub: NA
+* Source code: https://github.com/cran/rosetta
+* Date/Publication: 2023-03-05 22:00:02 UTC
+* Number of recursive dependencies: 173
+
+Run `revdepcheck::cloud_details(, "rosetta")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/rosetta/new/rosetta.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘rosetta/DESCRIPTION’ ... OK
+...
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking LazyData ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/rosetta/old/rosetta.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘rosetta/DESCRIPTION’ ... OK
+...
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking LazyData ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* DONE
+Status: 1 NOTE
+
+
+
+
+
+```
 # rstanarm
 
 <details>
@@ -1824,6 +3615,304 @@ make: *** [/opt/R/4.4.0/lib/R/etc/Makeconf:202: stan_files/continuous.o] Error 1
 rm stan_files/bernoulli.cc stan_files/binomial.cc stan_files/continuous.cc
 ERROR: compilation failed for package ‘rstanarm’
 * removing ‘/tmp/workdir/rstanarm/old/rstanarm.Rcheck/rstanarm’
+
+
+```
+# semptools
+
+<details>
+
+* Version: 0.3.2
+* GitHub: https://github.com/sfcheung/semptools
+* Source code: https://github.com/cran/semptools
+* Date/Publication: 2025-07-12 08:20:02 UTC
+* Number of recursive dependencies: 125
+
+Run `revdepcheck::cloud_details(, "semptools")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/semptools/new/semptools.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘semptools/DESCRIPTION’ ... OK
+...
+* this is package ‘semptools’ version ‘0.3.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/semptools/old/semptools.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘semptools/DESCRIPTION’ ... OK
+...
+* this is package ‘semptools’ version ‘0.3.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# semtree
+
+<details>
+
+* Version: 0.9.22
+* GitHub: https://github.com/brandmaier/semtree
+* Source code: https://github.com/cran/semtree
+* Date/Publication: 2025-07-28 11:20:02 UTC
+* Number of recursive dependencies: 123
+
+Run `revdepcheck::cloud_details(, "semtree")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/semtree/new/semtree.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘semtree/DESCRIPTION’ ... OK
+...
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘OpenMx’
+
+Package suggested but not available for checking: ‘ctsemOMX’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/semtree/old/semtree.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘semtree/DESCRIPTION’ ... OK
+...
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘OpenMx’
+
+Package suggested but not available for checking: ‘ctsemOMX’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# shrinkGPR
+
+<details>
+
+* Version: 1.1
+* GitHub: NA
+* Source code: https://github.com/cran/shrinkGPR
+* Date/Publication: 2025-08-19 12:20:02 UTC
+* Number of recursive dependencies: 97
+
+Run `revdepcheck::cloud_details(, "shrinkGPR")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘shrinkGPR’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/shrinkGPR/new/shrinkGPR.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘shrinkGPR’ ...
+** package ‘shrinkGPR’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+Error: package or namespace load failed for ‘shrinkGPR’:
+ .onLoad failed in loadNamespace() for 'shrinkGPR', details:
+  call: cpp_jit_compile(source)
+  error: Lantern is not loaded. Please use `install_torch()` to install additional dependencies.
+Error: loading failed
+Execution halted
+ERROR: loading failed
+* removing ‘/tmp/workdir/shrinkGPR/new/shrinkGPR.Rcheck/shrinkGPR’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘shrinkGPR’ ...
+** package ‘shrinkGPR’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+Error: package or namespace load failed for ‘shrinkGPR’:
+ .onLoad failed in loadNamespace() for 'shrinkGPR', details:
+  call: cpp_jit_compile(source)
+  error: Lantern is not loaded. Please use `install_torch()` to install additional dependencies.
+Error: loading failed
+Execution halted
+ERROR: loading failed
+* removing ‘/tmp/workdir/shrinkGPR/old/shrinkGPR.Rcheck/shrinkGPR’
+
+
+```
+# sprtt
+
+<details>
+
+* Version: 0.2.0
+* GitHub: https://github.com/MeikeSteinhilber/sprtt
+* Source code: https://github.com/cran/sprtt
+* Date/Publication: 2023-07-06 13:50:02 UTC
+* Number of recursive dependencies: 146
+
+Run `revdepcheck::cloud_details(, "sprtt")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/sprtt/new/sprtt.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘sprtt/DESCRIPTION’ ... OK
+...
+* this is package ‘sprtt’ version ‘0.2.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/sprtt/old/sprtt.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘sprtt/DESCRIPTION’ ... OK
+...
+* this is package ‘sprtt’ version ‘0.2.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
 
 
 ```
@@ -1957,6 +4046,158 @@ ERROR: configuration failed for package ‘string2path’
 
 
 ```
+# Surrogate
+
+<details>
+
+* Version: 3.4.1
+* GitHub: https://github.com/florianstijven/Surrogate-development
+* Source code: https://github.com/cran/Surrogate
+* Date/Publication: 2025-04-29 04:40:02 UTC
+* Number of recursive dependencies: 192
+
+Run `revdepcheck::cloud_details(, "Surrogate")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/Surrogate/new/Surrogate.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘Surrogate/DESCRIPTION’ ... OK
+...
+* this is package ‘Surrogate’ version ‘3.4.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/Surrogate/old/Surrogate.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘Surrogate/DESCRIPTION’ ... OK
+...
+* this is package ‘Surrogate’ version ‘3.4.1’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# tabledown
+
+<details>
+
+* Version: 1.0.0
+* GitHub: https://github.com/masiraji/tabledown
+* Source code: https://github.com/cran/tabledown
+* Date/Publication: 2024-05-02 13:40:03 UTC
+* Number of recursive dependencies: 163
+
+Run `revdepcheck::cloud_details(, "tabledown")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/tabledown/new/tabledown.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘tabledown/DESCRIPTION’ ... OK
+...
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘tabledown’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/tabledown/new/tabledown.Rcheck/00install.out’ for details.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/tabledown/old/tabledown.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘tabledown/DESCRIPTION’ ... OK
+...
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘tabledown’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/tabledown/old/tabledown.Rcheck/00install.out’ for details.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
 # TestAnaAPP
 
 <details>
@@ -1971,12 +4212,164 @@ Run `revdepcheck::cloud_details(, "TestAnaAPP")` for more info
 
 </details>
 
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/TestAnaAPP/new/TestAnaAPP.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘TestAnaAPP/DESCRIPTION’ ... OK
+...
+* this is package ‘TestAnaAPP’ version ‘1.1.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/TestAnaAPP/old/TestAnaAPP.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘TestAnaAPP/DESCRIPTION’ ... OK
+...
+* this is package ‘TestAnaAPP’ version ‘1.1.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘semPlot’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# tidycomm
+
+<details>
+
+* Version: 0.4.2
+* GitHub: https://github.com/tidycomm/tidycomm
+* Source code: https://github.com/cran/tidycomm
+* Date/Publication: 2025-08-27 12:00:02 UTC
+* Number of recursive dependencies: 141
+
+Run `revdepcheck::cloud_details(, "tidycomm")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/tidycomm/new/tidycomm.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘tidycomm/DESCRIPTION’ ... OK
+...
+* this is package ‘tidycomm’ version ‘0.4.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/tidycomm/old/tidycomm.Rcheck’
+* using R version 4.4.0 (2024-04-24)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.2 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘tidycomm/DESCRIPTION’ ... OK
+...
+* this is package ‘tidycomm’ version ‘0.4.2’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘MBESS’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
+
+
+
+
+
+```
+# tok
+
+<details>
+
+* Version: 0.2.0
+* GitHub: https://github.com/mlverse/tok
+* Source code: https://github.com/cran/tok
+* Date/Publication: 2025-08-27 09:10:02 UTC
+* Number of recursive dependencies: 51
+
+Run `revdepcheck::cloud_details(, "tok")` for more info
+
+</details>
+
 ## In both
 
-*   checking whether package ‘TestAnaAPP’ can be installed ... ERROR
+*   checking whether package ‘tok’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/tmp/workdir/TestAnaAPP/new/TestAnaAPP.Rcheck/00install.out’ for details.
+    See ‘/tmp/workdir/tok/new/tok.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -1984,36 +4377,54 @@ Run `revdepcheck::cloud_details(, "TestAnaAPP")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘TestAnaAPP’ ...
-** package ‘TestAnaAPP’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘tok’ ...
+** package ‘tok’ successfully unpacked and MD5 sums checked
 ** using staged installation
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
-  there is no package called ‘OpenMx’
-Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
-Execution halted
-ERROR: lazy loading failed for package ‘TestAnaAPP’
-* removing ‘/tmp/workdir/TestAnaAPP/new/TestAnaAPP.Rcheck/TestAnaAPP’
+Using cargo 1.75.0
+Using rustc 1.75.0 (82e1608df 2023-12-21) (built from a source tarball)
+Building for CRAN.
+Writing `src/Makevars`.
+`tools/config.R` has finished.
+** libs
+using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+...
+export CARGO_HOME=/tmp/workdir/tok/new/tok.Rcheck/00_pkg_src/tok/src/.cargo && \
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.cargo/bin" && \
+RUSTFLAGS=" --print=native-static-libs" cargo build -j 2 --offline --lib --release --manifest-path=./rust/Cargo.toml --target-dir ./rust/target 
+error: package `rayon v1.11.0` cannot be built because it requires rustc 1.80 or newer, while the currently active rustc version is 1.75.0
+Either upgrade to rustc 1.80 or newer, or use
+cargo update rayon@1.11.0 --precise ver
+where `ver` is the latest version of `rayon` supporting rustc 1.75.0
+make: *** [Makevars:26: rust/target/release/libtok.a] Error 101
+ERROR: compilation failed for package ‘tok’
+* removing ‘/tmp/workdir/tok/new/tok.Rcheck/tok’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘TestAnaAPP’ ...
-** package ‘TestAnaAPP’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘tok’ ...
+** package ‘tok’ successfully unpacked and MD5 sums checked
 ** using staged installation
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) : 
-  there is no package called ‘OpenMx’
-Calls: <Anonymous> ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
-Execution halted
-ERROR: lazy loading failed for package ‘TestAnaAPP’
-* removing ‘/tmp/workdir/TestAnaAPP/old/TestAnaAPP.Rcheck/TestAnaAPP’
+Using cargo 1.75.0
+Using rustc 1.75.0 (82e1608df 2023-12-21) (built from a source tarball)
+Building for CRAN.
+Writing `src/Makevars`.
+`tools/config.R` has finished.
+** libs
+using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+...
+export CARGO_HOME=/tmp/workdir/tok/old/tok.Rcheck/00_pkg_src/tok/src/.cargo && \
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.cargo/bin" && \
+RUSTFLAGS=" --print=native-static-libs" cargo build -j 2 --offline --lib --release --manifest-path=./rust/Cargo.toml --target-dir ./rust/target 
+error: package `rayon v1.11.0` cannot be built because it requires rustc 1.80 or newer, while the currently active rustc version is 1.75.0
+Either upgrade to rustc 1.80 or newer, or use
+cargo update rayon@1.11.0 --precise ver
+where `ver` is the latest version of `rayon` supporting rustc 1.75.0
+make: *** [Makevars:26: rust/target/release/libtok.a] Error 101
+ERROR: compilation failed for package ‘tok’
+* removing ‘/tmp/workdir/tok/old/tok.Rcheck/tok’
 
 
 ```
@@ -2073,10 +4484,10 @@ ERROR: configuration failed for package ‘TriDimRegression’
 
 <details>
 
-* Version: 1.0.3
+* Version: 1.2.0
 * GitHub: https://github.com/sachsmc/xactonomial
 * Source code: https://github.com/cran/xactonomial
-* Date/Publication: 2025-04-28 13:50:02 UTC
+* Date/Publication: 2025-07-30 08:00:02 UTC
 * Number of recursive dependencies: 41
 
 Run `revdepcheck::cloud_details(, "xactonomial")` for more info
