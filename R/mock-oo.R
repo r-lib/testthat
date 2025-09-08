@@ -1,8 +1,11 @@
 #' Mock S3 and S4 methods
 #'
+#' @description
 #' These functions allow you to temporarily override S3 and S4 methods that
 #' already exist. It works by using [registerS3method()]/[setMethod()] to
 #' temporarily replace the original definition.
+#'
+#' Learn more about mocking in `vignette("mocking")`.
 #'
 #' @param generic A string giving the name of the generic.
 #' @param signature A character vector giving the signature of the method.
@@ -67,11 +70,14 @@ local_mocked_s4_method <- function(
 
 #' Mock an R6 class
 #'
+#' @description
 #' This function allows you to temporarily override an R6 class definition.
 #' It works by creating a subclass then using [local_mocked_bindings()] to
 #' temporarily replace the original definition. This means that it will not
 #' affect subclasses of the original class; please file an issue if you need
 #' this.
+#'
+#' Learn more about mocking in `vignette("mocking")`.
 #'
 #' @export
 #' @param class An R6 class definition.

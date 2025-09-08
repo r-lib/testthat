@@ -31,9 +31,7 @@ during tests. This is helpful for testing functions that depend on external
 state (i.e. reading a value from a file or a website, or pretending a package
 is or isn't installed).
 
-These functions represent a second attempt at bringing mocking to testthat,
-incorporating what we've learned from the mockr, mockery, and mockthat
-packages.
+Learn more in \code{vignette("mocking")}.
 }
 \section{Use}{
 There are four places that the function you are trying to mock might

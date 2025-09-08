@@ -25,4 +25,6 @@ It works by creating a subclass then using \code{\link[=local_mocked_bindings]{l
 temporarily replace the original definition. This means that it will not
 affect subclasses of the original class; please file an issue if you need
 this.
+
+Learn more about mocking in \code{vignette("mocking")}.
 }

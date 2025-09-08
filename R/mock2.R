@@ -7,9 +7,7 @@
 #' state (i.e. reading a value from a file or a website, or pretending a package
 #' is or isn't installed).
 #'
-#' These functions represent a second attempt at bringing mocking to testthat,
-#' incorporating what we've learned from the mockr, mockery, and mockthat
-#' packages.
+#' Learn more in `vignette("mocking")`.
 #'
 #' # Use
 #'

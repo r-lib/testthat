@@ -23,6 +23,8 @@ Only needed when wrapping in another local helper.}
 These functions allow you to temporarily override S3 and S4 methods that
 already exist. It works by using \code{\link[=registerS3method]{registerS3method()}}/\code{\link[=setMethod]{setMethod()}} to
 temporarily replace the original definition.
+
+Learn more about mocking in \code{vignette("mocking")}.
 }
 \examples{
 x <- as.POSIXlt(Sys.time())
