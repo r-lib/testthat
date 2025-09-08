@@ -16,7 +16,7 @@ expect_snapshot_failure(expr)
 show_failure(expr)
 }
 \arguments{
-\item{expr}{Code to evalute}
+\item{expr}{Code to evaluate}
 
 \item{message}{Check that the failure message matches this regexp.}
 

@@ -70,8 +70,8 @@ following wrappers, to conform with \code{testthat}'s
 \strong{Function} \tab \strong{Catch} \tab \strong{Description} \cr
 \code{context} \tab \code{CATCH_TEST_CASE} \tab The context of a set of tests. \cr
 \code{test_that} \tab \code{CATCH_SECTION} \tab A test section. \cr
-\code{expect_true} \tab \code{CATCH_CHECK} \tab Test that an expression evaluates to \code{true}. \cr
-\code{expect_false} \tab \code{CATCH_CHECK_FALSE} \tab Test that an expression evalutes to \code{false}. \cr
+\code{expect_true} \tab \code{CATCH_CHECK} \tab Test that an expression evaluates to \code{TRUE}. \cr
+\code{expect_false} \tab \code{CATCH_CHECK_FALSE} \tab Test that an expression evaluates to \code{FALSE}. \cr
 \code{expect_error} \tab \code{CATCH_CHECK_THROWS} \tab Test that evaluation of an expression throws an exception. \cr
 \code{expect_error_as} \tab \code{CATCH_CHECK_THROWS_AS} \tab Test that evaluation of an expression throws an exception of a specific class. \cr
 }
