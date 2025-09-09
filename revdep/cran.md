@@ -1,9 +1,9 @@
 ## revdepcheck results
 
-We checked 9735 reverse dependencies (9726 from CRAN + 9 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 131 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 131 new problems
- * We failed to check 60 packages
+ * We saw 128 new problems
+ * We failed to check 0 packages
 
 Issues with CRAN packages are summarised below.
 
@@ -232,9 +232,6 @@ Issues with CRAN packages are summarised below.
 * oxcAAR
   checking tests ... ERROR
 
-* pandoc
-  checking examples ... ERROR
-
 * parquetize
   checking tests ... ERROR
 
@@ -246,9 +243,6 @@ Issues with CRAN packages are summarised below.
 
 * PCRedux
   checking tests ... ERROR
-
-* peacesciencer
-  checking installed package size ... NOTE
 
 * photon
   checking tests ... ERROR
@@ -293,10 +287,6 @@ Issues with CRAN packages are summarised below.
   checking tests ... ERROR
 
 * rbedrock
-  checking tests ... ERROR
-
-* rdracor
-  checking examples ... ERROR
   checking tests ... ERROR
 
 * regmedint
@@ -404,65 +394,3 @@ Issues with CRAN packages are summarised below.
 * ZillowR
   checking tests ... ERROR
 
-### Failed to check
-
-* apa               (NA)
-* apaTables         (NA)
-* arealDB           (NA)
-* atom4R            (NA)
-* bark              (NA)
-* bayesdfa          (NA)
-* ctsem             (NA)
-* dataone           (NA)
-* datapack          (NA)
-* dsTidyverse       (NA)
-* dsTidyverseClient (NA)
-* dySEM             (NA)
-* EcoEnsemble       (NA)
-* FAfA              (NA)
-* FAIRmaterials     (NA)
-* fdaPDE            (NA)
-* fio               (NA)
-* fungible          (NA)
-* gadjid            (NA)
-* GDINA             (NA)
-* gllvm             (NA)
-* gpboost           (NA)
-* gpuR              (NA)
-* greta.censored    (NA)
-* greta.dynamics    (NA)
-* greta.gam         (NA)
-* greta.gp          (NA)
-* insight           (NA)
-* jmv               (NA)
-* lcsm              (NA)
-* loon.shiny        (NA)
-* loon.tourr        (NA)
-* manymome          (NA)
-* metajam           (NA)
-* metaSEM           (NA)
-* minimaxALT        (NA)
-* ModStatR          (NA)
-* multinma          (NA)
-* papaja            (NA)
-* parameters        (NA)
-* phylosem          (NA)
-* psycModel         (NA)
-* rdflib            (NA)
-* redland           (NA)
-* rosetta           (NA)
-* rstanarm          (NA)
-* semptools         (NA)
-* semtree           (NA)
-* shrinkGPR         (NA)
-* sprtt             (NA)
-* SQLFormatteR      (NA)
-* string2path       (NA)
-* Surrogate         (NA)
-* tabledown         (NA)
-* TestAnaAPP        (NA)
-* tidycomm          (NA)
-* tok               (NA)
-* TriDimRegression  (NA)
-* xactonomial       (NA)
-* zen4R             (NA)

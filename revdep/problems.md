@@ -135,7 +135,7 @@ Run `revdepcheck::cloud_details(, "autodb")` for more info
        11.                   └─testthat::new_expectation(...)
        12.                     └─base::structure(...)
       
-      [ FAIL 20 | WARN 0 | SKIP 1 | PASS 693 ]
+      [ FAIL 19 | WARN 0 | SKIP 1 | PASS 694 ]
       Error:
       ! Test failures.
       Execution halted
@@ -328,8 +328,8 @@ Run `revdepcheck::cloud_details(, "clinDataReview")` for more info
       > 
       > test_check("clinDataReview")
         adding: report.html (deflated 63%)
-        adding: report_dependencies148061f2ee85/ (stored 0%)
-        adding: report_dependencies148061f2ee85/file14807b8c439a.html (deflated 8%)
+        adding: report_dependencies128b5d5f1fed/ (stored 0%)
+        adding: report_dependencies128b5d5f1fed/file128b74c69cf6.html (deflated 8%)
     ...
       `names(expected)`: "height" "width" 
       
@@ -2143,10 +2143,10 @@ Run `revdepcheck::cloud_details(, "lintr")` for more info
 
 <details>
 
-* Version: 0.1.9
+* Version: 0.2.0
 * GitHub: https://github.com/nicholasdavies/luajr
 * Source code: https://github.com/cran/luajr
-* Date/Publication: 2025-04-30 11:50:02 UTC
+* Date/Publication: 2025-09-08 14:00:08 UTC
 * Number of recursive dependencies: 42
 
 Run `revdepcheck::cloud_details(, "luajr")` for more info
@@ -2174,7 +2174,7 @@ Run `revdepcheck::cloud_details(, "luajr")` for more info
       `expected$at2` is a double vector (1)
       
       
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 176 ]
+      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 184 ]
       Error:
       ! Test failures.
       Execution halted
@@ -2849,7 +2849,7 @@ Run `revdepcheck::cloud_details(, "multiverse")` for more info
       ── Failure ('test-multiverse.R:32:3'): accessor functions work on newly initialised object ──
       Expected `expect_mapequal(conditions(M), list())` to throw a warning.
       
-      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 242 ]
+      [ FAIL 4 | WARN 3 | SKIP 0 | PASS 242 ]
       Error:
       ! Test failures.
       Execution halted
@@ -3308,43 +3308,6 @@ Run `revdepcheck::cloud_details(, "oxcAAR")` for more info
     Execution halted
     ```
 
-# pandoc
-
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/cderv/pandoc
-* Source code: https://github.com/cran/pandoc
-* Date/Publication: 2023-08-24 11:00:08 UTC
-* Number of recursive dependencies: 58
-
-Run `revdepcheck::cloud_details(, "pandoc")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘pandoc-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: pandoc_available_releases
-    > ### Title: Fetch all versions available to install
-    > ### Aliases: pandoc_available_releases
-    > 
-    > ### ** Examples
-    > 
-    > ## Don't show: 
-    > if (rlang::is_installed("gh") && attr(curlGetHeaders("https://github.com"), "status") == "200") (if (getRversion() >= "3.4") withAutoprint else force)({ # examplesIf
-    + ## End(Don't show)
-    + ## Don't show: 
-    + }) # examplesIf
-    Error in curlGetHeaders("https://github.com") : libcurl error code 28:
-    	Operation timed out after 60002 milliseconds with 0 bytes received
-    Execution halted
-    ```
-
 # parquetize
 
 <details>
@@ -3507,29 +3470,6 @@ Run `revdepcheck::cloud_details(, "PCRedux")` for more info
       Error:
       ! Test failures.
       Execution halted
-    ```
-
-# peacesciencer
-
-<details>
-
-* Version: 1.2.0
-* GitHub: https://github.com/svmiller/peacesciencer
-* Source code: https://github.com/cran/peacesciencer
-* Date/Publication: 2025-07-17 08:40:07 UTC
-* Number of recursive dependencies: 101
-
-Run `revdepcheck::cloud_details(, "peacesciencer")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.8Mb
-      sub-directories of 1Mb or more:
-        data   6.0Mb
     ```
 
 # photon
@@ -4187,65 +4127,6 @@ Run `revdepcheck::cloud_details(, "rbedrock")` for more info
 *   checking for GNU extensions in Makefiles ... NOTE
     ```
     GNU make is a SystemRequirements.
-    ```
-
-# rdracor
-
-<details>
-
-* Version: 1.0.5
-* GitHub: https://github.com/dracor-org/rdracor
-* Source code: https://github.com/cran/rdracor
-* Date/Publication: 2025-08-27 07:50:02 UTC
-* Number of recursive dependencies: 50
-
-Run `revdepcheck::cloud_details(, "rdracor")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘rdracor-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: dracor_api
-    > ### Title: Send a GET request to DraCor API and parse the results
-    > ### Aliases: dracor_api
-    > 
-    > ### ** Examples
-    > 
-    > dracor_api("https://dracor.org/api/v1/info", expected_type = "application/json")
-    Error in dracor_error(resp) : 
-      Status code - 504: Internal Dracor server problem
-    Calls: dracor_api -> dracor_error
-    Execution halted
-    ```
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(rdracor)
-      > 
-      > test_check("rdracor")
-      DraCor API URL:  https://dracor.org/api/v1 
-       openapi: https://dracor.org/api/v1/openapi.yaml
-      existdb: 6.4.0
-    ...
-        6.     └─rdracor::get_dracor_meta()
-        7.       ├─rdracor:::dracor_meta(...)
-        8.       │ └─utils::type.convert(...)
-        9.       └─rdracor::dracor_api(...)
-       10.         └─rdracor:::dracor_error(resp)
-      
-      [ FAIL 1 | WARN 1 | SKIP 0 | PASS 40 ]
-      Error:
-      ! Test failures.
-      Execution halted
     ```
 
 # regmedint
@@ -5270,7 +5151,7 @@ Run `revdepcheck::cloud_details(, "testdat")` for more info
       > library(testdat)
       > 
       > test_check("testdat")
-      [ FAIL 95 | WARN 0 | SKIP 0 | PASS 119 ]
+      [ FAIL 95 | WARN 0 | SKIP 0 | PASS 111 ]
       
       ══ Failed tests ════════════════════════════════════════════════════════════════
     ...
@@ -5280,7 +5161,7 @@ Run `revdepcheck::cloud_details(, "testdat")` for more info
       Expected one failure.
       Actually failed 2 times
       
-      [ FAIL 95 | WARN 0 | SKIP 0 | PASS 119 ]
+      [ FAIL 95 | WARN 0 | SKIP 0 | PASS 111 ]
       Error:
       ! Test failures.
       Execution halted
