@@ -4,11 +4,14 @@
 \alias{set_state_inspector}
 \title{Check for global state changes}
 \usage{
-set_state_inspector(callback)
+set_state_inspector(callback, tolerance = testthat_tolerance())
 }
 \arguments{
 \item{callback}{Either a zero-argument function that returns an object
 capturing global state that you're interested in, or \code{NULL}.}
+
+\item{tolerance}{Numerical tolerance: any differences (in the sense of
+\code{\link[base:all.equal]{base::all.equal()}}) smaller than this value will be ignored.}
 }
 \description{
 One of the most pernicious challenges to debug is when a test runs fine
