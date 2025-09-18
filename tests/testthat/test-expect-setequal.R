@@ -131,6 +131,23 @@ test_that("expect_contains() gives useful message on failure", {
   expect_snapshot_failure(expect_contains(x1, x3))
 })
 
+# not_contains ----------------------------------------------------------------
+
+test_that("expect_not_contains() succeeds when appropriate", {
+  expect_success(expect_not_contains(letters, 1))
+  expect_success(expect_not_contains(letters, LETTERS))
+  expect_success(expect_not_contains(letters, character()))
+})
+
+test_that("expect_not_contains() gives useful message on failure", {
+  x1 <- c("a", "b", "c")
+  x2 <- c("c", "d")
+  x3 <- c("b", "c", "d")
+
+  expect_snapshot_failure(expect_not_contains(x1, x2))
+  expect_snapshot_failure(expect_not_contains(x1, x3))
+})
+
 
 # in ----------------------------------------------------------------
 

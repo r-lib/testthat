@@ -4,6 +4,7 @@
 \alias{expect_setequal}
 \alias{expect_mapequal}
 \alias{expect_contains}
+\alias{expect_not_contains}
 \alias{expect_in}
 \title{Do you expect a vector containing these values?}
 \usage{
@@ -12,6 +13,8 @@ expect_setequal(object, expected)
 expect_mapequal(object, expected)
 
 expect_contains(object, expected)
+
+expect_not_contains(object, expected)
 
 expect_in(object, expected)
 }
@@ -28,6 +31,8 @@ more details.}
 and that every element of \code{y} occurs in \code{x}.
 \item \code{expect_contains(x, y)} tests that \code{x} contains every element of \code{y}
 (i.e. \code{y} is a subset of \code{x}).
+\item \code{expect_not_contains(x, y)} tests that \code{x} contains none of the elements
+of \code{y} (i.e. \code{y} is disjoint from \code{x}).
 \item \code{expect_in(x, y)} tests every element of \code{x} is in \code{y}
 (i.e. \code{x} is a subset of \code{y}).
 \item \code{expect_mapequal(x, y)} treats lists as if they are mappings between names

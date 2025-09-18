@@ -4,6 +4,8 @@
 #'    and that every element of `y` occurs in `x`.
 #' * `expect_contains(x, y)` tests that `x` contains every element of `y`
 #'   (i.e. `y` is a subset of `x`).
+#' * `expect_not_contains(x, y)` tests that `x` contains none of the elements
+#'   of `y` (i.e. `y` is disjoint from `x`).
 #' * `expect_in(x, y)` tests every element of `x` is in `y`
 #'   (i.e. `x` is a subset of `y`).
 #' * `expect_mapequal(x, y)` treats lists as if they are mappings between names
@@ -110,6 +112,33 @@ expect_contains <- function(object, expected) {
       sprintf("Actual: %s", values(act$val)),
       sprintf("Expected: %s", values(exp$val)),
       sprintf("Missing: %s", values(exp$val[exp_miss]))
+    )
+    fail(c(msg_exp, msg_act))
+  }
+
+  pass(act$val)
+}
+
+#' @export
+#' @rdname expect_setequal
+expect_not_contains <- function(object, expected) {
+  act <- quasi_label(enquo(object))
+  exp <- quasi_label(enquo(expected))
+
+  check_vector(object)
+  check_vector(expected)
+
+  exp_found <- exp$val %in% act$val
+  if (any(exp_found)) {
+    msg_exp <- sprintf(
+      "Expected %s to contain none of the values in %s.",
+      act$lab,
+      exp$lab
+    )
+    msg_act <- c(
+      sprintf("Actual: %s", values(act$val)),
+      sprintf("Expected: none of %s", values(exp$val)),
+      sprintf("Found: %s", values(exp$val[exp_found]))
     )
     fail(c(msg_exp, msg_act))
   }
