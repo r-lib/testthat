@@ -165,3 +165,20 @@ test_that("expect_in() gives useful message on failure", {
   expect_snapshot_failure(expect_in(x1, x2))
   expect_snapshot_failure(expect_in(x1, x3))
 })
+
+# not_in ----------------------------------------------------------------
+
+test_that("expect_not_in() succeeds when appropriate", {
+  expect_success(expect_not_in(1, letters))
+  expect_success(expect_not_in(LETTERS, letters))
+  expect_success(expect_not_in(character(), letters))
+})
+
+test_that("expect_not_in() gives useful message on failure", {
+  x1 <- c("a", "b", "c")
+  x2 <- c("c", "d")
+  x3 <- c("b", "c", "d")
+
+  expect_snapshot_failure(expect_not_in(x1, x2))
+  expect_snapshot_failure(expect_not_in(x1, x3))
+})

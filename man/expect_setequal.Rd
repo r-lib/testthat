@@ -6,6 +6,7 @@
 \alias{expect_contains}
 \alias{expect_not_contains}
 \alias{expect_in}
+\alias{expect_not_in}
 \title{Do you expect a vector containing these values?}
 \usage{
 expect_setequal(object, expected)
@@ -17,6 +18,8 @@ expect_contains(object, expected)
 expect_not_contains(object, expected)
 
 expect_in(object, expected)
+
+expect_not_in(object, expected)
 }
 \arguments{
 \item{object, expected}{Computation and value to compare it to.
@@ -33,8 +36,10 @@ and that every element of \code{y} occurs in \code{x}.
 (i.e. \code{y} is a subset of \code{x}).
 \item \code{expect_not_contains(x, y)} tests that \code{x} contains none of the elements
 of \code{y} (i.e. \code{y} is disjoint from \code{x}).
-\item \code{expect_in(x, y)} tests every element of \code{x} is in \code{y}
+\item \code{expect_in(x, y)} tests that every element of \code{x} is in \code{y}
 (i.e. \code{x} is a subset of \code{y}).
+\item \code{expect_not_in(x, y)} tests that no element of \code{x} is in \code{y}
+(i.e. \code{x} is disjoint from \code{y}).
 \item \code{expect_mapequal(x, y)} treats lists as if they are mappings between names
 and values. Concretely, this drops \code{NULL}s in both objects and sorts
 named components.

@@ -165,3 +165,25 @@
       Expected: "d", "e"
       Invalid: "a", "b"
 
+# expect_not_in() gives useful message on failure
+
+    Code
+      expect_not_in(x1, x2)
+    Condition
+      Error:
+      ! Expected `x1` to contain no values from `x2`.
+      Actual: "a", "b", "c"
+      Expected: none of "c", "d"
+      Invalid: "c"
+
+---
+
+    Code
+      expect_not_in(x1, x3)
+    Condition
+      Error:
+      ! Expected `x1` to contain no values from `x3`.
+      Actual: "a", "b", "c"
+      Expected: none of "b", "c", "d"
+      Invalid: "b", "c"
+

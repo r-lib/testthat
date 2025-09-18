@@ -6,8 +6,10 @@
 #'   (i.e. `y` is a subset of `x`).
 #' * `expect_not_contains(x, y)` tests that `x` contains none of the elements
 #'   of `y` (i.e. `y` is disjoint from `x`).
-#' * `expect_in(x, y)` tests every element of `x` is in `y`
+#' * `expect_in(x, y)` tests that every element of `x` is in `y`
 #'   (i.e. `x` is a subset of `y`).
+#' * `expect_not_in(x, y)` tests that no element of `x` is in `y`
+#'   (i.e. `x` is disjoint from `y`).
 #' * `expect_mapequal(x, y)` treats lists as if they are mappings between names
 #'   and values. Concretely, this drops `NULL`s in both objects and sorts
 #'   named components.
@@ -166,6 +168,33 @@ expect_in <- function(object, expected) {
       sprintf("Actual: %s", values(act$val)),
       sprintf("Expected: %s", values(exp$val)),
       sprintf("Invalid: %s", values(act$val[act_miss]))
+    )
+    fail(c(msg_exp, msg_act))
+  }
+
+  pass(act$val)
+}
+
+#' @export
+#' @rdname expect_setequal
+expect_not_in <- function(object, expected) {
+  act <- quasi_label(enquo(object))
+  exp <- quasi_label(enquo(expected))
+
+  check_vector(object)
+  check_vector(expected)
+
+  act_found <- act$val %in% exp$val
+  if (any(act_found)) {
+    msg_exp <- sprintf(
+      "Expected %s to contain no values from %s.",
+      act$lab,
+      exp$lab
+    )
+    msg_act <- c(
+      sprintf("Actual: %s", values(act$val)),
+      sprintf("Expected: none of %s", values(exp$val)),
+      sprintf("Invalid: %s", values(act$val[act_found]))
     )
     fail(c(msg_exp, msg_act))
   }
