@@ -6,7 +6,12 @@
 \alias{expect_false}
 \title{Do you expect \code{TRUE} or \code{FALSE}?}
 \usage{
-expect_true(object, info = NULL, label = NULL)
+expect_true(
+  object,
+  info = NULL,
+  label = NULL,
+  required = c("one", "any", "all")
+)
 
 expect_false(object, info = NULL, label = NULL)
 }
@@ -21,6 +26,10 @@ is soft-deprecated and should not be used in new code. Instead see
 alternatives in \link{quasi_label}.}
 
 \item{label}{Used to customise failure messages. For expert use only.}
+
+\item{required}{"one" (default) to require an identical match to \code{TRUE}.
+"any" to replicate \code{expect_true(any(TRUE))}. "all" for
+\code{expect_true(all(TRUE))}.}
 }
 \description{
 These are fall-back expectations that you can use when none of the other
