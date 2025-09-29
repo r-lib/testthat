@@ -18,6 +18,16 @@
     Condition
       Error in `expect_setequal()`:
       ! `expected` must be a vector, not a primitive function.
+    Code
+      expect_setequal(!!fun, 1)
+    Condition
+      Error in `expect_setequal()`:
+      ! `object` must be a vector, not a primitive function.
+    Code
+      expect_setequal(1, !!fun)
+    Condition
+      Error in `expect_setequal()`:
+      ! `expected` must be a vector, not a primitive function.
 
 # useful message on failure
 

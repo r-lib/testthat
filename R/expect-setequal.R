@@ -28,8 +28,8 @@ expect_setequal <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  check_vector(object)
-  check_vector(expected)
+  check_vector(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
   if (!is.null(names(act$val)) && !is.null(names(exp$val))) {
     testthat_warn("expect_setequal() ignores names")
   }
