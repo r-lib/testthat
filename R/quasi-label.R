@@ -59,10 +59,11 @@ quasi_label <- function(quo, label = NULL, arg = NULL) {
 }
 
 labelled_value <- function(value, label) {
-  list(
-    val = value,
-    lab = label
-  )
+  if (missing(value)) {
+    list(val = missing_arg(), lab = label)
+  } else {
+    list(val = value, lab = label)
+  }
 }
 
 quasi_capture <- function(.quo, .label, .capture, ...) {
