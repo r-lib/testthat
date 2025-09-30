@@ -1,3 +1,14 @@
+# missing arguments are propagated
+
+    Code
+      expect_null(x$missing)
+    Condition
+      Error:
+      ! Expected `x$missing` to be NULL.
+      Differences:
+      `actual` is absent
+      `expected` is NULL
+
 # produces useful summaries for long calls
 
     Code
