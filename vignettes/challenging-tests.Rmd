@@ -134,6 +134,25 @@ test_that("user must respond y or n", {
 })
 ```
 
+If you don't care about reproducing the output of `continue()` and just want to recreate its return value, you can use `mock_output_sequence()`. This creates a function that returns the input supplied to `mock_output_sequence()` in sequence: the first input at the first call, the second input at the second call, etc. The following code shows how it works and how you might use it to test `readline()`:
+
+```{r}
+f <- mock_output_sequence(1, 12, 123)
+f()
+f()
+f()
+```
+
+And 
+
+```{r}
+test_that("user must respond y or n", {
+  local_mocked_bindings(readline = mock_output_sequence("x", "y"))
+  expect_true(continue("This is dangerous"))
+})
+```
+
+
 If you were testing the behavior of some function that uses `continue()`, you might want to mock `continue()` instead of `readline()`. For example, the function below requires user confirmation before overwriting an existing file. In order to focus our tests on the behavior of just this function, we mock `continue()` to return either `TRUE` or `FALSE` without any user messaging.
 
 ```{r}
