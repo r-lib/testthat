@@ -23,7 +23,7 @@ In this vignette, you'll learn about the three-part structure of expectations, h
 
 ## Do you need it?
 
-But before you read the rest of the vignette and dive into the full details of creating a fully 100% correct expectation, consider if you can get away with a simpler wrapper. For example, take this expectation from tidytext:
+But before you read the rest of the vignette and dive into the full details of creating a 100% correct expectation, consider if you can get away with a simpler wrapper. For example, take this expectation from tidytext:
 
 ```{r}
 # from tidytext
