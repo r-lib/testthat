@@ -266,6 +266,30 @@ using a snapshot test:</p>
 <span><span class="co">#&gt;   ! You must enter y or n</span></span>
 <span><span class="co">#&gt;   Do you want to continue? (y/n) y</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🎊</span>.</span></span></code></pre></div>
+<p>If you don’t care about reproducing the output of
+<code>continue()</code> and just want to recreate its return value, you
+can use <code><a href="../reference/mock_output_sequence.html">mock_output_sequence()</a></code>. This creates a function
+that returns the input supplied to <code><a href="../reference/mock_output_sequence.html">mock_output_sequence()</a></code>
+in sequence: the first input at the first call, the second input at the
+second call, etc. The following code shows how it works and how you
+might use it to test <code><a href="https://rdrr.io/r/base/readline.html" class="external-link">readline()</a></code>:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mock_output_sequence.html">mock_output_sequence</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">12</span>, <span class="fl">123</span><span class="op">)</span></span>
+<span><span class="fu">f</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
+<span><span class="fu">f</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 12</span></span>
+<span><span class="fu">f</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 123</span></span></code></pre></div>
+<p>And</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"user must respond y or n"</span>, <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/local_mocked_bindings.html">local_mocked_bindings</a></span><span class="op">(</span>readline <span class="op">=</span> <span class="fu"><a href="../reference/mock_output_sequence.html">mock_output_sequence</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="fu">continue</span><span class="op">(</span><span class="st">"This is dangerous"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; This is dangerous</span></span>
+<span><span class="co">#&gt; ! You must enter y or n</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 😀</span>.</span></span></code></pre></div>
 <p>If you were testing the behavior of some function that uses
 <code>continue()</code>, you might want to mock <code>continue()</code>
 instead of <code><a href="https://rdrr.io/r/base/readline.html" class="external-link">readline()</a></code>. For example, the function below
@@ -273,7 +297,7 @@ requires user confirmation before overwriting an existing file. In order
 to focus our tests on the behavior of just this function, we mock
 <code>continue()</code> to return either <code>TRUE</code> or
 <code>FALSE</code> without any user messaging.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">save_file</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">path</span>, <span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu">continue</span><span class="op">(</span><span class="st">"`path` already exists"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -300,7 +324,7 @@ to focus our tests on the behavior of just this function, we mock
 <span><span class="co">#&gt; Condition</span></span>
 <span><span class="co">#&gt;   Error in `save_file()`:</span></span>
 <span><span class="co">#&gt;   ! Failed to continue</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 😀</span>.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🥇</span>.</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="user-facing-text">User-facing text<a class="anchor" aria-label="anchor" href="#user-facing-text"></a>

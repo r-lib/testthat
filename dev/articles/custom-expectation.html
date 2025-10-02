@@ -115,11 +115,83 @@ expectations, how to test your custom expectations, see a few examples,
 and, if you’re writing a lot of expectations, learn how to reduce
 repeated code.</p>
 <div class="section level2">
+<h2 id="do-you-need-it">Do you need it?<a class="anchor" aria-label="anchor" href="#do-you-need-it"></a>
+</h2>
+<p>But before you read the rest of the vignette and dive into the full
+details of creating a 100% correct expectation, consider if you can get
+away with a simpler wrapper. If you’re just customising an existing
+expectation by changing some defaults, you’re fine:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">expect_df</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="st">"data.frame"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>If you’re combining multiple expectations, you can introduce a subtle
+problem. For example, take this expectation from tidytext:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># from tidytext</span></span>
+<span><span class="va">expect_nrow</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tbl</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">tbl</span>, <span class="st">"data.frame"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">)</span>, <span class="va">n</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>If we use it in a test you can see there’s an issue:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"success"</span>, <span class="op">{</span></span>
+<span>  <span class="fu">expect_nrow</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">32</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🥇</span>.</span></span>
+<span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"failure 1"</span>, <span class="op">{</span></span>
+<span>  <span class="fu">expect_nrow</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">30</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;">: failure 1</span> ─────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; Expected `nrow(tbl)` to be equal to `n`.</span></span>
+<span><span class="co">#&gt; Differences:</span></span>
+<span><span class="co">#&gt;   `actual`: <span style="color: #00BB00;">32.0</span></span></span>
+<span><span class="co">#&gt; `expected`: <span style="color: #00BB00;">30.0</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Backtrace:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">    </span>▆</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> 1. </span>└─<span style="font-weight: bold;">global</span> expect_nrow(mtcars, 30)</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> 2. </span>  └─<span style="font-weight: bold;">testthat</span>::expect_equal(nrow(tbl), n)</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed with 1 failure and 1 success.</span></span>
+<span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"failure 2"</span>, <span class="op">{</span></span>
+<span>  <span class="fu">expect_nrow</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;">: failure 2</span> ─────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; Expected `tbl` to be an S3 object.</span></span>
+<span><span class="co">#&gt; Actual OO type: none.</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Backtrace:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">    </span>▆</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> 1. </span>└─<span style="font-weight: bold;">global</span> expect_nrow(matrix(1:5), 2)</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> 2. </span>  └─<span style="font-weight: bold;">testthat</span>::expect_s3_class(tbl, "data.frame")</span></span>
+<span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;">: failure 2</span> ─────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; Expected `nrow(tbl)` to be equal to `n`.</span></span>
+<span><span class="co">#&gt; Differences:</span></span>
+<span><span class="co">#&gt;   `actual`: <span style="color: #00BB00;">5.0</span></span></span>
+<span><span class="co">#&gt; `expected`: <span style="color: #00BB00;">2.0</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Backtrace:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">    </span>▆</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> 1. </span>└─<span style="font-weight: bold;">global</span> expect_nrow(matrix(1:5), 2)</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> 2. </span>  └─<span style="font-weight: bold;">testthat</span>::expect_equal(nrow(tbl), n)</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed with 2 failures and 0 successes.</span></span></code></pre></div>
+<p>Each of these tests contain a single expectation, but they report a
+total of two successes and failures. It would be confusing if testthat
+didn’t report these numbers correctly. But as a helper in your package,
+it’s probably not a big deal.</p>
+<p>You might also notice that these failures generate a backtrace
+whereas built-in expectations don’t. Again, it’s not a big deal because
+the backtrace is correct, it’s just not needed.</p>
+<p>These are both minor issues, so if they don’t bother you, you can
+save yourself some pain by not reading this vignette 😀.</p>
+</div>
+<div class="section level2">
 <h2 id="expectation-basics">Expectation basics<a class="anchor" aria-label="anchor" href="#expectation-basics"></a>
 </h2>
 <p>An expectation has three main parts, as illustrated by
 <code><a href="../reference/expect_length.html">expect_length()</a></code>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expect_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>  </span>
 <span>  <span class="co"># 1. Capture object and label</span></span>
 <span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
@@ -162,14 +234,14 @@ issue.</p>
 functions are called primarily for their side-effects (triggering a
 failure), and returning the value allows expectations to be piped
 together:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"mtcars is a 13 row data frame"</span>, <span class="op">{</span></span>
 <span>  <span class="va">mtcars</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="../reference/inheritance-expectations.html">expect_type</a></span><span class="op">(</span><span class="st">"list"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="st">"data.frame"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="fl">11</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 3 successes 🥇</span>.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 3 successes 🎊</span>.</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="testing-your-expectations">Testing your expectations<a class="anchor" aria-label="anchor" href="#testing-your-expectations"></a>
 </h3>
@@ -193,13 +265,13 @@ in a snapshot, making it easier to review whether it’s useful.</li>
 ensure that your expectation always reports either a single success or a
 single failure. If it doesn’t, the end user is going to get confusing
 results in their test suite reports.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"expect_length works as expected"</span>, <span class="op">{</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span>  <span class="fu"><a href="../reference/expect_success.html">expect_success</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/expect_success.html">expect_failure</a></span><span class="op">(</span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">11</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🎊</span>.</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🌈</span>.</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"expect_length gives useful feedback"</span>, <span class="op">{</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
@@ -213,7 +285,7 @@ results in their test suite reports.</p>
 <span><span class="co">#&gt;   Error:</span></span>
 <span><span class="co">#&gt;   ! Expected `x` to have length 11.</span></span>
 <span><span class="co">#&gt;   Actual length: 10.</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🌈</span>.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -232,11 +304,11 @@ checking that the input is a vector. R is a bit unusual in that it gives
 a length to pretty much every object, and you can imagine not wanting
 code like the following to succeed, because it’s likely that the user
 passed the wrong object to the test.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/expect_length.html">expect_length</a></span><span class="op">(</span><span class="va">mean</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>To do this we’ll add an extra check that the input is either an
 atomic vector or a list:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expect_vector_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>  </span>
 <span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -261,7 +333,7 @@ atomic vector or a list:</p>
 <span>  </span>
 <span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">expect_vector_length</span><span class="op">(</span><span class="va">mean</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error: Expected `mean` to be a vector</span></span>
 <span><span class="co">#&gt; Actual type: closure</span></span>
@@ -278,7 +350,7 @@ class. R has a lot of different OO systems, and you want your failure
 messages to be as informative as possible, so before checking that the
 class matches, you probably want to check that the object is from the
 correct OO family.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expect_s3_class</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/scalar-type-predicates.html" class="external-link">is_string</a></span><span class="op">(</span><span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">abort</a></span><span class="op">(</span><span class="st">"`class` must be a string."</span><span class="op">)</span></span>
@@ -309,7 +381,7 @@ correct OO family.</p>
 <span></span>
 <span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="va">TestClass</span> <span class="op">&lt;-</span> <span class="fu">methods</span><span class="fu">::</span><span class="kw"><a href="https://rdrr.io/r/methods/setClass.html" class="external-link">setClass</a></span><span class="op">(</span><span class="st">"Test"</span>, contains <span class="op">=</span> <span class="st">"integer"</span><span class="op">)</span></span>
 <span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu">TestClass</span><span class="op">(</span><span class="op">)</span></span>
@@ -341,7 +413,7 @@ string. If it’s not a string, I throw an error. This is not a test
 failure; the user is calling the function incorrectly. In general, you
 should check the type of all arguments that affect the operation and
 error if they’re not what you expect.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x1</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `expect_s3_class()`:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> `class` must be a string.</span></span></code></pre></div>
@@ -360,7 +432,7 @@ that <code>x</code> is an S3 object with the given class. The
 implementation of this is straightforward: we also allow
 <code>class</code> to be <code>NULL</code> and then only verify
 inheritance when non-<code>NULL</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expect_s3_object</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">class</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/scalar-type-predicates.html" class="external-link">is_string</a></span><span class="op">(</span><span class="va">class</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">abort</a></span><span class="op">(</span><span class="st">"`class` must be a string or NULL."</span><span class="op">)</span></span>
@@ -410,7 +482,7 @@ because it’s important to get it right in testthat itself.</p>
 expectation. This usually works because the default value of
 <code>trace_env</code> is <code>caller_env()</code>. But when you
 introduce a helper, you’ll need to explicitly pass it along:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expect_length_</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">act</span>, <span class="va">n</span>, <span class="va">trace_env</span> <span class="op">=</span> <span class="fu">caller_env</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">act_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">act_n</span> <span class="op">!=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
