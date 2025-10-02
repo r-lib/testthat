@@ -153,7 +153,7 @@ that problem with:</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">set_state_inspector</span><span class="op">(</span><span class="va">callback</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">set_state_inspector</span><span class="op">(</span><span class="va">callback</span>, tolerance <span class="op">=</span> <span class="fu"><a href="testthat_tolerance.html">testthat_tolerance</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -163,6 +163,20 @@ that problem with:</p>
 <dl><dt id="arg-callback">callback<a class="anchor" aria-label="anchor" href="#arg-callback"></a></dt>
 <dd><p>Either a zero-argument function that returns an object
 capturing global state that you're interested in, or <code>NULL</code>.</p></dd>
+
+
+<dt id="arg-tolerance">tolerance<a class="anchor" aria-label="anchor" href="#arg-tolerance"></a></dt>
+<dd><p>If non-<code>NULL</code>, used as threshold for ignoring small
+floating point difference when comparing numeric vectors. Using any
+non-<code>NULL</code> value will cause integer and double vectors to be compared
+based on their values, not their types, and will ignore the difference
+between <code>NaN</code> and <code>NA_real_</code>.</p>
+<p>It uses the same algorithm as <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code>, i.e., first we generate
+<code>x_diff</code> and <code>y_diff</code> by subsetting <code>x</code> and <code>y</code> to look only locations
+with differences. Then we check that
+<code>mean(abs(x_diff - y_diff)) / mean(abs(y_diff))</code> (or just
+<code>mean(abs(x_diff - y_diff))</code> if <code>y_diff</code> is small) is less than
+<code>tolerance</code>.</p></dd>
 
 </dl></div>
 
