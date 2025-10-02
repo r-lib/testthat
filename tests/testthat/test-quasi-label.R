@@ -10,6 +10,10 @@ test_that("symbols are quoted", {
   expect_equal(expr_label(quote(a)), "`a`")
 })
 
+test_that("missing arguments are propagated", {
+  x <- list(missing = missing_arg())
+  expect_snapshot_failure(expect_null(x$missing))
+})
 
 test_that("is_call_infix() handles complex calls (#1472)", {
   expect_false(is_call_infix(quote(

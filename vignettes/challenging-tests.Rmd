@@ -87,7 +87,7 @@ If your package is going to CRAN, you **must** either use one of these packages 
 
 ## Graphics
 
-The only type of testing you can use for graphics is snapshot testing (`vignette("snapshotting")`) via `expect_snapshot_file()`. Graphical snapshot testing is surprisingly challenging because you need pixel-perfect rendering across multiple versions of multiple operating systems, and this is hard, mostly due to imperceptble differences in font rendering. Fortunately we've needed to overcome these challenges in order to test ggplot2, and you can benefit from our experience by using {vdiffr} when testing graphical output.
+The only type of testing you can use for graphics is snapshot testing (`vignette("snapshotting")`) via `expect_snapshot_file()`. Graphical snapshot testing is surprisingly challenging because you need pixel-perfect rendering across multiple versions of multiple operating systems, and this is hard, mostly due to imperceptible differences in font rendering. Fortunately we've needed to overcome these challenges in order to test {ggplot2}, and you can benefit from our experience by using {vdiffr} when testing graphical output.
 
 ## User interaction
 
@@ -166,4 +166,4 @@ Errors, warnings, and other user-facing text should be tested to ensure they're 
 
 ## Repeated code
 
-If you find yourself repeating the same set of expectations again and again across your test suite, it may be a sign that you should design your own expectation. Learn how in `vignette("custom-expectations")`.
+If you find yourself repeating the same set of expectations again and again across your test suite, it may be a sign that you should design your own expectation. Learn how in `vignette("custom-expectation")`.

@@ -1,3 +1,19 @@
+# basic properties upheld
+
+    Code
+      expect_vector(x, size = 5)
+    Condition
+      Error:
+      ! `x` must have size 5, not size 10.
+
+---
+
+    Code
+      expect_vector(y)
+    Condition
+      Error:
+      ! `y` must be a vector, not `NULL`.
+
 # expect_vector validates its inputs
 
     Code

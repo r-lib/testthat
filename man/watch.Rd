@@ -9,14 +9,14 @@ watch(path, callback, pattern = NULL, hash = TRUE)
 \arguments{
 \item{path}{character vector of paths to watch.  Omit trailing backslash.}
 
-\item{callback}{function called everytime a change occurs.  It should
+\item{callback}{function called every time a change occurs.  It should
 have three parameters: added, deleted, modified, and should return
-TRUE to keep watching, or FALSE to stop.}
+\code{TRUE} to keep watching, or \code{FALSE} to stop.}
 
 \item{pattern}{file pattern passed to \code{\link[=dir]{dir()}}}
 
 \item{hash}{hashes are more accurate at detecting changes, but are slower
-for large files.  When FALSE, uses modification time stamps}
+for large files.  When \code{FALSE}, uses modification time stamps}
 }
 \description{
 This is used to power the \code{\link[=auto_test]{auto_test()}} and

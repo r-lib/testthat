@@ -39,7 +39,7 @@ capture_success_failure <- function(expr) {
 #' Use `show_failure()` in examples to print the failure message without
 #' throwing an error.
 #'
-#' @param expr Code to evalute
+#' @param expr Code to evaluate
 #' @param message Check that the failure message matches this regexp.
 #' @param ... Other arguments passed on to [expect_match()].
 #' @export

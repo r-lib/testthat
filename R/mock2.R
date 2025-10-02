@@ -100,7 +100,7 @@
 #'
 #' To mock a function that returns different values in sequence,
 #' for instance an API call whose status would be 502 then 200,
-#' or an user intput to `readline()`, you can use [mock_output_sequence()]
+#' or an user input to `readline()`, you can use [mock_output_sequence()]
 #'
 #' ```R
 #' local_mocked_bindings(readline = mock_output_sequence("3", "This is a note", "n"))
