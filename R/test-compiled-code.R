@@ -230,8 +230,8 @@ run_cpp_tests <- function(package) {
 #' \strong{Function} \tab \strong{Catch} \tab \strong{Description} \cr
 #' `context` \tab `CATCH_TEST_CASE` \tab The context of a set of tests. \cr
 #' `test_that` \tab `CATCH_SECTION` \tab A test section. \cr
-#' `expect_true` \tab `CATCH_CHECK` \tab Test that an expression evaluates to `true`. \cr
-#' `expect_false` \tab `CATCH_CHECK_FALSE` \tab Test that an expression evalutes to `false`. \cr
+#' `expect_true` \tab `CATCH_CHECK` \tab Test that an expression evaluates to `TRUE`. \cr
+#' `expect_false` \tab `CATCH_CHECK_FALSE` \tab Test that an expression evaluates to `FALSE`. \cr
 #' `expect_error` \tab `CATCH_CHECK_THROWS` \tab Test that evaluation of an expression throws an exception. \cr
 #' `expect_error_as` \tab `CATCH_CHECK_THROWS_AS` \tab Test that evaluation of an expression throws an exception of a specific class. \cr
 #' }

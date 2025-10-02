@@ -26,9 +26,12 @@ test_that("warns if both inputs are named", {
 })
 
 test_that("checks inputs", {
+  fun <- sum
   expect_snapshot(error = TRUE, {
     expect_setequal(sum, 1)
     expect_setequal(1, sum)
+    expect_setequal(!!fun, 1)
+    expect_setequal(1, !!fun)
   })
 })
 

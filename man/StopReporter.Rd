@@ -5,7 +5,7 @@
 \title{Error if any test fails}
 \description{
 The default reporter used when \code{\link[=expect_that]{expect_that()}} is run interactively.
-It responds by displaying a summary of the number of successes and faiures
+It responds by displaying a summary of the number of successes and failures
 and \code{\link[=stop]{stop()}}ping on if there are any failures.
 }
 \seealso{

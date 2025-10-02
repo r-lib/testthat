@@ -26,7 +26,7 @@ for backward compatibility only and new expectations should not use it.}
 supplied when you need to forward a srcref captured elsewhere.}
 
 \item{trace_env}{If \code{trace} is not specified, this is used to generate an
-informative traceack for failures. You should only need to set this if
+informative traceback for failures. You should only need to set this if
 you're calling \code{fail()} from a helper function; see
 \code{vignette("custom-expectation")} for details.}
 

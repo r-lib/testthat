@@ -14,20 +14,19 @@ knitr::opts_chunk$set(
 )
 ```
 
-Some times you have tests that you don't want to run in certain circumstances.
+Sometimes you have tests that you can't or don't want to run in certain circumstances.
 This vignette describes how to **skip** tests to avoid execution in undesired environments.
-Skipping is a relatively advanced topic because in most cases you want all your tests to run everywhere.
-The most common exceptions are:
+The most common scenarios are:
 
 -   You're testing a web service that occasionally fails, and you don't want to run the tests on CRAN.
-    Or maybe the API requires authentication, and you can only run the tests when you've [securely distributed](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) some secrets.
+    Or the API requires authentication, and you can only run the tests when you've [securely distributed](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) secrets.
 
--   You're relying on features that not all operating systems possess, and want to make sure your code doesn't run on a platform where it doesn't work.
-    This platform tends to be Windows, since amongst other things, it lacks full utf8 support.
+-   You're relying on features that not all operating systems possess, and want to make sure your code doesn't run on platforms where it doesn't work.
+    The most common platform with limitations is Windows, which among other things lacks full UTF-8 support.
 
--   You're writing your tests for multiple versions of R or multiple versions of a dependency and you want to skip when a feature isn't available.
+-   You're writing tests for multiple versions of R or multiple versions of a dependency, and you want to skip when a feature isn't available.
     You generally don't need to skip tests if a suggested package is not installed.
-    This is only needed in exceptional circumstances, e.g. when a package is not available on some operating system.
+    This is only needed in exceptional circumstances, e.g., when a package is not available on some operating systems.
 
 ```{r setup}
 library(testthat)
@@ -37,18 +36,38 @@ library(testthat)
 
 testthat comes with a variety of helpers for the most common situations:
 
--   `skip_on_cran()` skips tests on CRAN.
+-   `skip_if_not_installed()` skips if a required package is not installed. You can optionally supply a minimal version too.
+
+-   `skip_on_cran()` skips tests on CRAN. `skip_on_bioc()` skips tests on Bioconductor.
     This is useful for slow tests and tests that occasionally fail for reasons outside of your control.
 
 -   `skip_on_os()` allows you to skip tests on a specific operating system.
     Generally, you should strive to avoid this as much as possible (so your code works the same on all platforms), but sometimes it's just not possible.
 
--   `skip_on_ci()` skips tests on most continuous integration platforms (e.g. GitHub Actions, Travis, Appveyor).
+-   `skip_on_ci()` skips tests on most CI platforms (e.g., GitHub Actions).
 
-You can also easily implement your own using either `skip_if()` or `skip_if_not()`, which both take an expression that should yield a single `TRUE` or `FALSE`.
+-   `skip_on_covr()` skips tests during code coverage.
 
-All reporters show which tests as skipped.
-As of testthat 3.0.0, ProgressReporter (used interactively) and CheckReporter (used inside of `R CMD check`) also display a summary of skips across all tests.
+-   `skip_unless_r(">= 4.2")` only runs tests for newer R versions. 
+    `skip_unless_r("< 4.2")` only runs tests for older R versions.
+
+You can implement your own using skips `skip_if()` or `skip_if_not()`:
+
+```{r}
+#| eval: false
+
+# Only run test if a token file is available
+skip_if_not(file.exists("secure-token.json"))
+
+# Only run test if R has memory profiling capabilities
+skip_if_not(capabilities("profmem"))
+
+# Only run if we've opted-in to slow tests with an env var
+skip_if(Sys.getenv("RUN_SLOW_TESTS") == "true")
+```
+
+All reporters show which tests are skipped.
+As of testthat 3.0.0, ProgressReporter (used interactively) and CheckReporter (used inside `R CMD check`) also display a summary of skips across all tests.
 It looks something like this:
 
 ```         
@@ -57,12 +76,12 @@ It looks something like this:
 ● On CRAN (1)
 ```
 
-You should keep an on eye this when developing interactively to make sure that you're not accidentally skipping the wrong things.
+This display is really important, and you should keep an eye on it when working on your test suite. If you accidentally skip too many tests, you can trick yourself into believing your code is working correctly, when actually you're just not testing it.
 
 ## Helpers
 
-If you find yourself using the same `skip_if()`/`skip_if_not()` expression across multiple tests, it's a good idea to create a helper function.
-This function should start with `skip_` and live in a `test/helper-{something}.R` file:
+If you find yourself using the same `skip_if()` or `skip_if_not()` expression across multiple tests, it's a good idea to create a helper function.
+This function should start with `skip_` and live in a `tests/testthat/helper-{something}.R` file:
 
 ```{r}
 skip_if_dangerous <- function() {
@@ -76,8 +95,8 @@ skip_if_dangerous <- function() {
 
 ## Embedding `skip()` in package functions
 
-Another useful technique that can sometimes be useful is to build a `skip()` directly into a package function.
-For example take a look at [`pkgdown:::convert_markdown_to_html()`](https://github.com/r-lib/pkgdown/blob/v2.0.7/R/markdown.R#L95-L106), which absolutely, positively cannot work if the Pandoc tool is unavailable:
+Another useful technique is to embed a `skip()` directly into a package function.
+For example, take a look at [`pkgdown:::convert_markdown_to_html()`](https://github.com/r-lib/pkgdown/blob/v2.0.7/R/markdown.R#L95-L106), which absolutely cannot work if the Pandoc tool is unavailable:
 
 ```{r eval = FALSE}
 convert_markdown_to_html <- function(in_path, out_path, ...) {
@@ -98,18 +117,18 @@ convert_markdown_to_html <- function(in_path, out_path, ...) {
 ```
 
 If Pandoc is not available when `convert_markdown_to_html()` executes, it throws an error *unless* it appears to be part of a test run, in which case the test is skipped.
-This is an alternative to implementing a custom skipper, e.g. `skip_if_no_pandoc()`, and inserting it into many of pkgdown's tests.
+This is an alternative to implementing a custom skipper, e.g., `skip_if_no_pandoc()`, and inserting it into many of pkgdown's tests.
 
 We don't want pkgdown to have a runtime dependency on testthat, so pkgdown includes a copy of `testthat::is_testing()`:
 
-```{r eval = FALSE}
+```{r}
 is_testing <- function() {
   identical(Sys.getenv("TESTTHAT"), "true")
 }
 ```
 
-It might look like the code appears to still have a runtime dependency on testthat, because of the call to `testthat::skip()`.
-But `testthat::skip()` is only executed during a test run, which implies that testthat is installed.
+It might look like the code still has a runtime dependency on testthat, because of the call to `testthat::skip()`.
+But `testthat::skip()` is only executed during a test run, which means that testthat is installed.
 
 We have mixed feelings about this approach.
 On the one hand, it feels elegant and concise, and it absolutely guarantees that you'll never miss a needed skip in one of your tests.
