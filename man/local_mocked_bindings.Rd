@@ -121,7 +121,7 @@ local_mocked_bindings(
 
 To mock a function that returns different values in sequence,
 for instance an API call whose status would be 502 then 200,
-or an user intput to \code{readline()}, you can use \code{\link[=mock_output_sequence]{mock_output_sequence()}}
+or an user input to \code{readline()}, you can use \code{\link[=mock_output_sequence]{mock_output_sequence()}}
 
 \if{html}{\out{<div class="sourceCode R">}}\preformatted{local_mocked_bindings(readline = mock_output_sequence("3", "This is a note", "n"))
 }\if{html}{\out{</div>}}

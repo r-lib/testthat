@@ -29,7 +29,7 @@ When supplied, the expectation is displayed with the backtrace.
 Expert use only.}
 
 \item{trace_env}{If \code{trace} is not specified, this is used to generate an
-informative traceack for failures. You should only need to set this if
+informative traceback for failures. You should only need to set this if
 you're calling \code{fail()} from a helper function; see
 \code{vignette("custom-expectation")} for details.}
 }

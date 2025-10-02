@@ -9,11 +9,11 @@
 #'
 #' @param path character vector of paths to watch.  Omit trailing backslash.
 #' @param pattern file pattern passed to [dir()]
-#' @param callback function called everytime a change occurs.  It should
+#' @param callback function called every time a change occurs.  It should
 #'   have three parameters: added, deleted, modified, and should return
-#'   TRUE to keep watching, or FALSE to stop.
+#'   `TRUE` to keep watching, or `FALSE` to stop.
 #' @param hash hashes are more accurate at detecting changes, but are slower
-#'   for large files.  When FALSE, uses modification time stamps
+#'   for large files.  When `FALSE`, uses modification time stamps
 #' @export
 #' @keywords internal
 watch <- function(path, callback, pattern = NULL, hash = TRUE) {

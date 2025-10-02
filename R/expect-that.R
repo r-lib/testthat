@@ -15,7 +15,7 @@
 #' @param srcref Location of the failure. Should only needed to be explicitly
 #'   supplied when you need to forward a srcref captured elsewhere.
 #' @param trace_env If `trace` is not specified, this is used to generate an
-#'   informative traceack for failures. You should only need to set this if
+#'   informative traceback for failures. You should only need to set this if
 #'   you're calling `fail()` from a helper function; see
 #'   `vignette("custom-expectation")` for details.
 #' @param trace An optional backtrace created by [rlang::trace_back()].
