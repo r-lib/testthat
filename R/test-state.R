@@ -42,8 +42,7 @@
 #' @export
 #' @param callback Either a zero-argument function that returns an object
 #'   capturing global state that you're interested in, or `NULL`.
-#' @param tolerance Numerical tolerance: any differences (in the sense of
-#'   [base::all.equal()]) smaller than this value will be ignored.
+#' @inheritParams waldo::compare
 set_state_inspector <- function(callback, tolerance = testthat_tolerance()) {
   if (
     !is.null(callback) &&

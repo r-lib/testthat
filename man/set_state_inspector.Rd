@@ -10,8 +10,18 @@ set_state_inspector(callback, tolerance = testthat_tolerance())
 \item{callback}{Either a zero-argument function that returns an object
 capturing global state that you're interested in, or \code{NULL}.}
 
-\item{tolerance}{Numerical tolerance: any differences (in the sense of
-\code{\link[base:all.equal]{base::all.equal()}}) smaller than this value will be ignored.}
+\item{tolerance}{If non-\code{NULL}, used as threshold for ignoring small
+floating point difference when comparing numeric vectors. Using any
+non-\code{NULL} value will cause integer and double vectors to be compared
+based on their values, not their types, and will ignore the difference
+between \code{NaN} and \code{NA_real_}.
+
+It uses the same algorithm as \code{\link[=all.equal]{all.equal()}}, i.e., first we generate
+\code{x_diff} and \code{y_diff} by subsetting \code{x} and \code{y} to look only locations
+with differences. Then we check that
+\code{mean(abs(x_diff - y_diff)) / mean(abs(y_diff))} (or just
+\code{mean(abs(x_diff - y_diff))} if \code{y_diff} is small) is less than
+\code{tolerance}.}
 }
 \description{
 One of the most pernicious challenges to debug is when a test runs fine
