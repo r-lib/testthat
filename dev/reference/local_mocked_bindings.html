@@ -196,7 +196,7 @@ the function into your package, or make a wrapper that you can mock:</p>
 
 <p>To mock a function that returns different values in sequence,
 for instance an API call whose status would be 502 then 200,
-or an user intput to <code><a href="https://rdrr.io/r/base/readline.html" class="external-link">readline()</a></code>, you can use <code><a href="mock_output_sequence.html">mock_output_sequence()</a></code></p>
+or an user input to <code><a href="https://rdrr.io/r/base/readline.html" class="external-link">readline()</a></code>, you can use <code><a href="mock_output_sequence.html">mock_output_sequence()</a></code></p>
 <p></p><div class="sourceCode R"><pre><code><span><span class="fu"><a href="../reference/local_mocked_bindings.html">local_mocked_bindings</a></span><span class="op">(</span>readline <span class="op">=</span> <span class="fu"><a href="../reference/mock_output_sequence.html">mock_output_sequence</a></span><span class="op">(</span><span class="st">"3"</span>, <span class="st">"This is a note"</span>, <span class="st">"n"</span><span class="op">)</span><span class="op">)</span></span></code></pre><p></p></div>
 </div>
 
