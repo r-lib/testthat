@@ -17,22 +17,20 @@
 expect_vector <- function(object, ptype = NULL, size = NULL) {
   check_installed("vctrs")
   check_number_whole(size, min = 0, allow_null = TRUE)
-
   act <- quasi_label(enquo(object))
+  # vec_assert() automatically adds backticks so we hack out the ones
+  # added by as_label()
+  act$lab <- gsub("^`|`$", "", act$lab)
 
-  message <- NULL
-  tryCatch(
+  withCallingHandlers(
     vctrs::vec_assert(act$val, ptype = ptype, size = size, arg = act$lab),
     vctrs_error_scalar_type = function(e) {
-      message <<- e$message
+      fail(e$message)
     },
     vctrs_error_assert = function(e) {
-      message <<- e$message
+      fail(e$message)
     }
   )
 
-  if (!is.null(message)) {
-    return(fail(message))
-  }
   pass(act$val)
 }
