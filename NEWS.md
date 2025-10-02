@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `set_state_inspector()` gains `tolerance` argument and ignores minor FP differences by default (@mcol, #2237).
 * `expect_vector()` fails, instead of erroring, if `object` is not a vector (@plietar, #2224).
 * New `vignette("mocking")` explains mocking in detail (#1265).
 * New `vignette("challenging-functions")` provides an index to other documentation organised by testing challenges (#1265).
