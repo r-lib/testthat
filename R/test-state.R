@@ -58,8 +58,13 @@ set_state_inspector <- function(callback, tolerance = testthat_tolerance()) {
 }
 
 testthat_state_condition <- function(before, after, call) {
-  diffs <- waldo_compare(before, after, x_arg = "before", y_arg = "after",
-                         tolerance = the$state_inspector_tolerance)
+  diffs <- waldo_compare(
+    before,
+    after,
+    x_arg = "before",
+    y_arg = "after",
+    tolerance = the$state_inspector_tolerance
+  )
 
   if (length(diffs) == 0) {
     return(NULL)
