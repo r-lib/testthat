@@ -70,3 +70,45 @@ test_that("ListReporter and bare expectations", {
   # 2 tests, "before" and "after". no result for the bare expectation
   expect_identical(df$test, c("before", "after"))
 })
+
+test_that("works in parallel", {
+  lr <- ListReporter$new()
+
+  lr$start_file("f1")
+  lr$start_test(NULL, "t11")
+  lr$add_result(NULL, "t11", new_expectation("success", "msg111"))
+
+  lr$start_file("f2")
+  lr$start_test(NULL, "t21")
+  lr$add_result(NULL, "t21", new_expectation("success", "msg211"))
+
+  lr$start_file("f1")
+  lr$start_test(NULL, "t11")
+  lr$add_result(NULL, "t11", new_expectation("success", "msg112"))
+  lr$end_test(NULL, "t11")
+
+  lr$start_file("f2")
+  lr$start_test(NULL, "t21")
+  lr$add_result(NULL, "t21", new_expectation("success", "msg212"))
+  lr$end_test(NULL, "t21")
+
+  lr$start_file("f2")
+  lr$start_test(NULL, "t22")
+  lr$add_result(NULL, "t22", new_expectation("skip", "skip221"))
+  lr$end_test(NULL, "t22")
+
+  lr$start_file("f2")
+  lr$end_file()
+
+  lr$start_file("f1")
+  lr$end_file()
+
+  results <- as.data.frame(lr$get_results())
+  expect_snapshot({
+    results[, c(1:8, 12:13)]
+  })
+
+  expect_true(all(!is.na(results$user)))
+  expect_true(all(!is.na(results$system)))
+  expect_true(all(!is.na(results$real)))
+})
