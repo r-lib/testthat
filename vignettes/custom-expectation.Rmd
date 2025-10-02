@@ -23,7 +23,15 @@ In this vignette, you'll learn about the three-part structure of expectations, h
 
 ## Do you need it?
 
-But before you read the rest of the vignette and dive into the full details of creating a 100% correct expectation, consider if you can get away with a simpler wrapper. For example, take this expectation from tidytext:
+But before you read the rest of the vignette and dive into the full details of creating a 100% correct expectation, consider if you can get away with a simpler wrapper. If you're just customising an existing expectation by changing some defaults, you're fine:
+
+```{r}
+expect_df <- function(tbl) {
+  expect_s3_class(tbl, "data.frame")
+}
+```
+
+If you're combining multiple expectations, you can introduce a subtle problem. For example, take this expectation from tidytext:
 
 ```{r}
 # from tidytext
@@ -33,7 +41,7 @@ expect_nrow <- function(tbl, n) {
 }
 ```
 
-If we use it in a test you can see there's a subtle problem:
+If we use it in a test you can see there's an issue:
 
 ```{r}
 #| error: true
@@ -48,7 +56,11 @@ test_that("failure 2", {
 })
 ```
 
-Each of these tests contain a single expectation, but they report a total of 2 successes and failures. It would be confusing if testthat didn't report these numbers correctly. But as a helper in your package, it's probably not a big deal and you save yourself some pain by not reading this vignette 😀. You might also notice that these failures generate a backtrace whereas most failures don't. Again this is not a big deal, and the backtrace is correct, it's just not needed.
+Each of these tests contain a single expectation, but they report a total of two successes and failures. It would be confusing if testthat didn't report these numbers correctly. But as a helper in your package, it's probably not a big deal. 
+
+You might also notice that these failures generate a backtrace whereas built-in expectations don't. Again, it's not a big deal because the backtrace is correct, it's just not needed.
+
+These are both minor issues, so if they don't bother you, you can save yourself some pain by not reading this vignette 😀.
 
 ## Expectation basics
 
