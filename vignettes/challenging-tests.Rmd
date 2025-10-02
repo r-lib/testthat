@@ -134,7 +134,7 @@ test_that("user must respond y or n", {
 })
 ```
 
-If you don't care about reproducing the output of `continue()` and just want to recreate its return value, you can use `mock_output_sequence()`. This creates a function that each time it's called returns the next input supplied to `mock_output_sequence()`. The following code shows how it works and how you might use it to test `readline()`:
+If you don't care about reproducing the output of `continue()` and just want to recreate its return value, you can use `mock_output_sequence()`. This creates a function that returns the input supplied to `mock_output_sequence()` in sequence: the first input at the first call, the second input at the second call, etc. The following code shows how it works and how you might use it to test `readline()`:
 
 ```{r}
 f <- mock_output_sequence(1, 12, 123)
