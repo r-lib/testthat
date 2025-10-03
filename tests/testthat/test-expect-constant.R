@@ -27,6 +27,65 @@ test_that("expect_null works", {
 })
 
 test_that("returns the input value", {
-  res <- expect_true(TRUE)
-  expect_equal(res, TRUE)
+  res_one <- expect_true(TRUE, required = "one")
+  expect_equal(res_one, TRUE)
+
+  res_any <- expect_true(TRUE, required = "any")
+  expect_equal(res_any, TRUE)
+
+  res_all <- expect_true(TRUE, required = "all")
+  expect_equal(res_all, TRUE)
+})
+
+test_that("expect_true(required = 'all')", {
+  expect_success(
+    expect_true(TRUE, required = "all")
+  )
+  expect_success(
+    expect_true(c(TRUE, TRUE), required = "all")
+  )
+
+  expect_snapshot_failure(
+    expect_true(FALSE, required = "all")
+  )
+  expect_snapshot_failure(
+    expect_true(c(FALSE, FALSE), required = "all")
+  )
+  expect_snapshot_failure(
+    expect_true(c(TRUE, FALSE), required = "all")
+  )
+  expect_snapshot_failure(
+    expect_true("not logical", required = "all")
+  )
+  expect_failure(
+    expect_true(c(TRUE, FALSE), required = "all", label = "FOO"),
+    "FOO"
+  )
+})
+
+test_that("expect_true(required = 'any')", {
+  expect_success(
+    expect_true(TRUE, required = "any")
+  )
+  expect_success(
+    expect_true(c(TRUE, TRUE), required = "any")
+  )
+  expect_success(
+    expect_true(c(FALSE, TRUE), required = "any")
+  )
+
+  expect_snapshot_failure(
+    expect_true(FALSE, required = "any")
+  )
+  expect_snapshot_failure(
+    expect_true(c(FALSE, FALSE), required = "any")
+  )
+  expect_snapshot_failure(
+    expect_true("not logical", required = "any")
+  )
+  # Label works
+  expect_failure(
+    expect_true(c(FALSE, FALSE), required = "any", label = "FOO"),
+    "FOO"
+  )
 })

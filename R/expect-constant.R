@@ -7,6 +7,10 @@
 #'
 #' Attributes are ignored.
 #'
+#' @param required "one" (default) to require an identical match to `TRUE`.
+#'   "any" to replicate `expect_true(any(TRUE))`. "all" for
+#'   `expect_true(all(TRUE))`.
+#'
 #' @inheritParams expect_that
 #' @family expectations
 #' @examples
@@ -28,10 +32,67 @@ NULL
 
 #' @export
 #' @rdname logical-expectations
-expect_true <- function(object, info = NULL, label = NULL) {
+expect_true <- function(
+  object,
+  info = NULL,
+  label = NULL,
+  required = c("one", "any", "all")
+) {
+  required <- match.arg(required)
   act <- quasi_label(enquo(object), label)
+
+  switch(
+    required,
+    "one" = expect_true_one(act, info),
+    "any" = expect_true_any(act, info),
+    "all" = expect_true_all(act, info),
+    stop("Unknown argument to `required`. This should never throw.")
+  )
+}
+
+expect_true_one <- function(
+  act,
+  info = NULL
+) {
   exp <- labelled_value(TRUE, "TRUE")
   expect_waldo_constant_(act, exp, info = info, ignore_attr = TRUE)
+}
+
+expect_true_any <- function(
+  act,
+  info = NULL
+) {
+  if (!is_logical(act$val)) {
+    cli::cli_abort("{act$lab} must be a logical vector")
+  }
+
+  if (!any(act$val)) {
+    msg <- sprintf("No values in %s are TRUE.", act$lab)
+    return(fail(msg, info = info))
+  }
+
+  pass(act$val)
+}
+
+expect_true_all <- function(
+  act,
+  info = NULL
+) {
+  if (!is_logical(act$val)) {
+    not_true_idx <- seq_along(act$val)
+  } else {
+    not_true_idx <- which(!act$val)
+  }
+
+  if (length(not_true_idx) > 0) {
+    msg <- sprintf(
+      "%s is not TRUE at index: %s",
+      act$lab,
+      toString(not_true_idx)
+    )
+    return(fail(msg, info = info))
+  }
+  pass(act$val)
 }
 
 #' @export
