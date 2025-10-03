@@ -47,14 +47,14 @@ expect_named <- function(
   act_names <- normalise_names(names(act$val), ignore.order, ignore.case)
 
   if (ignore.order) {
-    act <- labelled_value(act_names, paste0("names(", act$lab, ")"))
-    return(expect_setequal_(act, exp))
+    act_names <- labelled_value(act_names, paste0("names(", act$lab, ")"))
+    expect_setequal_(act_names, exp)
   } else {
-    act <- labelled_value(act_names, paste0("names(", act$lab, ")"))
-    return(expect_waldo_equal_("equal", act, exp))
+    act_name <- labelled_value(act_names, paste0("names(", act$lab, ")"))
+    expect_waldo_equal_("equal", act_name, exp)
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {

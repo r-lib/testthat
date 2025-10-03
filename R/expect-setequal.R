@@ -45,7 +45,9 @@ expect_setequal_ <- function(
   act_miss <- unique(act$val[!act$val %in% exp$val])
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
-  if (length(exp_miss) || length(act_miss)) {
+  if (length(exp_miss) == 0 && length(act_miss) == 0) {
+    pass()
+  } else {
     msg_exp <- sprintf(
       "Expected %s to have the same values as %s.",
       act$lab,
@@ -57,10 +59,10 @@ expect_setequal_ <- function(
       if (length(act_miss)) sprintf("Needs: %s", values(act_miss)),
       if (length(exp_miss)) sprintf("Absent: %s", values(exp_miss))
     )
-
-    return(fail(c(msg_exp, msg_act), trace_env = trace_env))
+    fail(c(msg_exp, msg_act), trace_env = trace_env)
   }
-  pass(act$val)
+
+  invisible(act$value)
 }
 
 values <- function(x) {

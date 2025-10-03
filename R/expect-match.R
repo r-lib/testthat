@@ -115,7 +115,8 @@ expect_match_ <- function(
   ok <- if (all) all(condition) else any(condition)
 
   if (ok) {
-    return(pass(act$val))
+    pass()
+    return(invisible(act$val))
   }
 
   values <- show_text(act$val, condition)
@@ -135,7 +136,9 @@ expect_match_ <- function(
     encodeString(regexp, quote = '"')
   )
   msg_act <- c(paste0("Actual ", title, ':'), values)
-  return(fail(c(msg_exp, msg_act), info = info, trace_env = trace_env))
+  fail(c(msg_exp, msg_act), info = info, trace_env = trace_env)
+
+  invisible(act$val)
 }
 
 # Adapted from print.ellmer_prompt
