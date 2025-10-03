@@ -13,7 +13,7 @@ fail(
   trace = NULL
 )
 
-pass(value)
+pass(value = NULL)
 }
 \arguments{
 \item{message}{Failure message to send to the user. It's best practice to

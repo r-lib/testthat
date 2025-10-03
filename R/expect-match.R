@@ -116,26 +116,27 @@ expect_match_ <- function(
 
   if (ok) {
     pass()
-  } else {
-    values <- show_text(act$val, condition)
-    if (length(act$val) == 1) {
-      which <- ""
-    } else {
-      which <- if (all) "every element of " else "some element of "
-    }
-    match <- if (negate) "not to match" else "to match"
-
-    msg_exp <- sprintf(
-      "Expected %s%s %s %s %s.",
-      which,
-      act$lab,
-      match,
-      if (fixed) "string" else "regexp",
-      encodeString(regexp, quote = '"')
-    )
-    msg_act <- c(paste0("Actual ", title, ':'), values)
-    fail(c(msg_exp, msg_act), info = info, trace_env = trace_env)
+    invisible(act$val)
   }
+
+  values <- show_text(act$val, condition)
+  if (length(act$val) == 1) {
+    which <- ""
+  } else {
+    which <- if (all) "every element of " else "some element of "
+  }
+  match <- if (negate) "not to match" else "to match"
+
+  msg_exp <- sprintf(
+    "Expected %s%s %s %s %s.",
+    which,
+    act$lab,
+    match,
+    if (fixed) "string" else "regexp",
+    encodeString(regexp, quote = '"')
+  )
+  msg_act <- c(paste0("Actual ", title, ':'), values)
+  fail(c(msg_exp, msg_act), info = info, trace_env = trace_env)
 
   invisible(act$val)
 }
