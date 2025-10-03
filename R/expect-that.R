@@ -67,7 +67,7 @@ capture_trace <- function(trace_env) {
 #' @param value Value to return, typically the result of evaluating the
 #'   `object` argument to the expectation.
 #' @export
-pass <- function(value) {
+pass <- function(value = NULL) {
   expectation("success", "success")
   invisible(value)
 }

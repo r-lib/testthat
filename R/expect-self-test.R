@@ -75,24 +75,22 @@ expect_failure <- function(expr, message = NULL, ...) {
       "Expected one failure.",
       sprintf("Actually failed %i times", status$n_failure)
     )
-    return(fail(msg))
-  }
-
-  if (status$n_success != 0) {
+    fail(msg)
+  } else if (status$n_success != 0) {
     msg <- c(
       "Expected zero successes.",
       sprintf("Actually succeeded %i times", status$n_success)
     )
-    return(fail(msg))
-  }
-
-  if (!is.null(message)) {
-    act <- labelled_value(status$last_failure$message, "failure message")
-    if (!expect_match_(act, message, ..., title = "message")) {
-      return()
+    fail(msg)
+  } else {
+    if (is.null(message)) {
+      pass()
+    } else {
+      act <- labelled_value(status$last_failure$message, "failure message")
+      expect_match_(act, message, ..., title = "message")
     }
   }
-  pass(NULL)
+  invisible()
 }
 
 #' @export

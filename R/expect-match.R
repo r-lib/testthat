@@ -50,23 +50,17 @@ expect_match <- function(
     return(fail(msg, info = info))
   }
 
-  if (
-    !expect_match_(
-      act = act,
-      regexp = regexp,
-      perl = perl,
-      fixed = fixed,
-      ...,
-      all = all,
-      info = info,
-      label = label,
-      negate = FALSE
-    )
-  ) {
-    return()
-  }
-
-  pass(act$val)
+  expect_match_(
+    act = act,
+    regexp = regexp,
+    perl = perl,
+    fixed = fixed,
+    ...,
+    all = all,
+    info = info,
+    label = label,
+    negate = FALSE
+  )
 }
 
 #' @describeIn expect_match Check that a string doesn't match a regular
@@ -90,22 +84,17 @@ expect_no_match <- function(
   check_bool(fixed)
   check_bool(all)
 
-  if (
-    !expect_match_(
-      act = act,
-      regexp = regexp,
-      perl = perl,
-      fixed = fixed,
-      ...,
-      all = all,
-      info = info,
-      label = label,
-      negate = TRUE
-    )
-  ) {
-    return()
-  }
-  pass(act$val)
+  expect_match_(
+    act = act,
+    regexp = regexp,
+    perl = perl,
+    fixed = fixed,
+    ...,
+    all = all,
+    info = info,
+    label = label,
+    negate = TRUE
+  )
 }
 
 expect_match_ <- function(
@@ -126,27 +115,29 @@ expect_match_ <- function(
   ok <- if (all) all(condition) else any(condition)
 
   if (ok) {
-    return(TRUE)
-  }
-
-  values <- show_text(act$val, condition)
-  if (length(act$val) == 1) {
-    which <- ""
+    pass()
   } else {
-    which <- if (all) "every element of " else "some element of "
-  }
-  match <- if (negate) "not to match" else "to match"
+    values <- show_text(act$val, condition)
+    if (length(act$val) == 1) {
+      which <- ""
+    } else {
+      which <- if (all) "every element of " else "some element of "
+    }
+    match <- if (negate) "not to match" else "to match"
 
-  msg_exp <- sprintf(
-    "Expected %s%s %s %s %s.",
-    which,
-    act$lab,
-    match,
-    if (fixed) "string" else "regexp",
-    encodeString(regexp, quote = '"')
-  )
-  msg_act <- c(paste0("Actual ", title, ':'), values)
-  fail(c(msg_exp, msg_act), info = info, trace_env = trace_env)
+    msg_exp <- sprintf(
+      "Expected %s%s %s %s %s.",
+      which,
+      act$lab,
+      match,
+      if (fixed) "string" else "regexp",
+      encodeString(regexp, quote = '"')
+    )
+    msg_act <- c(paste0("Actual ", title, ':'), values)
+    fail(c(msg_exp, msg_act), info = info, trace_env = trace_env)
+  }
+
+  invisible(act$val)
 }
 
 
