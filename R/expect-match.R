@@ -116,7 +116,7 @@ expect_match_ <- function(
 
   if (ok) {
     pass()
-    invisible(act$val)
+    return(invisible(act$val))
   }
 
   values <- show_text(act$val, condition)
