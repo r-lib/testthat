@@ -50,17 +50,23 @@ expect_match <- function(
     return(fail(msg, info = info))
   }
 
-  expect_match_(
-    act = act,
-    regexp = regexp,
-    perl = perl,
-    fixed = fixed,
-    ...,
-    all = all,
-    info = info,
-    label = label,
-    negate = FALSE
-  )
+  if (
+    !expect_match_(
+      act = act,
+      regexp = regexp,
+      perl = perl,
+      fixed = fixed,
+      ...,
+      all = all,
+      info = info,
+      label = label,
+      negate = FALSE
+    )
+  ) {
+    return()
+  }
+
+  pass(act$val)
 }
 
 #' @describeIn expect_match Check that a string doesn't match a regular
@@ -84,17 +90,22 @@ expect_no_match <- function(
   check_bool(fixed)
   check_bool(all)
 
-  expect_match_(
-    act = act,
-    regexp = regexp,
-    perl = perl,
-    fixed = fixed,
-    ...,
-    all = all,
-    info = info,
-    label = label,
-    negate = TRUE
-  )
+  if (
+    !expect_match_(
+      act = act,
+      regexp = regexp,
+      perl = perl,
+      fixed = fixed,
+      ...,
+      all = all,
+      info = info,
+      label = label,
+      negate = TRUE
+    )
+  ) {
+    return()
+  }
+  pass(act$val)
 }
 
 expect_match_ <- function(
@@ -115,7 +126,7 @@ expect_match_ <- function(
   ok <- if (all) all(condition) else any(condition)
 
   if (ok) {
-    return(pass(act$val))
+    return(TRUE)
   }
 
   values <- show_text(act$val, condition)
@@ -135,7 +146,7 @@ expect_match_ <- function(
     encodeString(regexp, quote = '"')
   )
   msg_act <- c(paste0("Actual ", title, ':'), values)
-  return(fail(c(msg_exp, msg_act), info = info, trace_env = trace_env))
+  fail(c(msg_exp, msg_act), info = info, trace_env = trace_env)
 }
 
 

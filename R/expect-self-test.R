@@ -88,7 +88,9 @@ expect_failure <- function(expr, message = NULL, ...) {
 
   if (!is.null(message)) {
     act <- labelled_value(status$last_failure$message, "failure message")
-    return(expect_match_(act, message, ..., title = "message"))
+    if (!expect_match_(act, message, ..., title = "message")) {
+      return()
+    }
   }
   pass(NULL)
 }

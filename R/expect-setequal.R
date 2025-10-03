@@ -34,7 +34,11 @@ expect_setequal <- function(object, expected) {
     testthat_warn("expect_setequal() ignores names")
   }
 
-  expect_setequal_(act, exp)
+  if (!expect_setequal_(act, exp)) {
+    return()
+  }
+
+  pass(act$val)
 }
 
 expect_setequal_ <- function(
@@ -45,22 +49,23 @@ expect_setequal_ <- function(
   act_miss <- unique(act$val[!act$val %in% exp$val])
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
-  if (length(exp_miss) || length(act_miss)) {
-    msg_exp <- sprintf(
-      "Expected %s to have the same values as %s.",
-      act$lab,
-      exp$lab
-    )
-    msg_act <- c(
-      sprintf("Actual: %s", values(act$val)),
-      sprintf("Expected: %s", values(exp$val)),
-      if (length(act_miss)) sprintf("Needs: %s", values(act_miss)),
-      if (length(exp_miss)) sprintf("Absent: %s", values(exp_miss))
-    )
-
-    return(fail(c(msg_exp, msg_act), trace_env = trace_env))
+  if (length(exp_miss) == 0 && length(act_miss) == 0) {
+    return(TRUE)
   }
-  pass(act$val)
+
+  msg_exp <- sprintf(
+    "Expected %s to have the same values as %s.",
+    act$lab,
+    exp$lab
+  )
+  msg_act <- c(
+    sprintf("Actual: %s", values(act$val)),
+    sprintf("Expected: %s", values(exp$val)),
+    if (length(act_miss)) sprintf("Needs: %s", values(act_miss)),
+    if (length(exp_miss)) sprintf("Absent: %s", values(exp_miss))
+  )
+
+  fail(c(msg_exp, msg_act), trace_env = trace_env)
 }
 
 values <- function(x) {
@@ -87,7 +92,11 @@ expect_mapequal <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  expect_waldo_equal_("equal", act, exp, list_as_map = TRUE)
+  if (!expect_waldo_equal_("equal", act, exp, list_as_map = TRUE)) {
+    return()
+  }
+
+  pass(act$val)
 }
 
 #' @export

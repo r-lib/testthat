@@ -42,15 +42,16 @@ expect_output <- function(
       )
       return(fail(msg, info = info))
     }
-    pass(act$val)
   } else if (is.null(regexp) || identical(act$cap, "")) {
     if (identical(act$cap, "")) {
       msg <- sprintf("Expected %s to produce output.", act$lab)
       return(fail(msg, info = info))
     }
-    pass(act$val)
   } else {
-    act <- labelled_value(act$cap, act$lab)
-    expect_match_(act, enc2native(regexp), ..., title = "output")
+    act_out <- labelled_value(act$cap, paste0("output from ", act$lab))
+    if (!expect_match_(act_out, enc2native(regexp), ..., title = "output")) {
+      return()
+    }
   }
+  pass(act$val)
 }

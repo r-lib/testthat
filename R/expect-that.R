@@ -21,7 +21,8 @@
 #' @param trace An optional backtrace created by [rlang::trace_back()].
 #'   When supplied, the expectation is displayed with the backtrace.
 #'   Expert use only.
-#' @export
+#' @return `pass()` returns `value` invisibly; `fail()` returns `FALSE`
+#'   invisibly.
 #' @examples
 #' expect_length <- function(object, n) {
 #'   act <- quasi_label(rlang::enquo(object), arg = "object")
@@ -44,6 +45,7 @@ fail <- function(
   trace <- trace %||% capture_trace(trace_env)
   message <- paste(c(message, info), collapse = "\n")
   expectation("failure", message, srcref = srcref, trace = trace)
+  invisible(FALSE)
 }
 
 snapshot_fail <- function(message, trace_env = caller_env()) {

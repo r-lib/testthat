@@ -68,7 +68,11 @@ expect_equal <- function(
   check_number_decimal(tolerance, min = 0, allow_null = TRUE)
 
   if (edition_get() >= 3) {
-    expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)
+    if (
+      !expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)
+    ) {
+      return()
+    }
   } else {
     if (!is.null(tolerance)) {
       comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
@@ -84,8 +88,8 @@ expect_equal <- function(
       )
       return(fail(msg, info = info))
     }
-    pass(act$val)
   }
+  pass(act$val)
 }
 
 
@@ -103,21 +107,19 @@ expect_identical <- function(
   exp <- quasi_label(enquo(expected), expected.label)
 
   if (edition_get() >= 3) {
-    expect_waldo_equal_("identical", act, exp, info, ...)
+    if (!expect_waldo_equal_("identical", act, exp, info, ...)) {
+      return()
+    }
   } else {
     ident <- identical(act$val, exp$val, ...)
-    if (ident) {
-      msg_act <- NULL
-    } else {
+    if (!ident) {
       compare <- compare(act$val, exp$val)
       if (compare$equal) {
         msg_act <- "Objects equal but not identical"
       } else {
         msg_act <- compare$message
       }
-    }
 
-    if (!ident) {
       msg <- c(
         sprintf("Expected %s to be identical to %s.", act$lab, exp$lab),
         "Differences:",
@@ -125,8 +127,9 @@ expect_identical <- function(
       )
       return(fail(msg, info = info))
     }
-    pass(act$val)
   }
+
+  pass(act$val)
 }
 
 expect_waldo_equal_ <- function(
@@ -144,15 +147,16 @@ expect_waldo_equal_ <- function(
     x_arg = "actual",
     y_arg = "expected"
   )
-  if (length(comp) != 0) {
-    msg <- c(
-      sprintf("Expected %s to be %s to %s.", act$lab, type, exp$lab),
-      "Differences:",
-      paste0(comp, collpase = "\n")
-    )
-    return(fail(msg, info = info, trace_env = trace_env))
+  if (length(comp) == 0) {
+    return(TRUE)
   }
-  pass(act$val)
+
+  msg <- c(
+    sprintf("Expected %s to be %s to %s.", act$lab, type, exp$lab),
+    "Differences:",
+    paste0(comp, collpase = "\n")
+  )
+  fail(msg, info = info, trace_env = trace_env)
 }
 
 #' Is an object equal to the expected value, ignoring attributes?
