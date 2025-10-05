@@ -86,8 +86,8 @@ expect_equal <- function(
       )
       fail(msg, info = info)
     }
+    invisible(act$val)
   }
-  invisible(act$val)
 }
 
 
@@ -107,8 +107,7 @@ expect_identical <- function(
   if (edition_get() >= 3) {
     expect_waldo_equal_("identical", act, exp, info, ...)
   } else {
-    ident <- identical(act$val, exp$val, ...)
-    if (ident) {
+    if (identical(act$val, exp$val, ...)) {
       pass()
     } else {
       compare <- compare(act$val, exp$val)
@@ -123,11 +122,10 @@ expect_identical <- function(
         "Differences:",
         msg_act
       )
-      return(fail(msg, info = info))
+      fail(msg, info = info)
     }
+    invisible(act$val)
   }
-
-  invisible(act$val)
 }
 
 expect_waldo_equal_ <- function(
@@ -207,7 +205,9 @@ expect_equivalent <- function(
       exp$lab,
       comp$message
     )
-    return(fail(msg, info = info))
+    fail(msg, info = info)
+  } else {
+    pass()
   }
-  pass(act$val)
+  invisible(act$val)
 }

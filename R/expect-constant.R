@@ -82,7 +82,9 @@ expect_waldo_constant_ <- function(
       "Differences:",
       paste0(comp, collpase = "\n")
     )
-    return(fail(msg, info = info, trace_env = trace_env))
+    fail(msg, info = info, trace_env = trace_env)
+  } else {
+    pass()
   }
-  pass(act$val)
+  invisible(act$val)
 }
