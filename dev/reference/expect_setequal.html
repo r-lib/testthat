@@ -8,8 +8,8 @@ expect_contains(x, y) tests that x contains every element of y
 expect_in(x, y) tests every element of x is in y
 (i.e. x is a subset of y).
 expect_mapequal(x, y) treats lists as if they are mappings between names
-and values. Concretely, this drops NULLs in both objects and sorts
-named components.
+and values. Concretely, checks that x and y have the same names, then
+checks that x[names(y)] equals y.
 
 "><meta property="og:description" content="
 
@@ -20,8 +20,8 @@ expect_contains(x, y) tests that x contains every element of y
 expect_in(x, y) tests every element of x is in y
 (i.e. x is a subset of y).
 expect_mapequal(x, y) treats lists as if they are mappings between names
-and values. Concretely, this drops NULLs in both objects and sorts
-named components.
+and values. Concretely, checks that x and y have the same names, then
+checks that x[names(y)] equals y.
 
 "><meta property="og:image" content="https://testthat.r-lib.org/logo.png"><meta name="robots" content="noindex"><script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script></head><body>
     <a href="#container" class="visually-hidden-focusable">Skip to content</a>
@@ -95,8 +95,8 @@ and that every element of <code>y</code> occurs in <code>x</code>.</p></li>
 <li><p><code>expect_in(x, y)</code> tests every element of <code>x</code> is in <code>y</code>
 (i.e. <code>x</code> is a subset of <code>y</code>).</p></li>
 <li><p><code>expect_mapequal(x, y)</code> treats lists as if they are mappings between names
-and values. Concretely, this drops <code>NULL</code>s in both objects and sorts
-named components.</p></li>
+and values. Concretely, checks that <code>x</code> and <code>y</code> have the same names, then
+checks that <code>x[names(y)]</code> equals <code>y</code>.</p></li>
 </ul></div>
 
     <div class="section level2">
@@ -141,17 +141,10 @@ more details.</p></dd>
 <span class="r-in"><span><span class="fu">expect_mapequal</span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_mapequal</span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `x` to be equal to `list(a = 1)`.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `actual` is length 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `expected` is length 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `names(actual)`:   <span style="color: #555555;">"a"</span> <span style="color: #BBBB00;">"b"</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `names(expected)`: <span style="color: #555555;">"a"</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `actual$b` is <span style="color: #0000BB;">a double vector</span> (2)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `expected$b` is absent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected names of `x` to have the same values as names of `list(a = 1)`.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Actual: "b", "a"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected: "a"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Needs: "b"</span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_mapequal</span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Expected `x` to be equal to `list(a = 1, b = "x")`.</span>
@@ -161,17 +154,10 @@ more details.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_mapequal</span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `x` to be equal to `list(a = 1, b = 2, c = 3)`.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `actual` is length 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `expected` is length 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `names(actual)`:   <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `names(expected)`: <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #0000BB;">"c"</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `actual$c` is absent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> `expected$c` is <span style="color: #BBBB00;">a double vector</span> (3)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected names of `x` to have the same values as names of `list(a = 1, b = 2, c = 3)`.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Actual: "b", "a"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected: "a", "b", "c"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Absent: "c"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
