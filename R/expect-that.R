@@ -43,7 +43,7 @@ fail <- function(
   trace = NULL
 ) {
   check_character(message)
-  check_character(info, all_null = TRUE)
+  check_character(info, allow_null = TRUE)
 
   trace <- trace %||% capture_trace(trace_env)
   message <- paste(c(message, info), collapse = "\n")
