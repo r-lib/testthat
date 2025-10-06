@@ -127,8 +127,8 @@ expect_contains <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  check_vector(object)
-  check_vector(expected)
+  check_vector(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
 
   exp_miss <- !exp$val %in% act$val
   if (any(exp_miss)) {
@@ -156,8 +156,8 @@ expect_in <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  check_vector(object)
-  check_vector(expected)
+  check_vector(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
 
   act_miss <- !act$val %in% exp$val
   if (any(act_miss)) {
@@ -181,11 +181,7 @@ expect_in <- function(object, expected) {
 
 # Helpers ----------------------------------------------------------------------
 
-check_vector <- function(
-  x,
-  error_arg = caller_arg(x),
-  error_call = caller_env()
-) {
+check_vector <- function(x, error_arg, error_call = caller_env()) {
   if (!is_vector(x)) {
     stop_input_type(x, "a vector", arg = error_arg, call = error_call)
   }
