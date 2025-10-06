@@ -96,8 +96,9 @@ Regardless of how it's called an expectation should either return <code>pass()</
 
 
 <dl><dt id="arg-message">message<a class="anchor" aria-label="anchor" href="#arg-message"></a></dt>
-<dd><p>Failure message to send to the user. It's best practice to
-describe both what is expected and what was actually received.</p></dd>
+<dd><p>A character vector describing the failure. The
+first element should describe the expected value, and the second (and
+optionally subsequence) elements should describe what was actually seen.</p></dd>
 
 
 <dt id="arg-info">info<a class="anchor" aria-label="anchor" href="#arg-info"></a></dt>
