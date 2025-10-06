@@ -8,8 +8,9 @@
 #' Learn more about creating your own expectations in
 #' `vignette("custom-expectation")`.
 #'
-#' @param message Failure message to send to the user. It's best practice to
-#'   describe both what is expected and what was actually received.
+#' @param message A character vector describing the failure. The
+#'   first element should describe the expected value, and the second (and
+#'   optionally subsequence) elements should describe what was actually seen.
 #' @param info Character vector continuing additional information. Included
 #'   for backward compatibility only and new expectations should not use it.
 #' @param srcref Location of the failure. Should only needed to be explicitly
@@ -41,6 +42,9 @@ fail <- function(
   trace_env = caller_env(),
   trace = NULL
 ) {
+  check_character(message)
+  check_character(info, all_null = TRUE)
+
   trace <- trace %||% capture_trace(trace_env)
   message <- paste(c(message, info), collapse = "\n")
   expectation("failure", message, srcref = srcref, trace = trace)

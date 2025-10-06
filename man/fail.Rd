@@ -16,8 +16,9 @@ fail(
 pass(value)
 }
 \arguments{
-\item{message}{Failure message to send to the user. It's best practice to
-describe both what is expected and what was actually received.}
+\item{message}{A character vector describing the failure. The
+first element should describe the expected value, and the second (and
+optionally subsequence) elements should describe what was actually seen.}
 
 \item{info}{Character vector continuing additional information. Included
 for backward compatibility only and new expectations should not use it.}

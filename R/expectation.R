@@ -5,7 +5,9 @@
 #' `vignette("custom-expectation")` for details.
 #'
 #' @param ok `TRUE` or `FALSE` indicating if the expectation was successful.
-#' @param failure_message Message to show if the expectation failed.
+#' @param failure_message A character vector describing the failure. The
+#'   first element should describe the expected value, and the second (and
+#'   optionally subsequence) elements should describe what was actually seen.
 #' @inheritParams fail
 #' @return An expectation object from either `succeed()` or `fail()`.
 #'   with a `continue_test` restart.
