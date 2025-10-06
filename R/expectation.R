@@ -20,6 +20,9 @@ expect <- function(
   trace = NULL,
   trace_env = caller_env()
 ) {
+  check_bool(ok)
+  check_character(failure_message)
+
   if (!ok) {
     return(fail(
       failure_message,
