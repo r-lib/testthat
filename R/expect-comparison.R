@@ -40,8 +40,6 @@ expect_compare_ <- function(
   } else {
     pass()
   }
-
-  invisible(act$val)
 }
 
 failure_compare <- function(act, exp, operator) {
@@ -83,6 +81,7 @@ expect_lt <- function(object, expected, label = NULL, expected.label = NULL) {
   exp <- quasi_label(enquo(expected), expected.label)
 
   expect_compare_("<", act, exp)
+  invisible(act$val)
 }
 
 #' @export
@@ -92,6 +91,7 @@ expect_lte <- function(object, expected, label = NULL, expected.label = NULL) {
   exp <- quasi_label(enquo(expected), expected.label)
 
   expect_compare_("<=", act, exp)
+  invisible(act$val)
 }
 
 #' @export
@@ -101,6 +101,7 @@ expect_gt <- function(object, expected, label = NULL, expected.label = NULL) {
   exp <- quasi_label(enquo(expected), expected.label)
 
   expect_compare_(">", act, exp)
+  invisible(act$val)
 }
 
 #' @export
@@ -110,6 +111,7 @@ expect_gte <- function(object, expected, label = NULL, expected.label = NULL) {
   exp <- quasi_label(enquo(expected), expected.label)
 
   expect_compare_(">=", act, exp)
+  invisible(act$val)
 }
 
 

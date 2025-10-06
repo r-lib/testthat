@@ -90,6 +90,7 @@ expect_mapequal <- function(object, expected) {
   exp <- quasi_label(enquo(expected))
 
   expect_waldo_equal_("equal", act, exp, list_as_map = TRUE)
+  invisible(act$val)
 }
 
 #' @export

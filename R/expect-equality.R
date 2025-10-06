@@ -86,8 +86,8 @@ expect_equal <- function(
       )
       fail(msg, info = info)
     }
-    invisible(act$val)
   }
+  invisible(act$val)
 }
 
 
@@ -124,8 +124,8 @@ expect_identical <- function(
       )
       fail(msg, info = info)
     }
-    invisible(act$val)
   }
+  invisible(act$val)
 }
 
 expect_waldo_equal_ <- function(
@@ -153,8 +153,6 @@ expect_waldo_equal_ <- function(
     )
     fail(msg, info = info, trace_env = trace_env)
   }
-
-  invisible(act$val)
 }
 
 #' Is an object equal to the expected value, ignoring attributes?

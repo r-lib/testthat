@@ -31,7 +31,9 @@ NULL
 expect_true <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label)
   exp <- labelled_value(TRUE, "TRUE")
+
   expect_waldo_constant_(act, exp, info = info, ignore_attr = TRUE)
+  invisible(act$val)
 }
 
 #' @export
@@ -39,7 +41,9 @@ expect_true <- function(object, info = NULL, label = NULL) {
 expect_false <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label)
   exp <- labelled_value(FALSE, "FALSE")
+
   expect_waldo_constant_(act, exp, info = info, ignore_attr = TRUE)
+  invisible(act$val)
 }
 
 #' Do you expect `NULL`?
@@ -59,7 +63,9 @@ expect_false <- function(object, info = NULL, label = NULL) {
 expect_null <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label)
   exp <- labelled_value(NULL, "NULL")
+
   expect_waldo_constant_(act, exp, info = info)
+  invisible(act$val)
 }
 
 expect_waldo_constant_ <- function(
@@ -86,5 +92,4 @@ expect_waldo_constant_ <- function(
   } else {
     pass()
   }
-  invisible(act$val)
 }
