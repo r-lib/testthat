@@ -46,18 +46,13 @@ capture_success_failure <- function(expr) {
 expect_success <- function(expr) {
   status <- capture_success_failure(expr)
 
+  expected <- "Expected exactly one success and no failures."
   if (status$n_success != 1) {
-    msg <- c(
-      "Expected one success.",
-      sprintf("Actually succeeded %i times", status$n_success)
-    )
-    fail(msg)
+    actual <- sprintf("Actually succeeded %i times", status$n_success)
+    fail(c(expected, actual))
   } else if (status$n_failure > 0) {
-    msg <- c(
-      "Expected zero failures.",
-      sprintf("Actually failed %i times", status$n_failure)
-    )
-    fail(msg)
+    actual <- sprintf("Actually failed %i times", status$n_failure)
+    fail(c(expected, actual))
   } else {
     pass()
   }
@@ -70,18 +65,13 @@ expect_success <- function(expr) {
 expect_failure <- function(expr, message = NULL, ...) {
   status <- capture_success_failure(expr)
 
+  expected <- "Expected exactly one failure and no successes."
   if (status$n_failure != 1) {
-    msg <- c(
-      "Expected one failure.",
-      sprintf("Actually failed %i times", status$n_failure)
-    )
-    fail(msg)
+    actual <- sprintf("Actually failed %i times", status$n_failure)
+    fail(c(expected, actual))
   } else if (status$n_success != 0) {
-    msg <- c(
-      "Expected zero successes.",
-      sprintf("Actually succeeded %i times", status$n_success)
-    )
-    fail(msg)
+    actual <- sprintf("Actually succeeded %i times", status$n_success)
+    fail(c(expected, actual))
   } else {
     if (is.null(message)) {
       pass()
