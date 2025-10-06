@@ -191,9 +191,10 @@ expect_snapshot_file <- function(
       comp,
       hint
     )
-    return(snapshot_fail(msg))
+    snapshot_fail(msg)
+  } else {
+    pass()
   }
-  pass(NULL)
 }
 
 is_text_file <- function(path) {

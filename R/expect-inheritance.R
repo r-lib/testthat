@@ -74,9 +74,11 @@ expect_type <- function(object, type) {
       sprintf("Expected %s to have type %s.", act$lab, format_class(type)),
       sprintf("Actual type: %s", format_class(act_type))
     )
-    return(fail(msg))
+    fail(msg)
+  } else {
+    pass()
   }
-  pass(act$val)
+  invisible(act$val)
 }
 
 #' @export

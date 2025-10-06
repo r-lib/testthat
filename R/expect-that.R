@@ -2,8 +2,9 @@
 #'
 #' @description
 #' These are the primitives that you can use to implement your own expectations.
-#' Regardless of how it's called an expectation should either return `pass()`,
-#' `fail()`, or throw an error (if for example, the arguments are invalid).
+#' Every path through an expectation should either call `pass()`, `fail()`,
+#' or throw an error (e.g. if the arguments are invalid). Expectations should
+#' always return `invisible(act$val)`.
 #'
 #' Learn more about creating your own expectations in
 #' `vignette("custom-expectation")`.
@@ -29,10 +30,12 @@
 #'   act_n <- length(act$val)
 #'   if (act_n != n) {
 #'     msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
-#'     return(fail(msg))
+#'     fail(msg)
+#'   } else {
+#'     pass()
 #'   }
 #'
-#'   pass(act$val)
+#'   invisible(act$val)
 #' }
 fail <- function(
   message = "Failure has been forced",
@@ -44,12 +47,14 @@ fail <- function(
   trace <- trace %||% capture_trace(trace_env)
   message <- paste(c(message, info), collapse = "\n")
   expectation("failure", message, srcref = srcref, trace = trace)
+  invisible()
 }
 
 snapshot_fail <- function(message, trace_env = caller_env()) {
   trace <- capture_trace(trace_env)
   message <- paste(message, collapse = "\n")
   expectation("failure", message, trace = trace, snapshot = TRUE)
+  invisible()
 }
 
 capture_trace <- function(trace_env) {
@@ -62,12 +67,10 @@ capture_trace <- function(trace_env) {
 }
 
 #' @rdname fail
-#' @param value Value to return, typically the result of evaluating the
-#'   `object` argument to the expectation.
 #' @export
-pass <- function(value = NULL) {
+pass <- function() {
   expectation("success", "success")
-  invisible(value)
+  invisible()
 }
 
 #' Mark a test as successful

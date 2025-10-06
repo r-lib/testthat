@@ -70,7 +70,7 @@
 # expect_no are deprecated
 
     Code
-      expect_no_failure(pass(NULL))
+      expect_no_failure(pass())
     Condition
       Warning:
       `expect_no_failure()` was deprecated in testthat 3.3.0.

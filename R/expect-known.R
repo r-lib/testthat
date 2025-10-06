@@ -73,15 +73,22 @@ expect_known_output <- function(
   act$lab <- label %||% quo_label(act$quo)
   act <- append(act, eval_with_output(object, print = print, width = width))
 
-  compare_file(file, act$out, update = update, info = info, ...)
+  expect_file_unchanged_(file, act$out, update = update, info = info, ...)
   invisible(act$val)
 }
 
-compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
+expect_file_unchanged_ <- function(
+  path,
+  lines,
+  ...,
+  update = TRUE,
+  info = NULL
+) {
   if (!file.exists(path)) {
     cli::cli_warn("Creating reference output.")
     brio::write_lines(lines, path)
-    return(pass(NULL))
+    pass()
+    return()
   }
 
   old_lines <- brio::read_lines(path)
@@ -108,9 +115,10 @@ compare_file <- function(path, lines, ..., update = TRUE, info = NULL) {
       encodeString(path, quote = "'"),
       paste0(comp, collapse = "\n\n")
     )
-    return(fail(msg, info = info, trace_env = caller_env()))
+    fail(msg, info = info, trace_env = caller_env())
+  } else {
+    pass()
   }
-  pass(NULL)
 }
 
 #' Do you expect the output/result to equal a known good value?
@@ -151,7 +159,7 @@ expect_output_file <- function(
   act$lab <- label %||% quo_label(act$quo)
   act <- append(act, eval_with_output(object, print = print, width = width))
 
-  compare_file(file, act$out, update = update, info = info, ...)
+  expect_file_unchanged_(file, act$out, update = update, info = info, ...)
   invisible(act$val)
 }
 
@@ -180,6 +188,7 @@ expect_known_value <- function(
   if (!file.exists(file)) {
     cli::cli_warn("Creating reference value.")
     saveRDS(object, file, version = version)
+    pass()
   } else {
     ref_val <- readRDS(file)
     comp <- compare(act$val, ref_val, ...)
@@ -194,11 +203,13 @@ expect_known_value <- function(
         encodeString(file, quote = "'"),
         comp$message
       )
-      return(fail(msg, info = info))
+      fail(msg, info = info)
+    } else {
+      pass()
     }
   }
 
-  pass(act$value)
+  invisible(act$val)
 }
 
 #' @export
@@ -233,6 +244,7 @@ expect_known_hash <- function(object, hash = NULL) {
 
   if (is.null(hash)) {
     cli::cli_warn("No recorded hash: use {substr(act_hash, 1, 10)}.")
+    pass()
   } else {
     if (hash != act_hash) {
       msg <- sprintf(
@@ -240,11 +252,13 @@ expect_known_hash <- function(object, hash = NULL) {
         hash,
         act_hash
       )
-      return(fail(msg))
+      fail(msg)
+    } else {
+      pass()
     }
   }
 
-  pass(act$value)
+  invisible(act$val)
 }
 
 all_utf8 <- function(x) {

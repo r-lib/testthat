@@ -51,18 +51,18 @@ expect_success <- function(expr) {
       "Expected one success.",
       sprintf("Actually succeeded %i times", status$n_success)
     )
-    return(fail(msg))
-  }
-
-  if (status$n_failure > 0) {
+    fail(msg)
+  } else if (status$n_failure > 0) {
     msg <- c(
       "Expected zero failures.",
       sprintf("Actually failed %i times", status$n_failure)
     )
-    return(fail(msg))
+    fail(msg)
+  } else {
+    pass()
   }
 
-  pass(NULL)
+  invisible()
 }
 
 #' @export
@@ -116,9 +116,11 @@ expect_no_success <- function(expr) {
   status <- capture_success_failure(expr)
 
   if (status$n_success > 0) {
-    return(fail("Expectation succeeded"))
+    fail("Expectation succeeded")
+  } else {
+    pass()
   }
-  pass(NULL)
+  invisible()
 }
 
 #' @export
@@ -128,9 +130,11 @@ expect_no_failure <- function(expr) {
   status <- capture_success_failure(expr)
 
   if (status$n_failure > 0) {
-    return(fail("Expectation failed"))
+    fail("Expectation failed")
+  } else {
+    pass()
   }
-  pass(NULL)
+  invisible()
 }
 
 expect_snapshot_skip <- function(x, cran = FALSE) {

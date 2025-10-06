@@ -114,9 +114,11 @@ expect_contains <- function(object, expected) {
       sprintf("Missing: %s", values(exp$val[exp_miss]))
     )
     fail(c(msg_exp, msg_act))
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 #' @export
@@ -141,9 +143,11 @@ expect_in <- function(object, expected) {
       sprintf("Invalid: %s", values(act$val[act_miss]))
     )
     fail(c(msg_exp, msg_act))
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 # Helpers ----------------------------------------------------------------------

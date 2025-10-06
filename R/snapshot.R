@@ -380,10 +380,12 @@ expect_snapshot_helper <- function(
       comp,
       hint
     )
-    return(snapshot_fail(msg, trace_env = trace_env))
+    snapshot_fail(msg, trace_env = trace_env)
+  } else {
+    pass()
   }
 
-  pass(NULL)
+  invisible()
 }
 
 snapshot_hint <- function(id, show_accept = TRUE, reset_output = TRUE) {

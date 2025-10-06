@@ -29,9 +29,11 @@ expect_invisible <- function(call, label = NULL) {
       sprintf("Expected %s to return invisibly.", lab),
       "Actual visibility: visible."
     )
-    return(fail(msg))
+    fail(msg)
+  } else {
+    pass()
   }
-  pass(vis$value)
+  invisible(vis$value)
 }
 
 #' @export
@@ -45,7 +47,9 @@ expect_visible <- function(call, label = NULL) {
       sprintf("Expected %s to return visibly.", lab),
       "Actual visibility: invisible."
     )
-    return(fail(msg))
+    fail(msg)
+  } else {
+    pass()
   }
-  pass(vis$value)
+  invisible(vis$value)
 }

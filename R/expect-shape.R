@@ -32,9 +32,11 @@ expect_length <- function(object, n) {
       sprintf("Expected %s to have length %i.", act$lab, n),
       sprintf("Actual length: %i.", act$n)
     )
-    return(fail(msg))
+    fail(msg)
+  } else {
+    pass()
   }
-  pass(act$val)
+  invisible(act$val)
 }
 
 #' @param nrow,ncol Expected [nrow()]/[ncol()] of `object`.
@@ -61,14 +63,17 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
         sprintf("Expected %s to have %i rows.", act$lab, nrow),
         sprintf("Actual rows: %i.", act$nrow)
       )
-      return(fail(msg))
+      fail(msg)
+    } else {
+      pass()
     }
   } else if (!missing(ncol)) {
     check_number_whole(ncol, allow_na = TRUE)
 
     if (length(dim_object) == 1L) {
       msg <- sprintf("Expected %s to have two or more dimensions.", act$lab)
-      return(fail(msg))
+      fail(msg)
+      return(invisible(act$val))
     }
 
     act$ncol <- dim_object[2L]
@@ -78,7 +83,9 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
         sprintf("Expected %s to have %i columns.", act$lab, ncol),
         sprintf("Actual columns: %i.", act$ncol)
       )
-      return(fail(msg))
+      fail(msg)
+    } else {
+      pass()
     }
   } else {
     # !missing(dim)
@@ -92,16 +99,17 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
         sprintf("Expected %s to have %i dimensions.", act$lab, length(dim)),
         sprintf("Actual dimensions: %i.", length(act$dim))
       )
-    }
-
-    if (!identical(as.integer(act$dim), as.integer(dim))) {
+      fail(msg)
+    } else if (!identical(as.integer(act$dim), as.integer(dim))) {
       msg <- c(
         sprintf("Expected %s to have dim (%s).", act$lab, toString(dim)),
         sprintf("Actual dim: (%s).", toString(act$dim))
       )
-      return(fail(msg))
+      fail(msg)
+    } else {
+      pass()
     }
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
