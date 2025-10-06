@@ -62,7 +62,7 @@ expect_setequal_ <- function(
     fail(c(msg_exp, msg_act), trace_env = trace_env)
   }
 
-  invisible(act$value)
+  invisible(act$val)
 }
 
 values <- function(x) {
