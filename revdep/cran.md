@@ -1,9 +1,9 @@
 ## revdepcheck results
 
-We checked 131 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 9829 reverse dependencies (9816 from CRAN + 13 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 128 new problems
- * We failed to check 0 packages
+ * We saw 113 new problems
+ * We failed to check 58 packages
 
 Issues with CRAN packages are summarised below.
 
@@ -13,26 +13,20 @@ Issues with CRAN packages are summarised below.
 * adjclust
   checking tests ... ERROR
 
-* APackOfTheClones
-  checking tests ... ERROR
-
 * autodb
   checking tests ... ERROR
 
 * aws.comprehend
   checking tests ... ERROR
 
-* bgmfiles
-  checking tests ... ERROR
-
 * bindr
   checking tests ... ERROR
 
-* caretEnsemble
+* clinUtils
   checking tests ... ERROR
 
-* clinDataReview
-  checking tests ... ERROR
+* cmsafops
+  checking examples ... ERROR
 
 * cnd
   checking tests ... ERROR
@@ -52,7 +46,7 @@ Issues with CRAN packages are summarised below.
 * covr
   checking tests ... ERROR
 
-* datarobot
+* DepLogo
   checking tests ... ERROR
 
 * DiceKriging
@@ -67,13 +61,10 @@ Issues with CRAN packages are summarised below.
 * digitize
   checking tests ... ERROR
 
-* disprofas
-  checking tests ... ERROR
-
 * distances
   checking tests ... ERROR
 
-* distro
+* dmlalg
   checking tests ... ERROR
 
 * EDISON
@@ -82,22 +73,13 @@ Issues with CRAN packages are summarised below.
 * ergm
   checking tests ... ERROR
 
-* expstudy
-  checking tests ... ERROR
-
-* fabletools
-  checking tests ... ERROR
-
 * futile.logger
   checking tests ... ERROR
 
-* ggeffects
+* ggdist
   checking tests ... ERROR
 
 * ggseg
-  checking tests ... ERROR
-
-* gips
   checking tests ... ERROR
 
 * graphhopper
@@ -106,13 +88,19 @@ Issues with CRAN packages are summarised below.
 * greeks
   checking tests ... ERROR
 
-* HandTill2001
+* gtfs2gps
+  checking tests ... ERROR
+
+* handwriterRF
   checking tests ... ERROR
 
 * hdcuremodels
   checking tests ... ERROR
 
 * hedgehog
+  checking tests ... ERROR
+
+* howzatR
   checking tests ... ERROR
 
 * htmltools
@@ -130,16 +118,19 @@ Issues with CRAN packages are summarised below.
 * HurreconR
   checking tests ... ERROR
 
+* hySpc.testthat
+  checking tests ... ERROR
+
+* idiolect
+  checking tests ... ERROR
+
+* imager
+  checking tests ... ERROR
+
 * IMEC
   checking tests ... ERROR
 
-* installr
-  checking tests ... ERROR
-
 * itan
-  checking tests ... ERROR
-
-* latrend
   checking tests ... ERROR
 
 * leaflet.minicharts
@@ -148,19 +139,10 @@ Issues with CRAN packages are summarised below.
 * learnr
   checking tests ... ERROR
 
-* lightr
-  checking tests ... ERROR
-
 * lintr
   checking tests ... ERROR
 
 * luajr
-  checking tests ... ERROR
-
-* madrat
-  checking tests ... ERROR
-
-* mailmerge
   checking tests ... ERROR
 
 * MakefileR
@@ -190,31 +172,25 @@ Issues with CRAN packages are summarised below.
 * mlr3pipelines
   checking tests ... ERROR
 
-* modeltests
-  checking tests ... ERROR
-
 * moexer
   checking tests ... ERROR
 
 * MolgenisArmadillo
   checking tests ... ERROR
 
-* multiverse
-  checking tests ... ERROR
-
-* nanoarrow
-  checking tests ... ERROR
-
 * NasdaqDataLink
   checking tests ... ERROR
 
-* nettskjemar
+* nhdplusTools
   checking tests ... ERROR
 
 * nhlapi
   checking tests ... ERROR
 
 * nodiv
+  checking tests ... ERROR
+
+* openxlsx
   checking tests ... ERROR
 
 * operator.tools
@@ -244,19 +220,13 @@ Issues with CRAN packages are summarised below.
 * PCRedux
   checking tests ... ERROR
 
-* photon
+* phyloraster
   checking tests ... ERROR
 
 * pocketapi
   checking tests ... ERROR
 
 * pointblank
-  checking tests ... ERROR
-
-* pollen
-  checking tests ... ERROR
-
-* prism
   checking tests ... ERROR
 
 * productplots
@@ -268,25 +238,10 @@ Issues with CRAN packages are summarised below.
 * pyinit
   checking tests ... ERROR
 
-* quadmesh
-  checking tests ... ERROR
-
 * Quandl
   checking tests ... ERROR
 
-* r2dii.analysis
-  checking tests ... ERROR
-
-* r2dii.match
-  checking tests ... ERROR
-
-* r2dii.plot
-  checking tests ... ERROR
-
 * rags2ridges
-  checking tests ... ERROR
-
-* rbedrock
   checking tests ... ERROR
 
 * regmedint
@@ -295,10 +250,7 @@ Issues with CRAN packages are summarised below.
 * Rexperigen
   checking tests ... ERROR
 
-* rjstat
-  checking tests ... ERROR
-
-* rlang
+* rmdl
   checking tests ... ERROR
 
 * rosetteApi
@@ -310,22 +262,28 @@ Issues with CRAN packages are summarised below.
 * RPresto
   checking tests ... ERROR
 
+* rtables
+  checking tests ... ERROR
+
 * RTD
   checking tests ... ERROR
 
 * saeSim
   checking tests ... ERROR
 
+* sassy
+  checking tests ... ERROR
+
 * scorematchingad
   checking tests ... ERROR
 
+* scoutbaR
+  checking tests ... ERROR
+
+* scrutiny
+  checking tests ... ERROR
+
 * seqminer
-  checking tests ... ERROR
-
-* seriation
-  checking tests ... ERROR
-
-* shiny
   checking tests ... ERROR
 
 * shiny.benchmark
@@ -346,13 +304,16 @@ Issues with CRAN packages are summarised below.
 * spatialsample
   checking tests ... ERROR
 
-* spex
+* ssdtools
   checking tests ... ERROR
 
-* tabularaster
+* tabr
   checking tests ... ERROR
 
 * testdat
+  checking tests ... ERROR
+
+* testex
   checking tests ... ERROR
 
 * texreg
@@ -361,16 +322,22 @@ Issues with CRAN packages are summarised below.
 * ThankYouStars
   checking tests ... ERROR
 
+* threshr
+  checking tests ... ERROR
+
 * tibblify
   checking tests ... ERROR
 
 * tinyProject
   checking tests ... ERROR
 
-* trip
+* TrialEmulation
   checking tests ... ERROR
 
 * tryCatchLog
+  checking tests ... ERROR
+
+* uwot
   checking tests ... ERROR
 
 * vein
@@ -379,18 +346,66 @@ Issues with CRAN packages are summarised below.
 * WhatIf
   checking tests ... ERROR
 
-* whirl
-  checking tests ... ERROR
-
-* wk
-  checking tests ... ERROR
-
-* xpose
-  checking tests ... ERROR
-
-* zephyr
-  checking tests ... ERROR
-
 * ZillowR
   checking tests ... ERROR
 
+### Failed to check
+
+* admtools            (NA)
+* apa                 (NA)
+* apaTables           (NA)
+* bark                (NA)
+* bayesdfa            (NA)
+* cocktailApp         (NA)
+* ctsem               (NA)
+* DSMolgenisArmadillo (NA)
+* dsTidyverse         (NA)
+* dsTidyverseClient   (NA)
+* dySEM               (NA)
+* EcoEnsemble         (NA)
+* FAfA                (NA)
+* fdaPDE              (NA)
+* fio                 (NA)
+* fungible            (NA)
+* gadjid              (NA)
+* GDINA               (NA)
+* genekitr            (NA)
+* GeneSelectR         (NA)
+* ggmulti             (NA)
+* ggpicrust2          (NA)
+* gllvm               (NA)
+* gpuR                (NA)
+* insight             (NA)
+* jmv                 (NA)
+* lcsm                (NA)
+* loon.shiny          (NA)
+* loon.tourr          (NA)
+* manymome            (NA)
+* metaSEM             (NA)
+* ModStatR            (NA)
+* numbat              (NA)
+* OlinkAnalyze        (NA)
+* parameters          (NA)
+* PathwayVote         (NA)
+* phylosem            (NA)
+* psycModel           (NA)
+* Revticulate         (NA)
+* rosetta             (NA)
+* rstanarm            (NA)
+* SCpubr              (NA)
+* semptools           (NA)
+* semtree             (NA)
+* sprtt               (NA)
+* SQLFormatteR        (NA)
+* ssdGSA              (NA)
+* StratPal            (NA)
+* string2path         (NA)
+* Surrogate           (NA)
+* tabledown           (NA)
+* TestAnaAPP          (NA)
+* tidycomm            (NA)
+* tinyarray           (NA)
+* tok                 (NA)
+* tricolore           (NA)
+* TriDimRegression    (NA)
+* xactonomial         (NA)
