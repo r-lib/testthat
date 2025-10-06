@@ -51,10 +51,7 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
   dim_object <- base::dim(object)
   if (is.null(dim_object)) {
     fail(sprintf("Expected %s to have dimensions.", act$lab))
-    return(invisible(act$val))
-  }
-
-  if (!missing(nrow)) {
+  } else if (!missing(nrow)) {
     check_number_whole(nrow, allow_na = TRUE)
     act$nrow <- dim_object[1L]
 
@@ -71,18 +68,17 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
 
     if (length(dim_object) == 1L) {
       fail(sprintf("Expected %s to have two or more dimensions.", act$lab))
-      return(invisible(act$val))
-    }
-
-    act$ncol <- dim_object[2L]
-
-    if (!identical(as.integer(act$ncol), as.integer(ncol))) {
-      fail(c(
-        sprintf("Expected %s to have %i columns.", act$lab, ncol),
-        sprintf("Actual columns: %i.", act$ncol)
-      ))
     } else {
-      pass()
+      act$ncol <- dim_object[2L]
+
+      if (!identical(as.integer(act$ncol), as.integer(ncol))) {
+        fail(c(
+          sprintf("Expected %s to have %i columns.", act$lab, ncol),
+          sprintf("Actual columns: %i.", act$ncol)
+        ))
+      } else {
+        pass()
+      }
     }
   } else {
     # !missing(dim)
