@@ -44,14 +44,14 @@ expect_named <- function(
   exp <- quasi_label(enquo(expected), arg = "expected")
 
   exp$val <- normalise_names(exp$val, ignore.order, ignore.case)
-  act_names <- normalise_names(names(act$val), ignore.order, ignore.case)
-
+  act_names <- labelled_value(
+    normalise_names(names(act$val), ignore.order, ignore.case),
+    paste0("names of ", act$lab)
+  )
   if (ignore.order) {
-    act_names <- labelled_value(act_names, paste0("names(", act$lab, ")"))
     expect_setequal_(act_names, exp)
   } else {
-    act_name <- labelled_value(act_names, paste0("names(", act$lab, ")"))
-    expect_waldo_equal_("equal", act_name, exp)
+    expect_waldo_equal_("equal", act_names, exp)
   }
 
   invisible(act$val)

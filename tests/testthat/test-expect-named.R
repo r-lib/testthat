@@ -35,7 +35,7 @@ test_that("provide useful feedback on failure", {
 
   expect_snapshot_failure(expect_named(x1, c("a", "b"), ignore.order = FALSE))
   expect_snapshot_failure(expect_named(x2, "a", ignore.order = FALSE))
-  expect_snapshot_failure(expect_named(x1, c("b"), ignore.order = FALSE))
+  expect_snapshot_failure(expect_named(x1, "b", ignore.order = FALSE))
 })
 
 test_that("expect_named validates its inputs", {
