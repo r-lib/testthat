@@ -248,12 +248,11 @@ expect_known_hash <- function(object, hash = NULL) {
     pass()
   } else {
     if (hash != act_hash) {
-      msg <- sprintf(
+      fail(sprintf(
         "Expected value to hash to %s.\nActual hash: %s",
         hash,
         act_hash
-      )
-      fail(msg)
+      ))
     } else {
       pass()
     }

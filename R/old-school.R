@@ -147,8 +147,7 @@ takes_less_than <- function(amount) {
     duration <- system.time(force(expr))["elapsed"]
 
     if (duration >= amount) {
-      msg <- paste0("took ", duration, " seconds, which is more than ", amount)
-      fail(msg)
+      fail(paste0("took ", duration, " seconds, which is more than ", amount))
     } else {
       pass()
     }

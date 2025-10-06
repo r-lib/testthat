@@ -29,8 +29,7 @@
 #'
 #'   act_n <- length(act$val)
 #'   if (act_n != n) {
-#'     msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
-#'     fail(msg)
+#'     fail(sprintf("%s has length %i, not length %i.", act$lab, act_n, n))
 #'   } else {
 #'     pass()
 #'   }

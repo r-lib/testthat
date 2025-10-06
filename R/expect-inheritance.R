@@ -70,11 +70,10 @@ expect_type <- function(object, type) {
   act_type <- typeof(act$val)
 
   if (!identical(act_type, type)) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to have type %s.", act$lab, format_class(type)),
       sprintf("Actual type: %s", format_class(act_type))
-    )
-    fail(msg)
+    ))
   } else {
     pass()
   }
@@ -95,30 +94,26 @@ expect_s3_class <- function(object, class, exact = FALSE) {
 
   if (identical(class, NA)) {
     if (isS3(object)) {
-      msg <- sprintf("Expected %s not to be an S3 object.", act$lab)
-      fail(msg)
+      fail(sprintf("Expected %s not to be an S3 object.", act$lab))
     } else {
       pass()
     }
   } else if (is.character(class)) {
     if (!isS3(act$val)) {
-      msg <- c(
+      fail(c(
         sprintf("Expected %s to be an S3 object.", act$lab),
         sprintf("Actual OO type: %s.", oo_type(act$val))
-      )
-      fail(msg)
+      ))
     } else if (exact && !identical(class(act$val), class)) {
-      msg <- c(
+      fail(c(
         sprintf("Expected %s to have class %s.", act$lab, exp_lab),
         sprintf("Actual class: %s.", act$class)
-      )
-      fail(msg)
+      ))
     } else if (!inherits(act$val, class)) {
-      msg <- c(
+      fail(c(
         sprintf("Expected %s to inherit from %s.", act$lab, exp_lab),
         sprintf("Actual class: %s.", act$class)
-      )
-      fail(msg)
+      ))
     } else {
       pass()
     }
@@ -138,24 +133,21 @@ expect_s4_class <- function(object, class) {
 
   if (identical(class, NA)) {
     if (isS4(object)) {
-      msg <- sprintf("Expected %s not to be an S4 object.", act$lab)
-      fail(msg)
+      fail(sprintf("Expected %s not to be an S4 object.", act$lab))
     } else {
       pass()
     }
   } else if (is.character(class)) {
     if (!isS4(act$val)) {
-      msg <- c(
+      fail(c(
         sprintf("Expected %s to be an S4 object.", act$lab),
         sprintf("Actual OO type: %s.", oo_type(act$val))
-      )
-      fail(msg)
+      ))
     } else if (!methods::is(act$val, class)) {
-      msg <- c(
+      fail(c(
         sprintf("Expected %s to inherit from %s.", act$lab, exp_lab),
         sprintf("Actual class: %s.", act$class)
-      )
-      fail(msg)
+      ))
     } else {
       pass()
     }
@@ -173,19 +165,17 @@ expect_r6_class <- function(object, class) {
   check_string(class)
 
   if (!inherits(act$val, "R6")) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to be an R6 object.", act$lab),
       sprintf("Actual OO type: %s.", oo_type(act$val))
-    )
-    fail(msg)
+    ))
   } else if (!inherits(act$val, class)) {
     act_class <- format_class(class(act$val))
     exp_class <- format_class(class)
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to inherit from %s.", act$lab, exp_class),
       sprintf("Actual class: %s.", act_class)
-    )
-    fail(msg)
+    ))
   } else {
     pass()
   }
@@ -204,21 +194,19 @@ expect_s7_class <- function(object, class) {
   act <- quasi_label(enquo(object))
 
   if (!S7::S7_inherits(object)) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to be an S7 object.", act$lab),
       sprintf("Actual OO type: %s.", oo_type(act$val))
-    )
-    fail(msg)
+    ))
   } else if (!S7::S7_inherits(object, class)) {
     exp_class <- attr(class, "name", TRUE)
     act_class <- setdiff(base::class(object), "S7_object")
     act_class_desc <- paste0("<", act_class, ">", collapse = "/")
 
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to inherit from <%s>.", act$lab, exp_class),
       sprintf("Actual class: %s.", act_class_desc)
-    )
-    fail(msg)
+    ))
   } else {
     pass()
   }
