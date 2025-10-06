@@ -82,7 +82,8 @@ expect_file_unchanged_ <- function(
   lines,
   ...,
   update = TRUE,
-  info = NULL
+  info = NULL,
+  trace_env = caller_env()
 ) {
   if (!file.exists(path)) {
     cli::cli_warn("Creating reference output.")
@@ -115,7 +116,7 @@ expect_file_unchanged_ <- function(
       encodeString(path, quote = "'"),
       paste0(comp, collapse = "\n\n")
     )
-    fail(msg, info = info, trace_env = caller_env())
+    fail(msg, info = info, trace_env = trace_env)
   } else {
     pass()
   }
