@@ -47,7 +47,8 @@ expect_match <- function(
 
   if (length(object) == 0) {
     msg <- sprintf("Expected %s to have at least one element.", act$lab)
-    return(fail(msg, info = info))
+    fail(msg, info = info)
+    return(invisible(act$val))
   }
 
   expect_match_(

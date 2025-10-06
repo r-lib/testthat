@@ -21,15 +21,17 @@ expect <- function(
   trace_env = caller_env()
 ) {
   if (!ok) {
-    return(fail(
+    fail(
       failure_message,
       info,
       srcref = srcref,
       trace = trace,
       trace_env = trace_env
-    ))
+    )
+  } else {
+    # For backwards compatibility
+    succeed(failure_message)
   }
-  succeed(failure_message)
 }
 
 #' Construct an expectation object

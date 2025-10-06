@@ -129,7 +129,8 @@ expect_snapshot_ <- function(
   )
   if (!is.null(msg)) {
     if (error) {
-      return(fail(msg, trace = state$error[["trace"]]))
+      fail(msg, trace = state$error[["trace"]])
+      return()
     } else {
       cnd_signal(state$error)
     }

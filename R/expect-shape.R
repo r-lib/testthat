@@ -51,7 +51,8 @@ expect_shape = function(object, ..., nrow, ncol, dim) {
 
   dim_object <- base::dim(object)
   if (is.null(dim_object)) {
-    return(fail(sprintf("Expected %s to have dimensions.", act$lab)))
+    fail(sprintf("Expected %s to have dimensions.", act$lab))
+    return(invisible(act$val))
   }
 
   if (!missing(nrow)) {

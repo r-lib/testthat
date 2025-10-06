@@ -115,7 +115,8 @@ SnapshotReporter <- R6::R6Class(
           value_enc
         )
         if (fail_on_new) {
-          return(fail(message, trace_env = trace_env))
+          fail(message, trace_env = trace_env)
+          return()
         }
         testthat_warn(message)
         character()
