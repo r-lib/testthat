@@ -7,8 +7,8 @@
 #' * `expect_in(x, y)` tests every element of `x` is in `y`
 #'   (i.e. `x` is a subset of `y`).
 #' * `expect_mapequal(x, y)` treats lists as if they are mappings between names
-#'   and values. Concretely, this drops `NULL`s in both objects and sorts
-#'   named components.
+#'   and values. Concretely, checks that `x` and `y` have the same names, then
+#'   checks that `x[names(y)]` equals `y`.
 #'
 #' Note that `expect_setequal()` ignores names, and you will be warned if both
 #' `object` and `expected` have them.
@@ -89,7 +89,35 @@ expect_mapequal <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  expect_waldo_equal_("equal", act, exp, list_as_map = TRUE)
+  check_vector(act$val, error_arg = "object")
+  check_map_names(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
+  check_map_names(exp$val, error_arg = "expected")
+
+  act_nms <- names(act$val)
+  exp_nms <- names(exp$val)
+
+  # Length-0 vectors are OK whether named or unnamed.
+  if (length(act$val) == 0 && length(exp$val) == 0) {
+    testthat_warn("`object` and `expected` are empty vectors.")
+    pass()
+  } else {
+    if (!setequal(act_nms, exp_nms)) {
+      act_names <- labelled_value(names(act$val), paste0("names of ", act$lab))
+      exp_names <- labelled_value(names(exp$val), paste0("names of ", exp$lab))
+      expect_setequal_(act_names, exp_names)
+    } else {
+      if (edition_get() >= 3) {
+        act <- labelled_value(act$val[exp_nms], act$lab)
+        expect_waldo_equal_("equal", act, exp)
+      } else {
+        # Packages depend on 2e behaviour, but the expectation isn't written
+        # to be reused, and we don't want to bother
+        expect_equal(act$val[exp_nms], exp$val)
+      }
+    }
+  }
+
   invisible(act$val)
 }
 
@@ -156,5 +184,29 @@ expect_in <- function(object, expected) {
 check_vector <- function(x, error_arg, error_call = caller_env()) {
   if (!is_vector(x)) {
     stop_input_type(x, "a vector", arg = error_arg, call = error_call)
+  }
+}
+
+check_map_names <- function(x, error_arg, error_call = caller_env()) {
+  nms <- names2(x)
+  if (anyDuplicated(nms)) {
+    dups <- unique(nms[duplicated(nms)])
+    cli::cli_abort(
+      c(
+        "All elements in {.arg {error_arg}} must have unique names.",
+        x = "Duplicate names: {.str {dups}}"
+      ),
+      call = error_call
+    )
+  }
+  if (any(nms == "")) {
+    empty <- which(nms == "")
+    cli::cli_abort(
+      c(
+        "All elements in {.arg {error_arg}} must have names.",
+        x = "Empty names at position{?s}: {empty}"
+      ),
+      call = error_call
+    )
   }
 }

@@ -31,8 +31,8 @@ and that every element of \code{y} occurs in \code{x}.
 \item \code{expect_in(x, y)} tests every element of \code{x} is in \code{y}
 (i.e. \code{x} is a subset of \code{y}).
 \item \code{expect_mapequal(x, y)} treats lists as if they are mappings between names
-and values. Concretely, this drops \code{NULL}s in both objects and sorts
-named components.
+and values. Concretely, checks that \code{x} and \code{y} have the same names, then
+checks that \code{x[names(y)]} equals \code{y}.
 }
 }
 \details{
