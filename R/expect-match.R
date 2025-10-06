@@ -144,18 +144,15 @@ expect_match_ <- function(
 }
 
 # Adapted from print.ellmer_prompt
-show_text <- function(
-  x,
-  condition,
-  ...,
-  max_items = 20,
-  max_lines = max_items * 25
-) {
+show_text <- function(x, matches = NULL, max_items = 20, max_lines = NULL) {
+  matches <- matches %||% rep(TRUE, length(x))
+  max_lines <- max_lines %||% (max_items * 25)
+
   n <- length(x)
   n_extra <- length(x) - max_items
   if (n_extra > 0) {
     x <- x[seq_len(max_items)]
-    condition <- condition[seq_len(max_items)]
+    matches <- matches[seq_len(max_items)]
   }
 
   if (length(x) == 0) {
@@ -165,7 +162,7 @@ show_text <- function(
   bar <- if (cli::is_utf8_output()) "\u2502" else "|"
 
   id <- ifelse(
-    condition,
+    matches,
     cli::col_green(cli::symbol$tick),
     cli::col_red(cli::symbol$cross)
   )
@@ -178,10 +175,15 @@ show_text <- function(
   x <- gsub("\n", paste0("\n", exdent), x)
 
   lines <- strsplit(x, "\n")
-  ids <- rep(seq_along(x), length(lines))
+  ids <- rep(seq_along(x), lengths(lines))
+  first <- c(TRUE, ids[-length(ids)] != ids[-1])
   lines <- unlist(lines)
 
   if (length(lines) > max_lines) {
+    if (first[max_lines + 1]) {
+      max_lines <- max_lines - 1
+    }
+
     lines <- lines[seq_len(max_lines)]
     lines <- c(lines, paste0(exdent, "..."))
     n_extra <- n - ids[max_lines - 1]
