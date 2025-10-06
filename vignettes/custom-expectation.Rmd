@@ -288,13 +288,13 @@ expect_length_ <- function(act, n, trace_env = caller_env()) {
   } else {
     pass()
   }
-
-  invisible(act$val)
 }
 
 expect_length <- function(object, n) {  
   act <- quasi_label(rlang::enquo(object))
+
   expect_length_(act, n)
+  invisible(act$val)
 }
 ```
 
@@ -302,6 +302,7 @@ A few recommendations:
 
 * The helper shouldn't be user-facing, so we give it a `_` suffix to make that clear. 
 * It's typically easiest for a helper to take the labeled value produced by `quasi_label()`.
-* Your helper should usually call both `fail()` and `pass()` and be returned from the wrapping expectation.
+* Your helper should usually be called for its side effects (i.e. it calls `fail()` and `pass()`).
+* You should return `invisible(act$val)` from the parent expecatation as usual.
 
 Again, you're probably not writing so many expectations that it makes sense for you to go to this effort, but it is important for testthat to get it right.
