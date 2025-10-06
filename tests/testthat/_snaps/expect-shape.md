@@ -39,8 +39,8 @@
       expect_shape(array(dim = 1:3), dim = 1:2)
     Condition
       Error:
-      ! Expected `array(dim = 1:3)` to have dim (1, 2).
-      Actual dim: (1, 2, 3).
+      ! Expected `array(dim = 1:3)` to have 2 dimensions.
+      Actual dimensions: 3.
 
 ---
 
@@ -48,8 +48,8 @@
       expect_shape(array(dim = 1:3), dim = 1:4)
     Condition
       Error:
-      ! Expected `array(dim = 1:3)` to have dim (1, 2, 3, 4).
-      Actual dim: (1, 2, 3).
+      ! Expected `array(dim = 1:3)` to have 4 dimensions.
+      Actual dimensions: 3.
 
 # nrow compared correctly
 

@@ -22,15 +22,21 @@ expect_vector <- function(object, ptype = NULL, size = NULL) {
   # added by as_label()
   act$lab <- gsub("^`|`$", "", act$lab)
 
+  failed <- FALSE
   withCallingHandlers(
     vctrs::vec_assert(act$val, ptype = ptype, size = size, arg = act$lab),
     vctrs_error_scalar_type = function(e) {
+      failed <<- TRUE
       fail(e$message)
     },
     vctrs_error_assert = function(e) {
+      failed <<- TRUE
       fail(e$message)
     }
   )
 
-  pass(act$val)
+  if (!failed) {
+    pass()
+  }
+  invisible(act$val)
 }

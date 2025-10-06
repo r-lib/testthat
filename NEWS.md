@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* Expectations now consistently return the value of the first argument, regardless of whether the expectation succeeds or fails. The primary exception are `expect_message()` and friends which will return the condition. This shouldn't affect existing tests, but will make failures clearer when you chain together multiple expectations (#2246).
 * `set_state_inspector()` gains `tolerance` argument and ignores minor FP differences by default (@mcol, #2237).
 * `expect_vector()` fails, instead of erroring, if `object` is not a vector (@plietar, #2224).
 * New `vignette("mocking")` explains mocking in detail (#1265).

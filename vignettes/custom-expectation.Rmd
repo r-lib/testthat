@@ -48,9 +48,11 @@ If we use it in a test you can see there's an issue:
 test_that("success", {
   expect_nrow(mtcars, 32)
 })
+
 test_that("failure 1", {
   expect_nrow(mtcars, 30)
 })
+
 test_that("failure 2", {
   expect_nrow(matrix(1:5), 2)
 })
@@ -64,35 +66,37 @@ These are both minor issues, so if they don't bother you, you can save yourself 
 
 ## Expectation basics
 
-An expectation has three main parts, as illustrated by `expect_length()`:
+An expectation has four main parts, as illustrated by `expect_length()`:
 
 ```{r}
 expect_length <- function(object, n) {  
   # 1. Capture object and label
   act <- quasi_label(rlang::enquo(object))
-
-  # 2. Check if expectations are violated
+  
   act_n <- length(act$val)
   if (act_n != n) {
-    msg <- c(
+    # 2. Fail if expectations are violated
+    fail(c(
       sprintf("Expected %s to have length %i.", act$lab, n),
       sprintf("Actual length: %i.", act_n)
-    )
-    return(fail(msg))
+    ))
+  } else {
+    # 3. Pass if expectations are met
+    pass()
   }
   
-  # 3. Pass when expectations are met
-  pass(act$val)
+  # 4. Invisibly return the input value
+  invisible(act$val)
 }
 ```
 
 The first step in any expectation is to use `quasi_label()` to capture a "labeled value", i.e., a list that contains both the value (`$val`) for testing and a label (`$lab`) used to make failure messages as informative as possible. This is a pattern that exists for fairly esoteric reasons; you don't need to understand it, just copy and paste it.
 
-Next you need to check each way that `object` could violate the expectation. In this case, there's only one check, but in more complicated cases there can be multiple checks. In most cases, it's easier to check for violations one by one, using early returns to `fail()`. This makes it easier to write informative failure messages that first describe what was expected and then what was actually seen.
+Next you need to check each way that `object` could violate the expectation. In this case, there's only one check, but in more complicated cases there can be many. Note the specific form of the failure message: the first element describes what we expected, and then the second line reports what we actually saw.
 
-Note that you need to use `return(fail())` here. If you don't, your expectation might end up failing multiple times or both failing and succeeding. You won't see these problems when interactively testing your expectation, but forgetting to `return()` can lead to incorrect fail and pass counts in typical usage. In the next section, you'll learn how to test your expectation to avoid this issue.
+If the object is as expected, call `pass()`. This ensures that a success will be registered in the test reporter.
 
-Finally, if the object is as expected, call `pass()` with `act$val`. This is good practice because expectation functions are called primarily for their side-effects (triggering a failure), and returning the value allows expectations to be piped together:
+Finally, return the input value (`act$val`) invisibly. This is good practice because expectations are called primarily for their side-effects (triggering a failure), and returning the value allows expectations to be piped together:
 
 ```{r}
 #| label: piping
@@ -149,23 +153,23 @@ expect_vector_length <- function(object, n) {
   # It's non-trivial to check if an object is a vector in base R so we
   # use an rlang helper
   if (!rlang::is_vector(act$val)) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to be a vector", act$lab),
       sprintf("Actual type: %s", typeof(act$val))
-    )
-    return(fail(msg))
+    ))
+  } else {
+    act_n <- length(act$val)
+    if (act_n != n) {
+      fail(c(
+        sprintf("Expected %s to have length %i.", act$lab, n),
+        sprintf("Actual length: %i.", act_n)
+      ))
+    } else {
+      pass()
+    }
   }
 
-  act_n <- length(act$val)
-  if (act_n != n) {
-    msg <- c(
-      sprintf("Expected %s to have length %i.", act$lab, n),
-      sprintf("Actual length: %i.", act_n)
-    )
-    return(fail(msg))
-  }
-  
-  pass(act$val)
+  invisible(act$val)
 }
 ```
 
@@ -188,27 +192,22 @@ expect_s3_class <- function(object, class) {
   act <- quasi_label(rlang::enquo(object))
 
   if (!is.object(act$val)) {
-    msg <- sprintf("Expected %s to be an object.", act$lab)
-    return(fail(msg))
-  }
-
-  if (isS4(act$val)) {
-    msg <- c(
+    fail(sprintf("Expected %s to be an object.", act$lab))
+  } else if (isS4(act$val)) {
+    fail(c(
       sprintf("Expected %s to be an S3 object.", act$lab),
       "Actual OO type: S4"
-    )
-    return(fail(msg))
-  }
-
-  if (!inherits(act$val, class)) {
-    msg <- c(
+    ))
+  } else if (!inherits(act$val, class)) {
+    fail(c(
       sprintf("Expected %s to inherit from %s.", act$lab, class),
       sprintf("Actual class: %s", class(act$val))
-    )
-    return(fail(msg))
+    ))
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 ```
 
@@ -253,27 +252,22 @@ expect_s3_object <- function(object, class = NULL) {
   act <- quasi_label(rlang::enquo(object))
 
   if (!is.object(act$val)) {
-    msg <- sprintf("Expected %s to be an object.", act$lab)
-    return(fail(msg))
-  }
-
-  if (isS4(act$val)) {
-    msg <- c(
+    fail(sprintf("Expected %s to be an object.", act$lab))
+  } else if (isS4(act$val)) {
+    fail(c(
       sprintf("Expected %s to be an S3 object.", act$lab),
       "Actual OO type: S4"
-    )
-    return(fail(msg))
-  }
-
-  if (!is.null(class) && !inherits(act$val, class)) {
-    msg <- c(
+    ))
+  } else if (!is.null(class) && !inherits(act$val, class)) {
+    fail(c(
       sprintf("Expected %s to inherit from %s.", act$lab, class),
       sprintf("Actual class: %s", class(act$val))
-    )
-    return(fail(msg))
+    ))
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 ```
 
@@ -287,16 +281,20 @@ The key challenge is that `fail()` captures a `trace_env`, which should be the e
 expect_length_ <- function(act, n, trace_env = caller_env()) {
   act_n <- length(act$val)
   if (act_n != n) {
-    msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
-    return(fail(msg, trace_env = trace_env))
+    fail(
+      sprintf("%s has length %i, not length %i.", act$lab, act_n, n), 
+      trace_env = trace_env
+    )
+  } else {
+    pass()
   }
-
-  pass(act$val)
 }
 
 expect_length <- function(object, n) {  
   act <- quasi_label(rlang::enquo(object))
+
   expect_length_(act, n)
+  invisible(act$val)
 }
 ```
 
@@ -304,6 +302,7 @@ A few recommendations:
 
 * The helper shouldn't be user-facing, so we give it a `_` suffix to make that clear. 
 * It's typically easiest for a helper to take the labeled value produced by `quasi_label()`.
-* Your helper should usually call both `fail()` and `pass()` and be returned from the wrapping expectation.
+* Your helper should usually be called for its side effects (i.e. it calls `fail()` and `pass()`).
+* You should return `invisible(act$val)` from the parent expecatation as usual.
 
 Again, you're probably not writing so many expectations that it makes sense for you to go to this effort, but it is important for testthat to get it right.

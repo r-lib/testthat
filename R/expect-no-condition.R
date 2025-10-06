@@ -119,10 +119,12 @@ expect_no_ <- function(
       "."
     )
     msg_act <- actual_condition(first_match)
-    return(fail(c(msg_exp, msg_act), trace_env = trace_env))
+    fail(c(msg_exp, msg_act), trace_env = trace_env)
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 indent_lines <- function(x) {

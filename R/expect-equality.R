@@ -76,16 +76,18 @@ expect_equal <- function(
       comp <- compare(act$val, exp$val, ...)
     }
 
-    if (!comp$equal) {
+    if (comp$equal) {
+      pass()
+    } else {
       msg <- c(
         sprintf("Expected %s to equal %s.", act$lab, exp$lab),
         "Differences:",
         comp$message
       )
-      return(fail(msg, info = info))
+      fail(msg, info = info)
     }
-    pass(act$val)
   }
+  invisible(act$val)
 }
 
 
@@ -105,9 +107,8 @@ expect_identical <- function(
   if (edition_get() >= 3) {
     expect_waldo_equal_("identical", act, exp, info, ...)
   } else {
-    ident <- identical(act$val, exp$val, ...)
-    if (ident) {
-      msg_act <- NULL
+    if (identical(act$val, exp$val, ...)) {
+      pass()
     } else {
       compare <- compare(act$val, exp$val)
       if (compare$equal) {
@@ -115,18 +116,16 @@ expect_identical <- function(
       } else {
         msg_act <- compare$message
       }
-    }
 
-    if (!ident) {
       msg <- c(
         sprintf("Expected %s to be identical to %s.", act$lab, exp$lab),
         "Differences:",
         msg_act
       )
-      return(fail(msg, info = info))
+      fail(msg, info = info)
     }
-    pass(act$val)
   }
+  invisible(act$val)
 }
 
 expect_waldo_equal_ <- function(
@@ -144,15 +143,16 @@ expect_waldo_equal_ <- function(
     x_arg = "actual",
     y_arg = "expected"
   )
-  if (length(comp) != 0) {
+  if (length(comp) == 0) {
+    pass()
+  } else {
     msg <- c(
       sprintf("Expected %s to be %s to %s.", act$lab, type, exp$lab),
       "Differences:",
       paste0(comp, collpase = "\n")
     )
-    return(fail(msg, info = info, trace_env = trace_env))
+    fail(msg, info = info, trace_env = trace_env)
   }
-  pass(act$val)
 }
 
 #' Is an object equal to the expected value, ignoring attributes?
@@ -203,7 +203,9 @@ expect_equivalent <- function(
       exp$lab,
       comp$message
     )
-    return(fail(msg, info = info))
+    fail(msg, info = info)
+  } else {
+    pass()
   }
-  pass(act$val)
+  invisible(act$val)
 }

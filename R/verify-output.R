@@ -64,7 +64,7 @@ verify_output <- function(
   if (!interactive() && on_cran()) {
     skip("On CRAN")
   }
-  compare_file(path, output, update = TRUE)
+  expect_file_unchanged_(path, output, update = TRUE)
   invisible()
 }
 

@@ -143,9 +143,11 @@ expect_error <- function(
     # Access error fields with `[[` rather than `$` because the
     # `$.Throwable` from the rJava package throws with unknown fields
     if (!is.null(msg)) {
-      return(fail(msg, info = info, trace = act$cap[["trace"]]))
+      fail(msg, info = info, trace = act$cap[["trace"]])
+    } else {
+      pass()
     }
-    pass(act$val %||% act$cap)
+    invisible(act$val %||% act$cap)
   }
 }
 
@@ -198,9 +200,11 @@ expect_warning <- function(
       cond_type = "warnings"
     )
     if (!is.null(msg)) {
-      return(fail(msg, info = info))
+      fail(msg, info = info)
+    } else {
+      pass()
     }
-    pass(act$val)
+    invisible(act$val)
   }
 }
 
@@ -236,9 +240,11 @@ expect_message <- function(
     act <- quasi_capture(enquo(object), label, capture_messages)
     msg <- compare_messages(act$cap, act$lab, regexp = regexp, all = all, ...)
     if (!is.null(msg)) {
-      return(fail(msg, info = info))
+      fail(msg, info = info)
+    } else {
+      pass()
     }
-    pass(act$val)
+    invisible(act$val)
   }
 }
 
@@ -285,9 +291,11 @@ expect_condition <- function(
       cond_type = "condition"
     )
     if (!is.null(msg)) {
-      return(fail(msg, info = info, trace = act$cap[["trace"]]))
+      fail(msg, info = info, trace = act$cap[["trace"]])
+    } else {
+      pass()
     }
-    pass(act$val %||% act$cap)
+    invisible(act$val %||% act$cap)
   }
 }
 
@@ -327,16 +335,18 @@ expect_condition_matching_ <- function(
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
   if (!is.null(msg)) {
-    return(fail(
+    fail(
       msg,
       info = info,
       trace = act$cap[["trace"]],
       trace_env = trace_env
-    ))
+    )
+  } else {
+    pass()
   }
   # If a condition was expected, return it. Otherwise return the value
   # of the expression.
-  pass(if (expected) act$cap else act$val)
+  invisible(if (expected) act$cap else act$val)
 }
 
 # -------------------------------------------------------------------------

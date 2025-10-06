@@ -24,10 +24,10 @@ expect_cpp_tests_pass <- function(package) {
   info <- paste(output[-1], collapse = "\n")
 
   if (!tests_passed) {
-    msg <- paste("C++ unit tests:", info, sep = "\n")
-    return(fail(msg))
+    fail(paste("C++ unit tests:", info, sep = "\n"))
+  } else {
+    pass()
   }
-  pass(NULL)
 }
 
 #' Do C++ tests past?

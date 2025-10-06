@@ -46,21 +46,25 @@ expect_match <- function(
   check_bool(all)
 
   if (length(object) == 0) {
-    msg <- sprintf("Expected %s to have at least one element.", act$lab)
-    return(fail(msg, info = info))
+    fail(
+      sprintf("Expected %s to have at least one element.", act$lab),
+      info = info
+    )
+  } else {
+    expect_match_(
+      act = act,
+      regexp = regexp,
+      perl = perl,
+      fixed = fixed,
+      ...,
+      all = all,
+      info = info,
+      label = label,
+      negate = FALSE
+    )
   }
 
-  expect_match_(
-    act = act,
-    regexp = regexp,
-    perl = perl,
-    fixed = fixed,
-    ...,
-    all = all,
-    info = info,
-    label = label,
-    negate = FALSE
-  )
+  invisible(act$val)
 }
 
 #' @describeIn expect_match Check that a string doesn't match a regular
@@ -95,6 +99,7 @@ expect_no_match <- function(
     label = label,
     negate = TRUE
   )
+  invisible(act$val)
 }
 
 expect_match_ <- function(
@@ -114,28 +119,28 @@ expect_match_ <- function(
   condition <- if (negate) !matches else matches
   ok <- if (all) all(condition) else any(condition)
 
-  if (ok) {
-    return(pass(act$val))
-  }
+  if (!ok) {
+    values <- show_text(act$val, condition)
+    if (length(act$val) == 1) {
+      which <- ""
+    } else {
+      which <- if (all) "every element of " else "some element of "
+    }
+    match <- if (negate) "not to match" else "to match"
 
-  values <- show_text(act$val, condition)
-  if (length(act$val) == 1) {
-    which <- ""
+    msg_exp <- sprintf(
+      "Expected %s%s %s %s %s.",
+      which,
+      act$lab,
+      match,
+      if (fixed) "string" else "regexp",
+      encodeString(regexp, quote = '"')
+    )
+    msg_act <- c(paste0("Actual ", title, ':'), values)
+    fail(c(msg_exp, msg_act), info = info, trace_env = trace_env)
   } else {
-    which <- if (all) "every element of " else "some element of "
+    pass()
   }
-  match <- if (negate) "not to match" else "to match"
-
-  msg_exp <- sprintf(
-    "Expected %s%s %s %s %s.",
-    which,
-    act$lab,
-    match,
-    if (fixed) "string" else "regexp",
-    encodeString(regexp, quote = '"')
-  )
-  msg_act <- c(paste0("Actual ", title, ':'), values)
-  return(fail(c(msg_exp, msg_act), info = info, trace_env = trace_env))
 }
 
 # Adapted from print.ellmer_prompt

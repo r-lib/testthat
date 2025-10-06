@@ -13,7 +13,7 @@ fail(
   trace = NULL
 )
 
-pass(value)
+pass()
 }
 \arguments{
 \item{message}{A character vector describing the failure. The
@@ -34,14 +34,12 @@ you're calling \code{fail()} from a helper function; see
 \item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
 When supplied, the expectation is displayed with the backtrace.
 Expert use only.}
-
-\item{value}{Value to return, typically the result of evaluating the
-\code{object} argument to the expectation.}
 }
 \description{
 These are the primitives that you can use to implement your own expectations.
-Regardless of how it's called an expectation should either return \code{pass()},
-\code{fail()}, or throw an error (if for example, the arguments are invalid).
+Every path through an expectation should either call \code{pass()}, \code{fail()},
+or throw an error (e.g. if the arguments are invalid). Expectations should
+always return \code{invisible(act$val)}.
 
 Learn more about creating your own expectations in
 \code{vignette("custom-expectation")}.
@@ -52,10 +50,11 @@ expect_length <- function(object, n) {
 
   act_n <- length(act$val)
   if (act_n != n) {
-    msg <- sprintf("\%s has length \%i, not length \%i.", act$lab, act_n, n)
-    return(fail(msg))
+    fail(sprintf("\%s has length \%i, not length \%i.", act$lab, act_n, n))
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 }
