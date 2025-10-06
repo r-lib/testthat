@@ -7,6 +7,13 @@ test_that("info only evaluated on failure", {
   expect_no_error(expect(TRUE, "fail", info = stop("!")))
 })
 
+test_that("validates key inputs", {
+  expect_snapshot(error = TRUE, {
+    expect(1)
+    expect(TRUE, 1)
+  })
+})
+
 test_that("can subclass expectation", {
   exp <- new_expectation(
     "failure",
