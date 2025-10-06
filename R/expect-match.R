@@ -120,7 +120,12 @@ expect_match_ <- function(
   ok <- if (all) all(condition) else any(condition)
 
   if (!ok) {
-    values <- show_text(act$val, condition)
+    labels <- ifelse(
+      condition,
+      cli::col_green(cli::symbol$tick),
+      cli::col_red(cli::symbol$cross)
+    )
+    values <- show_text(act$val, labels)
     if (length(act$val) == 1) {
       which <- ""
     } else {
@@ -144,15 +149,15 @@ expect_match_ <- function(
 }
 
 # Adapted from print.ellmer_prompt
-show_text <- function(x, matches = NULL, max_items = 20, max_lines = NULL) {
-  matches <- matches %||% rep(TRUE, length(x))
+show_text <- function(x, labels = NULL, max_items = 20, max_lines = NULL) {
+  labels <- labels %||% seq_along(x)
   max_lines <- max_lines %||% (max_items * 25)
 
   n <- length(x)
   n_extra <- length(x) - max_items
   if (n_extra > 0) {
     x <- x[seq_len(max_items)]
-    matches <- matches[seq_len(max_items)]
+    labels <- labels[seq_len(max_items)]
   }
 
   if (length(x) == 0) {
@@ -161,13 +166,7 @@ show_text <- function(x, matches = NULL, max_items = 20, max_lines = NULL) {
 
   bar <- if (cli::is_utf8_output()) "\u2502" else "|"
 
-  id <- ifelse(
-    matches,
-    cli::col_green(cli::symbol$tick),
-    cli::col_red(cli::symbol$cross)
-  )
-
-  indent <- paste0(id, " ", bar, " ")
+  indent <- paste0(labels, " ", bar, " ")
   exdent <- paste0("  ", cli::col_grey(bar), " ")
 
   x[is.na(x)] <- cli::col_red("<NA>")

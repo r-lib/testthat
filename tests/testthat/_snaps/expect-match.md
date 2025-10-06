@@ -149,20 +149,12 @@
       Actual text:
       x | test
 
-# show_text() shows success and failure
-
-    Code
-      base::writeLines(show_text(c("a", "b"), c(TRUE, FALSE)))
-    Output
-      ✔ │ a
-      ✖ │ b
-
 # show_text() truncates values and lines
 
     Code
       base::writeLines(show_text(lines, max_lines = 3))
     Output
-      ✔ │ a
+      1 │ a
         │ b
         │ ...
       ... and 8 more.
@@ -170,13 +162,13 @@
     Code
       base::writeLines(show_text(lines, max_items = 3))
     Output
-      ✔ │ a
+      1 │ a
         │ b
         │ c
-      ✔ │ d
+      2 │ d
         │ e
         │ f
-      ✔ │ g
+      3 │ g
         │ h
         │ i
       ... and 6 more.
@@ -184,10 +176,10 @@
     Code
       base::writeLines(show_text(lines, max_items = 2, max_lines = 4))
     Output
-      ✔ │ a
+      1 │ a
         │ b
         │ c
-      ✔ │ d
+      2 │ d
         │ ...
       ... and 8 more.
       
