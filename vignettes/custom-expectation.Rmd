@@ -75,12 +75,11 @@ expect_length <- function(object, n) {
   
   act_n <- length(act$val)
   if (act_n != n) {
-    msg <- c(
+    # 2. Fail if expectations are violated
+    fail(c(
       sprintf("Expected %s to have length %i.", act$lab, n),
       sprintf("Actual length: %i.", act_n)
-    )
-    # 2. Fail if expectations are violated
-    fail(msg)
+    ))
   } else {
     # 3. Pass if expectations are met
     pass()
@@ -93,7 +92,7 @@ expect_length <- function(object, n) {
 
 The first step in any expectation is to use `quasi_label()` to capture a "labeled value", i.e., a list that contains both the value (`$val`) for testing and a label (`$lab`) used to make failure messages as informative as possible. This is a pattern that exists for fairly esoteric reasons; you don't need to understand it, just copy and paste it.
 
-Next you need to check each way that `object` could violate the expectation. In this case, there's only one check, but in more complicated cases there can be multiple checks. In most cases, it's easier to check for violations one by one, using an nested if-else statement. That makes it easier to write informative failure messages that first describe what was expected and then what was actually seen.
+Next you need to check each way that `object` could violate the expectation. In this case, there's only one check, but in more complicated cases there can be many. Note the specific form of the failure message: the first element describes what we expected, and then the second line reports what we actually saw.
 
 If the object is as expected, call `pass()`. This ensures that a success will be registered in the test reporter.
 
@@ -154,21 +153,19 @@ expect_vector_length <- function(object, n) {
   # It's non-trivial to check if an object is a vector in base R so we
   # use an rlang helper
   if (!rlang::is_vector(act$val)) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to be a vector", act$lab),
       sprintf("Actual type: %s", typeof(act$val))
-    )
-    fail(msg)
+    ))
     return(invisible(act$val))
   }
 
   act_n <- length(act$val)
   if (act_n != n) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to have length %i.", act$lab, n),
       sprintf("Actual length: %i.", act_n)
-    )
-    fail(msg)
+    ))
   } else {
     pass()
   }
@@ -195,20 +192,17 @@ expect_s3_class <- function(object, class) {
   act <- quasi_label(rlang::enquo(object))
 
   if (!is.object(act$val)) {
-    msg <- sprintf("Expected %s to be an object.", act$lab)
-    fail(msg)
+    fail(sprintf("Expected %s to be an object.", act$lab))
   } else if (isS4(act$val)) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to be an S3 object.", act$lab),
       "Actual OO type: S4"
-    )
-    fail(msg)
+    ))
   } else if (!inherits(act$val, class)) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to inherit from %s.", act$lab, class),
       sprintf("Actual class: %s", class(act$val))
-    )
-    fail(msg)
+    ))
   } else {
     pass()
   }
@@ -258,20 +252,17 @@ expect_s3_object <- function(object, class = NULL) {
   act <- quasi_label(rlang::enquo(object))
 
   if (!is.object(act$val)) {
-    msg <- sprintf("Expected %s to be an object.", act$lab)
-    fail(msg)
+    fail(sprintf("Expected %s to be an object.", act$lab))
   } else if (isS4(act$val)) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to be an S3 object.", act$lab),
       "Actual OO type: S4"
-    )
-    fail(msg)
+    ))
   } else if (!is.null(class) && !inherits(act$val, class)) {
-    msg <- c(
+    fail(c(
       sprintf("Expected %s to inherit from %s.", act$lab, class),
       sprintf("Actual class: %s", class(act$val))
-    )
-    fail(msg)
+    ))
   } else {
     pass()
   }
@@ -290,8 +281,10 @@ The key challenge is that `fail()` captures a `trace_env`, which should be the e
 expect_length_ <- function(act, n, trace_env = caller_env()) {
   act_n <- length(act$val)
   if (act_n != n) {
-    msg <- sprintf("%s has length %i, not length %i.", act$lab, act_n, n)
-    fail(msg, trace_env = trace_env)
+    fail(
+      sprintf("%s has length %i, not length %i.", act$lab, act_n, n), 
+      trace_env = trace_env
+    )
   } else {
     pass()
   }
