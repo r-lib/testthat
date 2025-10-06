@@ -139,6 +139,7 @@ problem. For example, take this expectation from tidytext:</p>
 <span>  <span class="fu">expect_nrow</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">32</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🥇</span>.</span></span>
+<span></span>
 <span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"failure 1"</span>, <span class="op">{</span></span>
 <span>  <span class="fu">expect_nrow</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">30</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -154,6 +155,7 @@ problem. For example, take this expectation from tidytext:</p>
 <span><span class="co">#&gt; <span style="color: #555555;"> 2. </span>  └─<span style="font-weight: bold;">testthat</span>::expect_equal(nrow(tbl), n)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed with 1 failure and 1 success.</span></span>
+<span></span>
 <span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"failure 2"</span>, <span class="op">{</span></span>
 <span>  <span class="fu">expect_nrow</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -189,25 +191,27 @@ save yourself some pain by not reading this vignette 😀.</p>
 <div class="section level2">
 <h2 id="expectation-basics">Expectation basics<a class="anchor" aria-label="anchor" href="#expectation-basics"></a>
 </h2>
-<p>An expectation has three main parts, as illustrated by
+<p>An expectation has four main parts, as illustrated by
 <code><a href="../reference/expect_length.html">expect_length()</a></code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expect_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>  </span>
 <span>  <span class="co"># 1. Capture object and label</span></span>
 <span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="co"># 2. Check if expectations are violated</span></span>
+<span>  </span>
 <span>  <span class="va">act_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">act_n</span> <span class="op">!=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="co"># 2. Fail if expectations are violated</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to have length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">n</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Actual length: %i."</span>, <span class="va">act_n</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="co"># 3. Pass if expectations are met</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span>  </span>
-<span>  <span class="co"># 3. Pass when expectations are met</span></span>
-<span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span>  <span class="co"># 4. Invisibly return the input value</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>The first step in any expectation is to use
 <code><a href="../reference/quasi_label.html">quasi_label()</a></code> to capture a “labeled value”, i.e., a list
@@ -217,23 +221,15 @@ possible. This is a pattern that exists for fairly esoteric reasons; you
 don’t need to understand it, just copy and paste it.</p>
 <p>Next you need to check each way that <code>object</code> could
 violate the expectation. In this case, there’s only one check, but in
-more complicated cases there can be multiple checks. In most cases, it’s
-easier to check for violations one by one, using early returns to
-<code><a href="../reference/fail.html">fail()</a></code>. This makes it easier to write informative failure
-messages that first describe what was expected and then what was
-actually seen.</p>
-<p>Note that you need to use <code>return(fail())</code> here. If you
-don’t, your expectation might end up failing multiple times or both
-failing and succeeding. You won’t see these problems when interactively
-testing your expectation, but forgetting to <code><a href="https://rdrr.io/r/base/function.html" class="external-link">return()</a></code> can
-lead to incorrect fail and pass counts in typical usage. In the next
-section, you’ll learn how to test your expectation to avoid this
-issue.</p>
-<p>Finally, if the object is as expected, call <code><a href="../reference/fail.html">pass()</a></code> with
-<code>act$val</code>. This is good practice because expectation
-functions are called primarily for their side-effects (triggering a
-failure), and returning the value allows expectations to be piped
-together:</p>
+more complicated cases there can be many. Note the specific form of the
+failure message: the first element describes what we expected, and then
+the second line reports what we actually saw.</p>
+<p>If the object is as expected, call <code><a href="../reference/fail.html">pass()</a></code>. This ensures
+that a success will be registered in the test reporter.</p>
+<p>Finally, return the input value (<code>act$val</code>) invisibly.
+This is good practice because expectations are called primarily for
+their side-effects (triggering a failure), and returning the value
+allows expectations to be piped together:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"mtcars is a 13 row data frame"</span>, <span class="op">{</span></span>
 <span>  <span class="va">mtcars</span> <span class="op">|&gt;</span></span>
@@ -315,23 +311,23 @@ atomic vector or a list:</p>
 <span>  <span class="co"># It's non-trivial to check if an object is a vector in base R so we</span></span>
 <span>  <span class="co"># use an rlang helper</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/type-predicates.html" class="external-link">is_vector</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to be a vector"</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Actual type: %s"</span>, <span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="va">act_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">act_n</span> <span class="op">!=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to have length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">n</span><span class="op">)</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Actual length: %i."</span>, <span class="va">act_n</span><span class="op">)</span></span>
+<span>      <span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>      <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
 <span>  <span class="op">}</span></span>
 <span></span>
-<span>  <span class="va">act_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">act_n</span> <span class="op">!=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to have length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">n</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Actual length: %i."</span>, <span class="va">act_n</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span>  </span>
-<span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">expect_vector_length</span><span class="op">(</span><span class="va">mean</span>, <span class="fl">1</span><span class="op">)</span></span>
@@ -359,27 +355,22 @@ correct OO family.</p>
 <span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/is.object.html" class="external-link">is.object</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to be an object."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span><span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/isS4.html" class="external-link">isS4</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to be an object."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/isS4.html" class="external-link">isS4</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to be an S3 object."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span><span class="op">)</span>,</span>
 <span>      <span class="st">"Actual OO type: S4"</span></span>
-<span>    <span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span>, <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span>, <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to inherit from %s."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">class</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Actual class: %s"</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span></span>
-<span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
@@ -441,27 +432,22 @@ inheritance when non-<code>NULL</code>.</p>
 <span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/is.object.html" class="external-link">is.object</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to be an object."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span><span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/isS4.html" class="external-link">isS4</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to be an object."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/isS4.html" class="external-link">isS4</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to be an S3 object."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span><span class="op">)</span>,</span>
 <span>      <span class="st">"Actual OO type: S4"</span></span>
-<span>    <span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">class</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span>, <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">class</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span>, <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Expected %s to inherit from %s."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">class</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Actual class: %s"</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span></span>
-<span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
@@ -486,16 +472,20 @@ introduce a helper, you’ll need to explicitly pass it along:</p>
 <code class="sourceCode R"><span><span class="va">expect_length_</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">act</span>, <span class="va">n</span>, <span class="va">trace_env</span> <span class="op">=</span> <span class="fu">caller_env</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">act_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">act_n</span> <span class="op">!=</span> <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">msg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act_n</span>, <span class="va">n</span><span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span><span class="va">msg</span>, trace_env <span class="op">=</span> <span class="va">trace_env</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">fail</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%s has length %i, not length %i."</span>, <span class="va">act</span><span class="op">$</span><span class="va">lab</span>, <span class="va">act_n</span>, <span class="va">n</span><span class="op">)</span>, </span>
+<span>      trace_env <span class="op">=</span> <span class="va">trace_env</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
-<span></span>
-<span>  <span class="fu"><a href="../reference/fail.html">pass</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">expect_length</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span>  </span>
 <span>  <span class="va">act</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quasi_label.html">quasi_label</a></span><span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/enquo.html" class="external-link">enquo</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
 <span>  <span class="fu">expect_length_</span><span class="op">(</span><span class="va">act</span>, <span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="va">act</span><span class="op">$</span><span class="va">val</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>A few recommendations:</p>
 <ul>
@@ -503,8 +493,10 @@ introduce a helper, you’ll need to explicitly pass it along:</p>
 suffix to make that clear.</li>
 <li>It’s typically easiest for a helper to take the labeled value
 produced by <code><a href="../reference/quasi_label.html">quasi_label()</a></code>.</li>
-<li>Your helper should usually call both <code><a href="../reference/fail.html">fail()</a></code> and
-<code><a href="../reference/fail.html">pass()</a></code> and be returned from the wrapping expectation.</li>
+<li>Your helper should usually be called for its side effects (i.e. it
+calls <code><a href="../reference/fail.html">fail()</a></code> and <code><a href="../reference/fail.html">pass()</a></code>).</li>
+<li>You should return <code>invisible(act$val)</code> from the parent
+expecatation as usual.</li>
 </ul>
 <p>Again, you’re probably not writing so many expectations that it makes
 sense for you to go to this effort, but it is important for testthat to
