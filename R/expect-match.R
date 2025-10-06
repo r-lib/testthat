@@ -46,22 +46,24 @@ expect_match <- function(
   check_bool(all)
 
   if (length(object) == 0) {
-    msg <- sprintf("Expected %s to have at least one element.", act$lab)
-    fail(msg, info = info)
-    return(invisible(act$val))
+    fail(
+      sprintf("Expected %s to have at least one element.", act$lab),
+      info = info
+    )
+  } else {
+    expect_match_(
+      act = act,
+      regexp = regexp,
+      perl = perl,
+      fixed = fixed,
+      ...,
+      all = all,
+      info = info,
+      label = label,
+      negate = FALSE
+    )
   }
 
-  expect_match_(
-    act = act,
-    regexp = regexp,
-    perl = perl,
-    fixed = fixed,
-    ...,
-    all = all,
-    info = info,
-    label = label,
-    negate = FALSE
-  )
   invisible(act$val)
 }
 
