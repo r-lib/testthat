@@ -70,51 +70,50 @@ test_that("truncates long vectors", {
 
 test_that("ignores order", {
   expect_success(expect_mapequal(list(a = 1, b = 2), list(b = 2, a = 1)))
+  expect_success(expect_mapequal(c(a = 1, b = 2), c(b = 2, a = 1)))
 })
 
-test_that("ignores order recursively", {
-  x <- list(outer_1 = 1, outer_2 = list(inner_1 = 1, inner_2 = 2))
-  y <- list(outer_2 = list(inner_2 = 2, inner_1 = 1), outer_1 = 1)
-  expect_success(expect_mapequal(x, y))
-})
-
-test_that("fails when any names are duplicated", {
-  expect_failure(expect_mapequal(
-    list(a = 1, b = 2, b = 3),
-    list(b = 2, a = 1)
-  ))
-  expect_failure(expect_mapequal(
-    list(a = 1, b = 2),
-    list(b = 3, b = 2, a = 1)
-  ))
-  expect_failure(expect_mapequal(
-    list(a = 1, b = 2, b = 3),
-    list(b = 3, b = 2, a = 1)
-  ))
-})
-
-test_that("handling NULLs", {
-  expect_success(expect_mapequal(list(a = 1, b = NULL), list(b = NULL, a = 1)))
-})
-
-test_that("fail if names don't match", {
-  expect_failure(expect_mapequal(list(a = 1, b = 2), list(a = 1)))
-  expect_failure(expect_mapequal(list(a = 1), list(a = 1, b = 2)))
+test_that("fails if names don't match", {
+  x <- list(a = 1, b = 2)
+  y <- list(a = 1)
+  expect_snapshot_failure(expect_mapequal(x, y))
+  expect_snapshot_failure(expect_mapequal(y, x))
 })
 
 test_that("fails if values don't match", {
-  expect_failure(expect_mapequal(
-    list(a = 1, b = 2),
-    list(a = 1, b = 3)
-  ))
+  x <- list(a = 1, b = 2)
+  y <- list(a = 1, b = 3)
+  expect_snapshot_failure(expect_mapequal(x, y))
 })
 
-test_that("fails if unnamed values in different location if any unnamed values", {
-  expect_success(expect_mapequal(list(1, b = 2, c = 3), list(1, c = 3, b = 2)))
-  expect_failure(expect_mapequal(
-    list(1, b = 2, c = 3),
-    list(b = 2, 1, c = 3)
-  ))
+test_that("NULLs are not dropped", {
+  expect_success(expect_mapequal(list(a = 1, b = NULL), list(b = NULL, a = 1)))
+})
+
+test_that("warns if empty vector", {
+  expect_snapshot(expect_success(expect_mapequal(list(), list())))
+})
+
+test_that("uses equality behaviour of current edition", {
+  local_edition(2)
+  expect_success(expect_mapequal(c(a = 1), c(a = 1L)))
+})
+
+test_that("validates its inputs", {
+  unnamed <- list(1)
+  named <- list(a = 1)
+  duplicated <- list(x = 1, x = 2)
+
+  expect_snapshot(error = TRUE, {
+    expect_mapequal(sum, named)
+    expect_mapequal(named, sum)
+
+    expect_mapequal(unnamed, named)
+    expect_mapequal(named, unnamed)
+
+    expect_mapequal(named, duplicated)
+    expect_mapequal(duplicated, named)
+  })
 })
 
 # contains ----------------------------------------------------------------
