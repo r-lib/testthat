@@ -157,18 +157,18 @@ expect_vector_length <- function(object, n) {
       sprintf("Expected %s to be a vector", act$lab),
       sprintf("Actual type: %s", typeof(act$val))
     ))
-    return(invisible(act$val))
+  } else {
+    act_n <- length(act$val)
+    if (act_n != n) {
+      fail(c(
+        sprintf("Expected %s to have length %i.", act$lab, n),
+        sprintf("Actual length: %i.", act_n)
+      ))
+    } else {
+      pass()
+    }
   }
 
-  act_n <- length(act$val)
-  if (act_n != n) {
-    fail(c(
-      sprintf("Expected %s to have length %i.", act$lab, n),
-      sprintf("Actual length: %i.", act_n)
-    ))
-  } else {
-    pass()
-  }
   invisible(act$val)
 }
 ```
