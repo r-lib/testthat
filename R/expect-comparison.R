@@ -28,19 +28,24 @@ expect_compare_ <- function(
   operator <- match.arg(operator)
   op <- match.fun(operator)
 
-  actual_op <- switch(operator, "<" = ">=", "<=" = ">", ">" = "<=", ">=" = "<")
-
   cmp <- op(act$val, exp$val)
   if (length(cmp) != 1 || !is.logical(cmp)) {
     cli::cli_abort(
-      "Result of comparison must be a single logical value.",
+      "Result of comparison must be `TRUE`, `FALSE`, or `NA`",
       call = trace_env
     )
-  }
-  if (isTRUE(cmp)) {
+  } else if (!isTRUE(cmp)) {
+    msg <- failure_compare(act, exp, operator)
+    fail(msg, trace_env = trace_env)
+  } else {
     pass()
-    return(invisible(act$val))
   }
+
+  invisible(act$val)
+}
+
+failure_compare <- function(act, exp, operator) {
+  actual_op <- switch(operator, "<" = ">=", "<=" = ">", ">" = "<=", ">=" = "<")
 
   diff <- act$val - exp$val
   msg_exp <- sprintf("Expected %s %s %s.", act$lab, operator, exp$lab)
@@ -67,9 +72,10 @@ expect_compare_ <- function(
       actual_op
     )
   }
-  fail(c(msg_exp, msg_act, msg_diff), trace_env = trace_env)
-  invisible(act$val)
+
+  c(msg_exp, msg_act, msg_diff)
 }
+
 #' @export
 #' @rdname comparison-expectations
 expect_lt <- function(object, expected, label = NULL, expected.label = NULL) {
