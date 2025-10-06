@@ -144,13 +144,10 @@ expect_match_ <- function(
 }
 
 # Adapted from print.ellmer_prompt
-show_text <- function(
-  x,
-  matches = rep(TRUE, length(x)),
-  ...,
-  max_items = 20,
-  max_lines = max_items * 25
-) {
+show_text <- function(x, matches = NULL, max_items = 20, max_lines = NULL) {
+  matches <- matches %||% rep(TRUE, length(x))
+  max_lines <- max_lines %||% (max_items * 25)
+
   n <- length(x)
   n_extra <- length(x) - max_items
   if (n_extra > 0) {
