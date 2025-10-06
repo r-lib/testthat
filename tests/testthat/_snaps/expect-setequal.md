@@ -142,7 +142,15 @@
         `actual$b`: 2.0
       `expected$b`: 3.0
 
-# check inputs
+# warns if empty vector
+
+    Code
+      expect_success(expect_mapequal(list(), list()))
+    Condition
+      Warning:
+      `object` and `expected` are empty vectors.
+
+# validates its inputs
 
     Code
       expect_mapequal(sum, named)
@@ -178,14 +186,6 @@
       Error in `expect_mapequal()`:
       ! All elements in `object` must have unique names.
       x Duplicate names: "x"
-
-# warns if empty vector
-
-    Code
-      expect_success(expect_mapequal(list(), list()))
-    Condition
-      Warning:
-      `object` and `expected` are empty vectors.
 
 # expect_contains() gives useful message on failure
 
