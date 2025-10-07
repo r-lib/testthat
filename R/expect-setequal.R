@@ -34,25 +34,17 @@ expect_setequal <- function(object, expected) {
     testthat_warn("expect_setequal() ignores names")
   }
 
-  expect_setequal_(act, exp)
+  expect_setequal_("Expected %s to have the same values as %s.", act, exp)
 }
 
-expect_setequal_ <- function(
-  act,
-  exp,
-  trace_env = caller_env()
-) {
+expect_setequal_ <- function(msg, act, exp, trace_env = caller_env()) {
   act_miss <- unique(act$val[!act$val %in% exp$val])
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
   if (length(exp_miss) == 0 && length(act_miss) == 0) {
     pass()
   } else {
-    msg_exp <- sprintf(
-      "Expected %s to have the same values as %s.",
-      act$lab,
-      exp$lab
-    )
+    msg_exp <- sprintf(msg, act$lab, exp$lab)
     msg_act <- c(
       sprintf("Actual: %s", values(act$val)),
       sprintf("Expected: %s", values(exp$val)),
@@ -103,13 +95,16 @@ expect_mapequal <- function(object, expected) {
     pass()
   } else {
     if (!setequal(act_nms, exp_nms)) {
-      act_names <- labelled_value(names(act$val), paste0("names of ", act$lab))
-      exp_names <- labelled_value(names(exp$val), paste0("names of ", exp$lab))
-      expect_setequal_(act_names, exp_names)
+      msg <- "Expected %s to have the same names as %s."
+      act_names <- labelled_value(names(act$val), act$lab)
+      exp_names <- labelled_value(names(exp$val), exp$lab)
+      expect_setequal_(msg, act_names, exp_names)
     } else {
       if (edition_get() >= 3) {
         act <- labelled_value(act$val[exp_nms], act$lab)
-        expect_waldo_equal_("equal", act, exp, tolerance = testthat_tolerance())
+
+        msg <- "Expected %s to contain the same values as %s."
+        expect_waldo_equal_(msg, act, exp, tolerance = testthat_tolerance())
       } else {
         # Packages depend on 2e behaviour, but the expectation isn't written
         # to be reused, and we don't want to bother
