@@ -1,3 +1,21 @@
+#' Expect that all values in a vector are the same
+#'
+#' These expectations are similar to `expect_true(all(x == "x"))`,
+#' `expect_true(all(x))` and `expect_true(all(!x))` but give more informative
+#' failure messages if the expectations are not met.
+#'
+#' @inheritParams expect_equal
+#' @export
+#' @examples
+#' x1 <- c(1, 1, 1, 1, 1, 1)
+#' expect_all_equal(x1, 1)
+#'
+#' x2 <- c(1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2)
+#' show_failure(expect_all_equal(x2, 1))
+#'
+#' # expect_all_true() and expect_all_false() are helpers for common cases
+#' show_failure(expect_all_true(rpois(100, 10) < 20))
+#' show_failure(expect_all_false(rpois(100, 10) > 20))
 expect_all_equal <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
@@ -6,6 +24,8 @@ expect_all_equal <- function(object, expected) {
   invisible(act$val)
 }
 
+#' @export
+#' @rdname expect_all_equal
 expect_all_true <- function(object) {
   act <- quasi_label(enquo(object))
   exp <- labelled_value(TRUE, "TRUE")
@@ -14,6 +34,8 @@ expect_all_true <- function(object) {
   invisible(act$val)
 }
 
+#' @export
+#' @rdname expect_all_equal
 expect_all_false <- function(object) {
   act <- quasi_label(enquo(object))
   exp <- labelled_value(FALSE, "FALSE")
