@@ -46,7 +46,7 @@
       expect_equal(list(a = 1), list(a = "b", b = 10))
     Condition
       Error:
-      ! Expected `list(a = 1)` to be equal to `list(a = "b", b = 10)`.
+      ! Expected `list(a = 1)` to equal `list(a = "b", b = 10)`.
       Differences:
       `actual` is length 1
       `expected` is length 2
