@@ -149,6 +149,14 @@
       Actual text:
       x | test
 
+# show_text() shows success and failure
+
+    Code
+      base::writeLines(show_text(c("a", "b"), c(TRUE, FALSE)))
+    Output
+      ✔ │ a
+      ✖ │ b
+
 # show_text() truncates values and lines
 
     Code
