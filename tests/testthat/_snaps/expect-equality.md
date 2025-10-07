@@ -15,7 +15,7 @@
       expect_equal(x, "a")
     Condition
       Error:
-      ! Expected `x` to be equal to "a".
+      ! Expected `x` to equal "a".
       Differences:
       `actual` is a double vector (1)
       `expected` is a character vector ('a')
@@ -66,7 +66,7 @@
       expect_equal(x, !!y)
     Condition
       Error:
-      ! Expected `x` to be equal to 2.
+      ! Expected `x` to equal 2.
       Differences:
         `actual`: 1.0
       `expected`: 2.0

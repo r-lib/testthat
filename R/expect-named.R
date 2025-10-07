@@ -51,13 +51,14 @@ expect_named <- function(
     exp$val <- normalise_names(exp$val, ignore.order, ignore.case)
     act_names <- labelled_value(
       normalise_names(names(act$val), ignore.order, ignore.case),
-      paste0("names of ", act$lab)
+      act$lab
     )
 
+    msg <- "Expected %s to have names %s."
     if (ignore.order) {
-      expect_setequal_(act_names, exp)
+      expect_setequal_(msg, act_names, exp)
     } else {
-      expect_waldo_equal_("equal", act_names, exp)
+      expect_waldo_equal_(msg, act_names, exp)
     }
   }
 

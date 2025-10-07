@@ -68,7 +68,8 @@ expect_equal <- function(
   check_number_decimal(tolerance, min = 0, allow_null = TRUE)
 
   if (edition_get() >= 3) {
-    expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)
+    msg <- "Expected %s to equal %s."
+    expect_waldo_equal_(msg, act, exp, info, ..., tolerance = tolerance)
   } else {
     if (!is.null(tolerance)) {
       comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
@@ -105,7 +106,8 @@ expect_identical <- function(
   exp <- quasi_label(enquo(expected), expected.label)
 
   if (edition_get() >= 3) {
-    expect_waldo_equal_("identical", act, exp, info, ...)
+    msg <- "Expected %s to be identical to %s."
+    expect_waldo_equal_(msg, act, exp, info, ...)
   } else {
     if (identical(act$val, exp$val, ...)) {
       pass()
@@ -129,7 +131,7 @@ expect_identical <- function(
 }
 
 expect_waldo_equal_ <- function(
-  type,
+  msg,
   act,
   exp,
   info = NULL,
@@ -147,7 +149,7 @@ expect_waldo_equal_ <- function(
     pass()
   } else {
     msg <- c(
-      sprintf("Expected %s to be %s to %s.", act$lab, type, exp$lab),
+      sprintf(msg, act$lab, exp$lab),
       "Differences:",
       paste0(comp, collpase = "\n")
     )

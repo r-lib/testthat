@@ -115,7 +115,7 @@
       expect_mapequal(x, y)
     Condition
       Error:
-      ! Expected names of `x` to have the same values as names of `y`.
+      ! Expected `x` to have the same names as `y`.
       Actual: "a", "b"
       Expected: "a"
       Needs: "b"
@@ -126,7 +126,7 @@
       expect_mapequal(y, x)
     Condition
       Error:
-      ! Expected names of `y` to have the same values as names of `x`.
+      ! Expected `y` to have the same names as `x`.
       Actual: "a"
       Expected: "a", "b"
       Absent: "b"
@@ -137,7 +137,7 @@
       expect_mapequal(x, y)
     Condition
       Error:
-      ! Expected `x` to be equal to `y`.
+      ! Expected `x` to contain the same values as `y`.
       Differences:
         `actual$b`: 2.0
       `expected$b`: 3.0
