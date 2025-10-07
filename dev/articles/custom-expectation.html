@@ -144,7 +144,7 @@ problem. For example, take this expectation from tidytext:</p>
 <span>  <span class="fu">expect_nrow</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">30</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;">: failure 1</span> ─────────────────────────────────────────────────</span></span>
-<span><span class="co">#&gt; Expected `nrow(tbl)` to be equal to `n`.</span></span>
+<span><span class="co">#&gt; Expected `nrow(tbl)` to equal `n`.</span></span>
 <span><span class="co">#&gt; Differences:</span></span>
 <span><span class="co">#&gt;   `actual`: <span style="color: #00BB00;">32.0</span></span></span>
 <span><span class="co">#&gt; `expected`: <span style="color: #00BB00;">30.0</span></span></span>
@@ -167,7 +167,7 @@ problem. For example, take this expectation from tidytext:</p>
 <span><span class="co">#&gt; <span style="color: #555555;"> 1. </span>└─<span style="font-weight: bold;">global</span> expect_nrow(matrix(1:5), 2)</span></span>
 <span><span class="co">#&gt; <span style="color: #555555;"> 2. </span>  └─<span style="font-weight: bold;">testthat</span>::expect_s3_class(tbl, "data.frame")</span></span>
 <span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Failure</span><span style="font-weight: bold;">: failure 2</span> ─────────────────────────────────────────────────</span></span>
-<span><span class="co">#&gt; Expected `nrow(tbl)` to be equal to `n`.</span></span>
+<span><span class="co">#&gt; Expected `nrow(tbl)` to equal `n`.</span></span>
 <span><span class="co">#&gt; Differences:</span></span>
 <span><span class="co">#&gt;   `actual`: <span style="color: #00BB00;">5.0</span></span></span>
 <span><span class="co">#&gt; `expected`: <span style="color: #00BB00;">2.0</span></span></span>

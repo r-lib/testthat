@@ -128,7 +128,7 @@ the results.</p>
 <span class="r-in"><span><span class="co"># that caused the problem:</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="va">i</span><span class="op">)</span>, <span class="va">i</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `f(i)` to be equal to `i * 10`.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `f(i)` to equal `i * 10`.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   `actual`:  <span style="color: #00BB00;">90.0</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `expected`: <span style="color: #00BB00;">100.0</span></span>
@@ -139,7 +139,7 @@ the results.</p>
 <span class="r-in"><span><span class="co"># variable name</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">!</span><span class="op">!</span><span class="va">i</span><span class="op">)</span>, <span class="op">!</span><span class="op">!</span><span class="op">(</span><span class="va">i</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `f(10)` to be equal to 100.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `f(10)` to equal 100.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   `actual`:  <span style="color: #00BB00;">90.0</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> `expected`: <span style="color: #00BB00;">100.0</span></span>
