@@ -37,12 +37,7 @@ expect_setequal <- function(object, expected) {
   expect_setequal_("Expected %s to have the same values as %s.", act, exp)
 }
 
-expect_setequal_ <- function(
-  msg,
-  act,
-  exp,
-  trace_env = caller_env()
-) {
+expect_setequal_ <- function(msg, act, exp, trace_env = caller_env()) {
   act_miss <- unique(act$val[!act$val %in% exp$val])
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
