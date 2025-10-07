@@ -4,7 +4,7 @@
 \alias{expect_all_equal}
 \alias{expect_all_true}
 \alias{expect_all_false}
-\title{Expect that all values in a vector are the same}
+\title{Do you expect every value in vector to have this value?}
 \usage{
 expect_all_equal(object, expected)
 

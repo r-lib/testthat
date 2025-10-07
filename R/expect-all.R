@@ -1,4 +1,4 @@
-#' Expect that all values in a vector are the same
+#' Do you expect every value in a vector to have this value?
 #'
 #' These expectations are similar to `expect_true(all(x == "x"))`,
 #' `expect_true(all(x))` and `expect_true(all(!x))` but give more informative

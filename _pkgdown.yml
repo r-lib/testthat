@@ -27,6 +27,7 @@ reference:
 - title: Expectations
 - subtitle: Values
   contents:
+  - expect_all_equal
   - expect_gt
   - expect_length
   - expect_match
