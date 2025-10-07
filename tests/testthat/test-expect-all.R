@@ -24,3 +24,10 @@ test_that("truncates very long differences", {
   x <- rep(TRUE, 10)
   expect_snapshot_failure(expect_all_equal(x, FALSE))
 })
+
+test_that("has TRUE and FALSE helpers", {
+  x1 <- rep(TRUE, 10)
+  x2 <- rep(FALSE, 10)
+  expect_success(expect_all_true(x1))
+  expect_success(expect_all_false(x2))
+})
