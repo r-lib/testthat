@@ -15,7 +15,7 @@ test_that("can compare atomic vectors", {
   expect_snapshot_failure(expect_all_equal(x, TRUE))
 })
 
-test_that("can compare lists", {
+test_that("can compare named lists", {
   x <- list(a = 1, b = 1, c = 2, d = 1, e = 1)
   expect_snapshot_failure(expect_all_equal(x, list(1)))
 })

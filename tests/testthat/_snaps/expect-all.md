@@ -32,7 +32,7 @@
       `actual[2:8]`:   TRUE TRUE TRUE FALSE TRUE TRUE TRUE
       `expected[2:8]`: TRUE TRUE TRUE TRUE  TRUE TRUE TRUE
 
-# can compare lists
+# can compare named lists
 
     Code
       expect_all_equal(x, list(1))
