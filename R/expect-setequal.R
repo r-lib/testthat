@@ -109,7 +109,7 @@ expect_mapequal <- function(object, expected) {
         act <- labelled_value(act$val[exp_nms], act$lab)
 
         msg <- "Expected %s to contain the same values as %s."
-        expect_waldo_equal_(msg, act, exp)
+        expect_waldo_equal_(msg, act, exp, tolerance = testthat_tolerance())
       } else {
         # Packages depend on 2e behaviour, but the expectation isn't written
         # to be reused, and we don't want to bother

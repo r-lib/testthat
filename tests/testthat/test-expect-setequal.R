@@ -94,6 +94,10 @@ test_that("warns if empty vector", {
   expect_snapshot(expect_success(expect_mapequal(list(), list())))
 })
 
+test_that("ignores integer/numeric differences", {
+  expect_success(expect_mapequal(list(a = 1L), list(a = 1)))
+})
+
 test_that("uses equality behaviour of current edition", {
   local_edition(2)
   expect_success(expect_mapequal(c(a = 1), c(a = 1L)))
