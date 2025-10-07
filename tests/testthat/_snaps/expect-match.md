@@ -154,7 +154,7 @@
     Code
       base::writeLines(show_text(lines, max_lines = 3))
     Output
-      1 │ a
+      ✔ │ a
         │ b
         │ ...
       ... and 8 more.
@@ -162,13 +162,13 @@
     Code
       base::writeLines(show_text(lines, max_items = 3))
     Output
-      1 │ a
+      ✔ │ a
         │ b
         │ c
-      2 │ d
+      ✔ │ d
         │ e
         │ f
-      3 │ g
+      ✔ │ g
         │ h
         │ i
       ... and 6 more.
@@ -176,10 +176,10 @@
     Code
       base::writeLines(show_text(lines, max_items = 2, max_lines = 4))
     Output
-      1 │ a
+      ✔ │ a
         │ b
         │ c
-      2 │ d
+      ✔ │ d
         │ ...
       ... and 8 more.
       
