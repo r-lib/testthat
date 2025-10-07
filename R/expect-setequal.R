@@ -108,7 +108,7 @@ expect_mapequal <- function(object, expected) {
       if (edition_get() >= 3) {
         act <- labelled_value(act$val[exp_nms], act$lab)
 
-        msg <- "Expected %s to contain same values as %s."
+        msg <- "Expected %s to contain the same values as %s."
         expect_waldo_equal_(msg, act, exp)
       } else {
         # Packages depend on 2e behaviour, but the expectation isn't written
