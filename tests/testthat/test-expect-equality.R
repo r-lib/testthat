@@ -72,6 +72,10 @@ test_that("provide useful feedback on failure (3e)", {
   expect_snapshot_failure(expect_equal(x, "a"))
 })
 
+test_that("correctly spaces lines", {
+  expect_snapshot_failure(expect_equal(list(a = 1), list(a = "b", b = 10)))
+})
+
 test_that("provide useful feedback on failure (2e)", {
   local_edition(2)
   withr::local_options(testthat.edition_ignore = TRUE)

@@ -151,7 +151,7 @@ expect_waldo_equal_ <- function(
     msg <- c(
       sprintf(msg, act$lab, exp$lab),
       "Differences:",
-      paste0(comp, collpase = "\n")
+      paste0(comp, "\n")
     )
     fail(msg, info = info, trace_env = trace_env)
   }

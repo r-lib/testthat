@@ -86,7 +86,7 @@ expect_waldo_constant_ <- function(
     msg <- c(
       sprintf("Expected %s to be %s.", act$lab, exp$lab),
       "Differences:",
-      paste0(comp, collpase = "\n")
+      paste0(comp, "\n")
     )
     fail(msg, info = info, trace_env = trace_env)
   } else {
