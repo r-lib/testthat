@@ -97,7 +97,6 @@ test_that("% is not treated as sprintf format specifier (#445)", {
   expect_success(expect_equal("%", "%"))
 })
 
-
 # 2nd edition ---------------------------------------------------
 
 test_that("useful message if objects equal but not identical", {
