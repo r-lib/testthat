@@ -137,7 +137,7 @@
       expect_mapequal(x, y)
     Condition
       Error:
-      ! Expected `x` to contain same values as `y`.
+      ! Expected `x` to contain the same values as `y`.
       Differences:
         `actual$b`: 2.0
       `expected$b`: 3.0
