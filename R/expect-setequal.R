@@ -109,7 +109,7 @@ expect_mapequal <- function(object, expected) {
     } else {
       if (edition_get() >= 3) {
         act <- labelled_value(act$val[exp_nms], act$lab)
-        expect_waldo_equal_("equal", act, exp)
+        expect_waldo_equal_("equal", act, exp, tolerance = testthat_tolerance())
       } else {
         # Packages depend on 2e behaviour, but the expectation isn't written
         # to be reused, and we don't want to bother
