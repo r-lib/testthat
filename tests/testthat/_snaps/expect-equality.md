@@ -40,6 +40,26 @@
       Differences:
       Types not compatible: double is not character
 
+# correctly spaces lines
+
+    Code
+      expect_equal(list(a = 1), list(a = "b", b = 10))
+    Condition
+      Error:
+      ! Expected `list(a = 1)` to be equal to `list(a = "b", b = 10)`.
+      Differences:
+      `actual` is length 1
+      `expected` is length 2
+      
+      `names(actual)`:   "a"    
+      `names(expected)`: "a" "b"
+      
+      `actual$a` is a double vector (1)
+      `expected$a` is a character vector ('b')
+      
+      `actual$b` is absent
+      `expected$b` is a double vector (10)
+
 # provide useful feedback on failure (2e)
 
     Code
