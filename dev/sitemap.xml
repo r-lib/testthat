@@ -47,6 +47,7 @@
 <url><loc>https://testthat.r-lib.org/dev/reference/equality-expectations.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/evaluate_promise.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/reference/expect_all_equal.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_equivalent.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_error.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_invisible.html</loc></url>

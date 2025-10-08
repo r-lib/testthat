@@ -122,17 +122,47 @@ alternatives in <a href="quasi_label.html">quasi_label</a>.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">expect_true</span><span class="op">(</span><span class="fl">2</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Failed expectations will throw an error</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="fu">expect_true</span><span class="op">(</span><span class="fl">2</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
-<span class="r-in"><span><span class="fu">expect_true</span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="fl">2</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># or better:</span></span></span>
-<span class="r-in"><span><span class="fu">expect_false</span><span class="op">(</span><span class="fl">2</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_true</span><span class="op">(</span><span class="fl">2</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `2 != 2` to be TRUE.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `actual`:   <span style="color: #00BB00;">FALSE</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `expected`: <span style="color: #00BB00;">TRUE</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span></span>
-<span class="r-in"><span><span class="fu">expect_true</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">==</span> <span class="fl">3</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># but better to use more specific expectation, if available</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># where possible, use more specific expectations, to get more informative</span></span></span>
+<span class="r-in"><span><span class="co"># error messages</span></span></span>
+<span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_true</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">==</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `length(a) == 3` to be TRUE.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `actual`:   <span style="color: #00BB00;">FALSE</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `expected`: <span style="color: #00BB00;">TRUE</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu"><a href="equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `length(a)` to equal 3.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   `actual`: <span style="color: #00BB00;">4.0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `expected`: <span style="color: #00BB00;">3.0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu">expect_true</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected `all(x)` to be TRUE.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `actual`:   <span style="color: #00BB00;">FALSE</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `expected`: <span style="color: #00BB00;">TRUE</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu"><a href="expect_success.html">show_failure</a></span><span class="op">(</span><span class="fu"><a href="expect_all_equal.html">expect_all_true</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Failed expectation:</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Expected every element of `x` to equal TRUE.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `actual`:   <span style="color: #555555;">TRUE</span> <span style="color: #555555;">TRUE</span> <span style="color: #00BB00;">FALSE</span> <span style="color: #555555;">TRUE</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> `expected`: <span style="color: #555555;">TRUE</span> <span style="color: #555555;">TRUE</span> <span style="color: #00BB00;">TRUE</span>  <span style="color: #555555;">TRUE</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
