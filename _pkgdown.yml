@@ -54,6 +54,7 @@ reference:
 - title: Test helpers
   contents:
   - is_testing
+  - extract_test
   - local_edition
   - local_reproducible_output
   - set_state_inspector
