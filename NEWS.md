@@ -1,6 +1,7 @@
 # testthat (development version)
 
 * New `extract_test()` function to extract a reprex from a failing expectation.
+* `expect_all_equal()`, `expect_all_true()`, and `expect_all_false()` are a new family of expectations that checks that every element of a vector has the same value. Compared to using `expect_true(all(...))` they give better failure messages (#1836, #2235).
 * Expectations now consistently return the value of the first argument, regardless of whether the expectation succeeds or fails. The primary exception are `expect_message()` and friends which will return the condition. This shouldn't affect existing tests, but will make failures clearer when you chain together multiple expectations (#2246).
 * `set_state_inspector()` gains `tolerance` argument and ignores minor FP differences by default (@mcol, #2237).
 * `expect_vector()` fails, instead of erroring, if `object` is not a vector (@plietar, #2224).
