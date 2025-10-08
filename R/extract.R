@@ -24,9 +24,10 @@ extract_test <- function(location, path = stdout()) {
   test_path <- test_path(pieces[[1]])
   line <- as.integer(pieces[2])
   source <- paste0("# Extracted from ", test_path, ":", line)
+  exprs <- parse_file(test_path)
 
   lines <- tryCatch(
-    extract_test_lines(test_path, line),
+    extract_test_lines(exprs, line),
     error = function(cnd) {
       lines <- strsplit(conditionMessage(cnd), "\n")[[1]]
       lines <- c("", "Failed to extract test: ", lines)
@@ -38,17 +39,9 @@ extract_test <- function(location, path = stdout()) {
   base::writeLines(lines, con = path)
 }
 
-extract_test_lines <- function(path, line, error_call = caller_env()) {
-  check_string(path)
-  if (!file.exists(path)) {
-    cli::cli_abort(
-      "{.arg path} ({.path path}) does not exist.",
-      call = error_call
-    )
-  }
+extract_test_lines <- function(exprs, line, error_call = caller_env()) {
   check_number_whole(line, min = 1, call = error_call)
 
-  exprs <- parse(file = path, keep.source = TRUE)
   srcrefs <- attr(exprs, "srcref")
 
   # Focus on srcrefs before the selected line
@@ -87,6 +80,17 @@ extract_test_lines <- function(path, line, error_call = caller_env()) {
 }
 
 # Helpers ---------------------------------------------------------------------
+
+parse_file <- function(path, error_call = caller_env()) {
+  check_string(path, call = error_call)
+  if (!file.exists(path)) {
+    cli::cli_abort(
+      "{.arg path} ({.path path}) does not exist.",
+      call = error_call
+    )
+  }
+  parse(path, keep.source = TRUE)
+}
 
 check_test_call <- function(expr, error_call = caller_env()) {
   if (!is_call(expr, n = 2)) {
