@@ -21,4 +21,19 @@ fails, the error message will be written to \code{path}.
 \code{extract_test()} creates a minimal reprex for a failed expectation.
 It extracts all non-test code before the failed expectation as well as
 all code inside the test up to and including the failed expectation.
+
+This is particularly useful when you're debugging test failures in
+someone else's package.
+}
+\examples{
+# If you see a test failure like this:
+# ── Failure (test-extract.R:46:3): errors if can't find test ───────────────
+# Expected FALSE to be TRUE.
+# Differences:
+# `actual`:   FALSE
+# `expected`: TRUE
+
+# You can run this:
+\dontrun{extract_test("test-extract.R:46:3")}
+# to see just the code needed to reproduce the failure
 }

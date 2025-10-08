@@ -1,8 +1,12 @@
 #' Extract a reprex from a failed expectation
 #'
+#' @description
 #' `extract_test()` creates a minimal reprex for a failed expectation.
 #' It extracts all non-test code before the failed expectation as well as
 #' all code inside the test up to and including the failed expectation.
+#'
+#' This is particularly useful when you're debugging test failures in
+#' someone else's package.
 #'
 #' @param location A string giving the location in the form
 #'   `FILE:LINE[:COLUMN]`.
@@ -11,6 +15,17 @@
 #'   reprex to `path`. This function will never error: if extraction
 #'   fails, the error message will be written to `path`.
 #' @export
+#' @examples
+#' # If you see a test failure like this:
+#' # ── Failure (test-extract.R:46:3): errors if can't find test ───────────────
+#' # Expected FALSE to be TRUE.
+#' # Differences:
+#' # `actual`:   FALSE
+#' # `expected`: TRUE
+#'
+#' # You can run this:
+#' \dontrun{extract_test("test-extract.R:46:3")}
+#' # to see just the code needed to reproduce the failure
 extract_test <- function(location, path = stdout()) {
   check_string(location)
 
