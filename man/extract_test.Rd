@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract.R
 \name{extract_test}
 \alias{extract_test}
-\title{Extract a reprex from an failed expectation}
+\title{Extract a reprex from a failed expectation}
 \usage{
 extract_test(location, path = stdout())
 }

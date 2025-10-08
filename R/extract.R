@@ -1,4 +1,4 @@
-#' Extract a reprex from an failed expectation
+#' Extract a reprex from a failed expectation
 #'
 #' `extract_test()` creates a minimal reprex for a failed expectation.
 #' It extracts all non-test code before the failed expectation as well as
@@ -23,13 +23,13 @@ extract_test <- function(location, path = stdout()) {
 
   test_path <- test_path(pieces[[1]])
   line <- as.integer(pieces[2])
-  source <- paste0("# Extracted from tests/testthat/", path, ":", line)
+  source <- paste0("# Extracted from ", test_path, ":", line)
 
   lines <- tryCatch(
     extract_test_lines(test_path, line),
     error = function(cnd) {
       lines <- strsplit(conditionMessage(cnd), "\n")[[1]]
-      lines <- c("Failed to extract test", lines)
+      lines <- c("", "Failed to extract test: ", lines)
       paste0("# ", lines)
     }
   )
@@ -68,7 +68,10 @@ extract_test_lines <- function(path, line, error_call = caller_env()) {
     prequel <- NULL
   }
 
-  # Now we extract the contents of the test
+  # Now we extract the contents of the last test
+  if (!any(is_subtest)) {
+    cli::cli_abort("Failed to find test at line {line}.", call = error_call)
+  }
   test_idx <- rev(which(is_subtest))[[1]]
   call <- exprs[[test_idx]]
   check_test_call(call, error_call = error_call)
@@ -95,7 +98,7 @@ check_test_call <- function(expr, error_call = caller_env()) {
   }
   if (!is_call(expr[[3]], "{")) {
     cli::cli_abort(
-      "test call has use {",
+      "test call doesn't use `{`",
       internal = TRUE,
       call = error_call
     )
