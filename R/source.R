@@ -115,7 +115,9 @@ filter_desc <- function(exprs, descs, error_call = caller_env()) {
 }
 
 is_subtest <- function(expr) {
-  is_call(expr, c("test_that", "describe", "it"), n = 2) && is_string(expr[[2]])
+  is_call(expr, c("test_that", "describe", "it"), n = 2) &&
+    is_string(expr[[2]]) &&
+    is_call(expr[[3]], "{")
 }
 
 #' @rdname source_file

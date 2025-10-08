@@ -43,40 +43,33 @@ extract_test_lines <- function(exprs, line, error_call = caller_env()) {
   check_number_whole(line, min = 1, call = error_call)
 
   srcrefs <- attr(exprs, "srcref")
-
-  # Focus on srcrefs before the selected line
-  keep <- start_line(srcrefs) <= line
-  exprs <- exprs[keep]
-  srcrefs <- srcrefs[keep]
-
-  # We first capture the prequel, all code outside of tests
   is_subtest <- map_lgl(exprs, is_subtest)
-  if (any(!is_subtest)) {
-    prequel <- c(
-      comment_header("prequel"),
-      map_chr(srcrefs[!is_subtest], as.character),
-      ""
-    )
-  } else {
-    prequel <- NULL
-  }
 
-  # Now we extract the contents of the last test
-  if (!any(is_subtest)) {
+  # First we find the test
+  is_test <- is_subtest &
+    start_line(srcrefs) <= line &
+    end_line(srcrefs) >= line
+  if (!any(is_test)) {
     cli::cli_abort("Failed to find test at line {line}.", call = error_call)
   }
-  test_idx <- rev(which(is_subtest))[[1]]
-  call <- exprs[[test_idx]]
-  check_test_call(call, error_call = error_call)
-
+  call <- exprs[[which(is_test)[[1]]]]
   test_contents <- attr(call[[3]], "srcref")[-1] # drop `{`
   keep <- start_line(test_contents) <= line
-  test <- c(
-    comment_header("test"),
-    map_chr(test_contents[keep], as.character)
-  )
+  test <- srcref_to_character(test_contents[keep])
 
-  c(prequel, test)
+  # We first find the prequel, all non-test code before the test
+  is_prequel <- !is_subtest & start_line(srcrefs) < line
+  if (!any(is_prequel)) {
+    return(test)
+  }
+
+  c(
+    "# prequel ---------------------------------------------------------------",
+    srcref_to_character(srcrefs[is_prequel]),
+    "",
+    "# test ------------------------------------------------------------------",
+    test
+  )
 }
 
 # Helpers ---------------------------------------------------------------------
@@ -92,27 +85,20 @@ parse_file <- function(path, error_call = caller_env()) {
   parse(path, keep.source = TRUE)
 }
 
-check_test_call <- function(expr, error_call = caller_env()) {
-  if (!is_call(expr, n = 2)) {
-    cli::cli_abort(
-      "test call has unexpected number of arguments",
-      internal = TRUE,
-      call = error_call
-    )
-  }
-  if (!is_call(expr[[3]], "{")) {
-    cli::cli_abort(
-      "test call doesn't use `{`",
-      internal = TRUE,
-      call = error_call
-    )
-  }
+parse_text <- function(text) {
+  text <- sub("^\n", "", text)
+  indent <- regmatches(text, regexpr("^ *", text))
+  text <- gsub(paste0("(?m)^", indent), "", text, perl = TRUE)
+
+  parse(text = text, keep.source = TRUE)
 }
 
-comment_header <- function(x) {
-  paste0("# ", x, " ", strrep("-", 80 - nchar(x) - 3))
+srcref_to_character <- function(x) {
+  unlist(map(x, as.character))
 }
-
 start_line <- function(srcrefs) {
   map_int(srcrefs, \(x) x[[1]])
+}
+end_line <- function(srcrefs) {
+  map_int(srcrefs, \(x) x[[3]])
 }
