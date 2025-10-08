@@ -7,6 +7,9 @@
 #' @param location A string giving the location in the form
 #'   `FILE:LINE[:COLUMN]`.
 #' @param path Path to write the reprex to. Defaults to `stdout()`.
+#' @return This function is called for its side effect of rendering a
+#'   reprex to `path`. This function will never error: if extraction
+#'   fails, the error message will be written to `path`.
 #' @export
 extract_test <- function(location, path = stdout()) {
   check_string(location)
@@ -20,8 +23,18 @@ extract_test <- function(location, path = stdout()) {
 
   test_path <- test_path(pieces[[1]])
   line <- as.integer(pieces[2])
+  source <- paste0("# Extracted from tests/testthat/", path, ":", line)
 
-  lines <- extract_test_lines(test_path, line)
+  lines <- tryCatch(
+    extract_test_lines(test_path, line),
+    error = function(cnd) {
+      lines <- strsplit(conditionMessage(cnd), "\n")[[1]]
+      lines <- c("Failed to extract test", lines)
+      paste0("# ", lines)
+    }
+  )
+  lines <- c(source, lines)
+
   base::writeLines(lines, con = path)
 }
 
@@ -62,14 +75,12 @@ extract_test_lines <- function(path, line, error_call = caller_env()) {
 
   test_contents <- attr(call[[3]], "srcref")[-1] # drop `{`
   keep <- start_line(test_contents) <= line
-  test <- map_chr(test_contents[keep], as.character)
-
-  c(
-    paste0("# Extracted from tests/testthat/", path, ":", line),
-    prequel,
+  test <- c(
     comment_header("test"),
-    test
+    map_chr(test_contents[keep], as.character)
   )
+
+  c(prequel, test)
 }
 
 # Helpers ---------------------------------------------------------------------

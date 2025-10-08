@@ -12,6 +12,11 @@ extract_test(location, path = stdout())
 
 \item{path}{Path to write the reprex to. Defaults to \code{stdout()}.}
 }
+\value{
+This function is called for its side effect of rendering a
+reprex to \code{path}. This function will never error: if extraction
+fails, the error message will be written to \code{path}.
+}
 \description{
 \code{extract_test()} creates a minimal reprex for a failed expectation.
 It extracts all non-test code before the failed expectation as well as
