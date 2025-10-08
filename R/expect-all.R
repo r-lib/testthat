@@ -62,6 +62,7 @@ expect_all_equal_ <- function(act, exp, trace_env = caller_env()) {
     "Expected every element of %s to equal %s.",
     act,
     exp,
+    tolerance = testthat_tolerance(),
     trace_env = trace_env
   )
 }

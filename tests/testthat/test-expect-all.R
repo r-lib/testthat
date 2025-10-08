@@ -20,6 +20,10 @@ test_that("can compare named lists", {
   expect_snapshot_failure(expect_all_equal(x, list(1)))
 })
 
+test_that("has tolerance enabled", {
+  expect_success(expect_all_equal(1, 1L))
+})
+
 test_that("truncates very long differences", {
   x <- rep(TRUE, 10)
   expect_snapshot_failure(expect_all_equal(x, FALSE))
