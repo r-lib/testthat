@@ -121,28 +121,6 @@
       Expected: "d", "e"
       Missing: "d", "e"
 
-# expect_not_contains() gives useful message on failure
-
-    Code
-      expect_not_contains(x1, x2)
-    Condition
-      Error:
-      ! Expected `x1` to contain none of the values in `x2`.
-      Actual: "a", "b", "c"
-      Expected: none of "c", "d"
-      Found: "c"
-
----
-
-    Code
-      expect_not_contains(x1, x3)
-    Condition
-      Error:
-      ! Expected `x1` to contain none of the values in `x3`.
-      Actual: "a", "b", "c"
-      Expected: none of "b", "c", "d"
-      Found: "b", "c"
-
 # expect_in() gives useful message on failure
 
     Code
@@ -165,13 +143,13 @@
       Expected: "d", "e"
       Invalid: "a", "b"
 
-# expect_not_in() gives useful message on failure
+# expect_disjoint() gives useful message on failure
 
     Code
-      expect_not_in(x1, x2)
+      expect_disjoint(x1, x2)
     Condition
       Error:
-      ! Expected `x1` to contain no values from `x2`.
+      ! Expected `x1` to be disjoint from `x2`.
       Actual: "a", "b", "c"
       Expected: none of "c", "d"
       Invalid: "c"
@@ -179,10 +157,10 @@
 ---
 
     Code
-      expect_not_in(x1, x3)
+      expect_disjoint(x1, x3)
     Condition
       Error:
-      ! Expected `x1` to contain no values from `x3`.
+      ! Expected `x1` to be disjoint from `x3`.
       Actual: "a", "b", "c"
       Expected: none of "b", "c", "d"
       Invalid: "b", "c"

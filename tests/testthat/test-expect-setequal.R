@@ -131,23 +131,6 @@ test_that("expect_contains() gives useful message on failure", {
   expect_snapshot_failure(expect_contains(x1, x3))
 })
 
-# not_contains ----------------------------------------------------------------
-
-test_that("expect_not_contains() succeeds when appropriate", {
-  expect_success(expect_not_contains(letters, 1))
-  expect_success(expect_not_contains(letters, LETTERS))
-  expect_success(expect_not_contains(letters, character()))
-})
-
-test_that("expect_not_contains() gives useful message on failure", {
-  x1 <- c("a", "b", "c")
-  x2 <- c("c", "d")
-  x3 <- c("b", "c", "d")
-
-  expect_snapshot_failure(expect_not_contains(x1, x2))
-  expect_snapshot_failure(expect_not_contains(x1, x3))
-})
-
 
 # in ----------------------------------------------------------------
 
@@ -166,19 +149,19 @@ test_that("expect_in() gives useful message on failure", {
   expect_snapshot_failure(expect_in(x1, x3))
 })
 
-# not_in ----------------------------------------------------------------
+# disjoint ----------------------------------------------------------------
 
-test_that("expect_not_in() succeeds when appropriate", {
-  expect_success(expect_not_in(1, letters))
-  expect_success(expect_not_in(LETTERS, letters))
-  expect_success(expect_not_in(character(), letters))
+test_that("expect_disjoint() succeeds when appropriate", {
+  expect_success(expect_disjoint(1, letters))
+  expect_success(expect_disjoint(LETTERS, letters))
+  expect_success(expect_disjoint(character(), letters))
 })
 
-test_that("expect_not_in() gives useful message on failure", {
+test_that("expect_disjoint() gives useful message on failure", {
   x1 <- c("a", "b", "c")
   x2 <- c("c", "d")
   x3 <- c("b", "c", "d")
 
-  expect_snapshot_failure(expect_not_in(x1, x2))
-  expect_snapshot_failure(expect_not_in(x1, x3))
+  expect_snapshot_failure(expect_disjoint(x1, x2))
+  expect_snapshot_failure(expect_disjoint(x1, x3))
 })

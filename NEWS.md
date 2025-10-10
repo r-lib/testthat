@@ -1,6 +1,6 @@
 # testthat (development version)
 
-* New `expect_not_contains()` and `expect_not_in()` to check for the absence of values (#1851).
+* New `expect_disjoint()` to check for the absence of values (#1851).
 * New `vignette("mocking")` explains mocking in detail (#1265).
 * New `vignette("challenging-functions")` provides an index to other documentation organised by testing challenges (#1265).
 * When running a test interactively, testthat now reports the number of succeses. The results should also be more useful if you are using nested tests.
