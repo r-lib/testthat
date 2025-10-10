@@ -5,8 +5,10 @@ expect_setequal(x, y) tests that every element of x occurs in y,
 and that every element of y occurs in x.
 expect_contains(x, y) tests that x contains every element of y
 (i.e. y is a subset of x).
-expect_in(x, y) tests every element of x is in y
+expect_in(x, y) tests that every element of x is in y
 (i.e. x is a subset of y).
+expect_disjoint(x, y) tests that no element of x is in y
+(i.e. x is disjoint from y).
 expect_mapequal(x, y) treats lists as if they are mappings between names
 and values. Concretely, checks that x and y have the same names, then
 checks that x[names(y)] equals y.
@@ -17,8 +19,10 @@ expect_setequal(x, y) tests that every element of x occurs in y,
 and that every element of y occurs in x.
 expect_contains(x, y) tests that x contains every element of y
 (i.e. y is a subset of x).
-expect_in(x, y) tests every element of x is in y
+expect_in(x, y) tests that every element of x is in y
 (i.e. x is a subset of y).
+expect_disjoint(x, y) tests that no element of x is in y
+(i.e. x is disjoint from y).
 expect_mapequal(x, y) treats lists as if they are mappings between names
 and values. Concretely, checks that x and y have the same names, then
 checks that x[names(y)] equals y.
@@ -92,8 +96,10 @@ checks that x[names(y)] equals y.
 and that every element of <code>y</code> occurs in <code>x</code>.</p></li>
 <li><p><code>expect_contains(x, y)</code> tests that <code>x</code> contains every element of <code>y</code>
 (i.e. <code>y</code> is a subset of <code>x</code>).</p></li>
-<li><p><code>expect_in(x, y)</code> tests every element of <code>x</code> is in <code>y</code>
+<li><p><code>expect_in(x, y)</code> tests that every element of <code>x</code> is in <code>y</code>
 (i.e. <code>x</code> is a subset of <code>y</code>).</p></li>
+<li><p><code>expect_disjoint(x, y)</code> tests that no element of <code>x</code> is in <code>y</code>
+(i.e. <code>x</code> is disjoint from <code>y</code>).</p></li>
 <li><p><code>expect_mapequal(x, y)</code> treats lists as if they are mappings between names
 and values. Concretely, checks that <code>x</code> and <code>y</code> have the same names, then
 checks that <code>x[names(y)]</code> equals <code>y</code>.</p></li>
@@ -107,7 +113,9 @@ checks that <code>x[names(y)]</code> equals <code>y</code>.</p></li>
 <span></span>
 <span><span class="fu">expect_contains</span><span class="op">(</span><span class="va">object</span>, <span class="va">expected</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">expect_in</span><span class="op">(</span><span class="va">object</span>, <span class="va">expected</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">expect_in</span><span class="op">(</span><span class="va">object</span>, <span class="va">expected</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">expect_disjoint</span><span class="op">(</span><span class="va">object</span>, <span class="va">expected</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
