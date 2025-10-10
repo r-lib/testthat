@@ -183,25 +183,22 @@ expect_disjoint <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  check_vector(object)
-  check_vector(expected)
-
+  check_vector(act$val)
+  check_vector(exp$val)
   act_common <- act$val %in% exp$val
+
   if (any(act_common)) {
-    msg_exp <- sprintf(
-      "Expected %s to be disjoint from %s.",
-      act$lab,
-      exp$lab
-    )
-    msg_act <- c(
+    fail(c(
+      sprintf("Expected %s to be disjoint from %s.", act$lab, exp$lab),
       sprintf("Actual: %s", values(act$val)),
       sprintf("Expected: None of %s", values(exp$val)),
       sprintf("Invalid: %s", values(act$val[act_common]))
-    )
-    fail(c(msg_exp, msg_act))
+    ))
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 # Helpers ----------------------------------------------------------------------
