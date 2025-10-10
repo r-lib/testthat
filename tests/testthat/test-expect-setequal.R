@@ -154,3 +154,21 @@ test_that("expect_in() gives useful message on failure", {
   expect_snapshot_failure(expect_in(x1, x2))
   expect_snapshot_failure(expect_in(x1, x3))
 })
+
+# disjoint ----------------------------------------------------------------
+
+test_that("expect_disjoint() succeeds when appropriate", {
+  expect_success(expect_disjoint(1, letters))
+  expect_success(expect_disjoint(LETTERS, letters))
+  expect_success(expect_disjoint(character(), letters))
+})
+
+test_that("expect_disjoint() gives useful message on failure", {
+  x1 <- c("a", "b", "c")
+  x2 <- c("c", "d")
+  x3 <- c("b", "c", "d")
+
+  expect_snapshot_failure(expect_disjoint(x1, x2))
+  expect_snapshot_failure(expect_disjoint(x1, x3))
+  expect_snapshot_failure(expect_disjoint(NA, c("a", NA)))
+})
