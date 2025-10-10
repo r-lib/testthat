@@ -164,4 +164,5 @@ test_that("expect_disjoint() gives useful message on failure", {
 
   expect_snapshot_failure(expect_disjoint(x1, x2))
   expect_snapshot_failure(expect_disjoint(x1, x3))
+  expect_snapshot_failure(expect_disjoint(NA, c("a", NA)))
 })

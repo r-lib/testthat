@@ -151,7 +151,7 @@
       Error:
       ! Expected `x1` to be disjoint from `x2`.
       Actual: "a", "b", "c"
-      Expected: none of "c", "d"
+      Expected: None of "c", "d"
       Invalid: "c"
 
 ---
@@ -162,6 +162,17 @@
       Error:
       ! Expected `x1` to be disjoint from `x3`.
       Actual: "a", "b", "c"
-      Expected: none of "b", "c", "d"
+      Expected: None of "b", "c", "d"
       Invalid: "b", "c"
+
+---
+
+    Code
+      expect_disjoint(NA, c("a", NA))
+    Condition
+      Error:
+      ! Expected NA to be disjoint from `c("a", NA)`.
+      Actual: NA
+      Expected: None of "a", NA
+      Invalid: NA
 

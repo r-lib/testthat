@@ -165,7 +165,7 @@ expect_disjoint <- function(object, expected) {
     )
     msg_act <- c(
       sprintf("Actual: %s", values(act$val)),
-      sprintf("Expected: none of %s", values(exp$val)),
+      sprintf("Expected: None of %s", values(exp$val)),
       sprintf("Invalid: %s", values(act$val[act_common]))
     )
     fail(c(msg_exp, msg_act))
