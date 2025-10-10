@@ -7,9 +7,7 @@
 #' state (i.e. reading a value from a file or a website, or pretending a package
 #' is or isn't installed).
 #'
-#' These functions represent a second attempt at bringing mocking to testthat,
-#' incorporating what we've learned from the mockr, mockery, and mockthat
-#' packages.
+#' Learn more in `vignette("mocking")`.
 #'
 #' # Use
 #'
@@ -100,7 +98,7 @@
 #'
 #' To mock a function that returns different values in sequence,
 #' for instance an API call whose status would be 502 then 200,
-#' or an user intput to `readline()`, you can use [mock_output_sequence()]
+#' or an user input to `readline()`, you can use [mock_output_sequence()]
 #'
 #' ```R
 #' local_mocked_bindings(readline = mock_output_sequence("3", "This is a note", "n"))

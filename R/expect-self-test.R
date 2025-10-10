@@ -39,30 +39,25 @@ capture_success_failure <- function(expr) {
 #' Use `show_failure()` in examples to print the failure message without
 #' throwing an error.
 #'
-#' @param expr Code to evalute
+#' @param expr Code to evaluate
 #' @param message Check that the failure message matches this regexp.
 #' @param ... Other arguments passed on to [expect_match()].
 #' @export
 expect_success <- function(expr) {
   status <- capture_success_failure(expr)
 
+  expected <- "Expected exactly one success and no failures."
   if (status$n_success != 1) {
-    msg <- c(
-      "Expected one success.",
-      sprintf("Actually succeeded %i times", status$n_success)
-    )
-    return(fail(msg))
+    actual <- sprintf("Actually succeeded %i times", status$n_success)
+    fail(c(expected, actual))
+  } else if (status$n_failure > 0) {
+    actual <- sprintf("Actually failed %i times", status$n_failure)
+    fail(c(expected, actual))
+  } else {
+    pass()
   }
 
-  if (status$n_failure > 0) {
-    msg <- c(
-      "Expected zero failures.",
-      sprintf("Actually failed %i times", status$n_failure)
-    )
-    return(fail(msg))
-  }
-
-  pass(NULL)
+  invisible()
 }
 
 #' @export
@@ -70,27 +65,22 @@ expect_success <- function(expr) {
 expect_failure <- function(expr, message = NULL, ...) {
   status <- capture_success_failure(expr)
 
+  expected <- "Expected exactly one failure and no successes."
   if (status$n_failure != 1) {
-    msg <- c(
-      "Expected one failure.",
-      sprintf("Actually failed %i times", status$n_failure)
-    )
-    return(fail(msg))
+    actual <- sprintf("Actually failed %i times", status$n_failure)
+    fail(c(expected, actual))
+  } else if (status$n_success != 0) {
+    actual <- sprintf("Actually succeeded %i times", status$n_success)
+    fail(c(expected, actual))
+  } else {
+    if (is.null(message)) {
+      pass()
+    } else {
+      act <- labelled_value(status$last_failure$message, "failure message")
+      expect_match_(act, message, ..., title = "message")
+    }
   }
-
-  if (status$n_success != 0) {
-    msg <- c(
-      "Expected zero successes.",
-      sprintf("Actually succeeded %i times", status$n_success)
-    )
-    return(fail(msg))
-  }
-
-  if (!is.null(message)) {
-    act <- labelled_value(status$last_failure$message, "failure message")
-    return(expect_match_(act, message, ..., title = "message"))
-  }
-  pass(NULL)
+  invisible()
 }
 
 #' @export
@@ -116,9 +106,11 @@ expect_no_success <- function(expr) {
   status <- capture_success_failure(expr)
 
   if (status$n_success > 0) {
-    return(fail("Expectation succeeded"))
+    fail("Expectation succeeded")
+  } else {
+    pass()
   }
-  pass(NULL)
+  invisible()
 }
 
 #' @export
@@ -128,9 +120,11 @@ expect_no_failure <- function(expr) {
   status <- capture_success_failure(expr)
 
   if (status$n_failure > 0) {
-    return(fail("Expectation failed"))
+    fail("Expectation failed")
+  } else {
+    pass()
   }
-  pass(NULL)
+  invisible()
 }
 
 expect_snapshot_skip <- function(x, cran = FALSE) {

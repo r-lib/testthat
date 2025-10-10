@@ -88,8 +88,14 @@ task_q <- R6::R6Class(
             pr[[i]][["error"]] == "ready"
           outmsg <- NULL
           if (has_output) {
-            lns <- c(worker$read_output_lines(), worker$read_error_lines())
-            inc <- paste0(worker$read_output(), worker$read_error())
+            lns <- c(
+              safely(worker$read_output_lines(), character()),
+              safely(worker$read_error_lines(), character())
+            )
+            inc <- paste0(
+              safely(worker$read_output(), ""),
+              safely(worker$read_error(), "")
+            )
             if (nchar(inc)) {
               lns <- c(lns, strsplit(inc, "\n", fixed = TRUE)[[1]])
             }
@@ -247,6 +253,13 @@ df_add_row <- function(df, ..., .before = NULL) {
   } else {
     rbind(df[1:(before - 1), ], row, df[before:nrow(df), ])
   }
+}
+
+safely <- function(expr, default = NULL) {
+  tryCatch(
+    expr,
+    error = function(e) default
+  )
 }
 
 silence_r_cmd_check <- function() callr::r_session

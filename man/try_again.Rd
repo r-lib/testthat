@@ -2,7 +2,7 @@
 % Please edit documentation in R/try-again.R
 \name{try_again}
 \alias{try_again}
-\title{Evaluate an expression multiple times until it succeeds}
+\title{Evaluate an expectation multiple times until it succeeds}
 \usage{
 try_again(times, code)
 }
@@ -26,6 +26,9 @@ usually_return_1 <- function(i) {
 expect_equal(usually_return_1(), 1)
 
 # 1\% chance of failure:
-try_again(3, expect_equal(usually_return_1(), 1))
+try_again(1, expect_equal(usually_return_1(), 1))
+
+# 0.1\% chance of failure:
+try_again(2, expect_equal(usually_return_1(), 1))
 }
 }

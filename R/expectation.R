@@ -5,7 +5,9 @@
 #' `vignette("custom-expectation")` for details.
 #'
 #' @param ok `TRUE` or `FALSE` indicating if the expectation was successful.
-#' @param failure_message Message to show if the expectation failed.
+#' @param failure_message A character vector describing the failure. The
+#'   first element should describe the expected value, and the second (and
+#'   optionally subsequence) elements should describe what was actually seen.
 #' @inheritParams fail
 #' @return An expectation object from either `succeed()` or `fail()`.
 #'   with a `continue_test` restart.
@@ -20,27 +22,34 @@ expect <- function(
   trace = NULL,
   trace_env = caller_env()
 ) {
+  check_bool(ok)
+  check_character(failure_message)
+
   if (!ok) {
-    return(fail(
+    fail(
       failure_message,
       info,
       srcref = srcref,
       trace = trace,
       trace_env = trace_env
-    ))
+    )
+  } else {
+    # For backwards compatibility
+    succeed(failure_message)
   }
-  succeed(failure_message)
 }
 
-#' Construct an expectation object
+#' Expectation conditions
 #'
 #' @description
-#' For advanced use only. If you are creating your own expectation, you should
-#' call [pass()] or [fail()]. See `vignette("custom-expectation")` for more
-#' details.
+#' `new_expectation()` creates an expectation condition object and
+#' `exp_signal()` signals it. `expectation()` does both. `is.expectation()`
+#' tests if a captured condition is a testthat expectation.
 #'
-#' `new_expectation()` creates an expectation object and `exp_signal()` signals
-#' it. `expectation()` does both.
+#' These functions are primarily for internal use. If you are creating your
+#' own expectation, you do not need these functions are instead should use
+#' [pass()] or [fail()]. See `vignette("custom-expectation")` for more
+#' details.
 #'
 #' @param type Expectation type. Must be one of "success", "failure", "error",
 #'   "skip", "warning".

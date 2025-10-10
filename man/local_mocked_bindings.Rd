@@ -31,9 +31,7 @@ during tests. This is helpful for testing functions that depend on external
 state (i.e. reading a value from a file or a website, or pretending a package
 is or isn't installed).
 
-These functions represent a second attempt at bringing mocking to testthat,
-incorporating what we've learned from the mockr, mockery, and mockthat
-packages.
+Learn more in \code{vignette("mocking")}.
 }
 \section{Use}{
 There are four places that the function you are trying to mock might
@@ -121,7 +119,7 @@ local_mocked_bindings(
 
 To mock a function that returns different values in sequence,
 for instance an API call whose status would be 502 then 200,
-or an user intput to \code{readline()}, you can use \code{\link[=mock_output_sequence]{mock_output_sequence()}}
+or an user input to \code{readline()}, you can use \code{\link[=mock_output_sequence]{mock_output_sequence()}}
 
 \if{html}{\out{<div class="sourceCode R">}}\preformatted{local_mocked_bindings(readline = mock_output_sequence("3", "This is a note", "n"))
 }\if{html}{\out{</div>}}

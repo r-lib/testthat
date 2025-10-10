@@ -15,7 +15,7 @@
       expect_equal(x, "a")
     Condition
       Error:
-      ! Expected `x` to be equal to "a".
+      ! Expected `x` to equal "a".
       Differences:
       `actual` is a double vector (1)
       `expected` is a character vector ('a')
@@ -39,6 +39,26 @@
       ! Expected `x` to equal "a".
       Differences:
       Types not compatible: double is not character
+
+# correctly spaces lines
+
+    Code
+      expect_equal(list(a = 1), list(a = "b", b = 10))
+    Condition
+      Error:
+      ! Expected `list(a = 1)` to equal `list(a = "b", b = 10)`.
+      Differences:
+      `actual` is length 1
+      `expected` is length 2
+      
+      `names(actual)`:   "a"    
+      `names(expected)`: "a" "b"
+      
+      `actual$a` is a double vector (1)
+      `expected$a` is a character vector ('b')
+      
+      `actual$b` is absent
+      `expected$b` is a double vector (10)
 
 # provide useful feedback on failure (2e)
 
@@ -66,7 +86,7 @@
       expect_equal(x, !!y)
     Condition
       Error:
-      ! Expected `x` to be equal to 2.
+      ! Expected `x` to equal 2.
       Differences:
         `actual`: 1.0
       `expected`: 2.0

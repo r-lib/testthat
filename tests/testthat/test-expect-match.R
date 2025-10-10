@@ -66,3 +66,27 @@ test_that("expect_no_match works", {
 test_that("empty string is never a match", {
   expect_success(expect_no_match(character(), "x"))
 })
+
+# show_text() ------------------------------------------------------------------
+
+test_that("show_text() shows success and failure", {
+  local_reproducible_output(unicode = TRUE)
+  expect_snapshot({
+    base::writeLines(show_text(c("a", "b"), c(TRUE, FALSE)))
+  })
+})
+
+test_that("show_text() truncates values and lines", {
+  local_reproducible_output(unicode = TRUE)
+  lines <- map_chr(
+    split(letters, (seq_along(letters) - 1) %/% 3),
+    paste,
+    collapse = "\n"
+  )
+
+  expect_snapshot({
+    base::writeLines(show_text(lines, max_lines = 3))
+    base::writeLines(show_text(lines, max_items = 3))
+    base::writeLines(show_text(lines, max_items = 2, max_lines = 4))
+  })
+})

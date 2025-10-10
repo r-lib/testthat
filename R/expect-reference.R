@@ -28,9 +28,11 @@ expect_reference <- function(
 
   if (!is_reference(act$val, exp$val)) {
     msg <- sprintf("Expected %s to be a reference to %s.", act$lab, exp$lab)
-    return(fail(msg, info = info))
+    fail(msg, info = info)
+  } else {
+    pass()
   }
-  pass(act$val)
+  invisible(act$val)
 }
 
 # expect_reference() needs dev version of rlang

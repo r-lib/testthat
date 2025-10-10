@@ -2,16 +2,16 @@ test_that("expect_failure() requires 1 failure and zero successes", {
   expect_success(expect_failure(fail()))
 
   expect_failure(expect_failure({}))
-  expect_failure(expect_failure(pass(NULL)))
+  expect_failure(expect_failure(pass()))
   expect_failure(expect_failure({
-    pass(NULL)
+    pass()
     fail()
   }))
 
   expect_failure(expect_failure({
     fail()
     # Following succeed/fail are never reached
-    pass(NULL)
+    pass()
     fail()
   }))
 })
@@ -29,7 +29,7 @@ test_that("expect_failure() generates a useful error messages", {
   }
   expect_has_success <- function() {
     fail()
-    pass(NULL)
+    pass()
   }
   expect_failure_foo <- function() fail("foo")
 
@@ -42,17 +42,17 @@ test_that("expect_failure() generates a useful error messages", {
 })
 
 test_that("expect_success() requires 1 success and zero failures", {
-  expect_success(expect_success(pass(NULL)))
+  expect_success(expect_success(pass()))
 
   expect_failure(expect_success({}))
   expect_failure(expect_success(fail()))
   expect_failure(expect_success({
-    pass(NULL)
+    pass()
     fail()
   }))
   expect_failure(expect_success({
-    pass(NULL)
-    pass(NULL)
+    pass()
+    pass()
   }))
 })
 
@@ -69,12 +69,12 @@ test_that("show_failure", {
 test_that("expect_success() generates a useful error messages", {
   expect_no_success <- function() {}
   expect_many_successes <- function() {
-    pass(NULL)
-    pass(NULL)
+    pass()
+    pass()
   }
   expect_has_failure <- function() {
     fail()
-    pass(NULL)
+    pass()
   }
 
   expect_snapshot_failure({
@@ -90,8 +90,8 @@ test_that("can count successes and failures", {
   expect_equal(status$n_failure, 0)
 
   status <- capture_success_failure({
-    pass(NULL)
-    pass(NULL)
+    pass()
+    pass()
     fail()
   })
   expect_equal(status$n_success, 2)
@@ -99,9 +99,9 @@ test_that("can count successes and failures", {
 
   # No code run after first fail
   status <- capture_success_failure({
-    pass(NULL)
+    pass()
     fail()
-    pass(NULL)
+    pass()
     fail()
   })
   expect_equal(status$n_success, 2)
@@ -110,15 +110,15 @@ test_that("can count successes and failures", {
 
 test_that("expect_no are deprecated", {
   expect_snapshot({
-    expect_no_failure(pass(NULL))
+    expect_no_failure(pass())
     expect_no_success(fail())
   })
 })
 
 test_that("expect_no still work", {
   withr::local_options(lifecycle_verbosity = "quiet")
-  expect_success(expect_no_failure(pass(NULL)))
+  expect_success(expect_no_failure(pass()))
   expect_failure(expect_no_failure(fail()))
   expect_success(expect_no_success(fail()))
-  expect_failure(expect_no_success(pass(NULL)))
+  expect_failure(expect_no_success(pass()))
 })

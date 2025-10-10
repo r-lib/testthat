@@ -9,8 +9,8 @@
 #' * `expect_disjoint(x, y)` tests that no element of `x` is in `y`
 #'   (i.e. `x` is disjoint from `y`).
 #' * `expect_mapequal(x, y)` treats lists as if they are mappings between names
-#'   and values. Concretely, this drops `NULL`s in both objects and sorts
-#'   named components.
+#'   and values. Concretely, checks that `x` and `y` have the same names, then
+#'   checks that `x[names(y)]` equals `y`.
 #'
 #' Note that `expect_setequal()` ignores names, and you will be warned if both
 #' `object` and `expected` have them.
@@ -30,39 +30,33 @@ expect_setequal <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  check_vector(object)
-  check_vector(expected)
+  check_vector(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
   if (!is.null(names(act$val)) && !is.null(names(exp$val))) {
     testthat_warn("expect_setequal() ignores names")
   }
 
-  expect_setequal_(act, exp)
+  expect_setequal_("Expected %s to have the same values as %s.", act, exp)
 }
 
-expect_setequal_ <- function(
-  act,
-  exp,
-  trace_env = caller_env()
-) {
+expect_setequal_ <- function(msg, act, exp, trace_env = caller_env()) {
   act_miss <- unique(act$val[!act$val %in% exp$val])
   exp_miss <- unique(exp$val[!exp$val %in% act$val])
 
-  if (length(exp_miss) || length(act_miss)) {
-    msg_exp <- sprintf(
-      "Expected %s to have the same values as %s.",
-      act$lab,
-      exp$lab
-    )
+  if (length(exp_miss) == 0 && length(act_miss) == 0) {
+    pass()
+  } else {
+    msg_exp <- sprintf(msg, act$lab, exp$lab)
     msg_act <- c(
       sprintf("Actual: %s", values(act$val)),
       sprintf("Expected: %s", values(exp$val)),
       if (length(act_miss)) sprintf("Needs: %s", values(act_miss)),
       if (length(exp_miss)) sprintf("Absent: %s", values(exp_miss))
     )
-
-    return(fail(c(msg_exp, msg_act), trace_env = trace_env))
+    fail(c(msg_exp, msg_act), trace_env = trace_env)
   }
-  pass(act$val)
+
+  invisible(act$val)
 }
 
 values <- function(x) {
@@ -89,7 +83,39 @@ expect_mapequal <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  expect_waldo_equal_("equal", act, exp, list_as_map = TRUE)
+  check_vector(act$val, error_arg = "object")
+  check_map_names(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
+  check_map_names(exp$val, error_arg = "expected")
+
+  act_nms <- names(act$val)
+  exp_nms <- names(exp$val)
+
+  # Length-0 vectors are OK whether named or unnamed.
+  if (length(act$val) == 0 && length(exp$val) == 0) {
+    testthat_warn("`object` and `expected` are empty vectors.")
+    pass()
+  } else {
+    if (!setequal(act_nms, exp_nms)) {
+      msg <- "Expected %s to have the same names as %s."
+      act_names <- labelled_value(names(act$val), act$lab)
+      exp_names <- labelled_value(names(exp$val), exp$lab)
+      expect_setequal_(msg, act_names, exp_names)
+    } else {
+      if (edition_get() >= 3) {
+        act <- labelled_value(act$val[exp_nms], act$lab)
+
+        msg <- "Expected %s to contain the same values as %s."
+        expect_waldo_equal_(msg, act, exp, tolerance = testthat_tolerance())
+      } else {
+        # Packages depend on 2e behaviour, but the expectation isn't written
+        # to be reused, and we don't want to bother
+        expect_equal(act$val[exp_nms], exp$val)
+      }
+    }
+  }
+
+  invisible(act$val)
 }
 
 #' @export
@@ -98,8 +124,8 @@ expect_contains <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  check_vector(object)
-  check_vector(expected)
+  check_vector(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
 
   exp_miss <- !exp$val %in% act$val
   if (any(exp_miss)) {
@@ -114,9 +140,11 @@ expect_contains <- function(object, expected) {
       sprintf("Missing: %s", values(exp$val[exp_miss]))
     )
     fail(c(msg_exp, msg_act))
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 
@@ -126,8 +154,8 @@ expect_in <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  check_vector(object)
-  check_vector(expected)
+  check_vector(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
 
   act_miss <- !act$val %in% exp$val
   if (any(act_miss)) {
@@ -142,9 +170,11 @@ expect_in <- function(object, expected) {
       sprintf("Invalid: %s", values(act$val[act_miss]))
     )
     fail(c(msg_exp, msg_act))
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 #' @export
@@ -176,12 +206,32 @@ expect_disjoint <- function(object, expected) {
 
 # Helpers ----------------------------------------------------------------------
 
-check_vector <- function(
-  x,
-  error_arg = caller_arg(x),
-  error_call = caller_env()
-) {
+check_vector <- function(x, error_arg, error_call = caller_env()) {
   if (!is_vector(x)) {
     stop_input_type(x, "a vector", arg = error_arg, call = error_call)
+  }
+}
+
+check_map_names <- function(x, error_arg, error_call = caller_env()) {
+  nms <- names2(x)
+  if (anyDuplicated(nms)) {
+    dups <- unique(nms[duplicated(nms)])
+    cli::cli_abort(
+      c(
+        "All elements in {.arg {error_arg}} must have unique names.",
+        x = "Duplicate names: {.str {dups}}"
+      ),
+      call = error_call
+    )
+  }
+  if (any(nms == "")) {
+    empty <- which(nms == "")
+    cli::cli_abort(
+      c(
+        "All elements in {.arg {error_arg}} must have names.",
+        x = "Empty names at position{?s}: {empty}"
+      ),
+      call = error_call
+    )
   }
 }

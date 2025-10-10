@@ -129,7 +129,7 @@ expect_snapshot_ <- function(
   )
   if (!is.null(msg)) {
     if (error) {
-      return(fail(msg, trace = state$error[["trace"]]))
+      fail(msg, trace = state$error[["trace"]])
     } else {
       cnd_signal(state$error)
     }
@@ -380,10 +380,12 @@ expect_snapshot_helper <- function(
       comp,
       hint
     )
-    return(snapshot_fail(msg, trace_env = trace_env))
+    snapshot_fail(msg, trace_env = trace_env)
+  } else {
+    pass()
   }
 
-  pass(NULL)
+  invisible()
 }
 
 snapshot_hint <- function(id, show_accept = TRUE, reset_output = TRUE) {

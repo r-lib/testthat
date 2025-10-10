@@ -2,7 +2,7 @@
 #'
 #' @description
 #' The default reporter used when [expect_that()] is run interactively.
-#' It responds by displaying a summary of the number of successes and faiures
+#' It responds by displaying a summary of the number of successes and failures
 #' and [stop()]ping on if there are any failures.
 #'
 #' @export

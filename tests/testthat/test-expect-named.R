@@ -12,6 +12,13 @@ test_that("expected_named verifies actual of names", {
   expect_snapshot_failure(expect_named(x, "b"))
 })
 
+test_that("always returns inputs", {
+  x <- c(a = 1)
+  expect_equal(expect_named(x), x)
+  expect_equal(expect_named(x, "a"), x)
+  expect_equal(expect_named(x, "a", ignore.order = TRUE), x)
+})
+
 test_that("expected_named optionally ignores order and case", {
   x <- c(a = 1, b = 2)
   expect_success(expect_named(x, c("A", "B"), ignore.case = TRUE))
@@ -28,7 +35,7 @@ test_that("provide useful feedback on failure", {
 
   expect_snapshot_failure(expect_named(x1, c("a", "b"), ignore.order = FALSE))
   expect_snapshot_failure(expect_named(x2, "a", ignore.order = FALSE))
-  expect_snapshot_failure(expect_named(x1, c("b"), ignore.order = FALSE))
+  expect_snapshot_failure(expect_named(x1, "b", ignore.order = FALSE))
 })
 
 test_that("expect_named validates its inputs", {

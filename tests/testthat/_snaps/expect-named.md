@@ -12,7 +12,7 @@
       expect_named(x, "b")
     Condition
       Error:
-      ! Expected names(`x`) to be equal to "b".
+      ! Expected `x` to have names "b".
       Differences:
       `actual`:   "a"
       `expected`: "b"
@@ -23,7 +23,7 @@
       expect_named(x1, c("a", "b"), ignore.order = TRUE)
     Condition
       Error:
-      ! Expected names(`x1`) to have the same values as `c("a", "b")`.
+      ! Expected `x1` to have names `c("a", "b")`.
       Actual: "a"
       Expected: "a", "b"
       Absent: "b"
@@ -34,7 +34,7 @@
       expect_named(x2, "a", ignore.order = TRUE)
     Condition
       Error:
-      ! Expected names(`x2`) to have the same values as "a".
+      ! Expected `x2` to have names "a".
       Actual: "a", "b"
       Expected: "a"
       Needs: "b"
@@ -45,7 +45,7 @@
       expect_named(x1, "b", ignore.order = TRUE)
     Condition
       Error:
-      ! Expected names(`x1`) to have the same values as "b".
+      ! Expected `x1` to have names "b".
       Actual: "a"
       Expected: "b"
       Needs: "a"
@@ -57,7 +57,7 @@
       expect_named(x1, c("a", "b"), ignore.order = FALSE)
     Condition
       Error:
-      ! Expected names(`x1`) to be equal to `c("a", "b")`.
+      ! Expected `x1` to have names `c("a", "b")`.
       Differences:
       `actual`:   "a"    
       `expected`: "a" "b"
@@ -68,7 +68,7 @@
       expect_named(x2, "a", ignore.order = FALSE)
     Condition
       Error:
-      ! Expected names(`x2`) to be equal to "a".
+      ! Expected `x2` to have names "a".
       Differences:
       `actual`:   "a" "b"
       `expected`: "a"    
@@ -76,10 +76,10 @@
 ---
 
     Code
-      expect_named(x1, c("b"), ignore.order = FALSE)
+      expect_named(x1, "b", ignore.order = FALSE)
     Condition
       Error:
-      ! Expected names(`x1`) to be equal to `c("b")`.
+      ! Expected `x1` to have names "b".
       Differences:
       `actual`:   "a"
       `expected`: "b"
