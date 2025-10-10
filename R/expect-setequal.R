@@ -183,10 +183,10 @@ expect_disjoint <- function(object, expected) {
   act <- quasi_label(enquo(object))
   exp <- quasi_label(enquo(expected))
 
-  check_vector(act$val)
-  check_vector(exp$val)
-  act_common <- act$val %in% exp$val
+  check_vector(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
 
+  act_common <- act$val %in% exp$val
   if (any(act_common)) {
     fail(c(
       sprintf("Expected %s to be disjoint from %s.", act$lab, exp$lab),
