@@ -313,9 +313,10 @@ queue_teardown <- function(queue) {
   tasks <- queue$list_tasks()
   num <- nrow(tasks)
 
+  # calling quit() here creates a race condition, and the output of
+  # the deferred_run() might be lost.
   clean_fn <- function() {
     withr::deferred_run(.GlobalEnv)
-    quit(save = "no", status = 0L, runLast = TRUE)
   }
 
   topoll <- list()
