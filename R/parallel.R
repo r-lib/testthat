@@ -320,7 +320,9 @@ queue_teardown <- function(queue) {
 
   topoll <- list()
   for (i in seq_len(num)) {
-    if (!is.null(tasks$worker[[i]])) {
+    if (
+      !is.null(tasks$worker[[i]]) && tasks$worker[[i]]$get_state() == "idle"
+    ) {
       # The worker might have crashed or exited, so this might fail.
       # If it does then we'll just ignore that worker
       tryCatch(
