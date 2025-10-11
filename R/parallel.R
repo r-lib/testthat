@@ -313,51 +313,87 @@ queue_teardown <- function(queue) {
   tasks <- queue$list_tasks()
   num <- nrow(tasks)
 
+  # calling quit() here creates a race condition, and the output of
+  # the deferred_run() might be lost. Instead we close the input
+  # connection in a separate task.
   clean_fn <- function() {
     withr::deferred_run(.GlobalEnv)
-    quit(save = "no", status = 1L, runLast = TRUE)
   }
 
-  topoll <- list()
+  topoll <- integer()
   for (i in seq_len(num)) {
-    if (!is.null(tasks$worker[[i]])) {
+    if (
+      !is.null(tasks$worker[[i]]) && tasks$worker[[i]]$get_state() == "idle"
+    ) {
       # The worker might have crashed or exited, so this might fail.
       # If it does then we'll just ignore that worker
       tryCatch(
         {
           tasks$worker[[i]]$call(clean_fn)
-          topoll <- c(topoll, tasks$worker[[i]]$get_poll_connection())
+          topoll <- c(topoll, i)
         },
-        error = function(e) tasks$worker[i] <- list(NULL)
+        error = function(e) NULL
       )
     }
   }
 
-  # Give covr time to write out the coverage files
+  # Give covr a bit more time
   if (in_covr()) {
     grace <- 30L
   } else {
-    grace <- 3L
+    grace <- 1L
   }
+  first_error <- NULL
   limit <- Sys.time() + grace
   while (length(topoll) > 0 && (timeout <- limit - Sys.time()) > 0) {
     timeout <- as.double(timeout, units = "secs") * 1000
-    pr <- processx::poll(topoll, as.integer(timeout))
+    conns <- lapply(tasks$worker[topoll], function(x) x$get_poll_connection())
+    pr <- unlist(processx::poll(conns, as.integer(timeout)))
+    for (i in which(pr == "ready")) {
+      msg <- tasks$worker[[topoll[i]]]$read()
+      first_error <- first_error %||% msg$error
+    }
+    topoll <- topoll[pr != "ready"]
+  }
+
+  topoll <- integer()
+  for (i in seq_len(num)) {
+    if (
+      !is.null(tasks$worker[[i]]) && tasks$worker[[i]]$get_state() == "idle"
+    ) {
+      tryCatch(
+        {
+          close(tasks$worker[[i]]$get_input_connection())
+          topoll <- c(topoll, i)
+        },
+        error = function(e) NULL
+      )
+    }
+  }
+
+  limit <- Sys.time() + grace
+  while (length(topoll) > 0 && (timeout <- limit - Sys.time()) > 0) {
+    timeout <- as.double(timeout, units = "secs") * 1000
+    conns <- lapply(tasks$worker[topoll], function(x) x$get_poll_connection())
+    pr <- unlist(processx::poll(conns, as.integer(timeout)))
     topoll <- topoll[pr != "ready"]
   }
 
   for (i in seq_len(num)) {
     if (!is.null(tasks$worker[[i]])) {
-      tryCatch(
-        close(tasks$worker[[i]]$get_input_connection()),
-        error = function(e) NULL
-      )
       if (ps::ps_is_supported()) {
-        tasks$worker[[i]]$kill_tree()
+        tryCatch(tasks$worker[[i]]$kill_tree(), error = function(e) NULL)
       } else {
-        tasks$worker[[i]]$kill()
+        tryCatch(tasks$worker[[i]]$kill(), error = function(e) NULL)
       }
     }
+  }
+
+  if (!is.null(first_error)) {
+    cli::cli_abort(
+      "At least one parallel worker failed to run teardown",
+      parent = first_error
+    )
   }
 }
 
