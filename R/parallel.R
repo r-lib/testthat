@@ -361,9 +361,9 @@ queue_teardown <- function(queue) {
         error = function(e) NULL
       )
       if (ps::ps_is_supported()) {
-        tasks$worker[[i]]$kill_tree()
+        tryCatch(tasks$worker[[i]]$kill_tree(), error = function(e) NULL)
       } else {
-        tasks$worker[[i]]$kill()
+        tryCatch(tasks$worker[[i]]$kill(), error = function(e) NULL)
       }
     }
   }
