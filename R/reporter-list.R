@@ -11,50 +11,52 @@ ListReporter <- R6::R6Class(
   "ListReporter",
   inherit = Reporter,
   public = list(
-    current_start_time = NA,
-    current_expectations = NULL,
-    current_file = NULL,
-    current_context = NULL,
-    current_test = NULL,
+    running = NULL,
+    current_file = "", # so we can still subset with this
     results = NULL,
 
     initialize = function() {
       super$initialize()
       self$capabilities$parallel_support <- TRUE
+      self$capabilities$parallel_updates <- TRUE
       self$results <- Stack$new()
+      self$running <- new.env(parent = emptyenv())
     },
 
     start_test = function(context, test) {
+      # is this a new test block?
       if (
-        !identical(self$current_context, context) ||
-          !identical(self$current_test, test)
+        !identical(self$running[[self$current_file]]$context, context) ||
+          !identical(self$running[[self$current_file]]$test, test)
       ) {
-        self$current_context <- context
-        self$current_test <- test
-        self$current_expectations <- Stack$new()
-        self$current_start_time <- proc.time()
+        self$running[[self$current_file]]$context <- context
+        self$running[[self$current_file]]$test <- test
+        self$running[[self$current_file]]$expectations <- Stack$new()
+        self$running[[self$current_file]]$start_time <- proc.time()
       }
     },
 
     add_result = function(context, test, result) {
-      if (is.null(self$current_expectations)) {
+      if (is.null(self$running[[self$current_file]]$expectations)) {
         # we received a result outside of a test:
         # could be a bare expectation or an exception/error
         if (!inherits(result, 'error')) {
           return()
         }
-        self$current_expectations <- Stack$new()
+        self$running[[self$current_file]]$expectations <- Stack$new()
       }
 
-      self$current_expectations$push(result)
+      self$running[[self$current_file]]$expectations$push(result)
     },
 
     end_test = function(context, test) {
-      elapsed <- as.double(proc.time() - self$current_start_time)
+      elapsed <- as.double(
+        proc.time() - self$running[[self$current_file]]$start_time
+      )
 
       results <- list()
-      if (!is.null(self$current_expectations)) {
-        results <- self$current_expectations$as_list()
+      if (!is.null(self$running[[self$current_file]]$expectations)) {
+        results <- self$running[[self$current_file]]$expectations$as_list()
       }
 
       self$results$push(list(
@@ -67,28 +69,39 @@ ListReporter <- R6::R6Class(
         results = results
       ))
 
-      self$current_expectations <- NULL
+      self$running[[self$current_file]]$expectations <- NULL
     },
 
     start_file = function(name) {
+      if (!name %in% names(self$running)) {
+        newfile <- list(
+          start_time = NA,
+          expectations = NULL,
+          context = NULL,
+          test = NULL
+        )
+        assign(name, newfile, envir = self$running)
+      }
       self$current_file <- name
     },
 
     end_file = function() {
       # fallback in case we have errors but no expectations
       self$end_context(self$current_file)
+      rm(list = self$current_file, envir = self$running)
     },
 
     end_context = function(context) {
-      results <- self$current_expectations
+      results <- self$running[[self$current_file]]$expectations
       if (is.null(results)) {
         return()
       }
 
-      self$current_expectations <- NULL
+      self$running[[self$current_file]]$expectations <- NULL
 
       # look for exceptions raised outside of tests
-      # they happened just before end_context since they interrupt the test_file execution
+      # they happened just before end_context since they interrupt the test_
+      # file execution
       results <- results$as_list()
       if (length(results) == 0) {
         return()

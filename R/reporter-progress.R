@@ -231,8 +231,10 @@ ProgressReporter <- R6::R6Class(
         snapshotter$end_file()
       }
 
+      # Separate from the progress bar
+      self$cat_line()
       stop_reporter(c(
-        "Maximum number of failures exceeded; quitting at end of file.",
+        "Maximum number of failures exceeded; quitting.",
         i = "Increase this number with (e.g.) {.run testthat::set_max_fails(Inf)}"
       ))
     },
@@ -462,22 +464,34 @@ ParallelProgressReporter <- R6::R6Class(
     },
 
     end_file = function() {
-      fsts <- self$files[[self$file_name]]
-      time <- proc.time() - fsts$start_time
+      if (!self$is_full()) {
+        fsts <- self$files[[self$file_name]]
+        time <- proc.time() - fsts$start_time
 
-      # Workaround for https://github.com/rstudio/rstudio/issues/7649
-      if (self$is_rstudio) {
-        self$cat_tight(strpad(self$cr(), self$width + 1)) # +1 for \r
-      }
-      self$show_status(complete = TRUE, time = time[[3]], pad = TRUE)
-      self$report_issues(fsts$issues)
+        # Workaround for https://github.com/rstudio/rstudio/issues/7649
+        if (self$is_rstudio) {
+          self$cat_tight(strpad(self$cr(), self$width + 1)) # +1 for \r
+        }
+        self$show_status(complete = TRUE, time = time[[3]], pad = TRUE)
+        self$report_issues(fsts$issues)
 
-      self$files[[self$file_name]] <- NULL
-      if (length(self$files)) {
+        self$files[[self$file_name]] <- NULL
+        if (length(self$files)) {
+          self$update(force = TRUE)
+        }
+      } else {
         self$update(force = TRUE)
-      }
+        self$cat_line()
+        self$rule()
 
-      if (self$is_full()) {
+        issues <- unlist(
+          map(self$files, \(x) x$issues$as_list()),
+          recursive = FALSE
+        )
+        summary <- map_chr(issues, issue_summary)
+        self$cat_tight(paste(summary, collapse = "\n\n"))
+
+        self$cat_line()
         self$report_full()
       }
     },
@@ -544,7 +558,7 @@ spinner <- function(frames, i) {
   frames[((i - 1) %% length(frames)) + 1]
 }
 
-issue_header <- function(x, pad = FALSE) {
+issue_header <- function(x, pad = FALSE, location = TRUE) {
   type <- expectation_type(x)
   if (has_colour()) {
     type <- colourise(first_upper(type), type)
@@ -555,11 +569,11 @@ issue_header <- function(x, pad = FALSE) {
     type <- strpad(type, 7)
   }
 
-  paste0(type, expectation_location(x, " (", ")"), ": ", x$test)
+  paste0(type, if (location) expectation_location(x, " (", ")"), ": ", x$test)
 }
 
-issue_summary <- function(x, rule = FALSE) {
-  header <- cli::style_bold(issue_header(x))
+issue_summary <- function(x, rule = FALSE, location = TRUE) {
+  header <- cli::style_bold(issue_header(x, location = location))
   if (rule) {
     # Don't truncate long test names
     width <- max(cli::ansi_nchar(header) + 6, getOption("width"))

@@ -61,55 +61,41 @@ test_that("second edition only optionally sets tolerance", {
   expect_success(expect_equal(x, y))
 })
 
-test_that("provide useful feedback on failure", {
-  local_output_override()
-
-  local_edition(3)
-  expect_snapshot_error(expect_identical(1, "a"))
-  expect_snapshot_error(expect_equal(1, "a"))
+test_that("provide useful feedback on failure (3e)", {
+  x <- 1
+  expect_snapshot_failure(expect_identical(x, "a"))
+  expect_snapshot_failure(expect_equal(x, "a"))
 
   local_edition(2)
   withr::local_options(testthat.edition_ignore = TRUE)
-  expect_snapshot_error(expect_identical(1, "a"))
-  expect_snapshot_error(expect_equal(1, "a"))
+  expect_snapshot_failure(expect_identical(x, "a"))
+  expect_snapshot_failure(expect_equal(x, "a"))
+})
+
+test_that("correctly spaces lines", {
+  expect_snapshot_failure(expect_equal(list(a = 1), list(a = "b", b = 10)))
+})
+
+test_that("provide useful feedback on failure (2e)", {
+  local_edition(2)
+  withr::local_options(testthat.edition_ignore = TRUE)
+
+  x <- 1
+  expect_snapshot_failure(expect_identical(x, "a"))
+  expect_snapshot_failure(expect_equal(x, "a"))
 })
 
 test_that("default labels use unquoting", {
-  local_edition(2)
-
-  x <- 2
-  expect_failure(expect_equal(1, !!x), "1 not equal to 2", fixed = TRUE)
+  x <- 1
+  y <- 2
+  expect_snapshot_failure(expect_equal(x, !!y))
 })
 
 test_that("% is not treated as sprintf format specifier (#445)", {
   expect_failure(expect_equal("+", "%"))
   expect_failure(expect_equal("%", "+"))
-  expect_equal("%", "%")
+  expect_success(expect_equal("%", "%"))
 })
-
-test_that("is_call_infix() handles complex calls (#1472)", {
-  expect_false(is_call_infix(quote(
-    base::any(
-      c(
-        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
-      ),
-      na.rm = TRUE
-    )
-  )))
-
-  withr::local_envvar(
-    "_R_CHECK_LENGTH_1_LOGIC2_" = "TRUE",
-  )
-  expect_true(
-    base::any(
-      c(
-        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
-      ),
-      na.rm = TRUE
-    )
-  )
-})
-
 
 # 2nd edition ---------------------------------------------------
 
@@ -117,10 +103,11 @@ test_that("useful message if objects equal but not identical", {
   local_edition(2)
 
   f <- function() x
+  environment(f) <- new_environment()
   g <- function() x
-  environment(g) <- globalenv()
+  environment(g) <- new_environment()
 
-  expect_failure(expect_identical(f, g))
+  expect_snapshot_failure(expect_identical(f, g))
 })
 
 test_that("attributes for object (#452)", {
@@ -128,7 +115,7 @@ test_that("attributes for object (#452)", {
 
   oops <- structure(0, oops = "oops")
   expect_equal(oops, oops)
-  expect_failure(expect_equal(oops, 0))
+  expect_snapshot_failure(expect_equal(oops, 0))
   expect_equal(as.numeric(oops), 0)
 })
 

@@ -1,3 +1,12 @@
+# generates actionable failure message
+
+    Code
+      expect_length(x, 2)
+    Condition
+      Error:
+      ! Expected `x` to have length 2.
+      Actual length: 10.
+
 # expect_length validates its inputs
 
     Code
@@ -8,51 +17,108 @@
 
 # dim compared correctly
 
-    matrix(nrow = 6, ncol = 3) has dim (6, 3), not (6, 2).
+    Code
+      expect_shape(matrix(nrow = 6, ncol = 3), dim = c(6L, 2L))
+    Condition
+      Error:
+      ! Expected `matrix(nrow = 6, ncol = 3)` to have dim (6, 2).
+      Actual dim: (6, 3).
 
 ---
 
-    matrix(nrow = 6, ncol = 3) has dim (6, 3), not (7, 3).
+    Code
+      expect_shape(matrix(nrow = 6, ncol = 3), dim = c(7L, 3L))
+    Condition
+      Error:
+      ! Expected `matrix(nrow = 6, ncol = 3)` to have dim (7, 3).
+      Actual dim: (6, 3).
 
 ---
 
-    array(dim = 1:3) has 3 dimensions, not 2.
+    Code
+      expect_shape(array(dim = 1:3), dim = 1:2)
+    Condition
+      Error:
+      ! Expected `array(dim = 1:3)` to have 2 dimensions.
+      Actual dimensions: 3.
 
 ---
 
-    array(dim = 1:3) has 3 dimensions, not 4.
+    Code
+      expect_shape(array(dim = 1:3), dim = 1:4)
+    Condition
+      Error:
+      ! Expected `array(dim = 1:3)` to have 4 dimensions.
+      Actual dimensions: 3.
 
 # nrow compared correctly
 
-    matrix(nrow = 5, ncol = 5) has 5 rows, not 6.
+    Code
+      expect_shape(matrix(nrow = 5, ncol = 5), nrow = 6L)
+    Condition
+      Error:
+      ! Expected `matrix(nrow = 5, ncol = 5)` to have 6 rows.
+      Actual rows: 5.
 
 ---
 
-    1 has no dimensions.
+    Code
+      expect_shape(1, nrow = 1)
+    Condition
+      Error:
+      ! Expected 1 to have dimensions.
 
 # ncol compared correctly
 
-    matrix(nrow = 5, ncol = 5) has 5 columns, not 7.
+    Code
+      expect_shape(matrix(nrow = 5, ncol = 5), ncol = 7L)
+    Condition
+      Error:
+      ! Expected `matrix(nrow = 5, ncol = 5)` to have 7 columns.
+      Actual columns: 5.
 
 ---
 
-    array(1) has only one dimension.
+    Code
+      expect_shape(array(1), ncol = 1)
+    Condition
+      Error:
+      ! Expected `array(1)` to have two or more dimensions.
 
 ---
 
-    array(integer()) has only one dimension.
+    Code
+      expect_shape(array(integer()), ncol = 0L)
+    Condition
+      Error:
+      ! Expected `array(integer())` to have two or more dimensions.
 
 # NA handling (e.g. dbplyr)
 
-    `x` has NA rows, not 10.
+    Code
+      expect_shape(x, nrow = 10L)
+    Condition
+      Error:
+      ! Expected `x` to have 10 rows.
+      Actual rows: NA.
 
 ---
 
-    `x` has 10 columns, not NA.
+    Code
+      expect_shape(x, ncol = NA_integer_)
+    Condition
+      Error:
+      ! Expected `x` to have NA columns.
+      Actual columns: 10.
 
 ---
 
-    `x` has dim (NA, 10), not (10, NA).
+    Code
+      expect_shape(x, dim = c(10L, NA_integer_))
+    Condition
+      Error:
+      ! Expected `x` to have dim (10, NA).
+      Actual dim: (NA, 10).
 
 # checks inputs arguments, 
 

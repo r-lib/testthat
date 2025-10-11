@@ -10,6 +10,34 @@ test_that("symbols are quoted", {
   expect_equal(expr_label(quote(a)), "`a`")
 })
 
+test_that("missing arguments are propagated", {
+  x <- list(missing = missing_arg())
+  expect_snapshot_failure(expect_null(x$missing))
+})
+
+test_that("is_call_infix() handles complex calls (#1472)", {
+  expect_false(is_call_infix(quote(
+    base::any(
+      c(
+        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
+      ),
+      na.rm = TRUE
+    )
+  )))
+
+  withr::local_envvar(
+    "_R_CHECK_LENGTH_1_LOGIC2_" = "TRUE",
+  )
+  expect_true(
+    base::any(
+      c(
+        veryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy_long_name = TRUE
+      ),
+      na.rm = TRUE
+    )
+  )
+})
+
 test_that("long vectors get ...", {
   long <- "123456789_123456789_123456789_123456789_123456789_123456789_"
   expect_equal(
@@ -60,7 +88,7 @@ test_that("labelling compound {} expression gives single string", {
 test_that("can label multiline functions", {
   expect_equal(
     expr_label(quote(function(x, y) {})),
-    "function(x, y) ..."
+    "`function(x, y) ...`"
   )
 })
 

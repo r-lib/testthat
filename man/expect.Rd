@@ -16,7 +16,9 @@ expect(
 \arguments{
 \item{ok}{\code{TRUE} or \code{FALSE} indicating if the expectation was successful.}
 
-\item{failure_message}{Message to show if the expectation failed.}
+\item{failure_message}{A character vector describing the failure. The
+first element should describe the expected value, and the second (and
+optionally subsequence) elements should describe what was actually seen.}
 
 \item{info}{Character vector continuing additional information. Included
 for backward compatibility only and new expectations should not use it.}
@@ -29,7 +31,7 @@ When supplied, the expectation is displayed with the backtrace.
 Expert use only.}
 
 \item{trace_env}{If \code{trace} is not specified, this is used to generate an
-informative traceack for failures. You should only need to set this if
+informative traceback for failures. You should only need to set this if
 you're calling \code{fail()} from a helper function; see
 \code{vignette("custom-expectation")} for details.}
 }

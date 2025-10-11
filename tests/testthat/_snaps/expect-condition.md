@@ -1,10 +1,28 @@
 # regexp = NULL checks for presence of error
 
-    `{ ... }` did not throw the expected error.
+    Code
+      expect_error(f())
+    Condition
+      Error:
+      ! Expected `f()` to throw a error.
+
+# regexp = NA checks for absence of error
+
+    Code
+      expect_error(f(), NA)
+    Condition
+      Error:
+      ! Expected `f()` not to throw any errors.
+      Actually got a <simpleError> with message:
+        Yes
 
 # regexp = string matches for error message
 
-    "OK" did not throw the expected error.
+    Code
+      expect_error(f(), "No")
+    Condition
+      Error:
+      ! Expected `f()` to throw a error.
 
 # expect_error validates its inputs
 
@@ -26,9 +44,13 @@
 
 # message method is called when expecting error
 
-    `fb()` threw an unexpected error.
-    Message: dispatched!
-    Class:   foobar/rlang_error/error/condition
+    Code
+      expect_error(fb(), NA)
+    Condition
+      Error:
+      ! Expected `fb()` not to throw any errors.
+      Actually got a <foobar> with message:
+        dispatched!
 
 # expect_warning validates its inputs
 
@@ -52,6 +74,17 @@
     Condition
       Error in `expect_warning()`:
       ! `all` must be `TRUE` or `FALSE`, not the string "yes".
+
+# regexp = NA checks for absence of message
+
+    Code
+      expect_message(f(), NA)
+    Condition
+      Error:
+      ! Expected `f()` not to throw any messages.
+      Actually got a <simpleMessage> with message:
+        !
+        
 
 # expect_message validates its inputs
 
@@ -78,7 +111,11 @@
 
 # condition class is included in failure
 
-    `f1()` did not throw a condition with class <bar>.
+    Code
+      expect_condition(f1(), class = "bar")
+    Condition
+      Error:
+      ! Expected `f1()` to throw a condition with class <bar>.
 
 # expect_condition validates its inputs
 

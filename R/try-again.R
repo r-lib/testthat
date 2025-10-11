@@ -1,4 +1,4 @@
-#' Evaluate an expression multiple times until it succeeds
+#' Evaluate an expectation multiple times until it succeeds
 #'
 #' If you have a flaky test, you can use `try_again()` to run it a few times
 #' until it succeeds. In most cases, you are better fixing the underlying
@@ -17,7 +17,10 @@
 #' expect_equal(usually_return_1(), 1)
 #'
 #' # 1% chance of failure:
-#' try_again(3, expect_equal(usually_return_1(), 1))
+#' try_again(1, expect_equal(usually_return_1(), 1))
+#'
+#' # 0.1% chance of failure:
+#' try_again(2, expect_equal(usually_return_1(), 1))
 #' }
 try_again <- function(times, code) {
   check_number_whole(times, min = 1)
@@ -28,9 +31,16 @@ try_again <- function(times, code) {
   while (i <= times) {
     tryCatch(
       return(eval(get_expr(code), get_env(code))),
-      expectation_failure = function(cnd) NULL
+      expectation_failure = function(cnd) {
+        cli::cli_inform(c(i = "Expectation failed; trying again ({i})..."))
+        NULL
+      },
+      error = function(cnd) {
+        cli::cli_inform(c(i = "Expectation errored; trying again ({i})..."))
+        NULL
+      }
     )
-    cli::cli_inform(c(i = "Expectation failed; trying again ({i})..."))
+
     i <- i + 1
   }
 

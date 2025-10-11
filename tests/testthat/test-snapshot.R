@@ -66,7 +66,7 @@ test_that("can scrub output/messages/warnings/errors", {
 
 test_that("always checks error status", {
   expect_error(expect_snapshot(stop("!"), error = FALSE))
-  expect_failure(expect_snapshot(print("!"), error = TRUE))
+  expect_snapshot_failure(expect_snapshot(print("!"), error = TRUE))
 })
 
 test_that("can capture error/warning messages", {
@@ -166,20 +166,35 @@ test_that("errors and warnings are folded", {
 # })
 
 test_that("hint is informative", {
-  expect_snapshot({
-    cat(snapshot_accept_hint("_default", "bar.R", reset_output = FALSE))
-    cat(snapshot_accept_hint("foo", "bar.R", reset_output = FALSE))
-  })
+  local_mocked_bindings(in_check_reporter = function() FALSE)
+  withr::local_envvar(GITHUB_ACTIONS = "false", TESTTHAT_WD = NA)
+
+  expect_snapshot(snapshot_hint("bar.R", reset_output = FALSE))
+})
+
+test_that("hint includes path when WD is different", {
+  local_mocked_bindings(in_check_reporter = function() FALSE)
+  withr::local_envvar(TESTTHAT_WD = "..")
+
+  hint <- snapshot_hint("bar.R", reset_output = FALSE)
+  # Can't use snapshot here because its hint will get the wrong path
+  expect_match(
+    hint,
+    'snapshot_accept("bar.R", "testthat")',
+    fixed = TRUE,
+    all = FALSE
+  )
 })
 
 test_that("expect_snapshot requires a non-empty test label", {
   local_description_set()
+  local_on_cran(FALSE)
 
   test_that("", {
     expect_error(expect_snapshot(1 + 1))
   })
 
-  pass(NULL) # quiet message about this test being empty
+  pass() # quiet message about this test being empty
 })
 
 test_that("expect_snapshot validates its inputs", {
@@ -210,13 +225,14 @@ test_that("expect_snapshot_warning validates its inputs", {
   })
 })
 
-test_that("on CRAN, snapshots are not run but don't skill entire test", {
+test_that("on CRAN, snapshots generate skip at end of test", {
   local_on_cran(TRUE)
 
   expectations <- capture_expectations(test_that("", {
     expect_snapshot(1 + 1)
     expect_true(TRUE)
   }))
-  expect_length(expectations, 1)
+  expect_length(expectations, 2)
   expect_s3_class(expectations[[1]], "expectation_success")
+  expect_s3_class(expectations[[2]], "expectation_skip")
 })

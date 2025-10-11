@@ -42,7 +42,8 @@
 #' @export
 #' @param callback Either a zero-argument function that returns an object
 #'   capturing global state that you're interested in, or `NULL`.
-set_state_inspector <- function(callback) {
+#' @inheritParams waldo::compare
+set_state_inspector <- function(callback, tolerance = testthat_tolerance()) {
   if (
     !is.null(callback) &&
       !(is.function(callback) && length(formals(callback)) == 0)
@@ -51,11 +52,18 @@ set_state_inspector <- function(callback) {
   }
 
   the$state_inspector <- callback
+  the$state_inspector_tolerance <- tolerance
   invisible()
 }
 
 testthat_state_condition <- function(before, after, call) {
-  diffs <- waldo_compare(before, after, x_arg = "before", y_arg = "after")
+  diffs <- waldo_compare(
+    before,
+    after,
+    x_arg = "before",
+    y_arg = "after",
+    tolerance = the$state_inspector_tolerance
+  )
 
   if (length(diffs) == 0) {
     return(NULL)

@@ -19,7 +19,7 @@ test_that("can write snaphot tests", {
   describe("snapshot tests in describe", {
     expect_snapshot(1 + 1)
     it("and in it", {
-      expect_snapshot(1 + 1)
+      expect_snapshot(2 + 2)
     })
   })
 })

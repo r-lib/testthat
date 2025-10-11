@@ -5,18 +5,24 @@ test_that("returns condition or value", {
 
 test_that("regexp = NULL checks for presence of error", {
   expect_success(expect_error(stop()))
-  expect_snapshot_failure(expect_error({}))
+
+  f <- function() {}
+  expect_snapshot_failure(expect_error(f()))
 })
 
 test_that("regexp = NA checks for absence of error", {
   expect_success(expect_error({}, NA))
-  expect_failure(expect_error(stop("Yes"), NA))
+
+  f <- function() stop("Yes")
+  expect_snapshot_failure(expect_error(f(), NA))
 })
 
 test_that("regexp = string matches for error message", {
   expect_success(expect_error(stop("Yes"), "Yes"))
   expect_error(expect_error(stop("Yes"), "No"))
-  expect_snapshot_failure(expect_error("OK", "No"))
+
+  f <- function() {}
+  expect_snapshot_failure(expect_error(f(), "No"))
 })
 
 test_that("class = string matches class of error", {
@@ -25,6 +31,7 @@ test_that("class = string matches class of error", {
   }
 
   expect_success(expect_error(blah(), class = "blah"))
+  # otherwise bubbles up
   expect_error(expect_error(blah(), class = "blech"), class = "blah")
 })
 
@@ -86,7 +93,7 @@ test_that("capture correct trace_env (#1994)", {
   expect_equal(status$n_failure, 1) # from expect_warning()
 
   status <- capture_success_failure({
-    stop("oops") %>% expect_error() %>% expect_warning()
+    stop("oops") |> expect_error() |> expect_warning()
   })
   expect_equal(status$n_success, 1) # from expect_error()
   expect_equal(status$n_failure, 1) # from expect_warning()
@@ -147,7 +154,9 @@ test_that("expect_warning validates its inputs", {
 
 test_that("regexp = NA checks for absence of message", {
   expect_success(expect_message({}, NA))
-  expect_failure(expect_message(message("!"), NA))
+
+  f <- \() message("!")
+  expect_snapshot_failure(expect_message(f(), NA))
 })
 
 test_that("expect_message validates its inputs", {

@@ -3,13 +3,14 @@ local_edition(2)
 context("Successes")
 
 test_that("Success", {
-  pass(NULL)
+  pass()
 })
 
 context("Failures")
 
 test_that("Failure:1", {
-  expect_true(FALSE)
+  x <- FALSE
+  expect_true(x)
 })
 
 test_that("Failure:2a", {

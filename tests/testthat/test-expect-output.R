@@ -3,11 +3,11 @@ g <- function() cat("!")
 
 test_that("expect = NA checks for no output", {
   expect_success(expect_output(f(), NA))
-  expect_failure(expect_output(g(), NA), "produced output")
+  expect_snapshot_failure(expect_output(g(), NA))
 })
 
 test_that("expect = NULL checks for some output", {
-  expect_failure(expect_output(f(), NULL), "produced no output")
+  expect_snapshot_failure(expect_output(f(), NULL))
   expect_success(expect_output(g(), NULL))
 })
 
@@ -33,8 +33,18 @@ test_that("... passed on to grepl", {
   expect_success(expect_output(print("X"), "x", ignore.case = TRUE))
 })
 
-test_that("returns first argument", {
-  expect_equal(expect_output(1, NA), 1)
+test_that("always returns first argument", {
+  f1 <- function() {
+    1
+  }
+  f2 <- function() {
+    cat("x")
+    1
+  }
+
+  expect_equal(expect_output(f1(), NA), 1)
+  expect_equal(expect_output(f2()), 1)
+  expect_equal(expect_output(f2(), "x"), 1)
 })
 
 test_that("uses unicode characters in output where available", {

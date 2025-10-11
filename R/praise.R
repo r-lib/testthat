@@ -43,7 +43,7 @@ praise_emoji <- function() {
     "\U0001f389", # party popper
     "\U0001f38a" # confetti ball
   )
-  sample(emoji, 1)
+  paste0(" ", sample(emoji, 1))
 }
 
 encourage <- function() {

@@ -63,7 +63,7 @@ test_that("skip_on_cran() works as expected", {
 
   local({
     local_on_cran(TRUE)
-    expect_snapshot_skip(skip_on_cran())
+    expect_skip(skip_on_cran())
   })
 
   withr::local_envvar(NOT_CRAN = NA)

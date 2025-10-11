@@ -143,9 +143,11 @@ expect_error <- function(
     # Access error fields with `[[` rather than `$` because the
     # `$.Throwable` from the rJava package throws with unknown fields
     if (!is.null(msg)) {
-      return(fail(msg, info = info, trace = act$cap[["trace"]]))
+      fail(msg, info = info, trace = act$cap[["trace"]])
+    } else {
+      pass()
     }
-    pass(act$val %||% act$cap)
+    invisible(act$val %||% act$cap)
   }
 }
 
@@ -198,9 +200,11 @@ expect_warning <- function(
       cond_type = "warnings"
     )
     if (!is.null(msg)) {
-      return(fail(msg, info = info))
+      fail(msg, info = info)
+    } else {
+      pass()
     }
-    pass(act$val)
+    invisible(act$val)
   }
 }
 
@@ -236,9 +240,11 @@ expect_message <- function(
     act <- quasi_capture(enquo(object), label, capture_messages)
     msg <- compare_messages(act$cap, act$lab, regexp = regexp, all = all, ...)
     if (!is.null(msg)) {
-      return(fail(msg, info = info))
+      fail(msg, info = info)
+    } else {
+      pass()
     }
-    pass(act$val)
+    invisible(act$val)
   }
 }
 
@@ -285,9 +291,11 @@ expect_condition <- function(
       cond_type = "condition"
     )
     if (!is.null(msg)) {
-      return(fail(msg, info = info, trace = act$cap[["trace"]]))
+      fail(msg, info = info, trace = act$cap[["trace"]])
+    } else {
+      pass()
     }
-    pass(act$val %||% act$cap)
+    invisible(act$val %||% act$cap)
   }
 }
 
@@ -327,16 +335,18 @@ expect_condition_matching_ <- function(
   # Access error fields with `[[` rather than `$` because the
   # `$.Throwable` from the rJava package throws with unknown fields
   if (!is.null(msg)) {
-    return(fail(
+    fail(
       msg,
       info = info,
       trace = act$cap[["trace"]],
       trace_env = trace_env
-    ))
+    )
+  } else {
+    pass()
   }
   # If a condition was expected, return it. Otherwise return the value
   # of the expression.
-  pass(if (expected) act$cap else act$val)
+  invisible(if (expected) act$cap else act$val)
 }
 
 # -------------------------------------------------------------------------
@@ -440,10 +450,10 @@ compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
   if (expected) {
     if (is.null(cond)) {
       if (is.null(cond_class)) {
-        sprintf("%s did not throw the expected %s.", lab, cond_type)
+        sprintf("Expected %s to throw a %s.", lab, cond_type)
       } else {
         sprintf(
-          "%s did not throw a %s with class <%s>.",
+          "Expected %s to throw a %s with class <%s>.",
           lab,
           cond_type,
           cond_class
@@ -454,12 +464,9 @@ compare_condition_3e <- function(cond_type, cond_class, cond, lab, expected) {
     }
   } else {
     if (!is.null(cond)) {
-      sprintf(
-        "%s threw an unexpected %s.\nMessage: %s\nClass:   %s",
-        lab,
-        cond_type,
-        cnd_message(cond),
-        paste(class(cond), collapse = "/")
+      c(
+        sprintf("Expected %s not to throw any %ss.", lab, cond_type),
+        actual_condition(cond)
       )
     } else {
       NULL
@@ -493,7 +500,7 @@ compare_condition_2e <- function(
 
   # Otherwise we're definitely expecting a condition
   if (is.null(cond)) {
-    return(sprintf("%s did not throw an %s.", lab, cond_type))
+    return(sprintf("Expected %s to throw a %s.", lab, cond_type))
   }
 
   matches <- cnd_matches_2e(cond, class, regexp, inherit, ...)
@@ -562,7 +569,12 @@ compare_messages <- function(
   # Expecting no messages
   if (identical(regexp, NA)) {
     if (length(messages) > 0) {
-      return(sprintf("%s generated %s:\n%s", lab, cond_type, bullets))
+      return(sprintf(
+        "Expected %s not to generate %s.\nActually generated:\n%s",
+        lab,
+        cond_type,
+        bullets
+      ))
     } else {
       return()
     }
@@ -570,7 +582,7 @@ compare_messages <- function(
 
   # Otherwise we're definitely expecting messages
   if (length(messages) == 0) {
-    return(sprintf("%s did not produce any %s.", lab, cond_type))
+    return(sprintf("Expected %s to produce %s.", lab, cond_type))
   }
 
   if (is.null(regexp)) {
@@ -623,5 +635,14 @@ check_condition_dots <- function(
       i = "Did you mean to use {.arg regexp} so {.arg ...} is passed to {.fn grepl}?"
     ),
     call = error_call
+  )
+}
+
+actual_condition <- function(cond) {
+  paste0(
+    "Actually got a <",
+    class(cond)[[1]],
+    "> with message:\n",
+    indent_lines(cnd_message(cond))
   )
 }

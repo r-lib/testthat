@@ -1,42 +1,88 @@
+# expected_named verifies presence of names
+
+    Code
+      expect_named(x)
+    Condition
+      Error:
+      ! Expected `x` to have names.
+
+# expected_named verifies actual of names
+
+    Code
+      expect_named(x, "b")
+    Condition
+      Error:
+      ! Expected `x` to have names "b".
+      Differences:
+      `actual`:   "a"
+      `expected`: "b"
+
 # provide useful feedback on failure
 
-    Names of c(a = 1) (`actual`) and c("a", "b") (`expected`) don't have the same values.
-    * Only in `expected`: "b"
-    
+    Code
+      expect_named(x1, c("a", "b"), ignore.order = TRUE)
+    Condition
+      Error:
+      ! Expected `x1` to have names `c("a", "b")`.
+      Actual: "a"
+      Expected: "a", "b"
+      Absent: "b"
 
 ---
 
-    Names of c(a = 1, b = 1) (`actual`) and c("a") (`expected`) don't have the same values.
-    * Only in `actual`: "b"
-    
+    Code
+      expect_named(x2, "a", ignore.order = TRUE)
+    Condition
+      Error:
+      ! Expected `x2` to have names "a".
+      Actual: "a", "b"
+      Expected: "a"
+      Needs: "b"
 
 ---
 
-    Names of c(a = 1) (`actual`) and c("b") (`expected`) don't have the same values.
-    * Only in `actual`: "a"
-    * Only in `expected`: "b"
-    
+    Code
+      expect_named(x1, "b", ignore.order = TRUE)
+    Condition
+      Error:
+      ! Expected `x1` to have names "b".
+      Actual: "a"
+      Expected: "b"
+      Needs: "a"
+      Absent: "b"
 
 ---
 
-    Names of c(a = 1) (`actual`) is not equal to c("a", "b") (`expected`).
-    
-    `actual`:   "a"    
-    `expected`: "a" "b"
+    Code
+      expect_named(x1, c("a", "b"), ignore.order = FALSE)
+    Condition
+      Error:
+      ! Expected `x1` to have names `c("a", "b")`.
+      Differences:
+      `actual`:   "a"    
+      `expected`: "a" "b"
 
 ---
 
-    Names of c(a = 1, b = 1) (`actual`) is not equal to c("a") (`expected`).
-    
-    `actual`:   "a" "b"
-    `expected`: "a"    
+    Code
+      expect_named(x2, "a", ignore.order = FALSE)
+    Condition
+      Error:
+      ! Expected `x2` to have names "a".
+      Differences:
+      `actual`:   "a" "b"
+      `expected`: "a"    
 
 ---
 
-    Names of c(a = 1) (`actual`) is not equal to c("b") (`expected`).
-    
-    `actual`:   "a"
-    `expected`: "b"
+    Code
+      expect_named(x1, "b", ignore.order = FALSE)
+    Condition
+      Error:
+      ! Expected `x1` to have names "b".
+      Differences:
+      `actual`:   "a"
+      `expected`: "b"
 
 # expect_named validates its inputs
 

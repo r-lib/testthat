@@ -52,18 +52,18 @@ quasi_label <- function(quo, label = NULL, arg = NULL) {
   }
 
   expr <- quo_get_expr(quo)
+  value <- eval_bare(expr, quo_get_env(quo))
+  label <- label %||% expr_label(expr)
 
-  labelled_value(
-    eval_bare(expr, quo_get_env(quo)),
-    label %||% expr_label(expr)
-  )
+  labelled_value(value, label)
 }
 
 labelled_value <- function(value, label) {
-  list(
-    val = value,
-    lab = label
-  )
+  if (missing(value)) {
+    list(val = missing_arg(), lab = label)
+  } else {
+    list(val = value, lab = label)
+  }
 }
 
 quasi_capture <- function(.quo, .label, .capture, ...) {
@@ -101,7 +101,7 @@ expr_label <- function(x) {
         x <- call2(x[[1]], quote(expr = ...))
       }
     }
-    deparse1(x)
+    paste0("`", deparse1(x), "`")
   } else {
     # Any other object that's been inlined in
     x <- deparse(x)

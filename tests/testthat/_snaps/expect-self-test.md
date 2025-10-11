@@ -1,7 +1,30 @@
-# expect_failure() can optionally match message
+# expect_failure() generates a useful error messages
 
-    Failure message does not match regexp "banana".
-    Text: "apple"
+    Code
+      expect_failure(expect_no_failure())
+    Condition
+      Error:
+      ! Expected exactly one failure and no successes.
+      Actually failed 0 times
+    Code
+      expect_failure(expect_many_failures())
+    Condition
+      Error:
+      ! Expected exactly one failure and no successes.
+      Actually failed 2 times
+    Code
+      expect_failure(expect_has_success())
+    Condition
+      Error:
+      ! Expected exactly one failure and no successes.
+      Actually succeeded 1 times
+    Code
+      expect_failure(expect_failure_foo(), "bar")
+    Condition
+      Error:
+      ! Expected failure message to match regexp "bar".
+      Actual message:
+      x | foo
 
 # errors in expect_success bubble up
 
@@ -17,15 +40,37 @@
       show_failure(expect_true(FALSE))
     Output
       Failed expectation:
-      FALSE (`actual`) is not equal to TRUE (`expected`).
-      
+      Expected FALSE to be TRUE.
+      Differences:
       `actual`:   FALSE
       `expected`: TRUE 
+      
+
+# expect_success() generates a useful error messages
+
+    Code
+      expect_success(expect_no_success())
+    Condition
+      Error:
+      ! Expected exactly one success and no failures.
+      Actually succeeded 0 times
+    Code
+      expect_success(expect_many_successes())
+    Condition
+      Error:
+      ! Expected exactly one success and no failures.
+      Actually succeeded 2 times
+    Code
+      expect_success(expect_has_failure())
+    Condition
+      Error:
+      ! Expected exactly one success and no failures.
+      Actually failed 1 times
 
 # expect_no are deprecated
 
     Code
-      expect_no_failure(pass(NULL))
+      expect_no_failure(pass())
     Condition
       Warning:
       `expect_no_failure()` was deprecated in testthat 3.3.0.

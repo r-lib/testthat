@@ -30,6 +30,8 @@ test_that("expect_snapshot_file works in a different directory", {
 })
 
 test_that("expect_snapshot_file works with variant", {
+  local_on_cran(FALSE)
+
   expect_snapshot_file(
     write_tmp_lines(r_version()),
     "version.txt",
@@ -39,6 +41,8 @@ test_that("expect_snapshot_file works with variant", {
 })
 
 test_that("expect_snapshot_file finds duplicate snapshot files", {
+  local_on_cran(FALSE)
+
   expect_snapshot(
     expect_snapshot_file(
       write_tmp_lines(r_version()),
@@ -50,6 +54,7 @@ test_that("expect_snapshot_file finds duplicate snapshot files", {
 })
 
 test_that("basic workflow", {
+  local_on_cran(FALSE)
   snapper <- local_test_snapshotter()
 
   path <- write_tmp_lines(letters)
@@ -66,7 +71,7 @@ test_that("basic workflow", {
   # fails if changed
   snapper$start_file("snapshot-6", "test")
   path2 <- write_tmp_lines(letters[-1])
-  expect_failure(expect_snapshot_file(path2, "letters.txt"))
+  expect_failure(expect_snapshot_file(path2, "letters.txt"), "has changed")
   snapper$end_file()
 })
 
@@ -157,35 +162,20 @@ test_that("split_path handles edge cases", {
   expect_equal(split_path("x/.b.c"), list(dir = "x", name = "", ext = "b.c"))
 })
 
-test_that("snapshot_hint output differs in R CMD check", {
-  snapshot_review_hint <- function(...) {
-    testthat:::snapshot_review_hint(..., reset_output = FALSE)
-  }
+test_that("generates informative hint", {
+  local_mocked_bindings(in_check_reporter = function() FALSE)
+  withr::local_envvar(GITHUB_ACTIONS = "false", TESTTHAT_WD = NA)
 
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = FALSE,
-    ci = FALSE
-  )))
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = TRUE,
-    ci = FALSE
-  )))
-  expect_snapshot(cat(snapshot_review_hint(
-    "lala",
-    "foo.r",
-    check = TRUE,
-    ci = TRUE
-  )))
+  expect_snapshot(snapshot_hint("lala", reset_output = FALSE))
 })
 
 test_that("expect_snapshot_file validates its inputs", {
+  path <- withr::local_tempfile(lines = "x")
+
   expect_snapshot(error = TRUE, {
-    expect_snapshot_file(123, "test.txt")
-    expect_snapshot_file("test.txt", 123)
-    expect_snapshot_file("test.txt", "test.txt", cran = "yes")
+    expect_snapshot_file(123)
+    expect_snapshot_file("doesnt-exist.txt")
+    expect_snapshot_file(path, 123)
+    expect_snapshot_file(path, "test.txt", cran = "yes")
   })
 })

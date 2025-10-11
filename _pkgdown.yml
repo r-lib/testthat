@@ -27,6 +27,7 @@ reference:
 - title: Expectations
 - subtitle: Values
   contents:
+  - expect_all_equal
   - expect_gt
   - expect_length
   - expect_match
@@ -68,8 +69,10 @@ reference:
 
 - title: Mocking
   contents:
-  - with_mocked_bindings
-  - starts_with("mock_")
+  - local_mocked_bindings
+  - local_mocked_s3_method
+  - local_mocked_r6_class
+  - mock_output_sequence
 
 - title: Custom expectations
   contents:
@@ -81,6 +84,24 @@ reference:
   - ends_with("Reporter")
   - -Reporter
 
+articles:
+- title: Setup and configuration
+  navbar: Setup
+  contents:
+  - third-edition
+  - parallel
+  - special-files
+  - custom-expectation
+
+- title: Testing techniques
+  navbar: Techniques
+  contents:
+  - challenging-tests
+  - mocking
+  - skipping
+  - snapshotting
+  - test-fixtures
+  
 news:
   releases:
   - text: "Version 3.2.0"

@@ -51,9 +51,14 @@ text from the output. Should take a character vector of lines as input
 and return a modified character vector as output.}
 
 \item{variant}{If not-\code{NULL}, results will be saved in
-\verb{_snaps/\{variant\}/\{test\}/\{name\}.\{ext\}}. This allows you to create
+\verb{_snaps/\{variant\}/\{test\}/\{name\}}. This allows you to create
 different snapshots for different scenarios, like different operating
-systems or different R versions.}
+systems or different R versions.
+
+Note that there's no way to declare all possible variants up front which
+means that as soon as you start using variants, you are responsible for
+deleting snapshot variants that are no longer used. (testthat will still
+delete all variants if you delete the test.)}
 
 \item{old, new}{Paths to old and new snapshot files.}
 }
@@ -79,10 +84,22 @@ testthat automatically detects dangling snapshots that have been
 written to the \verb{_snaps} directory but which no longer have
 corresponding R code to generate them. These dangling files are
 automatically deleted so they don't clutter the snapshot
-directory. However we want to preserve snapshot files when the R
-code wasn't executed because of an unexpected error or because of a
-\code{\link[=skip]{skip()}}. Let testthat know about these files by calling
-\code{announce_snapshot_file()} before \code{expect_snapshot_file()}.
+directory.
+
+This can cause problems if your test is conditionally executed, either
+because of an \code{if} statement or a \code{\link[=skip]{skip()}}. To avoid files being deleted in
+this case, you can call \code{announce_snapshot_file()} before the conditional
+code.
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{test_that("can save a file", \{
+  if (!can_save()) \{
+    announce_snapshot_file(name = "data.txt")
+    skip("Can't save file")
+  \}
+  path <- withr::local_tempfile()
+  expect_snapshot_file(save_file(path, mydata()), "data.txt")
+\})
+}\if{html}{\out{</div>}}
 }
 
 \examples{
@@ -105,20 +122,19 @@ expect_snapshot_file(save_png(hist(mtcars$mpg)), "plot.png")
 }
 
 # You'd then also provide a helper that skips tests where you can't
-# be sure of producing exactly the same output
+# be sure of producing exactly the same output.
 expect_snapshot_plot <- function(name, code) {
+  # Announce the file before touching skips or running `code`. This way,
+  # if the skips are active, testthat will not auto-delete the corresponding
+  # snapshot file.
+  name <- paste0(name, ".png")
+  announce_snapshot_file(name = name)
+
   # Other packages might affect results
   skip_if_not_installed("ggplot2", "2.0.0")
-  # Or maybe the output is different on some operation systems
+  # Or maybe the output is different on some operating systems
   skip_on_os("windows")
   # You'll need to carefully think about and experiment with these skips
-
-  name <- paste0(name, ".png")
-
-  # Announce the file before touching `code`. This way, if `code`
-  # unexpectedly fails or skips, testthat will not auto-delete the
-  # corresponding snapshot file.
-  announce_snapshot_file(name = name)
 
   path <- save_png(code)
   expect_snapshot_file(path, name)

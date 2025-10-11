@@ -40,6 +40,7 @@ Suggests:
     curl (>= 0.9.5),
     diffviewer (>= 0.1.0),
     digest (>= 0.6.33),
+    gh,
     knitr,
     rmarkdown,
     rstudioapi,
@@ -56,4 +57,4 @@ Config/testthat/parallel: true
 Config/testthat/start-first: watcher, parallel*
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3

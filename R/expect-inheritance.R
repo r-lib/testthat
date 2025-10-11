@@ -70,15 +70,14 @@ expect_type <- function(object, type) {
   act_type <- typeof(act$val)
 
   if (!identical(act_type, type)) {
-    msg <- sprintf(
-      "%s has type %s, not %s.",
-      act$lab,
-      format_class(act_type),
-      format_class(type)
-    )
-    return(fail(msg))
+    fail(c(
+      sprintf("Expected %s to have type %s.", act$lab, format_class(type)),
+      sprintf("Actual type: %s", format_class(act_type))
+    ))
+  } else {
+    pass()
   }
-  pass(act$val)
+  invisible(act$val)
 }
 
 #' @export
@@ -95,33 +94,34 @@ expect_s3_class <- function(object, class, exact = FALSE) {
 
   if (identical(class, NA)) {
     if (isS3(object)) {
-      msg <- sprintf("%s is an S3 object", act$lab)
-      return(fail(msg))
+      fail(sprintf("Expected %s not to be an S3 object.", act$lab))
+    } else {
+      pass()
     }
   } else if (is.character(class)) {
     if (!isS3(act$val)) {
-      return(fail(sprintf("%s is not an S3 object", act$lab)))
-    } else if (exact) {
-      if (!identical(class(act$val), class)) {
-        msg <- sprintf("%s has class %s, not %s.", act$lab, act$class, exp_lab)
-        return(fail(msg))
-      }
+      fail(c(
+        sprintf("Expected %s to be an S3 object.", act$lab),
+        sprintf("Actual OO type: %s.", oo_type(act$val))
+      ))
+    } else if (exact && !identical(class(act$val), class)) {
+      fail(c(
+        sprintf("Expected %s to have class %s.", act$lab, exp_lab),
+        sprintf("Actual class: %s.", act$class)
+      ))
+    } else if (!inherits(act$val, class)) {
+      fail(c(
+        sprintf("Expected %s to inherit from %s.", act$lab, exp_lab),
+        sprintf("Actual class: %s.", act$class)
+      ))
     } else {
-      if (!inherits(act$val, class)) {
-        msg <- sprintf(
-          "%s inherits from %s not %s.",
-          act$lab,
-          act$class,
-          exp_lab
-        )
-        return(fail(msg))
-      }
+      pass()
     }
   } else {
     stop_input_type(class, c("a character vector", "NA"))
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 #' @export
@@ -133,28 +133,29 @@ expect_s4_class <- function(object, class) {
 
   if (identical(class, NA)) {
     if (isS4(object)) {
-      msg <- sprintf("%s is an S4 object", act$lab)
-      return(fail(msg))
+      fail(sprintf("Expected %s not to be an S4 object.", act$lab))
+    } else {
+      pass()
     }
   } else if (is.character(class)) {
     if (!isS4(act$val)) {
-      return(fail(sprintf("%s is not an S4 object", act$lab)))
+      fail(c(
+        sprintf("Expected %s to be an S4 object.", act$lab),
+        sprintf("Actual OO type: %s.", oo_type(act$val))
+      ))
+    } else if (!methods::is(act$val, class)) {
+      fail(c(
+        sprintf("Expected %s to inherit from %s.", act$lab, exp_lab),
+        sprintf("Actual class: %s.", act$class)
+      ))
     } else {
-      if (!methods::is(act$val, class)) {
-        msg <- sprintf(
-          "%s inherits from %s not %s.",
-          act$lab,
-          act$class,
-          exp_lab
-        )
-        return(fail(msg))
-      }
+      pass()
     }
   } else {
     stop_input_type(class, c("a character vector", "NA"))
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 #' @export
@@ -164,17 +165,22 @@ expect_r6_class <- function(object, class) {
   check_string(class)
 
   if (!inherits(act$val, "R6")) {
-    return(fail(sprintf("%s is not an R6 object.", act$lab)))
-  }
-
-  if (!inherits(act$val, class)) {
+    fail(c(
+      sprintf("Expected %s to be an R6 object.", act$lab),
+      sprintf("Actual OO type: %s.", oo_type(act$val))
+    ))
+  } else if (!inherits(act$val, class)) {
     act_class <- format_class(class(act$val))
     exp_class <- format_class(class)
-    msg <- sprintf("%s inherits from %s not %s.", act$lab, act_class, exp_class)
-    return(fail(msg))
+    fail(c(
+      sprintf("Expected %s to inherit from %s.", act$lab, exp_class),
+      sprintf("Actual class: %s.", act_class)
+    ))
+  } else {
+    pass()
   }
 
-  pass(act$val)
+  invisible(act$val)
 }
 
 #' @export
@@ -188,22 +194,24 @@ expect_s7_class <- function(object, class) {
   act <- quasi_label(enquo(object))
 
   if (!S7::S7_inherits(object)) {
-    return(fail(sprintf("%s is not an S7 object", act$lab)))
+    fail(c(
+      sprintf("Expected %s to be an S7 object.", act$lab),
+      sprintf("Actual OO type: %s.", oo_type(act$val))
+    ))
+  } else if (!S7::S7_inherits(object, class)) {
+    exp_class <- attr(class, "name", TRUE)
+    act_class <- setdiff(base::class(object), "S7_object")
+    act_class_desc <- paste0("<", act_class, ">", collapse = "/")
+
+    fail(c(
+      sprintf("Expected %s to inherit from <%s>.", act$lab, exp_class),
+      sprintf("Actual class: %s.", act_class_desc)
+    ))
+  } else {
+    pass()
   }
 
-  if (!S7::S7_inherits(object, class)) {
-    obj_class <- setdiff(base::class(object), "S7_object")
-    class_desc <- paste0("<", obj_class, ">", collapse = "/")
-    msg <- sprintf(
-      "%s inherits from %s not <%s>.",
-      act$lab,
-      class_desc,
-      attr(class, "name", TRUE)
-    )
-    return(fail(msg))
-  }
-
-  pass(act$val)
+  invisible(act$val)
 }
 
 #' Do you expect to inherit from this class?
@@ -239,14 +247,16 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 
   if (!inherits(act$val, class)) {
     msg <- sprintf(
-      "%s inherits from `%s` not `%s`.",
+      "Expected %s to inherit from %s.\nActual inheritance: %s",
       act$lab,
-      act$class,
-      exp_lab
+      exp_lab,
+      act$class
     )
-    return(fail(msg, info = info))
+    fail(msg, info = info)
+  } else {
+    pass()
   }
-  pass(act$val)
+  invisible(act$val)
 }
 
 # Helpers ----------------------------------------------------------------------
@@ -254,5 +264,22 @@ expect_is <- function(object, class, info = NULL, label = NULL) {
 isS3 <- function(x) is.object(x) && !isS4(x)
 
 format_class <- function(x) {
-  paste0(encodeString(x, quote = "'"), collapse = "/")
+  paste0(encodeString(x, quote = '"'), collapse = "/")
+}
+
+oo_type <- function(x) {
+  if (!is.object(x)) {
+    return("none")
+  }
+  if (isS4(x)) {
+    "S4"
+  } else {
+    if (inherits(x, "R6")) {
+      "R6"
+    } else if (inherits(x, "S7")) {
+      "S7"
+    } else {
+      "S3"
+    }
+  }
 }

@@ -68,7 +68,8 @@ expect_equal <- function(
   check_number_decimal(tolerance, min = 0, allow_null = TRUE)
 
   if (edition_get() >= 3) {
-    expect_waldo_equal_("equal", act, exp, info, ..., tolerance = tolerance)
+    msg <- "Expected %s to equal %s."
+    expect_waldo_equal_(msg, act, exp, info, ..., tolerance = tolerance)
   } else {
     if (!is.null(tolerance)) {
       comp <- compare(act$val, exp$val, ..., tolerance = tolerance)
@@ -76,13 +77,20 @@ expect_equal <- function(
       comp <- compare(act$val, exp$val, ...)
     }
 
-    if (!comp$equal) {
-      msg <- sprintf("%s not equal to %s.\n%s", act$lab, exp$lab, comp$message)
-      return(fail(msg, info = info))
+    if (comp$equal) {
+      pass()
+    } else {
+      msg <- c(
+        sprintf("Expected %s to equal %s.", act$lab, exp$lab),
+        "Differences:",
+        comp$message
+      )
+      fail(msg, info = info)
     }
-    pass(act$val)
   }
+  invisible(act$val)
 }
+
 
 #' @export
 #' @rdname equality-expectations
@@ -98,36 +106,37 @@ expect_identical <- function(
   exp <- quasi_label(enquo(expected), expected.label)
 
   if (edition_get() >= 3) {
-    expect_waldo_equal_("identical", act, exp, info, ...)
+    msg <- "Expected %s to be identical to %s."
+    expect_waldo_equal_(msg, act, exp, info, ...)
   } else {
-    ident <- identical(act$val, exp$val, ...)
-    if (ident) {
-      msg <- ""
+    if (identical(act$val, exp$val, ...)) {
+      pass()
     } else {
       compare <- compare(act$val, exp$val)
       if (compare$equal) {
-        msg <- "Objects equal but not identical"
+        msg_act <- "Objects equal but not identical"
       } else {
-        msg <- compare$message
+        msg_act <- compare$message
       }
-    }
 
-    if (!ident) {
-      msg <- sprintf("%s not identical to %s.\n%s", act$lab, exp$lab, msg)
-      return(fail(msg, info = info))
+      msg <- c(
+        sprintf("Expected %s to be identical to %s.", act$lab, exp$lab),
+        "Differences:",
+        msg_act
+      )
+      fail(msg, info = info)
     }
-    pass(act$val)
   }
+  invisible(act$val)
 }
 
 expect_waldo_equal_ <- function(
-  type,
+  msg,
   act,
   exp,
   info = NULL,
   ...,
-  trace_env = caller_env(),
-  error_prefix = NULL
+  trace_env = caller_env()
 ) {
   comp <- waldo_compare(
     act$val,
@@ -136,20 +145,16 @@ expect_waldo_equal_ <- function(
     x_arg = "actual",
     y_arg = "expected"
   )
-  if (length(comp) != 0) {
-    msg <- sprintf(
-      "%s (%s) is not %s to %s (%s).\n\n%s",
-      act$lab,
-      "`actual`",
-      type,
-      exp$lab,
-      "`expected`",
-      paste0(comp, collapse = "\n\n")
+  if (length(comp) == 0) {
+    pass()
+  } else {
+    msg <- c(
+      sprintf(msg, act$lab, exp$lab),
+      "Differences:",
+      paste0(comp, "\n")
     )
-    msg <- paste0(error_prefix, msg)
-    return(fail(msg, info = info, trace_env = trace_env))
+    fail(msg, info = info, trace_env = trace_env)
   }
-  pass(act$val)
 }
 
 #' Is an object equal to the expected value, ignoring attributes?
@@ -195,12 +200,14 @@ expect_equivalent <- function(
   comp <- compare(act$val, exp$val, ..., check.attributes = FALSE)
   if (!comp$equal) {
     msg <- sprintf(
-      "%s not equivalent to %s.\n%s",
+      "Expected %s to be equivalent to %s.\n%s",
       act$lab,
       exp$lab,
       comp$message
     )
-    return(fail(msg, info = info))
+    fail(msg, info = info)
+  } else {
+    pass()
   }
-  pass(act$val)
+  invisible(act$val)
 }

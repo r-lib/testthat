@@ -12,17 +12,17 @@
 #' @examples
 #' expect_true(2 == 2)
 #' # Failed expectations will throw an error
-#' \dontrun{
-#' expect_true(2 != 2)
-#' }
-#' expect_true(!(2 != 2))
-#' # or better:
-#' expect_false(2 != 2)
+#' show_failure(expect_true(2 != 2))
 #'
-#' a <- 1:3
-#' expect_true(length(a) == 3)
-#' # but better to use more specific expectation, if available
-#' expect_equal(length(a), 3)
+#' # where possible, use more specific expectations, to get more informative
+#' # error messages
+#' a <- 1:4
+#' show_failure(expect_true(length(a) == 3))
+#' show_failure(expect_equal(length(a), 3))
+#' 
+#' x <- c(TRUE, TRUE, FALSE, TRUE)
+#' show_failure(expect_true(all(x)))
+#' show_failure(expect_all_true(x))
 #' @name logical-expectations
 NULL
 
@@ -31,7 +31,9 @@ NULL
 expect_true <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label)
   exp <- labelled_value(TRUE, "TRUE")
-  expect_waldo_equal_("equal", act, exp, info = info, ignore_attr = TRUE)
+
+  expect_waldo_constant_(act, exp, info = info, ignore_attr = TRUE)
+  invisible(act$val)
 }
 
 #' @export
@@ -39,7 +41,9 @@ expect_true <- function(object, info = NULL, label = NULL) {
 expect_false <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label)
   exp <- labelled_value(FALSE, "FALSE")
-  expect_waldo_equal_("equal", act, exp, info = info, ignore_attr = TRUE)
+
+  expect_waldo_constant_(act, exp, info = info, ignore_attr = TRUE)
+  invisible(act$val)
 }
 
 #' Do you expect `NULL`?
@@ -58,6 +62,34 @@ expect_false <- function(object, info = NULL, label = NULL) {
 #' show_failure(expect_null(y))
 expect_null <- function(object, info = NULL, label = NULL) {
   act <- quasi_label(enquo(object), label)
-  exp <- labelled_value(NULL, "FALSE")
-  expect_waldo_equal_("equal", act, exp, info = info)
+  exp <- labelled_value(NULL, "NULL")
+
+  expect_waldo_constant_(act, exp, info = info)
+  invisible(act$val)
+}
+
+expect_waldo_constant_ <- function(
+  act,
+  exp,
+  ...,
+  info = NULL,
+  trace_env = caller_env()
+) {
+  comp <- waldo_compare(
+    act$val,
+    exp$val,
+    ...,
+    x_arg = "actual",
+    y_arg = "expected"
+  )
+  if (length(comp) != 0) {
+    msg <- c(
+      sprintf("Expected %s to be %s.", act$lab, exp$lab),
+      "Differences:",
+      paste0(comp, "\n")
+    )
+    fail(msg, info = info, trace_env = trace_env)
+  } else {
+    pass()
+  }
 }

@@ -46,20 +46,25 @@ expect_match <- function(
   check_bool(all)
 
   if (length(object) == 0) {
-    return(fail(sprintf("%s is empty.", act$lab), info = info))
+    fail(
+      sprintf("Expected %s to have at least one element.", act$lab),
+      info = info
+    )
+  } else {
+    expect_match_(
+      act = act,
+      regexp = regexp,
+      perl = perl,
+      fixed = fixed,
+      ...,
+      all = all,
+      info = info,
+      label = label,
+      negate = FALSE
+    )
   }
 
-  expect_match_(
-    act = act,
-    regexp = regexp,
-    perl = perl,
-    fixed = fixed,
-    ...,
-    all = all,
-    info = info,
-    label = label,
-    negate = FALSE
-  )
+  invisible(act$val)
 }
 
 #' @describeIn expect_match Check that a string doesn't match a regular
@@ -94,6 +99,7 @@ expect_no_match <- function(
     label = label,
     negate = TRUE
   )
+  invisible(act$val)
 }
 
 expect_match_ <- function(
@@ -106,40 +112,85 @@ expect_match_ <- function(
   info = NULL,
   label = NULL,
   negate = FALSE,
-  title = "Text",
+  title = "text",
   trace_env = caller_env()
 ) {
   matches <- grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
   condition <- if (negate) !matches else matches
   ok <- if (all) all(condition) else any(condition)
 
-  if (ok) {
-    return(pass(act$val))
-  }
+  if (!ok) {
+    values <- show_text(act$val, condition)
+    if (length(act$val) == 1) {
+      which <- ""
+    } else {
+      which <- if (all) "every element of " else "some element of "
+    }
+    match <- if (negate) "not to match" else "to match"
 
-  text <- encodeString(act$val)
-  if (length(act$val) == 1) {
-    values <- paste0(title, ': "', text, '"')
-    which <- ""
-  } else {
-    bullet <- ifelse(
-      condition,
-      cli::col_green(cli::symbol$tick),
-      cli::col_red(cli::symbol$cross)
+    msg_exp <- sprintf(
+      "Expected %s%s %s %s %s.",
+      which,
+      act$lab,
+      match,
+      if (fixed) "string" else "regexp",
+      encodeString(regexp, quote = '"')
     )
-    values <- paste0(title, ":\n", paste0(bullet, " ", text, collapse = "\n"))
-    which <- if (all) "Every element of " else "Some element of "
+    msg_act <- c(paste0("Actual ", title, ':'), values)
+    fail(c(msg_exp, msg_act), info = info, trace_env = trace_env)
+  } else {
+    pass()
   }
-  match <- if (negate) "matches" else "does not match"
+}
 
-  msg <- sprintf(
-    "%s%s %s %s %s.\n%s",
-    which,
-    act$lab,
-    match,
-    if (fixed) "string" else "regexp",
-    encodeString(regexp, quote = '"'),
-    values
+# Adapted from print.ellmer_prompt
+show_text <- function(x, matches = NULL, max_items = 20, max_lines = NULL) {
+  matches <- matches %||% rep(TRUE, length(x))
+  max_lines <- max_lines %||% (max_items * 25)
+
+  n <- length(x)
+  n_extra <- length(x) - max_items
+  if (n_extra > 0) {
+    x <- x[seq_len(max_items)]
+    matches <- matches[seq_len(max_items)]
+  }
+
+  if (length(x) == 0) {
+    return(character())
+  }
+
+  bar <- if (cli::is_utf8_output()) "\u2502" else "|"
+
+  id <- ifelse(
+    matches,
+    cli::col_green(cli::symbol$tick),
+    cli::col_red(cli::symbol$cross)
   )
-  return(fail(msg, info = info, trace_env = trace_env))
+
+  indent <- paste0(id, " ", bar, " ")
+  exdent <- paste0("  ", cli::col_grey(bar), " ")
+
+  x[is.na(x)] <- cli::col_red("<NA>")
+  x <- paste0(indent, x)
+  x <- gsub("\n", paste0("\n", exdent), x)
+
+  lines <- strsplit(x, "\n")
+  ids <- rep(seq_along(x), lengths(lines))
+  first <- c(TRUE, ids[-length(ids)] != ids[-1])
+  lines <- unlist(lines)
+
+  if (length(lines) > max_lines) {
+    if (first[max_lines + 1]) {
+      max_lines <- max_lines - 1
+    }
+
+    lines <- lines[seq_len(max_lines)]
+    lines <- c(lines, paste0(exdent, "..."))
+    n_extra <- n - ids[max_lines - 1]
+  }
+
+  if (n_extra > 0) {
+    lines <- c(lines, paste0("... and ", n_extra, " more.\n"))
+  }
+  lines
 }
