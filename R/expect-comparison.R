@@ -1,4 +1,7 @@
-#' Do you expect a number bigger or smaller than this?
+#' Do you expect a value bigger or smaller than this?
+#'
+#' These functions compare values of comparable data types, such as numbers,
+#' dates, and times.
 #'
 #' @inheritParams expect_equal
 #' @param object,expected A value to compare and its expected bound.
@@ -45,30 +48,41 @@ expect_compare_ <- function(
 failure_compare <- function(act, exp, operator) {
   actual_op <- switch(operator, "<" = ">=", "<=" = ">", ">" = "<=", ">=" = "<")
 
-  diff <- act$val - exp$val
   msg_exp <- sprintf("Expected %s %s %s.", act$lab, operator, exp$lab)
 
-  digits <- max(
-    digits(act$val),
-    digits(exp$val),
-    min_digits(act$val, exp$val)
-  )
-
-  msg_act <- sprintf(
-    "Actual comparison: %s %s %s",
-    num_exact(act$val, digits),
-    actual_op,
-    num_exact(exp$val, digits)
-  )
-
-  if (is.na(diff)) {
-    msg_diff <- NULL
-  } else {
-    msg_diff <- sprintf(
-      "Difference: %s %s 0",
-      num_exact(diff, digits),
-      actual_op
+  if (is.numeric(act$val)) {
+    digits <- max(
+      digits(act$val),
+      digits(exp$val),
+      min_digits(act$val, exp$val)
     )
+
+    msg_act <- sprintf(
+      "Actual comparison: %s %s %s",
+      num_exact(act$val, digits),
+      actual_op,
+      num_exact(exp$val, digits)
+    )
+
+    diff <- act$val - exp$val
+    if (is.na(diff)) {
+      msg_diff <- NULL
+    } else {
+      msg_diff <- sprintf(
+        "Difference: %s %s 0",
+        num_exact(diff, digits),
+        actual_op
+      )
+    }
+
+  } else {
+    msg_act <- sprintf(
+      "Actual comparison: \"%s\" %s \"%s\"",
+      act$val,
+      actual_op,
+      exp$val
+    )
+    msg_diff <- NULL
   }
 
   c(msg_exp, msg_act, msg_diff)

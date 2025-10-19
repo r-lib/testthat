@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* Make `expect_lt()`, `expect_lte()`, `expect_gt()`, and `expect_gte()` work properly for non-numeric data (#2268)
 * New `expect_disjoint()` to check for the absence of values (@stibu81, #1851).
 * `expect_all_equal()`, `expect_all_true()`, and `expect_all_false()` are a new family of expectations that checks that every element of a vector has the same value. Compared to using `expect_true(all(...))` they give better failure messages (#1836, #2235).
 * Expectations now consistently return the value of the first argument, regardless of whether the expectation succeeds or fails. The primary exception are `expect_message()` and friends which will return the condition. This shouldn't affect existing tests, but will make failures clearer when you chain together multiple expectations (#2246).

@@ -76,6 +76,114 @@
       ! Expected `x` < 10.
       Actual comparison: NA >= 10.0
 
+# comparisons with POSIXct objects work
+
+    Code
+      expect_lt(time2, time)
+    Condition
+      Error:
+      ! Expected `time2` < `time`.
+      Actual comparison: "2020-01-01 01:00:01" >= "2020-01-01 01:00:00"
+
+---
+
+    Code
+      expect_lte(time2, time)
+    Condition
+      Error:
+      ! Expected `time2` <= `time`.
+      Actual comparison: "2020-01-01 01:00:01" > "2020-01-01 01:00:00"
+
+---
+
+    Code
+      expect_gt(time, time2)
+    Condition
+      Error:
+      ! Expected `time` > `time2`.
+      Actual comparison: "2020-01-01 01:00:00" <= "2020-01-01 01:00:01"
+
+---
+
+    Code
+      expect_gte(time, time2)
+    Condition
+      Error:
+      ! Expected `time` >= `time2`.
+      Actual comparison: "2020-01-01 01:00:00" < "2020-01-01 01:00:01"
+
+# comparisons with Date objects work
+
+    Code
+      expect_lt(date2, date)
+    Condition
+      Error:
+      ! Expected `date2` < `date`.
+      Actual comparison: "2020-01-02" >= "2020-01-01"
+
+---
+
+    Code
+      expect_lte(date2, date)
+    Condition
+      Error:
+      ! Expected `date2` <= `date`.
+      Actual comparison: "2020-01-02" > "2020-01-01"
+
+---
+
+    Code
+      expect_gt(date, date2)
+    Condition
+      Error:
+      ! Expected `date` > `date2`.
+      Actual comparison: "2020-01-01" <= "2020-01-02"
+
+---
+
+    Code
+      expect_gte(date, date2)
+    Condition
+      Error:
+      ! Expected `date` >= `date2`.
+      Actual comparison: "2020-01-01" < "2020-01-02"
+
+# comparisons with character objects work
+
+    Code
+      expect_lt("b", "a")
+    Condition
+      Error:
+      ! Expected "b" < "a".
+      Actual comparison: "b" >= "a"
+
+---
+
+    Code
+      expect_lte("b", "a")
+    Condition
+      Error:
+      ! Expected "b" <= "a".
+      Actual comparison: "b" > "a"
+
+---
+
+    Code
+      expect_gt("a", "b")
+    Condition
+      Error:
+      ! Expected "a" > "b".
+      Actual comparison: "a" <= "b"
+
+---
+
+    Code
+      expect_gte("a", "b")
+    Condition
+      Error:
+      ! Expected "a" >= "b".
+      Actual comparison: "a" < "b"
+
 # comparison must yield a single logical
 
     Code

@@ -58,13 +58,44 @@ test_that("comparisons with NA work", {
   expect_snapshot_failure(expect_lt(x, 10))
 })
 
-test_that("comparisons with more complicated objects work", {
-  time <- Sys.time()
+test_that("comparisons with POSIXct objects work", {
+  time <- as.POSIXct("2020-01-01 01:00:00")
   time2 <- time + 1
   expect_success(expect_lt(time, time2))
   expect_success(expect_lte(time, time2))
   expect_success(expect_gt(time2, time))
   expect_success(expect_gte(time2, time))
+
+  expect_snapshot_failure(expect_lt(time2, time))
+  expect_snapshot_failure(expect_lte(time2, time))
+  expect_snapshot_failure(expect_gt(time, time2))
+  expect_snapshot_failure(expect_gte(time, time2))
+})
+
+test_that("comparisons with Date objects work", {
+  date <- as.Date("2020-01-01")
+  date2 <- date + 1
+  expect_success(expect_lt(date, date2))
+  expect_success(expect_lte(date, date2))
+  expect_success(expect_gt(date2, date))
+  expect_success(expect_gte(date2, date))
+
+  expect_snapshot_failure(expect_lt(date2, date))
+  expect_snapshot_failure(expect_lte(date2, date))
+  expect_snapshot_failure(expect_gt(date, date2))
+  expect_snapshot_failure(expect_gte(date, date2))
+})
+
+test_that("comparisons with character objects work", {
+  expect_success(expect_lt("a", "b"))
+  expect_success(expect_lte("a", "b"))
+  expect_success(expect_gt("b", "a"))
+  expect_success(expect_gte("b", "a"))
+
+  expect_snapshot_failure(expect_lt("b", "a"))
+  expect_snapshot_failure(expect_lte("b", "a"))
+  expect_snapshot_failure(expect_gt("a", "b"))
+  expect_snapshot_failure(expect_gte("a", "b"))
 })
 
 test_that("comparison must yield a single logical", {
