@@ -19,7 +19,7 @@
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Mocking">
 <meta name="robots" content="noindex">
-<script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script><script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
     <a href="#container" class="visually-hidden-focusable">Skip to content</a>
@@ -353,7 +353,7 @@ function to mock.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">unix_time</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">unix_time</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1760131023</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1760995071</span></span></code></pre></div>
 <p>Now I’m going to create a function factory that makes it easy to
 compute how much time has elapsed since some fixed starting point:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -367,7 +367,7 @@ compute how much time has elapsed since some fixed starting point:</p>
 <span><span class="va">timer</span> <span class="op">&lt;-</span> <span class="fu">elapsed</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="fu">timer</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.501909</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.5018971</span></span></code></pre></div>
 <p>Imagine trying to test this function without mocking! You’d probably
 think it’s not worth it. In fact, that’s what I thought originally, but
 I soon learned my lesson because I introduce bug because I’d forgotten
