@@ -69,6 +69,10 @@ test_that("always checks error status", {
   expect_snapshot_failure(expect_snapshot(print("!"), error = TRUE))
 })
 
+test_that("snapshots of failures fail", {
+  expect_snapshot_failure(expect_snapshot(fail()))
+})
+
 test_that("can capture error/warning messages", {
   expect_snapshot_error(stop("This is an error"))
   expect_snapshot_warning(warning("This is a warning"))

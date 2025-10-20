@@ -111,8 +111,7 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
   handle_expectation <- function(e) {
     the$test_expectations <- the$test_expectations + 1L
     register_expectation(e, 7)
-    # Don't bubble up to any other handlers
-    invokeRestart("continue_test")
+    invokeRestart("muffle_expectation")
   }
   handle_warning <- function(e) {
     # When options(warn) < 0, warnings are expected to be ignored.

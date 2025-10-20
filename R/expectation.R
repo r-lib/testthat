@@ -10,7 +10,7 @@
 #'   optionally subsequence) elements should describe what was actually seen.
 #' @inheritParams fail
 #' @return An expectation object from either `succeed()` or `fail()`.
-#'   with a `continue_test` restart.
+#'   with a `muffle_expectation` restart.
 #' @seealso [exp_signal()]
 #' @keywords internal
 #' @export
@@ -104,7 +104,7 @@ exp_signal <- function(exp) {
     } else {
       signalCondition(exp)
     },
-    continue_test = function(e) NULL
+    muffle_expectation = function(e) NULL
   )
 
   invisible(exp)

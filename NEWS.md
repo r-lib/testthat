@@ -850,7 +850,7 @@ This release mostly focusses on an overhaul of how testthat works with condition
 
 * New `exp_signal()` function is a condition signaller that
   implements the testthat protocol (signal with `stop()` if the
-  expectation is broken, with a `continue_test` restart).
+  expectation is broken, with a `muffle_expectation` restart).
 
 * Existence of restarts is first checked before invocation. This makes
   it possible to signal warnings or messages with a different
