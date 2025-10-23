@@ -82,7 +82,22 @@ failure_compare <- function(act, exp, operator) {
       actual_op,
       exp$val
     )
-    msg_diff <- NULL
+
+    if (inherits(act$val, c("Date", "POSIXt"))) {
+      diff <- act$val - exp$val
+      if (is.na(diff)) {
+        msg_diff <- NULL
+      } else {
+        msg_diff <- sprintf(
+          "Difference: %s %s 0 %s",
+          dt_diff(diff),
+          actual_op,
+          attr(diff, "unit")
+        )
+      }
+    } else {
+      msg_diff <- NULL
+    }
   }
 
   c(msg_exp, msg_act, msg_diff)
@@ -185,4 +200,10 @@ digits <- function(x) {
   } else {
     ceiling(round(scale, digits = 2))
   }
+}
+
+dt_diff <- function(x) {
+  val <- unclass(x)
+  digits <- digits(abs(val)) + 1
+  paste(num_exact(val, digits), attr(x, "unit"))
 }
