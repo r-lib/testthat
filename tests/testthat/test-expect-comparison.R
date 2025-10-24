@@ -84,6 +84,14 @@ test_that("comparisons with Date objects work", {
   expect_snapshot_failure(expect_gt(date, date2))
 })
 
+test_that("comparisons of date/time with NA work", {
+  time <- as.POSIXct("2020-01-01 01:00:00")
+  date <- as.Date("2020-01-01")
+
+  expect_failure(expect_lt(time, NA))
+  expect_failure(expect_gt(date, NA))
+})
+
 test_that("comparisons with character objects work", {
   expect_success(expect_lte("a", "b"))
 
