@@ -76,6 +76,45 @@
       ! Expected `x` < 10.
       Actual comparison: NA >= 10.0
 
+# comparisons with negative numbers work
+
+    Code
+      expect_gt(-5, -2)
+    Condition
+      Error:
+      ! Expected `-5` > `-2`.
+      Actual comparison: -5.0 <= -2.0
+      Difference: -3.0 <= 0
+
+# comparisons with POSIXct objects work
+
+    Code
+      expect_lt(time2, time)
+    Condition
+      Error:
+      ! Expected `time2` < `time`.
+      Actual comparison: "2020-01-01 01:00:01.5" >= "2020-01-01 01:00:00"
+      Difference: 1.5 secs >= 0 secs
+
+# comparisons with Date objects work
+
+    Code
+      expect_gt(date, date2)
+    Condition
+      Error:
+      ! Expected `date` > `date2`.
+      Actual comparison: "2020-01-01" <= "2020-01-02"
+      Difference: -1.0 days <= 0 days
+
+# comparisons with character objects work
+
+    Code
+      expect_lte("b", "a")
+    Condition
+      Error:
+      ! Expected "b" <= "a".
+      Actual comparison: "b" > "a"
+
 # comparison must yield a single logical
 
     Code
