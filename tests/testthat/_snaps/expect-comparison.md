@@ -76,6 +76,16 @@
       ! Expected `x` < 10.
       Actual comparison: NA >= 10.0
 
+# comparisons with negative numbers work
+
+    Code
+      expect_gt(-5, -2)
+    Condition
+      Error:
+      ! Expected `-5` > `-2`.
+      Actual comparison: -5.0 <= -2.0
+      Difference: -3.0 <= 0
+
 # comparisons with POSIXct objects work
 
     Code

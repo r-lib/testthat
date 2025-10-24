@@ -194,7 +194,7 @@ digits <- function(x) {
   if (length(x) == 0) {
     return(0)
   }
-  scale <- -log10(min(x))
+  scale <- -log10(min(abs(x)))
   if (scale <= 0) {
     0L
   } else {

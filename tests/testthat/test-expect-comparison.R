@@ -58,6 +58,12 @@ test_that("comparisons with NA work", {
   expect_snapshot_failure(expect_lt(x, 10))
 })
 
+
+test_that("comparisons with negative numbers work", {
+  expect_success(expect_lt(-5, -2))
+  expect_snapshot_failure(expect_gt(-5, -2))
+})
+
 test_that("comparisons with POSIXct objects work", {
   time <- as.POSIXct("2020-01-01 01:00:00")
   time2 <- time + 1.5
