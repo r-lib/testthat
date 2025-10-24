@@ -69,7 +69,10 @@ test_that("comparisons with POSIXct objects work", {
   time2 <- time + 1.5
   expect_success(expect_lt(time, time2))
 
-  expect_snapshot_failure(expect_lt(time2, time))
+  # set digits.secs = 1 to ensure consistent output with older R versions
+  withr::with_options(c(digits.secs = 1), {
+    expect_snapshot_failure(expect_lt(time2, time))
+  })
 })
 
 test_that("comparisons with Date objects work", {
