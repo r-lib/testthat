@@ -11,7 +11,9 @@ Requires the \emph{xml2} package.
 
 To fit into the jUnit structure, \code{context()} becomes the \verb{<testsuite>}
 name as well as the base of the \verb{<testcase> classname}. The
-\verb{test_that()`` name becomes the rest of the }\if{html}{\out{<testcase>}} classname\verb{. The deparsed }expect_that()\verb{call becomes the}\if{html}{\out{<testcase>}}\verb{name. On failure, the message goes into the}\if{html}{\out{<failure>}}` node message
+\code{test_that()} name becomes the rest of the \verb{<testcase> classname}.
+The deparsed \code{expect_that()} call becomes the \verb{<testcase>} name.
+On failure, the message goes into the \verb{<failure>} node message
 argument (first line only) and into its text content (full message).
 Execution time and some other details are also recorded.
 

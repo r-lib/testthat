@@ -15,7 +15,7 @@ classnameOK <- function(text) {
 #'
 #' To fit into the jUnit structure, `context()` becomes the `<testsuite>`
 #' name as well as the base of the `<testcase> classname`. The
-#' `test_that()`` name becomes the rest of the `<testcase> classname`.
+#' `test_that()` name becomes the rest of the `<testcase> classname`.
 #' The deparsed `expect_that()` call becomes the `<testcase>` name.
 #' On failure, the message goes into the `<failure>` node message
 #' argument (first line only) and into its text content (full message).
