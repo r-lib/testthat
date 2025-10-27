@@ -36,7 +36,6 @@
 #'     ```
 #'     Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
 #'     ```
-#' @param wrap DEPRECATED
 #' @return A list (invisibly) containing data about the test results.
 #' @inheritParams with_reporter
 #' @inheritParams source_file
@@ -50,7 +49,6 @@ test_dir <- function(
   load_helpers = TRUE,
   stop_on_failure = TRUE,
   stop_on_warning = FALSE,
-  wrap = deprecated(),
   package = NULL,
   load_package = c("none", "installed", "source"),
   shuffle = FALSE
@@ -67,10 +65,6 @@ test_dir <- function(
   )
   if (length(test_paths) == 0) {
     cli::cli_abort("No test files found.")
-  }
-
-  if (!is_missing(wrap)) {
-    lifecycle::deprecate_stop("3.0.0", "test_dir(wrap = )")
   }
 
   want_parallel <- find_parallel(path, load_package, package)
@@ -150,15 +144,11 @@ test_files <- function(
   stop_on_failure = FALSE,
   stop_on_warning = FALSE,
   desc = NULL,
-  wrap = TRUE,
   load_package = c("none", "installed", "source"),
   parallel = FALSE,
   shuffle = FALSE,
   error_call = caller_env()
 ) {
-  if (!isTRUE(wrap)) {
-    lifecycle::deprecate_stop("3.0.0", "test_dir(wrap = )")
-  }
 
   # Must keep these two blocks in sync
   if (parallel) {
@@ -202,7 +192,6 @@ test_files_serial <- function(
   stop_on_failure = FALSE,
   stop_on_warning = FALSE,
   desc = NULL,
-  wrap = TRUE,
   load_package = c("none", "installed", "source"),
   shuffle = FALSE,
   error_call = caller_env()

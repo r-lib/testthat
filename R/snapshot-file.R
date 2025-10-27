@@ -137,7 +137,7 @@ expect_snapshot_file <- function(
 
   is_text <- is_text_file(name)
   if (!is_missing(binary)) {
-    lifecycle::deprecate_soft(
+    lifecycle::deprecate_warn(
       "3.0.3",
       "expect_snapshot_file(binary = )",
       "expect_snapshot_file(compare = )"
