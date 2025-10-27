@@ -8,3 +8,5 @@ revdep/checks
 revdep/library
 log/runit.html
 log/runit.log
+
+/.quarto/
