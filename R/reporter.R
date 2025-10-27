@@ -8,7 +8,7 @@
 #' You only need to use this `Reporter` object directly if you are creating
 #' a new reporter. Currently, creating new Reporters is undocumented,
 #' so if you want to create your own, you'll need to make sure that you're
-#' familiar with [R6](https://adv-r.hadley.nz/R6.html) and then need read the
+#' familiar with [R6](https://adv-r.hadley.nz/r6.html) and then need read the
 #' source code for a few.
 #'
 #' @keywords internal
