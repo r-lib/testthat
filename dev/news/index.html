@@ -63,22 +63,19 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-<ul><li><p><code>expect_snapshot(binary)</code> is now fully deprecated; it was soft deprecated in v3.0.3.</p></li>
-<li><p><code>test_files(wrap)</code> has now been removed; it was deprecated in v3.0.0.</p></li>
-<li><p>Make <code><a href="../reference/comparison-expectations.html">expect_lt()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_lte()</a></code>, <code><a href="../reference/comparison-expectations.html">expect_gt()</a></code>, and <code><a href="../reference/comparison-expectations.html">expect_gte()</a></code> work properly for non-numeric data (<a href="https://github.com/r-lib/testthat/issues/2268" class="external-link">#2268</a>)</p></li>
-<li><p>New <code><a href="../reference/expect_setequal.html">expect_disjoint()</a></code> to check for the absence of values (<a href="https://github.com/stibu81" class="external-link">@stibu81</a>, <a href="https://github.com/r-lib/testthat/issues/1851" class="external-link">#1851</a>).</p></li>
-<li><p><code><a href="../reference/expect_all_equal.html">expect_all_equal()</a></code>, <code><a href="../reference/expect_all_equal.html">expect_all_true()</a></code>, and <code><a href="../reference/expect_all_equal.html">expect_all_false()</a></code> are a new family of expectations that checks that every element of a vector has the same value. Compared to using <code>expect_true(all(...))</code> they give better failure messages (<a href="https://github.com/r-lib/testthat/issues/1836" class="external-link">#1836</a>, <a href="https://github.com/r-lib/testthat/issues/2235" class="external-link">#2235</a>).</p></li>
-<li><p>Expectations now consistently return the value of the first argument, regardless of whether the expectation succeeds or fails. The primary exception are <code><a href="../reference/expect_error.html">expect_message()</a></code> and friends which will return the condition. This shouldn’t affect existing tests, but will make failures clearer when you chain together multiple expectations (<a href="https://github.com/r-lib/testthat/issues/2246" class="external-link">#2246</a>).</p></li>
-<li><p><code><a href="../reference/set_state_inspector.html">set_state_inspector()</a></code> gains <code>tolerance</code> argument and ignores minor FP differences by default (<a href="https://github.com/mcol" class="external-link">@mcol</a>, <a href="https://github.com/r-lib/testthat/issues/2237" class="external-link">#2237</a>).</p></li>
-<li><p><code><a href="../reference/expect_vector.html">expect_vector()</a></code> fails, instead of erroring, if <code>object</code> is not a vector (<a href="https://github.com/plietar" class="external-link">@plietar</a>, <a href="https://github.com/r-lib/testthat/issues/2224" class="external-link">#2224</a>).</p></li>
-<li><p>New <code><a href="../articles/mocking.html">vignette("mocking")</a></code> explains mocking in detail (<a href="https://github.com/r-lib/testthat/issues/1265" class="external-link">#1265</a>).</p></li>
-<li><p>New <code>vignette("challenging-functions")</code> provides an index to other documentation organised by testing challenges (<a href="https://github.com/r-lib/testthat/issues/1265" class="external-link">#1265</a>). ## Lifecycle changes</p></li>
-<li><p>testthat now requires R 4.1.</p></li>
-<li><p><code>expect_snapshot(binary)</code> is now fully deprecated; it was soft deprecated in v3.0.3.</p></li>
-<li><p><code>is_null()</code>/<code>matches()</code> deprecated in 2.0.0 (2017-12-19) and <code>is_true()</code>/<code>is_false()</code> deprecated in 2.1.0 (2019-04-23) have been removed (<a href="https://github.com/r-lib/testthat/issues/2109" class="external-link">#2109</a>).</p></li>
-<li><p><code><a href="../reference/with_mock.html">local_mock()</a></code> and <code><a href="../reference/with_mock.html">with_mock()</a></code> have been made defunct because they are no longer permitted in R 4.5.</p></li>
-<li><p><code>test_files(wrap)</code> has now been removed; it was deprecated in v3.0.0.</p></li>
-</ul><div class="section level3">
+<div class="section level3">
+<h3 id="lifecycle-changes-development-version">Lifecycle changes<a class="anchor" aria-label="anchor" href="#lifecycle-changes-development-version"></a></h3>
+<ul><li>testthat now requires R 4.1.</li>
+<li>
+<code>expect_snapshot(binary)</code> is now fully deprecated; it was soft deprecated in v3.0.3.</li>
+<li>
+<code>is_null()</code>/<code>matches()</code> deprecated in 2.0.0 (2017-12-19) and <code>is_true()</code>/<code>is_false()</code> deprecated in 2.1.0 (2019-04-23) have been removed (<a href="https://github.com/r-lib/testthat/issues/2109" class="external-link">#2109</a>).</li>
+<li>
+<code><a href="../reference/with_mock.html">local_mock()</a></code> and <code><a href="../reference/with_mock.html">with_mock()</a></code> have been made defunct because they are no longer permitted in R 4.5.</li>
+<li>
+<code>test_files(wrap)</code> has now been removed; it was deprecated in v3.0.0.</li>
+</ul></div>
+<div class="section level3">
 <h3 id="new-expectations-development-version">New expectations<a class="anchor" aria-label="anchor" href="#new-expectations-development-version"></a></h3>
 <ul><li><p>The failure messages for all <code>expect_</code> functions have been rewritten to first state what was expected and then what was actually received (<a href="https://github.com/r-lib/testthat/issues/2142" class="external-link">#2142</a>). They also functions consistently and rigorously check their inputs (<a href="https://github.com/r-lib/testthat/issues/1754" class="external-link">#1754</a>).</p></li>
 <li><p>Expectations now consistently return the value of the first argument, regardless of whether the expectation succeeds or fails (the only exception is <code><a href="../reference/expect_error.html">expect_message()</a></code> and friends which will return the condition). This shouldn’t affect existing tests, but will make failures clearer when you chain together multiple expectations (<a href="https://github.com/r-lib/testthat/issues/2246" class="external-link">#2246</a>).</p></li>

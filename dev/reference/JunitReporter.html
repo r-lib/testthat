@@ -5,7 +5,9 @@ the Jenkins Continuous Integration System to report on a dashboard etc.
 Requires the xml2 package.
 To fit into the jUnit structure, context() becomes the &amp;lt;testsuite&amp;gt;
 name as well as the base of the &amp;lt;testcase&amp;gt; classname. The
-test_that()`` name becomes the rest of the  classname. The deparsed expect_that()call becomes thename. On failure, the message goes into the` node message
+test_that() name becomes the rest of the &amp;lt;testcase&amp;gt; classname.
+The deparsed expect_that() call becomes the &amp;lt;testcase&amp;gt; name.
+On failure, the message goes into the &amp;lt;failure&amp;gt; node message
 argument (first line only) and into its text content (full message).
 Execution time and some other details are also recorded.
 References for the jUnit XML format:
@@ -15,7 +17,9 @@ the Jenkins Continuous Integration System to report on a dashboard etc.
 Requires the xml2 package.
 To fit into the jUnit structure, context() becomes the &amp;lt;testsuite&amp;gt;
 name as well as the base of the &amp;lt;testcase&amp;gt; classname. The
-test_that()`` name becomes the rest of the  classname. The deparsed expect_that()call becomes thename. On failure, the message goes into the` node message
+test_that() name becomes the rest of the &amp;lt;testcase&amp;gt; classname.
+The deparsed expect_that() call becomes the &amp;lt;testcase&amp;gt; name.
+On failure, the message goes into the &amp;lt;failure&amp;gt; node message
 argument (first line only) and into its text content (full message).
 Execution time and some other details are also recorded.
 References for the jUnit XML format:
@@ -89,9 +93,11 @@ the Jenkins Continuous Integration System to report on a dashboard etc.
 Requires the <em>xml2</em> package.</p>
 <p>To fit into the jUnit structure, <code><a href="context.html">context()</a></code> becomes the <code>&lt;testsuite&gt;</code>
 name as well as the base of the <code>&lt;testcase&gt; classname</code>. The
-<code>test_that()`` name becomes the rest of the </code><testcase> classname<code>. The deparsed </code>expect_that()<code>call becomes the</code><testcase><code>name. On failure, the message goes into the</code><failure>` node message
+<code><a href="test_that.html">test_that()</a></code> name becomes the rest of the <code>&lt;testcase&gt; classname</code>.
+The deparsed <code><a href="expect_that.html">expect_that()</a></code> call becomes the <code>&lt;testcase&gt;</code> name.
+On failure, the message goes into the <code>&lt;failure&gt;</code> node message
 argument (first line only) and into its text content (full message).
-Execution time and some other details are also recorded.</failure></testcase></testcase></p>
+Execution time and some other details are also recorded.</p>
 <p>References for the jUnit XML format:
 <a href="https://github.com/testmoapp/junitxml" class="external-link">https://github.com/testmoapp/junitxml</a></p>
     </div>
