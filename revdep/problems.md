@@ -1,5133 +1,4614 @@
-# adjclust
+# adjclust (0.6.10)
 
-<details>
-
-* Version: 0.6.10
-* GitHub: https://github.com/pneuvial/adjclust
-* Source code: https://github.com/cran/adjclust
-* Date/Publication: 2024-10-08 08:10:02 UTC
-* Number of recursive dependencies: 113
+* GitHub: <https://github.com/pneuvial/adjclust>
+* Email: <mailto:pierre.neuvial@math.univ-toulouse.fr>
+* GitHub mirror: <https://github.com/cran/adjclust>
 
 Run `revdepcheck::cloud_details(, "adjclust")` for more info
 
-</details>
+## Newly broken
+
+*   checking tests ... ERROR
+     ```
+     ...
+       > library("testthat")
+       > library("adjclust")
+       > 
+       > test_check("adjclust")
+       object has no names - using numeric order for row/column names
+       [ FAIL 1 | WARN 1 | SKIP 3 | PASS 171 ]
+       
+       ══ Skipped tests (3) ═══════════════════════════════════════════════════════════
+       • No NA value: nothing to test here! (3): 'test_snpClust_NA-in-LD.R:22:3',
+         'test_snpClust_NA-in-LD.R:57:3', 'test_snpClust_NA-in-LD.R:78:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test_modify.R:19:3'): Results of the algorithm are shifted by lambda when similarity is unnormalized and heights are positive ──
+       Error in `expect_message(fit4 <- adjClust(sim2), fit3$correction)`: `regexp` must be a single string, `NA`, or `NULL`, not the number 1.8.
+       Backtrace:
+           ▆
+        1. └─testthat::expect_message(regexp = fit3$correction) at test_modify.R:19:3
+        2.   └─testthat:::check_string(regexp, allow_null = TRUE, allow_na = TRUE)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 1 | SKIP 3 | PASS 171 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
+
+# arulesCBA (1.2.8)
+
+* GitHub: <https://github.com/mhahsler/arulesCBA>
+* Email: <mailto:mhahsler@lyle.smu.edu>
+* GitHub mirror: <https://github.com/cran/arulesCBA>
+
+Run `revdepcheck::cloud_details(, "arulesCBA")` for more info
 
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library("testthat")
-      > library("adjclust")
-      > 
-      > test_check("adjclust")
-      object has no names - using numeric order for row/column names
-      [ FAIL 1 | WARN 1 | SKIP 3 | PASS 171 ]
-      
-    ...
-          ▆
-       1. └─testthat::expect_message(regexp = fit3$correction) at test_modify.R:19:3
-       2.   └─testthat:::check_string(regexp, allow_null = TRUE, allow_na = TRUE)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 1 | SKIP 3 | PASS 171 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       The following objects are masked from 'package:base':
+       
+           abbreviate, write
+       
+       > 
+       > testthat::test_check("arulesCBA")
+       [ FAIL 1 | WARN 0 | SKIP 2 | PASS 55 ]
+       
+       ══ Skipped tests (2) ═══════════════════════════════════════════════════════════
+       • empty test (2): ,
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-CBA_helpers.R:18:1'): (code run outside of `test_that()`) ──────
+       Error in `expect(length(r), length(cls))`: `ok` must be `TRUE` or `FALSE`, not the number 2.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = length(r)) at test-CBA_helpers.R:18:1
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 2 | PASS 55 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# autodb (3.1.0)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is  5.2Mb
-      sub-directories of 1Mb or more:
-        doc    2.1Mb
-        libs   2.6Mb
-    ```
-
-# autodb
-
-<details>
-
-* Version: 3.1.0
-* GitHub: https://github.com/CharnelMouse/autodb
-* Source code: https://github.com/cran/autodb
-* Date/Publication: 2025-09-18 08:10:07 UTC
-* Number of recursive dependencies: 84
+* GitHub: <https://github.com/CharnelMouse/autodb>
+* Email: <mailto:markwebster204@yahoo.co.uk>
+* GitHub mirror: <https://github.com/cran/autodb>
 
 Run `revdepcheck::cloud_details(, "autodb")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(autodb)
-      
-      Attaching package: 'autodb'
-      
-      The following object is masked from 'package:stats':
-    ...
-        8.               ├─hedgehog:::as.expectation(e)
-        9.               └─hedgehog:::as.expectation.error(e)
-       10.                 └─testthat::expectation("error", msg, srcref)
-       11.                   └─testthat::new_expectation(...)
-       12.                     └─base::structure(...)
-      
-      [ FAIL 20 | WARN 0 | SKIP 1 | PASS 710 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         9.               └─hedgehog:::as.expectation.error(e)
+        10.                 └─testthat::expectation("error", msg, srcref)
+        11.                   └─testthat::new_expectation(...)
+        12.                     └─base::structure(...)
+       ── Error ('test-synthesise.r:837:5'): synthesised_fds / is a closure-equivalent inverse of synthesise ──
+       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
+       Backtrace:
+            ▆
+         1. └─hedgehog::forall(...) at test-synthesise.r:837:5
+         2.   └─hedgehog:::run.prop(property, tree$root, curry)
+         3.     └─base::tryCatch(...)
+         4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+         5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+         6.           └─value[[3L]](cond)
+         7.             └─hedgehog (local) register_expectation(e)
+         8.               ├─hedgehog:::as.expectation(e)
+         9.               └─hedgehog:::as.expectation.error(e)
+        10.                 └─testthat::expectation("error", msg, srcref)
+        11.                   └─testthat::new_expectation(...)
+        12.                     └─base::structure(...)
+       
+       [ FAIL 219 | WARN 0 | SKIP 1 | PASS 436 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# aws.comprehend
+# aws.comprehend (0.2.1)
 
-<details>
-
-* Version: 0.2.1
-* GitHub: https://github.com/cloudyr/aws.comprehend
-* Source code: https://github.com/cran/aws.comprehend
-* Date/Publication: 2020-03-18 14:30:06 UTC
-* Number of recursive dependencies: 32
+* GitHub: <https://github.com/cloudyr/aws.comprehend>
+* Email: <mailto:antoine.sac@gmail.com>
+* GitHub mirror: <https://github.com/cran/aws.comprehend>
 
 Run `revdepcheck::cloud_details(, "aws.comprehend")` for more info
 
-</details>
+## Newly broken
+
+*   checking tests ... ERROR
+     ```
+     ...
+       ── Error ('test-detect_syntax.R:6:3'): detect_syntax works on single string ────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-detect_syntax.R:6:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-detect_syntax.R:27:3'): detect_syntax works on character vector ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-detect_syntax.R:27:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 13 | WARN 0 | SKIP 0 | PASS 10 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
+
+# batata (0.2.1)
+
+* GitHub: <https://github.com/feddelegrand7/batata>
+* Email: <mailto:ihaddaden.fodeil@gmail.com>
+* GitHub mirror: <https://github.com/cran/batata>
+
+Run `revdepcheck::cloud_details(, "batata")` for more info
 
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(aws.comprehend)
-      > 
-      > test_check("aws.comprehend")
-      [ FAIL 13 | WARN 0 | SKIP 0 | PASS 10 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-detect_syntax.R:27:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 13 | WARN 0 | SKIP 0 | PASS 10 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > test_check("batata")
+       [ FAIL 3 | WARN 2 | SKIP 1 | PASS 38 ]
+       
+       ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
+       • On CRAN (1): 'test-yesterday_packages.R:12:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test-display_starred.R:8:3'): display_starred() returns a character vector ──
+       Expected `output` to have type "character".
+       Actual type: "NULL"
+       ── Failure ('test-display_starred.R:14:3'): display_starred() returns a vector
+                 of length superior than 0 ──
+       Expected `length(output)` > 0.
+       Actual comparison: 0.0 <= 0.0
+       Difference: 0.0 <= 0
+       ── Failure ('test-display_starred.R:20:3'): display_starred() returns a coherent length ──
+       Expected `length(output2)` to equal 10.
+       Differences:
+       1/1 mismatches
+       [1] 0 - 10 == -10
+       
+       [ FAIL 3 | WARN 2 | SKIP 1 | PASS 38 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# bindr
+# bcRP (1.0.1)
 
-<details>
+* GitHub: <https://github.com/JulioCollazos64/bcRP>
+* Email: <mailto:amarullazo626@gmail.com>
+* GitHub mirror: <https://github.com/cran/bcRP>
 
-* Version: 0.1.2
-* GitHub: https://github.com/krlmlr/bindr
-* Source code: https://github.com/cran/bindr
-* Date/Publication: 2024-11-21 21:30:14 UTC
-* Number of recursive dependencies: 24
-
-Run `revdepcheck::cloud_details(, "bindr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(bindr)
-      > 
-      > test_check("bindr")
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 41 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-error.R:9:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 41 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# clinUtils
-
-<details>
-
-* Version: 0.2.1
-* GitHub: https://github.com/openanalytics/clinUtils
-* Source code: https://github.com/cran/clinUtils
-* Date/Publication: 2025-09-03 09:20:15 UTC
-* Number of recursive dependencies: 102
-
-Run `revdepcheck::cloud_details(, "clinUtils")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(clinUtils)
-      > 
-      > test_check("clinUtils")
-      [ FAIL 2 | WARN 1 | SKIP 2 | PASS 305 ]
-      
-      ══ Skipped tests (2) ═══════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::expect(ok = cDefs[[which(cDefsFmtPercentage)]]$targets) at test_getClinDT.R:176:7
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 2 | WARN 1 | SKIP 2 | PASS 305 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  7.8Mb
-      sub-directories of 1Mb or more:
-        doc   6.6Mb
-    ```
-
-# cmsafops
-
-<details>
-
-* Version: 1.4.1
-* GitHub: https://github.com/cmsaf/cmsaf-r-tools
-* Source code: https://github.com/cran/cmsafops
-* Date/Publication: 2025-04-08 22:30:02 UTC
-* Number of recursive dependencies: 121
-
-Run `revdepcheck::cloud_details(, "cmsafops")` for more info
-
-</details>
+Run `revdepcheck::cloud_details(, "bcRP")` for more info
 
 ## Newly broken
 
 *   checking examples ... ERROR
-    ```
-    Running examples in ‘cmsafops-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: extract.level
-    > ### Title: Extract levels from 4-dimensional NetCDF files.
-    > ### Aliases: extract.level
-    > 
-    > ### ** Examples
-    > 
-    > ## Create an example NetCDF file with a similar structure as used by CM
-    ...
-    > ## Extract all levels of the example CM SAF NetCDF file and write the
-    > ## output to a new file.
-    > extract.level(var = "SIS", infile = file.path(tempdir(),"CMSAF_example_file.nc"),
-    +  outfile = file.path(tempdir(),"CMSAF_example_file_extract.level2.nc"),
-    +  level = "all")
-    Error in R_nc4_create: Permission denied (creation mode was 4096)
-    Error in nc_create(outfile, c(vars, grid_vars), force_v4 = force_v4) : 
-      Error in nc_create!
-    Calls: extract.level -> write_output_file -> nc_create
-    Execution halted
-    ```
+     ```
+     ...
+     > # Will get you the most recent data for these codes
+     > # as you have not provided the `from` and `to` arguments.
+     > get_bcrp_data(codes = codes)
+     # A tibble: 92 × 4
+        name     values            series_name                                  code 
+        <chr>    <chr>             <chr>                                        <chr>
+      1 Oct.2023 -23030.188127     Cuentas monetarias de las sociedades creado… PN00…
+      2 Nov.2023 -21803.811257     Cuentas monetarias de las sociedades creado… PN00…
+      3 Dic.2023 -10753.996433     Cuentas monetarias de las sociedades creado… PN00…
+      4 Ene.2024 -7372.69594999999 Cuentas monetarias de las sociedades creado… PN00…
+      5 Feb.2024 -4352.91922600001 Cuentas monetarias de las sociedades creado… PN00…
+      6 Mar.2024 -6059.647797      Cuentas monetarias de las sociedades creado… PN00…
+      7 Abr.2024 -7011.29944       Cuentas monetarias de las sociedades creado… PN00…
+      8 May.2024 -5719.920519      Cuentas monetarias de las sociedades creado… PN00…
+      9 Jun.2024 -4412.965822      Cuentas monetarias de las sociedades creado… PN00…
+     10 Jul.2024 3762.929587       Cuentas monetarias de las sociedades creado… PN00…
+     # ℹ 82 more rows
+     > 
+     > # You can also provide the range of dates
+     > # through the `from` and `to` arguments.
+     > get_bcrp_data(codes = codes, from = "2015-01", to = "2020-01")
+     Error in perform_req_strategy(requests = list_of_requests, strategy = request_strategy) : 
+       Error(s) at: PN00002MM PN01270PM
+     Calls: get_bcrp_data -> perform_req_strategy
+     Execution halted
+     ```
 
-# cnd
+# bindr (0.1.2)
 
-<details>
+* GitHub: <https://github.com/krlmlr/bindr>
+* Email: <mailto:kirill@cynkra.com>
+* GitHub mirror: <https://github.com/cran/bindr>
 
-* Version: 0.1.0
-* GitHub: https://github.com/jmbarbone/cnd
-* Source code: https://github.com/cran/cnd
-* Date/Publication: 2025-02-26 14:00:02 UTC
-* Number of recursive dependencies: 46
+Run `revdepcheck::cloud_details(, "bindr")` for more info
+
+## Newly broken
+
+*   checking tests ... ERROR
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(bindr)
+       > 
+       > test_check("bindr")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 41 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-error.R:9:3'): non-native encoding causes warning ──────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-error.R:9:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 41 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
+
+# binpackr (0.1.1)
+
+* GitHub: <https://github.com/lschneiderbauer/binpackr>
+* Email: <mailto:lukas.schneiderbauer@gmail.com>
+* GitHub mirror: <https://github.com/cran/binpackr>
+
+Run `revdepcheck::cloud_details(, "binpackr")` for more info
+
+## Newly broken
+
+*   checking tests ... ERROR
+     ```
+     ...
+         9.               └─hedgehog:::as.expectation.error(e)
+        10.                 └─testthat::expectation("error", msg, srcref)
+        11.                   └─testthat::new_expectation(...)
+        12.                     └─base::structure(...)
+       ── Error ('test-bin_pack_ffd.R:26:3'): Equal sized items get distributed correctly. ──
+       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
+       Backtrace:
+            ▆
+         1. └─hedgehog::forall(...) at test-bin_pack_ffd.R:26:3
+         2.   └─hedgehog:::run.prop(property, tree$root, curry)
+         3.     └─base::tryCatch(...)
+         4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+         5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+         6.           └─value[[3L]](cond)
+         7.             └─hedgehog (local) register_expectation(e)
+         8.               ├─hedgehog:::as.expectation(e)
+         9.               └─hedgehog:::as.expectation.error(e)
+        10.                 └─testthat::expectation("error", msg, srcref)
+        11.                   └─testthat::new_expectation(...)
+        12.                     └─base::structure(...)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 4 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
+
+# clinUtils (0.2.1)
+
+* GitHub: <https://github.com/openanalytics/clinUtils>
+* Email: <mailto:laure.cougnaud@openanalytics.eu>
+* GitHub mirror: <https://github.com/cran/clinUtils>
+
+Run `revdepcheck::cloud_details(, "clinUtils")` for more info
+
+## Newly broken
+
+*   checking tests ... ERROR
+     ```
+     ...
+       ══ Skipped tests (2) ═══════════════════════════════════════════════════════════
+       • On CRAN (2): 'test_getClinDT.R:838:7', 'test_getClinDT.R:855:7'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test_getClinDT.R:139:7'): Invisible columns are not shown in the DataTables output ──
+       Error in `expect(cDefs[[which(cDefsNonVisible)]]$targets, 1)`: `ok` must be `TRUE` or `FALSE`, not the number 1.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = cDefs[[which(cDefsNonVisible)]]$targets) at test_getClinDT.R:139:7
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test_getClinDT.R:176:7'): Percentages are correctly formatted ───────
+       Error in `expect(cDefs[[which(cDefsFmtPercentage)]]$targets, 1)`: `ok` must be `TRUE` or `FALSE`, not the number 1.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = cDefs[[which(cDefsFmtPercentage)]]$targets) at test_getClinDT.R:176:7
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 2 | WARN 1 | SKIP 2 | PASS 305 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
+
+# cnd (0.1.0)
+
+* GitHub: <https://github.com/jmbarbone/cnd>
+* Email: <mailto:jmbarbone@gmail.com>
+* GitHub mirror: <https://github.com/cran/cnd>
 
 Run `revdepcheck::cloud_details(, "cnd")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-    ...
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure ('test-condition.R:226:3'): cnd(condition) handling ─────────────────
-      Expected exactly one failure and no successes.
-      Actually succeeded 1 times
-      
-      [ FAIL 1 | WARN 0 | SKIP 11 | PASS 81 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > # Learn more about the roles of various files in:
+       > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
+       > # * https://testthat.r-lib.org/articles/special-files.html
+       > 
+       > library(testthat)
+       > library(cnd)
+       > 
+       > test_check("cnd")
+       [ FAIL 1 | WARN 0 | SKIP 11 | PASS 81 ]
+       
+       ══ Skipped tests (11) ══════════════════════════════════════════════════════════
+       • On CRAN (11): 'test-condition.R:109:1', 'test-condition.R:179:1',
+         'test-document.R:33:3', 'test-document.R:37:1', 'test-handlers.R:1:1',
+         'test-handlers.R:11:1', 'test-print.R:1:1', 'test-print.R:24:1',
+         'test-register.R:40:1', 'test-register.R:44:1', 'test-utils.R:28:1'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test-condition.R:226:3'): cnd(condition) handling ─────────────────
+       Expected exactly one failure and no successes.
+       Actually succeeded 1 times
+       
+       [ FAIL 1 | WARN 0 | SKIP 11 | PASS 81 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# coenocliner
+# coenocliner (0.2-3)
 
-<details>
-
-* Version: 0.2-3
-* GitHub: https://github.com/gavinsimpson/coenocliner
-* Source code: https://github.com/cran/coenocliner
-* Date/Publication: 2021-02-14 16:50:09 UTC
-* Number of recursive dependencies: 28
+* GitHub: <https://github.com/gavinsimpson/coenocliner>
+* Email: <mailto:ucfagls@gmail.com>
+* GitHub mirror: <https://github.com/cran/coenocliner>
 
 Run `revdepcheck::cloud_details(, "coenocliner")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘test-all.R’
-    Running the tests in ‘tests/test-all.R’ failed.
-    Complete output:
-      > ## Test `coenocliner` using the `testthat` package
-      > 
-      > ## Setup
-      > library("testthat")
-      > 
-      > ## Runs the tests in inst/tests
-      > test_check("coenocliner")
-    ...
-      ── Error ('test-coenocline.R:55:5'): coenocline() returns an integer matrix with x and y gradients ──
-      Error in `is_true()`: could not find function "is_true"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(typeof(sim) == "integer", is_true()) at test-coenocline.R:55:5
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 85 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > ## Setup
+       > library("testthat")
+       > 
+       > ## Runs the tests in inst/tests
+       > test_check("coenocliner")
+       Loading required package: coenocliner
+       This is coenocliner 0.2-3
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 85 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-coenocline.R:25:5'): coenocline() returns an integer matrix ────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(typeof(sim) == "integer", is_true()) at test-coenocline.R:25:5
+       ── Error ('test-coenocline.R:55:5'): coenocline() returns an integer matrix with x and y gradients ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(typeof(sim) == "integer", is_true()) at test-coenocline.R:55:5
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 85 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# conflr
+# conflr (0.1.1)
 
-<details>
-
-* Version: 0.1.1
-* GitHub: https://github.com/line/conflr
-* Source code: https://github.com/cran/conflr
-* Date/Publication: 2020-04-08 12:50:02 UTC
-* Number of recursive dependencies: 61
+* GitHub: <https://github.com/line/conflr>
+* Email: <mailto:hiroaki.yutani@linecorp.com>
+* GitHub mirror: <https://github.com/cran/conflr>
 
 Run `revdepcheck::cloud_details(, "conflr")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # Copyright (C) 2019 LINE Corporation
-      > #
-      > # conflr is free software; you can redistribute it and/or modify it under the
-      > # terms of the GNU General Public License as published by the Free Software
-      > # Foundation, version 3.
-      > #
-      > # conflr is distributed in the hope that it will be useful, but WITHOUT ANY
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-utils.R:93:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 14 | WARN 0 | SKIP 4 | PASS 92 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-utils.R:77:3'): try_get_existing_page_id() works ───────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-utils.R:77:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-utils.R:93:3'): try_get_personal_space_key() handles personal spaces ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-utils.R:93:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 14 | WARN 0 | SKIP 4 | PASS 92 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘R6’
-      All declared Imports should be used.
-    ```
+     ```
+     Namespace in Imports field not imported from: ‘R6’
+       All declared Imports should be used.
+     ```
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
+# countdown (0.4.0)
 
-# countdown
-
-<details>
-
-* Version: 0.4.0
-* GitHub: https://github.com/gadenbuie/countdown
-* Source code: https://github.com/cran/countdown
-* Date/Publication: 2022-08-16 09:00:08 UTC
-* Number of recursive dependencies: 52
+* GitHub: <https://github.com/gadenbuie/countdown>
+* Email: <mailto:garrick@adenbuie.com>
+* GitHub mirror: <https://github.com/cran/countdown>
 
 Run `revdepcheck::cloud_details(, "countdown")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(countdown)
-      > 
-      > test_check("countdown")
-      [ FAIL 1 | WARN 0 | SKIP 1 | PASS 43 ]
-      
-      ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(requireNamespace = function(...) FALSE, expect_error(countdown_app())) at test-shiny.R:7:5
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 1 | PASS 43 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > library(testthat)
+       > library(countdown)
+       > 
+       > test_check("countdown")
+       [ FAIL 1 | WARN 0 | SKIP 1 | PASS 43 ]
+       
+       ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
+       • On CRAN (1): 'test-countdown.R:15:1'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-shiny.R:7:5'): countdown_app() / errors if shiny not available ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       i Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(requireNamespace = function(...) FALSE, expect_error(countdown_app())) at test-shiny.R:7:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 1 | PASS 43 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# covdepGE (1.0.1)
 
-*   checking Rd cross-references ... NOTE
-    ```
-    Packages unavailable to check Rd xrefs: ‘xaringan’, ‘beepr’
-    ```
-
-# covdepGE
-
-<details>
-
-* Version: 1.0.1
-* GitHub: https://github.com/JacobHelwig/covdepGE
-* Source code: https://github.com/cran/covdepGE
-* Date/Publication: 2022-09-16 15:56:08 UTC
-* Number of recursive dependencies: 68
+* GitHub: <https://github.com/JacobHelwig/covdepGE>
+* Email: <mailto:jacob.a.helwig@tamu.edu>
+* GitHub mirror: <https://github.com/cran/covdepGE>
 
 Run `revdepcheck::cloud_details(, "covdepGE")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/tests.html
-      > # * https://testthat.r-lib.org/reference/test_package.html#special-files
-    ...
-      Expected exactly one failure and no successes.
-      Actually failed 0 times
-      ── Failure ('test-covdepGE.R:511:3'): No title summary ─────────────────────────
-      Expected exactly one failure and no successes.
-      Actually failed 0 times
-      
-      [ FAIL 25 | WARN 16 | SKIP 31 | PASS 57 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Expected exactly one failure and no successes.
+       Actually failed 0 times
+       ── Failure ('test-covdepGE.R:461:3'): Font size ────────────────────────────────
+       Expected exactly one failure and no successes.
+       Actually failed 0 times
+       ── Failure ('test-covdepGE.R:467:3'): Font color 1 ─────────────────────────────
+       Expected exactly one failure and no successes.
+       Actually failed 0 times
+       ── Failure ('test-covdepGE.R:473:3'): Font color 2 ─────────────────────────────
+       Expected exactly one failure and no successes.
+       Actually failed 0 times
+       ── Failure ('test-covdepGE.R:479:3'): Font threshold ───────────────────────────
+       Expected exactly one failure and no successes.
+       Actually failed 0 times
+       ── Failure ('test-covdepGE.R:506:3'): Different graph_colors ───────────────────
+       Expected exactly one failure and no successes.
+       Actually failed 0 times
+       ── Failure ('test-covdepGE.R:511:3'): No title summary ─────────────────────────
+       Expected exactly one failure and no successes.
+       Actually failed 0 times
+       
+       [ FAIL 25 | WARN 16 | SKIP 31 | PASS 57 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking C++ specification ... NOTE
-    ```
-      Specified C++11: please drop specification unless essential
-    ```
+     ```
+       Specified C++11: please drop specification unless essential
+     ```
 
-# covr
+# covr (3.6.4)
 
-<details>
-
-* Version: 3.6.4
-* GitHub: https://github.com/r-lib/covr
-* Source code: https://github.com/cran/covr
-* Date/Publication: 2023-11-09 08:10:06 UTC
-* Number of recursive dependencies: 57
+* GitHub: <https://github.com/r-lib/covr>
+* Email: <mailto:james.f.hester@gmail.com>
+* GitHub mirror: <https://github.com/cran/covr>
 
 Run `revdepcheck::cloud_details(, "covr")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > ops <- options("crayon.enabled" = FALSE, warn = 1)
-      > library(testthat)
-      > library("covr")
-      > 
-      > # Skip tests on Solaris as gcc is not in the PATH and I do not have an easy way
-      > # to mimic the CRAN build environment
-      > if (!tolower(Sys.info()[["sysname"]]) == "sunos") {
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-utils.R:27:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 22 | WARN 0 | SKIP 11 | PASS 185 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# DepLogo
-
-<details>
-
-* Version: 1.2.1
-* GitHub: NA
-* Source code: https://github.com/cran/DepLogo
-* Date/Publication: 2024-02-15 17:00:02 UTC
-* Number of recursive dependencies: 41
-
-Run `revdepcheck::cloud_details(, "DepLogo")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(DepLogo)
-      > 
-      > test_check("DepLogo")
-      [ FAIL 1 | WARN 1 | SKIP 0 | PASS 67 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::expect(ok = min(num)) at test-Partitioning.R:29:9
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 1 | SKIP 0 | PASS 67 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-utils.R:20:3'): it works as expected ───────────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-utils.R:20:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-utils.R:27:3'): it works as expected ───────────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-utils.R:27:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 22 | WARN 0 | SKIP 11 | PASS 185 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is  7.1Mb
-      sub-directories of 1Mb or more:
-        doc       4.8Mb
-        extdata   2.1Mb
-    ```
+*   checking compiled code ... NOTE
+     ```
+     File ‘covr/libs/covr.so’:
+       Found non-API calls to R: ‘BODY’, ‘CLOENV’, ‘FORMALS’, ‘SET_BODY’,
+         ‘SET_CLOENV’, ‘SET_FORMALS’
+     
+     Compiled code should not call non-API entry points in R.
+     
+     See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual,
+     and section ‘Moving into C API compliance’ for issues with the use of
+     non-API entry points.
+     ```
 
-# DiceKriging
+# difNLR (1.5.1-4)
 
-<details>
-
-* Version: 1.6.0
-* GitHub: NA
-* Source code: https://github.com/cran/DiceKriging
-* Date/Publication: 2021-02-23 17:30:03 UTC
-* Number of recursive dependencies: 30
-
-Run `revdepcheck::cloud_details(, "DiceKriging")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > ## load dependencies
-      > library(testthat)
-      > 
-      > ## test package
-      > test_check('DiceKriging')
-      Loading required package: DiceKriging
-      [1] "SK  ; trend.reestim= FALSE"
-    ...
-      ── Error ('test-scaling.R:3:1'): Test predict ──────────────────────────────────
-      Error in `is_true()`: could not find function "is_true"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(max(abs(p$sd - p.test$sd)) < 1e-06, is_true())
-      
-      [ FAIL 12 | WARN 6 | SKIP 12 | PASS 85 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# dictionar6
-
-<details>
-
-* Version: 0.1.3
-* GitHub: https://github.com/xoopR/dictionar6
-* Source code: https://github.com/cran/dictionar6
-* Date/Publication: 2021-09-13 04:40:02 UTC
-* Number of recursive dependencies: 25
-
-Run `revdepcheck::cloud_details(, "dictionar6")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > test_check("dictionar6")
-      Loading required package: dictionar6
-      [ FAIL 1 | WARN 2 | SKIP 0 | PASS 165 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure ('test-Dictionary.R:56:3'): add untyped ─────────────────────────────
-    ...
-      
-      Backtrace:
-          ▆
-       1. └─dictionar6:::expect_equal_dictionary(...) at test-Dictionary.R:56:3
-       2.   └─testthat::expect_mapequal(x$items, y$items) at ./helpers.R:10:3
-      
-      [ FAIL 1 | WARN 2 | SKIP 0 | PASS 165 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# difNLR
-
-<details>
-
-* Version: 1.5.1-4
-* GitHub: https://github.com/adelahladka/difNLR
-* Source code: https://github.com/cran/difNLR
-* Date/Publication: 2025-06-30 16:40:06 UTC
-* Number of recursive dependencies: 139
+* GitHub: <https://github.com/adelahladka/difNLR>
+* Email: <mailto:hladka@cs.cas.cz>
+* GitHub mirror: <https://github.com/cran/difNLR>
 
 Run `revdepcheck::cloud_details(, "difNLR")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-        `actual$se`: 0.234433093 0.132523018 0.160377865 0.145217350 0.123570547
-      `expected$se`: 0.234433200 0.132523009 0.160377916 0.145217456 0.123570609
-      
-      
-      [ FAIL 25 | WARN 1 | SKIP 16 | PASS 317 ]
-      Deleting unused snapshots: 'difNLR/plot-fit1-gen.svg',
-      'difNLR/plot-fit2-gen.svg', and 'difNLR/plot-stat-gen.svg'
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       - attr(environment(actual$m$resid)$rhs, 'gradient')[6, ]      -0.17426731 -0.16579797 0.78936339  0.00000000  0.00000000
+       + attr(environment(expected$m$resid)$rhs, 'gradient')[6, ]    -0.17426730 -0.16579795 0.78936344  0.00000000  0.00000000
+       - attr(environment(actual$m$resid)$rhs, 'gradient')[7, ]      -0.04316778 -0.23243708 0.55164768 -0.04316774 -0.23243708
+       + attr(environment(expected$m$resid)$rhs, 'gradient')[7, ]    -0.04316780 -0.23243709 0.55164768 -0.04316789 -0.23243709
+       - attr(environment(actual$m$resid)$rhs, 'gradient')[8, ]      -0.10877868 -0.22819248 0.64546286  0.00000000  0.00000000
+       + attr(environment(expected$m$resid)$rhs, 'gradient')[8, ]    -0.10877869 -0.22819249 0.64546285  0.00000000  0.00000000
+       - attr(environment(actual$m$resid)$rhs, 'gradient')[9, ]       0.16964471 -0.17684837 0.23046457  0.00000000  0.00000000
+       + attr(environment(expected$m$resid)$rhs, 'gradient')[9, ]     0.16964469 -0.17684838 0.23046462  0.00000000  0.00000000
+       - attr(environment(actual$m$resid)$rhs, 'gradient')[10, ]      0.17703719 -0.17134705 0.23986082  0.17703708 -0.17134706
+       + attr(environment(expected$m$resid)$rhs, 'gradient')[10, ]    0.17703716 -0.17134706 0.23986080  0.17703712 -0.17134706
+       and 1990 more ...
+       
+       ── Failure ('test-estimNLR.R:81:3'): estimNLR - examples at help page ──────────
+       Expected `fit_plf` to equal `fit_plf_expected`.
+       Differences:
+         `actual$se`: 0.234433093 0.132523018 0.160377865 0.145217350 0.123570547
+       `expected$se`: 0.234433200 0.132523009 0.160377916 0.145217456 0.123570609
+       
+       
+       [ FAIL 25 | WARN 1 | SKIP 16 | PASS 317 ]
+       Deleting unused snapshots: 'difNLR/plot-fit1-gen.svg',
+       'difNLR/plot-fit2-gen.svg', and 'difNLR/plot-stat-gen.svg'
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# digitize
+# digitize (0.0.4)
 
-<details>
-
-* Version: 0.0.4
-* GitHub: https://github.com/tpoisot/digitize
-* Source code: https://github.com/cran/digitize
-* Date/Publication: 2016-08-27 07:52:45
-* Number of recursive dependencies: 29
+* GitHub: <https://github.com/tpoisot/digitize>
+* Email: <mailto:jashander@ucdavis.edu>
+* GitHub mirror: <https://github.com/cran/digitize>
 
 Run `revdepcheck::cloud_details(, "digitize")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(digitize)
-      > 
-      > test_check("digitize")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-unit.r:9:13
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-reverse_compatible.r:32:13'): `digitize` gives same ────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-reverse_compatible.r:32:13
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-unit.r:9:13'): Digitize skips point input ──────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-unit.r:9:13
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 1 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# distances
+# distances (0.1.12)
 
-<details>
-
-* Version: 0.1.12
-* GitHub: https://github.com/fsavje/distances
-* Source code: https://github.com/cran/distances
-* Date/Publication: 2025-04-01 14:00:02 UTC
-* Number of recursive dependencies: 24
+* GitHub: <https://github.com/fsavje/distances>
+* Email: <mailto:rpackages@fredriksavje.com>
+* GitHub mirror: <https://github.com/cran/distances>
 
 Run `revdepcheck::cloud_details(, "distances")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(distances)
-      > 
-      > test_check("distances")
-      [ FAIL 8 | WARN 0 | SKIP 0 | PASS 419 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::expect_error(class = c("error", "condition")) at test_input_check.R:300:3
-       2.   └─testthat:::check_string(class, allow_null = TRUE)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 8 | WARN 0 | SKIP 0 | PASS 419 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        1. └─testthat::expect_error(class = c("error", "condition")) at test_input_check.R:249:3
+        2.   └─testthat:::check_string(class, allow_null = TRUE)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test_input_check.R:273:3'): `coerce_integer` checks input. ──────────
+       Error in `expect_error(t_coerce_integer(t_x = letters[1:10]), class = c("error", "condition"), regexp = "`t_x` must be integer or NULL.")`: `class` must be a single string or `NULL`, not a character vector.
+       Backtrace:
+           ▆
+        1. └─testthat::expect_error(class = c("error", "condition")) at test_input_check.R:273:3
+        2.   └─testthat:::check_string(class, allow_null = TRUE)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test_input_check.R:300:3'): `coerce_norm_matrix` checks input. ──────
+       Error in `expect_error(t_coerce_norm_matrix(t_mat = dist(1:4)), class = c("error", "condition"), regexp = "`t_mat` must be matrix, data.frame or vector.")`: `class` must be a single string or `NULL`, not a character vector.
+       Backtrace:
+           ▆
+        1. └─testthat::expect_error(class = c("error", "condition")) at test_input_check.R:300:3
+        2.   └─testthat:::check_string(class, allow_null = TRUE)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 8 | WARN 0 | SKIP 0 | PASS 419 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# dmlalg
+# dmlalg (1.0.2)
 
-<details>
-
-* Version: 1.0.2
-* GitHub: NA
-* Source code: https://github.com/cran/dmlalg
-* Date/Publication: 2022-02-03 12:40:02 UTC
-* Number of recursive dependencies: 45
+* Email: <mailto:emmenegger@stat.math.ethz.ch>
+* GitHub mirror: <https://github.com/cran/dmlalg>
 
 Run `revdepcheck::cloud_details(, "dmlalg")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(dmlalg)
-      > 
-      > test_check("dmlalg")
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1113 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-       1. └─dmlalg (local) check_return_results_format(beta = beta, var = var, xx_colnames = xx_colnames) at test-data_formats_regsdml.R:1356:3
-       2.   └─testthat::expect(ok = nrow(results$beta_test)) at test-data_formats_regsdml.R:1332:5
-       3.     └─testthat:::check_bool(ok)
-       4.       └─testthat:::stop_input_type(...)
-       5.         └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1113 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(dmlalg)
+       > 
+       > test_check("dmlalg")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1113 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-data_formats_regsdml.R:1332:5'): return_results outputs right data formats ──
+       Error in `expect(nrow(results$beta_test), d)`: `ok` must be `TRUE` or `FALSE`, not the number 3.
+       Backtrace:
+           ▆
+        1. └─dmlalg (local) check_return_results_format(beta = beta, var = var, xx_colnames = xx_colnames) at test-data_formats_regsdml.R:1356:3
+        2.   └─testthat::expect(ok = nrow(results$beta_test)) at test-data_formats_regsdml.R:1332:5
+        3.     └─testthat:::check_bool(ok)
+        4.       └─testthat:::stop_input_type(...)
+        5.         └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1113 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# EDISON
+# EDISON (1.1.1)
 
-<details>
-
-* Version: 1.1.1
-* GitHub: NA
-* Source code: https://github.com/cran/EDISON
-* Date/Publication: 2016-03-30 21:04:12
-* Number of recursive dependencies: 26
+* Email: <mailto:fdondelinger.work@gmail.com>
+* GitHub mirror: <https://github.com/cran/EDISON>
 
 Run `revdepcheck::cloud_details(, "EDISON")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘test-all.R’
-    Running the tests in ‘tests/test-all.R’ failed.
-    Complete output:
-      > library(testthat)
-      > test_check("EDISON")
-      Loading required package: EDISON
-      Loading required package: corpcor
-      Loading required package: MASS
-      [1] "Initialisation successful."
-      [1] "Starting tvDBN iterations..."
-    ...
-      ── Error ('test-structure-moves.r:336:1'): output not null ─────────────────────
-      Error in `is_false()`: could not find function "is_false"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(...)
-      
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 17 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       5 % 10 % 15 % 20 % 25 % 30 % 35 % 40 % 45 % 50 % 55 % 60 % 65 % 70 % 75 % 80 % 85 % 90 % 95 % 100 % [1] ""
+       [1] "End of iterations"
+       [ FAIL 3 | WARN 0 | SKIP 0 | PASS 17 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-structure-moves.r:328:1'): network info the same before and after  ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(updateCorrectly(), is_true())
+       ── Error ('test-structure-moves.r:332:1'): rejected moves make no change ───────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(noChangeOnReject(), is_true())
+       ── Error ('test-structure-moves.r:336:1'): output not null ─────────────────────
+       Error in `is_false()`: could not find function "is_false"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(...)
+       
+       [ FAIL 3 | WARN 0 | SKIP 0 | PASS 17 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# ergm
+# ergm (4.10.1)
 
-<details>
-
-* Version: 4.10.1
-* GitHub: https://github.com/statnet/ergm
-* Source code: https://github.com/cran/ergm
-* Date/Publication: 2025-08-27 08:40:08 UTC
-* Number of recursive dependencies: 86
+* GitHub: <https://github.com/statnet/ergm>
+* Email: <mailto:pavel@statnet.org>
+* GitHub mirror: <https://github.com/cran/ergm>
 
 Run `revdepcheck::cloud_details(, "ergm")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘requireNamespaceTest.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > #  File tests/testthat.R in package ergm, part of the Statnet suite of packages
-      > #  for network analysis, https://statnet.org .
-      > #
-      > #  This software is distributed under the GPL-3 license.  It is free, open
-      > #  source, and has the attribution requirements (GPL Section 7) at
-      > #  https://statnet.org/attribution .
-    ...
-      x | Expected `off <- ergm(nw ~ edges + offset(triangle), offset.coef = 0.1)` to throw a message.
-      ── Failure ('test-term-Offset.R:23:3'): Estimation with Offset() operator works ──
-      Expected failure message to match regexp ".* did not throw the expected message.*".
-      Actual message:
-      x | Expected `Off <- ergm(nw ~ edges + Offset(~triangle, which = 1, coef = 0.1))` to throw a message.
-      
-      [ FAIL 2 | WARN 0 | SKIP 1 | PASS 4275 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > test-valued-terms.R: 
+       > test-valued-terms.R: 'ergm.count' 4.1.3 (2025-09-10), part of the Statnet Project
+       > test-valued-terms.R: * 'news(package="ergm.count")' for changes since last version
+       > test-valued-terms.R: * 'citation("ergm.count")' for citation information
+       > test-valued-terms.R: * 'https://statnet.org' for help, support, and other information
+       > test-valued-terms.R: 
+       [ FAIL 2 | WARN 0 | SKIP 1 | PASS 4275 ]
+       
+       ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
+       • empty test (1):
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test-term-Offset.R:19:3'): Estimation with Offset() operator works ──
+       Expected failure message to match regexp ".* did not throw the expected message.*".
+       Actual message:
+       x | Expected `off <- ergm(nw ~ edges + offset(triangle), offset.coef = 0.1)` to throw a message.
+       ── Failure ('test-term-Offset.R:23:3'): Estimation with Offset() operator works ──
+       Expected failure message to match regexp ".* did not throw the expected message.*".
+       Actual message:
+       x | Expected `Off <- ergm(nw ~ edges + Offset(~triangle, which = 1, coef = 0.1))` to throw a message.
+       
+       [ FAIL 2 | WARN 0 | SKIP 1 | PASS 4275 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# futile.logger (1.4.3)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is  8.2Mb
-      sub-directories of 1Mb or more:
-        R      1.5Mb
-        doc    1.3Mb
-        help   1.6Mb
-        libs   2.9Mb
-    ```
-
-# futile.logger
-
-<details>
-
-* Version: 1.4.3
-* GitHub: NA
-* Source code: https://github.com/cran/futile.logger
-* Date/Publication: 2016-07-10 16:57:47
-* Number of recursive dependencies: 27
+* Email: <mailto:r@zatonovo.com>
+* GitHub mirror: <https://github.com/cran/futile.logger>
 
 Run `revdepcheck::cloud_details(, "futile.logger")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(futile.logger)
-      > test_check("futile.logger")
-      [ FAIL 12 | WARN 1 | SKIP 0 | PASS 40 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Error ('test_layout.R:7:3'): Embedded format string ─────────────────────────
-    ...
-      ── Error ('test_logger.R:80:3'): carp returns output ───────────────────────────
-      Error in `is_false()`: could not find function "is_false"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(flog.carp(), is_false()) at test_logger.R:80:3
-      
-      [ FAIL 12 | WARN 1 | SKIP 0 | PASS 40 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test_logger.R:34:3'): Create new logger ─────────────────────────────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(length(raw.root) == 0, is_true()) at test_logger.R:34:3
+       ── Error ('test_logger.R:47:3'): Hierarchy is honored ──────────────────────────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(length(raw.root) == 0, is_true()) at test_logger.R:47:3
+       ── Error ('test_logger.R:61:3'): Hierarchy inheritance ─────────────────────────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(length(raw.root) == 0, is_true()) at test_logger.R:61:3
+       ── Error ('test_logger.R:80:3'): carp returns output ───────────────────────────
+       Error in `is_false()`: could not find function "is_false"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(flog.carp(), is_false()) at test_logger.R:80:3
+       
+       [ FAIL 12 | WARN 1 | SKIP 0 | PASS 40 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# ggdist
+# ggdist (3.3.3)
 
-<details>
-
-* Version: 3.3.3
-* GitHub: https://github.com/mjskay/ggdist
-* Source code: https://github.com/cran/ggdist
-* Date/Publication: 2025-04-23 00:20:02 UTC
-* Number of recursive dependencies: 126
+* GitHub: <https://github.com/mjskay/ggdist>
+* Email: <mailto:mjskay@northwestern.edu>
+* GitHub mirror: <https://github.com/cran/ggdist>
 
 Run `revdepcheck::cloud_details(, "ggdist")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-      'test.scale_/point-size-discrete-mapping.svg',
-      'test.scale_/slab-alpha-continuous-mapping.svg',
-      'test.scale_/slab-alpha-discrete-mapping.svg',
-      'test.scale_/slab-color-continuous-mapping.svg',
-      'test.scale_/slab-color-discrete-mapping.svg', …,
-      'test.scale_/slab-size-continuous-mapping.svg', and
-      'test.scale_/slab-size-discrete-mapping.svg'
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       [ FAIL 1 | WARN 0 | SKIP 109 | PASS 721 ]
+       Deleting unused snapshots:
+       'test.scale_/dots-slab-color-plus-slab-shape-mapping.svg',
+       'test.scale_/interval-alpha-continuous-mapping.svg',
+       'test.scale_/interval-alpha-discrete-mapping.svg',
+       'test.scale_/interval-color-continuous-mapping.svg',
+       'test.scale_/interval-color-discrete-mapping.svg',
+       'test.scale_/interval-linetype-discrete-mapping.svg',
+       'test.scale_/interval-size-continuous-mapping.svg',
+       'test.scale_/interval-size-discrete-mapping.svg',
+       'test.scale_/point-alpha-continuous-mapping.svg',
+       'test.scale_/point-alpha-discrete-mapping.svg',
+       'test.scale_/point-fill-continuous-mapping.svg',
+       'test.scale_/point-fill-discrete-mapping.svg',
+       'test.scale_/point-size-continuous-mapping.svg',
+       'test.scale_/point-size-discrete-mapping.svg',
+       'test.scale_/slab-alpha-continuous-mapping.svg',
+       'test.scale_/slab-alpha-discrete-mapping.svg',
+       'test.scale_/slab-color-continuous-mapping.svg',
+       'test.scale_/slab-color-discrete-mapping.svg', …,
+       'test.scale_/slab-size-continuous-mapping.svg', and
+       'test.scale_/slab-size-discrete-mapping.svg'
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# ggseg (1.6.5)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is  5.6Mb
-      sub-directories of 1Mb or more:
-        R      1.5Mb
-        doc    1.3Mb
-        help   1.5Mb
-    ```
-
-# ggseg
-
-<details>
-
-* Version: 1.6.5
-* GitHub: https://github.com/ggseg/ggseg
-* Source code: https://github.com/cran/ggseg
-* Date/Publication: 2022-06-13 11:10:02 UTC
-* Number of recursive dependencies: 126
+* GitHub: <https://github.com/ggseg/ggseg>
+* Email: <mailto:a.m.mowinckel@psykologi.uio.no>
+* GitHub mirror: <https://github.com/cran/ggseg>
 
 Run `revdepcheck::cloud_details(, "ggseg")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > 
-      > test_check("ggseg")
-      Loading required package: ggseg
-      merging atlas and data by 'region'
-      merging atlas and data by 'region'
-    ...
-          ▆
-       1. └─testthat::expect_warning(regexp = 3) at test-brain_palettes.R:10:3
-       2.   └─testthat:::check_string(regexp, allow_null = TRUE, allow_na = TRUE)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 8 | PASS 106 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Loading required package: ggseg
+       merging atlas and data by 'region'
+       merging atlas and data by 'region'
+       [ FAIL 1 | WARN 0 | SKIP 8 | PASS 106 ]
+       
+       ══ Skipped tests (8) ═══════════════════════════════════════════════════════════
+       • On CRAN (7): 'test-brain-atlas-plots.R:2:1', 'test-ggseg.R:8:1',
+         'test-ggseg.R:41:1', 'test-ggseg.R:50:1', 'test-ggseg_atlas.R:94:1',
+         'test-scale_brain.R:2:1', 'test-theme_brain.R:2:1'
+       • empty test (1): 'test-coord-funcs.R:1:1'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-brain_palettes.R:10:3'): Check that palette extraction happens ok ──
+       Error in `expect_warning(length(brain_pal("aseg", 2)), 3)`: `regexp` must be a single string, `NA`, or `NULL`, not the number 3.
+       Backtrace:
+           ▆
+        1. └─testthat::expect_warning(regexp = 3) at test-brain_palettes.R:10:3
+        2.   └─testthat:::check_string(regexp, allow_null = TRUE, allow_na = TRUE)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 8 | PASS 106 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking package subdirectories ... NOTE
-    ```
-    Problems with news in ‘NEWS.md’:
-      Cannot extract version info from the following section titles:
-        * Changes all data options to .data to decrease possibility of column naming overlap
-    ```
+     ```
+     Problems with news in ‘NEWS.md’:
+       Cannot extract version info from the following section titles:
+         * Changes all data options to .data to decrease possibility of column naming overlap
+     ```
 
-# graphhopper
+# graphhopper (0.1.2)
 
-<details>
-
-* Version: 0.1.2
-* GitHub: https://github.com/crazycapivara/graphhopper-r
-* Source code: https://github.com/cran/graphhopper
-* Date/Publication: 2021-02-06 16:50:02 UTC
-* Number of recursive dependencies: 65
+* GitHub: <https://github.com/crazycapivara/graphhopper-r>
+* Email: <mailto:crazycapivara@gmail.com>
+* GitHub mirror: <https://github.com/cran/graphhopper>
 
 Run `revdepcheck::cloud_details(, "graphhopper")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(graphhopper)
-      > 
-      > test_check("graphhopper")
-      [ FAIL 1 | WARN 0 | SKIP 2 | PASS 6 ]
-      
-      ══ Skipped tests (2) ═══════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test_route.R:9:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 2 | PASS 6 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > library(graphhopper)
+       > 
+       > test_check("graphhopper")
+       [ FAIL 1 | WARN 0 | SKIP 2 | PASS 6 ]
+       
+       ══ Skipped tests (2) ═══════════════════════════════════════════════════════════
+       • gh_is_avialable() is not TRUE (2): 'test_route-local-gh-instance.R:10:3',
+         'test_spt-local-gh-instance.R:4:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test_route.R:9:3'): sf LINESTRING ───────────────────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_route.R:9:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 2 | PASS 6 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# greeks (1.4.4)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# greeks
-
-<details>
-
-* Version: 1.4.4
-* GitHub: https://github.com/ahudde/greeks
-* Source code: https://github.com/cran/greeks
-* Date/Publication: 2025-03-02 13:30:04 UTC
-* Number of recursive dependencies: 89
+* GitHub: <https://github.com/ahudde/greeks>
+* Email: <mailto:anselmhudde@gmx.de>
+* GitHub mirror: <https://github.com/cran/greeks>
 
 Run `revdepcheck::cloud_details(, "greeks")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(greeks)
-      > 
-      > test_check("greeks")
-      [1] "custom payoff"
-      [1] "custom payoff"
-      [1] "custom payoff"
-    ...
-          ▆
-       1. └─testthat::expect(failure_message = <empty>) at test-Implied_Volatility.R:90:3
-       2.   └─testthat:::check_character(failure_message)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 17 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        1. └─testthat::expect(failure_message = <empty>) at test-BS_European_Greeks.R:107:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-BS_Geometric_Asian_Greeks.R:81:3'): BS_Geometric_Asian_Greeks is correct ──
+       Error in `expect(max(error) < sqrt(epsilon))`: `failure_message` must be a character vector, not absent.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = <empty>) at test-BS_Geometric_Asian_Greeks.R:81:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-Implied_Volatility.R:90:3'): implied volatility is correct ─────
+       Error in `expect(max(abs(option_price_test - option_price)) < 1e-06)`: `failure_message` must be a character vector, not absent.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = <empty>) at test-Implied_Volatility.R:90:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 3 | WARN 0 | SKIP 0 | PASS 17 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# hdcuremodels (0.0.5)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is  5.2Mb
-      sub-directories of 1Mb or more:
-        libs   4.8Mb
-    ```
-
-# gtfs2gps
-
-<details>
-
-* Version: 2.1-2
-* GitHub: https://github.com/ipeaGIT/gtfs2gps
-* Source code: https://github.com/cran/gtfs2gps
-* Date/Publication: 2024-10-08 07:00:06 UTC
-* Number of recursive dependencies: 86
-
-Run `revdepcheck::cloud_details(, "gtfs2gps")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(gtfs2gps)
-      gtfs2gps version 2.1-2 is now loaded
-      NOTE: All filter functions from gtfs2gps were removed
-      Please replace them by similar functions from gtfstools
-      > 
-      > test_check("gtfs2gps")
-    ...
-          ▆
-       1. └─testthat::expect(ok = length(unique(poa_simpl$shapes$shape_id))) at test_simplify_shapes.R:9:5
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 119 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# handwriterRF
-
-<details>
-
-* Version: 1.1.1
-* GitHub: https://github.com/CSAFE-ISU/handwriterRF
-* Source code: https://github.com/cran/handwriterRF
-* Date/Publication: 2025-01-29 00:20:01 UTC
-* Number of recursive dependencies: 124
-
-Run `revdepcheck::cloud_details(, "handwriterRF")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-      Calculating similarity score...
-      Calculating distance between samples...
-      Calculating similarity score...
-      Calculating distance between samples...
-      Calculating similarity score...
-      Calculating SLR...
-      Calculating distance between samples...
-      Calculating similarity score...
-      Calculating SLR...
-      Killed
-    ```
-
-# hdcuremodels
-
-<details>
-
-* Version: 0.0.5
-* GitHub: https://github.com/kelliejarcher/hdcuremodels
-* Source code: https://github.com/cran/hdcuremodels
-* Date/Publication: 2025-07-31 21:02:06 UTC
-* Number of recursive dependencies: 136
+* GitHub: <https://github.com/kelliejarcher/hdcuremodels>
+* Email: <mailto:archer.43@osu.edu>
+* GitHub mirror: <https://github.com/cran/hdcuremodels>
 
 Run `revdepcheck::cloud_details(, "hdcuremodels")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-          ▆
-       1. └─testthat::expect(ok = nobs(fit)) at test-nobs.R:11:3
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 552 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        1. └─testthat::expect(failure_message = <empty>) at test-formula.R:11:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-logLik.R:11:3'): logLik function works correctly ───────────────
+       Error in `expect(round(logLik(fit), 5), -9.22893)`: `ok` must be `TRUE` or `FALSE`, not a <logLik> object.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = round(logLik(fit), 5)) at test-logLik.R:11:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-nobs.R:11:3'): nobs function works correctly ───────────────────
+       Error in `expect(nobs(fit), 60)`: `ok` must be `TRUE` or `FALSE`, not the number 60.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = nobs(fit)) at test-nobs.R:11:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 3 | WARN 0 | SKIP 0 | PASS 552 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# hedgehog
+# hedgehog (0.1)
 
-<details>
-
-* Version: 0.1
-* GitHub: https://github.com/hedgehogqa/r-hedgehog
-* Source code: https://github.com/cran/hedgehog
-* Date/Publication: 2018-08-22 16:50:03 UTC
-* Number of recursive dependencies: 41
+* GitHub: <https://github.com/hedgehogqa/r-hedgehog>
+* Email: <mailto:huw.campbell@gmail.com>
+* GitHub mirror: <https://github.com/cran/hedgehog>
 
 Run `revdepcheck::cloud_details(, "hedgehog")` for more info
 
-</details>
+## Newly broken
+
+*   checking examples ... ERROR
+     ```
+     ...
+     Backtrace:
+          ▆
+       1. └─hedgehog::forall(...)
+       2.   └─hedgehog:::run.prop(property, tree$root, curry)
+       3.     └─base::tryCatch(...)
+       4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+       5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+       6.           └─value[[3L]](cond)
+       7.             └─hedgehog (local) register_expectation(e)
+       8.               ├─hedgehog:::as.expectation(e)
+       9.               └─hedgehog:::as.expectation.error(e)
+      10.                 └─testthat::expectation("error", msg, srcref)
+      11.                   └─testthat::new_expectation(...)
+      12.                     └─base::structure(...)
+     Error:
+     ! Test failed with 1 failure and 0 successes.
+     Backtrace:
+         ▆
+      1. └─testthat::test_that(...)
+      2.   └─testthat:::test_code(code, parent.frame())
+      3.     ├─withr (local) `<fn>`()
+      4.     └─reporter$end_test(context = reporter$.context, test = test)
+      5.       └─cli::cli_abort(...)
+      6.         └─rlang::abort(...)
+     Execution halted
+     ```
+
+*   checking tests ... ERROR
+     ```
+     ...
+         9.               └─hedgehog:::as.expectation.error(e)
+        10.                 └─testthat::expectation("error", msg, srcref)
+        11.                   └─testthat::new_expectation(...)
+        12.                     └─base::structure(...)
+       ── Error ('test_registry.R:125:1'): Registry State Machine Model ───────────────
+       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
+       Backtrace:
+            ▆
+         1. └─hedgehog::forall(...)
+         2.   └─hedgehog:::run.prop(property, tree$root, curry)
+         3.     └─base::tryCatch(...)
+         4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+         5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+         6.           └─value[[3L]](cond)
+         7.             └─hedgehog (local) register_expectation(e)
+         8.               ├─hedgehog:::as.expectation(e)
+         9.               └─hedgehog:::as.expectation.error(e)
+        10.                 └─testthat::expectation("error", msg, srcref)
+        11.                   └─testthat::new_expectation(...)
+        12.                     └─base::structure(...)
+       
+       [ FAIL 24 | WARN 1 | SKIP 0 | PASS 0 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
+
+*   checking re-building of vignette outputs ... ERROR
+     ```
+     ...
+     Quitting from hedgehog.Rmd:47-51 [unnamed-chunk-1]
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     NULL
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     
+     Error: processing vignette 'hedgehog.Rmd' failed with diagnostics:
+     Test failed with 1 failure and 0 successes.
+     --- failed re-building ‘hedgehog.Rmd’
+     
+     --- re-building ‘state-machines.Rmd’ using rmarkdown
+     
+     Quitting from state-machines.Rmd:138-145 [unnamed-chunk-5]
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     NULL
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     
+     Error: processing vignette 'state-machines.Rmd' failed with diagnostics:
+     Test failed with 1 failure and 0 successes.
+     --- failed re-building ‘state-machines.Rmd’
+     
+     SUMMARY: processing the following files failed:
+       ‘hedgehog.Rmd’ ‘state-machines.Rmd’
+     
+     Error: Vignette re-building failed.
+     Execution halted
+     ```
+
+# heumilkr (0.3.0)
+
+* GitHub: <https://github.com/lschneiderbauer/heumilkr>
+* Email: <mailto:lukas.schneiderbauer@gmail.com>
+* GitHub mirror: <https://github.com/cran/heumilkr>
+
+Run `revdepcheck::cloud_details(, "heumilkr")` for more info
 
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘test_hedgehog.R’
-    Running the tests in ‘tests/test_hedgehog.R’ failed.
-    Complete output:
-      > library(testthat)
-      > options(testthat.use_colours = FALSE)
-      > test_check("hedgehog")
-      Loading required package: hedgehog
-      [ FAIL 4 | WARN 1 | SKIP 0 | PASS 27 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-        8.               ├─hedgehog:::as.expectation(e)
-        9.               └─hedgehog:::as.expectation.error(e)
-       10.                 └─testthat::expectation("error", msg, srcref)
-       11.                   └─testthat::new_expectation(...)
-       12.                     └─base::structure(...)
-      
-      [ FAIL 4 | WARN 1 | SKIP 0 | PASS 27 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         9.               └─hedgehog:::as.expectation.error(e)
+        10.                 └─testthat::expectation("error", msg, srcref)
+        11.                   └─testthat::new_expectation(...)
+        12.                     └─base::structure(...)
+       ── Error ('test-clarke_wright.R:127:3'): Vehicles are not assigned to restricted sites ──
+       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
+       Backtrace:
+            ▆
+         1. └─hedgehog::forall(...) at test-clarke_wright.R:127:3
+         2.   └─hedgehog:::run.prop(property, tree$root, curry)
+         3.     └─base::tryCatch(...)
+         4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+         5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+         6.           └─value[[3L]](cond)
+         7.             └─hedgehog (local) register_expectation(e)
+         8.               ├─hedgehog:::as.expectation(e)
+         9.               └─hedgehog:::as.expectation.error(e)
+        10.                 └─testthat::expectation("error", msg, srcref)
+        11.                   └─testthat::new_expectation(...)
+        12.                     └─base::structure(...)
+       
+       [ FAIL 5 | WARN 0 | SKIP 2 | PASS 15 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# howzatR
+# howzatR (1.0.1)
 
-<details>
-
-* Version: 1.0.1
-* GitHub: https://github.com/lukelockley/howzatR
-* Source code: https://github.com/cran/howzatR
-* Date/Publication: 2022-09-09 14:32:56 UTC
-* Number of recursive dependencies: 24
+* GitHub: <https://github.com/lukelockley/howzatR>
+* Email: <mailto:luke.lockley@btinternet.com>
+* GitHub mirror: <https://github.com/cran/howzatR>
 
 Run `revdepcheck::cloud_details(, "howzatR")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(howzatR)
-      > 
-      > test_check("howzatR")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 16 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::expect(ok = bat_sr(runs_scored = 250, balls_faced = 200)) at test-batting_basics.R:22:3
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 16 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > test_check("howzatR")
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 16 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-batting_basics.R:7:3'): bat_avg works ──────────────────────────
+       Error in `expect(bat_avg(runs_scored = 50, no_dismissals = 2), 25)`: `ok` must be `TRUE` or `FALSE`, not the number 25.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = bat_avg(runs_scored = 50, no_dismissals = 2)) at test-batting_basics.R:7:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-batting_basics.R:22:3'): bat_sr works ──────────────────────────
+       Error in `expect(bat_sr(runs_scored = 250, balls_faced = 200), 125)`: `ok` must be `TRUE` or `FALSE`, not the number 125.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = bat_sr(runs_scored = 250, balls_faced = 200)) at test-batting_basics.R:22:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 16 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# htmltools
+# htmltools (0.5.8.1)
 
-<details>
-
-* Version: 0.5.8.1
-* GitHub: https://github.com/rstudio/htmltools
-* Source code: https://github.com/cran/htmltools
-* Date/Publication: 2024-04-04 05:03:00 UTC
-* Number of recursive dependencies: 51
+* GitHub: <https://github.com/rstudio/htmltools>
+* Email: <mailto:carson@posit.co>
+* GitHub mirror: <https://github.com/cran/htmltools>
 
 Run `revdepcheck::cloud_details(, "htmltools")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘test-all.R’
-    Running the tests in ‘tests/test-all.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(htmltools)
-      > 
-      > test_check("htmltools")
-      [ FAIL 1 | WARN 0 | SKIP 7 | PASS 10196 ]
-      
-      ══ Skipped tests (7) ═══════════════════════════════════════════════════════════
-    ...
-       11.               └─base::mapply(FUN = f, ..., SIMPLIFY = FALSE)
-       12.                 └─htmltools (local) `<fn>`(dots[[1L]][[1L]], dots[[2L]][[1L]])
-       13.                   └─testthat::expect_equal(y$parent, NULL) at ./helper-tags.R:8:7
-       14.                     └─testthat::quasi_label(enquo(object), label)
-       15.                       └─rlang::eval_bare(expr, quo_get_env(quo))
-      
-      [ FAIL 1 | WARN 0 | SKIP 7 | PASS 10196 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-tag-query.R:123:3'): tagQuery()$find() ─────────────────────────
+       Error in `y$parent`: $ operator is invalid for atomic vectors
+       Backtrace:
+            ▆
+         1. ├─testthat::expect_failure(...) at test-tag-query.R:123:3
+         2. │ └─testthat:::capture_success_failure(expr)
+         3. │   └─base::withCallingHandlers(...)
+         4. └─htmltools:::expect_equal_tags(x$selectedTags(), newX$selectedTags())
+         5.   └─htmltools (local) expect_equal_tags_(x, y) at ./helper-tags.R:25:3
+         6.     └─base::Map(x, y, f = expect_equal_tags_) at ./helper-tags.R:16:7
+         7.       └─base::mapply(FUN = f, ..., SIMPLIFY = FALSE)
+         8.         └─htmltools (local) `<fn>`(dots[[1L]][[1L]], dots[[2L]][[1L]])
+         9.           └─htmltools (local) expect_equal_tags_(x$children, y$children) at ./helper-tags.R:12:7
+        10.             └─base::Map(x, y, f = expect_equal_tags_) at ./helper-tags.R:16:7
+        11.               └─base::mapply(FUN = f, ..., SIMPLIFY = FALSE)
+        12.                 └─htmltools (local) `<fn>`(dots[[1L]][[1L]], dots[[2L]][[1L]])
+        13.                   └─testthat::expect_equal(y$parent, NULL) at ./helper-tags.R:8:7
+        14.                     └─testthat::quasi_label(enquo(object), label)
+        15.                       └─rlang::eval_bare(expr, quo_get_env(quo))
+       
+       [ FAIL 1 | WARN 0 | SKIP 7 | PASS 10196 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
-*   checking package dependencies ... NOTE
-    ```
-    Package which this enhances but not available for checking: ‘knitr’
-    ```
+*   checking compiled code ... NOTE
+     ```
+     File ‘htmltools/libs/htmltools.so’:
+       Found non-API calls to R: ‘SETLENGTH’, ‘SET_TRUELENGTH’
+     
+     Compiled code should not call non-API entry points in R.
+     
+     See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual,
+     and section ‘Moving into C API compliance’ for issues with the use of
+     non-API entry points.
+     ```
 
-# httptest
+# httptest (4.2.2)
 
-<details>
-
-* Version: 4.2.2
-* GitHub: https://github.com/nealrichardson/httptest
-* Source code: https://github.com/cran/httptest
-* Date/Publication: 2024-01-23 19:40:02 UTC
-* Number of recursive dependencies: 51
+* GitHub: <https://github.com/nealrichardson/httptest>
+* Email: <mailto:neal.p.richardson@gmail.com>
+* GitHub mirror: <https://github.com/cran/httptest>
 
 Run `revdepcheck::cloud_details(, "httptest")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > test_check("httptest")
-      Loading required package: httptest
-      [ FAIL 2 | WARN 0 | SKIP 12 | PASS 289 ]
-      
-      ══ Skipped tests (12) ══════════════════════════════════════════════════════════
-    ...
-       5. │       └─testthat:::quasi_capture(...)
-       6. │         ├─testthat (local) .capture(...)
-       7. │         │ └─base::withCallingHandlers(...)
-       8. │         └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-       9. └─testthat::expect_failure(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 12 | PASS 289 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        4. │     └─testthat:::expect_condition_matching_(...)
+        5. │       └─testthat:::quasi_capture(...)
+        6. │         ├─testthat (local) .capture(...)
+        7. │         │ └─base::withCallingHandlers(...)
+        8. │         └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+        9. └─testthat::expect_failure(...)
+       ── Failure ('test-expect-header.R:25:7'): expect_header with fake HTTP ─────────
+       Expected exactly one failure and no successes.
+       Actually succeeded 1 times
+       Backtrace:
+           ▆
+        1. ├─httptest::expect_POST(...) at test-expect-header.R:25:7
+        2. │ └─httptest:::expect_mock_request(object, "POST ", url, " ", ...)
+        3. │   └─request_happened()(...)
+        4. │     └─testthat:::expect_condition_matching_(...)
+        5. │       └─testthat:::quasi_capture(...)
+        6. │         ├─testthat (local) .capture(...)
+        7. │         │ └─base::withCallingHandlers(...)
+        8. │         └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+        9. └─testthat::expect_failure(...)
+       
+       [ FAIL 2 | WARN 0 | SKIP 12 | PASS 289 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# httptest2
+# httptest2 (1.2.1)
 
-<details>
-
-* Version: 1.2.1
-* GitHub: https://github.com/nealrichardson/httptest2
-* Source code: https://github.com/cran/httptest2
-* Date/Publication: 2025-07-27 21:00:02 UTC
-* Number of recursive dependencies: 53
+* GitHub: <https://github.com/nealrichardson/httptest2>
+* Email: <mailto:neal.p.richardson@gmail.com>
+* GitHub mirror: <https://github.com/cran/httptest2>
 
 Run `revdepcheck::cloud_details(, "httptest2")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > test_check("httptest2")
-      Loading required package: httptest2
-      [ FAIL 5 | WARN 0 | SKIP 2 | PASS 233 ]
-      
-      ══ Skipped tests (2) ═══════════════════════════════════════════════════════════
-    ...
-       11. │         │ └─base::withCallingHandlers(...)
-       12. │         └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-       13. └─httr2::req_perform(this_req)
-       14.   └─httptest2 (local) mock(req)
-       15.     └─rlang::abort(out, mockfile = req$mockfile, class = "httptest2_request")
-      
-      [ FAIL 5 | WARN 0 | SKIP 2 | PASS 233 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       <httptest2_request/rlang_error/error/condition>
+       Error in `mock(req)`: An unexpected request was made:
+       POST http://httpbin.not/get {"test":true}
+       Backtrace:
+            ▆
+         1. ├─testthat::expect_failure(...) at test-expect-request.R:75:5
+         2. │ └─testthat:::capture_success_failure(expr)
+         3. │   └─base::withCallingHandlers(...)
+         4. ├─httptest2::expect_POST(...)
+         5. │ └─httptest2:::expect_request(object, "POST ", url, " ", ...)
+         6. │   ├─base::withCallingHandlers(...)
+         7. │   └─testthat::expect_error(...)
+         8. │     └─testthat:::expect_condition_matching_(...)
+         9. │       └─testthat:::quasi_capture(...)
+        10. │         ├─testthat (local) .capture(...)
+        11. │         │ └─base::withCallingHandlers(...)
+        12. │         └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+        13. └─httr2::req_perform(this_req)
+        14.   └─httptest2 (local) mock(req)
+        15.     └─rlang::abort(out, mockfile = req$mockfile, class = "httptest2_request")
+       
+       [ FAIL 5 | WARN 0 | SKIP 2 | PASS 233 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# humanize
+# humanize (0.2.0)
 
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/newtux/humanize
-* Source code: https://github.com/cran/humanize
-* Date/Publication: 2018-04-04 04:16:58 UTC
-* Number of recursive dependencies: 31
+* GitHub: <https://github.com/newtux/humanize>
+* Email: <mailto:gerrymanoim@gmail.com>
+* GitHub mirror: <https://github.com/cran/humanize>
 
 Run `revdepcheck::cloud_details(, "humanize")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(humanize)
-      > 
-      > test_check("humanize")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 96 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test_time.R:214:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 96 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test_time.R:145:3'): natural_time works as expected ─────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_time.R:145:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test_time.R:214:3'): natural_time no months works as expected ───────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_time.R:214:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 96 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# HurreconR (1.1)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# HurreconR
-
-<details>
-
-* Version: 1.1
-* GitHub: https://github.com/hurrecon-model/hurreconR
-* Source code: https://github.com/cran/HurreconR
-* Date/Publication: 2023-06-13 20:40:03 UTC
-* Number of recursive dependencies: 47
+* GitHub: <https://github.com/hurrecon-model/hurreconR>
+* Email: <mailto:boose@fas.harvard.edu>
+* GitHub mirror: <https://github.com/cran/HurreconR>
 
 Run `revdepcheck::cloud_details(, "HurreconR")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/tests.html
-      > # * https://testthat.r-lib.org/reference/test_package.html#special-files
-    ...
-       1. └─testthat::expect_snapshot_value(tolerance = test.expected) at test_HurreconR.R:14:1
-       2.   └─testthat:::check_number_decimal(tolerance, min = 0)
-       3.     └─testthat:::.stop_not_number(...)
-       4.       └─testthat:::stop_input_type(...)
-       5.         └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 1 | SKIP 0 | PASS 0 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > 
+       > library(testthat)
+       > library(HurreconR)
+       > 
+       > test_check("HurreconR")
+       Path set to /tmp/workdir/HurreconR/new/HurreconR.Rcheck/HurreconR/
+       ... Modeling site ...
+       014 ms
+       [ FAIL 1 | WARN 1 | SKIP 0 | PASS 0 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test_HurreconR.R:14:1'): (code run outside of `test_that()`) ────────
+       Error in `expect_snapshot_value(hurrecon_summarize_site(hur_id = "AL1935-03", site_name = "Miami FL", hur_path = hur_path), test.expected, style = "serialize", cran = FALSE)`: `tolerance` must be a number, not the string "/tmp/workdir/HurreconR/new/...".
+       Backtrace:
+           ▆
+        1. └─testthat::expect_snapshot_value(tolerance = test.expected) at test_HurreconR.R:14:1
+        2.   └─testthat:::check_number_decimal(tolerance, min = 0)
+        3.     └─testthat:::.stop_not_number(...)
+        4.       └─testthat:::stop_input_type(...)
+        5.         └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 1 | SKIP 0 | PASS 0 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# hySpc.testthat
+# hySpc.testthat (0.2.1)
 
-<details>
-
-* Version: 0.2.1
-* GitHub: NA
-* Source code: https://github.com/cran/hySpc.testthat
-* Date/Publication: 2020-06-24 13:00:02 UTC
-* Number of recursive dependencies: 24
+* Email: <mailto:Claudia.Beleites@chemometrix.gmbh>
+* GitHub mirror: <https://github.com/cran/hySpc.testthat>
 
 Run `revdepcheck::cloud_details(, "hySpc.testthat")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(hySpc.testthat)
-      > 
-      > test_check("hySpc.testthat")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 2 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-        7.   └─hySpc.testthat (local) t()
-        8.     └─testthat::test_that(...)
-        9.       └─testthat:::test_code(code, parent.frame())
-       10.         └─reporter$start_test(context = reporter$.context, test = test)
-       11.           └─base::identical(self$running[[self$current_file]]$context, context)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 2 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         7.   └─hySpc.testthat (local) test()
+         8.     └─testthat::test_that(...)
+         9.       └─testthat:::test_code(code, parent.frame())
+        10.         └─reporter$start_test(context = reporter$.context, test = test)
+        11.           └─base::identical(self$running[[self$current_file]]$context, context)
+       ── Error ('test_attached.R:3:1'): standalone ───────────────────────────────────
+       Error in `identical(self$running[[self$current_file]]$context, context)`: attempt to use zero-length variable name
+       Backtrace:
+            ▆
+         1. └─hySpc.testthat::unittest(ns = test_env, reporter = "list")
+         2.   ├─testthat::with_reporter(...)
+         3.   │ └─base::tryCatch(...)
+         4.   │   └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+         5.   │     └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+         6.   │       └─base (local) doTryCatch(return(expr), name, parentenv, handler)
+         7.   └─hySpc.testthat (local) t()
+         8.     └─testthat::test_that(...)
+         9.       └─testthat:::test_code(code, parent.frame())
+        10.         └─reporter$start_test(context = reporter$.context, test = test)
+        11.           └─base::identical(self$running[[self$current_file]]$context, context)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 2 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# idiolect (1.0.1)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# idiolect
-
-<details>
-
-* Version: 1.0.1
-* GitHub: https://github.com/andreanini/idiolect
-* Source code: https://github.com/cran/idiolect
-* Date/Publication: 2024-08-28 09:00:02 UTC
-* Number of recursive dependencies: 162
+* GitHub: <https://github.com/andreanini/idiolect>
+* Email: <mailto:andrea.nini@manchester.ac.uk>
+* GitHub mirror: <https://github.com/cran/idiolect>
 
 Run `revdepcheck::cloud_details(, "idiolect")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/tests.html
-      > # * https://testthat.r-lib.org/reference/test_package.html#special-files
-    ...
-          ▆
-       1. └─testthat::expect(ok = results.corpus[4, 4]) at test-impostors.R:123:3
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 3 | WARN 1 | SKIP 11 | PASS 14 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        1. └─testthat::expect(ok = results.corpus[1, 4]) at test-impostors.R:35:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-impostors.R:84:3'): KGI works ──────────────────────────────────
+       Error in `testthat::expect(results.corpus[1, 4], 0.75)`: `ok` must be `TRUE` or `FALSE`, not the number 0.75.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = results.corpus[1, 4]) at test-impostors.R:84:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-impostors.R:123:3'): IM works ──────────────────────────────────
+       Error in `testthat::expect(results.corpus[4, 4], 0.57)`: `ok` must be `TRUE` or `FALSE`, not the number 0.57.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = results.corpus[4, 4]) at test-impostors.R:123:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 3 | WARN 1 | SKIP 11 | PASS 14 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# imager
+## In both
 
-<details>
+*   checking DESCRIPTION meta-information ... NOTE
+     ```
+       Missing dependency on R >= 4.1.0 because package code uses the pipe
+       |> or function shorthand \(...) syntax added in R 4.1.0.
+       File(s) using such syntax:
+         ‘calibrate_LLR.R’ ‘concordance.R’ ‘contentmask.R’ ‘create_corpus.R’
+         ‘delta.R’ ‘density_plot.R’ ‘impostors.R’ ‘lambdaG.R’ ‘lambdaG.Rd’
+         ‘lambdaG_visualize.R’ ‘lambdaG_visualize.Rd’ ‘most_similar.Rd’
+         ‘ngram_tracing.R’ ‘performance.R’ ‘posterior.R’ ‘tokenize_sents.R’
+         ‘utils.R’ ‘vectorize.R’
+     ```
 
-* Version: 1.0.5
-* GitHub: https://github.com/asgr/imager
-* Source code: https://github.com/cran/imager
-* Date/Publication: 2025-08-02 09:30:02 UTC
-* Number of recursive dependencies: 85
+# imager (1.0.5)
+
+* GitHub: <https://github.com/asgr/imager>
+* Email: <mailto:aaron.robotham@uwa.edu.au>
+* GitHub mirror: <https://github.com/cran/imager>
 
 Run `revdepcheck::cloud_details(, "imager")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(imager)
-      Loading required package: magrittr
-      
-      Attaching package: 'magrittr'
-      
-      The following objects are masked from 'package:testthat':
-    ...
-          ▆
-       1. └─testthat::expect(failure_message = TRUE) at test_load_save_videos.R:15:13
-       2.   └─testthat:::check_character(failure_message)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 19 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       
+           frame
+       
+       The following object is masked from 'package:base':
+       
+           save.image
+       
+       > 
+       > test_check("imager")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 19 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test_load_save_videos.R:15:13'): load_and_save_videos ───────────────
+       Error in `expect(file_test("-f", ff), TRUE)`: `failure_message` must be a character vector, not `TRUE`.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = TRUE) at test_load_save_videos.R:15:13
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 19 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# IMEC (0.2.0)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is 27.9Mb
-      sub-directories of 1Mb or more:
-        data      1.4Mb
-        doc       3.7Mb
-        extdata   1.0Mb
-        include   3.3Mb
-        libs     17.8Mb
-    ```
-
-# IMEC
-
-<details>
-
-* Version: 0.2.0
-* GitHub: NA
-* Source code: https://github.com/cran/IMEC
-* Date/Publication: 2020-11-27 10:10:03 UTC
-* Number of recursive dependencies: 100
+* Email: <mailto:maximilianmaier0401@gmail.com>
+* GitHub mirror: <https://github.com/cran/IMEC>
 
 Run `revdepcheck::cloud_details(, "IMEC")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(IMEC)
-      > 
-      > test_check("IMEC")
-      [1] "The used edge weight is 0.333333333333333"
-      [1] "The used edge weight is 0.5"
-      [1] "The used edge weight is 0.333333333333333"
-    ...
-          ▆
-       1. └─testthat::expect(failure_message = <empty>) at test-0-basictests.R:60:3
-       2.   └─testthat:::check_character(failure_message)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 2 | WARN 2 | SKIP 1 | PASS 2 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
+       • On CRAN (1): 'test-0-basictests.R:105:1'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-0-basictests.R:29:3'): analytic way of calculating coherence works ──
+       Error in `expect(0 < mean(IMEC$ExplanatoryCoherenceT1[[2]]))`: `failure_message` must be a character vector, not absent.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = <empty>) at test-0-basictests.R:29:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-0-basictests.R:60:3'): analytic way of calculating coherence works for 1 theory ──
+       Error in `expect(0 < mean(IMEC$ExplanatoryCoherenceT1[[2]]))`: `failure_message` must be a character vector, not absent.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = <empty>) at test-0-basictests.R:60:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 2 | WARN 2 | SKIP 1 | PASS 2 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# leaflet.minicharts (0.6.2)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# itan
-
-<details>
-
-* Version: 3.1.1
-* GitHub: https://github.com/arielarmijo/itan
-* Source code: https://github.com/cran/itan
-* Date/Publication: 2022-02-10 13:40:06 UTC
-* Number of recursive dependencies: 65
-
-Run `revdepcheck::cloud_details(, "itan")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(itan)
-      > 
-      > test_check("itan")
-      [ FAIL 4 | WARN 50 | SKIP 0 | PASS 101 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      `expected$E` is a double vector (21, 0, 0, 1, 7, ...)
-      
-      `actual$NA` is an integer vector (2, 1, 2, 1, 1, ...)
-      `expected$NA` is a double vector (2, 1, 2, 1, 1, ...)
-      
-      
-      [ FAIL 4 | WARN 50 | SKIP 0 | PASS 101 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# leaflet.minicharts
-
-<details>
-
-* Version: 0.6.2
-* GitHub: NA
-* Source code: https://github.com/cran/leaflet.minicharts
-* Date/Publication: 2021-05-11 09:20:10 UTC
-* Number of recursive dependencies: 95
+* Email: <mailto:veronique.bachelier@rte-france.com>
+* GitHub mirror: <https://github.com/cran/leaflet.minicharts>
 
 Run `revdepcheck::cloud_details(, "leaflet.minicharts")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(leaflet.minicharts)
-      > 
-      > test_check("leaflet.minicharts")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 106 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-minicharts.R:12:1
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 106 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-flows.R:12:1'): (code run outside of `test_that()`) ────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-flows.R:12:1
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-minicharts.R:12:1'): (code run outside of `test_that()`) ───────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-minicharts.R:12:1
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 106 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# learnr
+# learnr (0.11.5)
 
-<details>
-
-* Version: 0.11.5
-* GitHub: https://github.com/rstudio/learnr
-* Source code: https://github.com/cran/learnr
-* Date/Publication: 2023-09-28 05:00:02 UTC
-* Number of recursive dependencies: 87
+* GitHub: <https://github.com/rstudio/learnr>
+* Email: <mailto:garrick@posit.co>
+* GitHub mirror: <https://github.com/cran/learnr>
 
 Run `revdepcheck::cloud_details(, "learnr")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > 
-      > if (requireNamespace("testthat")) {
-      +   library(testthat)
-      +   library(learnr)
-      + 
-      +   test_check("learnr")
-      + }
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-exercise.R:246:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 20 | PASS 812 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         'test-evaluators.R:179:3', 'test-evaluators.R:212:3',
+         'test-evaluators.R:244:3', 'test-evaluators.R:279:3',
+         'test-evaluators.R:363:3', 'test-exercise.R:356:1', 'test-exercise.R:1237:3',
+         'test-exercise.R:1345:1', 'test-exercise.R:1393:1', 'test-exercise.R:1444:3',
+         'test-exercise.R:1472:3', 'test-exercise.R:1524:1',
+         'test-shinytest2-aaa.R:2:1', 'test-shinytest2-hints.R:2:1'
+       • Skipping test because LANG is C.UTF-8 (2): 'test-i18n.R:208:3',
+         'test-i18n.R:238:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-exercise.R:246:3'): evaluate_exercise() returns an internal error when `render_exercise()` fails ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-exercise.R:246:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 20 | PASS 812 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# lintr
+# linl (0.0.5)
 
-<details>
+* GitHub: <https://github.com/eddelbuettel/linl>
+* Email: <mailto:edd@debian.org>
+* GitHub mirror: <https://github.com/cran/linl>
 
-* Version: 3.2.0
-* GitHub: https://github.com/r-lib/lintr
-* Source code: https://github.com/cran/lintr
-* Date/Publication: 2025-02-12 15:00:02 UTC
-* Number of recursive dependencies: 62
+Run `revdepcheck::cloud_details(, "linl")` for more info
+
+## Newly broken
+
+*   checking re-building of vignette outputs ... WARNING
+     ```
+     ...
+     tlmgr: package log updated: /opt/TinyTeX/texmf-var/web2c/tlmgr.log
+     tlmgr: command log updated: /opt/TinyTeX/texmf-var/web2c/tlmgr-commands.log
+     
+     tlmgr: Remote database at https://mirrors.mit.edu/CTAN/systems/texlive/tlnet
+     (revision 76648 of the texlive-scripts package)
+     seems to be older than the local installation
+     (revision 76658 of texlive-scripts);
+     please use a different mirror and/or wait a day or two.
+     
+     Warning in system2("tlmgr", args, ...) :
+       running command ''tlmgr' search --file --global '/grffile.sty'' had status 1 and error message 'Function not implemented'
+     ! LaTeX Error: File `grffile.sty' not found.
+     
+     ! Emergency stop.
+     <read *> 
+     
+     Error: processing vignette 'linl.Rmd' failed with diagnostics:
+     LaTeX failed to compile /tmp/workdir/linl/new/linl.Rcheck/vign_test/linl/vignettes/linl.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See linl.log for more info.
+     --- failed re-building ‘linl.Rmd’
+     
+     SUMMARY: processing the following file failed:
+       ‘linl.Rmd’
+     
+     Error: Vignette re-building failed.
+     Execution halted
+     ```
+
+## Newly fixed
+
+*   checking re-building of vignette outputs ... ERROR
+     ```
+     ...
+     ! ! Emergency stop.
+     ! <*> ...ljfour; mag:=1; ; nonstopmode; input pplr8t
+     
+     ! ! Emergency stop.
+     ! <*> ...ljfour; mag:=1; ; nonstopmode; input pplr8t
+     
+     ! <*> ...ljfour; mag:=1; ; nonstopmode; input pplr8t
+     
+     ! Transcript written on mfput.log.
+     
+     ! grep: pplr8t.log: No such file or directory
+     
+     ! mktextfm: `mf-nowin -progname=mf \mode:=ljfour; mag:=1; ; nonstopmode; input pplr8t' failed to make pplr8t.tfm.
+     
+     ! kpathsea: Appending font creation commands to missfont.log.
+     
+     Error: processing vignette 'linl.Rmd' failed with diagnostics:
+     LaTeX failed to compile /tmp/workdir/linl/old/linl.Rcheck/vign_test/linl/vignettes/linl.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See linl.log for more info.
+     --- failed re-building ‘linl.Rmd’
+     
+     SUMMARY: processing the following file failed:
+       ‘linl.Rmd’
+     
+     Error: Vignette re-building failed.
+     Execution halted
+     ```
+
+# lintr (3.2.0)
+
+* GitHub: <https://github.com/r-lib/lintr>
+* Email: <mailto:michaelchirico4@gmail.com>
+* GitHub mirror: <https://github.com/cran/lintr>
 
 Run `revdepcheck::cloud_details(, "lintr")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(lintr)
-      > 
-      > # suppress printing environment name (noisy)
-      > invisible({
-      +   loadNamespace("patrick")
-      +   loadNamespace("withr")
-    ...
-      Expected exactly one failure and no successes.
-      Actually failed 2 times
-      ── Failure ('test-expect_lint.R:50:3'): multiple checks ────────────────────────
-      Expected exactly one success and no failures.
-      Actually succeeded 3 times
-      
-      [ FAIL 13 | WARN 0 | SKIP 5 | PASS 6551 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Expected exactly one success and no failures.
+       Actually succeeded 2 times
+       ── Failure ('test-expect_lint.R:44:3'): multiple checks ────────────────────────
+       Expected exactly one success and no failures.
+       Actually succeeded 2 times
+       ── Failure ('test-expect_lint.R:45:3'): multiple checks ────────────────────────
+       Expected exactly one success and no failures.
+       Actually succeeded 2 times
+       ── Failure ('test-expect_lint.R:46:3'): multiple checks ────────────────────────
+       Expected exactly one failure and no successes.
+       Actually succeeded 1 times
+       ── Failure ('test-expect_lint.R:48:3'): multiple checks ────────────────────────
+       Expected exactly one success and no failures.
+       Actually failed 1 times
+       ── Failure ('test-expect_lint.R:49:3'): multiple checks ────────────────────────
+       Expected exactly one failure and no successes.
+       Actually failed 2 times
+       ── Failure ('test-expect_lint.R:50:3'): multiple checks ────────────────────────
+       Expected exactly one success and no failures.
+       Actually succeeded 3 times
+       
+       [ FAIL 13 | WARN 0 | SKIP 5 | PASS 6551 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# manipulateWidget (0.11.1)
 
-*   checking package dependencies ... NOTE
-    ```
-    Package which this enhances but not available for checking: ‘data.table’
-    ```
-
-# luajr
-
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/nicholasdavies/luajr
-* Source code: https://github.com/cran/luajr
-* Date/Publication: 2025-09-08 14:00:08 UTC
-* Number of recursive dependencies: 42
-
-Run `revdepcheck::cloud_details(, "luajr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-      Expected `attributes(x)` to be equal to `list(...)`.
-      Differences:
-      `actual$at2` is an integer vector (1)
-      `expected$at2` is a double vector (1)
-      
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 184 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-## In both
-
-*   checking for GNU extensions in Makefiles ... NOTE
-    ```
-    GNU make is a SystemRequirements.
-    ```
-
-# MakefileR
-
-<details>
-
-* Version: 1.0
-* GitHub: https://github.com/krlmlr/MakefileR
-* Source code: https://github.com/cran/MakefileR
-* Date/Publication: 2016-01-08 15:55:12
-* Number of recursive dependencies: 41
-
-Run `revdepcheck::cloud_details(, "MakefileR")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(MakefileR)
-      > 
-      > test_check("MakefileR")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 31 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-rule.R:30:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 31 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-## In both
-
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# manipulateWidget
-
-<details>
-
-* Version: 0.11.1
-* GitHub: https://github.com/rte-antares-rpackage/manipulateWidget
-* Source code: https://github.com/cran/manipulateWidget
-* Date/Publication: 2021-10-05 08:50:09 UTC
-* Number of recursive dependencies: 108
+* GitHub: <https://github.com/rte-antares-rpackage/manipulateWidget>
+* Email: <mailto:veronique.bachelier@rte-france.com>
+* GitHub mirror: <https://github.com/cran/manipulateWidget>
 
 Run `revdepcheck::cloud_details(, "manipulateWidget")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(manipulateWidget)
-      > 
-      > test_check("manipulateWidget")
-      [ FAIL 2 | WARN 0 | SKIP 1 | PASS 650 ]
-      
-      ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
-    ...
-       2. │ └─base::withCallingHandlers(...)
-       3. └─testthat::with_mock(...) at test-on_done.R:24:23
-       4.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       5.     └─lifecycle:::deprecate_stop0(msg)
-       6.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 1 | PASS 650 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-on_done.R:5:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-on_done.R:24:23'): onDone / returns a combined widget if comparison ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. ├─base::suppressWarnings(...) at test-on_done.R:24:5
+        2. │ └─base::withCallingHandlers(...)
+        3. └─testthat::with_mock(...) at test-on_done.R:24:23
+        4.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        5.     └─lifecycle:::deprecate_stop0(msg)
+        6.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 2 | WARN 0 | SKIP 1 | PASS 650 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking Rd files ... NOTE
-    ```
-    checkRd: (-1) manipulateWidget.Rd:113-117: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) manipulateWidget.Rd:118-120: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) manipulateWidget.Rd:121-123: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) manipulateWidget.Rd:124-127: Lost braces in \itemize; meant \describe ?
-    ```
+     ```
+     checkRd: (-1) manipulateWidget.Rd:113-117: Lost braces in \itemize; meant \describe ?
+     checkRd: (-1) manipulateWidget.Rd:118-120: Lost braces in \itemize; meant \describe ?
+     checkRd: (-1) manipulateWidget.Rd:121-123: Lost braces in \itemize; meant \describe ?
+     checkRd: (-1) manipulateWidget.Rd:124-127: Lost braces in \itemize; meant \describe ?
+     ```
 
-*   checking data for non-ASCII characters ... NOTE
-    ```
-      Note: found 55 marked UTF-8 strings
-    ```
+# markmyassignment (0.8.8)
 
-# markmyassignment
-
-<details>
-
-* Version: 0.8.8
-* GitHub: NA
-* Source code: https://github.com/cran/markmyassignment
-* Date/Publication: 2024-01-29 09:20:06 UTC
-* Number of recursive dependencies: 53
+* Email: <mailto:mons.magnusson@gmail.com>
+* GitHub mirror: <https://github.com/cran/markmyassignment>
 
 Run `revdepcheck::cloud_details(, "markmyassignment")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > test_check("markmyassignment")
-      Loading required package: markmyassignment
-      [ FAIL 2 | WARN 0 | SKIP 6 | PASS 145 ]
-      
-      ══ Skipped tests (6) ═══════════════════════════════════════════════════════════
-      • On CRAN (6): 'test-set_assignment.R:5:3', 'test-set_assignment.R:47:3',
-    ...
-      ✖ │ 'markmyassignment' not found in the body of `base::mean`
-      ── Failure ('test-expectation.R:45:3'): expect_no_forbidden_function_code() ────
-      Expected failure message to match regexp "Forbidden code 'UseMethod' is found in the body of base::mean".
-      Actual message:
-      ✖ │ Forbidden code 'UseMethod' is found in the body of `base::mean`
-      
-      [ FAIL 2 | WARN 0 | SKIP 6 | PASS 145 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+     Complete output:
+       > library(testthat)
+       > test_check("markmyassignment")
+       Loading required package: markmyassignment
+       [ FAIL 2 | WARN 0 | SKIP 6 | PASS 145 ]
+       
+       ══ Skipped tests (6) ═══════════════════════════════════════════════════════════
+       • On CRAN (6): 'test-set_assignment.R:5:3', 'test-set_assignment.R:47:3',
+         'test-set_assignment.R:70:3', 'test-set_assignment.R:101:3',
+         'test-set_assignment.R:155:3', 'test-set_assignment.R:205:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test-expectation.R:40:3'): expect_function_code() ─────────────────
+       Expected failure message to match regexp "'markmyassignment' not found in the body of base::mean".
+       Actual message:
+       ✖ │ 'markmyassignment' not found in the body of `base::mean`
+       ── Failure ('test-expectation.R:45:3'): expect_no_forbidden_function_code() ────
+       Expected failure message to match regexp "Forbidden code 'UseMethod' is found in the body of base::mean".
+       Actual message:
+       ✖ │ Forbidden code 'UseMethod' is found in the body of `base::mean`
+       
+       [ FAIL 2 | WARN 0 | SKIP 6 | PASS 145 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# maybe
+# maybe (1.1.0)
 
-<details>
-
-* Version: 1.1.0
-* GitHub: https://github.com/armcn/maybe
-* Source code: https://github.com/cran/maybe
-* Date/Publication: 2023-08-07 13:30:02 UTC
-* Number of recursive dependencies: 44
+* GitHub: <https://github.com/armcn/maybe>
+* Email: <mailto:andrew.richard.mcneil@gmail.com>
+* GitHub mirror: <https://github.com/cran/maybe>
 
 Run `revdepcheck::cloud_details(, "maybe")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(maybe)
-      > 
-      > test_check("maybe")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 133 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-        9.                 ├─hedgehog:::as.expectation(e)
-       10.                 └─hedgehog:::as.expectation.error(e)
-       11.                   └─testthat::expectation("error", msg, srcref)
-       12.                     └─testthat::new_expectation(...)
-       13.                       └─base::structure(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 133 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        11.                   └─testthat::expectation("error", msg, srcref)
+        12.                     └─testthat::new_expectation(...)
+        13.                       └─base::structure(...)
+       ── Error ('test-with_default.R:19:3'): with_default returns the default with a nothing value ──
+       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
+       Backtrace:
+            ▆
+         1. └─quickcheck::for_all(...) at test-with_default.R:19:3
+         2.   └─hedgehog::forall(...)
+         3.     └─hedgehog:::run.prop(property, tree$root, curry)
+         4.       └─base::tryCatch(...)
+         5.         └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+         6.           └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+         7.             └─value[[3L]](cond)
+         8.               └─hedgehog (local) register_expectation(e)
+         9.                 ├─hedgehog:::as.expectation(e)
+        10.                 └─hedgehog:::as.expectation.error(e)
+        11.                   └─testthat::expectation("error", msg, srcref)
+        12.                     └─testthat::new_expectation(...)
+        13.                       └─base::structure(...)
+       
+       [ FAIL 74 | WARN 0 | SKIP 0 | PASS 60 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# mbbe
+# mbbe (0.1.0)
 
-<details>
-
-* Version: 0.1.0
-* GitHub: https://github.com/certara/mbbe
-* Source code: https://github.com/cran/mbbe
-* Date/Publication: 2024-02-03 11:20:02 UTC
-* Number of recursive dependencies: 80
+* GitHub: <https://github.com/certara/mbbe>
+* Email: <mailto:mark.sale@certara.com>
+* GitHub mirror: <https://github.com/cran/mbbe>
 
 Run `revdepcheck::cloud_details(, "mbbe")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-check_requirements.R:39:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 11 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
+       > # * https://testthat.r-lib.org/articles/special-files.html
+       > 
+       > library(testthat)
+       > library(mbbe)
+       > 
+       > test_check("mbbe")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 11 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-check_requirements.R:39:3'): check_requirements works ──────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-check_requirements.R:39:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 11 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# MetaComp
+# MetaComp (1.1.2)
 
-<details>
-
-* Version: 1.1.2
-* GitHub: https://github.com/seninp-bioinfo/MetaComp
-* Source code: https://github.com/cran/MetaComp
-* Date/Publication: 2018-06-18 20:06:45 UTC
-* Number of recursive dependencies: 48
+* GitHub: <https://github.com/seninp-bioinfo/MetaComp>
+* Email: <mailto:senin@hawaii.edu>
+* GitHub mirror: <https://github.com/cran/MetaComp>
 
 Run `revdepcheck::cloud_details(, "MetaComp")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(MetaComp)
-      > 
-      > test_check("MetaComp")
-      [1] "gottcha"
-      [1] "kraken"
-      [ FAIL 15 | WARN 21 | SKIP 0 | PASS 108 ]
-    ...
-      ── Error ('test_plot_pangia_assignment.R:31:1'): (code run outside of `test_that()`) ──
-      Error in `is_true()`: could not find function "is_true"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(file.exists(png_name), is_true()) at test_plot_pangia_assignment.R:31:1
-      
-      [ FAIL 15 | WARN 21 | SKIP 0 | PASS 108 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test_plot_merged_assignment_m.R:80:1'): (code run outside of `test_that()`) ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(...) at test_plot_merged_assignment_m.R:80:1
+       ── Error ('test_plot_merged_assignment_p.R:81:1'): (code run outside of `test_that()`) ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(...) at test_plot_merged_assignment_p.R:81:1
+       ── Error ('test_plot_metaphlan_assignment.R:31:1'): (code run outside of `test_that()`) ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(file.exists(png_name), is_true()) at test_plot_metaphlan_assignment.R:31:1
+       ── Error ('test_plot_pangia_assignment.R:31:1'): (code run outside of `test_that()`) ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(file.exists(png_name), is_true()) at test_plot_pangia_assignment.R:31:1
+       
+       [ FAIL 15 | WARN 21 | SKIP 0 | PASS 108 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# metaDigitise (1.0.1)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# metaDigitise
-
-<details>
-
-* Version: 1.0.1
-* GitHub: https://github.com/daniel1noble/metaDigitise
-* Source code: https://github.com/cran/metaDigitise
-* Date/Publication: 2020-03-13 06:10:02 UTC
-* Number of recursive dependencies: 47
+* GitHub: <https://github.com/daniel1noble/metaDigitise>
+* Email: <mailto:daniel.wa.noble@gmail.com>
+* GitHub mirror: <https://github.com/cran/metaDigitise>
 
 Run `revdepcheck::cloud_details(, "metaDigitise")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > 
-      > library(testthat)
-      > library(metaDigitise)
-      > library(mockery)
-      > 
-      > testthat::test_check("metaDigitise")
-      [ FAIL 14 | WARN 0 | SKIP 0 | PASS 35 ]
-    ...
-       4. └─metaDigitise (local) point_extraction_tester_func(object = list(plot_type = "mean_error"))
-       5.   └─testthat::with_mock(...) at test-point_extraction.R:9:9
-       6.     └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       7.       └─lifecycle:::deprecate_stop0(msg)
-       8.         └─rlang::cnd_signal(...)
-      
-      [ FAIL 14 | WARN 0 | SKIP 0 | PASS 35 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-misc_func.R:132:9
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-point_extraction.R:9:2'): Checking point_extraction.. ──────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. ├─testthat::expect_equal(...) at test-point_extraction.R:17:9
+        2. │ └─testthat::quasi_label(enquo(object), label)
+        3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+        4. └─metaDigitise (local) point_extraction_tester_func(object = list(plot_type = "mean_error"))
+        5.   └─testthat::with_mock(...) at test-point_extraction.R:9:9
+        6.     └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        7.       └─lifecycle:::deprecate_stop0(msg)
+        8.         └─rlang::cnd_signal(...)
+       
+       [ FAIL 14 | WARN 0 | SKIP 0 | PASS 35 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# mknapsack (0.1.0)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# mknapsack
-
-<details>
-
-* Version: 0.1.0
-* GitHub: https://github.com/madedotcom/mknapsack
-* Source code: https://github.com/cran/mknapsack
-* Date/Publication: 2018-04-10 12:45:53 UTC
-* Number of recursive dependencies: 35
+* GitHub: <https://github.com/madedotcom/mknapsack>
+* Email: <mailto:bulat.yapparov@made.com>
+* GitHub mirror: <https://github.com/cran/mknapsack>
 
 Run `revdepcheck::cloud_details(, "mknapsack")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > suppressPackageStartupMessages({
-      +   library(testthat)
-      +   library(data.table)
-      + })
-      > 
-      > test_check("mknapsack")
-      Loading required package: mknapsack
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-packing.R:146:5
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 21 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > suppressPackageStartupMessages({
+       +   library(testthat)
+       +   library(data.table)
+       + })
+       > 
+       > test_check("mknapsack")
+       Loading required package: mknapsack
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 21 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-packing.R:146:5'): solver / calls correct method based on the option value ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-packing.R:146:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 21 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# mlr3pipelines
+# mlr3pipelines (0.9.0)
 
-<details>
-
-* Version: 0.9.0
-* GitHub: https://github.com/mlr-org/mlr3pipelines
-* Source code: https://github.com/cran/mlr3pipelines
-* Date/Publication: 2025-07-31 23:20:11 UTC
-* Number of recursive dependencies: 166
+* GitHub: <https://github.com/mlr-org/mlr3pipelines>
+* Email: <mailto:mlr.developer@mb706.com>
+* GitHub mirror: <https://github.com/cran/mlr3pipelines>
 
 Run `revdepcheck::cloud_details(, "mlr3pipelines")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > if (requireNamespace("testthat", quietly = TRUE)) {
-      +   library("checkmate")
-      +   library("testthat")
-      +   library("mlr3")
-      +   library("paradox")
-      +   library("mlr3pipelines")
-      +   test_check("mlr3pipelines")
-    ...
-      ── Failure ('test_Graph.R:240:3'): assert_graph test ───────────────────────────
-      Expected `expect_deep_clone(po, po)` to throw a error with class <error>.
-      ── Failure ('test_meta.R:12:3'): expect_deep_clone catches non-deep clones ─────
-      Expected exactly one failure and no successes.
-      Actually succeeded 16 times
-      
-      [ FAIL 57 | WARN 0 | SKIP 96 | PASS 12541 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         2. │ └─testthat:::expect_condition_matching_(...)
+         3. │   └─testthat:::quasi_capture(...)
+         4. │     ├─testthat (local) .capture(...)
+         5. │     │ └─base::withCallingHandlers(...)
+         6. │     └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+         7. └─global expect_deep_clone(po, po)
+         8.   └─expect_references_differ(one, two, "ROOT")
+         9.     └─expect_references_differ(...)
+        10.       └─expect_references_differ(...)
+        11.         └─expect_references_differ(...)
+        12.           └─expect_references_differ(...)
+        13.             └─expect_references_differ(...)
+        14.               └─expect_references_differ(...)
+        15.                 └─expect_references_differ(...)
+        16.                   └─testthat::expect_null(visited_b[[addr_a]], label = label)
+       ── Failure ('test_Graph.R:240:3'): assert_graph test ───────────────────────────
+       Expected `expect_deep_clone(po, po)` to throw a error with class <error>.
+       ── Failure ('test_meta.R:12:3'): expect_deep_clone catches non-deep clones ─────
+       Expected exactly one failure and no successes.
+       Actually succeeded 16 times
+       
+       [ FAIL 57 | WARN 0 | SKIP 96 | PASS 12541 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# moexer (0.3.0)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is  5.3Mb
-      sub-directories of 1Mb or more:
-        R      3.5Mb
-        help   1.5Mb
-    ```
-
-# moexer
-
-<details>
-
-* Version: 0.3.0
-* GitHub: https://github.com/x1o/moexer
-* Source code: https://github.com/cran/moexer
-* Date/Publication: 2024-03-12 12:30:03 UTC
-* Number of recursive dependencies: 79
+* GitHub: <https://github.com/x1o/moexer>
+* Email: <mailto:dmitry.zotikov@ungrund.org>
+* GitHub mirror: <https://github.com/cran/moexer>
 
 Run `revdepcheck::cloud_details(, "moexer")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(moexer)
-      > 
-      > test_check("moexer")
-      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 0 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-iss.R:3:5
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 0 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-candles.R:39:5'): Getting candle borders works ─────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-candles.R:39:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-iss.R:3:5'): Parsing a JSON ISS response works ─────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-iss.R:3:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 4 | WARN 0 | SKIP 0 | PASS 0 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# MolgenisArmadillo
+# MolgenisArmadillo (2.9.1)
 
-<details>
-
-* Version: 2.9.1
-* GitHub: https://github.com/molgenis/molgenis-r-armadillo
-* Source code: https://github.com/cran/MolgenisArmadillo
-* Date/Publication: 2025-06-13 13:10:02 UTC
-* Number of recursive dependencies: 83
+* GitHub: <https://github.com/molgenis/molgenis-r-armadillo>
+* Email: <mailto:m.k.slofstra@umcg.nl>
+* GitHub mirror: <https://github.com/cran/MolgenisArmadillo>
 
 Run `revdepcheck::cloud_details(, "MolgenisArmadillo")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(tibble)
-      > library(MolgenisArmadillo)
-      > library(webmockr)
-      > 
-      > test_check("MolgenisArmadillo")
-      crul not installed, skipping enable
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-utils.R:11:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 237 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         3. │   ├─testthat (local) .capture(...)
+         4. │   │ ├─withr::with_output_sink(...)
+         5. │   │ │ └─base::force(code)
+         6. │   │ ├─base::withCallingHandlers(...)
+         7. │   │ └─base::withVisible(code)
+         8. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+         9. └─testthat::with_mock(...)
+        10.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        11.     └─lifecycle:::deprecate_stop0(msg)
+        12.       └─rlang::cnd_signal(...)
+       ── Error ('test-utils.R:11:3'): .handle_request_error handles 500 ──────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       i Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-utils.R:11:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 4 | WARN 0 | SKIP 0 | PASS 237 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# NasdaqDataLink
+# NasdaqDataLink (1.0.0)
 
-<details>
-
-* Version: 1.0.0
-* GitHub: https://github.com/nasdaq/data-link-r
-* Source code: https://github.com/cran/NasdaqDataLink
-* Date/Publication: 2022-06-22 07:50:05 UTC
-* Number of recursive dependencies: 48
+* GitHub: <https://github.com/nasdaq/data-link-r>
+* Email: <mailto:jamie.couture@nasdaq.com>
+* GitHub mirror: <https://github.com/cran/NasdaqDataLink>
 
 Run `revdepcheck::cloud_details(, "NasdaqDataLink")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > test_check("NasdaqDataLink")
-      Loading required package: NasdaqDataLink
-      Loading required package: xts
-      Loading required package: zoo
-      
-      Attaching package: 'zoo'
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-search.r:4:1
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 6 | WARN 0 | SKIP 2 | PASS 4 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-pointintime.r:8:1'): (code run outside of `test_that()`) ───────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-pointintime.r:8:1
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-search.r:4:1'): (code run outside of `test_that()`) ────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-search.r:4:1
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 6 | WARN 0 | SKIP 2 | PASS 4 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# nhdplusTools
+# nhdplusTools (1.3.2)
 
-<details>
-
-* Version: 1.3.2
-* GitHub: https://github.com/doi-usgs/nhdplusTools
-* Source code: https://github.com/cran/nhdplusTools
-* Date/Publication: 2025-06-10 13:00:14 UTC
-* Number of recursive dependencies: 134
+* GitHub: <https://github.com/doi-usgs/nhdplusTools>
+* Email: <mailto:dblodgett@usgs.gov>
+* GitHub mirror: <https://github.com/cran/nhdplusTools>
 
 Run `revdepcheck::cloud_details(, "nhdplusTools")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library("testthat")
-      > 
-      > test_check("nhdplusTools")
-      Loading required package: nhdplusTools
-      Starting 2 test processes.
-      > test_02_subset.R: All intersections performed in latitude/longitude.
-      > test_02_subset.R: All intersections performed in latitude/longitude.
-    ...
-          ▆
-       1. └─testthat::expect(ok = nrow(out)) at test_02_subset_extras.R:75:3
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 58 | PASS 315 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         'test_get_nhdplus.R:49:3', 'test_get_nhdplushr.R:3:3',
+         'test_get_nhdplushr.R:23:3', 'test_get_nhdplushr.R:53:3',
+         'test_get_nhdplushr.R:80:3', 'test_get_nhdplushr.R:101:3',
+         'test_get_nhdplushr.R:147:3', 'test_get_nhdplushr.R:174:3',
+         'test_get_nhdplushr.R:196:3', 'test_get_codes.R:4:3', 'test_get_vaa.R:4:3',
+         'test_get_vaa.R:38:3', 'test_index.R:13:5', 'test_index.R:61:3',
+         'test_map_nhdplus.R:4:3', 'test_navigate.R:4:3', 'test_navigate.R:71:3',
+         'test_nhdplusTools.R:41:3', 'test_nhdplusTools.R:50:3',
+         'test_get_path.R:69:3', 'test_rescale_catchments.R:3:3',
+         'test_run_plus_attributes.R:20:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test_02_subset_extras.R:75:3'): by rpu ──────────────────────────────
+       Error in `expect(nrow(out), 267)`: `ok` must be `TRUE` or `FALSE`, not the number 267.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = nrow(out)) at test_02_subset_extras.R:75:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 58 | PASS 315 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# nhlapi (0.1.4)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is  8.4Mb
-      sub-directories of 1Mb or more:
-        data   2.5Mb
-        doc    5.1Mb
-    ```
-
-# nhlapi
-
-<details>
-
-* Version: 0.1.4
-* GitHub: https://github.com/jozefhajnala/nhlapi
-* Source code: https://github.com/cran/nhlapi
-* Date/Publication: 2021-02-20 01:20:05 UTC
-* Number of recursive dependencies: 50
+* GitHub: <https://github.com/jozefhajnala/nhlapi>
+* Email: <mailto:jozef.hajnala@gmail.com>
+* GitHub mirror: <https://github.com/cran/nhlapi>
 
 Run `revdepcheck::cloud_details(, "nhlapi")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(nhlapi)
-      > 
-      > test_check("nhlapi")
-      [ FAIL 17 | WARN 0 | SKIP 38 | PASS 147 ]
-      
-      ══ Skipped tests (38) ══════════════════════════════════════════════════════════
-    ...
-       3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
-       4. └─testthat::with_mock(...)
-       5.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       6.     └─lifecycle:::deprecate_stop0(msg)
-       7.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 17 | WARN 0 | SKIP 38 | PASS 147 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        1. ├─testthat::expect_equal(...) at test.nhl_teams_schedule.R:20:5
+        2. │ └─testthat::quasi_label(enquo(object), label)
+        3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+        4. └─testthat::with_mock(nhl_teams = mock_return, nhl_teams_shedule_previous(teamIds = 1:2))
+        5.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        6.     └─lifecycle:::deprecate_stop0(msg)
+        7.       └─rlang::cnd_signal(...)
+       ── Error ('test.nhl_teams_stats.R:5:5'): Statas for 2 teams and 2 seasons ──────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. ├─testthat::expect_equal(...) at test.nhl_teams_stats.R:5:5
+        2. │ └─testthat::quasi_label(enquo(object), label)
+        3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+        4. └─testthat::with_mock(...)
+        5.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        6.     └─lifecycle:::deprecate_stop0(msg)
+        7.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 17 | WARN 0 | SKIP 38 | PASS 147 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# nodiv (1.4.3)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# nodiv
-
-<details>
-
-* Version: 1.4.3
-* GitHub: https://github.com/mkborregaard/nodiv
-* Source code: https://github.com/cran/nodiv
-* Date/Publication: 2025-09-12 14:40:02 UTC
-* Number of recursive dependencies: 40
+* GitHub: <https://github.com/mkborregaard/nodiv>
+* Email: <mailto:mkborregaard@sund.ku.dk>
+* GitHub mirror: <https://github.com/cran/nodiv>
 
 Run `revdepcheck::cloud_details(, "nodiv")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(nodiv)
-      > 
-      > test_check("nodiv")
-      
-        |                                                                            
-        |                                                                      |   0%
-    ...
-          ▆
-       1. └─testthat::expect(failure_message = <empty>) at test_adding.R:4:3
-       2.   └─testthat:::check_character(failure_message)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 63 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         |                                                                            
+         |=========================================================             |  82%
+         |                                                                            
+         |============================================================          |  86%
+         |                                                                            
+         |================================================================      |  91%
+         |                                                                            
+         |===================================================================   |  95%
+         |                                                                            
+         |======================================================================| 100%[ FAIL 1 | WARN 0 | SKIP 0 | PASS 63 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test_adding.R:4:3'): add shape to object ────────────────────────────
+       Error in `expect(is.null(coquettes$shape))`: `failure_message` must be a character vector, not absent.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = <empty>) at test_adding.R:4:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 63 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# openxlsx
+# openxlsx (4.2.8)
 
-<details>
-
-* Version: 4.2.8
-* GitHub: https://github.com/ycphs/openxlsx
-* Source code: https://github.com/cran/openxlsx
-* Date/Publication: 2025-01-25 20:30:02 UTC
-* Number of recursive dependencies: 47
+* GitHub: <https://github.com/ycphs/openxlsx>
+* Email: <mailto:jan.garbuszus@ruhr-uni-bochum.de>
+* GitHub mirror: <https://github.com/cran/openxlsx>
 
 Run `revdepcheck::cloud_details(, "openxlsx")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(openxlsx)
-      > 
-      > test_check("openxlsx")
-      [ FAIL 1 | WARN 0 | SKIP 7 | PASS 1266 ]
-      
-      ══ Skipped tests (7) ═══════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::expect(ok = activeSheet(wbook)) at test-activeSheet.R:27:3
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 7 | PASS 1266 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > library(openxlsx)
+       > 
+       > test_check("openxlsx")
+       [ FAIL 1 | WARN 0 | SKIP 7 | PASS 1266 ]
+       
+       ══ Skipped tests (7) ═══════════════════════════════════════════════════════════
+       • On CRAN (4): 'test-read_sources.R:11:3', 'test-read_sources.R:38:3',
+         'test-read_sources.R:55:3', 'test-write-permissions.R:6:3'
+       • empty test (3): 'test-trying_to_break_openxlsx.R:7:1',
+         'test-worksheet_ordering.R:246:1', 'test-write_data_to_sheetData.R:189:1'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-activeSheet.R:27:3'): get and set active sheet of a workbook ───
+       Error in `expect(activeSheet(wbook), 2)`: `ok` must be `TRUE` or `FALSE`, not the number 2.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = activeSheet(wbook)) at test-activeSheet.R:27:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 7 | PASS 1266 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# operator.tools (1.6.3)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is 10.6Mb
-      sub-directories of 1Mb or more:
-        R         1.5Mb
-        extdata   1.2Mb
-        libs      7.2Mb
-    ```
-
-# operator.tools
-
-<details>
-
-* Version: 1.6.3
-* GitHub: https://github.com/decisionpatterns/operator.tools
-* Source code: https://github.com/cran/operator.tools
-* Date/Publication: 2017-02-28 23:13:22
-* Number of recursive dependencies: 25
+* GitHub: <https://github.com/decisionpatterns/operator.tools>
+* Email: <mailto:chris.brown@decisionpatterns.com>
+* GitHub mirror: <https://github.com/cran/operator.tools>
 
 Run `revdepcheck::cloud_details(, "operator.tools")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(operator.tools)
-      > 
-      > test_check("operator.tools")
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 27 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      ── Error ('test-operators.R:6:1'): opetators ───────────────────────────────────
-      Error in `is_true()`: could not find function "is_true"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(...) at test-operators.R:6:1
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 27 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(operator.tools)
+       > 
+       > test_check("operator.tools")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 27 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-operators.R:6:1'): opetators ───────────────────────────────────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(...) at test-operators.R:6:1
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 27 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# optigrab
+# optigrab (0.9.2.1)
 
-<details>
-
-* Version: 0.9.2.1
-* GitHub: https://github.com/decisionpatterns/optigrab
-* Source code: https://github.com/cran/optigrab
-* Date/Publication: 2019-01-07 18:40:03 UTC
-* Number of recursive dependencies: 42
+* GitHub: <https://github.com/decisionpatterns/optigrab>
+* Email: <mailto:chris.brown@decisionpatterns.com>
+* GitHub mirror: <https://github.com/cran/optigrab>
 
 Run `revdepcheck::cloud_details(, "optigrab")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(optigrab)
-      > 
-      > test_check("optigrab")
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 106 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      ── Error ('test-opt_expand.r:98:1'): (code run outside of `test_that()`) ───────
-      Error in `is_true()`: could not find function "is_true"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(is.character(expanded), is_true()) at test-opt_expand.r:98:1
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 106 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(optigrab)
+       > 
+       > test_check("optigrab")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 106 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-opt_expand.r:98:1'): (code run outside of `test_that()`) ───────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(is.character(expanded), is_true()) at test-opt_expand.r:98:1
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 106 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking Rd files ... NOTE
-    ```
-    checkRd: (-1) gnu_style.Rd:24: Lost braces
-        24 | [GNU Command Line Standards]{http://www.gnu.org/prep/standards/standards.html}
-           |                             ^
-    ```
+     ```
+     checkRd: (-1) gnu_style.Rd:24: Lost braces
+         24 | [GNU Command Line Standards]{http://www.gnu.org/prep/standards/standards.html}
+            |                             ^
+     ```
 
-# ottr
+# owmr (0.8.2)
 
-<details>
-
-* Version: 1.5.2
-* GitHub: NA
-* Source code: https://github.com/cran/ottr
-* Date/Publication: 2025-07-02 03:00:02 UTC
-* Number of recursive dependencies: 53
-
-Run `revdepcheck::cloud_details(, "ottr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/tests.html
-      > # * https://testthat.r-lib.org/reference/test_package.html#special-files
-    ...
-      
-      Backtrace:
-          ▆
-       1. └─ottr (local) run_test(...) at test_integration.R:51:3
-       2.   └─testthat::expect_equal(want, got) at test_integration.R:31:5
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 212 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# owmr
-
-<details>
-
-* Version: 0.8.2
-* GitHub: https://github.com/crazycapivara/owmr
-* Source code: https://github.com/cran/owmr
-* Date/Publication: 2020-01-11 14:30:02 UTC
-* Number of recursive dependencies: 90
+* GitHub: <https://github.com/crazycapivara/owmr>
+* Email: <mailto:crazycapivara@gmail.com>
+* GitHub mirror: <https://github.com/cran/owmr>
 
 Run `revdepcheck::cloud_details(, "owmr")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(owmr)
-      owmr 0.8.2
-         another crazy way to talk to OpenWeatherMap's API
-         Documentation: type ?owmr or https://crazycapivara.github.io/owmr/
-         Issues, notes and bleeding edge: https://github.com/crazycapivara/owmr/
-      
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test_forecast.R:8:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 3 | SKIP 0 | PASS 28 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test_current_mocks.R:8:3'): current weather data ────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_current_mocks.R:8:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test_forecast.R:8:3'): forecast data ────────────────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_forecast.R:8:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 2 | WARN 3 | SKIP 0 | PASS 28 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# oxcAAR
+# oxcAAR (1.1.1)
 
-<details>
-
-* Version: 1.1.1
-* GitHub: NA
-* Source code: https://github.com/cran/oxcAAR
-* Date/Publication: 2021-07-05 17:20:02 UTC
-* Number of recursive dependencies: 54
+* Email: <mailto:martin.hinz@iaw.unibe.ch>
+* GitHub mirror: <https://github.com/cran/oxcAAR>
 
 Run `revdepcheck::cloud_details(, "oxcAAR")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(oxcAAR)
-      > 
-      > test_check("oxcAAR")
-      [ FAIL 6 | WARN 2 | SKIP 1 | PASS 50 ]
-      
-      ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test_simulate.R:12:1
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 6 | WARN 2 | SKIP 1 | PASS 50 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test_simulate.R:4:3'): oxcalSimulate produces error given wrong oxcal result file ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_simulate.R:4:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test_simulate.R:12:1'): (code run outside of `test_that()`) ─────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_simulate.R:12:1
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 6 | WARN 2 | SKIP 1 | PASS 50 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking re-building of vignette outputs ... ERROR
-    ```
-    Error(s) in re-building vignettes:
-    --- re-building ‘basic-usage.Rmd’ using rmarkdown
-    trying URL 'https://c14.arch.ox.ac.uk/OxCalDistribution.zip'
-    
-    Quitting from basic-usage.Rmd:23-31 [unnamed-chunk-1]
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    <error/rlang_error>
-    Error in `invokeRestart()`:
-    ! no 'restart' 'muffleWarning' found
-    ---
-    ...
-    
-    Error: processing vignette 'basic-usage.Rmd' failed with diagnostics:
-    no 'restart' 'muffleWarning' found
-    --- failed re-building ‘basic-usage.Rmd’
-    
-    SUMMARY: processing the following file failed:
-      ‘basic-usage.Rmd’
-    
-    Error: Vignette re-building failed.
-    Execution halted
-    ```
+     ```
+     ...
+          ▆
+       1. ├─oxcAAR::quickSetupOxcal()
+       2. │ └─oxcAAR:::downloadOxcal(path = path)
+       3. │   └─base::tryCatch(...)
+       4. │     └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+       5. │       └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+       6. │         └─value[[3L]](cond)
+       7. │           └─base::message(e)
+       8. │             ├─base::withRestarts(...)
+       9. │             │ └─base (local) withOneRestart(expr, restarts[[1L]])
+      10. │             │   └─base (local) doWithOneRestart(return(expr), restart)
+      11. │             └─base::signalCondition(cond)
+      12. └─evaluate (local) `<fn>`(`<S3: simpleWarning>`)
+      13.   └─base::invokeRestart("muffleWarning")
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     
+     Error: processing vignette 'basic-usage.Rmd' failed with diagnostics:
+     no 'restart' 'muffleWarning' found
+     --- failed re-building ‘basic-usage.Rmd’
+     
+     SUMMARY: processing the following file failed:
+       ‘basic-usage.Rmd’
+     
+     Error: Vignette re-building failed.
+     Execution halted
+     ```
 
-# parquetize
+# parquetize (0.5.7)
 
-<details>
-
-* Version: 0.5.7
-* GitHub: https://github.com/ddotta/parquetize
-* Source code: https://github.com/cran/parquetize
-* Date/Publication: 2024-03-04 14:10:02 UTC
-* Number of recursive dependencies: 72
+* GitHub: <https://github.com/ddotta/parquetize>
+* Email: <mailto:damien.dotta@live.fr>
+* GitHub mirror: <https://github.com/cran/parquetize>
 
 Run `revdepcheck::cloud_details(, "parquetize")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/tests.html
-      > # * https://testthat.r-lib.org/reference/test_package.html#special-files
-    ...
-       8.   └─testthat::expect_equal(nrow(dataset), with_lines)
-      ── Failure ('test-testthat-helpers.R:9:3'): expect_parquet fails on file's number of line ──
-      Expected `expect_parquet(parquetize_example("iris_dataset"), with_lines = 25)` to throw a error.
-      
-      [ FAIL 2 | WARN 0 | SKIP 3 | PASS 192 ]
-      Error:
-      ! Test failures.
-      Warning message:
-      call dbDisconnect() when finished working with a connection 
-      Execution halted
-    ```
+     ```
+     ...
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test-testthat-helpers.R:9:3'): expect_parquet fails on file's number of line ──
+       Expected `nrow(dataset)` to equal `with_lines`.
+       Differences:
+         `actual`: 150.0
+       `expected`:  25.0
+       
+       Backtrace:
+           ▆
+        1. ├─testthat::expect_error(...) at test-testthat-helpers.R:9:3
+        2. │ └─testthat:::expect_condition_matching_(...)
+        3. │   └─testthat:::quasi_capture(...)
+        4. │     ├─testthat (local) .capture(...)
+        5. │     │ └─base::withCallingHandlers(...)
+        6. │     └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+        7. └─parquetize::expect_parquet(...)
+        8.   └─testthat::expect_equal(nrow(dataset), with_lines)
+       ── Failure ('test-testthat-helpers.R:9:3'): expect_parquet fails on file's number of line ──
+       Expected `expect_parquet(parquetize_example("iris_dataset"), with_lines = 25)` to throw a error.
+       
+       [ FAIL 2 | WARN 0 | SKIP 3 | PASS 192 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# passport
+# passport (0.3.0)
 
-<details>
-
-* Version: 0.3.0
-* GitHub: https://github.com/alistaire47/passport
-* Source code: https://github.com/cran/passport
-* Date/Publication: 2020-11-07 07:30:03 UTC
-* Number of recursive dependencies: 79
+* GitHub: <https://github.com/alistaire47/passport>
+* Email: <mailto:edward.visel@gmail.com>
+* GitHub mirror: <https://github.com/cran/passport>
 
 Run `revdepcheck::cloud_details(, "passport")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(passport)
-      > 
-      > test_check("passport")
-      [ FAIL 1 | WARN 4 | SKIP 1 | PASS 37 ]
-      
-      ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
-    ...
-       5. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-       6. └─testthat::with_mock(...)
-       7.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       8.     └─lifecycle:::deprecate_stop0(msg)
-       9.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 4 | SKIP 1 | PASS 37 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       
+       ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
+       • On CRAN (1): 'test_parse_country.R:91:5'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test_parse_country.R:43:5'): parsing country names with simulated geocoding APIs works ──
+       `with_mock(...)` threw an error with unexpected message.
+       Expected match: "jsonlite"
+       Actual message: "`with_mock()` was deprecated in testthat 3.2.0 and is now defunct.\nℹ Please use `with_mocked_bindings()` instead."
+       Backtrace:
+           ▆
+        1. ├─testthat::expect_error(...) at test_parse_country.R:43:5
+        2. │ └─testthat:::quasi_capture(...)
+        3. │   ├─testthat (local) .capture(...)
+        4. │   │ └─base::withCallingHandlers(...)
+        5. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+        6. └─testthat::with_mock(...)
+        7.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        8.     └─lifecycle:::deprecate_stop0(msg)
+        9.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 4 | SKIP 1 | PASS 37 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# patrick
+# patrick (0.3.0)
 
-<details>
-
-* Version: 0.3.0
-* GitHub: https://github.com/google/patrick
-* Source code: https://github.com/cran/patrick
-* Date/Publication: 2025-01-27 18:40:05 UTC
-* Number of recursive dependencies: 33
+* GitHub: <https://github.com/google/patrick>
+* Email: <mailto:msquinn@google.com>
+* GitHub mirror: <https://github.com/cran/patrick>
 
 Run `revdepcheck::cloud_details(, "patrick")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # Copyright 2018 Google LLC
-      > #
-      > # Licensed under the Apache License, Version 2.0 (the "License");
-      > # you may not use this file except in compliance with the License.
-      > # You may obtain a copy of the License at
-      > #
-      > #     http://www.apache.org/licenses/LICENSE-2.0
-    ...
-        | 
-      Backtrace:
-          ▆
-       1. ├─rlang::eval_tidy(code, args)
-       2. └─testthat::expect_failure(testthat::expect_true(case), failure_message) at test-with_parameters.R:22:7
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 24 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         | Differences:
+         | `actual`:   FALSE
+         | `expected`: TRUE 
+         | 
+       Backtrace:
+           ▆
+        1. ├─rlang::eval_tidy(code, args)
+        2. └─testthat::expect_failure(testthat::expect_true(case), failure_message) at test-with_parameters.R:22:7
+       ── Failure ('test-with_parameters.R:22:7'): Running tests: null ────────────────
+       Expected failure message to match regexp "`case` (isn't true|is not TRUE)".
+       Actual message:
+       x | Expected `case` to be TRUE.
+         | Differences:
+         | `actual` is NULL
+         | `expected` is a logical vector (TRUE)
+         | 
+       Backtrace:
+           ▆
+        1. ├─rlang::eval_tidy(code, args)
+        2. └─testthat::expect_failure(testthat::expect_true(case), failure_message) at test-with_parameters.R:22:7
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 24 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# PCRedux
+# PCRedux (1.2-0)
 
-<details>
-
-* Version: 1.2-0
-* GitHub: https://github.com/PCRuniversum/PCRedux
-* Source code: https://github.com/cran/PCRedux
-* Date/Publication: 2025-06-13 05:00:02 UTC
-* Number of recursive dependencies: 149
+* GitHub: <https://github.com/PCRuniversum/PCRedux>
+* Email: <mailto:draspiess@gmail.com>
+* GitHub mirror: <https://github.com/cran/PCRedux>
 
 Run `revdepcheck::cloud_details(, "PCRedux")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(PCRedux)
-      > 
-      > test_check("PCRedux")
-      [ FAIL 8 | WARN 0 | SKIP 0 | PASS 23 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      ── Error ('test_qPCR2fdata.R:11:3'): qPCR2fdata gives the correct dimensions and properties ──
-      Error in `is_true()`: could not find function "is_true"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(...) at test_qPCR2fdata.R:11:3
-      
-      [ FAIL 8 | WARN 0 | SKIP 0 | PASS 23 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test_mblrr.R:10:3'): mblrr gives the correct dimensions and properties ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(length(res) == 6, is_true()) at test_mblrr.R:10:3
+       ── Error ('test_pcrfit_single.R:9:3'): pcrfit_single gives the correct dimensions and properties ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(...) at test_pcrfit_single.R:9:3
+       ── Error ('test_performeR.R:11:3'): performeR gives the correct dimensions and properties ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(...) at test_performeR.R:11:3
+       ── Error ('test_qPCR2fdata.R:11:3'): qPCR2fdata gives the correct dimensions and properties ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(...) at test_qPCR2fdata.R:11:3
+       
+       [ FAIL 8 | WARN 0 | SKIP 0 | PASS 23 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# phyloraster
+# phyloraster (2.2.0)
 
-<details>
-
-* Version: 2.2.0
-* GitHub: https://github.com/gabferreira/phyloraster
-* Source code: https://github.com/cran/phyloraster
-* Date/Publication: 2025-02-28 15:00:01 UTC
-* Number of recursive dependencies: 82
+* GitHub: <https://github.com/gabferreira/phyloraster>
+* Email: <mailto:gabriela-alves77@hotmail.com>
+* GitHub mirror: <https://github.com/cran/phyloraster>
 
 Run `revdepcheck::cloud_details(, "phyloraster")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(phyloraster)
-      > 
-      > test_check("phyloraster")
-      [ FAIL 8 | WARN 0 | SKIP 0 | PASS 84 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::expect(failure_message = shp2rast(...)) at test-shp2rast.R:100:3
-       2.   └─testthat:::check_character(failure_message)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 8 | WARN 0 | SKIP 0 | PASS 84 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        1. └─testthat::expect(failure_message = rast.pe.ses(...)) at test-rast.pe.ses.R:96:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-shp2rast.R:77:3'): function runs ok when a mask is applied ─────
+       Error in `expect(phyloraster::shp2rast(shp, y = coun.rast, sps.col = "BINOMIAL", ymask = TRUE, background = 0), ok = T)`: `failure_message` must be a character vector, not a <SpatRaster> object.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = phyloraster::shp2rast(...)) at test-shp2rast.R:77:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-shp2rast.R:100:3'): Raster is saved when filename is provided ──
+       Error in `expect(shp2rast(shp, y = coun.rast, sps.col = "BINOMIAL", background = 0, filename = temp), ok = T)`: `failure_message` must be a character vector, not a <SpatRaster> object.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = shp2rast(...)) at test-shp2rast.R:100:3
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 8 | WARN 0 | SKIP 0 | PASS 84 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# pocketapi
+# pocketapi (0.1)
 
-<details>
-
-* Version: 0.1
-* GitHub: https://github.com/CorrelAid/pocketapi
-* Source code: https://github.com/cran/pocketapi
-* Date/Publication: 2020-11-20 10:20:02 UTC
-* Number of recursive dependencies: 80
+* GitHub: <https://github.com/CorrelAid/pocketapi>
+* Email: <mailto:fr1e@pm.me>
+* GitHub mirror: <https://github.com/cran/pocketapi>
 
 Run `revdepcheck::cloud_details(, "pocketapi")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(pocketapi)
-      > 
-      > test_check("pocketapi")
-      [ FAIL 13 | WARN 0 | SKIP 0 | PASS 45 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test_pocket_unfavorite.R:22:5
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 13 | WARN 0 | SKIP 0 | PASS 45 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test_pocket_tag.R:107:5'): pocket_tag tag_delete - success ──────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_pocket_tag.R:107:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test_pocket_unfavorite.R:22:5'): pocket_unfavorite - success generates message ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_pocket_unfavorite.R:22:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 13 | WARN 0 | SKIP 0 | PASS 45 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘dplyr’
-      All declared Imports should be used.
-    ```
+     ```
+     Namespace in Imports field not imported from: ‘dplyr’
+       All declared Imports should be used.
+     ```
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
+# pointblank (0.12.2)
 
-# pointblank
-
-<details>
-
-* Version: 0.12.2
-* GitHub: https://github.com/rstudio/pointblank
-* Source code: https://github.com/cran/pointblank
-* Date/Publication: 2024-10-23 03:50:02 UTC
-* Number of recursive dependencies: 125
+* GitHub: <https://github.com/rstudio/pointblank>
+* Email: <mailto:rich@posit.co>
+* GitHub mirror: <https://github.com/cran/pointblank>
 
 Run `revdepcheck::cloud_details(, "pointblank")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(pointblank)
-      > library(dittodb)
-      Loading required package: DBI
-      > test_check("pointblank")
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1824 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure ('test-tidyselect_integration.R:73:3'): Full range of tidyselect features available in column selection ──
-      Expected exactly one success and no failures.
-      Actually succeeded 2 times
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1824 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(pointblank)
+       > library(dittodb)
+       Loading required package: DBI
+       > test_check("pointblank")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1824 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test-tidyselect_integration.R:73:3'): Full range of tidyselect features available in column selection ──
+       Expected exactly one success and no failures.
+       Actually succeeded 2 times
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1824 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# productplots (0.1.1)
 
-*   checking data for non-ASCII characters ... NOTE
-    ```
-      Note: found 1 marked UTF-8 string
-    ```
-
-# productplots
-
-<details>
-
-* Version: 0.1.1
-* GitHub: https://github.com/hadley/productplots
-* Source code: https://github.com/cran/productplots
-* Date/Publication: 2016-07-02 07:38:04
-* Number of recursive dependencies: 49
+* GitHub: <https://github.com/hadley/productplots>
+* Email: <mailto:hadley@rstudio.com>
+* GitHub mirror: <https://github.com/cran/productplots>
 
 Run `revdepcheck::cloud_details(, "productplots")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(productplots)
-      > 
-      > test_check("productplots")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 43 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      ── Error ('test-labels.r:35:3'): vbar, vspine and fluct all have rows ──────────
-      Error in `is_true()`: could not find function "is_true"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(div_has_rows(c("hspine", "vbar")), is_true()) at test-labels.r:35:3
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 43 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(productplots)
+       > 
+       > test_check("productplots")
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 43 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-labels.r:10:3'): hbar, hspine, and fluct all have columns ──────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(div_has_cols(c("hspine", "hbar")), is_true()) at test-labels.r:10:3
+       ── Error ('test-labels.r:35:3'): vbar, vspine and fluct all have rows ──────────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(div_has_rows(c("hspine", "vbar")), is_true()) at test-labels.r:35:3
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 43 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# projmgr
+# projmgr (0.1.1)
 
-<details>
-
-* Version: 0.1.1
-* GitHub: https://github.com/emilyriederer/projmgr
-* Source code: https://github.com/cran/projmgr
-* Date/Publication: 2024-01-24 05:10:02 UTC
-* Number of recursive dependencies: 78
+* GitHub: <https://github.com/emilyriederer/projmgr>
+* Email: <mailto:emilyriederer@gmail.com>
+* GitHub mirror: <https://github.com/cran/projmgr>
 
 Run `revdepcheck::cloud_details(, "projmgr")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(projmgr)
-      > 
-      > test_check("projmgr")
-      [ FAIL 4 | WARN 1 | SKIP 3 | PASS 106 ]
-      
-      ══ Skipped tests (3) ═══════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...)
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 4 | WARN 1 | SKIP 3 | PASS 106 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-get-engine.R:33:1'): Repo metadata is added for non-empty results ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...)
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-get-engine.R:41:1'): Repo metadata is not added for non-empty results ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...)
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 4 | WARN 1 | SKIP 3 | PASS 106 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# pyinit
+# pyinit (1.1.3)
 
-<details>
-
-* Version: 1.1.3
-* GitHub: https://github.com/dakep/pyinit
-* Source code: https://github.com/cran/pyinit
-* Date/Publication: 2022-04-26 20:50:08 UTC
-* Number of recursive dependencies: 26
+* GitHub: <https://github.com/dakep/pyinit>
+* Email: <mailto:david.kepplinger@gmail.com>
+* GitHub mirror: <https://github.com/cran/pyinit>
 
 Run `revdepcheck::cloud_details(, "pyinit")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘debug.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > if (require(testthat)) {
-      +   library(pyinit)
-      +   test_check("pyinit")
-      + } else {
-      +   warning("'pyinit' requires 'testthat' for tests.")
-      + }
-    ...
-      Error in `expect_known_hash(round(res$coefficients[, obj_order], 4), "30f3b173bb32999ace3f3072ed")`: The package "digest" is required.
-      Backtrace:
-          ▆
-       1. └─testthat::expect_known_hash(...) at test-exact_fit.R:41:5
-       2.   └─rlang::check_installed("digest")
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 3 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > if (require(testthat)) {
+       +   library(pyinit)
+       +   test_check("pyinit")
+       + } else {
+       +   warning("'pyinit' requires 'testthat' for tests.")
+       + }
+       Loading required package: testthat
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 3 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-exact_fit.R:41:5'): Rank-deficient problems ────────────────────
+       <rlib_error_package_not_found/rlang_error/error/condition>
+       Error in `expect_known_hash(round(res$coefficients[, obj_order], 4), "30f3b173bb32999ace3f3072ed")`: The package "digest" is required.
+       Backtrace:
+           ▆
+        1. └─testthat::expect_known_hash(...) at test-exact_fit.R:41:5
+        2.   └─rlang::check_installed("digest")
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 3 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# Quandl
+# Quandl (2.11.0)
 
-<details>
-
-* Version: 2.11.0
-* GitHub: https://github.com/quandl/quandl-r
-* Source code: https://github.com/cran/Quandl
-* Date/Publication: 2021-08-11 16:00:02 UTC
-* Number of recursive dependencies: 48
+* GitHub: <https://github.com/quandl/quandl-r>
+* Email: <mailto:dave@quandl.com>
+* GitHub mirror: <https://github.com/cran/Quandl>
 
 Run `revdepcheck::cloud_details(, "Quandl")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > test_check("Quandl")
-      Loading required package: Quandl
-      Loading required package: xts
-      Loading required package: zoo
-      
-      Attaching package: 'zoo'
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-search.r:4:1
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 6 | WARN 0 | SKIP 2 | PASS 4 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-pointintime.r:8:1'): (code run outside of `test_that()`) ───────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-pointintime.r:8:1
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-search.r:4:1'): (code run outside of `test_that()`) ────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-search.r:4:1
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 6 | WARN 0 | SKIP 2 | PASS 4 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# rags2ridges
+# quickcheck (0.1.3)
 
-<details>
+* GitHub: <https://github.com/armcn/quickcheck>
+* Email: <mailto:andrew.richard.mcneil@gmail.com>
+* GitHub mirror: <https://github.com/cran/quickcheck>
 
-* Version: 2.2.8
-* GitHub: https://github.com/CFWP/rags2ridges
-* Source code: https://github.com/cran/rags2ridges
-* Date/Publication: 2025-08-29 16:30:02 UTC
-* Number of recursive dependencies: 94
+Run `revdepcheck::cloud_details(, "quickcheck")` for more info
+
+## Newly broken
+
+*   checking examples ... ERROR
+     ```
+     Running examples in ‘quickcheck-Ex.R’ failed
+     The error most likely occurred in:
+     
+     > ### Name: as_hedgehog
+     > ### Title: Convert a quickcheck generator to a hedgehog generator
+     > ### Aliases: as_hedgehog
+     > 
+     > ### ** Examples
+     > 
+     > is_even <-
+     +   function(a) a %% 2L == 0L
+     > gen_powers_of_two <-
+     +   integer_bounded(1L, 10L, len = 1L) %>%
+     +     as_hedgehog() %>%
+     +     hedgehog::gen.with(function(a) 2 ^ a)
+     > for_all(
+     +   a = from_hedgehog(gen_powers_of_two),
+     +   property = function(a) is_even(a) %>% testthat::expect_true()
+     + )
+     Error in attributes(.Data) <- c(attributes(.Data), attrib) : 
+       all attributes must have names [3 does not]
+     Calls: for_all ... as.expectation.error -> <Anonymous> -> new_expectation -> structure
+     Execution halted
+     ```
+
+*   checking tests ... ERROR
+     ```
+     ...
+        12.                     └─testthat::new_expectation(...)
+        13.                       └─base::structure(...)
+       ── Error ('test-tibble_of.R:1:1'): generator fails if generator arguments don't have modifiable lengths ──
+       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
+       Backtrace:
+            ▆
+         1. └─quickcheck::repeat_test(...)
+         2.   └─quickcheck::for_all(...)
+         3.     └─hedgehog::forall(...)
+         4.       └─hedgehog:::run.prop(property, tree$root, curry)
+         5.         └─base::tryCatch(...)
+         6.           └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+         7.             └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+         8.               └─value[[3L]](cond)
+         9.                 └─hedgehog (local) register_expectation(e)
+        10.                   ├─hedgehog:::as.expectation(e)
+        11.                   └─hedgehog:::as.expectation.error(e)
+        12.                     └─testthat::expectation("error", msg, srcref)
+        13.                       └─testthat::new_expectation(...)
+        14.                         └─base::structure(...)
+       
+       [ FAIL 400 | WARN 0 | SKIP 0 | PASS 17 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
+
+# rags2ridges (2.2.8)
+
+* GitHub: <https://github.com/CFWP/rags2ridges>
+* Email: <mailto:carel.peeters@wur.nl>
+* GitHub mirror: <https://github.com/cran/rags2ridges>
 
 Run `revdepcheck::cloud_details(, "rags2ridges")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(rags2ridges)
-      > 
-      > test_check("rags2ridges")
-      [ FAIL 830 | WARN 320 | SKIP 0 | PASS 984 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      ── Error ('test-xfcvl.R:26:3'): .xfcl functions works properly on degenerated data ──
-      Error in `is_true()`: could not find function "is_true"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(TRUE, is_true()) at test-xfcvl.R:26:3
-      
-      [ FAIL 830 | WARN 320 | SKIP 0 | PASS 984 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-armaRidgeP.R:97:7'): proper values for very small lambda, type = Null ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(all(abs(aa) <= abs(bb)), is_true()) at test-armaRidgeP.R:97:7
+       ── Error ('test-armaRidgeP.R:120:3'): Test armaRidgeP in various special cases (by reference) ──
+       Error in `is_false()`: could not find function "is_false"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(...) at test-armaRidgeP.R:120:3
+       ── Error ('test-isSymmetricPD.R:29:3'): isSymmetricPD works as intended ────────
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(isSymmetricPD(pdS), is_true()) at test-isSymmetricPD.R:29:3
+       ── Error ('test-xfcvl.R:26:3'): .xfcl functions works properly on degenerated data ──
+       Error in `is_true()`: could not find function "is_true"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_that(TRUE, is_true()) at test-xfcvl.R:26:3
+       
+       [ FAIL 830 | WARN 320 | SKIP 0 | PASS 984 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# regmedint (1.0.1)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.3Mb
-      sub-directories of 1Mb or more:
-        libs   5.1Mb
-    ```
-
-# regmedint
-
-<details>
-
-* Version: 1.0.1
-* GitHub: https://github.com/kaz-yos/regmedint
-* Source code: https://github.com/cran/regmedint
-* Date/Publication: 2024-01-13 00:50:02 UTC
-* Number of recursive dependencies: 153
+* GitHub: <https://github.com/kaz-yos/regmedint>
+* Email: <mailto:yi.li10@mail.mcgill.ca>
+* GitHub mirror: <https://github.com/cran/regmedint>
 
 Run `revdepcheck::cloud_details(, "regmedint")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(regmedint)
-      > 
-      > test_check("regmedint")
-      [ FAIL 4 | WARN 0 | SKIP 2 | PASS 4128 ]
-      
-      ══ Skipped tests (2) ═══════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-05_calc_myreg.R:235:9
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 4 | WARN 0 | SKIP 2 | PASS 4128 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-05_calc_myreg.R:194:9'): calc_myreg / calls calc_myreg_mreg_logistic_yreg_linear when mreg logistic / yreg linear ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-05_calc_myreg.R:194:9
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-05_calc_myreg.R:235:9'): calc_myreg / calls calc_myreg_mreg_logistic_yreg_logistic when mreg logistic / yreg logistic ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-05_calc_myreg.R:235:9
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 4 | WARN 0 | SKIP 2 | PASS 4128 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘Deriv’
-      All declared Imports should be used.
-    ```
+     ```
+     Namespace in Imports field not imported from: ‘Deriv’
+       All declared Imports should be used.
+     ```
 
-# Rexperigen
+# Rexperigen (0.2.1)
 
-<details>
-
-* Version: 0.2.1
-* GitHub: https://github.com/aquincum/Rexperigen
-* Source code: https://github.com/cran/Rexperigen
-* Date/Publication: 2016-08-26 02:48:12
-* Number of recursive dependencies: 26
+* GitHub: <https://github.com/aquincum/Rexperigen>
+* Email: <mailto:daniel@szeredi.hu>
+* GitHub mirror: <https://github.com/cran/Rexperigen>
 
 Run `revdepcheck::cloud_details(, "Rexperigen")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(Rexperigen)
-      > 
-      > test_check("Rexperigen")
-      [ FAIL 17 | WARN 0 | SKIP 0 | PASS 23 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      Expected `getOption("Rexperigen.password")` to equal "".
-      Differences:
-      1/1 mismatches
-      x[1]: "korte"
-      y[1]: ""
-      
-      [ FAIL 17 | WARN 0 | SKIP 0 | PASS 23 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-utils.R:108:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Failure ('test-zzz.R:7:3'): initialization is okay ──────────────────────────
+       Expected `getOption("Rexperigen.experimenter")` to equal "".
+       Differences:
+       1/1 mismatches
+       x[1]: "alma"
+       y[1]: ""
+       ── Failure ('test-zzz.R:8:3'): initialization is okay ──────────────────────────
+       Expected `getOption("Rexperigen.password")` to equal "".
+       Differences:
+       1/1 mismatches
+       x[1]: "korte"
+       y[1]: ""
+       
+       [ FAIL 17 | WARN 0 | SKIP 0 | PASS 23 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# rmdl (0.1.0)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# rmdl
-
-<details>
-
-* Version: 0.1.0
-* GitHub: https://github.com/shah-in-boots/rmdl
-* Source code: https://github.com/cran/rmdl
-* Date/Publication: 2024-05-02 22:20:02 UTC
-* Number of recursive dependencies: 101
+* GitHub: <https://github.com/shah-in-boots/rmdl>
+* Email: <mailto:ashah282@uic.edu>
+* GitHub mirror: <https://github.com/cran/rmdl>
 
 Run `revdepcheck::cloud_details(, "rmdl")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(rmdl)
-      Loading required package: vctrs
-      Loading required package: tibble
-      
-      Attaching package: 'tibble'
-      
-    ...
-          ▆
-       1. └─testthat::expect(ok = length(t)) at test-terms.R:213:9
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 4 | PASS 206 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Using `fundamental` decomposition pattern: 
+       - Mediation term: NA
+       - Stratifying term: NA
+       Interaction term `green` was applied to exposure term `witch`
+       [ FAIL 1 | WARN 0 | SKIP 4 | PASS 206 ]
+       
+       ══ Skipped tests (4) ═══════════════════════════════════════════════════════════
+       • Skipping (1): 'test-formulas.R:57:2'
+       • empty test (3): 'test-interaction.R:41:1', 'test-model-table.R:272:1',
+         'test-patterns.R:36:1'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-terms.R:213:2'): interaction terms are appropriately made ──────
+       Error in `expect(length(t), 5)`: `ok` must be `TRUE` or `FALSE`, not the number 5.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = length(t)) at test-terms.R:213:9
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 4 | PASS 206 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# rosetteApi
+## In both
 
-<details>
+*   checking DESCRIPTION meta-information ... NOTE
+     ```
+       Missing dependency on R >= 4.2.0 because package code uses the pipe
+       placeholder syntax added in R 4.2.0.
+       File(s) using such syntax:
+         ‘model-table.R’
+     ```
 
-* Version: 1.14.4
-* GitHub: NA
-* Source code: https://github.com/cran/rosetteApi
-* Date/Publication: 2020-06-17 23:00:02 UTC
-* Number of recursive dependencies: 46
+# rosetteApi (1.14.4)
+
+* Email: <mailto:seth@basistech.com>
+* GitHub mirror: <https://github.com/cran/rosetteApi>
 
 Run `revdepcheck::cloud_details(, "rosetteApi")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(rosetteApi)
-      > 
-      > test_check("rosetteApi")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 13 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test_api.R:14:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 13 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test_api.R:3:3'): httr::GET function mocks correctly ────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_api.R:3:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test_api.R:14:3'): httr::POST functions mock correctly ──────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_api.R:14:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 13 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# Rpolyhedra
+# Rpolyhedra (0.5.6)
 
-<details>
-
-* Version: 0.5.6
-* GitHub: https://github.com/ropensci/Rpolyhedra
-* Source code: https://github.com/cran/Rpolyhedra
-* Date/Publication: 2024-11-06 15:10:02 UTC
-* Number of recursive dependencies: 98
+* GitHub: <https://github.com/ropensci/Rpolyhedra>
+* Email: <mailto:abaranek@dc.uba.ar>
+* GitHub mirror: <https://github.com/cran/Rpolyhedra>
 
 Run `revdepcheck::cloud_details(, "Rpolyhedra")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(Rpolyhedra)
-      > library(stringr)
-      > library(lgr)
-      > library(rgl)
-      > library(geometry)
-      > library(testthat)
-      > 
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test_package_lib.R:22:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 646 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       appenders:
+         console: <AppenderConsole> [all] -> console
+       > #' getDataDirMockedTest mocked function for a temp dest folder for testing proposes
+       > 
+       > 
+       > 
+       > testthat::test_check("Rpolyhedra")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 646 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test_package_lib.R:22:3'): test on package lib functions ────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_package_lib.R:22:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 646 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# RPresto
+# RPresto (1.4.7)
 
-<details>
-
-* Version: 1.4.7
-* GitHub: https://github.com/prestodb/RPresto
-* Source code: https://github.com/cran/RPresto
-* Date/Publication: 2025-01-08 05:40:17 UTC
-* Number of recursive dependencies: 69
+* GitHub: <https://github.com/prestodb/RPresto>
+* Email: <mailto:jarodm@fb.com>
+* GitHub mirror: <https://github.com/cran/RPresto>
 
 Run `revdepcheck::cloud_details(, "RPresto")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # Copyright (c) Meta Platforms, Inc. and affiliates.
-      > # All rights reserved.
-      > #
-      > # This source code is licensed under the BSD-style license found in the
-      > # LICENSE file in the root directory of this source tree.
-      > 
-      > library("testthat")
-    ...
-       1. └─RPresto:::setup_mock_connection() at test-fetch.R:26:3
-       2.   └─testthat::with_mock(...) at ./helper-mock_connection.R:8:3
-       3.     └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       4.       └─lifecycle:::deprecate_stop0(msg)
-       5.         └─rlang::cnd_signal(...)
-      
-      [ FAIL 30 | WARN 0 | SKIP 83 | PASS 36 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─RPresto:::setup_mock_dplyr_connection() at test-db_query_fields.R:39:3
+        2.   └─testthat::with_mock(...) at ./helper-mock_connection.R:38:3
+        3.     └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        4.       └─lifecycle:::deprecate_stop0(msg)
+        5.         └─rlang::cnd_signal(...)
+       ── Error ('test-fetch.R:26:3'): fetch works with mock ──────────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─RPresto:::setup_mock_connection() at test-fetch.R:26:3
+        2.   └─testthat::with_mock(...) at ./helper-mock_connection.R:8:3
+        3.     └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        4.       └─lifecycle:::deprecate_stop0(msg)
+        5.         └─rlang::cnd_signal(...)
+       
+       [ FAIL 30 | WARN 0 | SKIP 83 | PASS 36 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# rtables
+# rtables (0.6.13)
 
-<details>
-
-* Version: 0.6.13
-* GitHub: https://github.com/insightsengineering/rtables
-* Source code: https://github.com/cran/rtables
-* Date/Publication: 2025-06-19 19:20:06 UTC
-* Number of recursive dependencies: 99
+* GitHub: <https://github.com/insightsengineering/rtables>
+* Email: <mailto:joe.zhu@roche.com>
+* GitHub mirror: <https://github.com/cran/rtables>
 
 Run `revdepcheck::cloud_details(, "rtables")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > if (requireNamespace("testthat", quietly = TRUE)) {
-      +   library(testthat)
-      +   library(rtables)
-      +   test_check("rtables", reporter = "check")
-      + }
-      Loading required package: formatters
-      
-    ...
-          ▆
-       1. └─testthat::expect(ok = unlist(ares2$b)) at test-make-afun.R:135:3
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1746 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       
+       The following objects are masked from 'package:stats':
+       
+           filter, lag
+       
+       The following objects are masked from 'package:base':
+       
+           intersect, setdiff, setequal, union
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1746 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-make-afun.R:135:3'): make_afun works for df functions ──────────
+       Error in `expect(unlist(ares2$b), 6)`: `ok` must be `TRUE` or `FALSE`, not the number 6.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = unlist(ares2$b)) at test-make-afun.R:135:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1746 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# RTD
+# RTD (0.4.1)
 
-<details>
-
-* Version: 0.4.1
-* GitHub: https://github.com/treasure-data/RTD
-* Source code: https://github.com/cran/RTD
-* Date/Publication: 2020-07-26 23:10:22 UTC
-* Number of recursive dependencies: 114
+* GitHub: <https://github.com/treasure-data/RTD>
+* Email: <mailto:ariga@treasure-data.com>
+* GitHub mirror: <https://github.com/cran/RTD>
 
 Run `revdepcheck::cloud_details(, "RTD")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(mockery)
-      > library(RTD)
-      > 
-      > test_check("RTD")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 10 ]
-      
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-td.R:32:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 10 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-td.R:12:3'): td_upload works with mock ─────────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-td.R:12:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-td.R:32:3'): td_upload works with mock when the table already exists ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-td.R:32:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 10 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# scorematchingad (0.1.4)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# saeSim
-
-<details>
-
-* Version: 0.11.0
-* GitHub: https://github.com/wahani/saeSim
-* Source code: https://github.com/cran/saeSim
-* Date/Publication: 2022-02-07 16:40:02 UTC
-* Number of recursive dependencies: 90
-
-Run `revdepcheck::cloud_details(, "saeSim")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘test-all.R’
-    Running the tests in ‘tests/test-all.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(saeSim)
-      > 
-      > test_check("saeSim")
-      
-      # A data frame: 100 × 3
-          idD      x      e
-    ...
-      ── Error ('test-sim_setup.R:8:3'): sim_setup ───────────────────────────────────
-      Error in `is_true()`: could not find function "is_true"
-      Backtrace:
-          ▆
-       1. └─testthat::expect_that(...) at test-sim_setup.R:8:3
-      
-      [ FAIL 3 | WARN 249 | SKIP 0 | PASS 128 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-## In both
-
-*   checking Rd files ... NOTE
-    ```
-    checkRd: (-1) sim_setup_preconfigured.Rd:24: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) sim_setup_preconfigured.Rd:25: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) sim_setup_preconfigured.Rd:26: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) sim_setup_preconfigured.Rd:27: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) sim_setup_preconfigured.Rd:28: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) sim_setup_preconfigured.Rd:29: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) sim_setup_preconfigured.Rd:30: Lost braces in \itemize; meant \describe ?
-    checkRd: (-1) sim_setup_preconfigured.Rd:31: Lost braces in \itemize; meant \describe ?
-    ```
-
-# sassy
-
-<details>
-
-* Version: 1.2.8
-* GitHub: https://github.com/dbosak01/sassy
-* Source code: https://github.com/cran/sassy
-* Date/Publication: 2025-09-10 09:00:02 UTC
-* Number of recursive dependencies: 91
-
-Run `revdepcheck::cloud_details(, "sassy")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/tests.html
-      > # * https://testthat.r-lib.org/reference/test_package.html#special-files
-    ...
-          ▆
-       1. └─testthat::expect(failure_message = TRUE) at test-oq.R:171:3
-       2.   └─testthat:::check_character(failure_message)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 7 | WARN 0 | SKIP 0 | PASS 11 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.4Mb
-      sub-directories of 1Mb or more:
-        doc       5.1Mb
-        extdata   1.1Mb
-    ```
-
-# scorematchingad
-
-<details>
-
-* Version: 0.1.4
-* GitHub: https://github.com/kasselhingee/scorematchingad
-* Source code: https://github.com/cran/scorematchingad
-* Date/Publication: 2025-09-01 02:30:02 UTC
-* Number of recursive dependencies: 59
+* GitHub: <https://github.com/kasselhingee/scorematchingad>
+* Email: <mailto:kassel.hingee@anu.edu.au>
+* GitHub mirror: <https://github.com/cran/scorematchingad>
 
 Run `revdepcheck::cloud_details(, "scorematchingad")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > 
-      > test_check("scorematchingad")
-      Loading required package: scorematchingad
-      The Jacobian of the Hessian was non-zero for row 1 of xmat and dynmat
-      [ FAIL 2 | WARN 0 | SKIP 18 | PASS 427 ]
-      
-    ...
-       5. │     │ └─base::withCallingHandlers(...)
-       6. │     └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-       7. └─testthat::expect_equal(dir3_m, vMF_m(Y))
-      ── Failure ('test-vMF.R:102:3'): vMF matches for simulated weights, ignoring SE, which shouldn't match ──
-      Expected `expect_equal(dir3_m, vMF_m(Y))` to throw a error.
-      
-      [ FAIL 2 | WARN 0 | SKIP 18 | PASS 427 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       • Only for research. (1): 'test-FB.R:97:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test-vMF.R:102:3'): vMF matches for simulated weights, ignoring SE, which shouldn't match ──
+       Expected `dir3_m` to equal `vMF_m(Y)`.
+       Differences:
+         `actual`: -0.579 0.722 -0.380
+       `expected`: -0.384 0.824 -0.417
+       
+       Backtrace:
+           ▆
+        1. ├─testthat::expect_error(expect_equal(dir3_m, vMF_m(Y)), "not equal to") at test-vMF.R:102:3
+        2. │ └─testthat:::expect_condition_matching_(...)
+        3. │   └─testthat:::quasi_capture(...)
+        4. │     ├─testthat (local) .capture(...)
+        5. │     │ └─base::withCallingHandlers(...)
+        6. │     └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+        7. └─testthat::expect_equal(dir3_m, vMF_m(Y))
+       ── Failure ('test-vMF.R:102:3'): vMF matches for simulated weights, ignoring SE, which shouldn't match ──
+       Expected `expect_equal(dir3_m, vMF_m(Y))` to throw a error.
+       
+       [ FAIL 2 | WARN 0 | SKIP 18 | PASS 427 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# scrutiny (0.6.0)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is 42.2Mb
-      sub-directories of 1Mb or more:
-        cppad    10.2Mb
-        include   4.9Mb
-        libs     26.3Mb
-    ```
-
-# scoutbaR
-
-<details>
-
-* Version: 0.2.0
-* GitHub: NA
-* Source code: https://github.com/cran/scoutbaR
-* Date/Publication: 2025-03-20 10:30:02 UTC
-* Number of recursive dependencies: 66
-
-Run `revdepcheck::cloud_details(, "scoutbaR")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 3 | WARN 0 | SKIP 1 | PASS 8 ]
-      Deleting unused snapshots: 'scoutbar/simple-001.json',
-      'scoutbar/simple-001_.png', 'scoutbar/simple-002.json',
-      'scoutbar/simple-002_.png', 'scoutbar/simple-003.json', and
-      'scoutbar/simple-003_.png'
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# scrutiny
-
-<details>
-
-* Version: 0.6.0
-* GitHub: https://github.com/lhdjung/scrutiny
-* Source code: https://github.com/cran/scrutiny
-* Date/Publication: 2025-08-22 18:10:02 UTC
-* Number of recursive dependencies: 84
+* GitHub: <https://github.com/lhdjung/scrutiny>
+* Email: <mailto:jung-lukas@gmx.net>
+* GitHub mirror: <https://github.com/cran/scrutiny>
 
 Run `revdepcheck::cloud_details(, "scrutiny")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > 
-      > 
-      > library(testthat)
-      > library(scrutiny)
-      > 
-      > test_check("scrutiny")
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 525 ]
-    ...
-       2. └─scrutiny:::expect_na(.)
-       3.   └─testthat::expect(failure_message = msg_error) at ./helper-expectations.R:18:3
-       4.     └─testthat:::check_character(failure_message)
-       5.       └─testthat:::stop_input_type(...)
-       6.         └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 525 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-decimal-places.R:130:3'): `decimal_places_scalar()` conditions work as expected ──
+       Error in `testthat::expect(act$is_na, msg_error)`: `failure_message` must be a character vector, not `NULL`.
+       Backtrace:
+           ▆
+        1. ├─NA %>% decimal_places_scalar() %>% expect_na() at test-decimal-places.R:130:3
+        2. └─scrutiny:::expect_na(.)
+        3.   └─testthat::expect(failure_message = msg_error) at ./helper-expectations.R:18:3
+        4.     └─testthat:::check_character(failure_message)
+        5.       └─testthat:::stop_input_type(...)
+        6.         └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-seq-predicates.R:141:3'): `is_seq_dispersed()` passes its special tests, returning `NA` ──
+       Error in `testthat::expect(act$is_na, msg_error)`: `failure_message` must be a character vector, not `NULL`.
+       Backtrace:
+           ▆
+        1. ├─... %>% expect_na() at test-seq-predicates.R:141:3
+        2. └─scrutiny:::expect_na(.)
+        3.   └─testthat::expect(failure_message = msg_error) at ./helper-expectations.R:18:3
+        4.     └─testthat:::check_character(failure_message)
+        5.       └─testthat:::stop_input_type(...)
+        6.         └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 525 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# seqminer (9.7)
 
-*   checking Rd cross-references ... NOTE
-    ```
-    Package unavailable to check Rd xrefs: ‘janitor’
-    ```
-
-# seqminer
-
-<details>
-
-* Version: 9.7
-* GitHub: https://github.com/zhanxw/seqminer
-* Source code: https://github.com/cran/seqminer
-* Date/Publication: 2024-10-02 06:10:02 UTC
-* Number of recursive dependencies: 31
+* GitHub: <https://github.com/zhanxw/seqminer>
+* Email: <mailto:zhanxw@gmail.com>
+* GitHub mirror: <https://github.com/cran/seqminer>
 
 Run `revdepcheck::cloud_details(, "seqminer")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > ## follow http://adv-r.had.co.nz/Testing.html
-      > print(sprintf("Test seqminer [version %s]", packageVersion("seqminer")))
-      [1] "Test seqminer [version 9.7]"
-      > print("Platform")
-      [1] "Platform"
-      > print(str(.Platform))
-      List of 8
-    ...
-          ▆
-       1. └─testthat::expect(failure_message = <empty>) at test-vcf.R:181:5
-       2.   └─testthat:::check_character(failure_message)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 2 | WARN 0 | SKIP 0 | PASS 72 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       created index file [ /tmp/RtmpO0JrNh/file14ef2ed1fcc6 ]
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 72 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-vcf.R:167:5'): createSingleChromosomeVCFIndex ──────────────────
+       Error in `expect(nchar(cfh) > 0)`: `failure_message` must be a character vector, not absent.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = <empty>) at test-vcf.R:167:5
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-vcf.R:181:5'): createSingleChromosomeBCFIndex ──────────────────
+       Error in `expect(nchar(cfh) > 0)`: `failure_message` must be a character vector, not absent.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(failure_message = <empty>) at test-vcf.R:181:5
+        2.   └─testthat:::check_character(failure_message)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 72 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# sf (1.0-21)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is 14.9Mb
-      sub-directories of 1Mb or more:
-        libs  13.3Mb
-    ```
+* GitHub: <https://github.com/r-spatial/sf>
+* Email: <mailto:edzer.pebesma@uni-muenster.de>
+* GitHub mirror: <https://github.com/cran/sf>
 
-*   checking for GNU extensions in Makefiles ... NOTE
-    ```
-    GNU make is a SystemRequirements.
-    ```
+Run `revdepcheck::cloud_details(, "sf")` for more info
 
-# shiny.benchmark
+## Newly broken
 
-<details>
+*   checking tests ... NOTE
+     ```
+     ...
+       Running ‘read.R’
+       Comparing ‘read.Rout’ to ‘read.Rout.save’ ... OK
+       Running ‘roundtrip.R’
+       Comparing ‘roundtrip.Rout’ to ‘roundtrip.Rout.save’ ... OK
+       Running ‘s2.R’
+       Comparing ‘s2.Rout’ to ‘s2.Rout.save’ ... OK
+       Running ‘sample.R’
+       Comparing ‘sample.Rout’ to ‘sample.Rout.save’ ... OK
+       Running ‘sfc.R’
+       Comparing ‘sfc.Rout’ to ‘sfc.Rout.save’ ...547a548,551
+     > The following object is masked from 'package:testthat':
+     > 
+     >     matches
+     > 
+       Running ‘sfg.R’
+       Comparing ‘sfg.Rout’ to ‘sfg.Rout.save’ ... OK
+       Running ‘spatstat.R’
+       Comparing ‘spatstat.Rout’ to ‘spatstat.Rout.save’ ... OK
+       Running ‘stars.R’
+       Comparing ‘stars.Rout’ to ‘stars.Rout.save’ ... OK
+       Running ‘testthat.R’
+       Running ‘units.R’
+       Comparing ‘units.Rout’ to ‘units.Rout.save’ ... OK
+       Running ‘wkb.R’
+       Comparing ‘wkb.Rout’ to ‘wkb.Rout.save’ ... OK
+     ```
 
-* Version: 0.1.1
-* GitHub: https://github.com/Appsilon/shiny.benchmark
-* Source code: https://github.com/cran/shiny.benchmark
-* Date/Publication: 2023-01-20 09:50:02 UTC
-* Number of recursive dependencies: 100
+# shiny.benchmark (0.1.1)
+
+* GitHub: <https://github.com/Appsilon/shiny.benchmark>
+* Email: <mailto:opensource+douglas@appsilon.com>
+* GitHub mirror: <https://github.com/cran/shiny.benchmark>
 
 Run `revdepcheck::cloud_details(, "shiny.benchmark")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(shiny.benchmark)
-      > 
-      > test_check("shiny.benchmark")
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 7 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-       2.   └─base::eval(...)
-       3.     └─testthat::local_mock(menu = function(...) 2) at test-load_example.R:74:5
-       4.       └─lifecycle::deprecate_stop("3.2.0", "local_mock()", "local_mocked_bindings()")
-       5.         └─lifecycle:::deprecate_stop0(msg)
-       6.           └─rlang::cnd_signal(...)
-      
-      [ FAIL 3 | WARN 0 | SKIP 0 | PASS 7 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Backtrace:
+           ▆
+        1. └─base::eval(...)
+        2.   └─base::eval(...)
+        3.     └─testthat::local_mock(menu = function(...) stop("Opps, shouldn't reach this")) at test-load_example.R:52:5
+        4.       └─lifecycle::deprecate_stop("3.2.0", "local_mock()", "local_mocked_bindings()")
+        5.         └─lifecycle:::deprecate_stop0(msg)
+        6.           └─rlang::cnd_signal(...)
+       ── Error ('test-load_example.R:74:5'): Does not create load_examples if there is a file in directory ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `local_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `local_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─base::eval(...)
+        2.   └─base::eval(...)
+        3.     └─testthat::local_mock(menu = function(...) 2) at test-load_example.R:74:5
+        4.       └─lifecycle::deprecate_stop("3.2.0", "local_mock()", "local_mocked_bindings()")
+        5.         └─lifecycle:::deprecate_stop0(msg)
+        6.           └─rlang::cnd_signal(...)
+       
+       [ FAIL 3 | WARN 0 | SKIP 0 | PASS 7 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# shinyShortcut
+# shinyShortcut (0.1.0)
 
-<details>
-
-* Version: 0.1.0
-* GitHub: NA
-* Source code: https://github.com/cran/shinyShortcut
-* Date/Publication: 2017-03-19 18:13:08 UTC
-* Number of recursive dependencies: 34
+* Email: <mailto:ewan.keith100@gmail.com>
+* GitHub mirror: <https://github.com/cran/shinyShortcut>
 
 Run `revdepcheck::cloud_details(, "shinyShortcut")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(shinyShortcut)
-      > 
-      > test_check("shinyShortcut")
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-shinyShortcut.R:5:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(shinyShortcut)
+       > 
+       > test_check("shinyShortcut")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-shinyShortcut.R:5:3'): ShinyShorcut returns the correct files ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-shinyShortcut.R:5:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# SIAtools (0.1.3)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# SIAtools
-
-<details>
-
-* Version: 0.1.3
-* GitHub: NA
-* Source code: https://github.com/cran/SIAtools
-* Date/Publication: 2025-06-09 15:20:02 UTC
-* Number of recursive dependencies: 88
+* Email: <mailto:netik@cs.cas.cz>
+* GitHub mirror: <https://github.com/cran/SIAtools>
 
 Run `revdepcheck::cloud_details(, "SIAtools")` for more info
 
-</details>
+## Newly broken
+
+*   checking tests ... ERROR
+     ```
+     ...
+       ══ Skipped tests (4) ═══════════════════════════════════════════════════════════
+       • On CRAN (4): 'test-add_module.R:33:1', 'test-add_module.R:66:1',
+         'test-add_module.R:73:1', 'test-add_module.R:92:1'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-get_modules.R:76:3'): manifest prints out correctly ────────────
+       Error in `parse(text = x)`: <text>:5:19: unexpected symbol
+       4:   sm_test:
+       5:     title: CHANGE THIS
+                            ^
+       Backtrace:
+           ▆
+        1. ├─get_modules() %>% print(as_tibble = TRUE) %>% ... at test-get_modules.R:76:3
+        2. └─testthat::expect_snapshot_value(., style = "deparse", cran = TRUE)
+        3.   └─testthat:::expect_snapshot_helper(...)
+        4.     └─snapshotter$take_snapshot(...)
+        5.       └─testthat (local) load(old_raw)
+        6.         └─testthat:::reparse(x)
+        7.           ├─base::eval(parse(text = x), env)
+        8.           └─base::parse(text = x)
+       
+       [ FAIL 1 | WARN 0 | SKIP 4 | PASS 65 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
+
+# sidra (0.1.9)
+
+* GitHub: <https://github.com/rodrigoesborges/sidra>
+* Email: <mailto:rodrigo@borges.net.br>
+* GitHub mirror: <https://github.com/cran/sidra>
+
+Run `revdepcheck::cloud_details(, "sidra")` for more info
 
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-    ...
-       4.     └─snapshotter$take_snapshot(...)
-       5.       └─testthat (local) load(old_raw)
-       6.         └─testthat:::reparse(x)
-       7.           ├─base::eval(parse(text = x), env)
-       8.           └─base::parse(text = x)
-      
-      [ FAIL 1 | WARN 0 | SKIP 4 | PASS 65 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > library(sidra)
+       > 
+       > test_check("sidra")
+       A consulta excederá o limite de 100.000 pontos de dados permitido pela API.
+       Vamos contornar este problema fazendo várias solicitações menores.
+       Haverá maior demora
+       A consulta excederá o limite de 100.000 pontos de dados permitido pela API.
+       Vamos contornar este problema fazendo várias solicitações menores.
+       Haverá maior demora
+       [ FAIL 1 | WARN 1 | SKIP 0 | PASS 2 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test-sidra.R:11:5'): sidra(1705) returns a data frame ─────────────
+       Expected `output_table` to be NULL.
+       Differences:
+       `actual` is an S3 object of class <data.table/data.frame>, a list
+       `expected` is NULL
+       
+        OR API was not reacheable,
+                       function should have returned NULL
+       
+       [ FAIL 1 | WARN 1 | SKIP 0 | PASS 2 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# SpaDES.tools
+# spaero (0.6.0)
 
-<details>
-
-* Version: 2.0.7
-* GitHub: https://github.com/PredictiveEcology/SpaDES.tools
-* Source code: https://github.com/cran/SpaDES.tools
-* Date/Publication: 2024-05-15 09:00:11 UTC
-* Number of recursive dependencies: 94
-
-Run `revdepcheck::cloud_details(, "SpaDES.tools")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # This file is part of the standard setup for testthat.
-      > # It is recommended that you do not modify it.
-      > #
-      > # Where should you do additional test configuration?
-      > # Learn more about the roles of various files in:
-      > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
-      > # * https://testthat.r-lib.org/articles/special-files.html
-    ...
-      Expected `length(spreadState[["indices"]])` to be equal to `maxSize1`.
-      Differences:
-        `actual`:   4.0
-      `expected`: 100.0
-      
-      
-      [ FAIL 4 | WARN 0 | SKIP 3 | PASS 2256 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# spaero
-
-<details>
-
-* Version: 0.6.0
-* GitHub: https://github.com/e3bo/spaero
-* Source code: https://github.com/cran/spaero
-* Date/Publication: 2020-09-26 23:50:03 UTC
-* Number of recursive dependencies: 68
+* GitHub: <https://github.com/e3bo/spaero>
+* Email: <mailto:odea35@gmail.com>
+* GitHub mirror: <https://github.com/cran/spaero>
 
 Run `revdepcheck::cloud_details(, "spaero")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(spaero)
-      > 
-      > test_check("spaero")
-      [ FAIL 1 | WARN 4 | SKIP 7 | PASS 47 ]
-      
-      ══ Skipped tests (7) ═══════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-simulator.R:6:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 4 | SKIP 7 | PASS 47 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       > test_check("spaero")
+       [ FAIL 1 | WARN 4 | SKIP 7 | PASS 47 ]
+       
+       ══ Skipped tests (7) ═══════════════════════════════════════════════════════════
+       • On CRAN (6): 'test-simulator.R:60:3', 'test-simulator.R:82:3',
+         'test-simulator.R:157:3', 'test-simulator.R:190:3', 'test-stats.R:118:3',
+         'test-stats.R:237:3'
+       • {earlywarnings} is not installed (1): 'test-stats.R:303:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-simulator.R:6:3'): Argument checking works ─────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-simulator.R:6:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 4 | SKIP 7 | PASS 47 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
-*   checking package dependencies ... NOTE
-    ```
-    Package suggested but not available for checking: ‘earlywarnings’
-    ```
-
 *   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘utils’
-      All declared Imports should be used.
-    ```
+     ```
+     Namespace in Imports field not imported from: ‘utils’
+       All declared Imports should be used.
+     ```
 
 *   checking Rd cross-references ... NOTE
-    ```
-    Unknown package ‘earlywarnings’ in Rd xrefs
-    ```
+     ```
+     Unknown package ‘earlywarnings’ in Rd xrefs
+     ```
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
+# spatialsample (0.6.0)
 
-# spatialsample
-
-<details>
-
-* Version: 0.6.0
-* GitHub: https://github.com/tidymodels/spatialsample
-* Source code: https://github.com/cran/spatialsample
-* Date/Publication: 2024-10-02 18:20:02 UTC
-* Number of recursive dependencies: 101
+* GitHub: <https://github.com/tidymodels/spatialsample>
+* Email: <mailto:mike.mahoney.218@gmail.com>
+* GitHub mirror: <https://github.com/cran/spatialsample>
 
 Run `revdepcheck::cloud_details(, "spatialsample")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(spatialsample)
-      > 
-      > sf::sf_extSoftVersion()
-                GEOS           GDAL         proj.4 GDAL_with_GEOS     USE_PROJ_H 
-            "3.12.1"        "3.8.4"        "9.4.0"         "true"         "true" 
-                PROJ 
-    ...
-      [ FAIL 1 | WARN 0 | SKIP 26 | PASS 535 ]
-      Deleting unused snapshots: 'autoplot/buffered-llo-set-plot.svg',
-      'autoplot/buffered-llo-split-plot.svg', 'autoplot/buffered-rsample-plot.svg',
-      'autoplot/buffered-rset-plot.svg', 'autoplot/buffered-vfold-plot.svg',
-      'autoplot/buffered-vfold-split.svg', 'autoplot/repeated-block-cv.svg',
-      'autoplot/repeated-llo.svg', 'autoplot/repeated-vfold.svg', and
-      'autoplot/snake-flips-rows-the-right-way.svg'
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-spatial_vfold_cv.R:200:3'): bad args ───────────────────────────
+       Error in `rsample::vfold_cv(data = data, v = v, repeats = repeats, strata = {     {         strata     } }, breaks = breaks, pool = pool, ...)`: Leave-one-out cross-validation is not supported by this function.
+       x You set `v` to `nrow(data)`, which would result in a leave-one-out cross-validation.
+       i Use `loo_cv()` in this case.
+       Backtrace:
+           ▆
+        1. └─spatialsample::spatial_buffer_vfold_cv(...)
+        2.   └─rsample::vfold_cv(...)
+        3.     └─rsample:::vfold_splits(...)
+        4.       └─rsample:::check_v(v, n, prevent_loo = prevent_loo, call = rlang::caller_env())
+        5.         └─cli::cli_abort(...)
+        6.           └─rlang::abort(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 26 | PASS 535 ]
+       Deleting unused snapshots: 'autoplot/buffered-llo-set-plot.svg',
+       'autoplot/buffered-llo-split-plot.svg', 'autoplot/buffered-rsample-plot.svg',
+       'autoplot/buffered-rset-plot.svg', 'autoplot/buffered-vfold-plot.svg',
+       'autoplot/buffered-vfold-split.svg', 'autoplot/repeated-block-cv.svg',
+       'autoplot/repeated-llo.svg', 'autoplot/repeated-vfold.svg', and
+       'autoplot/snake-flips-rows-the-right-way.svg'
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# ssdtools
+# ssdtools (2.4.0)
 
-<details>
-
-* Version: 2.4.0
-* GitHub: https://github.com/bcgov/ssdtools
-* Source code: https://github.com/cran/ssdtools
-* Date/Publication: 2025-09-12 05:30:02 UTC
-* Number of recursive dependencies: 120
+* GitHub: <https://github.com/bcgov/ssdtools>
+* Email: <mailto:joe@poissonconsulting.ca>
+* GitHub mirror: <https://github.com/cran/ssdtools>
 
 Run `revdepcheck::cloud_details(, "ssdtools")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > # Copyright 2015-2023 Province of British Columbia
-      > # Copyright 2021 Environment and Climate Change Canada
-      > # Copyright 2023-2024 Australian Government Department of Climate Change,
-      > # Energy, the Environment and Water
-      > #
-      > #    Licensed under the Apache License, Version 2.0 (the "License");
-      > #    you may not use this file except in compliance with the License.
-    ...
-      'ggplot/geom_hcintersect.png', 'ggplot/geom_hcintersect_aes.png',
-      'ggplot/geom_ssdpoint.png', 'ggplot/geom_ssdpoint_identity.png',
-      'ggplot/geom_ssdsegment.png', 'ggplot/geom_ssdsegment_arrow.png',
-      'ggplot/geom_ssdsegment_identity.png', 'ggplot/geom_ssdsegment_nodata.png',
-      'ggplot/geom_xribbon.png', 'match-moments/cdf.png', 'plot-cdf/fits.png',
-      'plot-cdf/fits_average.png', 'plot-cdf/fits_average_na.png', …,
-      'ssd-plot/ribbon.png', and 'ssd-plot/suffix.png'
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        5.     └─testthat:::stop_input_type(...)
+        6.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-hc.R:653:3'): ssd_hc save_to lnorm 1 ───────────────────────────
+       Error in `expect_snapshot_value(hc$lcl, est, style = "deparse")`: `cran` must be `TRUE` or `FALSE`, not the number 1.29.
+       Backtrace:
+           ▆
+        1. └─testthat::expect_snapshot_value(cran = est) at test-hc.R:653:3
+        2.   └─testthat:::check_bool(cran)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 2 | WARN 0 | SKIP 214 | PASS 989 ]
+       Deleting unused snapshots: 'autoplot/autoplot.png',
+       'autoplot/autoplot_bigmark.png', 'autoplot/autoplot_new.png',
+       'autoplot/autoplot_rescale.png', 'autoplot/suffix.png',
+       'ggplot/geom_hcintersect.png', 'ggplot/geom_hcintersect_aes.png',
+       'ggplot/geom_ssdpoint.png', 'ggplot/geom_ssdpoint_identity.png',
+       'ggplot/geom_ssdsegment.png', 'ggplot/geom_ssdsegment_arrow.png',
+       'ggplot/geom_ssdsegment_identity.png', 'ggplot/geom_ssdsegment_nodata.png',
+       'ggplot/geom_xribbon.png', 'match-moments/cdf.png', 'plot-cdf/fits.png',
+       'plot-cdf/fits_average.png', 'plot-cdf/fits_average_na.png', …,
+       'ssd-plot/ribbon.png', and 'ssd-plot/suffix.png'
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# tabr (0.5.3)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is 36.0Mb
-      sub-directories of 1Mb or more:
-        R      1.8Mb
-        libs  33.2Mb
-    ```
-
-# tabr
-
-<details>
-
-* Version: 0.5.3
-* GitHub: https://github.com/leonawicz/tabr
-* Source code: https://github.com/cran/tabr
-* Date/Publication: 2025-07-03 22:40:06 UTC
-* Number of recursive dependencies: 75
+* GitHub: <https://github.com/leonawicz/tabr>
+* Email: <mailto:rpkgs@pm.me>
+* GitHub mirror: <https://github.com/cran/tabr>
 
 Run `revdepcheck::cloud_details(, "tabr")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(tabr)
-      The tabr 0.5.3 LilyPond API was built and tested against LilyPond 2.22.1-2 on Linux.
-      Local LilyPond installation not found (only required for transcription).
-      > 
-      > test_check("tabr")
-      <Lyrics string>
-    ...
-          ▆
-       1. └─testthat::expect(ok = n_steps(x)) at test-music.R:24:3
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 1 | SKIP 7 | PASS 1137 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       <Musical phrase>
+       <es,,>4 <es,>4 <es>4 <es'>4 <es''>4
+       sh: 1: lilypond: not found
+       sh: 1: lilypond: not found
+       [ FAIL 1 | WARN 1 | SKIP 7 | PASS 1137 ]
+       
+       ══ Skipped tests (7) ═══════════════════════════════════════════════════════════
+       • On CRAN (7): 'test-outputs.R:86:3', 'test-outputs.R:109:3',
+         'test-outputs.R:158:3', 'test-outputs.R:199:3', 'test-outputs.R:225:3',
+         'test-snippet.R:14:3', 'test-snippet.R:32:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-music.R:24:3'): music functions return as expected ─────────────
+       Error in `expect(n_steps(x), 11)`: `ok` must be `TRUE` or `FALSE`, not the number 11.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = n_steps(x)) at test-music.R:24:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 1 | SKIP 7 | PASS 1137 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# testdat
+# testdat (0.4.3)
 
-<details>
-
-* Version: 0.4.3
-* GitHub: https://github.com/socialresearchcentre/testdat
-* Source code: https://github.com/cran/testdat
-* Date/Publication: 2025-08-19 04:30:02 UTC
-* Number of recursive dependencies: 79
+* GitHub: <https://github.com/socialresearchcentre/testdat>
+* Email: <mailto:danny@gorcha.org>
+* GitHub mirror: <https://github.com/cran/testdat>
 
 Run `revdepcheck::cloud_details(, "testdat")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(testdat)
-      > 
-      > test_check("testdat")
-      [ FAIL 95 | WARN 0 | SKIP 0 | PASS 111 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-      Component "failed_records": Numeric: lengths (4, 2) differ
-      ...
-      ── Failure ('test-testdata.R:9:3'): set_testdata/get_testdata work correctly ───
-      Expected exactly one failure and no successes.
-      Actually failed 2 times
-      
-      [ FAIL 95 | WARN 0 | SKIP 0 | PASS 111 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Expected `x_xl_summary` to equal `xl_summary`.
+       Differences:
+       Component "tests": Mean relative difference: 0.5
+       Component "failed": Mean relative difference: 0.5
+       ── Failure ('test-reporter_excel.R:47:3'): excel_results ───────────────────────
+       Expected `x_xl_failing` to equal `xl_failing`.
+       Differences:
+       Attributes: < Component "row.names": Numeric: lengths (4, 2) differ >
+       Component "context": Lengths (4, 2) differ (string compare on first 2)
+       Component "test": Lengths (4, 2) differ (string compare on first 2)
+       Component "status": Lengths (4, 2) differ (string compare on first 2)
+       Component "variable": Lengths (4, 2) differ (string compare on first 2)
+       Component "variable": 'is.NA' value mismatch: 0 in current 1 in target
+       Component "description": Lengths (4, 2) differ (string compare on first 2)
+       Component "description": 1 string mismatch
+       Component "failed_records": Numeric: lengths (4, 2) differ
+       ...
+       ── Failure ('test-testdata.R:9:3'): set_testdata/get_testdata work correctly ───
+       Expected exactly one failure and no successes.
+       Actually failed 2 times
+       
+       [ FAIL 95 | WARN 0 | SKIP 0 | PASS 111 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# testex
+# testex (0.2.0)
 
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/dgkf/testex
-* Source code: https://github.com/cran/testex
-* Date/Publication: 2024-04-14 23:30:02 UTC
-* Number of recursive dependencies: 53
+* GitHub: <https://github.com/dgkf/testex>
+* Email: <mailto:doug.kelkhoff@gmail.com>
+* GitHub mirror: <https://github.com/cran/testex>
 
 Run `revdepcheck::cloud_details(, "testex")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(testex)
-      > 
-      > test_check("testex")
-      [ FAIL 1 | WARN 0 | SKIP 2 | PASS 80 ]
-      
-    ...
-        7. │   │ └─base::withVisible(code)
-        8. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-        9. └─callr::r(...) at test-pkgexample.R:15:5
-       10.   └─callr:::get_result(output = out, options)
-       11.     └─throw(callr_remote_error(remerr, output), parent = fix_msg(remerr[[3]]))
-      
-      [ FAIL 1 | WARN 0 | SKIP 2 | PASS 80 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-pkgexample.R:15:5'): test_examples_as_testthat converts examples to tests and executes test suite ──
+       <callr_status_error/callr_error/rlib_error_3_0/rlib_error/error/condition>
+       Error: ! in callr subprocess.
+       Caused by error in `reporter$add_result(context = reporter$.context, test = test, …`:
+       ! attempt to use zero-length variable name
+       Backtrace:
+            ▆
+         1. ├─testthat::expect_silent(...) at test-pkgexample.R:14:3
+         2. │ └─testthat:::quasi_capture(enquo(object), NULL, evaluate_promise)
+         3. │   ├─testthat (local) .capture(...)
+         4. │   │ ├─withr::with_output_sink(...)
+         5. │   │ │ └─base::force(code)
+         6. │   │ ├─base::withCallingHandlers(...)
+         7. │   │ └─base::withVisible(code)
+         8. │   └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+         9. └─callr::r(...) at test-pkgexample.R:15:5
+        10.   └─callr:::get_result(output = out, options)
+        11.     └─throw(callr_remote_error(remerr, output), parent = fix_msg(remerr[[3]]))
+       
+       [ FAIL 1 | WARN 0 | SKIP 2 | PASS 80 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# texreg
+# texreg (1.39.4)
 
-<details>
-
-* Version: 1.39.4
-* GitHub: https://github.com/leifeld/texreg
-* Source code: https://github.com/cran/texreg
-* Date/Publication: 2024-07-24 12:20:01 UTC
-* Number of recursive dependencies: 110
+* GitHub: <https://github.com/leifeld/texreg>
+* Email: <mailto:philip.leifeld@manchester.ac.uk>
+* GitHub mirror: <https://github.com/cran/texreg>
 
 Run `revdepcheck::cloud_details(, "texreg")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library("testthat")
-      > library("texreg")
-      Version:  1.39.4
-      Date:     2024-07-23
-      Author:   Philip Leifeld (University of Manchester)
-      
-      Consider submitting praise using the praise or praise_interactive functions.
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-texreg.R:319:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 2 | WARN 1 | SKIP 33 | PASS 201 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-huxtablereg.R:13:3'): huxtablereg gives useful error message if huxtable not installed ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-huxtablereg.R:13:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-texreg.R:319:3'): knitreg function works ───────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-texreg.R:319:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 2 | WARN 1 | SKIP 33 | PASS 201 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking re-building of vignette outputs ... WARNING
-    ```
-    Error(s) in re-building vignettes:
-      ...
-    --- re-building ‘texreg.Rnw’ using Sweave
-    Error: processing vignette 'texreg.Rnw' failed with diagnostics:
-    Running 'texi2dvi' on 'texreg.tex' failed.
-    LaTeX errors:
-    ! LaTeX Error: File `thumbpdf.sty' not found.
-    
-    Type X to quit or <RETURN> to proceed,
-    or enter new name. (Default extension: sty)
-    ...
-    l.8 ^^M
-           
-    !  ==> Fatal error occurred, no output PDF file produced!
-    --- failed re-building ‘texreg.Rnw’
-    
-    SUMMARY: processing the following file failed:
-      ‘texreg.Rnw’
-    
-    Error: Vignette re-building failed.
-    Execution halted
-    ```
-
-*   checking package dependencies ... NOTE
-    ```
-    Packages which this enhances but not available for checking:
-      'AER', 'alpaca', 'betareg', 'Bergm', 'bife', 'biglm', 'brglm',
-      'brms', 'btergm', 'dynlm', 'eha', 'ergm', 'feisr', 'fGarch',
-      'fixest', 'forecast', 'gamlss', 'gamlss.inf', 'gee', 'glmmTMB',
-      'gmm', 'gnm', 'h2o', 'latentnet', 'lfe', 'logitr', 'lqmm', 'maxLik',
-      'metaSEM', 'mfx', 'mhurdle', 'miceadds', 'mlogit', 'MuMIn', 'oglmx',
-      'ordinal', 'pglm', 'plm', 'relevent', 'remify', 'remstats',
-      'remstimate', 'rms', 'robust', 'simex', 'spatialreg', 'spdep',
-      'speedglm', 'truncreg', 'VGAM'
-    ```
+     ```
+     Error(s) in re-building vignettes:
+       ...
+     --- re-building ‘texreg.Rnw’ using Sweave
+     Error: processing vignette 'texreg.Rnw' failed with diagnostics:
+     Running 'texi2dvi' on 'texreg.tex' failed.
+     LaTeX errors:
+     ! LaTeX Error: File `thumbpdf.sty' not found.
+     
+     Type X to quit or <RETURN> to proceed,
+     or enter new name. (Default extension: sty)
+     
+     ! Emergency stop.
+     <read *> 
+              
+     l.8 ^^M
+            
+     !  ==> Fatal error occurred, no output PDF file produced!
+     --- failed re-building ‘texreg.Rnw’
+     
+     SUMMARY: processing the following file failed:
+       ‘texreg.Rnw’
+     
+     Error: Vignette re-building failed.
+     Execution halted
+     ```
 
 *   checking Rd cross-references ... NOTE
-    ```
-    Packages unavailable to check Rd xrefs: ‘h2o’, ‘spatialreg’, ‘eha’, ‘MuMIn’, ‘Bergm’, ‘mfx’, ‘betareg’, ‘biglm’, ‘brglm’, ‘brms’, ‘btergm’, ‘ordinal’, ‘dynlm’, ‘ergm’, ‘latentnet’, ‘forecast’, ‘fGarch’, ‘feisr’, ‘lfe’, ‘fixest’, ‘gamlss’, ‘gamlss.inf’, ‘gee’, ‘gmm’, ‘miceadds’, ‘glmmTMB’, ‘gnm’, ‘AER’, ‘robust’, ‘lqmm’, ‘rms’, ‘maxLik’, ‘mhurdle’, ‘mlogit’, ‘plm’, ‘pglm’, ‘relevent’, ‘remstimate’, ‘simex’, ‘speedglm’, ‘truncreg’, ‘VGAM’, ‘metaSEM’
-    Unknown packages ‘bife’, ‘alpaca’, ‘oglmx’ in Rd xrefs
-    ```
+     ```
+     Packages unavailable to check Rd xrefs: ‘h2o’, ‘spatialreg’, ‘eha’, ‘MuMIn’, ‘Bergm’, ‘mfx’, ‘betareg’, ‘bife’, ‘biglm’, ‘brglm’, ‘brms’, ‘btergm’, ‘ordinal’, ‘dynlm’, ‘ergm’, ‘latentnet’, ‘forecast’, ‘fGarch’, ‘alpaca’, ‘feisr’, ‘lfe’, ‘fixest’, ‘gamlss’, ‘gamlss.inf’, ‘gee’, ‘gmm’, ‘miceadds’, ‘glmmTMB’, ‘gnm’, ‘AER’, ‘robust’, ‘lqmm’, ‘rms’, ‘maxLik’, ‘mhurdle’, ‘mlogit’, ‘plm’, ‘pglm’, ‘relevent’, ‘remstimate’, ‘simex’, ‘speedglm’, ‘truncreg’, ‘VGAM’, ‘metaSEM’
+     Unknown package ‘oglmx’ in Rd xrefs
+     ```
 
-# ThankYouStars
+# ThankYouStars (0.2.0)
 
-<details>
-
-* Version: 0.2.0
-* GitHub: https://github.com/ksmzn/ThankYouStars
-* Source code: https://github.com/cran/ThankYouStars
-* Date/Publication: 2017-11-12 04:21:17 UTC
-* Number of recursive dependencies: 30
+* GitHub: <https://github.com/ksmzn/ThankYouStars>
+* Email: <mailto:orehacks@gmail.com>
+* GitHub mirror: <https://github.com/cran/ThankYouStars>
 
 Run `revdepcheck::cloud_details(, "ThankYouStars")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(ThankYouStars)
-      > 
-      > test_check("ThankYouStars")
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-starring.R:3:1
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(ThankYouStars)
+       > 
+       > test_check("ThankYouStars")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-starring.R:3:1'): (code run outside of `test_that()`) ──────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-starring.R:3:1
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# tibblify (0.3.1)
 
-*   checking LazyData ... NOTE
-    ```
-      'LazyData' is specified without a 'data' directory
-    ```
-
-# threshr
-
-<details>
-
-* Version: 1.0.6
-* GitHub: https://github.com/paulnorthrop/threshr
-* Source code: https://github.com/cran/threshr
-* Date/Publication: 2024-07-17 21:10:02 UTC
-* Number of recursive dependencies: 82
-
-Run `revdepcheck::cloud_details(, "threshr")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(threshr)
-      > 
-      > test_check("threshr")
-      Fitting at threshold number ...
-      1 2 3 4 5 6 7 8 9 10 [ FAIL 1 | WARN 0 | SKIP 0 | PASS 297 ]
-      
-    ...
-          ▆
-       1. └─testthat::expect(failure_message = TRUE) at test-plot_and_summary.R:22:3
-       2.   └─testthat:::check_character(failure_message)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 297 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
-
-# tibblify
-
-<details>
-
-* Version: 0.3.1
-* GitHub: https://github.com/mgirlich/tibblify
-* Source code: https://github.com/cran/tibblify
-* Date/Publication: 2024-01-11 07:30:02 UTC
-* Number of recursive dependencies: 61
+* GitHub: <https://github.com/mgirlich/tibblify>
+* Email: <mailto:maximilian.girlich@outlook.com>
+* GitHub mirror: <https://github.com/cran/tibblify>
 
 Run `revdepcheck::cloud_details(, "tibblify")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(tibblify)
-      > 
-      > test_check("tibblify")
-      [ FAIL 1 | WARN 0 | SKIP 85 | PASS 541 ]
-      
-    ...
-       2.   └─testthat:::expect_snapshot_(...)
-       3.     ├─testthat:::with_is_snapshotting(...)
-       4.     └─testthat:::verify_exec(quo_get_expr(x), quo_get_env(x), replay)
-       5.       └─evaluate::evaluate(source, envir = env, new_device = FALSE, output_handler = handler)
-       6.         └─evaluate::parse_all(input, filename = filename)
-      
-      [ FAIL 1 | WARN 0 | SKIP 85 | PASS 541 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         'test-tibblify.R:573:1', 'test-tibblify.R:852:3', 'test-tibblify.R:1138:1',
+         'test-tibblify.R:1158:1', 'test-tibblify.R:1223:1', 'test-tibblify.R:1308:1',
+         'test-tibblify.R:1397:1', 'test-tibblify.R:1405:1', 'test-tibblify.R:1467:1',
+         'test-tibblify.R:1473:1', 'test-tibblify.R:1484:1',
+         'test-unnest-tree.R:39:1', 'test-unnest-tree.R:190:1',
+         'test-unnest-tree.R:257:1', 'test-unpack-tspec.R:75:1',
+         'test-unpack-tspec.R:122:1', 'test-untibblify.R:185:1'
+       • improve guessing logic (1): 'test-spec_guess_object_list.R:128:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-unnest-tree.R:34:3'): checks arguments ─────────────────────────
+       Error in `UseMethod("parse_all")`: no applicable method for 'parse_all' applied to an object of class "NULL"
+       Backtrace:
+           ▆
+        1. └─testthat::expect_snapshot(...) at test-unnest-tree.R:34:3
+        2.   └─testthat:::expect_snapshot_(...)
+        3.     ├─testthat:::with_is_snapshotting(...)
+        4.     └─testthat:::verify_exec(quo_get_expr(x), quo_get_env(x), replay)
+        5.       └─evaluate::evaluate(source, envir = env, new_device = FALSE, output_handler = handler)
+        6.         └─evaluate::parse_all(input, filename = filename)
+       
+       [ FAIL 1 | WARN 0 | SKIP 85 | PASS 541 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking dependencies in R code ... NOTE
-    ```
-    Namespace in Imports field not imported from: ‘lifecycle’
-      All declared Imports should be used.
-    ```
+     ```
+     Namespace in Imports field not imported from: ‘lifecycle’
+       All declared Imports should be used.
+     ```
 
-# tinyProject
+*   checking compiled code ... NOTE
+     ```
+     File ‘tibblify/libs/tibblify.so’:
+       Found non-API calls to R: ‘BODY’, ‘CLOENV’, ‘ENCLOS’, ‘EXTPTR_PROT’,
+         ‘EXTPTR_TAG’, ‘FORMALS’, ‘FRAME’, ‘HASHTAB’, ‘OBJECT’, ‘PRENV’,
+         ‘PRVALUE’, ‘R_PromiseExpr’, ‘Rf_allocSExp’, ‘Rf_findVarInFrame3’,
+         ‘SETLENGTH’, ‘SET_BODY’, ‘SET_CLOENV’, ‘SET_FORMALS’,
+         ‘SET_GROWABLE_BIT’, ‘SET_TRUELENGTH’, ‘STRING_PTR’
+     
+     Compiled code should not call non-API entry points in R.
+     
+     See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual,
+     and section ‘Moving into C API compliance’ for issues with the use of
+     non-API entry points.
+     ```
 
-<details>
+# tinyProject (0.6.1)
 
-* Version: 0.6.1
-* GitHub: NA
-* Source code: https://github.com/cran/tinyProject
-* Date/Publication: 2019-06-14 11:40:03 UTC
-* Number of recursive dependencies: 39
+* Email: <mailto:guillem.francois@gmail.com>
+* GitHub mirror: <https://github.com/cran/tinyProject>
 
 Run `revdepcheck::cloud_details(, "tinyProject")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(tinyProject)
-      > 
-      > test_check("tinyProject")
-      [ FAIL 1 | WARN 5 | SKIP 0 | PASS 73 ]
-      
-      ══ Failed tests ════════════════════════════════════════════════════════════════
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-commandArgs.R:3:1
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 5 | SKIP 0 | PASS 73 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(tinyProject)
+       > 
+       > test_check("tinyProject")
+       [ FAIL 1 | WARN 5 | SKIP 0 | PASS 73 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-commandArgs.R:3:1'): (code run outside of `test_that()`) ───────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-commandArgs.R:3:1
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 5 | SKIP 0 | PASS 73 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# TrialEmulation
+# TrialEmulation (0.0.4.5)
 
-<details>
-
-* Version: 0.0.4.5
-* GitHub: https://github.com/Causal-LDA/TrialEmulation
-* Source code: https://github.com/cran/TrialEmulation
-* Date/Publication: 2025-06-13 10:10:08 UTC
-* Number of recursive dependencies: 87
+* GitHub: <https://github.com/Causal-LDA/TrialEmulation>
+* Email: <mailto:isaac.gravestock@roche.com>
+* GitHub mirror: <https://github.com/cran/TrialEmulation>
 
 Run `revdepcheck::cloud_details(, "TrialEmulation")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(TrialEmulation)
-      > 
-      > data.table::setDTthreads(2)
-      > test_check("TrialEmulation")
-      Starting data manipulation
-      Starting data extension
-    ...
-          ▆
-       1. └─testthat::expect(ok = nrow(result$data)) at test-data_preparation.R:175:3
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 4 | WARN 0 | SKIP 33 | PASS 458 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+        1. └─testthat::expect(ok = nrow(result$data)) at test-data_preparation.R:126:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-data_preparation.R:149:3'): data_preparation works with As-Treated estimand type ──
+       Error in `expect(nrow(result$data), result$N)`: `ok` must be `TRUE` or `FALSE`, not the number 1939053.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = nrow(result$data)) at test-data_preparation.R:149:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       ── Error ('test-data_preparation.R:175:3'): data_preparation works with ITT and censor weights ──
+       Error in `expect(nrow(result$data), result$N)`: `ok` must be `TRUE` or `FALSE`, not the number 8795.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = nrow(result$data)) at test-data_preparation.R:175:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 4 | WARN 0 | SKIP 33 | PASS 458 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# tryCatchLog
+# tryCatchLog (1.3.1)
 
-<details>
-
-* Version: 1.3.1
-* GitHub: https://github.com/aryoda/tryCatchLog
-* Source code: https://github.com/cran/tryCatchLog
-* Date/Publication: 2021-10-25 07:10:07 UTC
-* Number of recursive dependencies: 53
+* GitHub: <https://github.com/aryoda/tryCatchLog>
+* Email: <mailto:jaltfeld@altfeld-im.de>
+* GitHub mirror: <https://github.com/cran/tryCatchLog>
 
 Run `revdepcheck::cloud_details(, "tryCatchLog")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(tryCatchLog)
-      Using futile.logger for logging...
-      > 
-      > 
-      > 
-      > # Set to something like [1] "en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/de_DE.UTF-8"
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test_platform_functions.R:37:3
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 436 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test_namespace_hooks.R:36:3'): internal package state is initialized ─────────────────────────────────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_namespace_hooks.R:36:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test_platform_functions.R:37:3'): OS-specific newlines work ──────────────────────────────────────────────────────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test_platform_functions.R:37:3
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 4 | WARN 0 | SKIP 0 | PASS 436 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
 ## In both
 
 *   checking dependencies in R code ... NOTE
-    ```
-    There are ::: calls to the package's namespace in its code. A package
-      almost never needs to use ::: for its own objects:
-      ‘log2console’
-    ```
+     ```
+     There are ::: calls to the package's namespace in its code. A package
+       almost never needs to use ::: for its own objects:
+       ‘log2console’
+     ```
 
-# uwot
+# uwot (0.2.3)
 
-<details>
-
-* Version: 0.2.3
-* GitHub: https://github.com/jlmelville/uwot
-* Source code: https://github.com/cran/uwot
-* Date/Publication: 2025-02-24 06:30:02 UTC
-* Number of recursive dependencies: 92
+* GitHub: <https://github.com/jlmelville/uwot>
+* Email: <mailto:jlmelville@gmail.com>
+* GitHub mirror: <https://github.com/cran/uwot>
 
 Run `revdepcheck::cloud_details(, "uwot")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(uwot)
-      Loading required package: Matrix
-      > 
-      > test_check("uwot")
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 955 ]
-      
-    ...
-          ▆
-       1. └─testthat::expect(ok = res_model$seed) at test_output.R:1046:3
-       2.   └─testthat:::check_bool(ok)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 955 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+       Running ‘testthat.R’
+     Running the tests in ‘tests/testthat.R’ failed.
+     Complete output:
+       > library(testthat)
+       > library(uwot)
+       Loading required package: Matrix
+       > 
+       > test_check("uwot")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 955 ]
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test_output.R:1046:3'): can set seed internally ─────────────────────
+       Error in `expect(res_model$seed, 42)`: `ok` must be `TRUE` or `FALSE`, not the number 42.
+       Backtrace:
+           ▆
+        1. └─testthat::expect(ok = res_model$seed) at test_output.R:1046:3
+        2.   └─testthat:::check_bool(ok)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 955 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# vein (1.5.0)
 
-*   checking installed package size ... NOTE
-    ```
-      installed size is 16.1Mb
-      sub-directories of 1Mb or more:
-        libs  15.0Mb
-    ```
-
-# vein
-
-<details>
-
-* Version: 1.5.0
-* GitHub: https://github.com/atmoschem/vein
-* Source code: https://github.com/cran/vein
-* Date/Publication: 2025-10-04 23:20:02 UTC
-* Number of recursive dependencies: 56
+* GitHub: <https://github.com/atmoschem/vein>
+* Email: <mailto:zergioibarra@gmail.com>
+* GitHub mirror: <https://github.com/cran/vein>
 
 Run `revdepcheck::cloud_details(, "vein")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(vein)
-      > 
-      > test_check("vein")
-      Running tests in parallel requires the 3rd edition.
-      Weighted mean =  6 
-      [[1]]
-    ...
-          ▆
-       1. └─testthat::expect_warning(regexp = 1) at test-make_grid.R:26:3
-       2.   └─testthat:::check_string(regexp, allow_null = TRUE, allow_na = TRUE)
-       3.     └─testthat:::stop_input_type(...)
-       4.       └─rlang::abort(message, ..., call = call, arg = arg)
-      
-      [ FAIL 1 | WARN 0 | SKIP 2 | PASS 640 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       Number of lon points: 12
+       Number of lat points: 11
+       
+       Total Emissions 2095.073  kg 
+       Intersecting
+       Total Emissions 2095.073  kg 
+       [ FAIL 1 | WARN 0 | SKIP 2 | PASS 640 ]
+       
+       ══ Skipped tests (2) ═══════════════════════════════════════════════════════════
+       • empty test (2): ,
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-make_grid.R:26:3'): emis_grid warning ──────────────────────────
+       Error in `expect_warning(make_grid(b, 1/102.47/2, crs = "+init=epsg:31983")$id[1], 1)`: `regexp` must be a single string, `NA`, or `NULL`, not the number 1.
+       Backtrace:
+           ▆
+        1. └─testthat::expect_warning(regexp = 1) at test-make_grid.R:26:3
+        2.   └─testthat:::check_string(regexp, allow_null = TRUE, allow_na = TRUE)
+        3.     └─testthat:::stop_input_type(...)
+        4.       └─rlang::abort(message, ..., call = call, arg = arg)
+       
+       [ FAIL 1 | WARN 0 | SKIP 2 | PASS 640 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-## In both
+# WhatIf (1.5-10)
 
-*   checking data for non-ASCII characters ... NOTE
-    ```
-      Note: found 49 marked UTF-8 strings
-    ```
-
-# WhatIf
-
-<details>
-
-* Version: 1.5-10
-* GitHub: https://github.com/IQSS/WhatIf
-* Source code: https://github.com/cran/WhatIf
-* Date/Publication: 2020-11-14 14:20:06 UTC
-* Number of recursive dependencies: 26
+* GitHub: <https://github.com/IQSS/WhatIf>
+* Email: <mailto:soubhikbarari@gmail.com>
+* GitHub mirror: <https://github.com/cran/WhatIf>
 
 Run `revdepcheck::cloud_details(, "WhatIf")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(WhatIf)
-      > 
-      > test_check("WhatIf")
-      
-        |                                                                            
-        |                                                                      |   0%
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-whatif_convexhull.R:16:5
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 1 | WARN 0 | SKIP 4 | PASS 2 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+         |===================================================================== |  99%
+         |                                                                            
+         |======================================================================| 100%
+       [ FAIL 1 | WARN 0 | SKIP 4 | PASS 2 ]
+       
+       ══ Skipped tests (4) ═══════════════════════════════════════════════════════════
+       • On CRAN (4): 'test-whatif.R:9:5', 'test-whatif.R:32:5', 'test-whatif.R:55:5',
+         'test-whatif_convexhull.R:2:5'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-whatif_convexhull.R:16:5'): REQUIRE TEST multitreaded ──────────
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-whatif_convexhull.R:16:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 1 | WARN 0 | SKIP 4 | PASS 2 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
-# ZillowR
+# WhatsR (1.0.6)
 
-<details>
+* GitHub: <https://github.com/gesiscss/WhatsR>
+* Email: <mailto:julian.kohne@gesis.org>
+* GitHub mirror: <https://github.com/cran/WhatsR>
 
-* Version: 1.0.0
-* GitHub: NA
-* Source code: https://github.com/cran/ZillowR
-* Date/Publication: 2022-05-05 02:10:02 UTC
-* Number of recursive dependencies: 63
+Run `revdepcheck::cloud_details(, "WhatsR")` for more info
+
+## Newly broken
+
+*   checking examples ... ERROR
+     ```
+     Running examples in ‘WhatsR-Ex.R’ failed
+     The error most likely occurred in:
+     
+     > ### Name: download_emoji
+     > ### Title: Scraping a dictionary of emoji from https://www.unicode.org/
+     > ### Aliases: download_emoji
+     > 
+     > ### ** Examples
+     > 
+     > Emoji_dictionary <- download_emoji(nlines = 50)
+     Warning in file(con, "r") :
+       URL 'https://www.unicode.org/Public/emoji/15.1/emoji-test.txt': Timeout of 60 seconds was reached
+     Error in file(con, "r") : 
+       cannot open the connection to 'https://www.unicode.org/Public/emoji/15.1/emoji-test.txt'
+     Calls: download_emoji -> readLines -> file
+     Execution halted
+     ```
+
+# ZillowR (1.0.0)
+
+* Email: <mailto:fascinatingfingers@icloud.com>
+* GitHub mirror: <https://github.com/cran/ZillowR>
 
 Run `revdepcheck::cloud_details(, "ZillowR")` for more info
 
-</details>
-
 ## Newly broken
 
 *   checking tests ... ERROR
-    ```
-      Running ‘spelling.R’
-      Running ‘testthat.R’
-    Running the tests in ‘tests/testthat.R’ failed.
-    Complete output:
-      > library(testthat)
-      > library(ZillowR)
-      > 
-      > test_check("ZillowR")
-      [ FAIL 9 | WARN 0 | SKIP 0 | PASS 125 ]
-      
-    ...
-          ▆
-       1. └─testthat::with_mock(...) at test-GetZestimate.R:7:5
-       2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-       3.     └─lifecycle:::deprecate_stop0(msg)
-       4.       └─rlang::cnd_signal(...)
-      
-      [ FAIL 9 | WARN 0 | SKIP 0 | PASS 125 ]
-      Error:
-      ! Test failures.
-      Execution halted
-    ```
+     ```
+     ...
+       ── Error ('test-GetUpdatedPropertyDetails.R:7:5'): 'getURL' errors are handled gracefully ──
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-GetUpdatedPropertyDetails.R:7:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       ── Error ('test-GetZestimate.R:7:5'): 'getURL' errors are handled gracefully ───
+       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
+       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
+       ℹ Please use `with_mocked_bindings()` instead.
+       Backtrace:
+           ▆
+        1. └─testthat::with_mock(...) at test-GetZestimate.R:7:5
+        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
+        3.     └─lifecycle:::deprecate_stop0(msg)
+        4.       └─rlang::cnd_signal(...)
+       
+       [ FAIL 9 | WARN 0 | SKIP 0 | PASS 125 ]
+       Error:
+       ! Test failures.
+       Execution halted
+     ```
 
