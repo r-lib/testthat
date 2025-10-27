@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `expect_snapshot(binary)` is now fully deprecated; it was soft deprecated in v3.0.3.
+* `test_files(wrap)` has now been removed; it was deprecated in v3.0.0.
 * Make `expect_lt()`, `expect_lte()`, `expect_gt()`, and `expect_gte()` work properly for non-numeric data (#2268)
 * New `expect_disjoint()` to check for the absence of values (@stibu81, #1851).
 * `expect_all_equal()`, `expect_all_true()`, and `expect_all_false()` are a new family of expectations that checks that every element of a vector has the same value. Compared to using `expect_true(all(...))` they give better failure messages (#1836, #2235).
