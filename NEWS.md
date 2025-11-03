@@ -30,6 +30,7 @@
 
 ## Other new features
 
+* Updated vendored Catch framework from v1.9.6 (2017) to Catch2 v2.13.10 (2022). This fixes compilation issues with the C++23 standard. @pachadotdev
 * New `local_mocked_s3_method()`, `local_mocked_s4_method()`, and `local_mocked_r6_class()` allow you to mock S3 and S4 methods and R6 classes (#1892, #1916)
 * New `local_on_cran(TRUE)` allows you to simulate how your tests will run on CRAN (#2112).
 * `test_dir()`, `test_file()`, `test_package()`, `test_check()`, `test_local()`, `source_file()` gain a `shuffle` argument that uses `sample()` to randomly reorder the top-level expressions in each test file (#1942). This random reordering surfaces dependencies between tests and code outside of any test, as well as dependencies between tests. This helps you find and eliminate unintentional dependencies.
