@@ -1,4 +1,7 @@
-#' Does code return a number greater/less than the expected value?
+#' Do you expect a value bigger or smaller than this?
+#'
+#' These functions compare values of comparable data types, such as numbers,
+#' dates, and times.
 #'
 #' @inheritParams expect_equal
 #' @param object,expected A value to compare and its expected bound.
@@ -19,62 +22,125 @@
 #' @name comparison-expectations
 NULL
 
-expect_compare <- function(operator = c("<", "<=", ">", ">="), act, exp) {
+expect_compare_ <- function(
+  operator = c("<", "<=", ">", ">="),
+  act,
+  exp,
+  trace_env = caller_env()
+) {
   operator <- match.arg(operator)
   op <- match.fun(operator)
 
-  msg <- c(
-    "<" =  "not strictly less than",
-    "<=" = "not less than",
-    ">"  = "not strictly more than",
-    ">=" = "not more than"
-  )[[operator]]
-
   cmp <- op(act$val, exp$val)
   if (length(cmp) != 1 || !is.logical(cmp)) {
-    abort("Result of comparison must be a single logical value")
+    cli::cli_abort(
+      "Result of comparison must be `TRUE`, `FALSE`, or `NA`",
+      call = trace_env
+    )
+  } else if (!isTRUE(cmp)) {
+    msg <- failure_compare(act, exp, operator)
+    fail(msg, trace_env = trace_env)
+  } else {
+    pass()
   }
-  expect(
-    if (!is.na(cmp)) cmp else FALSE,
-    sprintf("%s is %s %s. Difference: %.3g", act$lab, msg, exp$lab, act$val - exp$val),
-    trace_env = caller_env()
-  )
-  invisible(act$val)
 }
+
+failure_compare <- function(act, exp, operator) {
+  actual_op <- switch(operator, "<" = ">=", "<=" = ">", ">" = "<=", ">=" = "<")
+
+  msg_exp <- sprintf("Expected %s %s %s.", act$lab, operator, exp$lab)
+
+  if (is.numeric(act$val)) {
+    digits <- max(
+      digits(act$val),
+      digits(exp$val),
+      min_digits(act$val, exp$val)
+    )
+
+    msg_act <- sprintf(
+      "Actual comparison: %s %s %s",
+      num_exact(act$val, digits),
+      actual_op,
+      num_exact(exp$val, digits)
+    )
+
+    diff <- act$val - exp$val
+    if (is.na(diff)) {
+      msg_diff <- NULL
+    } else {
+      msg_diff <- sprintf(
+        "Difference: %s %s 0",
+        num_exact(diff, digits),
+        actual_op
+      )
+    }
+
+  } else {
+    msg_act <- sprintf(
+      "Actual comparison: \"%s\" %s \"%s\"",
+      act$val,
+      actual_op,
+      exp$val
+    )
+
+    if (inherits(act$val, c("Date", "POSIXt"))) {
+      diff <- act$val - exp$val
+      if (is.na(diff)) {
+        msg_diff <- NULL
+      } else {
+        msg_diff <- sprintf(
+          "Difference: %s %s 0 %s",
+          dt_diff(diff),
+          actual_op,
+          attr(diff, "unit")
+        )
+      }
+    } else {
+      msg_diff <- NULL
+    }
+  }
+
+  c(msg_exp, msg_act, msg_diff)
+}
+
 #' @export
 #' @rdname comparison-expectations
 expect_lt <- function(object, expected, label = NULL, expected.label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
-  expect_compare("<", act, exp)
+  expect_compare_("<", act, exp)
+  invisible(act$val)
 }
 
 #' @export
 #' @rdname comparison-expectations
 expect_lte <- function(object, expected, label = NULL, expected.label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
-  expect_compare("<=", act, exp)
+  expect_compare_("<=", act, exp)
+  invisible(act$val)
 }
 
 #' @export
 #' @rdname comparison-expectations
 expect_gt <- function(object, expected, label = NULL, expected.label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
-  expect_compare(">", act, exp)
+  expect_compare_(">", act, exp)
+  invisible(act$val)
 }
 
 #' @export
 #' @rdname comparison-expectations
 expect_gte <- function(object, expected, label = NULL, expected.label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  exp <- quasi_label(enquo(expected), expected.label, arg = "expected")
+  act <- quasi_label(enquo(object), label)
+  exp <- quasi_label(enquo(expected), expected.label)
 
-  expect_compare(">=", act, exp)
+  expect_compare_(">=", act, exp)
+  invisible(act$val)
 }
 
 
@@ -89,13 +155,55 @@ expect_gte <- function(object, expected, label = NULL, expected.label = NULL) {
 #' @param ... All arguments passed on to `expect_lt()`/`expect_gt()`.
 #' @keywords internal
 expect_less_than <- function(...) {
-  warning("Deprecated: please use `expect_lt()` instead", call. = FALSE)
+  cli::cli_warn("Deprecated: please use {.fn expect_lt} instead.")
   expect_lt(...)
 }
 
 #' @rdname expect_less_than
 #' @export
 expect_more_than <- function(...) {
-  warning("Deprecated: please use `expect_gt()` instead", call. = FALSE)
+  cli::cli_warn("Deprecated: please use {.fn expect_gt} instead.")
   expect_gt(...)
+}
+
+
+# Helpers -----------------------------------------------------------------
+
+num_exact <- function(x, digits = 6) {
+  sprintf(paste0("%0.", digits, "f"), x)
+}
+
+min_digits <- function(x, y, tolerance = testthat_tolerance()) {
+  if (is.integer(x) && is.integer(y)) {
+    return(0L)
+  }
+
+  attributes(x) <- NULL
+  attributes(y) <- NULL
+
+  n <- digits(abs(x - y))
+  if (!is.null(tolerance)) {
+    n <- min(n, digits(tolerance))
+  }
+
+  as.integer(n) + 1L
+}
+
+digits <- function(x) {
+  x <- x[!is.na(x) & x != 0]
+  if (length(x) == 0) {
+    return(0)
+  }
+  scale <- -log10(min(abs(x)))
+  if (scale <= 0) {
+    0L
+  } else {
+    ceiling(round(scale, digits = 2))
+  }
+}
+
+dt_diff <- function(x) {
+  val <- unclass(x)
+  digits <- digits(abs(val)) + 1
+  paste(num_exact(val, digits), attr(x, "unit"))
 }

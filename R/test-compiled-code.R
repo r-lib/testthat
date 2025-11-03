@@ -2,22 +2,32 @@
 #' @rdname run_cpp_tests
 #' @export
 expect_cpp_tests_pass <- function(package) {
+  check_string(package)
+
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
   output <- ""
   tests_passed <- TRUE
 
   tryCatch(
-    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests, FALSE)),
+    output <- capture_output_lines(
+      tests_passed <- .Call(run_testthat_tests, FALSE)
+    ),
     error = function(e) {
-      warning(sprintf("failed to call test entrypoint '%s'", run_testthat_tests))
+      cli::cli_warn(
+        "Failed to call test entrypoint {.fn {run_testthat_tests}}."
+      )
     }
   )
 
   # Drop first line of output (it's jut a '####' delimiter)
   info <- paste(output[-1], collapse = "\n")
 
-  expect(tests_passed, paste("C++ unit tests:", info, sep = "\n"))
+  if (!tests_passed) {
+    fail(paste("C++ unit tests:", info, sep = "\n"))
+  } else {
+    pass()
+  }
 }
 
 #' Do C++ tests past?
@@ -31,6 +41,8 @@ expect_cpp_tests_pass <- function(package) {
 #' @keywords internal
 #' @export
 run_cpp_tests <- function(package) {
+  check_string(package)
+
   skip_on_os("solaris")
   check_installed("xml2", "to run run_cpp_tests()")
 
@@ -40,20 +52,26 @@ run_cpp_tests <- function(package) {
   tests_passed <- TRUE
 
   catch_error <- FALSE
-  tryCatch({
-    output <- capture_output_lines(tests_passed <- .Call(run_testthat_tests, TRUE))
-  },
+  tryCatch(
+    {
+      output <- capture_output_lines(
+        tests_passed <- .Call(run_testthat_tests, TRUE)
+      )
+    },
     error = function(e) {
       catch_error <- TRUE
       reporter <- get_reporter()
 
       context_start("Catch")
       reporter$start_test(context = "Catch", test = "Catch")
-      reporter$add_result(context = "Catch", test = "Catch", result = expectation("failure", e$message))
+      reporter$add_result(
+        context = "Catch",
+        test = "Catch",
+        result = new_expectation("failure", e$message)
+      )
       reporter$end_test(context = "Catch", test = "Catch")
     }
   )
-
 
   if (catch_error) {
     return()
@@ -78,9 +96,13 @@ run_cpp_tests <- function(package) {
       get_reporter()$start_test(context = context_name, test = test_name)
 
       for (i in seq_len(successes)) {
-        exp <- expectation("success", "")
+        exp <- new_expectation("success", "")
         exp$test <- test_name
-        get_reporter()$add_result(context = context_name, test = test_name, result = exp)
+        get_reporter()$add_result(
+          context = context_name,
+          test = test_name,
+          result = exp
+        )
       }
 
       failures <- xml2::xml_find_all(test, "./Expression")
@@ -91,7 +113,8 @@ run_cpp_tests <- function(package) {
         filename <- xml2::xml_attr(failure, "filename")
         type <- xml2::xml_attr(failure, "type")
 
-        type_msg <- switch(type,
+        type_msg <- switch(
+          type,
           "CATCH_CHECK_FALSE" = "isn't false.",
           "CATCH_CHECK_THROWS" = "did not throw an exception.",
           "CATCH_CHECK_THROWS_AS" = "threw an exception with unexpected type.",
@@ -101,12 +124,19 @@ run_cpp_tests <- function(package) {
         org_text <- paste(org_text, type_msg)
 
         line <- xml2::xml_attr(failure, "line")
-        failure_srcref <- srcref(srcfile(file.path("src", filename)), c(line, line, 1, 1))
+        failure_srcref <- srcref(
+          srcfile(file.path("src", filename)),
+          c(line, line, 1, 1)
+        )
 
-        exp <- expectation("failure", org_text, srcref = failure_srcref)
+        exp <- new_expectation("failure", org_text, srcref = failure_srcref)
         exp$test <- test_name
 
-        get_reporter()$add_result(context = context_name, test = test_name, result = exp)
+        get_reporter()$add_result(
+          context = context_name,
+          test = test_name,
+          result = exp
+        )
       }
 
       exceptions <- xml2::xml_find_all(test, "./Exception")
@@ -115,12 +145,23 @@ run_cpp_tests <- function(package) {
         filename <- xml2::xml_attr(exception, "filename")
         line <- xml2::xml_attr(exception, "line")
 
-        exception_srcref <- srcref(srcfile(file.path("src", filename)), c(line, line, 1, 1))
+        exception_srcref <- srcref(
+          srcfile(file.path("src", filename)),
+          c(line, line, 1, 1)
+        )
 
-        exp <- expectation("error", exception_text, srcref = exception_srcref)
+        exp <- new_expectation(
+          "error",
+          exception_text,
+          srcref = exception_srcref
+        )
         exp$test <- test_name
 
-        get_reporter()$add_result(context = context_name, test = test_name, result = exp)
+        get_reporter()$add_result(
+          context = context_name,
+          test = test_name,
+          result = exp
+        )
       }
 
       get_reporter()$end_test(context = context_name, test = test_name)
@@ -128,7 +169,7 @@ run_cpp_tests <- function(package) {
   }
 }
 
-#' Use Catch for C++ Unit Testing
+#' Use Catch for C++ unit testing
 #'
 #' Add the necessary infrastructure to enable C++ unit testing
 #' in \R packages with [Catch](https://github.com/catchorg/Catch2) and
@@ -189,8 +230,8 @@ run_cpp_tests <- function(package) {
 #' \strong{Function} \tab \strong{Catch} \tab \strong{Description} \cr
 #' `context` \tab `CATCH_TEST_CASE` \tab The context of a set of tests. \cr
 #' `test_that` \tab `CATCH_SECTION` \tab A test section. \cr
-#' `expect_true` \tab `CATCH_CHECK` \tab Test that an expression evaluates to `true`. \cr
-#' `expect_false` \tab `CATCH_CHECK_FALSE` \tab Test that an expression evalutes to `false`. \cr
+#' `expect_true` \tab `CATCH_CHECK` \tab Test that an expression evaluates to `TRUE`. \cr
+#' `expect_false` \tab `CATCH_CHECK_FALSE` \tab Test that an expression evaluates to `FALSE`. \cr
 #' `expect_error` \tab `CATCH_CHECK_THROWS` \tab Test that evaluation of an expression throws an exception. \cr
 #' `expect_error_as` \tab `CATCH_CHECK_THROWS_AS` \tab Test that evaluation of an expression throws an exception of a specific class. \cr
 #' }
@@ -214,6 +255,28 @@ run_cpp_tests <- function(package) {
 #'     c_run_testthat_tests
 #'     run_testthat_tests
 #' }
+#'
+#' Assuming you have `useDynLib(<pkg>, .registration = TRUE)` in your package's
+#' `NAMESPACE` file, this implies having routine registration code of the form:
+#'
+#' ```
+#' // The definition for this function comes from the file 'src/test-runner.cpp',
+#' // which is generated via `testthat::use_catch()`.
+#' extern SEXP run_testthat_tests();
+#'
+#' static const R_CallMethodDef callMethods[] = {
+#'   // other .Call method definitions,
+#'   {"run_testthat_tests", (DL_FUNC) &run_testthat_tests, 0},
+#'   {NULL, NULL, 0}
+#' };
+#'
+#' void R_init_<pkg>(DllInfo* dllInfo) {
+#'   R_registerRoutines(dllInfo, NULL, callMethods, NULL, NULL);
+#'   R_useDynamicSymbols(dllInfo, FALSE);
+#' }
+#' ```
+#'
+#' replacing `<pkg>` above with the name of your package, as appropriate.
 #'
 #' See [Controlling Visibility](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility)
 #' and [Registering Symbols](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols)
@@ -260,18 +323,20 @@ run_cpp_tests <- function(package) {
 use_catch <- function(dir = getwd()) {
   desc_path <- file.path(dir, "DESCRIPTION")
   if (!file.exists(desc_path)) {
-    stop("no DESCRIPTION file at path '", desc_path, "'", call. = FALSE)
+    cli::cli_abort("No DESCRIPTION file at path {.path {desc_path}}.")
   }
 
   desc <- read.dcf(desc_path, all = TRUE)
   pkg <- desc$Package
   if (!nzchar(pkg)) {
-    stop("no 'Package' field in DESCRIPTION file '", desc_path, "'", call. = FALSE)
+    cli::cli_abort(
+      "No {.field Package} field in DESCRIPTION file {.path {desc_path}}."
+    )
   }
 
   src_dir <- file.path(dir, "src")
   if (!file.exists(src_dir) && !dir.create(src_dir)) {
-    stop("failed to create 'src/' directory '", src_dir, "'", call. = FALSE)
+    cli::cli_abort("Failed to create {.path src/} directory {.path {src_dir}}.")
   }
 
   test_runner_path <- file.path(src_dir, "test-runner.cpp")
@@ -284,7 +349,9 @@ use_catch <- function(dir = getwd()) {
   )
 
   if (!success) {
-    stop("failed to copy 'test-runner.cpp' to '", src_dir, "'", call. = FALSE)
+    cli::cli_abort(
+      "Failed to copy {.file test-runner.cpp} to {.path {src_dir}}."
+    )
   }
 
   # Copy the test example.
@@ -295,13 +362,17 @@ use_catch <- function(dir = getwd()) {
   )
 
   if (!success) {
-    stop("failed to copy 'test-example.cpp' to '", src_dir, "'", call. = FALSE)
+    cli::cli_abort(
+      "Failed to copy {.file test-example.cpp} to {.path {src_dir}}."
+    )
   }
 
   # Copy the 'test-cpp.R' file.
   test_dir <- file.path(dir, "tests", "testthat")
   if (!file.exists(test_dir) && !dir.create(test_dir, recursive = TRUE)) {
-    stop("failed to create 'tests/testthat/' directory '", test_dir, "'", call. = FALSE)
+    cli::cli_abort(
+      "Failed to create {.path tests/testthat/} directory {.path {test_dir}}."
+    )
   }
 
   template_file <- system.file(package = "testthat", "resources", "test-cpp.R")
@@ -311,20 +382,24 @@ use_catch <- function(dir = getwd()) {
   cat(transformed, file = output_path)
 
   # Copy the 'test-runner.R file.
-  template_file <- system.file(package = "testthat", "resources", "catch-routine-registration.R")
+  template_file <- system.file(
+    package = "testthat",
+    "resources",
+    "catch-routine-registration.R"
+  )
   contents <- readChar(template_file, file.info(template_file)$size, TRUE)
   transformed <- sprintf(contents, pkg)
   output_path <- file.path(dir, "R", "catch-routine-registration.R")
   cat(transformed, file = output_path)
 
-  message("> Added C++ unit testing infrastructure.")
-  message("> Please ensure you have 'LinkingTo: testthat' in your DESCRIPTION.")
-  message("> Please ensure you have 'Suggests: xml2' in your DESCRIPTION.")
-  message("> Please ensure you have 'useDynLib(", pkg, ", .registration = TRUE)' in your NAMESPACE.")
+  cli::cli_inform(c(
+    v = "Added C++ unit testing infrastructure.",
+    i = "Please ensure you have {.field LinkingTo: testthat} in your DESCRIPTION.",
+    i = "Please ensure you have {.field Suggests: xml2} in your DESCRIPTION."
+  ))
 }
 
 get_routine <- function(package, routine) {
-
   # check to see if the package has explicitly exported
   # the associated routine (check common prefixes as we
   # don't necessarily have access to the NAMESPACE and
@@ -354,8 +429,9 @@ get_routine <- function(package, routine) {
   }
 
   # if we got here, we failed to find the symbol -- throw an error
-  fmt <- "failed to locate routine '%s' in package '%s'"
-  stop(sprintf(fmt, routine, package), call. = FALSE)
+  cli::cli_abort(
+    "Failed to locate routine {.code {routine}} in package {.pkg {package}}."
+  )
 }
 
 (function() {

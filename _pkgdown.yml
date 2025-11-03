@@ -9,6 +9,7 @@ template:
 
   includes:
     in_header: |
+      <script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script>
       <script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 home:
   links:
@@ -16,31 +17,35 @@ home:
     href: http://r-pkgs.org/tests.html
 
 reference:
-- title: Expectations
-- subtitle: Objects
-  contents:
-  - expect_equal
-  - expect_type
 
-- subtitle: Vectors
+- title: Basics
   contents:
-  - expect_length
-  - expect_gt
-  - expect_named
-  - expect_setequal
+  - test_that
+  - expect_equal
+  - expect_error
   - expect_true
+
+- title: Expectations
+- subtitle: Values
+  contents:
+  - expect_all_equal
+  - expect_gt
+  - expect_length
+  - expect_match
+  - expect_named
+  - expect_null
+  - expect_setequal
+  - expect_type
   - expect_vector
 
 - subtitle: Side-effects
   contents:
-  - expect_error
   - expect_no_error
   - expect_invisible
   - expect_output
   - expect_silent
-  - local_reproducible_output
 
-- title: Snapshot testing
+- subtitle: Snapshot tests
   contents:
   - expect_snapshot
   - expect_snapshot_value
@@ -50,30 +55,53 @@ reference:
 - title: Test helpers
   contents:
   - is_testing
+  - local_edition
+  - local_reproducible_output
+  - set_state_inspector
   - skip
   - teardown_env
-  - set_state_inspector
+  - try_again
 
 - title: Run tests
   contents:
-  - starts_with("auto_test")
-  - describe
   - starts_with("test_")
+  - -test_that
   - use_catch
-
-- title: Reporters
-  contents:
-  - Reporter
-  - ends_with("Reporter")
 
 - title: Mocking
   contents:
-  - with_mocked_bindings
+  - local_mocked_bindings
+  - local_mocked_s3_method
+  - local_mocked_r6_class
+  - mock_output_sequence
 
-- title: Expectation internals
+- title: Custom expectations
   contents:
-  - expect
   - fail
+  - expect_success
+
+- title: Reporters
+  contents:
+  - ends_with("Reporter")
+  - -Reporter
+
+articles:
+- title: Setup and configuration
+  navbar: Setup
+  contents:
+  - third-edition
+  - parallel
+  - special-files
+  - custom-expectation
+
+- title: Testing techniques
+  navbar: Techniques
+  contents:
+  - challenging-tests
+  - mocking
+  - skipping
+  - snapshotting
+  - test-fixtures
 
 news:
   releases:

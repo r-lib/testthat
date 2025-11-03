@@ -1,3 +1,12 @@
+## Check notes
+
+There is one check note in this version:
+
+ File ‘testthat/libs/testthat.so’:
+    Found non-API calls to R: ‘SET_BODY’, ‘SET_CLOENV’, ‘SET_FORMALS’
+
+The plan is to remove these calls in the next minor release. I have now informed the majority of users that these functions are going away.
+
 ## revdepcheck results
 
-We checked all reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package. Unfortunately something is up with our revdep test system and I failed to check ~1200 packages. I'm pretty confident these are bioconductor packages and unrelated to changes to testthat.
+I did not check revdeps since the fixes are minor and should only decrease the number of errors.

@@ -6,7 +6,7 @@
 \alias{expect_lte}
 \alias{expect_gt}
 \alias{expect_gte}
-\title{Does code return a number greater/less than the expected value?}
+\title{Do you expect a value bigger or smaller than this?}
 \usage{
 expect_lt(object, expected, label = NULL, expected.label = NULL)
 
@@ -23,7 +23,8 @@ expect_gte(object, expected, label = NULL, expected.label = NULL)
 use only.}
 }
 \description{
-Does code return a number greater/less than the expected value?
+These functions compare values of comparable data types, such as numbers,
+dates, and times.
 }
 \examples{
 a <- 9

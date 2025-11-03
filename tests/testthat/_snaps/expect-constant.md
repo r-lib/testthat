@@ -1,28 +1,33 @@
 # logical tests act as expected
 
-    FALSE is not TRUE
-    
-    `actual`:   [32mFALSE[39m
-    `expected`: [32mTRUE[39m 
+    Code
+      expect_true(df)
+    Condition
+      Error:
+      ! Expected `df` to be TRUE.
+      Differences:
+      `actual` is an S3 object of class <data.frame>, a list
+      `expected` is a logical vector (TRUE)
 
 ---
 
-    TRUE is not FALSE
-    
-    `actual`:   [32mTRUE[39m 
-    `expected`: [32mFALSE[39m
+    Code
+      expect_false(df)
+    Condition
+      Error:
+      ! Expected `df` to be FALSE.
+      Differences:
+      `actual` is an S3 object of class <data.frame>, a list
+      `expected` is a logical vector (FALSE)
 
 # expect_null works
 
-    1L is not NULL
-    
-    `actual` is [32man integer vector[39m (1)
-    `expected` is [32mNULL[39m
-
----
-
-    environment() is not NULL
-    
-    `actual` is [32man environment[39m
-    `expected` is [32mNULL[39m
+    Code
+      expect_null(df)
+    Condition
+      Error:
+      ! Expected `df` to be NULL.
+      Differences:
+      `actual` is an S3 object of class <data.frame>, a list
+      `expected` is NULL
 

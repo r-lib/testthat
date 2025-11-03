@@ -1,24 +1,129 @@
-# provide useful feedback on failure
+# provide useful feedback on failure (3e)
 
-    1 (`actual`) not identical to "a" (`expected`).
-    
-    `actual` is [32ma double vector[39m (1)
-    `expected` is [32ma character vector[39m ('a')
-
----
-
-    1 (`actual`) not equal to "a" (`expected`).
-    
-    `actual` is [32ma double vector[39m (1)
-    `expected` is [32ma character vector[39m ('a')
+    Code
+      expect_identical(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to be identical to "a".
+      Differences:
+      `actual` is a double vector (1)
+      `expected` is a character vector ('a')
 
 ---
 
-    1 not identical to "a".
-    Types not compatible: double is not character
+    Code
+      expect_equal(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to equal "a".
+      Differences:
+      `actual` is a double vector (1)
+      `expected` is a character vector ('a')
 
 ---
 
-    1 not equal to "a".
-    Types not compatible: double is not character
+    Code
+      expect_identical(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to be identical to "a".
+      Differences:
+      Types not compatible: double is not character
+
+---
+
+    Code
+      expect_equal(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to equal "a".
+      Differences:
+      Types not compatible: double is not character
+
+# correctly spaces lines
+
+    Code
+      expect_equal(list(a = 1), list(a = "b", b = 10))
+    Condition
+      Error:
+      ! Expected `list(a = 1)` to equal `list(a = "b", b = 10)`.
+      Differences:
+      `actual` is length 1
+      `expected` is length 2
+      
+      `names(actual)`:   "a"    
+      `names(expected)`: "a" "b"
+      
+      `actual$a` is a double vector (1)
+      `expected$a` is a character vector ('b')
+      
+      `actual$b` is absent
+      `expected$b` is a double vector (10)
+
+# provide useful feedback on failure (2e)
+
+    Code
+      expect_identical(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to be identical to "a".
+      Differences:
+      Types not compatible: double is not character
+
+---
+
+    Code
+      expect_equal(x, "a")
+    Condition
+      Error:
+      ! Expected `x` to equal "a".
+      Differences:
+      Types not compatible: double is not character
+
+# default labels use unquoting
+
+    Code
+      expect_equal(x, !!y)
+    Condition
+      Error:
+      ! Expected `x` to equal 2.
+      Differences:
+        `actual`: 1.0
+      `expected`: 2.0
+
+# useful message if objects equal but not identical
+
+    Code
+      expect_identical(f, g)
+    Condition
+      Error:
+      ! Expected `f` to be identical to `g`.
+      Differences:
+      Objects equal but not identical
+
+# attributes for object (#452)
+
+    Code
+      expect_equal(oops, 0)
+    Condition
+      Error:
+      ! Expected `oops` to equal 0.
+      Differences:
+      Attributes: < Modes: list, NULL >
+      Attributes: < Lengths: 1, 0 >
+      Attributes: < names for target but not for current >
+      Attributes: < current is not list-like >
+
+# expect_equal validates its inputs
+
+    Code
+      expect_equal(1, 2, tolerance = "high")
+    Condition
+      Error in `expect_equal()`:
+      ! `tolerance` must be a number or `NULL`, not the string "high".
+    Code
+      expect_equal(1, 2, tolerance = -1)
+    Condition
+      Error in `expect_equal()`:
+      ! `tolerance` must be a number larger than or equal to 0 or `NULL`, not the number -1.
 

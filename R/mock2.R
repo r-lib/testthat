@@ -1,4 +1,4 @@
-#' Mocking tools
+#' Temporarily redefine function definitions
 #'
 #' @description
 #' `with_mocked_bindings()` and `local_mocked_bindings()` provide tools for
@@ -7,9 +7,7 @@
 #' state (i.e. reading a value from a file or a website, or pretending a package
 #' is or isn't installed).
 #'
-#' These functions represent a second attempt at bringing mocking to testthat,
-#' incorporating what we've learned from the mockr, mockery, and mockthat
-#' packages.
+#' Learn more in `vignette("mocking")`.
 #'
 #' # Use
 #'
@@ -22,6 +20,9 @@
 #' * Called from an external package with `::`.
 #'
 #' They are described in turn below.
+#'
+#' (To mock S3 & S4 methods and R6 classes see [local_mocked_s3_method()],
+#' [local_mocked_s4_method()], and [local_mocked_r6_class()].)
 #'
 #' ## Internal & imported functions
 #'
@@ -92,6 +93,17 @@
 #'   my_wrapper = function(...) "new_value"
 #' )
 #' ```
+#'
+#' ## Multiple return values / sequence of outputs
+#'
+#' To mock a function that returns different values in sequence,
+#' for instance an API call whose status would be 502 then 200,
+#' or an user input to `readline()`, you can use [mock_output_sequence()]
+#'
+#' ```R
+#' local_mocked_bindings(readline = mock_output_sequence("3", "This is a note", "n"))
+#' ```
+#'
 #' @export
 #' @param ... Name-value pairs providing new values (typically functions) to
 #'   temporarily replace the named bindings.
@@ -103,6 +115,7 @@
 #'   under active development (i.e. loaded with [pkgload::load_all()]).
 #'   We don't recommend using this to mock functions in other packages,
 #'   as you should not modify namespaces that you don't own.
+#' @family mocking
 local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
   bindings <- list2(...)
   check_bindings(bindings)
@@ -132,7 +145,7 @@ local_mocked_bindings <- function(..., .package = NULL, .env = caller_env()) {
     local_bindings_rebind(!!!bindings, .env = test_env, .frame = .env)
   }
 
-  if (any(!bindings_found)) {
+  if (!all(bindings_found)) {
     missing <- names(bindings)[!bindings_found]
     cli::cli_abort("Can't find binding for {.arg {missing}}")
   }
@@ -173,18 +186,18 @@ local_bindings_rebind <- function(..., .env = .frame, .frame = caller_env()) {
   invisible()
 }
 
-dev_package <- function() {
+dev_package <- function(call = caller_env()) {
   if (is_testing() && testing_package() != "") {
     testing_package()
   } else {
     loaded <- loadedNamespaces()
     is_dev <- map_lgl(loaded, function(x) !is.null(pkgload::dev_meta(x)))
     if (sum(is_dev) == 0) {
-      cli::cli_abort("No packages loaded with pkgload")
+      cli::cli_abort("No packages loaded with pkgload", call = call)
     } else if (sum(is_dev) == 1) {
       loaded[is_dev]
     } else {
-      cli::cli_abort("Multiple packages loaded with pkgload")
+      cli::cli_abort("Multiple packages loaded with pkgload", call = call)
     }
   }
 }

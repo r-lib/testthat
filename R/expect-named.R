@@ -1,4 +1,4 @@
-#' Does code return a vector with (given) names?
+#' Do you expect a vector with (these) names?
 #'
 #' You can either check for the presence of names (leaving `expected`
 #' blank), specific names (by supplying a vector of names), or absence of
@@ -24,40 +24,58 @@
 #' # Can also check for the absence of names with NULL
 #' z <- 1:4
 #' expect_named(z, NULL)
-expect_named <- function(object, expected, ignore.order = FALSE,
-                         ignore.case = FALSE, info = NULL,
-                         label = NULL) {
-  act <- quasi_label(enquo(object), label, arg = "object")
-  act$names <- names(act$val)
+expect_named <- function(
+  object,
+  expected,
+  ignore.order = FALSE,
+  ignore.case = FALSE,
+  info = NULL,
+  label = NULL
+) {
+  check_bool(ignore.order)
+  check_bool(ignore.case)
+
+  act <- quasi_label(enquo(object), label)
 
   if (missing(expected)) {
-    expect(
-      !identical(act$names, NULL),
-      sprintf("%s does not have names.", act$lab)
-    )
+    act_names <- names(act$val)
+    if (is.null(act_names)) {
+      msg <- sprintf("Expected %s to have names.", act$lab)
+      fail(msg)
+    } else {
+      pass()
+    }
   } else {
-    exp_names <- normalise_names(expected, ignore.order, ignore.case)
-    act$names <- normalise_names(act$names, ignore.order, ignore.case)
+    exp <- quasi_label(enquo(expected), arg = "expected")
 
-    expect(
-      identical(act$names, exp_names),
-      sprintf(
-        "Names of %s (%s) don't match %s",
-        act$lab,
-        paste0("'", act$names, "'", collapse = ", "),
-        paste0("'", exp_names, "'", collapse = ", ")
-      ),
-      info = info
+    exp$val <- normalise_names(exp$val, ignore.order, ignore.case)
+    act_names <- labelled_value(
+      normalise_names(names(act$val), ignore.order, ignore.case),
+      act$lab
     )
+
+    msg <- "Expected %s to have names %s."
+    if (ignore.order) {
+      expect_setequal_(msg, act_names, exp)
+    } else {
+      expect_waldo_equal_(msg, act_names, exp)
+    }
   }
+
   invisible(act$val)
 }
 
 normalise_names <- function(x, ignore.order = FALSE, ignore.case = FALSE) {
-  if (is.null(x)) return()
+  if (is.null(x)) {
+    return()
+  }
 
-  if (ignore.order) x <- sort(x)
-  if (ignore.case) x <- tolower(x)
+  if (ignore.order) {
+    x <- sort(x)
+  }
+  if (ignore.case) {
+    x <- tolower(x)
+  }
 
   x
 }

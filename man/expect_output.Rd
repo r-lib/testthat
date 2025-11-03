@@ -2,7 +2,7 @@
 % Please edit documentation in R/expect-output.R
 \name{expect_output}
 \alias{expect_output}
-\title{Does code print output to the console?}
+\title{Do you expect printed output to match this pattern?}
 \usage{
 expect_output(
   object,

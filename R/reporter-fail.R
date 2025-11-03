@@ -1,4 +1,4 @@
-#' Test reporter: fail at end.
+#' Fail if any tests fail
 #'
 #' This reporter will simply throw an error if any of the tests failed. It is
 #' best combined with another reporter, such as the
@@ -6,7 +6,8 @@
 #'
 #' @export
 #' @family reporters
-FailReporter <- R6::R6Class("FailReporter",
+FailReporter <- R6::R6Class(
+  "FailReporter",
   inherit = Reporter,
   public = list(
     failed = FALSE,
@@ -22,7 +23,7 @@ FailReporter <- R6::R6Class("FailReporter",
 
     end_reporter = function() {
       if (self$failed) {
-        stop("Failures detected.", call. = FALSE)
+        cli::cli_abort("Failures detected.")
       }
     }
   )

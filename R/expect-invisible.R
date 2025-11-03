@@ -1,4 +1,4 @@
-#' Does code return a visible or invisible object?
+#' Do you expect the result to be (in)visible?
 #'
 #' Use this to test whether a function returns a visible or invisible
 #' output. Typically you'll use this to check that functions called primarily
@@ -24,10 +24,14 @@ expect_invisible <- function(call, label = NULL) {
   lab <- label %||% expr_label(enexpr(call))
   vis <- withVisible(call)
 
-  expect(
-    identical(vis$visible, FALSE),
-    sprintf("%s does not return invisibly", lab)
-  )
+  if (!identical(vis$visible, FALSE)) {
+    fail(c(
+      sprintf("Expected %s to return invisibly.", lab),
+      "Actual visibility: visible."
+    ))
+  } else {
+    pass()
+  }
   invisible(vis$value)
 }
 
@@ -37,9 +41,13 @@ expect_visible <- function(call, label = NULL) {
   lab <- label %||% expr_label(enexpr(call))
   vis <- withVisible(call)
 
-  expect(
-    identical(vis$visible, TRUE),
-    sprintf("%s does not invisibly", lab)
-  )
+  if (!identical(vis$visible, TRUE)) {
+    fail(c(
+      sprintf("Expected %s to return visibly.", lab),
+      "Actual visibility: invisible."
+    ))
+  } else {
+    pass()
+  }
   invisible(vis$value)
 }

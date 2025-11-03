@@ -48,9 +48,14 @@
 #' @param env The environment to evaluate `code` in.
 #' @export
 #' @keywords internal
-verify_output <- function(path, code, width = 80, crayon = FALSE,
-                          unicode = FALSE, env = caller_env()) {
-
+verify_output <- function(
+  path,
+  code,
+  width = 80,
+  crayon = FALSE,
+  unicode = FALSE,
+  env = caller_env()
+) {
   local_reproducible_output(width = width, crayon = crayon, unicode = unicode)
 
   expr <- substitute(code)
@@ -59,12 +64,11 @@ verify_output <- function(path, code, width = 80, crayon = FALSE,
   if (!interactive() && on_cran()) {
     skip("On CRAN")
   }
-  compare_file(path, output, update = TRUE)
+  expect_file_unchanged_(path, output, update = TRUE)
   invisible()
 }
 
 verify_exec <- function(expr, env = caller_env(), replay = output_replay) {
-
   if (is_call(expr, "{")) {
     exprs <- as.list(expr[-1])
   } else {
@@ -75,11 +79,15 @@ verify_exec <- function(expr, env = caller_env(), replay = output_replay) {
   withr::local_pdf(device_path)
   grDevices::dev.control(displaylist = "enable")
 
-  exprs <- lapply(exprs, function(x) if (is.character(x)) paste0("# ", x) else expr_deparse(x))
+  exprs <- lapply(exprs, function(x) {
+    if (is.character(x)) paste0("# ", x) else expr_deparse(x)
+  })
   source <- unlist(exprs, recursive = FALSE)
 
   handler <- evaluate::new_output_handler(value = testthat_print)
-  results <- evaluate::evaluate(source, envir = env,
+  results <- evaluate::evaluate(
+    source,
+    envir = env,
     new_device = FALSE,
     output_handler = handler
   )
@@ -159,7 +167,7 @@ output_replay.message <- function(x) {
 
 #' @export
 output_replay.recordedplot <- function(x) {
-  abort("Plots are not supported")
+  cli::cli_abort("Plots are not supported.")
 }
 
 

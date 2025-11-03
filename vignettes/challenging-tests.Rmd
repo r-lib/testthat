@@ -1,0 +1,188 @@
+---
+title: "Testing challenging functions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Testing challenging functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+#| include: false
+library(testthat)
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+
+# Pretend we're snapshotting
+snapper <- local_snapshotter(fail_on_new = FALSE)
+snapper$start_file("snapshotting.Rmd", "test")
+
+# Pretend we're testing testthat so we can use mocking
+Sys.setenv(TESTTHAT_PKG = "testthat")
+```
+
+This vignette is a quick reference guide for testing challenging functions. It's organized by problem type rather than technique, so you can quickly skim the whole vignette, spot the problem you're facing, and then learn more about useful tools for solving it. In it, you'll learn how to overcome the following challenges:
+
+* Functions with implicit inputs, like options and environment variables.
+* Random number generators.
+* Tests that can't be run in some environments.
+* Testing web APIs.
+* Testing graphical output.
+* User interaction.
+* User-facing text.
+* Repeated code.
+
+## Options and environment variables
+
+If your function depends on options or environment variables, first try refactoring the function to make the [inputs explicit](https://design.tidyverse.org/inputs-explicit.html). If that's not possible, use functions like `withr::local_options()` or `withr::local_envvar()` to temporarily change options and environment values within a test. Learn more in `vignette("test-fixtures")`.
+
+<!-- FIXME: Consider adding a brief example showing the difference between implicit and explicit approaches - this would make the recommendation more concrete -->
+
+## Random numbers
+
+What happens if you want to test a function that relies on randomness in some way? If you're writing a random number generator, you probably want to generate a large quantity of random numbers and then apply some statistical test. But what if your function just happens to use a little bit of pre-existing randomness? How do you make your tests repeatable and reproducible? Under the hood, random number generators generate different numbers because they update a special `.Random.seed` variable stored in the global environment. You can temporarily set this seed to a known value to make your random numbers reproducible with `withr::local_seed()`, making random numbers a special case of test fixtures (`vignette("test-fixtures")`).
+
+Here's a simple example showing how you might test the basic operation of a function that rolls a die:
+
+```{r}
+#| label: random-local-seed
+dice <- function() {
+  sample(6, 1)
+}
+
+test_that("dice returns different numbers", {
+  withr::local_seed(1234)
+
+  expect_equal(dice(), 4)
+  expect_equal(dice(), 2)
+  expect_equal(dice(), 6)
+})
+```
+
+Alternatively, you might want to mock (`vignette("mocking")`) the function to eliminate randomness.
+
+```{r}
+#| label: random-mock
+
+roll_three <- function() {
+  sum(dice(), dice(), dice())
+}
+
+test_that("three dice adds values of individual calls", {
+  local_mocked_bindings(dice = mock_output_sequence(1, 2, 3))
+  expect_equal(roll_three(), 6)
+})
+```
+
+When should you set the seed and when should you use mocking? As a general rule of thumb, set the seed when you want to test the actual random behavior, and use mocking when you want to test the logic that uses the random results.
+
+## Some tests can't be run in some circumstances
+
+You can skip a test without it passing or failing if you can't or don't want to run it (e.g., it's OS dependent, it only works interactively, or it shouldn't be tested on CRAN). Learn more in `vignette("skipping")`.
+
+## HTTP requests
+
+If you're trying to test functions that rely on HTTP requests, we recommend using {vcr} or {httptest2}. These packages both allow you to interactively record HTTP responses and then later replay them in tests. This is a specialized type of mocking (`vignette("mocking")`) that works with {httr} and {httr2} to isolates your tests from failures in the underlying API. 
+
+If your package is going to CRAN, you **must** either use one of these packages or use `skip_on_cran()` for all internet-facing tests. Otherwise, you are at high risk of failing `R CMD check` if the underlying API is temporarily down. This sort of failure causes extra work for the CRAN maintainers and extra hassle for you.
+
+## Graphics
+
+The only type of testing you can use for graphics is snapshot testing (`vignette("snapshotting")`) via `expect_snapshot_file()`. Graphical snapshot testing is surprisingly challenging because you need pixel-perfect rendering across multiple versions of multiple operating systems, and this is hard, mostly due to imperceptible differences in font rendering. Fortunately we've needed to overcome these challenges in order to test {ggplot2}, and you can benefit from our experience by using {vdiffr} when testing graphical output.
+
+## User interaction
+
+If you're testing a function that relies on user feedback (e.g. from `readline()`, `utils::menu()`, or `utils::askYesNo()`), you can use mocking (`vignette("mocking")`) to return fixed values within the test. For example, imagine that you've written the following function that asks the user if they want to continue:
+
+```{r}
+#| label: continue
+
+continue <- function(prompt) {
+  cat(prompt, "\n", sep = "")
+
+  repeat {
+    val <- readline("Do you want to continue? (y/n) ")
+    if (val %in% c("y", "n")) {
+      return(val == "y")
+    }
+    cat("! You must enter y or n\n")
+  }  
+}
+
+readline <- NULL
+```
+
+You could test its behavior by mocking `readline()` and using a snapshot test:
+
+```{r}
+#| label: mock-readline
+
+test_that("user must respond y or n", {
+  mock_readline <- local({
+    i <- 0
+    function(prompt) {
+      i <<- i + 1
+      cat(prompt)
+      val <- if (i == 1) "x" else "y"
+      cat(val, "\n", sep = "")
+      val
+    }
+  })
+
+  local_mocked_bindings(readline = mock_readline)
+  expect_snapshot(val <- continue("This is dangerous"))
+  expect_true(val)
+})
+```
+
+If you don't care about reproducing the output of `continue()` and just want to recreate its return value, you can use `mock_output_sequence()`. This creates a function that returns the input supplied to `mock_output_sequence()` in sequence: the first input at the first call, the second input at the second call, etc. The following code shows how it works and how you might use it to test `readline()`:
+
+```{r}
+f <- mock_output_sequence(1, 12, 123)
+f()
+f()
+f()
+```
+
+And 
+
+```{r}
+test_that("user must respond y or n", {
+  local_mocked_bindings(readline = mock_output_sequence("x", "y"))
+  expect_true(continue("This is dangerous"))
+})
+```
+
+
+If you were testing the behavior of some function that uses `continue()`, you might want to mock `continue()` instead of `readline()`. For example, the function below requires user confirmation before overwriting an existing file. In order to focus our tests on the behavior of just this function, we mock `continue()` to return either `TRUE` or `FALSE` without any user messaging.
+
+```{r}
+#| label: mock-continue
+
+save_file <- function(path, data) {
+  if (file.exists(path)) {
+    if (!continue("`path` already exists")) {
+      stop("Failed to continue")
+    }
+  }
+  writeLines(data, path)
+}
+
+test_that("save_file() requires confirmation to overwrite file", {
+  path <- withr::local_tempfile(lines = letters)
+
+  local_mocked_bindings(continue = function(...) TRUE)
+  save_file(path, "a")
+  expect_equal(readLines(path), "a")
+
+  local_mocked_bindings(continue = function(...) FALSE)
+  expect_snapshot(save_file(path, "a"), error = TRUE)
+})
+```
+
+## User-facing text
+
+Errors, warnings, and other user-facing text should be tested to ensure they're both actionable and consistent across the package. Obviously, it's not possible to test this automatically, but you can use snapshots (`vignette("snapshotting")`) to ensure that user-facing messages are clearly shown in PRs and easily reviewed by another human.
+
+## Repeated code
+
+If you find yourself repeating the same set of expectations again and again across your test suite, it may be a sign that you should design your own expectation. Learn how in `vignette("custom-expectation")`.

@@ -1,17 +1,19 @@
-#' Check reporter: 13 line summary of problems
+#' Report results for `R CMD check`
 #'
 #' `R CMD check` displays only the last 13 lines of the result, so this
 #' report is designed to ensure that you see something useful there.
 #'
 #' @export
 #' @family reporters
-CheckReporter <- R6::R6Class("CheckReporter",
+CheckReporter <- R6::R6Class(
+  "CheckReporter",
   inherit = Reporter,
   public = list(
     problems = NULL,
     skips = NULL,
     warnings = NULL,
     n_ok = 0L,
+    old_in_check_reporter = NULL,
 
     initialize = function(...) {
       self$capabilities$parallel_support <- TRUE
@@ -34,7 +36,14 @@ CheckReporter <- R6::R6Class("CheckReporter",
       }
     },
 
+    start_reporter = function() {
+      self$old_in_check_reporter <- in_check_reporter()
+      the$in_check_reporter <- TRUE
+    },
+
     end_reporter = function() {
+      the$in_check_reporter <- self$old_in_check_reporter
+
       if (self$skips$size() || self$warnings$size() || self$problems$size()) {
         self$cat_line(summary_line(
           n_fail = self$problems$size(),
@@ -63,6 +72,11 @@ CheckReporter <- R6::R6Class("CheckReporter",
         self$rule("Failed tests", line = 2)
         self$cat_line(map_chr(problems, issue_summary, rule = TRUE))
         self$cat_line()
+
+        if (some(problems, \(x) isTRUE(attr(x, "snapshot")))) {
+          self$rule("Snapshots", line = 1)
+          self$cat_line(snapshot_check_hint())
+        }
       } else {
         # clean up
         unlink("testthat-problems.rds")
@@ -86,10 +100,56 @@ summary_line <- function(n_fail, n_warn, n_skip, n_pass) {
   # Ordered from most important to least important
   paste0(
     "[ ",
-    colourise_if("FAIL", "failure", n_fail > 0), " ", n_fail, " | ",
-    colourise_if("WARN", "warn", n_warn > 0),    " ", n_warn, " | ",
-    colourise_if("SKIP", "skip", n_skip > 0),    " ", n_skip, " | ",
-    colourise_if("PASS", "success", n_fail == 0), " ", n_pass,
+    colourise_if("FAIL", "failure", n_fail > 0),
+    " ",
+    n_fail,
+    " | ",
+    colourise_if("WARN", "warn", n_warn > 0),
+    " ",
+    n_warn,
+    " | ",
+    colourise_if("SKIP", "skip", n_skip > 0),
+    " ",
+    n_skip,
+    " | ",
+    colourise_if("PASS", "success", n_fail == 0),
+    " ",
+    n_pass,
     " ]"
   )
+}
+
+snapshot_check_hint <- function() {
+  intro <- "To review and process snapshots locally:"
+
+  if (on_gh()) {
+    repository <- Sys.getenv("GITHUB_REPOSITORY")
+    run_id <- Sys.getenv("GITHUB_RUN_ID")
+
+    call <- sprintf(
+      "testthat::snapshot_download_gh(\"%s\", \"%s\")",
+      repository,
+      run_id
+    )
+    copy <- sprintf("* Run `%s` to download snapshots.", call)
+  } else {
+    copy <- c(
+      if (on_ci()) {
+        "* Download and unzip artifact."
+      } else {
+        "* Locate check directory."
+      },
+      "* Copy 'tests/testthat/_snaps' to local package."
+    )
+  }
+
+  action <- c(
+    "* Run `testthat::snapshot_accept()` to accept all changes.",
+    "* Run `testthat::snapshot_review()` to review all changes."
+  )
+  c(intro, copy, action)
+}
+
+run <- function(x) {
+  cli::format_inline(paste0("{.run testthat::", x, "}"))
 }

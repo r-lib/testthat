@@ -5,7 +5,7 @@ test_that("environment has package name", {
 
 setClass("MyClass")
 test_that("Cannot create S4 class without special behaviour", {
-  expect_error(setClass("MyClass2"), NA)
+  expect_no_error(setClass("MyClass2"))
 })
 
 test_that("is_checking respects env var", {

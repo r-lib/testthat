@@ -2,36 +2,59 @@
 % Please edit documentation in R/expect-that.R
 \name{fail}
 \alias{fail}
-\alias{succeed}
-\title{Default expectations that always succeed or fail.}
+\alias{pass}
+\title{Declare that an expectation either passes or fails}
 \usage{
 fail(
   message = "Failure has been forced",
   info = NULL,
-  trace_env = caller_env()
+  srcref = NULL,
+  trace_env = caller_env(),
+  trace = NULL
 )
 
-succeed(message = "Success has been forced", info = NULL)
+pass()
 }
 \arguments{
-\item{message}{a string to display.}
+\item{message}{A character vector describing the failure. The
+first element should describe the expected value, and the second (and
+optionally subsequence) elements should describe what was actually seen.}
 
 \item{info}{Character vector continuing additional information. Included
 for backward compatibility only and new expectations should not use it.}
 
-\item{trace_env}{If \code{is.null(trace)}, this is used to automatically
-generate a traceback running from \code{test_code()}/\code{test_file()} to
-\code{trace_env}. You'll generally only need to set this if you're wrapping
-an expectation inside another function.}
+\item{srcref}{Location of the failure. Should only needed to be explicitly
+supplied when you need to forward a srcref captured elsewhere.}
+
+\item{trace_env}{If \code{trace} is not specified, this is used to generate an
+informative traceback for failures. You should only need to set this if
+you're calling \code{fail()} from a helper function; see
+\code{vignette("custom-expectation")} for details.}
+
+\item{trace}{An optional backtrace created by \code{\link[rlang:trace_back]{rlang::trace_back()}}.
+When supplied, the expectation is displayed with the backtrace.
+Expert use only.}
 }
 \description{
-These allow you to manually trigger success or failure. Failure is
-particularly useful to a pre-condition or mark a test as not yet
-implemented.
+These are the primitives that you can use to implement your own expectations.
+Every path through an expectation should either call \code{pass()}, \code{fail()},
+or throw an error (e.g. if the arguments are invalid). Expectations should
+always return \code{invisible(act$val)}.
+
+Learn more about creating your own expectations in
+\code{vignette("custom-expectation")}.
 }
 \examples{
-\dontrun{
-test_that("this test fails", fail())
-test_that("this test succeeds", succeed())
+expect_length <- function(object, n) {
+  act <- quasi_label(rlang::enquo(object), arg = "object")
+
+  act_n <- length(act$val)
+  if (act_n != n) {
+    fail(sprintf("\%s has length \%i, not length \%i.", act$lab, act_n, n))
+  } else {
+    pass()
+  }
+
+  invisible(act$val)
 }
 }

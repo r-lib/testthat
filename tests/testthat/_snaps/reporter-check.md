@@ -3,8 +3,8 @@
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
     
     == Skipped tests (3) ===========================================================
-    * empty test (2): 'reporters/tests.R:40:1', 'reporters/tests.R:45:1'
-    * skip (1): 'reporters/tests.R:37:3'
+    * empty test (2): 'reporters/tests.R:41:1', 'reporters/tests.R:45:1'
+    * skip (1): 'reporters/tests.R:38:3'
     
     == Warnings ====================================================================
     -- Warning ('reporters/tests.R:47:5'): warnings get backtraces -----------------
@@ -14,23 +14,25 @@
      1. \-f()
     
     == Failed tests ================================================================
-    -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
-    FALSE is not TRUE
-    
+    -- Failure ('reporters/tests.R:13:3'): Failure:1 -------------------------------
+    Expected `x` to be TRUE.
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
-    -- Failure ('reporters/tests.R:16:8'): Failure:2a ------------------------------
-    FALSE is not TRUE
     
+    -- Failure ('reporters/tests.R:17:8'): Failure:2a ------------------------------
+    Expected FALSE to be TRUE.
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
      2.   \-testthat::expect_true(FALSE)
-    -- Error ('reporters/tests.R:23:3'): Error:1 -----------------------------------
+    -- Error ('reporters/tests.R:24:3'): Error:1 -----------------------------------
     Error in `eval(code, test_env)`: stop
-    -- Error ('reporters/tests.R:29:8'): errors get tracebacks ---------------------
+    -- Error ('reporters/tests.R:30:8'): errors get tracebacks ---------------------
     Error in `h()`: !
     Backtrace:
         x
@@ -59,8 +61,8 @@
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
     
     == Skipped tests (3) ===========================================================
-    * empty test (2): 'reporters/tests.R:40:1', 'reporters/tests.R:45:1'
-    * skip (1): 'reporters/tests.R:37:3'
+    * empty test (2): 'reporters/tests.R:41:1', 'reporters/tests.R:45:1'
+    * skip (1): 'reporters/tests.R:38:3'
     
     == Warnings ====================================================================
     -- Warning ('reporters/tests.R:47:5'): warnings get backtraces -----------------
@@ -70,23 +72,25 @@
      1. \-f()
     
     == Failed tests ================================================================
-    -- Failure ('reporters/tests.R:12:3'): Failure:1 -------------------------------
-    FALSE is not TRUE
-    
+    -- Failure ('reporters/tests.R:13:3'): Failure:1 -------------------------------
+    Expected `x` to be TRUE.
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
-    -- Failure ('reporters/tests.R:16:8'): Failure:2a ------------------------------
-    FALSE is not TRUE
     
+    -- Failure ('reporters/tests.R:17:8'): Failure:2a ------------------------------
+    Expected FALSE to be TRUE.
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
      2.   \-testthat::expect_true(FALSE)
-    -- Error ('reporters/tests.R:23:3'): Error:1 -----------------------------------
+    -- Error ('reporters/tests.R:24:3'): Error:1 -----------------------------------
     Error in `eval(code, test_env)`: stop
-    -- Error ('reporters/tests.R:29:8'): errors get tracebacks ---------------------
+    -- Error ('reporters/tests.R:30:8'): errors get tracebacks ---------------------
     Error in `h()`: !
     Backtrace:
         x
@@ -95,4 +99,36 @@
      3.     \-h()
     
     [ FAIL 4 | WARN 1 | SKIP 3 | PASS 1 ]
+
+# generates informative snapshot hints
+
+    Code
+      base::writeLines(snapshot_check_hint())
+    Output
+      To review and process snapshots locally:
+      * Locate check directory.
+      * Copy 'tests/testthat/_snaps' to local package.
+      * Run `testthat::snapshot_accept()` to accept all changes.
+      * Run `testthat::snapshot_review()` to review all changes.
+
+---
+
+    Code
+      base::writeLines(snapshot_check_hint())
+    Output
+      To review and process snapshots locally:
+      * Download and unzip artifact.
+      * Copy 'tests/testthat/_snaps' to local package.
+      * Run `testthat::snapshot_accept()` to accept all changes.
+      * Run `testthat::snapshot_review()` to review all changes.
+
+---
+
+    Code
+      base::writeLines(snapshot_check_hint())
+    Output
+      To review and process snapshots locally:
+      * Run `testthat::snapshot_download_gh("r-lib/testthat", "123")` to download snapshots.
+      * Run `testthat::snapshot_accept()` to accept all changes.
+      * Run `testthat::snapshot_review()` to review all changes.
 

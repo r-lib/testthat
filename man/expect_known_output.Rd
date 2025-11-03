@@ -5,7 +5,7 @@
 \alias{expect_known_value}
 \alias{expect_equal_to_reference}
 \alias{expect_known_hash}
-\title{Expectations: is the output or the value equal to a known good value?}
+\title{Do you expect the results/output to equal a known value?}
 \usage{
 expect_known_output(
   object,

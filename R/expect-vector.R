@@ -1,4 +1,4 @@
-#' Does code return a vector with the expected size and/or prototype?
+#' Do you expect a vector with this size and/or prototype?
 #'
 #' `expect_vector()` is a thin wrapper around [vctrs::vec_assert()], converting
 #' the results of that function in to the expectations used by testthat. This
@@ -10,22 +10,33 @@
 #'   size-0 (empty) generalised vector.
 #' @param size (Optional) Size to check for.
 #' @export
-#' @examples
-#' if (requireNamespace("vctrs") && packageVersion("vctrs") > "0.1.0.9002") {
+#' @examplesIf requireNamespace("vctrs")
 #' expect_vector(1:10, ptype = integer(), size = 10)
 #' show_failure(expect_vector(1:10, ptype = integer(), size = 5))
 #' show_failure(expect_vector(1:10, ptype = character(), size = 5))
-#' }
 expect_vector <- function(object, ptype = NULL, size = NULL) {
-  act <- quasi_label(enquo(object), arg = "object")
+  check_installed("vctrs")
+  check_number_whole(size, min = 0, allow_null = TRUE)
+  act <- quasi_label(enquo(object))
+  # vec_assert() automatically adds backticks so we hack out the ones
+  # added by as_label()
+  act$lab <- gsub("^`|`$", "", act$lab)
 
-  message <- NULL
-  tryCatch(
+  failed <- FALSE
+  withCallingHandlers(
     vctrs::vec_assert(act$val, ptype = ptype, size = size, arg = act$lab),
+    vctrs_error_scalar_type = function(e) {
+      failed <<- TRUE
+      fail(e$message)
+    },
     vctrs_error_assert = function(e) {
-      message <<- e$message
+      failed <<- TRUE
+      fail(e$message)
     }
   )
 
-  expect(is.null(message), message)
+  if (!failed) {
+    pass()
+  }
+  invisible(act$val)
 }

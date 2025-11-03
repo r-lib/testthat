@@ -1,11 +1,12 @@
-#' Test reporter: RStudio
+#' Report results to RStudio
 #'
 #' This reporter is designed for output to RStudio. It produces results in
 #' any easily parsed form.
 #'
 #' @export
 #' @family reporters
-RStudioReporter <- R6::R6Class("RStudioReporter",
+RStudioReporter <- R6::R6Class(
+  "RStudioReporter",
   inherit = Reporter,
   public = list(
     initialize = function(...) {

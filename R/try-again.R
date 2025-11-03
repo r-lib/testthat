@@ -1,46 +1,48 @@
-#' Try evaluating an expressing multiple times until it succeeds.
+#' Evaluate an expectation multiple times until it succeeds
 #'
-#' @param times Maximum number of attempts.
-#' @param code Code to evaluate
-#' @keywords internal
+#' If you have a flaky test, you can use `try_again()` to run it a few times
+#' until it succeeds. In most cases, you are better fixing the underlying
+#' cause of the flakeyness, but sometimes that's not possible.
+#'
+#' @param times Number of times to retry.
+#' @param code Code to evaluate.
 #' @export
 #' @examples
-#' third_try <- local({
-#'   i <- 3
-#'   function() {
-#'     i <<- i - 1
-#'     if (i > 0) fail(paste0("i is ", i))
-#'   }
-#' })
-#' try_again(3, third_try())
+#' usually_return_1 <- function(i) {
+#'   if (runif(1) < 0.1) 0 else 1
+#' }
+#'
+#' \dontrun{
+#' # 10% chance of failure:
+#' expect_equal(usually_return_1(), 1)
+#'
+#' # 1% chance of failure:
+#' try_again(1, expect_equal(usually_return_1(), 1))
+#'
+#' # 0.1% chance of failure:
+#' try_again(2, expect_equal(usually_return_1(), 1))
+#' }
 try_again <- function(times, code) {
-  while (times > 0) {
-    e <- tryCatch(
-      withCallingHandlers(
-        {
-          code
-          NULL
-        },
-        warning = function(e) {
-          if (identical(e$message, "restarting interrupted promise evaluation")) {
-            maybe_restart("muffleWarning")
-          }
-        }
-      ),
-      expectation_failure = function(e) {
-        e
+  check_number_whole(times, min = 1)
+
+  code <- enquo(code)
+
+  i <- 1
+  while (i <= times) {
+    tryCatch(
+      return(eval(get_expr(code), get_env(code))),
+      expectation_failure = function(cnd) {
+        cli::cli_inform(c(i = "Expectation failed; trying again ({i})..."))
+        NULL
       },
-      error = function(e) {
-        e
+      error = function(cnd) {
+        cli::cli_inform(c(i = "Expectation errored; trying again ({i})..."))
+        NULL
       }
     )
 
-    if (is.null(e)) {
-      return(invisible(TRUE))
-    }
-
-    times <- times - 1L
+    i <- i + 1
   }
 
-  stop(e)
+  eval(get_expr(code), get_env(code))
 }

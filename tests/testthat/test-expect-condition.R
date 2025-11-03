@@ -5,18 +5,24 @@ test_that("returns condition or value", {
 
 test_that("regexp = NULL checks for presence of error", {
   expect_success(expect_error(stop()))
-  expect_snapshot_failure(expect_error(null()))
+
+  f <- function() {}
+  expect_snapshot_failure(expect_error(f()))
 })
 
 test_that("regexp = NA checks for absence of error", {
-  expect_success(expect_error(null(), NA))
-  expect_failure(expect_error(stop("Yes"), NA))
+  expect_success(expect_error({}, NA))
+
+  f <- function() stop("Yes")
+  expect_snapshot_failure(expect_error(f(), NA))
 })
 
 test_that("regexp = string matches for error message", {
   expect_success(expect_error(stop("Yes"), "Yes"))
   expect_error(expect_error(stop("Yes"), "No"))
-  expect_snapshot_failure(expect_error("OK", "No"))
+
+  f <- function() {}
+  expect_snapshot_failure(expect_error(f(), "No"))
 })
 
 test_that("class = string matches class of error", {
@@ -25,6 +31,7 @@ test_that("class = string matches class of error", {
   }
 
   expect_success(expect_error(blah(), class = "blah"))
+  # otherwise bubbles up
   expect_error(expect_error(blah(), class = "blech"), class = "blah")
 })
 
@@ -34,10 +41,11 @@ test_that("base_class must match when class is set", {
   expect_success(expect_warning(foo(), class = "bar"))
 })
 
-test_that("check type of class and pattern", {
+test_that("expect_error validates its inputs", {
   expect_snapshot(error = TRUE, {
     expect_error(stop("!"), regexp = 1)
     expect_error(stop("!"), class = 1)
+    expect_error(stop("!"), inherit = "yes")
   })
 })
 
@@ -74,6 +82,21 @@ test_that("can capture Throwable conditions from rJava", {
 
   throw <- function(msg) stop(error_cnd("Throwable", message = msg))
   expect_error(throw("foo"), "foo", class = "Throwable")
+})
+
+test_that("capture correct trace_env (#1994)", {
+  # This should fail, not error
+  status <- capture_success_failure({
+    stop("oops") |> expect_error() |> expect_warning()
+  })
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
+
+  status <- capture_success_failure({
+    stop("oops") |> expect_error() |> expect_warning()
+  })
+  expect_equal(status$n_success, 1) # from expect_error()
+  expect_equal(status$n_failure, 1) # from expect_warning()
 })
 
 # expect_warning() ----------------------------------------------------------
@@ -118,12 +141,33 @@ test_that("when checking for no warnings, exclude deprecation warnings (2e)", {
   )
 })
 
+test_that("expect_warning validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_warning(warning("!"), regexp = 1)
+    expect_warning(warning("!"), class = 1)
+    expect_warning(warning("!"), inherit = "yes")
+    expect_warning(warning("!"), all = "yes")
+  })
+})
+
 # expect_message ----------------------------------------------------------
 
 test_that("regexp = NA checks for absence of message", {
-  expect_success(expect_message(null(), NA))
-  expect_failure(expect_message(message("!"), NA))
+  expect_success(expect_message({}, NA))
+
+  f <- \() message("!")
+  expect_snapshot_failure(expect_message(f(), NA))
 })
+
+test_that("expect_message validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_message(message("!"), regexp = 1)
+    expect_message(message("!"), class = 1)
+    expect_message(message("!"), inherit = "yes")
+    expect_message(message("!"), all = "yes")
+  })
+})
+
 
 # expect_condition --------------------------------------------------------
 
@@ -147,6 +191,11 @@ test_that("captured condition is muffled", {
   expect_message(expect_condition(message("Hi")), NA)
   expect_warning(expect_condition(warning("Hi")), NA)
   expect_error(expect_condition(stop("Hi")), NA)
+})
+
+test_that("condition class is included in failure", {
+  f1 <- function() signal(class = "foo")
+  expect_snapshot_failure(expect_condition(f1(), class = "bar"))
 })
 
 test_that("only matching condition is captured, others bubble up", {
@@ -175,14 +224,29 @@ test_that("cnd expectations consistently return condition (#1371)", {
   expect_s3_class(expect_error(f(NULL, stop(""))), "simpleError")
 
   # Used to behave differently with non-`NULL` values
-  expect_s3_class(expect_message(f("return value", message(""))), "simpleMessage")
-  expect_s3_class(expect_warning(f("return value", warning(""))), "simpleWarning")
+  expect_s3_class(
+    expect_message(f("return value", message(""))),
+    "simpleMessage"
+  )
+  expect_s3_class(
+    expect_warning(f("return value", warning(""))),
+    "simpleWarning"
+  )
   expect_s3_class(expect_error(f("return value", stop(""))), "simpleError")
 
   # If there is no condition expected we return the value
-  expect_equal(expect_message(f("return value", NULL), regexp = NA), "return value")
-  expect_equal(expect_warning(f("return value", NULL), regexp = NA), "return value")
-  expect_equal(expect_error(f("return value", NULL), regexp = NA), "return value")
+  expect_equal(
+    expect_message(f("return value", NULL), regexp = NA),
+    "return value"
+  )
+  expect_equal(
+    expect_warning(f("return value", NULL), regexp = NA),
+    "return value"
+  )
+  expect_equal(
+    expect_error(f("return value", NULL), regexp = NA),
+    "return value"
+  )
 })
 
 test_that("cli width wrapping doesn't affect text matching", {
@@ -192,7 +256,9 @@ test_that("cli width wrapping doesn't affect text matching", {
   local_use_cli()
 
   expect_error(
-    abort("foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz"),
+    abort(
+      "foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz"
+    ),
     "foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz foobarbaz"
   )
 })
@@ -212,8 +278,22 @@ test_that("can match parent conditions (#1493)", {
   expect_error(expect_error(f(), "Parent message.", inherit = FALSE))
 })
 
-test_that("unused arguments generate a warning", {
-  expect_snapshot(expect_condition(stop("Hi!"), foo = "bar"))
+test_that("expect_condition validates its inputs", {
+  expect_snapshot(error = TRUE, {
+    expect_condition(stop("!"), regexp = 1)
+    expect_condition(stop("!"), class = 1)
+    expect_condition(stop("!"), inherit = "yes")
+  })
+})
+
+test_that("unused arguments generate an error", {
+  expect_snapshot(error = TRUE, {
+    expect_condition(stop("Hi!"), foo = "bar")
+    expect_condition(stop("Hi!"), , , "bar")
+    expect_condition(stop("Hi!"), , , "bar", fixed = TRUE)
+    expect_condition(stop("Hi!"), "x", foo = "bar")
+    expect_condition(stop("Hi!"), pattern = "bar", fixed = TRUE)
+  })
 })
 
 
@@ -223,7 +303,8 @@ test_that("other conditions are swallowed", {
   f <- function(...) {
     conds <- c(...)
     for (cond in conds) {
-      switch(cond,
+      switch(
+        cond,
         message = message("message"),
         warning = warning("warning"),
         error = stop("error"),

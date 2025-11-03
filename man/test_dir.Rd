@@ -13,9 +13,9 @@ test_dir(
   load_helpers = TRUE,
   stop_on_failure = TRUE,
   stop_on_warning = FALSE,
-  wrap = lifecycle::deprecated(),
   package = NULL,
-  load_package = c("none", "installed", "source")
+  load_package = c("none", "installed", "source"),
+  shuffle = FALSE
 )
 }
 \arguments{
@@ -42,8 +42,6 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 \item{stop_on_warning}{If \code{TRUE}, throw an error if any tests generate
 warnings.}
 
-\item{wrap}{DEPRECATED}
-
 \item{package}{If these tests belong to a package, the name of the package.}
 
 \item{load_package}{Strategy to use for load package code:
@@ -57,6 +55,9 @@ field in your DESCRIPTION file:
 \if{html}{\out{<div class="sourceCode">}}\preformatted{Config/testthat/load-all: list(export_all = FALSE, helpers = FALSE)
 }\if{html}{\out{</div>}}
 }}
+
+\item{shuffle}{If \code{TRUE}, randomly reorder the top-level expressions
+in the file.}
 }
 \value{
 A list (invisibly) containing data about the test results.
@@ -78,4 +79,3 @@ namespace environment, so that tests can access internal functions
 and objects.
 }
 
-\keyword{internal}

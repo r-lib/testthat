@@ -34,24 +34,45 @@
 #' # !!. This causes the failure message to show the value rather than the
 #' # variable name
 #' show_failure(expect_equal(f(!!i), !!(i * 10)))
-quasi_label <- function(quo, label = NULL, arg = "quo") {
+quasi_label <- function(quo, label = NULL, arg = NULL) {
+  if (is.null(arg)) {
+    arg <- substitute(quo)
+    if (is_call(arg, "enquo")) {
+      arg <- arg[[2]]
+    }
+    arg <- as_label(arg)
+  }
+
   force(quo)
   if (quo_is_missing(quo)) {
-    stop("argument `", arg, "` is missing, with no default.", call. = FALSE)
+    cli::cli_abort(
+      "argument {.arg {arg}} is missing, with no default.",
+      call = caller_env()
+    )
   }
 
   expr <- quo_get_expr(quo)
+  value <- eval_bare(expr, quo_get_env(quo))
+  label <- label %||% expr_label(expr)
 
-  list(
-    val = eval_bare(expr, quo_get_env(quo)),
-    lab = label %||% expr_label(expr)
-  )
+  labelled_value(value, label)
+}
+
+labelled_value <- function(value, label) {
+  if (missing(value)) {
+    list(val = missing_arg(), lab = label)
+  } else {
+    list(val = value, lab = label)
+  }
 }
 
 quasi_capture <- function(.quo, .label, .capture, ...) {
   act <- list()
   act$lab <- .label %||% quo_label(.quo)
-  act$cap <- .capture(act$val <- eval_bare(quo_get_expr(.quo), quo_get_env(.quo)), ...)
+  act$cap <- .capture(
+    act$val <- eval_bare(quo_get_expr(.quo), quo_get_env(.quo)),
+    ...
+  )
 
   act
 }
@@ -80,7 +101,7 @@ expr_label <- function(x) {
         x <- call2(x[[1]], quote(expr = ...))
       }
     }
-    deparse1(x)
+    paste0("`", deparse1(x), "`")
   } else {
     # Any other object that's been inlined in
     x <- deparse(x)
@@ -103,8 +124,30 @@ is_call_infix <- function(x) {
 
   name <- as_string(fn)
   base <- c(
-    ":", "::", ":::", "$", "@", "^", "*", "/", "+", "-", ">", ">=",
-    "<", "<=", "==", "!=", "!", "&", "&&", "|", "||", "~", "<-", "<<-"
+    ":",
+    "::",
+    ":::",
+    "$",
+    "@",
+    "^",
+    "*",
+    "/",
+    "+",
+    "-",
+    ">",
+    ">=",
+    "<",
+    "<=",
+    "==",
+    "!=",
+    "!",
+    "&",
+    "&&",
+    "|",
+    "||",
+    "~",
+    "<-",
+    "<<-"
   )
   name %in% base || grepl("^%.*%$", name)
 }

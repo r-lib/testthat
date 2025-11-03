@@ -5,39 +5,40 @@ classnameOK <- function(text) {
 }
 
 
-#' Test reporter: summary of errors in jUnit XML format.
+#' Report results in jUnit XML format
 #'
+#' @description
 #' This reporter includes detailed results about each test and summaries,
 #' written to a file (or stdout) in jUnit XML format. This can be read by
 #' the Jenkins Continuous Integration System to report on a dashboard etc.
 #' Requires the _xml2_ package.
 #'
-#' To fit into the jUnit structure, context() becomes the `<testsuite>`
+#' To fit into the jUnit structure, `context()` becomes the `<testsuite>`
 #' name as well as the base of the `<testcase> classname`. The
-#' test_that() name becomes the rest of the `<testcase> classname`.
-#' The deparsed expect_that() call becomes the `<testcase>` name.
+#' `test_that()` name becomes the rest of the `<testcase> classname`.
+#' The deparsed `expect_that()` call becomes the `<testcase>` name.
 #' On failure, the message goes into the `<failure>` node message
 #' argument (first line only) and into its text content (full message).
-#'
 #' Execution time and some other details are also recorded.
 #'
 #' References for the jUnit XML format:
-#' \url{http://llg.cubic.org/docs/junit/}
+#' <https://github.com/testmoapp/junitxml>
 #'
 #' @export
 #' @family reporters
-JunitReporter <- R6::R6Class("JunitReporter",
+JunitReporter <- R6::R6Class(
+  "JunitReporter",
   inherit = Reporter,
   public = list(
-    results  = NULL,
-    timer    = NULL,
-    doc      = NULL,
-    errors   = NULL,
+    results = NULL,
+    timer = NULL,
+    doc = NULL,
+    errors = NULL,
     failures = NULL,
-    skipped  = NULL,
-    tests    = NULL,
-    root     = NULL,
-    suite    = NULL,
+    skipped = NULL,
+    tests = NULL,
+    root = NULL,
+    suite = NULL,
     suite_time = NULL,
     file_name = NULL,
 
@@ -78,9 +79,9 @@ JunitReporter <- R6::R6Class("JunitReporter",
       self$suite <- xml2::xml_add_child(
         self$root,
         "testsuite",
-        name      = context,
+        name = context,
         timestamp = private$timestamp(),
-        hostname  = private$hostname()
+        hostname = private$hostname()
       )
     },
 
@@ -92,7 +93,10 @@ JunitReporter <- R6::R6Class("JunitReporter",
       xml2::xml_attr(self$suite, "failures") <- as.character(self$failures)
       xml2::xml_attr(self$suite, "errors") <- as.character(self$errors)
       #jenkins junit plugin requires time has at most 3 digits
-      xml2::xml_attr(self$suite, "time") <- as.character(round(self$suite_time, 3))
+      xml2::xml_attr(self$suite, "time") <- as.character(round(
+        self$suite_time,
+        3
+      ))
 
       self$reset_suite()
     },
@@ -104,10 +108,16 @@ JunitReporter <- R6::R6Class("JunitReporter",
       time <- self$elapsed_time()
       self$suite_time <- self$suite_time + time
 
+      # If no context was started (e.g., warnings outside tests), create a default one
+      if (is.null(self$suite)) {
+        self$start_context(context %||% "(unknown)")
+      }
+
       # XML node for test case
       name <- test %||% "(unnamed)"
       testcase <- xml2::xml_add_child(
-        self$suite, "testcase",
+        self$suite,
+        "testcase",
         time = toString(time),
         classname = classnameOK(context),
         name = classnameOK(name)
@@ -115,23 +125,36 @@ JunitReporter <- R6::R6Class("JunitReporter",
 
       first_line <- function(x) {
         loc <- expectation_location(x, " (", ")")
-        paste0(strsplit(x$message, split = "\n")[[1]][1], loc)
+        paste0(strsplit(cli::ansi_strip(x$message), split = "\n")[[1]][1], loc)
       }
 
       # add an extra XML child node if not a success
       if (expectation_error(result)) {
         # "type" in Java is the exception class
-        error <- xml2::xml_add_child(testcase, "error", type = "error", message = first_line(result))
+        error <- xml2::xml_add_child(
+          testcase,
+          "error",
+          type = "error",
+          message = first_line(result)
+        )
         xml2::xml_text(error) <- cli::ansi_strip(format(result))
         self$errors <- self$errors + 1
       } else if (expectation_failure(result)) {
         # "type" in Java is the type of assertion that failed
-        failure <- xml2::xml_add_child(testcase, "failure", type = "failure", message = first_line(result))
+        failure <- xml2::xml_add_child(
+          testcase,
+          "failure",
+          type = "failure",
+          message = first_line(result)
+        )
         xml2::xml_text(failure) <- cli::ansi_strip(format(result))
         self$failures <- self$failures + 1
       } else if (expectation_skip(result)) {
         xml2::xml_add_child(testcase, "skipped", message = first_line(result))
         self$skipped <- self$skipped + 1
+      } else if (expectation_warning(result)) {
+        warning_node <- xml2::xml_add_child(testcase, "system-out")
+        xml2::xml_text(warning_node) <- cli::ansi_strip(format(result))
       }
     },
 
@@ -143,7 +166,7 @@ JunitReporter <- R6::R6Class("JunitReporter",
         xml2::write_xml(self$doc, file, format = TRUE)
         cat(brio::read_file(file), file = self$out)
       } else {
-        stop("unsupported output type: ", toString(self$out))
+        cli::cli_abort("Unsupported output type: {toString(self$out)}.")
       }
     } # end_reporter
   ), # public
@@ -169,9 +192,10 @@ JunitReporter <- R6::R6Class("JunitReporter",
 #   - timestamp - originally wrapper for toString(Sys.time())
 #   - hostname  - originally wrapper for Sys.info()[["nodename"]]
 #
-JunitReporterMock <- R6::R6Class("JunitReporterMock",
+JunitReporterMock <- R6::R6Class(
+  "JunitReporterMock",
   inherit = JunitReporter,
-  public  = list(),
+  public = list(),
   private = list(
     proctime = function() {
       c(user = 0, system = 0, elapsed = 0)

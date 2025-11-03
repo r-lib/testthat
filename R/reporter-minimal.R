@@ -1,4 +1,4 @@
-#' Test reporter: minimal.
+#' Report minimal results as compactly as possible
 #'
 #' The minimal test reporter provides the absolutely minimum amount of
 #' information: whether each expectation has succeeded, failed or experienced
@@ -7,7 +7,8 @@
 #'
 #' @export
 #' @family reporters
-MinimalReporter <- R6::R6Class("MinimalReporter",
+MinimalReporter <- R6::R6Class(
+  "MinimalReporter",
   inherit = Reporter,
   public = list(
     initialize = function(...) {

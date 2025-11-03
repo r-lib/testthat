@@ -7,16 +7,18 @@
       </testsuite>
       <testsuite name="Failures" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="2" errors="0" time="0">
         <testcase time="0" classname="Failures" name="Failure_1">
-          <failure type="failure" message="FALSE is not TRUE ('reporters/tests.R:12:3')">FALSE is not TRUE
-    
-    `actual`:   FALSE
-    `expected`: TRUE </failure>
-        </testcase>
-        <testcase time="0" classname="Failures" name="Failure_2a">
-          <failure type="failure" message="FALSE is not TRUE ('reporters/tests.R:16:8')">FALSE is not TRUE
-    
+          <failure type="failure" message="Expected `x` to be TRUE. ('reporters/tests.R:13:3')">Expected `x` to be TRUE.
+    Differences:
     `actual`:   FALSE
     `expected`: TRUE 
+    </failure>
+        </testcase>
+        <testcase time="0" classname="Failures" name="Failure_2a">
+          <failure type="failure" message="Expected FALSE to be TRUE. ('reporters/tests.R:17:8')">Expected FALSE to be TRUE.
+    Differences:
+    `actual`:   FALSE
+    `expected`: TRUE 
+    
     Backtrace:
         x
      1. \-f()
@@ -25,10 +27,10 @@
       </testsuite>
       <testsuite name="Errors" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="0" failures="0" errors="2" time="0">
         <testcase time="0" classname="Errors" name="Error_1">
-          <error type="error" message="Error in `eval(code, test_env)`: stop ('reporters/tests.R:23:3')">Error in `eval(code, test_env)`: stop</error>
+          <error type="error" message="Error in `eval(code, test_env)`: stop ('reporters/tests.R:24:3')">Error in `eval(code, test_env)`: stop</error>
         </testcase>
         <testcase time="0" classname="Errors" name="errors_get_tracebacks">
-          <error type="error" message="Error in `h()`: ! ('reporters/tests.R:29:8')">Error in `h()`: !
+          <error type="error" message="Error in `h()`: ! ('reporters/tests.R:30:8')">Error in `h()`: !
     Backtrace:
         x
      1. \-f()
@@ -38,14 +40,19 @@
       </testsuite>
       <testsuite name="Skips" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="2" failures="0" errors="0" time="0">
         <testcase time="0" classname="Skips" name="explicit_skips_are_reported">
-          <skipped message="Reason: skip ('reporters/tests.R:37:3')"/>
+          <skipped message="Reason: skip ('reporters/tests.R:38:3')"/>
         </testcase>
         <testcase time="0" classname="Skips" name="empty_tests_are_implicitly_skipped">
-          <skipped message="Reason: empty test ('reporters/tests.R:40:1')"/>
+          <skipped message="Reason: empty test ('reporters/tests.R:41:1')"/>
         </testcase>
       </testsuite>
       <testsuite name="Warnings" timestamp="1999:12:31 23:59:59" hostname="nodename" tests="2" skipped="1" failures="0" errors="0" time="0">
-        <testcase time="0" classname="Warnings" name="warnings_get_backtraces"/>
+        <testcase time="0" classname="Warnings" name="warnings_get_backtraces">
+          <system-out>def
+    Backtrace:
+        x
+     1. \-f()</system-out>
+        </testcase>
         <testcase time="0" classname="Warnings" name="warnings_get_backtraces">
           <skipped message="Reason: empty test ('reporters/tests.R:45:1')"/>
         </testcase>

@@ -13,7 +13,7 @@ use to override the default (which is selected by \code{\link[=default_reporter]
 You only need to use this \code{Reporter} object directly if you are creating
 a new reporter. Currently, creating new Reporters is undocumented,
 so if you want to create your own, you'll need to make sure that you're
-familiar with \href{https://adv-r.hadley.nz/R6.html}{R6} and then need read the
+familiar with \href{https://adv-r.hadley.nz/r6.html}{R6} and then need read the
 source code for a few.
 }
 \examples{
@@ -36,6 +36,7 @@ Other reporters:
 \code{\link{ProgressReporter}},
 \code{\link{RStudioReporter}},
 \code{\link{SilentReporter}},
+\code{\link{SlowReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},

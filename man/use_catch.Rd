@@ -2,7 +2,7 @@
 % Please edit documentation in R/test-compiled-code.R
 \name{use_catch}
 \alias{use_catch}
-\title{Use Catch for C++ Unit Testing}
+\title{Use Catch for C++ unit testing}
 \usage{
 use_catch(dir = getwd())
 }
@@ -70,8 +70,8 @@ following wrappers, to conform with \code{testthat}'s
 \strong{Function} \tab \strong{Catch} \tab \strong{Description} \cr
 \code{context} \tab \code{CATCH_TEST_CASE} \tab The context of a set of tests. \cr
 \code{test_that} \tab \code{CATCH_SECTION} \tab A test section. \cr
-\code{expect_true} \tab \code{CATCH_CHECK} \tab Test that an expression evaluates to \code{true}. \cr
-\code{expect_false} \tab \code{CATCH_CHECK_FALSE} \tab Test that an expression evalutes to \code{false}. \cr
+\code{expect_true} \tab \code{CATCH_CHECK} \tab Test that an expression evaluates to \code{TRUE}. \cr
+\code{expect_false} \tab \code{CATCH_CHECK_FALSE} \tab Test that an expression evaluates to \code{FALSE}. \cr
 \code{expect_error} \tab \code{CATCH_CHECK_THROWS} \tab Test that evaluation of an expression throws an exception. \cr
 \code{expect_error_as} \tab \code{CATCH_CHECK_THROWS_AS} \tab Test that evaluation of an expression throws an exception of a specific class. \cr
 }
@@ -97,6 +97,27 @@ tests. \code{testthat} will look for a routine with one of the names:
     c_run_testthat_tests
     run_testthat_tests
 }
+
+Assuming you have \verb{useDynLib(<pkg>, .registration = TRUE)} in your package's
+\code{NAMESPACE} file, this implies having routine registration code of the form:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{// The definition for this function comes from the file 'src/test-runner.cpp',
+// which is generated via `testthat::use_catch()`.
+extern SEXP run_testthat_tests();
+
+static const R_CallMethodDef callMethods[] = \{
+  // other .Call method definitions,
+  \{"run_testthat_tests", (DL_FUNC) &run_testthat_tests, 0\},
+  \{NULL, NULL, 0\}
+\};
+
+void R_init_<pkg>(DllInfo* dllInfo) \{
+  R_registerRoutines(dllInfo, NULL, callMethods, NULL, NULL);
+  R_useDynamicSymbols(dllInfo, FALSE);
+\}
+}\if{html}{\out{</div>}}
+
+replacing \verb{<pkg>} above with the name of your package, as appropriate.
 
 See \href{https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Controlling-visibility}{Controlling Visibility}
 and \href{https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-symbols}{Registering Symbols}
