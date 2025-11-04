@@ -10,6 +10,13 @@
  */
 #ifndef TWOBLUECUBES_SINGLE_INCLUDE_CATCH_HPP_INCLUDED
 #define TWOBLUECUBES_SINGLE_INCLUDE_CATCH_HPP_INCLUDED
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include <R_ext/Error.h>
+#ifdef __cplusplus
+}
+#endif
 // start catch.hpp
 
 
@@ -9021,7 +9028,7 @@ namespace detail {
             assert( m_type != ResultBase::LogicError );
             assert( m_type != ResultBase::RuntimeError );
             if( m_type != ResultBase::Ok )
-                std::abort();
+                Rf_error("Fatal error in test framework");
         }
 
         std::string m_errorMessage; // Only populated if resultType is an error
@@ -13151,7 +13158,7 @@ namespace Catch {
 
     void seedRng(IConfig const& config) {
         if (config.rngSeed() != 0) {
-            std::srand(config.rngSeed());
+            // std::srand(config.rngSeed()); // Disabled for R compatibility
             rng().seed(config.rngSeed());
         }
     }
@@ -15786,7 +15793,7 @@ namespace Catch {
 #ifdef _MSC_VER
         sprintf_s(buffer, "%.3f", duration);
 #else
-        std::sprintf(buffer, "%.3f", duration);
+        std::snprintf(buffer, sizeof(buffer), "%.3f", duration);
 #endif
         return std::string(buffer);
     }

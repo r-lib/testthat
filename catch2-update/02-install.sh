@@ -27,5 +27,3 @@ fi
 echo "Catch2 v2.13.10 installed to inst/include/testthat/vendor/catch.hpp"
 echo ""
 echo "inst/include/testthat/testthat.h now uses catch.hpp instead of catch.h"
-echo "test compilation with: R CMD INSTALL --preclean ."
-echo "run tests with: Rscript -e 'testthat::test_local()'"

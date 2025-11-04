@@ -74,7 +74,7 @@ if [ $? -eq 0 ]; then
   echo " Package build successful"
   echo ""
   echo "======================================"
-  echo "All tests passed! ✓"
+  echo "All tests passed!"
   echo "======================================"
 else
   echo " Package build failed"
