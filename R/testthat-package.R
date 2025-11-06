@@ -30,3 +30,11 @@ the$in_check_reporter <- FALSE
 #' @importFrom lifecycle deprecated
 ## usethis namespace: end
 NULL
+
+# nocov start
+
+.onLoad <- function(libname, pkgname) {
+  otel_cache_tracer()
+}
+
+# nocov end

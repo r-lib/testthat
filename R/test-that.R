@@ -35,6 +35,7 @@
 #' }
 test_that <- function(desc, code) {
   local_description_push(desc)
+  otel_local_active_span("test that", desc)
 
   code <- substitute(code)
   test_code(code, parent.frame())
