@@ -448,7 +448,7 @@ useful, the snapshot will be different every time the test is run:</p>
 <span><span class="co">#&gt;   safe_write_lines(letters, path)</span></span>
 <span><span class="co">#&gt; Condition</span></span>
 <span><span class="co">#&gt;   Error in `safe_write_lines()`:</span></span>
-<span><span class="co">#&gt;   ! '/tmp/RtmpRVPqpd/file2a47784245af' already exists.</span></span>
+<span><span class="co">#&gt;   ! '/tmp/RtmpNIcW4v/file2ac627e776d3' already exists.</span></span>
 <span><span class="co">#&gt;   i Set `overwrite = TRUE` to overwrite</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -462,8 +462,8 @@ useful, the snapshot will be different every time the test is run:</p>
 <span><span class="co">#&gt; <span style="color: #555555;">    safe_write_lines(letters, path)</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">  Condition</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">    Error in `safe_write_lines()`:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">-   ! '/tmp/RtmpRVPqpd/file2a47784245af' already exists.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">+   ! '/tmp/RtmpRVPqpd/file2a473c83e5ee' already exists.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">-   ! '/tmp/RtmpNIcW4v/file2ac627e776d3' already exists.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">+   ! '/tmp/RtmpNIcW4v/file2ac626311a3' already exists.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">    i Set `overwrite = TRUE` to overwrite</span></span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_accept("snapshotting.Rmd")` to accept the change.</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_review("snapshotting.Rmd")` to review the change.</span></span>
@@ -571,8 +571,8 @@ the test fails. Instead, you’ll need to call
 <code><a href="../reference/snapshot_accept.html">snapshot_review()</a></code>. This launches a Shiny app that allows
 you to visually review each change and approve it if it’s
 deliberate:</p>
-<p><img src="review-image.png" alt="Screenshot of the Shiny app for reviewing snapshot changes to images. It shows the changes to a png file of a plot created in a snapshot test. There is a button to accept the changed snapshot, or to skip it."></p>
-<p><img src="review-text.png" alt="Screenshot of the Shiny app for reviewing snapshot changes to text files. It shows the changes to a .R file created in a snapshot test, where a line has been removed. There is a button to accept the changed snapshot, or to skip it."></p>
+<p><img src="review-image.png" class="r-plt" alt="Screenshot of the Shiny app for reviewing snapshot changes to images. It shows the changes to a png file of a plot created in a snapshot test. There is a button to accept the changed snapshot, or to skip it."></p>
+<p><img src="review-text.png" class="r-plt" alt="Screenshot of the Shiny app for reviewing snapshot changes to text files. It shows the changes to a .R file created in a snapshot test, where a line has been removed. There is a button to accept the changed snapshot, or to skip it."></p>
 <p>The display varies based on the file type (currently text files,
 common image files, and csv files are supported).</p>
 <p>Sometimes the failure occurs in a non-interactive environment where
@@ -636,7 +636,7 @@ requests.</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
   </div></footer>

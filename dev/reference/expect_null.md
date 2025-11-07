@@ -1,0 +1,64 @@
+# Do you expect `NULL`?
+
+This is a special case because `NULL` is a singleton so it's possible
+check for it either with `expect_equal(x, NULL)` or
+`expect_type(x, "NULL")`.
+
+## Usage
+
+``` r
+expect_null(object, info = NULL, label = NULL)
+```
+
+## Arguments
+
+- object:
+
+  Object to test.
+
+  Supports limited unquoting to make it easier to generate readable
+  failures within a function or for loop. See
+  [quasi_label](https://testthat.r-lib.org/dev/reference/quasi_label.md)
+  for more details.
+
+- info:
+
+  Extra information to be included in the message. This argument is
+  soft-deprecated and should not be used in new code. Instead see
+  alternatives in
+  [quasi_label](https://testthat.r-lib.org/dev/reference/quasi_label.md).
+
+- label:
+
+  Used to customise failure messages. For expert use only.
+
+## See also
+
+Other expectations:
+[`comparison-expectations`](https://testthat.r-lib.org/dev/reference/comparison-expectations.md),
+[`equality-expectations`](https://testthat.r-lib.org/dev/reference/equality-expectations.md),
+[`expect_error()`](https://testthat.r-lib.org/dev/reference/expect_error.md),
+[`expect_length()`](https://testthat.r-lib.org/dev/reference/expect_length.md),
+[`expect_match()`](https://testthat.r-lib.org/dev/reference/expect_match.md),
+[`expect_named()`](https://testthat.r-lib.org/dev/reference/expect_named.md),
+[`expect_output()`](https://testthat.r-lib.org/dev/reference/expect_output.md),
+[`expect_reference()`](https://testthat.r-lib.org/dev/reference/expect_reference.md),
+[`expect_silent()`](https://testthat.r-lib.org/dev/reference/expect_silent.md),
+[`inheritance-expectations`](https://testthat.r-lib.org/dev/reference/inheritance-expectations.md),
+[`logical-expectations`](https://testthat.r-lib.org/dev/reference/logical-expectations.md)
+
+## Examples
+
+``` r
+x <- NULL
+y <- 10
+
+expect_null(x)
+show_failure(expect_null(y))
+#> Failed expectation:
+#> Expected `y` to be NULL.
+#> Differences:
+#> `actual` is a double vector (10)
+#> `expected` is NULL
+#> 
+```
