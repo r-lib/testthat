@@ -6,7 +6,7 @@
       "Bash(R:*)",
       "Bash(rm:*)",
       "Bash(air format:*)",
-      "Edit(/**)",
+      "Edit(**)",
     ],
     "deny": []
   }
