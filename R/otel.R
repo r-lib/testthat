@@ -18,17 +18,11 @@ local({
   otel_local_active_span <<- function(
     name,
     label,
-    attributes = list(),
-    links = NULL,
-    options = NULL,
     scope = parent.frame()
   ) {
     otel_is_tracing || return()
-    spn <- otel::start_local_active_span(
+    otel::start_local_active_span(
       sprintf("%s %s", name, label),
-      attributes = otel::as_attributes(attributes),
-      links = links,
-      options = options,
       tracer = otel_tracer,
       activation_scope = scope
     )

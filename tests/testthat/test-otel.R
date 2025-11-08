@@ -10,6 +10,6 @@ test_that("otel instrumentation works", {
 
   traces <- record$traces
   expect_length(traces, 1L)
-  expect_equal(traces[[1L]]$name, "test that otel testing")
+  expect_equal(traces[[1L]]$name, "test that otel instrumentation works / otel testing")
   expect_equal(traces[[1L]]$instrumentation_scope$name , "org.r-lib.testthat")
 })
