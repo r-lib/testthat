@@ -13,7 +13,6 @@ test_dir(
   load_helpers = TRUE,
   stop_on_failure = TRUE,
   stop_on_warning = FALSE,
-  wrap = deprecated(),
   package = NULL,
   load_package = c("none", "installed", "source"),
   shuffle = FALSE
@@ -42,8 +41,6 @@ See \link{Reporter} for more details and a list of built-in reporters.}
 
 \item{stop_on_warning}{If \code{TRUE}, throw an error if any tests generate
 warnings.}
-
-\item{wrap}{DEPRECATED}
 
 \item{package}{If these tests belong to a package, the name of the package.}
 

@@ -37,7 +37,7 @@ you're calling \code{fail()} from a helper function; see
 }
 \value{
 An expectation object from either \code{succeed()} or \code{fail()}.
-with a \code{continue_test} restart.
+with a \code{muffle_expectation} restart.
 }
 \description{
 Previously, we recommended using \code{expect()} when writing your own

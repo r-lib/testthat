@@ -5,7 +5,7 @@
 \alias{new_expectation}
 \alias{exp_signal}
 \alias{is.expectation}
-\title{Construct an expectation object}
+\title{Expectation conditions}
 \usage{
 expectation(type, message, ..., srcref = NULL, trace = NULL)
 
@@ -44,11 +44,13 @@ Expert use only.}
 \item{x}{object to test for class membership}
 }
 \description{
-For advanced use only. If you are creating your own expectation, you should
-call \code{\link[=pass]{pass()}} or \code{\link[=fail]{fail()}}. See \code{vignette("custom-expectation")} for more
-details.
+\code{new_expectation()} creates an expectation condition object and
+\code{exp_signal()} signals it. \code{expectation()} does both. \code{is.expectation()}
+tests if a captured condition is a testthat expectation.
 
-\code{new_expectation()} creates an expectation object and \code{exp_signal()} signals
-it. \code{expectation()} does both.
+These functions are primarily for internal use. If you are creating your
+own expectation, you do not need these functions are instead should use
+\code{\link[=pass]{pass()}} or \code{\link[=fail]{fail()}}. See \code{vignette("custom-expectation")} for more
+details.
 }
 \keyword{internal}

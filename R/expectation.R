@@ -10,7 +10,7 @@
 #'   optionally subsequence) elements should describe what was actually seen.
 #' @inheritParams fail
 #' @return An expectation object from either `succeed()` or `fail()`.
-#'   with a `continue_test` restart.
+#'   with a `muffle_expectation` restart.
 #' @seealso [exp_signal()]
 #' @keywords internal
 #' @export
@@ -39,15 +39,17 @@ expect <- function(
   }
 }
 
-#' Construct an expectation object
+#' Expectation conditions
 #'
 #' @description
-#' For advanced use only. If you are creating your own expectation, you should
-#' call [pass()] or [fail()]. See `vignette("custom-expectation")` for more
-#' details.
+#' `new_expectation()` creates an expectation condition object and
+#' `exp_signal()` signals it. `expectation()` does both. `is.expectation()`
+#' tests if a captured condition is a testthat expectation.
 #'
-#' `new_expectation()` creates an expectation object and `exp_signal()` signals
-#' it. `expectation()` does both.
+#' These functions are primarily for internal use. If you are creating your
+#' own expectation, you do not need these functions are instead should use
+#' [pass()] or [fail()]. See `vignette("custom-expectation")` for more
+#' details.
 #'
 #' @param type Expectation type. Must be one of "success", "failure", "error",
 #'   "skip", "warning".
@@ -102,7 +104,7 @@ exp_signal <- function(exp) {
     } else {
       signalCondition(exp)
     },
-    continue_test = function(e) NULL
+    muffle_expectation = function(e) NULL
   )
 
   invisible(exp)

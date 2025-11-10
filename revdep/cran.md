@@ -1,9 +1,9 @@
 ## revdepcheck results
 
-We checked 9829 reverse dependencies (9816 from CRAN + 13 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 9972 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 113 new problems
- * We failed to check 58 packages
+ * We saw 108 new problems
+ * We failed to check 23 packages
 
 Issues with CRAN packages are summarised below.
 
@@ -13,20 +13,29 @@ Issues with CRAN packages are summarised below.
 * adjclust
   checking tests ... ERROR
 
+* arulesCBA
+  checking tests ... ERROR
+
 * autodb
   checking tests ... ERROR
 
 * aws.comprehend
   checking tests ... ERROR
 
+* batata
+  checking tests ... ERROR
+
+* bcRP
+  checking examples ... ERROR
+
 * bindr
+  checking tests ... ERROR
+
+* binpackr
   checking tests ... ERROR
 
 * clinUtils
   checking tests ... ERROR
-
-* cmsafops
-  checking examples ... ERROR
 
 * cnd
   checking tests ... ERROR
@@ -44,15 +53,6 @@ Issues with CRAN packages are summarised below.
   checking tests ... ERROR
 
 * covr
-  checking tests ... ERROR
-
-* DepLogo
-  checking tests ... ERROR
-
-* DiceKriging
-  checking tests ... ERROR
-
-* dictionar6
   checking tests ... ERROR
 
 * difNLR
@@ -88,16 +88,15 @@ Issues with CRAN packages are summarised below.
 * greeks
   checking tests ... ERROR
 
-* gtfs2gps
-  checking tests ... ERROR
-
-* handwriterRF
-  checking tests ... ERROR
-
 * hdcuremodels
   checking tests ... ERROR
 
 * hedgehog
+  checking examples ... ERROR
+  checking tests ... ERROR
+  checking re-building of vignette outputs ... ERROR
+
+* heumilkr
   checking tests ... ERROR
 
 * howzatR
@@ -130,22 +129,16 @@ Issues with CRAN packages are summarised below.
 * IMEC
   checking tests ... ERROR
 
-* itan
-  checking tests ... ERROR
-
 * leaflet.minicharts
   checking tests ... ERROR
 
 * learnr
   checking tests ... ERROR
 
+* linl
+  checking re-building of vignette outputs ... WARNING
+
 * lintr
-  checking tests ... ERROR
-
-* luajr
-  checking tests ... ERROR
-
-* MakefileR
   checking tests ... ERROR
 
 * manipulateWidget
@@ -199,9 +192,6 @@ Issues with CRAN packages are summarised below.
 * optigrab
   checking tests ... ERROR
 
-* ottr
-  checking tests ... ERROR
-
 * owmr
   checking tests ... ERROR
 
@@ -241,6 +231,10 @@ Issues with CRAN packages are summarised below.
 * Quandl
   checking tests ... ERROR
 
+* quickcheck
+  checking examples ... ERROR
+  checking tests ... ERROR
+
 * rags2ridges
   checking tests ... ERROR
 
@@ -268,16 +262,7 @@ Issues with CRAN packages are summarised below.
 * RTD
   checking tests ... ERROR
 
-* saeSim
-  checking tests ... ERROR
-
-* sassy
-  checking tests ... ERROR
-
 * scorematchingad
-  checking tests ... ERROR
-
-* scoutbaR
   checking tests ... ERROR
 
 * scrutiny
@@ -285,6 +270,9 @@ Issues with CRAN packages are summarised below.
 
 * seqminer
   checking tests ... ERROR
+
+* sf
+  checking tests ... NOTE
 
 * shiny.benchmark
   checking tests ... ERROR
@@ -295,7 +283,7 @@ Issues with CRAN packages are summarised below.
 * SIAtools
   checking tests ... ERROR
 
-* SpaDES.tools
+* sidra
   checking tests ... ERROR
 
 * spaero
@@ -322,9 +310,6 @@ Issues with CRAN packages are summarised below.
 * ThankYouStars
   checking tests ... ERROR
 
-* threshr
-  checking tests ... ERROR
-
 * tibblify
   checking tests ... ERROR
 
@@ -346,65 +331,33 @@ Issues with CRAN packages are summarised below.
 * WhatIf
   checking tests ... ERROR
 
+* WhatsR
+  checking examples ... ERROR
+
 * ZillowR
   checking tests ... ERROR
 
 ### Failed to check
 
-* admtools            (NA)
-* apa                 (NA)
-* apaTables           (NA)
-* bark                (NA)
 * bayesdfa            (NA)
 * cocktailApp         (NA)
 * ctsem               (NA)
 * DSMolgenisArmadillo (NA)
 * dsTidyverse         (NA)
 * dsTidyverseClient   (NA)
-* dySEM               (NA)
 * EcoEnsemble         (NA)
-* FAfA                (NA)
 * fdaPDE              (NA)
 * fio                 (NA)
-* fungible            (NA)
 * gadjid              (NA)
-* GDINA               (NA)
-* genekitr            (NA)
-* GeneSelectR         (NA)
-* ggmulti             (NA)
-* ggpicrust2          (NA)
 * gllvm               (NA)
+* gpboost             (NA)
 * gpuR                (NA)
-* insight             (NA)
-* jmv                 (NA)
-* lcsm                (NA)
 * loon.shiny          (NA)
 * loon.tourr          (NA)
-* manymome            (NA)
-* metaSEM             (NA)
-* ModStatR            (NA)
-* numbat              (NA)
-* OlinkAnalyze        (NA)
-* parameters          (NA)
-* PathwayVote         (NA)
-* phylosem            (NA)
-* psycModel           (NA)
-* Revticulate         (NA)
-* rosetta             (NA)
+* multinma            (NA)
 * rstanarm            (NA)
-* SCpubr              (NA)
-* semptools           (NA)
-* semtree             (NA)
-* sprtt               (NA)
 * SQLFormatteR        (NA)
-* ssdGSA              (NA)
-* StratPal            (NA)
 * string2path         (NA)
-* Surrogate           (NA)
-* tabledown           (NA)
-* TestAnaAPP          (NA)
-* tidycomm            (NA)
-* tinyarray           (NA)
 * tok                 (NA)
 * tricolore           (NA)
 * TriDimRegression    (NA)

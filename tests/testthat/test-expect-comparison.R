@@ -58,13 +58,44 @@ test_that("comparisons with NA work", {
   expect_snapshot_failure(expect_lt(x, 10))
 })
 
-test_that("comparisons with more complicated objects work", {
-  time <- Sys.time()
-  time2 <- time + 1
+
+test_that("comparisons with negative numbers work", {
+  expect_success(expect_lt(-5, -2))
+  expect_snapshot_failure(expect_gt(-5, -2))
+})
+
+test_that("comparisons with POSIXct objects work", {
+  time <- as.POSIXct("2020-01-01 01:00:00")
+  time2 <- time + 1.5
   expect_success(expect_lt(time, time2))
-  expect_success(expect_lte(time, time2))
-  expect_success(expect_gt(time2, time))
-  expect_success(expect_gte(time2, time))
+
+  # set digits.secs = 1 to ensure consistent output with older R versions
+  withr::with_options(c(digits.secs = 1), {
+    expect_snapshot_failure(expect_lt(time2, time))
+  })
+})
+
+test_that("comparisons with Date objects work", {
+  date <- as.Date("2020-01-01")
+  date2 <- date + 1
+  expect_success(expect_gt(date2, date))
+  expect_success(expect_gte(date2, date))
+
+  expect_snapshot_failure(expect_gt(date, date2))
+})
+
+test_that("comparisons of date/time with NA work", {
+  time <- as.POSIXct("2020-01-01 01:00:00")
+  date <- as.Date("2020-01-01")
+
+  expect_failure(expect_lt(time, NA))
+  expect_failure(expect_gt(date, NA))
+})
+
+test_that("comparisons with character objects work", {
+  expect_success(expect_lte("a", "b"))
+
+  expect_snapshot_failure(expect_lte("b", "a"))
 })
 
 test_that("comparison must yield a single logical", {

@@ -5,6 +5,7 @@
 \alias{expect_mapequal}
 \alias{expect_contains}
 \alias{expect_in}
+\alias{expect_disjoint}
 \title{Do you expect a vector containing these values?}
 \usage{
 expect_setequal(object, expected)
@@ -14,6 +15,8 @@ expect_mapequal(object, expected)
 expect_contains(object, expected)
 
 expect_in(object, expected)
+
+expect_disjoint(object, expected)
 }
 \arguments{
 \item{object, expected}{Computation and value to compare it to.
@@ -28,8 +31,10 @@ more details.}
 and that every element of \code{y} occurs in \code{x}.
 \item \code{expect_contains(x, y)} tests that \code{x} contains every element of \code{y}
 (i.e. \code{y} is a subset of \code{x}).
-\item \code{expect_in(x, y)} tests every element of \code{x} is in \code{y}
+\item \code{expect_in(x, y)} tests that every element of \code{x} is in \code{y}
 (i.e. \code{x} is a subset of \code{y}).
+\item \code{expect_disjoint(x, y)} tests that no element of \code{x} is in \code{y}
+(i.e. \code{x} is disjoint from \code{y}).
 \item \code{expect_mapequal(x, y)} treats lists as if they are mappings between names
 and values. Concretely, checks that \code{x} and \code{y} have the same names, then
 checks that \code{x[names(y)]} equals \code{y}.

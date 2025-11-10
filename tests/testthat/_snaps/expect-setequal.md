@@ -231,3 +231,36 @@
       Expected: "d", "e"
       Invalid: "a", "b"
 
+# expect_disjoint() gives useful message on failure
+
+    Code
+      expect_disjoint(x1, x2)
+    Condition
+      Error:
+      ! Expected `x1` to be disjoint from `x2`.
+      Actual: "a", "b", "c"
+      Expected: None of "c", "d"
+      Invalid: "c"
+
+---
+
+    Code
+      expect_disjoint(x1, x3)
+    Condition
+      Error:
+      ! Expected `x1` to be disjoint from `x3`.
+      Actual: "a", "b", "c"
+      Expected: None of "b", "c", "d"
+      Invalid: "b", "c"
+
+---
+
+    Code
+      expect_disjoint(NA, c("a", NA))
+    Condition
+      Error:
+      ! Expected NA to be disjoint from `c("a", NA)`.
+      Actual: NA
+      Expected: None of "a", NA
+      Invalid: NA
+

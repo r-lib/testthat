@@ -104,6 +104,14 @@
       Error:
       ! Expected `print("!")` to throw a error.
 
+# snapshots of failures fail
+
+    Code
+      expect_snapshot(fail())
+    Condition
+      Error:
+      ! Failure has been forced
+
 # can capture error/warning messages
 
     This is an error

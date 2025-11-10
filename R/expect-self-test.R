@@ -11,13 +11,11 @@ capture_success_failure <- function(expr) {
     expectation_failure = function(cnd) {
       last_failure <<- cnd
       n_failure <<- n_failure + 1
-      # Don't bubble up to any other handlers
-      invokeRestart("continue_test")
+      invokeRestart("muffle_expectation")
     },
     expectation_success = function(cnd) {
       n_success <<- n_success + 1
-      # Don't bubble up to any other handlers
-      invokeRestart("continue_test")
+      invokeRestart("muffle_expectation")
     }
   )
 

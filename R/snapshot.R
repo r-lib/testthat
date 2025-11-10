@@ -131,7 +131,12 @@ expect_snapshot_ <- function(
     if (error) {
       fail(msg, trace = state$error[["trace"]])
     } else {
-      cnd_signal(state$error)
+      # This might be a failed expectation, so we need to make sure
+      # that we can muffle it
+      withRestarts(
+        cnd_signal(state$error),
+        muffle_expectation = function() NULL
+      )
     }
     return()
   }

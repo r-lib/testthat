@@ -7,22 +7,22 @@ classnameOK <- function(text) {
 
 #' Report results in jUnit XML format
 #'
+#' @description
 #' This reporter includes detailed results about each test and summaries,
 #' written to a file (or stdout) in jUnit XML format. This can be read by
 #' the Jenkins Continuous Integration System to report on a dashboard etc.
 #' Requires the _xml2_ package.
 #'
-#' To fit into the jUnit structure, context() becomes the `<testsuite>`
+#' To fit into the jUnit structure, `context()` becomes the `<testsuite>`
 #' name as well as the base of the `<testcase> classname`. The
-#' test_that() name becomes the rest of the `<testcase> classname`.
-#' The deparsed expect_that() call becomes the `<testcase>` name.
+#' `test_that()` name becomes the rest of the `<testcase> classname`.
+#' The deparsed `expect_that()` call becomes the `<testcase>` name.
 #' On failure, the message goes into the `<failure>` node message
 #' argument (first line only) and into its text content (full message).
-#'
 #' Execution time and some other details are also recorded.
 #'
 #' References for the jUnit XML format:
-#' \url{http://llg.cubic.org/docs/junit/}
+#' <https://github.com/testmoapp/junitxml>
 #'
 #' @export
 #' @family reporters

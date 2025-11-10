@@ -4,8 +4,10 @@
 #'    and that every element of `y` occurs in `x`.
 #' * `expect_contains(x, y)` tests that `x` contains every element of `y`
 #'   (i.e. `y` is a subset of `x`).
-#' * `expect_in(x, y)` tests every element of `x` is in `y`
+#' * `expect_in(x, y)` tests that every element of `x` is in `y`
 #'   (i.e. `x` is a subset of `y`).
+#' * `expect_disjoint(x, y)` tests that no element of `x` is in `y`
+#'   (i.e. `x` is disjoint from `y`).
 #' * `expect_mapequal(x, y)` treats lists as if they are mappings between names
 #'   and values. Concretely, checks that `x` and `y` have the same names, then
 #'   checks that `x[names(y)]` equals `y`.
@@ -145,6 +147,7 @@ expect_contains <- function(object, expected) {
   invisible(act$val)
 }
 
+
 #' @export
 #' @rdname expect_setequal
 expect_in <- function(object, expected) {
@@ -167,6 +170,30 @@ expect_in <- function(object, expected) {
       sprintf("Invalid: %s", values(act$val[act_miss]))
     )
     fail(c(msg_exp, msg_act))
+  } else {
+    pass()
+  }
+
+  invisible(act$val)
+}
+
+#' @export
+#' @rdname expect_setequal
+expect_disjoint <- function(object, expected) {
+  act <- quasi_label(enquo(object))
+  exp <- quasi_label(enquo(expected))
+
+  check_vector(act$val, error_arg = "object")
+  check_vector(exp$val, error_arg = "expected")
+
+  act_common <- act$val %in% exp$val
+  if (any(act_common)) {
+    fail(c(
+      sprintf("Expected %s to be disjoint from %s.", act$lab, exp$lab),
+      sprintf("Actual: %s", values(act$val)),
+      sprintf("Expected: None of %s", values(exp$val)),
+      sprintf("Invalid: %s", values(act$val[act_common]))
+    ))
   } else {
     pass()
   }
