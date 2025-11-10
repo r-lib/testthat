@@ -58,7 +58,8 @@ extract_test <- function(
 #' will need to restart your R session.
 #'
 #' @keywords internal
-#' @param
+#' @param package Name of installed package.
+#' @param path Path to `tests/testthat`.
 #' @export
 #' @rdname topic-name
 simulate_test_env <- function(package, path) {
@@ -69,7 +70,7 @@ simulate_test_env <- function(package, path) {
   source_test_helpers(path, env = env)
   source_test_setup(path, env = env)
 
-  invisible()
+  invisible(env)
 }
 
 extract_test_ <- function(
@@ -107,6 +108,7 @@ save_test <- function(srcref, dir, package = Sys.getenv("TESTTHAT_PKG")) {
   test_name <- tools::file_path_sans_ext(basename(test_path))
   dir_create(dir)
   problems_path <- file.path(dir, paste0(test_name, "-", line, ".R"))
+  cat("Saving ", problems_path, "\n", sep = "")
   writeLines(extracted, problems_path)
 
   invisible(problems_path)
@@ -150,8 +152,12 @@ extract_test_lines <- function(
     lines <- c(
       header("setup"),
       "library(testthat)",
-      sprintf('simulate_test_env(package = "%s", path = "..")', package),
-      "attach(test_env)",
+      sprintf(
+        'test_env <- simulate_test_env(package = "%s", path = "..")',
+        package
+      ),
+      "attach(test_env, warn.conflicts = FALSE)",
+      "",
       lines
     )
   }

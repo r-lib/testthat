@@ -7,8 +7,9 @@
       
       # setup ------------------------------------------------------------------------
       library(testthat)
-      simulate_test_env(package = "testthat", path = "..")
-      attach(test_env)
+      test_env <- simulate_test_env(package = "testthat", path = "..")
+      attach(test_env, warn.conflicts = FALSE)
+      
       # test -------------------------------------------------------------------------
       expect_true(TRUE)
 
@@ -19,8 +20,9 @@
     Output
       # setup ------------------------------------------------------------------------
       library(testthat)
-      simulate_test_env(package = "test", path = "..")
-      attach(test_env)
+      test_env <- simulate_test_env(package = "test", path = "..")
+      attach(test_env, warn.conflicts = FALSE)
+      
       # test -------------------------------------------------------------------------
       expect_true(TRUE)
 
