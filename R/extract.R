@@ -11,6 +11,8 @@
 #' @param location A string giving the location in the form
 #'   `FILE:LINE[:COLUMN]`.
 #' @param path Path to write the reprex to. Defaults to `stdout()`.
+#' @param package If supplied, will be used to construct a test environment
+#'   for the extracted code.
 #' @return This function is called for its side effect of rendering a
 #'   reprex to `path`. This function will never error: if extraction
 #'   fails, the error message will be written to `path`.
@@ -26,23 +28,38 @@
 #' # You can run this:
 #' \dontrun{extract_test("test-extract.R:46:3")}
 #' # to see just the code needed to reproduce the failure
-extract_test <- function(location, path = stdout()) {
+extract_test <- function(
+  location,
+  path = stdout(),
+  package = Sys.getenv("TESTTHAT_PKG")
+) {
   check_string(location)
+  check_string(package)
 
   pieces <- strsplit(location, ":")[[1]]
   if (!length(pieces) %in% c(2, 3)) {
-    cli::cli_abort(
-      "Expected {.arg location} to be of the form FILE:LINE[:COLUMN]"
-    )
+    cli::cli_abort(c(
+      "Expected {.arg location} to be of the form FILE:LINE[:COLUMN]",
+      i = "Got {.arg location}: {.val {location}}"
+    ))
   }
 
   test_path <- test_path(pieces[[1]])
   line <- as.integer(pieces[2])
+
+  base::writeLines(lines, con = path)
+}
+
+extract_test_ <- function(
+  test_path,
+  line,
+  package = Sys.getenv("TESTTHAT_PKG")
+) {
   source <- paste0("# Extracted from ", test_path, ":", line)
   exprs <- parse_file(test_path)
 
   lines <- tryCatch(
-    extract_test_lines(exprs, line),
+    extract_test_lines(exprs, line, package),
     error = function(cnd) {
       lines <- strsplit(conditionMessage(cnd), "\n")[[1]]
       lines <- c("", "Failed to extract test: ", lines)
@@ -50,11 +67,28 @@ extract_test <- function(location, path = stdout()) {
     }
   )
   lines <- c(source, lines)
-
-  base::writeLines(lines, con = path)
+  lines
 }
 
-extract_test_lines <- function(exprs, line, error_call = caller_env()) {
+save_test <- function(srcref, package = Sys.getenv("TESTTHAT_PKG")) {
+  test_path <- getSrcFilename(srcref)
+  if (is.null(test_path)) {
+    return()
+  }
+  line <- srcref[[1]]
+  extracted <- extract_test_(test_path, line, package)
+
+  test_name <- tools::file_path_sans_ext(base_name(test_path))
+  problems_path <- paste0("problems/", test_name, "-", line, ".R")
+  writeLines(extracted, problems_path)
+}
+
+extract_test_lines <- function(
+  exprs,
+  line,
+  package = "",
+  error_call = caller_env()
+) {
   check_number_whole(line, min = 1, call = error_call)
 
   srcrefs <- attr(exprs, "srcref")
@@ -70,21 +104,33 @@ extract_test_lines <- function(exprs, line, error_call = caller_env()) {
   call <- exprs[[which(is_test)[[1]]]]
   test_contents <- attr(call[[3]], "srcref")[-1] # drop `{`
   keep <- start_line(test_contents) <= line
-  test <- srcref_to_character(test_contents[keep])
+  lines <- srcref_to_character(test_contents[keep])
 
   # We first find the prequel, all non-test code before the test
   is_prequel <- !is_subtest & start_line(srcrefs) < line
-  if (!any(is_prequel)) {
-    return(test)
+  if (any(is_prequel)) {
+    lines <- c(
+      "# prequel ---------------------------------------------------------------",
+      srcref_to_character(srcrefs[is_prequel]),
+      "",
+      "# test ------------------------------------------------------------------",
+      lines
+    )
   }
 
-  c(
-    "# prequel ---------------------------------------------------------------",
-    srcref_to_character(srcrefs[is_prequel]),
-    "",
-    "# test ------------------------------------------------------------------",
-    test
-  )
+  if (package != "") {
+    lines <- c(
+      "library(testthat)",
+      sprintf('test_env <- test_that("%s")', package),
+      'source_test_helpers("..", env = test_env)',
+      'attach(test_env)',
+      "",
+      lines,
+      "",
+      'detach("test_env")'
+    )
+  }
+  lines
 }
 
 # Helpers ---------------------------------------------------------------------

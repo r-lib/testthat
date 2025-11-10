@@ -4,7 +4,7 @@
 \alias{extract_test}
 \title{Extract a reprex from a failed expectation}
 \usage{
-extract_test(location, path = stdout())
+extract_test(location, path = stdout(), package = Sys.getenv("TESTTHAT_PKG"))
 }
 \arguments{
 \item{location}{A string giving the location in the form

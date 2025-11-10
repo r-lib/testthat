@@ -1,3 +1,17 @@
+# can include test env setup
+
+    Code
+      base::writeLines(extract_test_lines(exprs, 2, "test"))
+    Output
+      library(testthat)
+      test_env <- test_that("test")
+      source_test_helpers("..", env = test_env)
+      attach(test_env)
+      
+      expect_true(TRUE)
+      
+      detach("test_env")
+
 # can extract prequel
 
     Code

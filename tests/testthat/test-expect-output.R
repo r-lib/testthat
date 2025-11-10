@@ -1,8 +1,6 @@
 f <- function() NULL
 g <- function() cat("!")
 
-writeLines("Hi!", "../someoutput.txt")
-
 test_that("expect = NA checks for no output", {
   expect_success(expect_output(f(), NA))
   expect_snapshot_failure(expect_output(g(), NA))

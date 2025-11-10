@@ -1,3 +1,13 @@
+test_that("can include test env setup", {
+  # fmt: skip
+  exprs <- parse_text("
+    test_that('foo', {
+      expect_true(TRUE)
+    })
+  ")
+  expect_snapshot(base::writeLines(extract_test_lines(exprs, 2, "test")))
+})
+
 test_that("can extract prequel", {
   # fmt: skip
   exprs <- parse_text("
