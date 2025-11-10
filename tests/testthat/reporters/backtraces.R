@@ -56,6 +56,14 @@ test_that("deep stacks are shown", {
   f(25)
 })
 
+test_that("errors in snapshots get useful backtraces", {
+  f <- function() g()
+  g <- function() h()
+  h <- function() stop("!")
+
+  expect_snapshot(f())
+})
+
 # Expectations ----------------------------------------------------------------
 f <- function() g()
 g <- function() h()
