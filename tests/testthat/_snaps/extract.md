@@ -1,27 +1,39 @@
+# can extract test from file
+
+    Code
+      base::writeLines(readLines(out_path))
+    Output
+      # Extracted from extract/simple.R:3
+      
+      # setup ------------------------------------------------------------------------
+      library(testthat)
+      simulate_test_env(package = "testthat", path = "..")
+      attach(test_env)
+      # test -------------------------------------------------------------------------
+      expect_true(TRUE)
+
 # can include test env setup
 
     Code
       base::writeLines(extract_test_lines(exprs, 2, "test"))
     Output
+      # setup ------------------------------------------------------------------------
       library(testthat)
-      test_env <- test_that("test")
-      source_test_helpers("..", env = test_env)
+      simulate_test_env(package = "test", path = "..")
       attach(test_env)
-      
+      # test -------------------------------------------------------------------------
       expect_true(TRUE)
-      
-      detach("test_env")
 
 # can extract prequel
 
     Code
       base::writeLines(extract_test_lines(exprs, 4))
     Output
-      # prequel ---------------------------------------------------------------
+      # prequel ----------------------------------------------------------------------
       x <- 1
       y <- 2
       
-      # test ------------------------------------------------------------------
+      # test -------------------------------------------------------------------------
       expect_true(TRUE)
 
 # preserves code format but not comments
@@ -29,10 +41,10 @@
     Code
       base::writeLines(extract_test_lines(exprs, 3))
     Output
-      # prequel ---------------------------------------------------------------
+      # prequel ----------------------------------------------------------------------
       1 +   1
       
-      # test ------------------------------------------------------------------
+      # test -------------------------------------------------------------------------
       2 +   2
 
 # can extract selected expectation
@@ -40,5 +52,6 @@
     Code
       base::writeLines(extract_test_lines(exprs, 2))
     Output
+      # test -------------------------------------------------------------------------
       expect_true(TRUE)
 

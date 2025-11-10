@@ -46,8 +46,30 @@ extract_test <- function(
 
   test_path <- test_path(pieces[[1]])
   line <- as.integer(pieces[2])
+  lines <- extract_test_(test_path, line, package)
 
   base::writeLines(lines, con = path)
+}
+
+#' Simulate a test environment
+#'
+#' This function is designed to allow you to simulate testthat's testing
+#' environment in an interactive session. To undo it's affect, you
+#' will need to restart your R session.
+#'
+#' @keywords internal
+#' @param
+#' @export
+#' @rdname topic-name
+simulate_test_env <- function(package, path) {
+  check_string(package)
+  check_string(path)
+
+  env <- test_env(package)
+  source_test_helpers(path, env = env)
+  source_test_setup(path, env = env)
+
+  invisible()
 }
 
 extract_test_ <- function(
@@ -66,21 +88,28 @@ extract_test_ <- function(
       paste0("# ", lines)
     }
   )
-  lines <- c(source, lines)
+  lines <- c(source, "", lines)
   lines
 }
 
-save_test <- function(srcref, package = Sys.getenv("TESTTHAT_PKG")) {
-  test_path <- getSrcFilename(srcref)
-  if (is.null(test_path)) {
+save_test <- function(srcref, dir, package = Sys.getenv("TESTTHAT_PKG")) {
+  if (env_var_is_false("TESTTHAT_PROBLEMS")) {
     return()
   }
-  line <- srcref[[1]]
+
+  test_path <- utils::getSrcFilename(srcref, full.names = TRUE)
+  if (is.null(test_path) || !file.exists(test_path)) {
+    return()
+  }
+  line <- srcref[[3]]
   extracted <- extract_test_(test_path, line, package)
 
-  test_name <- tools::file_path_sans_ext(base_name(test_path))
-  problems_path <- paste0("problems/", test_name, "-", line, ".R")
+  test_name <- tools::file_path_sans_ext(basename(test_path))
+  dir_create(dir)
+  problems_path <- file.path(dir, paste0(test_name, "-", line, ".R"))
   writeLines(extracted, problems_path)
+
+  invisible(problems_path)
 }
 
 extract_test_lines <- function(
@@ -104,30 +133,26 @@ extract_test_lines <- function(
   call <- exprs[[which(is_test)[[1]]]]
   test_contents <- attr(call[[3]], "srcref")[-1] # drop `{`
   keep <- start_line(test_contents) <= line
-  lines <- srcref_to_character(test_contents[keep])
+  lines <- c(header("test"), srcref_to_character(test_contents[keep]))
 
   # We first find the prequel, all non-test code before the test
   is_prequel <- !is_subtest & start_line(srcrefs) < line
   if (any(is_prequel)) {
     lines <- c(
-      "# prequel ---------------------------------------------------------------",
+      header("prequel"),
       srcref_to_character(srcrefs[is_prequel]),
       "",
-      "# test ------------------------------------------------------------------",
       lines
     )
   }
 
   if (package != "") {
     lines <- c(
+      header("setup"),
       "library(testthat)",
-      sprintf('test_env <- test_that("%s")', package),
-      'source_test_helpers("..", env = test_env)',
-      'attach(test_env)',
-      "",
-      lines,
-      "",
-      'detach("test_env")'
+      sprintf('simulate_test_env(package = "%s", path = "..")', package),
+      "attach(test_env)",
+      lines
     )
   }
   lines
@@ -139,7 +164,7 @@ parse_file <- function(path, error_call = caller_env()) {
   check_string(path, call = error_call)
   if (!file.exists(path)) {
     cli::cli_abort(
-      "{.arg path} ({.path path}) does not exist.",
+      "{.arg path} ({.path {path}}) does not exist.",
       call = error_call
     )
   }
@@ -162,4 +187,8 @@ start_line <- function(srcrefs) {
 }
 end_line <- function(srcrefs) {
   map_int(srcrefs, \(x) x[[3]])
+}
+
+header <- function(x) {
+  paste0("# ", x, " ", strrep("-", 80 - nchar(x) - 3))
 }

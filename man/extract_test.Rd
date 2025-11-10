@@ -11,6 +11,9 @@ extract_test(location, path = stdout(), package = Sys.getenv("TESTTHAT_PKG"))
 \verb{FILE:LINE[:COLUMN]}.}
 
 \item{path}{Path to write the reprex to. Defaults to \code{stdout()}.}
+
+\item{package}{If supplied, will be used to construct a test environment
+for the extracted code.}
 }
 \value{
 This function is called for its side effect of rendering a

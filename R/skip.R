@@ -323,3 +323,7 @@ on_cran <- function() {
 env_var_is_true <- function(x) {
   isTRUE(as.logical(Sys.getenv(x, "false")))
 }
+
+env_var_is_false <- function(x) {
+  isFALSE(as.logical(Sys.getenv(x, "true")))
+}

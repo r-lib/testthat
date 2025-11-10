@@ -1,3 +1,14 @@
+test_that("can extract test from file", {
+  exprs <- parse_file(test_path("extract/simple.R"))
+
+  dir <- withr::local_tempdir()
+  out_path <- save_test(attr(exprs, "srcref")[[1]], dir = dir)
+
+  expect_snapshot(base::writeLines(readLines(out_path)))
+})
+
+# extract_test_lines -----------------------------------------------------------
+
 test_that("can include test env setup", {
   # fmt: skip
   exprs <- parse_text("
