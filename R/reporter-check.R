@@ -27,6 +27,7 @@ CheckReporter <- R6::R6Class(
     add_result = function(context, test, result) {
       if (expectation_broken(result)) {
         self$problems$push(result)
+        try(save_test(result$srcref, "_problems"), silent = TRUE)
       } else if (expectation_warning(result)) {
         self$warnings$push(result)
       } else if (expectation_skip(result)) {

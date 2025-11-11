@@ -22,6 +22,7 @@
 
 ## Other new features
 
+* New `extract_test()` function to extract a reprex from a failing expectation. tests run in `R CMD check` will use this to automatically create a reprex in the `_problems/` directory for each failing expectation. You can turn this behaviour off by setting `TESTTHAT_PROBLEMS=false` (#2263).
 * New `local_mocked_s3_method()`, `local_mocked_s4_method()`, and `local_mocked_r6_class()` allow you to mock S3 and S4 methods and R6 classes (#1892, #1916)
 * New `local_on_cran(TRUE)` allows you to simulate how your tests will run on CRAN (#2112).
 * `test_dir()`, `test_file()`, `test_package()`, `test_check()`, `test_local()`, `source_file()` gain a `shuffle` argument that uses `sample()` to randomly reorder the top-level expressions in each test file (#1942). This random reordering surfaces dependencies between tests and code outside of any test, as well as dependencies between tests. This helps you find and eliminate unintentional dependencies.
