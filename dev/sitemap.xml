@@ -72,6 +72,7 @@
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_that.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expect_vector.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/expectation.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/reference/extract_test.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/fail.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/find_reporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/find_test_scripts.html</loc></url>
@@ -117,6 +118,7 @@
 <url><loc>https://testthat.r-lib.org/dev/reference/testthat_examples.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/testthat_results.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/testthat_tolerance.html</loc></url>
+<url><loc>https://testthat.r-lib.org/dev/reference/topic-name.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/try_again.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/use_catch.html</loc></url>
 <url><loc>https://testthat.r-lib.org/dev/reference/verify_output.html</loc></url>

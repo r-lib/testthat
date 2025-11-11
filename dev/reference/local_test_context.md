@@ -143,5 +143,5 @@ test_that("test ellipsis", {
   local_reproducible_output(unicode = TRUE)
   expect_equal(cli::symbol$ellipsis, "\u2026")
 })
-#> Test passed with 2 successes 🎊.
+#> Test passed with 2 successes 😀.
 ```

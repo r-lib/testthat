@@ -104,6 +104,13 @@
 ### Other new features
 
 - New
+  [`extract_test()`](https://testthat.r-lib.org/dev/reference/extract_test.md)
+  function to extract a reprex from a failing expectation. tests run in
+  `R CMD check` will use this to automatically create a reprex in the
+  `_problems/` directory for each failing expectation. You can turn this
+  behaviour off by setting `TESTTHAT_PROBLEMS=false`
+  ([\#2263](https://github.com/r-lib/testthat/issues/2263)).
+- New
   [`local_mocked_s3_method()`](https://testthat.r-lib.org/dev/reference/local_mocked_s3_method.md),
   [`local_mocked_s4_method()`](https://testthat.r-lib.org/dev/reference/local_mocked_s3_method.md),
   and

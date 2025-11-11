@@ -111,6 +111,8 @@
   [`is_snapshot()`](https://testthat.r-lib.org/dev/reference/is_testing.md)
   [`testing_package()`](https://testthat.r-lib.org/dev/reference/is_testing.md)
   : Determine testing status
+- [`extract_test()`](https://testthat.r-lib.org/dev/reference/extract_test.md)
+  : Extract a reprex from a failed expectation
 - [`local_edition()`](https://testthat.r-lib.org/dev/reference/local_edition.md)
   [`edition_get()`](https://testthat.r-lib.org/dev/reference/local_edition.md)
   : Temporarily change the active testthat edition

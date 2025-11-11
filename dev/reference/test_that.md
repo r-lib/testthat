@@ -48,7 +48,7 @@ test_that("trigonometric functions match identities", {
   expect_equal(cos(pi / 4), 1 / sqrt(2))
   expect_equal(tan(pi / 4), 1)
 })
-#> Test passed with 3 successes 😀.
+#> Test passed with 3 successes 🎊.
 
 if (FALSE) { # \dontrun{
 test_that("trigonometric functions match identities", {
