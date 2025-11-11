@@ -84,7 +84,10 @@ verify_exec <- function(expr, env = caller_env(), replay = output_replay) {
   })
   source <- unlist(exprs, recursive = FALSE)
 
-  handler <- evaluate::new_output_handler(value = testthat_print)
+  handler <- evaluate::new_output_handler(
+    value = testthat_print,
+    calling_handlers = list(error = function(cnd) rlang::entrace(cnd))
+  )
   results <- evaluate::evaluate(
     source,
     envir = env,

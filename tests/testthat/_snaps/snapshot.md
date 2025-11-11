@@ -243,7 +243,7 @@
     Condition <simpleWarning>
       Warning in `f()`:
       bar
-    Condition <simpleError>
+    Condition <rlang_error>
       Error in `f()`:
       ! baz
 

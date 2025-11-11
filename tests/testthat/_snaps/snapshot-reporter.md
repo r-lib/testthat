@@ -3,5 +3,5 @@
     Code
       err$message
     Output
-      [1] "Expected NULL to throw a error."
+      [1] "Error: Expected NULL to throw a error."
 

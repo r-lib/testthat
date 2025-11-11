@@ -43,6 +43,7 @@ test_that("can fully suppress incremental updates", {
 })
 
 test_that("reports backtraces", {
+  withr::local_envvar(TESTTHAT_MAX_FAILS = Inf)
   expect_snapshot_reporter(
     ProgressReporter$new(update_interval = 0, min_time = Inf),
     test_path("reporters/backtraces.R")

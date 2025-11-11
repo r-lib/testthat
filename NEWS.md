@@ -46,6 +46,7 @@
 * `expect_snapshot()` on reports how to resolve failures once when running inside `R CMD check`.
 * `expect_snapshot()` no longer skips on CRAN, as that skips the rest of the test. Instead it just returns, neither succeeding nor failing (#1585).
 * `expect_snapshot()` and `expect_snapshot_file()` hints now include the path to the package, if it's not the current working directory (#1577).
+* `expect_snapshot()` gives a more informative backtrace when the code inside the snapshot errors (#2277).
 * `expect_snapshot_file()` now clearly errors if the `path` doesn't exist (#2191), or has been used alreaday (#1592). It now considers `.json` to be a text file (#1593), and shows differences for text files in the console (#1593).
 * `expect_snapshot_value()` can now handle expressions that generate `-` (#1678) or zero length atomic vectors (#2042).
 * `expect_vector()` fails, instead of erroring, if `object` is not a vector (@plietar, #2224).

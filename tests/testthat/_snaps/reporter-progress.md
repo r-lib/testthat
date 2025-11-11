@@ -192,7 +192,8 @@
     - | 7 1      1 | reporters/backtraces                                           
     \ | 8 1      1 | reporters/backtraces                                           
     | | 9 1      1 | reporters/backtraces                                           
-    x | 9 1      1 | reporters/backtraces
+    / | 10 1      1 | reporters/backtraces                                          
+    x | 10 1      1 | reporters/backtraces
     --------------------------------------------------------------------------------
     Error ('reporters/backtraces.R:3:8'): errors thrown at block level are entraced
     Error in `g()`: foo
@@ -294,7 +295,15 @@
      25.                                                 \-f(x - 1)
      26.                                                   \-f(x - 1)
     
-    Failure ('reporters/backtraces.R:62:6'): (code run outside of `test_that()`)
+    Error ('reporters/backtraces.R:64:3'): errors in snapshots get useful backtraces
+    Error in `h()`: !
+    Backtrace:
+        x
+     1. \-f()
+     2.   \-g()
+     3.     \-h()
+    
+    Failure ('reporters/backtraces.R:70:6'): (code run outside of `test_that()`)
     Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
@@ -307,7 +316,7 @@
      3.     \-h()
      4.       \-testthat::expect_true(FALSE)
     
-    Failure ('reporters/backtraces.R:67:3'): nested expectations get backtraces
+    Failure ('reporters/backtraces.R:75:3'): nested expectations get backtraces
     Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
@@ -416,7 +425,15 @@
      25.                                                 \-f(x - 1)
      26.                                                   \-f(x - 1)
     
-    Failure ('reporters/backtraces.R:62:6'): (code run outside of `test_that()`)
+    Error ('reporters/backtraces.R:64:3'): errors in snapshots get useful backtraces
+    Error in `h()`: !
+    Backtrace:
+        x
+     1. \-f()
+     2.   \-g()
+     3.     \-h()
+    
+    Failure ('reporters/backtraces.R:70:6'): (code run outside of `test_that()`)
     Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
@@ -429,7 +446,7 @@
      3.     \-h()
      4.       \-testthat::expect_true(FALSE)
     
-    Failure ('reporters/backtraces.R:67:3'): nested expectations get backtraces
+    Failure ('reporters/backtraces.R:75:3'): nested expectations get backtraces
     Expected FALSE to be TRUE.
     Differences:
     `actual`:   FALSE
@@ -442,7 +459,7 @@
      3.     \-h()
      4.       \-testthat::expect_true(FALSE)
     
-    [ FAIL 9 | WARN 1 | SKIP 0 | PASS 1 ]
+    [ FAIL 10 | WARN 1 | SKIP 0 | PASS 1 ]
     
     No one gets it right on their first try
 
