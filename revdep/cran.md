@@ -1,9 +1,9 @@
 ## revdepcheck results
 
-We checked 9972 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 9992 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 108 new problems
- * We failed to check 23 packages
+ * We saw 91 new problems
+ * We failed to check 26 packages
 
 Issues with CRAN packages are summarised below.
 
@@ -22,16 +22,10 @@ Issues with CRAN packages are summarised below.
 * aws.comprehend
   checking tests ... ERROR
 
-* batata
+* BayesChange
   checking tests ... ERROR
-
-* bcRP
-  checking examples ... ERROR
 
 * bindr
-  checking tests ... ERROR
-
-* binpackr
   checking tests ... ERROR
 
 * clinUtils
@@ -50,9 +44,6 @@ Issues with CRAN packages are summarised below.
   checking tests ... ERROR
 
 * covdepGE
-  checking tests ... ERROR
-
-* covr
   checking tests ... ERROR
 
 * difNLR
@@ -91,14 +82,6 @@ Issues with CRAN packages are summarised below.
 * hdcuremodels
   checking tests ... ERROR
 
-* hedgehog
-  checking examples ... ERROR
-  checking tests ... ERROR
-  checking re-building of vignette outputs ... ERROR
-
-* heumilkr
-  checking tests ... ERROR
-
 * howzatR
   checking tests ... ERROR
 
@@ -129,14 +112,8 @@ Issues with CRAN packages are summarised below.
 * IMEC
   checking tests ... ERROR
 
-* leaflet.minicharts
-  checking tests ... ERROR
-
 * learnr
   checking tests ... ERROR
-
-* linl
-  checking re-building of vignette outputs ... WARNING
 
 * lintr
   checking tests ... ERROR
@@ -145,9 +122,6 @@ Issues with CRAN packages are summarised below.
   checking tests ... ERROR
 
 * markmyassignment
-  checking tests ... ERROR
-
-* maybe
   checking tests ... ERROR
 
 * mbbe
@@ -160,9 +134,6 @@ Issues with CRAN packages are summarised below.
   checking tests ... ERROR
 
 * mknapsack
-  checking tests ... ERROR
-
-* mlr3pipelines
   checking tests ... ERROR
 
 * moexer
@@ -183,9 +154,6 @@ Issues with CRAN packages are summarised below.
 * nodiv
   checking tests ... ERROR
 
-* openxlsx
-  checking tests ... ERROR
-
 * operator.tools
   checking tests ... ERROR
 
@@ -196,9 +164,6 @@ Issues with CRAN packages are summarised below.
   checking tests ... ERROR
 
 * oxcAAR
-  checking tests ... ERROR
-
-* parquetize
   checking tests ... ERROR
 
 * passport
@@ -219,9 +184,6 @@ Issues with CRAN packages are summarised below.
 * pointblank
   checking tests ... ERROR
 
-* productplots
-  checking tests ... ERROR
-
 * projmgr
   checking tests ... ERROR
 
@@ -229,10 +191,6 @@ Issues with CRAN packages are summarised below.
   checking tests ... ERROR
 
 * Quandl
-  checking tests ... ERROR
-
-* quickcheck
-  checking examples ... ERROR
   checking tests ... ERROR
 
 * rags2ridges
@@ -271,8 +229,8 @@ Issues with CRAN packages are summarised below.
 * seqminer
   checking tests ... ERROR
 
-* sf
-  checking tests ... NOTE
+* serocalculator
+  checking tests ... ERROR
 
 * shiny.benchmark
   checking tests ... ERROR
@@ -283,9 +241,6 @@ Issues with CRAN packages are summarised below.
 * SIAtools
   checking tests ... ERROR
 
-* sidra
-  checking tests ... ERROR
-
 * spaero
   checking tests ... ERROR
 
@@ -293,9 +248,6 @@ Issues with CRAN packages are summarised below.
   checking tests ... ERROR
 
 * ssdtools
-  checking tests ... ERROR
-
-* tabr
   checking tests ... ERROR
 
 * testdat
@@ -322,17 +274,11 @@ Issues with CRAN packages are summarised below.
 * tryCatchLog
   checking tests ... ERROR
 
-* uwot
-  checking tests ... ERROR
-
 * vein
   checking tests ... ERROR
 
 * WhatIf
   checking tests ... ERROR
-
-* WhatsR
-  checking examples ... ERROR
 
 * ZillowR
   checking tests ... ERROR
@@ -340,7 +286,6 @@ Issues with CRAN packages are summarised below.
 ### Failed to check
 
 * bayesdfa            (NA)
-* cocktailApp         (NA)
 * ctsem               (NA)
 * DSMolgenisArmadillo (NA)
 * dsTidyverse         (NA)
@@ -349,15 +294,19 @@ Issues with CRAN packages are summarised below.
 * fdaPDE              (NA)
 * fio                 (NA)
 * gadjid              (NA)
+* galvanizer          (NA)
+* ggpattern           (NA)
 * gllvm               (NA)
 * gpboost             (NA)
 * gpuR                (NA)
+* kerastuneR          (NA)
 * loon.shiny          (NA)
 * loon.tourr          (NA)
 * multinma            (NA)
 * rstanarm            (NA)
 * SQLFormatteR        (NA)
-* string2path         (NA)
+* stoRy               (NA)
+* tidyjson            (NA)
 * tok                 (NA)
 * tricolore           (NA)
 * TriDimRegression    (NA)

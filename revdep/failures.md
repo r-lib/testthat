@@ -46,66 +46,6 @@ ERROR: configuration failed for package ‘bayesdfa’
 
 
 ```
-# cocktailApp (0.2.3)
-
-* GitHub: <https://github.com/shabbychef/cocktailApp>
-* Email: <mailto:shabbychef@gmail.com>
-* GitHub mirror: <https://github.com/cran/cocktailApp>
-
-Run `revdepcheck::cloud_details(, "cocktailApp")` for more info
-
-## In both
-
-*   checking whether package ‘cocktailApp’ can be installed ... ERROR
-     ```
-     Installation failed.
-     See ‘/tmp/workdir/cocktailApp/new/cocktailApp.Rcheck/00install.out’ for details.
-     ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘cocktailApp’ ...
-** this is package ‘cocktailApp’ version ‘0.2.3’
-** package ‘cocktailApp’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error: .onLoad failed in loadNamespace() for 'ggtern', details:
-  call: NULL
-  error: <ggplot2::element_line> object properties are invalid:
-- @lineend must be <character> or <NULL>, not S3<arrow>
-Execution halted
-ERROR: lazy loading failed for package ‘cocktailApp’
-* removing ‘/tmp/workdir/cocktailApp/new/cocktailApp.Rcheck/cocktailApp’
-
-
-```
-### CRAN
-
-```
-* installing *source* package ‘cocktailApp’ ...
-** this is package ‘cocktailApp’ version ‘0.2.3’
-** package ‘cocktailApp’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** data
-** inst
-** byte-compile and prepare package for lazy loading
-Error: .onLoad failed in loadNamespace() for 'ggtern', details:
-  call: NULL
-  error: <ggplot2::element_line> object properties are invalid:
-- @lineend must be <character> or <NULL>, not S3<arrow>
-Execution halted
-ERROR: lazy loading failed for package ‘cocktailApp’
-* removing ‘/tmp/workdir/cocktailApp/old/cocktailApp.Rcheck/cocktailApp’
-
-
-```
 # ctsem (3.10.4)
 
 * GitHub: <https://github.com/cdriveraus/ctsem>
@@ -657,6 +597,106 @@ ERROR: compilation failed for package ‘gadjid’
 
 
 ```
+# galvanizer (0.5.3)
+
+* GitHub: <https://github.com/jonlinca/galvanizer>
+* Email: <mailto:hello@jonlin.ca>
+* GitHub mirror: <https://github.com/cran/galvanizer>
+
+Run `revdepcheck::cloud_details(, "galvanizer")` for more info
+
+## In both
+
+*   checking whether package ‘galvanizer’ can be installed ... ERROR
+     ```
+     Installation failed.
+     See ‘/tmp/workdir/galvanizer/new/galvanizer.Rcheck/00install.out’ for details.
+     ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘galvanizer’ ...
+** this is package ‘galvanizer’ version ‘0.5.3’
+** package ‘galvanizer’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+Error: object ‘at_depth’ is not exported by 'namespace:purrr'
+Execution halted
+ERROR: lazy loading failed for package ‘galvanizer’
+* removing ‘/tmp/workdir/galvanizer/new/galvanizer.Rcheck/galvanizer’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘galvanizer’ ...
+** this is package ‘galvanizer’ version ‘0.5.3’
+** package ‘galvanizer’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+Error: object ‘at_depth’ is not exported by 'namespace:purrr'
+Execution halted
+ERROR: lazy loading failed for package ‘galvanizer’
+* removing ‘/tmp/workdir/galvanizer/old/galvanizer.Rcheck/galvanizer’
+
+
+```
+# ggpattern (1.2.1)
+
+* GitHub: <https://github.com/trevorld/ggpattern>
+* Email: <mailto:trevor.l.davis@gmail.com>
+* GitHub mirror: <https://github.com/cran/ggpattern>
+
+Run `revdepcheck::cloud_details(, "ggpattern")` for more info
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/ggpattern/old/ggpattern.Rcheck’
+* using R version 4.5.1 (2025-06-13)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.3 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘ggpattern/DESCRIPTION’ ... OK
+...
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: OK
+
+
+
+
+
+```
 # gllvm (2.0.5)
 
 * GitHub: <https://github.com/JenniNiku/gllvm>
@@ -729,7 +769,7 @@ ERROR: compilation failed for package ‘gllvm’
 
 
 ```
-# gpboost (1.6.3)
+# gpboost (1.6.4)
 
 * GitHub: <https://github.com/fabsig/GPBoost>
 * Email: <mailto:fabiosigrist@gmail.com>
@@ -751,7 +791,7 @@ Run `revdepcheck::cloud_details(, "gpboost")` for more info
 
 ```
 * installing *source* package ‘gpboost’ ...
-** this is package ‘gpboost’ version ‘1.6.3’
+** this is package ‘gpboost’ version ‘1.6.4’
 ** package ‘gpboost’ successfully unpacked and MD5 sums checked
 ** using staged installation
 checking location of R... /opt/R/4.5.1/lib/R
@@ -761,8 +801,8 @@ configure: creating ./config.status
 config.status: creating src/Makevars
 ** libs
 ...
-./include/GPBoost/re_model_template.h:1520:6:   required from ‘void GPBoost::REModelTemplate<T_mat, T_chol>::OptimLinRegrCoefCovPar(const double*, const double*, int, double*, double*, int&, double*, double*, double*, double*, bool, const double*, bool, bool, bool, bool, bool) [with T_mat = Eigen::SparseMatrix<double>; T_chol = Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, 1, Eigen::AMDOrdering<int> >]’
-re_model.cpp:324:40:   required from here
+./include/GPBoost/re_model_template.h:1565:5:   required from ‘void GPBoost::REModelTemplate<T_mat, T_chol>::CalculateStandardErrorsCovPars(const double*, double*) [with T_mat = Eigen::SparseMatrix<double>; T_chol = Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, 1, Eigen::AMDOrdering<int> >]’
+re_model.cpp:769:50:   required from here
 ./include/Eigen/src/Core/CoreEvaluators.h:1064:54: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__m128d’} [-Wignored-attributes]
  1064 |     PacketAlignment = unpacket_traits<PacketScalar>::alignment,
       |                                                      ^~~~~~~~~
@@ -778,7 +818,7 @@ ERROR: compilation failed for package ‘gpboost’
 
 ```
 * installing *source* package ‘gpboost’ ...
-** this is package ‘gpboost’ version ‘1.6.3’
+** this is package ‘gpboost’ version ‘1.6.4’
 ** package ‘gpboost’ successfully unpacked and MD5 sums checked
 ** using staged installation
 checking location of R... /opt/R/4.5.1/lib/R
@@ -788,8 +828,8 @@ configure: creating ./config.status
 config.status: creating src/Makevars
 ** libs
 ...
-./include/GPBoost/re_model_template.h:1520:6:   required from ‘void GPBoost::REModelTemplate<T_mat, T_chol>::OptimLinRegrCoefCovPar(const double*, const double*, int, double*, double*, int&, double*, double*, double*, double*, bool, const double*, bool, bool, bool, bool, bool) [with T_mat = Eigen::SparseMatrix<double>; T_chol = Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, 1, Eigen::AMDOrdering<int> >]’
-re_model.cpp:324:40:   required from here
+./include/GPBoost/re_model_template.h:1565:5:   required from ‘void GPBoost::REModelTemplate<T_mat, T_chol>::CalculateStandardErrorsCovPars(const double*, double*) [with T_mat = Eigen::SparseMatrix<double>; T_chol = Eigen::SimplicialLLT<Eigen::SparseMatrix<double>, 1, Eigen::AMDOrdering<int> >]’
+re_model.cpp:769:50:   required from here
 ./include/Eigen/src/Core/CoreEvaluators.h:1064:54: warning: ignoring attributes on template argument ‘Eigen::internal::packet_traits<double>::type’ {aka ‘__m128d’} [-Wignored-attributes]
  1064 |     PacketAlignment = unpacket_traits<PacketScalar>::alignment,
       |                                                      ^~~~~~~~~
@@ -870,6 +910,58 @@ collect2: error: ld returned 1 exit status
 make: *** [/opt/R/4.5.1/lib/R/share/make/shlib.mk:10: gpuR.so] Error 1
 ERROR: compilation failed for package ‘gpuR’
 * removing ‘/tmp/workdir/gpuR/old/gpuR.Rcheck/gpuR’
+
+
+```
+# kerastuneR (0.1.0.7)
+
+* GitHub: <https://github.com/EagerAI/kerastuneR>
+* Email: <mailto:turqut.a.314@gmail.com>
+* GitHub mirror: <https://github.com/cran/kerastuneR>
+
+Run `revdepcheck::cloud_details(, "kerastuneR")` for more info
+
+## In both
+
+*   checking whether package ‘kerastuneR’ can be installed ... ERROR
+     ```
+     Installation failed.
+     See ‘/tmp/workdir/kerastuneR/new/kerastuneR.Rcheck/00install.out’ for details.
+     ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘kerastuneR’ ...
+** this is package ‘kerastuneR’ version ‘0.1.0.7’
+** package ‘kerastuneR’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: object ‘at_depth’ is not exported by 'namespace:purrr'
+Execution halted
+ERROR: lazy loading failed for package ‘kerastuneR’
+* removing ‘/tmp/workdir/kerastuneR/new/kerastuneR.Rcheck/kerastuneR’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘kerastuneR’ ...
+** this is package ‘kerastuneR’ version ‘0.1.0.7’
+** package ‘kerastuneR’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: object ‘at_depth’ is not exported by 'namespace:purrr'
+Execution halted
+ERROR: lazy loading failed for package ‘kerastuneR’
+* removing ‘/tmp/workdir/kerastuneR/old/kerastuneR.Rcheck/kerastuneR’
 
 
 ```
@@ -1212,20 +1304,20 @@ ERROR: configuration failed for package ‘SQLFormatteR’
 
 
 ```
-# string2path (0.2.2)
+# stoRy (0.2.2)
 
-* GitHub: <https://github.com/yutannihilation/string2path>
-* Email: <mailto:yutani.ini@gmail.com>
-* GitHub mirror: <https://github.com/cran/string2path>
+* GitHub: <https://github.com/theme-ontology/stoRy>
+* Email: <mailto:paul.sheridan.stats@gmail.com>
+* GitHub mirror: <https://github.com/cran/stoRy>
 
-Run `revdepcheck::cloud_details(, "string2path")` for more info
+Run `revdepcheck::cloud_details(, "stoRy")` for more info
 
 ## In both
 
-*   checking whether package ‘string2path’ can be installed ... ERROR
+*   checking whether package ‘stoRy’ can be installed ... ERROR
      ```
      Installation failed.
-     See ‘/tmp/workdir/string2path/new/string2path.Rcheck/00install.out’ for details.
+     See ‘/tmp/workdir/stoRy/new/stoRy.Rcheck/00install.out’ for details.
      ```
 
 ## Installation
@@ -1233,48 +1325,94 @@ Run `revdepcheck::cloud_details(, "string2path")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘string2path’ ...
-** this is package ‘string2path’ version ‘0.2.2’
-** package ‘string2path’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘stoRy’ ...
+** this is package ‘stoRy’ version ‘0.2.2’
+** package ‘stoRy’ successfully unpacked and MD5 sums checked
 ** using staged installation
-*** Checking if cargo is installed
-*** Checking if cargo is newer than the required version
-
--------------- ERROR: CONFIGURATION FAILED --------------------
-
-[cargo check result]
-The installed version of cargo (1.75.0) is older than the requirement (1.78.0)
-
-Please refer to <https://www.rust-lang.org/tools/install> to install Rust.
-
----------------------------------------------------------------
-
-ERROR: configuration failed for package ‘string2path’
-* removing ‘/tmp/workdir/string2path/new/string2path.Rcheck/string2path’
+** R
+Warning: namespace ‘stoRy’ is not available and has been replaced
+by .GlobalEnv when processing object ‘background_collection’
+** inst
+** byte-compile and prepare package for lazy loading
+Error: object ‘at_depth’ is not exported by 'namespace:purrr'
+Execution halted
+ERROR: lazy loading failed for package ‘stoRy’
+* removing ‘/tmp/workdir/stoRy/new/stoRy.Rcheck/stoRy’
 
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘string2path’ ...
-** this is package ‘string2path’ version ‘0.2.2’
-** package ‘string2path’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘stoRy’ ...
+** this is package ‘stoRy’ version ‘0.2.2’
+** package ‘stoRy’ successfully unpacked and MD5 sums checked
 ** using staged installation
-*** Checking if cargo is installed
-*** Checking if cargo is newer than the required version
+** R
+Warning: namespace ‘stoRy’ is not available and has been replaced
+by .GlobalEnv when processing object ‘background_collection’
+** inst
+** byte-compile and prepare package for lazy loading
+Error: object ‘at_depth’ is not exported by 'namespace:purrr'
+Execution halted
+ERROR: lazy loading failed for package ‘stoRy’
+* removing ‘/tmp/workdir/stoRy/old/stoRy.Rcheck/stoRy’
 
--------------- ERROR: CONFIGURATION FAILED --------------------
 
-[cargo check result]
-The installed version of cargo (1.75.0) is older than the requirement (1.78.0)
+```
+# tidyjson (0.3.2)
 
-Please refer to <https://www.rust-lang.org/tools/install> to install Rust.
+* GitHub: <https://github.com/colearendt/tidyjson>
+* Email: <mailto:cole@posit.co>
+* GitHub mirror: <https://github.com/cran/tidyjson>
 
----------------------------------------------------------------
+Run `revdepcheck::cloud_details(, "tidyjson")` for more info
 
-ERROR: configuration failed for package ‘string2path’
-* removing ‘/tmp/workdir/string2path/old/string2path.Rcheck/string2path’
+## In both
+
+*   checking whether package ‘tidyjson’ can be installed ... ERROR
+     ```
+     Installation failed.
+     See ‘/tmp/workdir/tidyjson/new/tidyjson.Rcheck/00install.out’ for details.
+     ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘tidyjson’ ...
+** this is package ‘tidyjson’ version ‘0.3.2’
+** package ‘tidyjson’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: object ‘at_depth’ is not exported by 'namespace:purrr'
+Execution halted
+ERROR: lazy loading failed for package ‘tidyjson’
+* removing ‘/tmp/workdir/tidyjson/new/tidyjson.Rcheck/tidyjson’
+
+
+```
+### CRAN
+
+```
+* installing *source* package ‘tidyjson’ ...
+** this is package ‘tidyjson’ version ‘0.3.2’
+** package ‘tidyjson’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: object ‘at_depth’ is not exported by 'namespace:purrr'
+Execution halted
+ERROR: lazy loading failed for package ‘tidyjson’
+* removing ‘/tmp/workdir/tidyjson/old/tidyjson.Rcheck/tidyjson’
 
 
 ```
@@ -1337,13 +1475,13 @@ Writing `src/Makevars`.
 `tools/config.R` has finished.
 ** libs
 ...
+	cp rust/vendor-config.toml /tmp/workdir/tok/old/tok.Rcheck/00_pkg_src/tok/src/.cargo/config.toml; \
+fi
 export CARGO_HOME=/tmp/workdir/tok/old/tok.Rcheck/00_pkg_src/tok/src/.cargo && \
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.cargo/bin" && \
 RUSTFLAGS=" --print=native-static-libs" cargo build -j 2 --offline --lib --release --manifest-path=./rust/Cargo.toml --target-dir ./rust/target 
-error: package `rayon-core v1.13.0` cannot be built because it requires rustc 1.80 or newer, while the currently active rustc version is 1.75.0
-Either upgrade to rustc 1.80 or newer, or use
-cargo update rayon-core@1.13.0 --precise ver
-where `ver` is the latest version of `rayon-core` supporting rustc 1.75.0
+error: package `tok v0.1.0 (/tmp/workdir/tok/old/tok.Rcheck/00_pkg_src/tok/src/rust)` cannot be built because it requires rustc 1.81.0 or newer, while the currently active rustc version is 1.75.0
+
 make: *** [Makevars:26: rust/target/release/libtok.a] Error 101
 ERROR: compilation failed for package ‘tok’
 * removing ‘/tmp/workdir/tok/old/tok.Rcheck/tok’

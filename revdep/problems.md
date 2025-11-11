@@ -91,28 +91,28 @@ Run `revdepcheck::cloud_details(, "autodb")` for more info
 *   checking tests ... ERROR
      ```
      ...
-         9.               └─hedgehog:::as.expectation.error(e)
-        10.                 └─testthat::expectation("error", msg, srcref)
-        11.                   └─testthat::new_expectation(...)
-        12.                     └─base::structure(...)
-       ── Error ('test-synthesise.r:837:5'): synthesised_fds / is a closure-equivalent inverse of synthesise ──
-       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
-       Backtrace:
-            ▆
-         1. └─hedgehog::forall(...) at test-synthesise.r:837:5
-         2.   └─hedgehog:::run.prop(property, tree$root, curry)
-         3.     └─base::tryCatch(...)
-         4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-         5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-         6.           └─value[[3L]](cond)
-         7.             └─hedgehog (local) register_expectation(e)
-         8.               ├─hedgehog:::as.expectation(e)
-         9.               └─hedgehog:::as.expectation.error(e)
-        10.                 └─testthat::expectation("error", msg, srcref)
-        11.                   └─testthat::new_expectation(...)
-        12.                     └─base::structure(...)
        
-       [ FAIL 219 | WARN 0 | SKIP 1 | PASS 436 ]
+       ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
+       • empty test (1): 'test-decompose.r:130:3'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Failure ('test-database.r:982:5'): database / concatenates without losing attribute orderings, if consistent ──
+       Expected exactly one failure and no successes.
+       Actually failed 2 times
+       ── Failure ('test-database_schema.r:744:5'): database_schema / concatenates without losing attribute orderings, if consistent ──
+       Expected exactly one failure and no successes.
+       Actually failed 2 times
+       ── Failure ('test-functional_dependency.r:276:5'): functional_dependency / concatenates without losing attribute orderings, if consistent ──
+       Expected exactly one failure and no successes.
+       Actually failed 2 times
+       ── Failure ('test-relation.r:726:5'): relation / concatenates without losing attribute orderings, if consistent ──
+       Expected exactly one failure and no successes.
+       Actually failed 2 times
+       ── Failure ('test-relation_schema.r:620:5'): relation_schema / concatenates without losing attribute orderings, if consistent ──
+       Expected exactly one failure and no successes.
+       Actually failed 2 times
+       
+       [ FAIL 5 | WARN 0 | SKIP 1 | PASS 725 ]
        Error:
        ! Test failures.
        Execution halted
@@ -158,84 +158,44 @@ Run `revdepcheck::cloud_details(, "aws.comprehend")` for more info
        Execution halted
      ```
 
-# batata (0.2.1)
+# BayesChange (2.1.2)
 
-* GitHub: <https://github.com/feddelegrand7/batata>
-* Email: <mailto:ihaddaden.fodeil@gmail.com>
-* GitHub mirror: <https://github.com/cran/batata>
+* GitHub: <https://github.com/lucadanese/BayesChange>
+* Email: <mailto:l.danese1@campus.unimib.it>
+* GitHub mirror: <https://github.com/cran/BayesChange>
 
-Run `revdepcheck::cloud_details(, "batata")` for more info
+Run `revdepcheck::cloud_details(, "BayesChange")` for more info
 
 ## Newly broken
 
 *   checking tests ... ERROR
      ```
      ...
-       > test_check("batata")
-       [ FAIL 3 | WARN 2 | SKIP 1 | PASS 38 ]
-       
-       ══ Skipped tests (1) ═══════════════════════════════════════════════════════════
-       • On CRAN (1): 'test-yesterday_packages.R:12:3'
+       > #
+       > # Where should you do additional test configuration?
+       > # Learn more about the roles of various files in:
+       > # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
+       > # * https://testthat.r-lib.org/articles/special-files.html
+       > 
+       > library(testthat)
+       > library(BayesChange)
+       > 
+       > test_check("BayesChange")
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1 ]
        
        ══ Failed tests ════════════════════════════════════════════════════════════════
-       ── Failure ('test-display_starred.R:8:3'): display_starred() returns a character vector ──
-       Expected `output` to have type "character".
-       Actual type: "NULL"
-       ── Failure ('test-display_starred.R:14:3'): display_starred() returns a vector
-                 of length superior than 0 ──
-       Expected `length(output)` > 0.
-       Actual comparison: 0.0 <= 0.0
-       Difference: 0.0 <= 0
-       ── Failure ('test-display_starred.R:20:3'): display_starred() returns a coherent length ──
-       Expected `length(output2)` to equal 10.
-       Differences:
-       1/1 mismatches
-       [1] 0 - 10 == -10
+       ── Error ('test-test-clust_cp.R:11:3'): clust_cp works ─────────────────────────
+       <std::logic_error/C++Error/error/condition>
+       Error: max(): object has no elements
+       Backtrace:
+           ▆
+        1. └─BayesChange::clust_cp(...) at test-test-clust_cp.R:11:3
+        2.   └─BayesChange::clust_cp_uni(...)
        
-       [ FAIL 3 | WARN 2 | SKIP 1 | PASS 38 ]
+       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 1 ]
        Error:
        ! Test failures.
        Execution halted
-     ```
-
-# bcRP (1.0.1)
-
-* GitHub: <https://github.com/JulioCollazos64/bcRP>
-* Email: <mailto:amarullazo626@gmail.com>
-* GitHub mirror: <https://github.com/cran/bcRP>
-
-Run `revdepcheck::cloud_details(, "bcRP")` for more info
-
-## Newly broken
-
-*   checking examples ... ERROR
-     ```
-     ...
-     > # Will get you the most recent data for these codes
-     > # as you have not provided the `from` and `to` arguments.
-     > get_bcrp_data(codes = codes)
-     # A tibble: 92 × 4
-        name     values            series_name                                  code 
-        <chr>    <chr>             <chr>                                        <chr>
-      1 Oct.2023 -23030.188127     Cuentas monetarias de las sociedades creado… PN00…
-      2 Nov.2023 -21803.811257     Cuentas monetarias de las sociedades creado… PN00…
-      3 Dic.2023 -10753.996433     Cuentas monetarias de las sociedades creado… PN00…
-      4 Ene.2024 -7372.69594999999 Cuentas monetarias de las sociedades creado… PN00…
-      5 Feb.2024 -4352.91922600001 Cuentas monetarias de las sociedades creado… PN00…
-      6 Mar.2024 -6059.647797      Cuentas monetarias de las sociedades creado… PN00…
-      7 Abr.2024 -7011.29944       Cuentas monetarias de las sociedades creado… PN00…
-      8 May.2024 -5719.920519      Cuentas monetarias de las sociedades creado… PN00…
-      9 Jun.2024 -4412.965822      Cuentas monetarias de las sociedades creado… PN00…
-     10 Jul.2024 3762.929587       Cuentas monetarias de las sociedades creado… PN00…
-     # ℹ 82 more rows
-     > 
-     > # You can also provide the range of dates
-     > # through the `from` and `to` arguments.
-     > get_bcrp_data(codes = codes, from = "2015-01", to = "2020-01")
-     Error in perform_req_strategy(requests = list_of_requests, strategy = request_strategy) : 
-       Error(s) at: PN00002MM PN01270PM
-     Calls: get_bcrp_data -> perform_req_strategy
-     Execution halted
      ```
 
 # bindr (0.1.2)
@@ -272,46 +232,6 @@ Run `revdepcheck::cloud_details(, "bindr")` for more info
         4.       └─rlang::cnd_signal(...)
        
        [ FAIL 1 | WARN 0 | SKIP 0 | PASS 41 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-# binpackr (0.1.1)
-
-* GitHub: <https://github.com/lschneiderbauer/binpackr>
-* Email: <mailto:lukas.schneiderbauer@gmail.com>
-* GitHub mirror: <https://github.com/cran/binpackr>
-
-Run `revdepcheck::cloud_details(, "binpackr")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-         9.               └─hedgehog:::as.expectation.error(e)
-        10.                 └─testthat::expectation("error", msg, srcref)
-        11.                   └─testthat::new_expectation(...)
-        12.                     └─base::structure(...)
-       ── Error ('test-bin_pack_ffd.R:26:3'): Equal sized items get distributed correctly. ──
-       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
-       Backtrace:
-            ▆
-         1. └─hedgehog::forall(...) at test-bin_pack_ffd.R:26:3
-         2.   └─hedgehog:::run.prop(property, tree$root, curry)
-         3.     └─base::tryCatch(...)
-         4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-         5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-         6.           └─value[[3L]](cond)
-         7.             └─hedgehog (local) register_expectation(e)
-         8.               ├─hedgehog:::as.expectation(e)
-         9.               └─hedgehog:::as.expectation.error(e)
-        10.                 └─testthat::expectation("error", msg, srcref)
-        11.                   └─testthat::new_expectation(...)
-        12.                     └─base::structure(...)
-       
-       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 4 ]
        Error:
        ! Test failures.
        Execution halted
@@ -570,61 +490,6 @@ Run `revdepcheck::cloud_details(, "covdepGE")` for more info
 *   checking C++ specification ... NOTE
      ```
        Specified C++11: please drop specification unless essential
-     ```
-
-# covr (3.6.4)
-
-* GitHub: <https://github.com/r-lib/covr>
-* Email: <mailto:james.f.hester@gmail.com>
-* GitHub mirror: <https://github.com/cran/covr>
-
-Run `revdepcheck::cloud_details(, "covr")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-       ── Error ('test-utils.R:20:3'): it works as expected ───────────────────────────
-       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
-       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
-       ℹ Please use `with_mocked_bindings()` instead.
-       Backtrace:
-           ▆
-        1. └─testthat::with_mock(...) at test-utils.R:20:3
-        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-        3.     └─lifecycle:::deprecate_stop0(msg)
-        4.       └─rlang::cnd_signal(...)
-       ── Error ('test-utils.R:27:3'): it works as expected ───────────────────────────
-       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
-       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
-       ℹ Please use `with_mocked_bindings()` instead.
-       Backtrace:
-           ▆
-        1. └─testthat::with_mock(...) at test-utils.R:27:3
-        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-        3.     └─lifecycle:::deprecate_stop0(msg)
-        4.       └─rlang::cnd_signal(...)
-       
-       [ FAIL 22 | WARN 0 | SKIP 11 | PASS 185 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-## In both
-
-*   checking compiled code ... NOTE
-     ```
-     File ‘covr/libs/covr.so’:
-       Found non-API calls to R: ‘BODY’, ‘CLOENV’, ‘FORMALS’, ‘SET_BODY’,
-         ‘SET_CLOENV’, ‘SET_FORMALS’
-     
-     Compiled code should not call non-API entry points in R.
-     
-     See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual,
-     and section ‘Moving into C API compliance’ for issues with the use of
-     non-API entry points.
      ```
 
 # difNLR (1.5.1-4)
@@ -1111,146 +976,6 @@ Run `revdepcheck::cloud_details(, "hdcuremodels")` for more info
        Execution halted
      ```
 
-# hedgehog (0.1)
-
-* GitHub: <https://github.com/hedgehogqa/r-hedgehog>
-* Email: <mailto:huw.campbell@gmail.com>
-* GitHub mirror: <https://github.com/cran/hedgehog>
-
-Run `revdepcheck::cloud_details(, "hedgehog")` for more info
-
-## Newly broken
-
-*   checking examples ... ERROR
-     ```
-     ...
-     Backtrace:
-          ▆
-       1. └─hedgehog::forall(...)
-       2.   └─hedgehog:::run.prop(property, tree$root, curry)
-       3.     └─base::tryCatch(...)
-       4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-       5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-       6.           └─value[[3L]](cond)
-       7.             └─hedgehog (local) register_expectation(e)
-       8.               ├─hedgehog:::as.expectation(e)
-       9.               └─hedgehog:::as.expectation.error(e)
-      10.                 └─testthat::expectation("error", msg, srcref)
-      11.                   └─testthat::new_expectation(...)
-      12.                     └─base::structure(...)
-     Error:
-     ! Test failed with 1 failure and 0 successes.
-     Backtrace:
-         ▆
-      1. └─testthat::test_that(...)
-      2.   └─testthat:::test_code(code, parent.frame())
-      3.     ├─withr (local) `<fn>`()
-      4.     └─reporter$end_test(context = reporter$.context, test = test)
-      5.       └─cli::cli_abort(...)
-      6.         └─rlang::abort(...)
-     Execution halted
-     ```
-
-*   checking tests ... ERROR
-     ```
-     ...
-         9.               └─hedgehog:::as.expectation.error(e)
-        10.                 └─testthat::expectation("error", msg, srcref)
-        11.                   └─testthat::new_expectation(...)
-        12.                     └─base::structure(...)
-       ── Error ('test_registry.R:125:1'): Registry State Machine Model ───────────────
-       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
-       Backtrace:
-            ▆
-         1. └─hedgehog::forall(...)
-         2.   └─hedgehog:::run.prop(property, tree$root, curry)
-         3.     └─base::tryCatch(...)
-         4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-         5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-         6.           └─value[[3L]](cond)
-         7.             └─hedgehog (local) register_expectation(e)
-         8.               ├─hedgehog:::as.expectation(e)
-         9.               └─hedgehog:::as.expectation.error(e)
-        10.                 └─testthat::expectation("error", msg, srcref)
-        11.                   └─testthat::new_expectation(...)
-        12.                     └─base::structure(...)
-       
-       [ FAIL 24 | WARN 1 | SKIP 0 | PASS 0 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-*   checking re-building of vignette outputs ... ERROR
-     ```
-     ...
-     Quitting from hedgehog.Rmd:47-51 [unnamed-chunk-1]
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     NULL
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     
-     Error: processing vignette 'hedgehog.Rmd' failed with diagnostics:
-     Test failed with 1 failure and 0 successes.
-     --- failed re-building ‘hedgehog.Rmd’
-     
-     --- re-building ‘state-machines.Rmd’ using rmarkdown
-     
-     Quitting from state-machines.Rmd:138-145 [unnamed-chunk-5]
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     NULL
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     
-     Error: processing vignette 'state-machines.Rmd' failed with diagnostics:
-     Test failed with 1 failure and 0 successes.
-     --- failed re-building ‘state-machines.Rmd’
-     
-     SUMMARY: processing the following files failed:
-       ‘hedgehog.Rmd’ ‘state-machines.Rmd’
-     
-     Error: Vignette re-building failed.
-     Execution halted
-     ```
-
-# heumilkr (0.3.0)
-
-* GitHub: <https://github.com/lschneiderbauer/heumilkr>
-* Email: <mailto:lukas.schneiderbauer@gmail.com>
-* GitHub mirror: <https://github.com/cran/heumilkr>
-
-Run `revdepcheck::cloud_details(, "heumilkr")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-         9.               └─hedgehog:::as.expectation.error(e)
-        10.                 └─testthat::expectation("error", msg, srcref)
-        11.                   └─testthat::new_expectation(...)
-        12.                     └─base::structure(...)
-       ── Error ('test-clarke_wright.R:127:3'): Vehicles are not assigned to restricted sites ──
-       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
-       Backtrace:
-            ▆
-         1. └─hedgehog::forall(...) at test-clarke_wright.R:127:3
-         2.   └─hedgehog:::run.prop(property, tree$root, curry)
-         3.     └─base::tryCatch(...)
-         4.       └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-         5.         └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-         6.           └─value[[3L]](cond)
-         7.             └─hedgehog (local) register_expectation(e)
-         8.               ├─hedgehog:::as.expectation(e)
-         9.               └─hedgehog:::as.expectation.error(e)
-        10.                 └─testthat::expectation("error", msg, srcref)
-        11.                   └─testthat::new_expectation(...)
-        12.                     └─base::structure(...)
-       
-       [ FAIL 5 | WARN 0 | SKIP 2 | PASS 15 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
 # howzatR (1.0.1)
 
 * GitHub: <https://github.com/lukelockley/howzatR>
@@ -1485,7 +1210,7 @@ Run `revdepcheck::cloud_details(, "HurreconR")` for more info
        > test_check("HurreconR")
        Path set to /tmp/workdir/HurreconR/new/HurreconR.Rcheck/HurreconR/
        ... Modeling site ...
-       014 ms
+       025 ms
        [ FAIL 1 | WARN 1 | SKIP 0 | PASS 0 ]
        
        ══ Failed tests ════════════════════════════════════════════════════════════════
@@ -1677,45 +1402,6 @@ Run `revdepcheck::cloud_details(, "IMEC")` for more info
        Execution halted
      ```
 
-# leaflet.minicharts (0.6.2)
-
-* Email: <mailto:veronique.bachelier@rte-france.com>
-* GitHub mirror: <https://github.com/cran/leaflet.minicharts>
-
-Run `revdepcheck::cloud_details(, "leaflet.minicharts")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-       ── Error ('test-flows.R:12:1'): (code run outside of `test_that()`) ────────────
-       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
-       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
-       ℹ Please use `with_mocked_bindings()` instead.
-       Backtrace:
-           ▆
-        1. └─testthat::with_mock(...) at test-flows.R:12:1
-        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-        3.     └─lifecycle:::deprecate_stop0(msg)
-        4.       └─rlang::cnd_signal(...)
-       ── Error ('test-minicharts.R:12:1'): (code run outside of `test_that()`) ───────
-       <lifecycle_error_deprecated/defunctError/rlang_error/error/condition>
-       Error: `with_mock()` was deprecated in testthat 3.2.0 and is now defunct.
-       ℹ Please use `with_mocked_bindings()` instead.
-       Backtrace:
-           ▆
-        1. └─testthat::with_mock(...) at test-minicharts.R:12:1
-        2.   └─lifecycle::deprecate_stop("3.2.0", "with_mock()", "with_mocked_bindings()")
-        3.     └─lifecycle:::deprecate_stop0(msg)
-        4.       └─rlang::cnd_signal(...)
-       
-       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 106 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
 # learnr (0.11.5)
 
 * GitHub: <https://github.com/rstudio/learnr>
@@ -1754,78 +1440,6 @@ Run `revdepcheck::cloud_details(, "learnr")` for more info
        Error:
        ! Test failures.
        Execution halted
-     ```
-
-# linl (0.0.5)
-
-* GitHub: <https://github.com/eddelbuettel/linl>
-* Email: <mailto:edd@debian.org>
-* GitHub mirror: <https://github.com/cran/linl>
-
-Run `revdepcheck::cloud_details(, "linl")` for more info
-
-## Newly broken
-
-*   checking re-building of vignette outputs ... WARNING
-     ```
-     ...
-     tlmgr: package log updated: /opt/TinyTeX/texmf-var/web2c/tlmgr.log
-     tlmgr: command log updated: /opt/TinyTeX/texmf-var/web2c/tlmgr-commands.log
-     
-     tlmgr: Remote database at https://mirrors.mit.edu/CTAN/systems/texlive/tlnet
-     (revision 76648 of the texlive-scripts package)
-     seems to be older than the local installation
-     (revision 76658 of texlive-scripts);
-     please use a different mirror and/or wait a day or two.
-     
-     Warning in system2("tlmgr", args, ...) :
-       running command ''tlmgr' search --file --global '/grffile.sty'' had status 1 and error message 'Function not implemented'
-     ! LaTeX Error: File `grffile.sty' not found.
-     
-     ! Emergency stop.
-     <read *> 
-     
-     Error: processing vignette 'linl.Rmd' failed with diagnostics:
-     LaTeX failed to compile /tmp/workdir/linl/new/linl.Rcheck/vign_test/linl/vignettes/linl.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See linl.log for more info.
-     --- failed re-building ‘linl.Rmd’
-     
-     SUMMARY: processing the following file failed:
-       ‘linl.Rmd’
-     
-     Error: Vignette re-building failed.
-     Execution halted
-     ```
-
-## Newly fixed
-
-*   checking re-building of vignette outputs ... ERROR
-     ```
-     ...
-     ! ! Emergency stop.
-     ! <*> ...ljfour; mag:=1; ; nonstopmode; input pplr8t
-     
-     ! ! Emergency stop.
-     ! <*> ...ljfour; mag:=1; ; nonstopmode; input pplr8t
-     
-     ! <*> ...ljfour; mag:=1; ; nonstopmode; input pplr8t
-     
-     ! Transcript written on mfput.log.
-     
-     ! grep: pplr8t.log: No such file or directory
-     
-     ! mktextfm: `mf-nowin -progname=mf \mode:=ljfour; mag:=1; ; nonstopmode; input pplr8t' failed to make pplr8t.tfm.
-     
-     ! kpathsea: Appending font creation commands to missfont.log.
-     
-     Error: processing vignette 'linl.Rmd' failed with diagnostics:
-     LaTeX failed to compile /tmp/workdir/linl/old/linl.Rcheck/vign_test/linl/vignettes/linl.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See linl.log for more info.
-     --- failed re-building ‘linl.Rmd’
-     
-     SUMMARY: processing the following file failed:
-       ‘linl.Rmd’
-     
-     Error: Vignette re-building failed.
-     Execution halted
      ```
 
 # lintr (3.2.0)
@@ -1952,46 +1566,6 @@ Run `revdepcheck::cloud_details(, "markmyassignment")` for more info
        ✖ │ Forbidden code 'UseMethod' is found in the body of `base::mean`
        
        [ FAIL 2 | WARN 0 | SKIP 6 | PASS 145 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-# maybe (1.1.0)
-
-* GitHub: <https://github.com/armcn/maybe>
-* Email: <mailto:andrew.richard.mcneil@gmail.com>
-* GitHub mirror: <https://github.com/cran/maybe>
-
-Run `revdepcheck::cloud_details(, "maybe")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-        11.                   └─testthat::expectation("error", msg, srcref)
-        12.                     └─testthat::new_expectation(...)
-        13.                       └─base::structure(...)
-       ── Error ('test-with_default.R:19:3'): with_default returns the default with a nothing value ──
-       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
-       Backtrace:
-            ▆
-         1. └─quickcheck::for_all(...) at test-with_default.R:19:3
-         2.   └─hedgehog::forall(...)
-         3.     └─hedgehog:::run.prop(property, tree$root, curry)
-         4.       └─base::tryCatch(...)
-         5.         └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-         6.           └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-         7.             └─value[[3L]](cond)
-         8.               └─hedgehog (local) register_expectation(e)
-         9.                 ├─hedgehog:::as.expectation(e)
-        10.                 └─hedgehog:::as.expectation.error(e)
-        11.                   └─testthat::expectation("error", msg, srcref)
-        12.                     └─testthat::new_expectation(...)
-        13.                       └─base::structure(...)
-       
-       [ FAIL 74 | WARN 0 | SKIP 0 | PASS 60 ]
        Error:
        ! Test failures.
        Execution halted
@@ -2157,46 +1731,6 @@ Run `revdepcheck::cloud_details(, "mknapsack")` for more info
        Execution halted
      ```
 
-# mlr3pipelines (0.9.0)
-
-* GitHub: <https://github.com/mlr-org/mlr3pipelines>
-* Email: <mailto:mlr.developer@mb706.com>
-* GitHub mirror: <https://github.com/cran/mlr3pipelines>
-
-Run `revdepcheck::cloud_details(, "mlr3pipelines")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-         2. │ └─testthat:::expect_condition_matching_(...)
-         3. │   └─testthat:::quasi_capture(...)
-         4. │     ├─testthat (local) .capture(...)
-         5. │     │ └─base::withCallingHandlers(...)
-         6. │     └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-         7. └─global expect_deep_clone(po, po)
-         8.   └─expect_references_differ(one, two, "ROOT")
-         9.     └─expect_references_differ(...)
-        10.       └─expect_references_differ(...)
-        11.         └─expect_references_differ(...)
-        12.           └─expect_references_differ(...)
-        13.             └─expect_references_differ(...)
-        14.               └─expect_references_differ(...)
-        15.                 └─expect_references_differ(...)
-        16.                   └─testthat::expect_null(visited_b[[addr_a]], label = label)
-       ── Failure ('test_Graph.R:240:3'): assert_graph test ───────────────────────────
-       Expected `expect_deep_clone(po, po)` to throw a error with class <error>.
-       ── Failure ('test_meta.R:12:3'): expect_deep_clone catches non-deep clones ─────
-       Expected exactly one failure and no successes.
-       Actually succeeded 16 times
-       
-       [ FAIL 57 | WARN 0 | SKIP 96 | PASS 12541 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
 # moexer (0.3.0)
 
 * GitHub: <https://github.com/x1o/moexer>
@@ -2338,7 +1872,7 @@ Run `revdepcheck::cloud_details(, "nhdplusTools")` for more info
          'test_get_vaa.R:38:3', 'test_index.R:13:5', 'test_index.R:61:3',
          'test_map_nhdplus.R:4:3', 'test_navigate.R:4:3', 'test_navigate.R:71:3',
          'test_nhdplusTools.R:41:3', 'test_nhdplusTools.R:50:3',
-         'test_get_path.R:69:3', 'test_rescale_catchments.R:3:3',
+         'test_rescale_catchments.R:3:3', 'test_get_path.R:69:3',
          'test_run_plus_attributes.R:20:3'
        
        ══ Failed tests ════════════════════════════════════════════════════════════════
@@ -2432,46 +1966,6 @@ Run `revdepcheck::cloud_details(, "nodiv")` for more info
         4.       └─rlang::abort(message, ..., call = call, arg = arg)
        
        [ FAIL 1 | WARN 0 | SKIP 0 | PASS 63 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-# openxlsx (4.2.8)
-
-* GitHub: <https://github.com/ycphs/openxlsx>
-* Email: <mailto:jan.garbuszus@ruhr-uni-bochum.de>
-* GitHub mirror: <https://github.com/cran/openxlsx>
-
-Run `revdepcheck::cloud_details(, "openxlsx")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-       > library(openxlsx)
-       > 
-       > test_check("openxlsx")
-       [ FAIL 1 | WARN 0 | SKIP 7 | PASS 1266 ]
-       
-       ══ Skipped tests (7) ═══════════════════════════════════════════════════════════
-       • On CRAN (4): 'test-read_sources.R:11:3', 'test-read_sources.R:38:3',
-         'test-read_sources.R:55:3', 'test-write-permissions.R:6:3'
-       • empty test (3): 'test-trying_to_break_openxlsx.R:7:1',
-         'test-worksheet_ordering.R:246:1', 'test-write_data_to_sheetData.R:189:1'
-       
-       ══ Failed tests ════════════════════════════════════════════════════════════════
-       ── Error ('test-activeSheet.R:27:3'): get and set active sheet of a workbook ───
-       Error in `expect(activeSheet(wbook), 2)`: `ok` must be `TRUE` or `FALSE`, not the number 2.
-       Backtrace:
-           ▆
-        1. └─testthat::expect(ok = activeSheet(wbook)) at test-activeSheet.R:27:3
-        2.   └─testthat:::check_bool(ok)
-        3.     └─testthat:::stop_input_type(...)
-        4.       └─rlang::abort(message, ..., call = call, arg = arg)
-       
-       [ FAIL 1 | WARN 0 | SKIP 7 | PASS 1266 ]
        Error:
        ! Test failures.
        Execution halted
@@ -2663,46 +2157,6 @@ Run `revdepcheck::cloud_details(, "oxcAAR")` for more info
      
      Error: Vignette re-building failed.
      Execution halted
-     ```
-
-# parquetize (0.5.7)
-
-* GitHub: <https://github.com/ddotta/parquetize>
-* Email: <mailto:damien.dotta@live.fr>
-* GitHub mirror: <https://github.com/cran/parquetize>
-
-Run `revdepcheck::cloud_details(, "parquetize")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-       
-       ══ Failed tests ════════════════════════════════════════════════════════════════
-       ── Failure ('test-testthat-helpers.R:9:3'): expect_parquet fails on file's number of line ──
-       Expected `nrow(dataset)` to equal `with_lines`.
-       Differences:
-         `actual`: 150.0
-       `expected`:  25.0
-       
-       Backtrace:
-           ▆
-        1. ├─testthat::expect_error(...) at test-testthat-helpers.R:9:3
-        2. │ └─testthat:::expect_condition_matching_(...)
-        3. │   └─testthat:::quasi_capture(...)
-        4. │     ├─testthat (local) .capture(...)
-        5. │     │ └─base::withCallingHandlers(...)
-        6. │     └─rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
-        7. └─parquetize::expect_parquet(...)
-        8.   └─testthat::expect_equal(nrow(dataset), with_lines)
-       ── Failure ('test-testthat-helpers.R:9:3'): expect_parquet fails on file's number of line ──
-       Expected `expect_parquet(parquetize_example("iris_dataset"), with_lines = 25)` to throw a error.
-       
-       [ FAIL 2 | WARN 0 | SKIP 3 | PASS 192 ]
-       Error:
-       ! Test failures.
-       Execution halted
      ```
 
 # passport (0.3.0)
@@ -2946,45 +2400,6 @@ Run `revdepcheck::cloud_details(, "pointblank")` for more info
        Execution halted
      ```
 
-# productplots (0.1.1)
-
-* GitHub: <https://github.com/hadley/productplots>
-* Email: <mailto:hadley@rstudio.com>
-* GitHub mirror: <https://github.com/cran/productplots>
-
-Run `revdepcheck::cloud_details(, "productplots")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-       Running ‘testthat.R’
-     Running the tests in ‘tests/testthat.R’ failed.
-     Complete output:
-       > library(testthat)
-       > library(productplots)
-       > 
-       > test_check("productplots")
-       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 43 ]
-       
-       ══ Failed tests ════════════════════════════════════════════════════════════════
-       ── Error ('test-labels.r:10:3'): hbar, hspine, and fluct all have columns ──────
-       Error in `is_true()`: could not find function "is_true"
-       Backtrace:
-           ▆
-        1. └─testthat::expect_that(div_has_cols(c("hspine", "hbar")), is_true()) at test-labels.r:10:3
-       ── Error ('test-labels.r:35:3'): vbar, vspine and fluct all have rows ──────────
-       Error in `is_true()`: could not find function "is_true"
-       Backtrace:
-           ▆
-        1. └─testthat::expect_that(div_has_rows(c("hspine", "vbar")), is_true()) at test-labels.r:35:3
-       
-       [ FAIL 2 | WARN 0 | SKIP 0 | PASS 43 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
 # projmgr (0.1.1)
 
 * GitHub: <https://github.com/emilyriederer/projmgr>
@@ -3100,73 +2515,6 @@ Run `revdepcheck::cloud_details(, "Quandl")` for more info
         4.       └─rlang::cnd_signal(...)
        
        [ FAIL 6 | WARN 0 | SKIP 2 | PASS 4 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-# quickcheck (0.1.3)
-
-* GitHub: <https://github.com/armcn/quickcheck>
-* Email: <mailto:andrew.richard.mcneil@gmail.com>
-* GitHub mirror: <https://github.com/cran/quickcheck>
-
-Run `revdepcheck::cloud_details(, "quickcheck")` for more info
-
-## Newly broken
-
-*   checking examples ... ERROR
-     ```
-     Running examples in ‘quickcheck-Ex.R’ failed
-     The error most likely occurred in:
-     
-     > ### Name: as_hedgehog
-     > ### Title: Convert a quickcheck generator to a hedgehog generator
-     > ### Aliases: as_hedgehog
-     > 
-     > ### ** Examples
-     > 
-     > is_even <-
-     +   function(a) a %% 2L == 0L
-     > gen_powers_of_two <-
-     +   integer_bounded(1L, 10L, len = 1L) %>%
-     +     as_hedgehog() %>%
-     +     hedgehog::gen.with(function(a) 2 ^ a)
-     > for_all(
-     +   a = from_hedgehog(gen_powers_of_two),
-     +   property = function(a) is_even(a) %>% testthat::expect_true()
-     + )
-     Error in attributes(.Data) <- c(attributes(.Data), attrib) : 
-       all attributes must have names [3 does not]
-     Calls: for_all ... as.expectation.error -> <Anonymous> -> new_expectation -> structure
-     Execution halted
-     ```
-
-*   checking tests ... ERROR
-     ```
-     ...
-        12.                     └─testthat::new_expectation(...)
-        13.                       └─base::structure(...)
-       ── Error ('test-tibble_of.R:1:1'): generator fails if generator arguments don't have modifiable lengths ──
-       Error in `attributes(.Data) <- c(attributes(.Data), attrib)`: all attributes must have names [3 does not]
-       Backtrace:
-            ▆
-         1. └─quickcheck::repeat_test(...)
-         2.   └─quickcheck::for_all(...)
-         3.     └─hedgehog::forall(...)
-         4.       └─hedgehog:::run.prop(property, tree$root, curry)
-         5.         └─base::tryCatch(...)
-         6.           └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-         7.             └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-         8.               └─value[[3L]](cond)
-         9.                 └─hedgehog (local) register_expectation(e)
-        10.                   ├─hedgehog:::as.expectation(e)
-        11.                   └─hedgehog:::as.expectation.error(e)
-        12.                     └─testthat::expectation("error", msg, srcref)
-        13.                       └─testthat::new_expectation(...)
-        14.                         └─base::structure(...)
-       
-       [ FAIL 400 | WARN 0 | SKIP 0 | PASS 17 ]
        Error:
        ! Test failures.
        Execution halted
@@ -3642,7 +2990,7 @@ Run `revdepcheck::cloud_details(, "seqminer")` for more info
 *   checking tests ... ERROR
      ```
      ...
-       created index file [ /tmp/RtmpO0JrNh/file14ef2ed1fcc6 ]
+       created index file [ /tmp/RtmpKLRY4B/file13bb36959e6f ]
        [ FAIL 2 | WARN 0 | SKIP 0 | PASS 72 ]
        
        ══ Failed tests ════════════════════════════════════════════════════════════════
@@ -3669,44 +3017,44 @@ Run `revdepcheck::cloud_details(, "seqminer")` for more info
        Execution halted
      ```
 
-# sf (1.0-21)
+# serocalculator (1.3.0)
 
-* GitHub: <https://github.com/r-spatial/sf>
-* Email: <mailto:edzer.pebesma@uni-muenster.de>
-* GitHub mirror: <https://github.com/cran/sf>
+* GitHub: <https://github.com/UCD-SERG/serocalculator>
+* Email: <mailto:kwlai@ucdavis.edu>
+* GitHub mirror: <https://github.com/cran/serocalculator>
 
-Run `revdepcheck::cloud_details(, "sf")` for more info
+Run `revdepcheck::cloud_details(, "serocalculator")` for more info
 
 ## Newly broken
 
-*   checking tests ... NOTE
+*   checking tests ... ERROR
      ```
      ...
-       Running ‘read.R’
-       Comparing ‘read.Rout’ to ‘read.Rout.save’ ... OK
-       Running ‘roundtrip.R’
-       Comparing ‘roundtrip.Rout’ to ‘roundtrip.Rout.save’ ... OK
-       Running ‘s2.R’
-       Comparing ‘s2.Rout’ to ‘s2.Rout.save’ ... OK
-       Running ‘sample.R’
-       Comparing ‘sample.Rout’ to ‘sample.Rout.save’ ... OK
-       Running ‘sfc.R’
-       Comparing ‘sfc.Rout’ to ‘sfc.Rout.save’ ...547a548,551
-     > The following object is masked from 'package:testthat':
-     > 
-     >     matches
-     > 
-       Running ‘sfg.R’
-       Comparing ‘sfg.Rout’ to ‘sfg.Rout.save’ ... OK
-       Running ‘spatstat.R’
-       Comparing ‘spatstat.Rout’ to ‘spatstat.Rout.save’ ... OK
-       Running ‘stars.R’
-       Comparing ‘stars.Rout’ to ‘stars.Rout.save’ ... OK
-       Running ‘testthat.R’
-       Running ‘units.R’
-       Comparing ‘units.Rout’ to ‘units.Rout.save’ ... OK
-       Running ‘wkb.R’
-       Comparing ‘wkb.Rout’ to ‘wkb.Rout.save’ ... OK
+       
+       [ FAIL 1 | WARN 0 | SKIP 15 | PASS 33 ]
+       
+       ══ Skipped tests (15) ══════════════════════════════════════════════════════════
+       • On CRAN (15): 'test-ab0.R:1:1', 'test-as_noise_params.R:13:1',
+         'test-autoplot.pop_data.R:19:1', 'test-autoplot.pop_data.R:28:1',
+         'test-autoplot.pop_data.R:37:1', 'test-class_attributes.R:9:1',
+         'test-df_to_array.R:1:1', 'test-est.incidence.R:1:1',
+         'test-est.incidence.by.R:35:1', 'test-f_dev.R:1:1',
+         'test-log_likelihood.R:1:1', 'test-plot_curve_params_one_ab.R:1:1',
+         'test-stratify_data.R:1:1', 'test-summary.pop_data.R:12:1',
+         'test-summary.pop_data.R:16:1'
+       
+       ══ Failed tests ════════════════════════════════════════════════════════════════
+       ── Error ('test-as_curve_params.R:33:3'): `as_curve_params()` produces expected results ──
+       Error in `test_data %>% ssdtools:::expect_snapshot_data(name = "curve-data")`: object 'expect_snapshot_data' not found
+       Backtrace:
+           ▆
+        1. └─test_data %>% ssdtools:::expect_snapshot_data(name = "curve-data") at test-as_curve_params.R:33:3
+       
+       [ FAIL 1 | WARN 0 | SKIP 15 | PASS 33 ]
+       Deleting unused snapshots: 'as_curve_params/curve-data.csv'
+       Error:
+       ! Test failures.
+       Execution halted
      ```
 
 # shiny.benchmark (0.1.1)
@@ -3821,46 +3169,6 @@ Run `revdepcheck::cloud_details(, "SIAtools")` for more info
         8.           └─base::parse(text = x)
        
        [ FAIL 1 | WARN 0 | SKIP 4 | PASS 65 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-# sidra (0.1.9)
-
-* GitHub: <https://github.com/rodrigoesborges/sidra>
-* Email: <mailto:rodrigo@borges.net.br>
-* GitHub mirror: <https://github.com/cran/sidra>
-
-Run `revdepcheck::cloud_details(, "sidra")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-       > library(sidra)
-       > 
-       > test_check("sidra")
-       A consulta excederá o limite de 100.000 pontos de dados permitido pela API.
-       Vamos contornar este problema fazendo várias solicitações menores.
-       Haverá maior demora
-       A consulta excederá o limite de 100.000 pontos de dados permitido pela API.
-       Vamos contornar este problema fazendo várias solicitações menores.
-       Haverá maior demora
-       [ FAIL 1 | WARN 1 | SKIP 0 | PASS 2 ]
-       
-       ══ Failed tests ════════════════════════════════════════════════════════════════
-       ── Failure ('test-sidra.R:11:5'): sidra(1705) returns a data frame ─────────────
-       Expected `output_table` to be NULL.
-       Differences:
-       `actual` is an S3 object of class <data.table/data.frame>, a list
-       `expected` is NULL
-       
-        OR API was not reacheable,
-                       function should have returned NULL
-       
-       [ FAIL 1 | WARN 1 | SKIP 0 | PASS 2 ]
        Error:
        ! Test failures.
        Execution halted
@@ -3994,46 +3302,6 @@ Run `revdepcheck::cloud_details(, "ssdtools")` for more info
        'ggplot/geom_xribbon.png', 'match-moments/cdf.png', 'plot-cdf/fits.png',
        'plot-cdf/fits_average.png', 'plot-cdf/fits_average_na.png', …,
        'ssd-plot/ribbon.png', and 'ssd-plot/suffix.png'
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
-# tabr (0.5.3)
-
-* GitHub: <https://github.com/leonawicz/tabr>
-* Email: <mailto:rpkgs@pm.me>
-* GitHub mirror: <https://github.com/cran/tabr>
-
-Run `revdepcheck::cloud_details(, "tabr")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-     ...
-       <Musical phrase>
-       <es,,>4 <es,>4 <es>4 <es'>4 <es''>4
-       sh: 1: lilypond: not found
-       sh: 1: lilypond: not found
-       [ FAIL 1 | WARN 1 | SKIP 7 | PASS 1137 ]
-       
-       ══ Skipped tests (7) ═══════════════════════════════════════════════════════════
-       • On CRAN (7): 'test-outputs.R:86:3', 'test-outputs.R:109:3',
-         'test-outputs.R:158:3', 'test-outputs.R:199:3', 'test-outputs.R:225:3',
-         'test-snippet.R:14:3', 'test-snippet.R:32:3'
-       
-       ══ Failed tests ════════════════════════════════════════════════════════════════
-       ── Error ('test-music.R:24:3'): music functions return as expected ─────────────
-       Error in `expect(n_steps(x), 11)`: `ok` must be `TRUE` or `FALSE`, not the number 11.
-       Backtrace:
-           ▆
-        1. └─testthat::expect(ok = n_steps(x)) at test-music.R:24:3
-        2.   └─testthat:::check_bool(ok)
-        3.     └─testthat:::stop_input_type(...)
-        4.       └─rlang::abort(message, ..., call = call, arg = arg)
-       
-       [ FAIL 1 | WARN 1 | SKIP 7 | PASS 1137 ]
        Error:
        ! Test failures.
        Execution halted
@@ -4425,44 +3693,6 @@ Run `revdepcheck::cloud_details(, "tryCatchLog")` for more info
        ‘log2console’
      ```
 
-# uwot (0.2.3)
-
-* GitHub: <https://github.com/jlmelville/uwot>
-* Email: <mailto:jlmelville@gmail.com>
-* GitHub mirror: <https://github.com/cran/uwot>
-
-Run `revdepcheck::cloud_details(, "uwot")` for more info
-
-## Newly broken
-
-*   checking tests ... ERROR
-     ```
-       Running ‘testthat.R’
-     Running the tests in ‘tests/testthat.R’ failed.
-     Complete output:
-       > library(testthat)
-       > library(uwot)
-       Loading required package: Matrix
-       > 
-       > test_check("uwot")
-       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 955 ]
-       
-       ══ Failed tests ════════════════════════════════════════════════════════════════
-       ── Error ('test_output.R:1046:3'): can set seed internally ─────────────────────
-       Error in `expect(res_model$seed, 42)`: `ok` must be `TRUE` or `FALSE`, not the number 42.
-       Backtrace:
-           ▆
-        1. └─testthat::expect(ok = res_model$seed) at test_output.R:1046:3
-        2.   └─testthat:::check_bool(ok)
-        3.     └─testthat:::stop_input_type(...)
-        4.       └─rlang::abort(message, ..., call = call, arg = arg)
-       
-       [ FAIL 1 | WARN 0 | SKIP 0 | PASS 955 ]
-       Error:
-       ! Test failures.
-       Execution halted
-     ```
-
 # vein (1.5.0)
 
 * GitHub: <https://github.com/atmoschem/vein>
@@ -4541,36 +3771,6 @@ Run `revdepcheck::cloud_details(, "WhatIf")` for more info
        Error:
        ! Test failures.
        Execution halted
-     ```
-
-# WhatsR (1.0.6)
-
-* GitHub: <https://github.com/gesiscss/WhatsR>
-* Email: <mailto:julian.kohne@gesis.org>
-* GitHub mirror: <https://github.com/cran/WhatsR>
-
-Run `revdepcheck::cloud_details(, "WhatsR")` for more info
-
-## Newly broken
-
-*   checking examples ... ERROR
-     ```
-     Running examples in ‘WhatsR-Ex.R’ failed
-     The error most likely occurred in:
-     
-     > ### Name: download_emoji
-     > ### Title: Scraping a dictionary of emoji from https://www.unicode.org/
-     > ### Aliases: download_emoji
-     > 
-     > ### ** Examples
-     > 
-     > Emoji_dictionary <- download_emoji(nlines = 50)
-     Warning in file(con, "r") :
-       URL 'https://www.unicode.org/Public/emoji/15.1/emoji-test.txt': Timeout of 60 seconds was reached
-     Error in file(con, "r") : 
-       cannot open the connection to 'https://www.unicode.org/Public/emoji/15.1/emoji-test.txt'
-     Calls: download_emoji -> readLines -> file
-     Execution halted
      ```
 
 # ZillowR (1.0.0)
