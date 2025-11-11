@@ -6,6 +6,11 @@
 \usage{
 simulate_test_env(package, path)
 }
+\arguments{
+\item{package}{Name of installed package.}
+
+\item{path}{Path to \code{tests/testthat}.}
+}
 \description{
 This function is designed to allow you to simulate testthat's testing
 environment in an interactive session. To undo it's affect, you
