@@ -224,14 +224,6 @@ test_that("you can't add a number and a letter", {
 })
 #> ── Error: you can't add a number and a letter ─────────────────────────
 #> Error in `1 + "a"`: non-numeric argument to binary operator
-#> Backtrace:
-#>     ▆
-#>  1. └─testthat::expect_snapshot(1 + "a")
-#>  2.   └─testthat:::expect_snapshot_(...)
-#>  3.     ├─base::withRestarts(cnd_signal(state$error), muffle_expectation = function() NULL)
-#>  4.     │ └─base (local) withOneRestart(expr, restarts[[1L]])
-#>  5.     │   └─base (local) doWithOneRestart(return(expr), restart)
-#>  6.     └─rlang::cnd_signal(state$error)
 #> Error:
 #> ! Test failed with 1 failure and 0 successes.
 ```
@@ -394,7 +386,7 @@ test_that("generates actionable error message", {
 #>   safe_write_lines(letters, path)
 #> Condition
 #>   Error in `safe_write_lines()`:
-#>   ! '/tmp/RtmpNIcW4v/file2ac627e776d3' already exists.
+#>   ! '/tmp/RtmpjhhwbM/file2a3062559c7c' already exists.
 #>   i Set `overwrite = TRUE` to overwrite
 #> Test passed with 1 success 🎊.
 ```
@@ -410,8 +402,8 @@ test_that("generates actionable error message", {
 #>     safe_write_lines(letters, path)
 #>   Condition
 #>     Error in `safe_write_lines()`:
-#> -   ! '/tmp/RtmpNIcW4v/file2ac627e776d3' already exists.
-#> +   ! '/tmp/RtmpNIcW4v/file2ac626311a3' already exists.
+#> -   ! '/tmp/RtmpjhhwbM/file2a3062559c7c' already exists.
+#> +   ! '/tmp/RtmpjhhwbM/file2a303a16e16a' already exists.
 #>     i Set `overwrite = TRUE` to overwrite
 #> * Run `testthat::snapshot_accept("snapshotting.Rmd")` to accept the change.
 #> * Run `testthat::snapshot_review("snapshotting.Rmd")` to review the change.

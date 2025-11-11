@@ -206,6 +206,9 @@
   hints now include the path to the package, if it’s not the current
   working directory
   ([\#1577](https://github.com/r-lib/testthat/issues/1577)).
+- [`expect_snapshot()`](https://testthat.r-lib.org/dev/reference/expect_snapshot.md)
+  gives a more informative backtrace when the code inside the snapshot
+  errors ([\#2277](https://github.com/r-lib/testthat/issues/2277)).
 - [`expect_snapshot_file()`](https://testthat.r-lib.org/dev/reference/expect_snapshot_file.md)
   now clearly errors if the `path` doesn’t exist
   ([\#2191](https://github.com/r-lib/testthat/issues/2191)), or has been

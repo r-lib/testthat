@@ -11,7 +11,7 @@ articles:
   special-files: special-files.html
   test-fixtures: test-fixtures.html
   third-edition: third-edition.html
-last_built: 2025-11-07T19:48Z
+last_built: 2025-11-11T13:19Z
 urls:
   reference: https://testthat.r-lib.org/reference
   article: https://testthat.r-lib.org/articles

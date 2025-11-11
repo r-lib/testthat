@@ -293,14 +293,6 @@ capturing errors is <em>slightly</em> more difficult because
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">: you can't add a number and a letter</span> ─────────────────────────</span></span>
 <span><span class="co">#&gt; Error in `1 + "a"`: non-numeric argument to binary operator</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Backtrace:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">    </span>▆</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> 1. </span>└─<span style="font-weight: bold;">testthat</span>::expect_snapshot(1 + "a")</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> 2. </span>  └─testthat:::expect_snapshot_(...)</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> 3. </span>    ├─<span style="font-weight: bold;">base</span>::withRestarts(cnd_signal(state$error), muffle_expectation = function() NULL)</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> 4. </span>    │ └─base (local) withOneRestart(expr, restarts[[1L]])</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> 5. </span>    │   └─base (local) doWithOneRestart(return(expr), restart)</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;"> 6. </span>    └─<span style="font-weight: bold;">rlang</span>::cnd_signal(state$error)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Test failed with 1 failure and 0 successes.</span></span></code></pre></div>
 <p>This is a safety valve that ensures that you don’t accidentally write
@@ -448,7 +440,7 @@ useful, the snapshot will be different every time the test is run:</p>
 <span><span class="co">#&gt;   safe_write_lines(letters, path)</span></span>
 <span><span class="co">#&gt; Condition</span></span>
 <span><span class="co">#&gt;   Error in `safe_write_lines()`:</span></span>
-<span><span class="co">#&gt;   ! '/tmp/RtmpNIcW4v/file2ac627e776d3' already exists.</span></span>
+<span><span class="co">#&gt;   ! '/tmp/RtmpjhhwbM/file2a3062559c7c' already exists.</span></span>
 <span><span class="co">#&gt;   i Set `overwrite = TRUE` to overwrite</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -462,8 +454,8 @@ useful, the snapshot will be different every time the test is run:</p>
 <span><span class="co">#&gt; <span style="color: #555555;">    safe_write_lines(letters, path)</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">  Condition</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">    Error in `safe_write_lines()`:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">-   ! '/tmp/RtmpNIcW4v/file2ac627e776d3' already exists.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">+   ! '/tmp/RtmpNIcW4v/file2ac626311a3' already exists.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">-   ! '/tmp/RtmpjhhwbM/file2a3062559c7c' already exists.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">+   ! '/tmp/RtmpjhhwbM/file2a303a16e16a' already exists.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">    i Set `overwrite = TRUE` to overwrite</span></span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_accept("snapshotting.Rmd")` to accept the change.</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_review("snapshotting.Rmd")` to review the change.</span></span>

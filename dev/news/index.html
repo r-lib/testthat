@@ -126,6 +126,8 @@
 <li>
 <code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> and <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> hints now include the path to the package, if it’s not the current working directory (<a href="https://github.com/r-lib/testthat/issues/1577" class="external-link">#1577</a>).</li>
 <li>
+<code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> gives a more informative backtrace when the code inside the snapshot errors (<a href="https://github.com/r-lib/testthat/issues/2277" class="external-link">#2277</a>).</li>
+<li>
 <code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> now clearly errors if the <code>path</code> doesn’t exist (<a href="https://github.com/r-lib/testthat/issues/2191" class="external-link">#2191</a>), or has been used alreaday (<a href="https://github.com/r-lib/testthat/issues/1592" class="external-link">#1592</a>). It now considers <code>.json</code> to be a text file (<a href="https://github.com/r-lib/testthat/issues/1593" class="external-link">#1593</a>), and shows differences for text files in the console (<a href="https://github.com/r-lib/testthat/issues/1593" class="external-link">#1593</a>).</li>
 <li>
 <code><a href="../reference/expect_snapshot_value.html">expect_snapshot_value()</a></code> can now handle expressions that generate <code>-</code> (<a href="https://github.com/r-lib/testthat/issues/1678" class="external-link">#1678</a>) or zero length atomic vectors (<a href="https://github.com/r-lib/testthat/issues/2042" class="external-link">#2042</a>).</li>
