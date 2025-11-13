@@ -6,20 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Running tests in parallel • testthat</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.9/font.css" rel="stylesheet">
-<link href="../deps/Source_Code_Pro-0.4.9/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Running tests in parallel">
-<script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script><script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
     <a href="#container" class="visually-hidden-focusable">Skip to content</a>
@@ -29,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.2.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,19 +41,26 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/custom-expectation.html">Custom expectations</a></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Setup</h6></li>
+    <li><a class="dropdown-item" href="../articles/third-edition.html">testthat 3e</a></li>
     <li><a class="dropdown-item" href="../articles/parallel.html">Running tests in parallel</a></li>
+    <li><a class="dropdown-item" href="../articles/special-files.html">Special files</a></li>
+    <li><a class="dropdown-item" href="../articles/custom-expectation.html">Custom expectations</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Techniques</h6></li>
+    <li><a class="dropdown-item" href="../articles/challenging-tests.html">Testing challenging functions</a></li>
+    <li><a class="dropdown-item" href="../articles/mocking.html">Mocking</a></li>
     <li><a class="dropdown-item" href="../articles/skipping.html">Skipping tests</a></li>
     <li><a class="dropdown-item" href="../articles/snapshotting.html">Snapshot tests</a></li>
-    <li><a class="dropdown-item" href="../articles/special-files.html">Special files</a></li>
     <li><a class="dropdown-item" href="../articles/test-fixtures.html">Test fixtures</a></li>
-    <li><a class="dropdown-item" href="../articles/third-edition.html">testthat 3e</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-news" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">News</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-news">
 <li><h6 class="dropdown-header" data-toc-skip>Releases</h6></li>
+    <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2025/11/testthat-3-3-0/">Version 3.3.0</a></li>
     <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2023/10/testthat-3-2-0/">Version 3.2.0</a></li>
     <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2021/10/testthat-3-1/">Version 3.1.0</a></li>
     <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/">Version 3.0.0</a></li>
@@ -89,7 +95,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Running tests in parallel</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/v3.2.3/vignettes/parallel.Rmd" class="external-link"><code>vignettes/parallel.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/main/vignettes/parallel.Rmd" class="external-link"><code>vignettes/parallel.Rmd</code></a></small>
       <div class="d-none name"><code>parallel.Rmd</code></div>
     </div>
 
@@ -102,6 +108,9 @@
 details.&lt;/p&gt;'><sup>1</sup></a>. Then add
 the following line to the <code>DESCRIPTION</code>:</p>
 <pre><code><span><span class="va">Config</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">parallel</span><span class="op">:</span> <span class="va">true</span></span></code></pre>
+<p>If needed (for example, for debugging) you can temporarily suppress
+parallel testing with
+<code>Sys.setenv(TESTTHAT_PARALLEL = "false")</code>.</p>
 <p>By default, testthat will use <code>getOption("Ncpus", 2)</code>
 cores. To increase that value for your development machine we recommend
 setting <code>TESTTHAT_CPUS</code> in your <code>.Renviron</code>. The
@@ -215,18 +224,13 @@ stop at the end of a test file.</p></li>
 they support <em>parallel updates</em>. E.g.
 <code>ProgressReporter</code> does not update its display until a test
 file is complete.</p></li>
-<li>
-<p>The standard output and standard error,
+<li><p>The standard output and standard error,
 i.e. <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code>, <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code>, <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code>,
 etc. output from the test files are lost currently. If you want to use
 <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code> or <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code> for print-debugging test
 cases, then the best is to temporarily run tests sequentially, by
 changing the <code>Config</code> entry in <code>DESCRIPTION</code> or
-selecting a non-parallel reporter, e.g. the
-<code>CheckReporter</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">test</span><span class="op">(</span>filter <span class="op">=</span> <span class="st">"badtest"</span>, reporter <span class="op">=</span> <span class="st">"check"</span><span class="op">)</span></span></code></pre></div>
-</li>
+setting <code>Sys.setenv(TESTTHAT_PARALLEL = "false")</code>.</p></li>
 </ul>
 </div>
 <div class="section level3">
@@ -241,7 +245,7 @@ running in parallel, testthat does not provide location information
 <p>To support parallel tests, a reporter must set
 <code>self$capabilities$parallel_support</code> to <code>TRUE</code> in
 its <code>initialize()</code> method:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">...</span></span>
 <span><span class="va">initialize</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">super</span><span class="op">$</span><span class="fu">initialize</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
@@ -273,7 +277,7 @@ handle multiple test files concurrently.</p>
 <p>A reporter declares parallel update support by setting
 <code>self$capabilities$parallel_updates</code> to
 <code>TRUE</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">...</span></span>
 <span><span class="va">initialize</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">super</span><span class="op">$</span><span class="fu">initialize</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
@@ -314,7 +318,7 @@ to let the user know that the tests are running.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
   </div></footer>

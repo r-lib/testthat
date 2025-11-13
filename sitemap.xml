@@ -3,8 +3,10 @@
 <url><loc>https://testthat.r-lib.org/CODE_OF_CONDUCT.html</loc></url>
 <url><loc>https://testthat.r-lib.org/LICENSE-text.html</loc></url>
 <url><loc>https://testthat.r-lib.org/LICENSE.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/challenging-tests.html</loc></url>
 <url><loc>https://testthat.r-lib.org/articles/custom-expectation.html</loc></url>
 <url><loc>https://testthat.r-lib.org/articles/index.html</loc></url>
+<url><loc>https://testthat.r-lib.org/articles/mocking.html</loc></url>
 <url><loc>https://testthat.r-lib.org/articles/parallel.html</loc></url>
 <url><loc>https://testthat.r-lib.org/articles/skipping.html</loc></url>
 <url><loc>https://testthat.r-lib.org/articles/snapshotting.html</loc></url>
@@ -26,12 +28,12 @@
 <url><loc>https://testthat.r-lib.org/reference/RStudioReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/Reporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/SilentReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/SlowReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/StopReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/SummaryReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/TapReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/TeamcityReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/auto_test.html</loc></url>
-<url><loc>https://testthat.r-lib.org/reference/auto_test_package.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/capture_condition.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/capture_output.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/compare.html</loc></url>
@@ -45,6 +47,7 @@
 <url><loc>https://testthat.r-lib.org/reference/equality-expectations.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/evaluate_promise.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_all_equal.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect_equivalent.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect_error.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect_invisible.html</loc></url>
@@ -55,6 +58,7 @@
 <url><loc>https://testthat.r-lib.org/reference/expect_match.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect_named.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect_no_error.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/expect_no_success.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect_null.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect_output.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect_output_file.html</loc></url>
@@ -69,6 +73,7 @@
 <url><loc>https://testthat.r-lib.org/reference/expect_that.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expect_vector.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/expectation.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/extract_test.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/fail.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/find_reporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/find_test_scripts.html</loc></url>
@@ -78,11 +83,14 @@
 <url><loc>https://testthat.r-lib.org/reference/is_testing.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/local_edition.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/local_mocked_bindings.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/local_mocked_r6_class.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/local_mocked_s3_method.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/local_snapshotter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/local_test_context.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/local_test_directory.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/logical-expectations.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/make_expectation.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/mock_output_sequence.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/not.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/oldskool.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/quasi_label.html</loc></url>
@@ -94,7 +102,9 @@
 <url><loc>https://testthat.r-lib.org/reference/skip.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/skip_on_travis.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/snapshot_accept.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/snapshot_download_gh.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/source_file.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/succeed.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/takes_less_than.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/teardown.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/teardown_env.html</loc></url>
@@ -109,6 +119,7 @@
 <url><loc>https://testthat.r-lib.org/reference/testthat_examples.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/testthat_results.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/testthat_tolerance.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/topic-name.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/try_again.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/use_catch.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/verify_output.html</loc></url>

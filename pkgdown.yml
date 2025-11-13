@@ -1,15 +1,17 @@
 pandoc: 3.1.11
-pkgdown: 2.1.1
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
+  challenging-tests: challenging-tests.html
   custom-expectation: custom-expectation.html
+  mocking: mocking.html
   parallel: parallel.html
   skipping: skipping.html
   snapshotting: snapshotting.html
   special-files: special-files.html
   test-fixtures: test-fixtures.html
   third-edition: third-edition.html
-last_built: 2025-01-13T13:41Z
+last_built: 2025-11-13T17:22Z
 urls:
   reference: https://testthat.r-lib.org/reference
   article: https://testthat.r-lib.org/articles

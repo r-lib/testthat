@@ -1,0 +1,309 @@
+# testthat
+
+## Overview
+
+Testing your code can be painful and tedious, but it greatly increases
+the quality of your code. **testthat** tries to make testing as fun as
+possible, so that you get a visceral satisfaction from writing tests.
+Testing should be addictive, so you do it all the time. To make that
+happen, testthat:
+
+- Provides functions that make it easy to describe what you expect a
+  function to do, including catching errors, warnings, and messages.
+
+- Easily integrates in your existing workflow, whether it’s informal
+  testing on the command line, building test suites, or using R CMD
+  check.
+
+- Displays test progress visually, showing a pass, fail, or error for
+  every expectation. If you’re using the terminal or a recent version of
+  RStudio, it’ll even colour the output.
+
+testthat draws inspiration from the xUnit family of testing packages, as
+well as from many of the innovative ruby testing libraries, like
+[rspec](https://rspec.info/), [testy](https://github.com/ahoward/testy),
+[bacon](https://github.com/leahneukirchen/bacon) and
+[cucumber](https://cucumber.io).
+
+testthat is the most popular unit testing package for R and is used by
+thousands of CRAN packages.
+
+If you’re not familiar with testthat, the [testing
+chapter](https://r-pkgs.org/testing-basics.html) in [R
+packages](https://r-pkgs.org) gives a good overview, along with workflow
+advice and concrete examples.
+
+## Installation
+
+``` r
+# Install the released version from CRAN
+install.packages("testthat")
+
+# Or the development version from GitHub:
+# install.packages("pak")
+pak::pak("r-lib/testthat")
+```
+
+## Usage
+
+The easiest way to get started is with
+[usethis](https://github.com/r-lib/usethis). Assuming you’re in a
+package directory, just run `usethis::use_test("name")` to create a test
+file, and set up all the other infrastructure you need. If you’re using
+RStudio, press Cmd/Ctrl + Shift + T (or run `devtools::test()` if not)
+to run all the tests in a package.
+
+# Package index
+
+## Basics
+
+- [`test_that()`](https://testthat.r-lib.org/reference/test_that.md) :
+  Run a test
+
+- [`expect_equal()`](https://testthat.r-lib.org/reference/equality-expectations.md)
+  [`expect_identical()`](https://testthat.r-lib.org/reference/equality-expectations.md)
+  : Do you expect this value?
+
+- [`expect_error()`](https://testthat.r-lib.org/reference/expect_error.md)
+  [`expect_warning()`](https://testthat.r-lib.org/reference/expect_error.md)
+  [`expect_message()`](https://testthat.r-lib.org/reference/expect_error.md)
+  [`expect_condition()`](https://testthat.r-lib.org/reference/expect_error.md)
+  : Do you expect an error, warning, message, or other condition?
+
+- [`expect_true()`](https://testthat.r-lib.org/reference/logical-expectations.md)
+  [`expect_false()`](https://testthat.r-lib.org/reference/logical-expectations.md)
+  :
+
+  Do you expect `TRUE` or `FALSE`?
+
+## Expectations
+
+### Values
+
+- [`expect_all_equal()`](https://testthat.r-lib.org/reference/expect_all_equal.md)
+  [`expect_all_true()`](https://testthat.r-lib.org/reference/expect_all_equal.md)
+  [`expect_all_false()`](https://testthat.r-lib.org/reference/expect_all_equal.md)
+  : Do you expect every value in a vector to have this value?
+
+- [`expect_lt()`](https://testthat.r-lib.org/reference/comparison-expectations.md)
+  [`expect_lte()`](https://testthat.r-lib.org/reference/comparison-expectations.md)
+  [`expect_gt()`](https://testthat.r-lib.org/reference/comparison-expectations.md)
+  [`expect_gte()`](https://testthat.r-lib.org/reference/comparison-expectations.md)
+  : Do you expect a value bigger or smaller than this?
+
+- [`expect_length()`](https://testthat.r-lib.org/reference/expect_length.md)
+  [`expect_shape()`](https://testthat.r-lib.org/reference/expect_length.md)
+  : Do you expect an object with this length or shape?
+
+- [`expect_match()`](https://testthat.r-lib.org/reference/expect_match.md)
+  [`expect_no_match()`](https://testthat.r-lib.org/reference/expect_match.md)
+  : Do you expect a string to match this pattern?
+
+- [`expect_named()`](https://testthat.r-lib.org/reference/expect_named.md)
+  : Do you expect a vector with (these) names?
+
+- [`expect_null()`](https://testthat.r-lib.org/reference/expect_null.md)
+  :
+
+  Do you expect `NULL`?
+
+- [`expect_setequal()`](https://testthat.r-lib.org/reference/expect_setequal.md)
+  [`expect_mapequal()`](https://testthat.r-lib.org/reference/expect_setequal.md)
+  [`expect_contains()`](https://testthat.r-lib.org/reference/expect_setequal.md)
+  [`expect_in()`](https://testthat.r-lib.org/reference/expect_setequal.md)
+  [`expect_disjoint()`](https://testthat.r-lib.org/reference/expect_setequal.md)
+  : Do you expect a vector containing these values?
+
+- [`expect_type()`](https://testthat.r-lib.org/reference/inheritance-expectations.md)
+  [`expect_s3_class()`](https://testthat.r-lib.org/reference/inheritance-expectations.md)
+  [`expect_s4_class()`](https://testthat.r-lib.org/reference/inheritance-expectations.md)
+  [`expect_r6_class()`](https://testthat.r-lib.org/reference/inheritance-expectations.md)
+  [`expect_s7_class()`](https://testthat.r-lib.org/reference/inheritance-expectations.md)
+  : Do you expect an S3/S4/R6/S7 object that inherits from this class?
+
+- [`expect_vector()`](https://testthat.r-lib.org/reference/expect_vector.md)
+  : Do you expect a vector with this size and/or prototype?
+
+### Side-effects
+
+- [`expect_no_error()`](https://testthat.r-lib.org/reference/expect_no_error.md)
+  [`expect_no_warning()`](https://testthat.r-lib.org/reference/expect_no_error.md)
+  [`expect_no_message()`](https://testthat.r-lib.org/reference/expect_no_error.md)
+  [`expect_no_condition()`](https://testthat.r-lib.org/reference/expect_no_error.md)
+  : Do you expect the absence of errors, warnings, messages, or other
+  conditions?
+- [`expect_invisible()`](https://testthat.r-lib.org/reference/expect_invisible.md)
+  [`expect_visible()`](https://testthat.r-lib.org/reference/expect_invisible.md)
+  : Do you expect the result to be (in)visible?
+- [`expect_output()`](https://testthat.r-lib.org/reference/expect_output.md)
+  : Do you expect printed output to match this pattern?
+- [`expect_silent()`](https://testthat.r-lib.org/reference/expect_silent.md)
+  : Do you expect code to execute silently?
+
+### Snapshot tests
+
+- [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
+  : Do you expect this code to run the same way as last time?
+- [`expect_snapshot_value()`](https://testthat.r-lib.org/reference/expect_snapshot_value.md)
+  : Do you expect this code to return the same value as last time?
+- [`expect_snapshot_file()`](https://testthat.r-lib.org/reference/expect_snapshot_file.md)
+  [`announce_snapshot_file()`](https://testthat.r-lib.org/reference/expect_snapshot_file.md)
+  [`compare_file_binary()`](https://testthat.r-lib.org/reference/expect_snapshot_file.md)
+  [`compare_file_text()`](https://testthat.r-lib.org/reference/expect_snapshot_file.md)
+  : Do you expect this code to create the same file as last time?
+- [`snapshot_accept()`](https://testthat.r-lib.org/reference/snapshot_accept.md)
+  [`snapshot_reject()`](https://testthat.r-lib.org/reference/snapshot_accept.md)
+  [`snapshot_review()`](https://testthat.r-lib.org/reference/snapshot_accept.md)
+  : Accept or reject modified snapshots
+- [`snapshot_download_gh()`](https://testthat.r-lib.org/reference/snapshot_download_gh.md)
+  : Download snapshots from GitHub
+
+## Test helpers
+
+- [`is_testing()`](https://testthat.r-lib.org/reference/is_testing.md)
+  [`is_parallel()`](https://testthat.r-lib.org/reference/is_testing.md)
+  [`is_checking()`](https://testthat.r-lib.org/reference/is_testing.md)
+  [`is_snapshot()`](https://testthat.r-lib.org/reference/is_testing.md)
+  [`testing_package()`](https://testthat.r-lib.org/reference/is_testing.md)
+  : Determine testing status
+- [`extract_test()`](https://testthat.r-lib.org/reference/extract_test.md)
+  : Extract a reprex from a failed expectation
+- [`local_edition()`](https://testthat.r-lib.org/reference/local_edition.md)
+  [`edition_get()`](https://testthat.r-lib.org/reference/local_edition.md)
+  : Temporarily change the active testthat edition
+- [`local_test_context()`](https://testthat.r-lib.org/reference/local_test_context.md)
+  [`local_reproducible_output()`](https://testthat.r-lib.org/reference/local_test_context.md)
+  : Temporarily set options for maximum reproducibility
+- [`set_state_inspector()`](https://testthat.r-lib.org/reference/set_state_inspector.md)
+  : Check for global state changes
+- [`skip()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_if_not()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_if()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_if_not_installed()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_unless_r()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_if_offline()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_on_cran()`](https://testthat.r-lib.org/reference/skip.md)
+  [`local_on_cran()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_on_os()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_on_ci()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_on_covr()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_on_bioc()`](https://testthat.r-lib.org/reference/skip.md)
+  [`skip_if_translated()`](https://testthat.r-lib.org/reference/skip.md)
+  : Skip a test for various reasons
+- [`teardown_env()`](https://testthat.r-lib.org/reference/teardown_env.md)
+  : Run code after all test files
+- [`try_again()`](https://testthat.r-lib.org/reference/try_again.md) :
+  Evaluate an expectation multiple times until it succeeds
+
+## Run tests
+
+- [`test_dir()`](https://testthat.r-lib.org/reference/test_dir.md) : Run
+  all tests in a directory
+- [`test_file()`](https://testthat.r-lib.org/reference/test_file.md) :
+  Run tests in a single file
+- [`test_package()`](https://testthat.r-lib.org/reference/test_package.md)
+  [`test_check()`](https://testthat.r-lib.org/reference/test_package.md)
+  [`test_local()`](https://testthat.r-lib.org/reference/test_package.md)
+  : Run all tests in a package
+- [`test_path()`](https://testthat.r-lib.org/reference/test_path.md) :
+  Locate a file in the testing directory
+- [`use_catch()`](https://testthat.r-lib.org/reference/use_catch.md) :
+  Use Catch for C++ unit testing
+
+## Mocking
+
+- [`local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.md)
+  [`with_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.md)
+  : Temporarily redefine function definitions
+- [`local_mocked_s3_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
+  [`local_mocked_s4_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
+  : Mock S3 and S4 methods
+- [`local_mocked_r6_class()`](https://testthat.r-lib.org/reference/local_mocked_r6_class.md)
+  : Mock an R6 class
+- [`mock_output_sequence()`](https://testthat.r-lib.org/reference/mock_output_sequence.md)
+  : Mock a sequence of output from a function
+
+## Custom expectations
+
+- [`fail()`](https://testthat.r-lib.org/reference/fail.md)
+  [`pass()`](https://testthat.r-lib.org/reference/fail.md) : Declare
+  that an expectation either passes or fails
+- [`expect_success()`](https://testthat.r-lib.org/reference/expect_success.md)
+  [`expect_failure()`](https://testthat.r-lib.org/reference/expect_success.md)
+  [`expect_snapshot_failure()`](https://testthat.r-lib.org/reference/expect_success.md)
+  [`show_failure()`](https://testthat.r-lib.org/reference/expect_success.md)
+  : Test your custom expectations
+
+## Reporters
+
+- [`CheckReporter`](https://testthat.r-lib.org/reference/CheckReporter.md)
+  :
+
+  Report results for `R CMD check`
+
+- [`DebugReporter`](https://testthat.r-lib.org/reference/DebugReporter.md)
+  : Interactively debug failing tests
+
+- [`FailReporter`](https://testthat.r-lib.org/reference/FailReporter.md)
+  : Fail if any tests fail
+
+- [`JunitReporter`](https://testthat.r-lib.org/reference/JunitReporter.md)
+  : Report results in jUnit XML format
+
+- [`ListReporter`](https://testthat.r-lib.org/reference/ListReporter.md)
+  : Capture test results and metadata
+
+- [`LocationReporter`](https://testthat.r-lib.org/reference/LocationReporter.md)
+  : Test reporter: location
+
+- [`MinimalReporter`](https://testthat.r-lib.org/reference/MinimalReporter.md)
+  : Report minimal results as compactly as possible
+
+- [`MultiReporter`](https://testthat.r-lib.org/reference/MultiReporter.md)
+  : Run multiple reporters at the same time
+
+- [`ProgressReporter`](https://testthat.r-lib.org/reference/ProgressReporter.md)
+  [`CompactProgressReporter`](https://testthat.r-lib.org/reference/ProgressReporter.md)
+  [`ParallelProgressReporter`](https://testthat.r-lib.org/reference/ProgressReporter.md)
+  : Report progress interactively
+
+- [`RStudioReporter`](https://testthat.r-lib.org/reference/RStudioReporter.md)
+  : Report results to RStudio
+
+- [`SilentReporter`](https://testthat.r-lib.org/reference/SilentReporter.md)
+  : Silently collect and all expectations
+
+- [`SlowReporter`](https://testthat.r-lib.org/reference/SlowReporter.md)
+  : Find slow tests
+
+- [`StopReporter`](https://testthat.r-lib.org/reference/StopReporter.md)
+  : Error if any test fails
+
+- [`SummaryReporter`](https://testthat.r-lib.org/reference/SummaryReporter.md)
+  : Report a summary of failures
+
+- [`TapReporter`](https://testthat.r-lib.org/reference/TapReporter.md) :
+  Report results in TAP format
+
+- [`TeamcityReporter`](https://testthat.r-lib.org/reference/TeamcityReporter.md)
+  : Report results in Teamcity format
+
+# Articles
+
+### Setup and configuration
+
+- [testthat 3e](https://testthat.r-lib.org/articles/third-edition.md):
+- [Running tests in
+  parallel](https://testthat.r-lib.org/articles/parallel.md):
+- [Special files](https://testthat.r-lib.org/articles/special-files.md):
+- [Custom
+  expectations](https://testthat.r-lib.org/articles/custom-expectation.md):
+
+### Testing techniques
+
+- [Testing challenging
+  functions](https://testthat.r-lib.org/articles/challenging-tests.md):
+- [Mocking](https://testthat.r-lib.org/articles/mocking.md):
+- [Skipping tests](https://testthat.r-lib.org/articles/skipping.md):
+- [Snapshot tests](https://testthat.r-lib.org/articles/snapshotting.md):
+- [Test fixtures](https://testthat.r-lib.org/articles/test-fixtures.md):

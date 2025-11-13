@@ -6,20 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>testthat 3e • testthat</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.9/font.css" rel="stylesheet">
-<link href="../deps/Source_Code_Pro-0.4.9/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="testthat 3e">
-<script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script><script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
     <a href="#container" class="visually-hidden-focusable">Skip to content</a>
@@ -29,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.2.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,19 +41,26 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/custom-expectation.html">Custom expectations</a></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Setup</h6></li>
+    <li><a class="dropdown-item" href="../articles/third-edition.html">testthat 3e</a></li>
     <li><a class="dropdown-item" href="../articles/parallel.html">Running tests in parallel</a></li>
+    <li><a class="dropdown-item" href="../articles/special-files.html">Special files</a></li>
+    <li><a class="dropdown-item" href="../articles/custom-expectation.html">Custom expectations</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Techniques</h6></li>
+    <li><a class="dropdown-item" href="../articles/challenging-tests.html">Testing challenging functions</a></li>
+    <li><a class="dropdown-item" href="../articles/mocking.html">Mocking</a></li>
     <li><a class="dropdown-item" href="../articles/skipping.html">Skipping tests</a></li>
     <li><a class="dropdown-item" href="../articles/snapshotting.html">Snapshot tests</a></li>
-    <li><a class="dropdown-item" href="../articles/special-files.html">Special files</a></li>
     <li><a class="dropdown-item" href="../articles/test-fixtures.html">Test fixtures</a></li>
-    <li><a class="dropdown-item" href="../articles/third-edition.html">testthat 3e</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-news" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">News</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-news">
 <li><h6 class="dropdown-header" data-toc-skip>Releases</h6></li>
+    <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2025/11/testthat-3-3-0/">Version 3.3.0</a></li>
     <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2023/10/testthat-3-2-0/">Version 3.2.0</a></li>
     <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2021/10/testthat-3-1/">Version 3.1.0</a></li>
     <li><a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2020/10/testthat-3-0-0/">Version 3.0.0</a></li>
@@ -89,7 +95,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>testthat 3e</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/v3.2.3/vignettes/third-edition.Rmd" class="external-link"><code>vignettes/third-edition.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/testthat/blob/main/vignettes/third-edition.Rmd" class="external-link"><code>vignettes/third-edition.Rmd</code></a></small>
       <div class="d-none name"><code>third-edition.Rmd</code></div>
     </div>
 
@@ -128,7 +134,7 @@ package.</p>
 <span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🥇</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🥇</span>.</span></span></code></pre></div>
 <p>This is also useful if you’ve switched to the 3rd edition and have a
 couple of tests that fail. You can use <code>local_edition(2)</code> to
 revert back to the old behaviour, giving you some breathing room to
@@ -138,7 +144,7 @@ figure out the underlying issue.</p>
 <span>  <span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/logical-expectations.html">expect_true</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">Test passed</span> 🎊</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changes">Changes<a class="anchor" aria-label="anchor" href="#changes"></a>
@@ -178,10 +184,8 @@ class along with the expected OO system.</p></li>
 This was an overly clever API that I regretted even before the release
 of testthat 1.0.0.</p></li>
 <li><p><code><a href="../reference/expect_equivalent.html">expect_equivalent()</a></code> has been deprecated since it is
-now equivalent (HA HA) to <code>expect_equal(ignore_attr = TRUE)</code>.
-The main difference is that it won’t ignore names; so you’ll need an
-explicit <code><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname()</a></code> if you deliberately want to ignore
-names.</p></li>
+now equivalent (HA HA) to
+<code>expect_equal(ignore_attr = TRUE)</code>.</p></li>
 <li><p><code><a href="../reference/teardown.html">setup()</a></code> and <code><a href="../reference/teardown.html">teardown()</a></code> are deprecated
 in favour of test fixtures. See <code><a href="../articles/test-fixtures.html">vignette("test-fixtures")</a></code>
 for details.</p></li>
@@ -221,13 +225,13 @@ one warning so the others will bubble up:</p>
 <p>You can either add additional expectations to catch these warnings,
 or silence them all with <code><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Second"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<code class="sourceCode R"><span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Second"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"Third"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="fu">f</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/expect_error.html">expect_warning</a></span><span class="op">(</span><span class="st">"First"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, you might want to capture them all in a snapshot
 test:</p>
@@ -235,7 +239,7 @@ test:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"f() produces expected outputs/messages/warnings"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/expect_snapshot.html">expect_snapshot</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  </span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── Snapshot ──────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; ── Snapshot ───────────────────────────────────────────────────────────</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Can't save or compare to reference when testing</span></span>
 <span><span class="co">#&gt; interactively.</span></span>
 <span><span class="co">#&gt; Code</span></span>
@@ -247,8 +251,8 @@ test:</p>
 <span><span class="co">#&gt;   Second warning</span></span>
 <span><span class="co">#&gt;   Warning in `f()`:</span></span>
 <span><span class="co">#&gt;   Third warning</span></span>
-<span><span class="co">#&gt; ──────────────────────────────────────────────────────────────────────────</span></span>
-<span><span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;">: f() produces expected outputs/messages/warnings</span> ─────────────────</span></span>
+<span><span class="co">#&gt; ───────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; ── <span style="color: #0000BB; font-weight: bold;">Skip</span><span style="font-weight: bold;">: f() produces expected outputs/messages/warnings</span> ──────────────</span></span>
 <span><span class="co">#&gt; Reason: empty test</span></span></code></pre></div>
 <p>The same principle also applies to <code><a href="../reference/expect_error.html">expect_message()</a></code>, but
 message handling has changed in a more radical way, as described
@@ -280,15 +284,16 @@ unit tests.</p>
 <span></span>
 <span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">f2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: `f1` not equal to `f2`.</span></span>
+<span><span class="co">#&gt; Error: Expected `f1` to equal `f2`.</span></span>
+<span><span class="co">#&gt; Differences:</span></span>
 <span><span class="co">#&gt; Attributes: &lt; Component "class": Lengths (1, 2) differ (string compare on first 1) &gt;</span></span>
 <span><span class="co">#&gt; Attributes: &lt; Component "class": 1 string mismatch &gt;</span></span>
 <span><span class="co">#&gt; Attributes: &lt; Component "levels": Lengths (3, 4) differ (string compare on first 3) &gt;</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">f2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: `f1` (`actual`) not equal to `f2` (`expected`).</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Error: Expected `f1` to equal `f2`.</span></span>
+<span><span class="co">#&gt; Differences:</span></span>
 <span><span class="co">#&gt; `levels(actual)`:   <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span>    </span></span>
 <span><span class="co">#&gt; `levels(expected)`: <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span> <span style="color: #0000BB;">"d"</span></span></span></code></pre></div>
 <p>waldo looks even better in your console because it carefully uses
@@ -316,7 +321,7 @@ if that is to annoying you can opt out of the comparison with
 <code><a href="../reference/compare.html">testthat::compare()</a></code> which unfortunately used a slightly
 different definition of tolerance. Now <code><a href="../reference/equality-expectations.html">expect_equal()</a></code>
 always uses the same definition of tolerance everywhere, which may
-require tweaks to your exising tolerance values.</p></li>
+require tweaks to your existing tolerance values.</p></li>
 <li>
 <p><code><a href="../reference/equality-expectations.html">expect_equal()</a></code> previously ignored timezone
 differences when one object had the current timezone set implicitly
@@ -331,8 +336,8 @@ differences when one object had the current timezone set implicitly
 <span></span>
 <span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="va">dt2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: `dt1` (`actual`) not equal to `dt2` (`expected`).</span></span>
-<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Error: Expected `dt1` to equal `dt2`.</span></span>
+<span><span class="co">#&gt; Differences:</span></span>
 <span><span class="co">#&gt; `attr(actual, 'tzone')`:   <span style="color: #00BB00;">""</span>   </span></span>
 <span><span class="co">#&gt; `attr(expected, 'tzone')`: <span style="color: #00BB00;">"UTC"</span></span></span></code></pre></div>
 </li>
@@ -402,7 +407,7 @@ CRAN.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
   </div></footer>
