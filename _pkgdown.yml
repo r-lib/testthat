@@ -106,6 +106,8 @@ articles:
 
 news:
   releases:
+  - text: "Version 3.3.0"
+    href: https://www.tidyverse.org/blog/2025/11/testthat-3-3-0/
   - text: "Version 3.2.0"
     href: https://www.tidyverse.org/blog/2023/10/testthat-3-2-0/
   - text: "Version 3.1.0"
