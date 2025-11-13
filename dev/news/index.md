@@ -2,6 +2,10 @@
 
 ## testthat (development version)
 
+## testthat 3.3.0
+
+CRAN release: 2025-11-13
+
 ### Lifecycle changes
 
 - testthat now requires R 4.1.

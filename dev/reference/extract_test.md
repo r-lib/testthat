@@ -39,7 +39,7 @@ message will be written to `path`.
 
 ``` r
 # If you see a test failure like this:
-# ── Failure (test-extract.R:46:3): errors if can't find test ───────────────
+# -- Failure (test-extract.R:46:3): errors if can't find test -------------
 # Expected FALSE to be TRUE.
 # Differences:
 # `actual`:   FALSE

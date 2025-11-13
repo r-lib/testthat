@@ -9,3 +9,13 @@ need to restart your R session.
 ``` r
 simulate_test_env(package, path)
 ```
+
+## Arguments
+
+- package:
+
+  Name of installed package.
+
+- path:
+
+  Path to `tests/testthat`.
