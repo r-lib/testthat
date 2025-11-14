@@ -51,6 +51,7 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
 
   test <- test_description()
   if (!is.null(test)) {
+    otel_local_active_span("test that", test, scope = frame)
     reporter$start_test(context = reporter$.context, test = test)
     withr::defer(reporter$end_test(context = reporter$.context, test = test))
   }
