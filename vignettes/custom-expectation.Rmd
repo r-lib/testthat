@@ -96,6 +96,8 @@ Next you need to check each way that `object` could violate the expectation. In 
 
 If the object is as expected, call `pass()`. This ensures that a success will be registered in the test reporter.
 
+Otherwise, call `fail()`. This ensures that a failure will be registered in the test reporter. NB: unlike `stop()` or `abort()`, `fail()` signals a failure but allows code execution to continue, ensuring that one failure does not prevent subsequent expectations from running.
+
 Finally, return the input value (`act$val`) invisibly. This is good practice because expectations are called primarily for their side-effects (triggering a failure), and returning the value allows expectations to be piped together:
 
 ```{r}
