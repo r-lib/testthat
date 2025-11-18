@@ -275,7 +275,7 @@ expect_s3_object <- function(object, class = NULL) {
 
 As you write more expectations, you might discover repeated code that you want to extract into a helper. Unfortunately, creating 100% correct helper functions is not straightforward in testthat because `fail()` captures the calling environment in order to give useful tracebacks, and testthat's own expectations don't expose this as an argument. Fortunately, getting this right is not critical (you'll just get a slightly suboptimal traceback in the case of failure), so we don't recommend bothering in most cases. We document it here, however, because it's important to get it right in testthat itself.
 
-The key challenge is that `fail()` captures a `trace_env`, which should be the execution environment of the expectation. This usually works because the default value of `trace_env` is `caller_env()`. But when you introduce a helper, you'll need to explicitly pass it along:
+The key challenge is that `fail()` captures a `trace_env`, which should be the execution environment of the expectation. This usually works because the default value of `trace_env` is `rlang::caller_env()`. But when you introduce a helper, you'll need to explicitly pass it along:
 
 ```{r}
 expect_length_ <- function(act, n, trace_env = caller_env()) {
