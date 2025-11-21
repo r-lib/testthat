@@ -104,7 +104,10 @@ exp_signal <- function(exp) {
     } else {
       signalCondition(exp)
     },
-    muffle_expectation = function(e) NULL
+    muffle_expectation = function(e) NULL,
+    # Legacy support for shinytest2
+    # https://github.com/r-lib/testthat/pull/2271#discussion_r2528722708
+    continue_test = function(e) NULL
   )
 
   invisible(exp)

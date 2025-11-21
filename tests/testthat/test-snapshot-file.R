@@ -136,6 +136,29 @@ test_that("warns on first creation", {
   expect_true(snapshot_file_equal_(path))
   expect_true(file.exists(file.path(snap_dir, "my-test/test.txt")))
   expect_false(file.exists(file.path(snap_dir, "my-test/test.new.txt")))
+
+  # Similar to shinytest2::AppDriver$expect_values() screenshot snapshot behavior
+  path_muffle <- write_tmp_lines("muffle-a")
+  snapshot_file_equal_w_muffle <- function(path) {
+    withCallingHandlers(
+      {
+        snapshot_file_equal(
+          snap_dir = snap_dir,
+          snap_test = "muffle-test",
+          snap_name = "test.txt",
+          snap_variant = NULL,
+          path = path,
+          fail_on_new = TRUE
+        )
+      },
+      expectation = function(e) {
+        invokeRestart("muffle_expectation")
+      }
+    )
+  }
+  # Warns on first run: Should fail on new, however it is muffled
+  expect_snapshot(out <- snapshot_file_equal_w_muffle(path_muffle))
+  expect_true(out)
 })
 
 # helpers -----------------------------------------------------------------
