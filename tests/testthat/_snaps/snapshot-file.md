@@ -22,6 +22,14 @@
       Error in `snapshot_file_equal_()`:
       ! 'doesnt-exist.txt' not found.
 
+---
+
+    Code
+      out <- snapshot_file_equal_w_muffle(path_muffle)
+    Condition
+      Warning:
+      Adding new file snapshot: 'tests/testthat/_snaps/muffle-test/test.txt'
+
 # generates informative hint
 
     Code
