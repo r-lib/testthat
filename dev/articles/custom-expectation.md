@@ -144,6 +144,14 @@ If the object is as expected, call
 [`pass()`](https://testthat.r-lib.org/dev/reference/fail.md). This
 ensures that a success will be registered in the test reporter.
 
+Otherwise, call
+[`fail()`](https://testthat.r-lib.org/dev/reference/fail.md). This
+ensures that a failure will be registered in the test reporter. NB:
+unlike [`stop()`](https://rdrr.io/r/base/stop.html) or `abort()`,
+[`fail()`](https://testthat.r-lib.org/dev/reference/fail.md) signals a
+failure but allows code execution to continue, ensuring that one failure
+does not prevent subsequent expectations from running.
+
 Finally, return the input value (`act$val`) invisibly. This is good
 practice because expectations are called primarily for their
 side-effects (triggering a failure), and returning the value allows

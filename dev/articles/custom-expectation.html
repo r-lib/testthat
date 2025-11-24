@@ -227,6 +227,11 @@ failure message: the first element describes what we expected, and then
 the second line reports what we actually saw.</p>
 <p>If the object is as expected, call <code><a href="../reference/fail.html">pass()</a></code>. This ensures
 that a success will be registered in the test reporter.</p>
+<p>Otherwise, call <code><a href="../reference/fail.html">fail()</a></code>. This ensures that a failure will
+be registered in the test reporter. NB: unlike <code><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop()</a></code> or
+<code>abort()</code>, <code><a href="../reference/fail.html">fail()</a></code> signals a failure but allows
+code execution to continue, ensuring that one failure does not prevent
+subsequent expectations from running.</p>
 <p>Finally, return the input value (<code>act$val</code>) invisibly.
 This is good practice because expectations are called primarily for
 their side-effects (triggering a failure), and returning the value
