@@ -398,8 +398,10 @@ The key challenge is that
 [`fail()`](https://testthat.r-lib.org/dev/reference/fail.md) captures a
 `trace_env`, which should be the execution environment of the
 expectation. This usually works because the default value of `trace_env`
-is `caller_env()`. But when you introduce a helper, you’ll need to
-explicitly pass it along:
+is
+[`rlang::caller_env()`](https://rlang.r-lib.org/reference/stack.html).
+But when you introduce a helper, you’ll need to explicitly pass it
+along:
 
 ``` r
 expect_length_ <- function(act, n, trace_env = caller_env()) {

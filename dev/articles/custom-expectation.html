@@ -467,7 +467,7 @@ because it’s important to get it right in testthat itself.</p>
 <p>The key challenge is that <code><a href="../reference/fail.html">fail()</a></code> captures a
 <code>trace_env</code>, which should be the execution environment of the
 expectation. This usually works because the default value of
-<code>trace_env</code> is <code>caller_env()</code>. But when you
+<code>trace_env</code> is <code><a href="https://rlang.r-lib.org/reference/stack.html" class="external-link">rlang::caller_env()</a></code>. But when you
 introduce a helper, you’ll need to explicitly pass it along:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">expect_length_</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">act</span>, <span class="va">n</span>, <span class="va">trace_env</span> <span class="op">=</span> <span class="fu">caller_env</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
