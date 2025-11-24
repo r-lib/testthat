@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.3.1
 
 * Fixed support for `shinytest2::AppDriver$expect_values()` screenshot snapshot failing on CI (#2293, #2288).
 
