@@ -160,7 +160,6 @@ expect_snapshot_file <- function(
     file_equal = compare,
     variant = variant,
   )
-
   if (inherits(equal, "expectation_failure")) {
     return(equal)
   }
