@@ -77,7 +77,7 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
     if (debug_end >= 0) {
       start <- eval_bare(quote(base::sys.nframe()), test_env) + 1L
       e$start_frame <- start
-      e$end_frame <- sys.nframe() - debug_end - 1L
+      e$end_frame <- sys.nframe() - debug_end - 3L
     }
 
     e$test <- test %||% "(code run outside of `test_that()`)"

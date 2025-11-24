@@ -262,12 +262,11 @@ snapshot_file_equal <- function(
     # We want to fail on CI since this suggests that the user has failed
     # to record the value locally
     if (fail_on_new) {
-      # Do not manually call return here.
-      # If snapshot_fail is silenced by `muffle_expectation`, let it behave like `fail_on_new = FALSE`
       snapshot_fail(message, trace_env = trace_env)
+    } else {
+      testthat_warn(message)
     }
 
-    testthat_warn(message)
     TRUE
   }
 }
