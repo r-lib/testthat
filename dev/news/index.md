@@ -2,6 +2,11 @@
 
 ## testthat (development version)
 
+- Fixed support for `shinytest2::AppDriver$expect_values()` screenshot
+  snapshot failing on CI
+  ([\#2293](https://github.com/r-lib/testthat/issues/2293),
+  [\#2288](https://github.com/r-lib/testthat/issues/2288)).
+
 ## testthat 3.3.0
 
 CRAN release: 2025-11-13
