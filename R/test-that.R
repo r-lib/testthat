@@ -110,7 +110,7 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
   }
   handle_expectation <- function(e) {
     the$test_expectations <- the$test_expectations + 1L
-    register_expectation(e, 7)
+    register_expectation(e, 9)
     invokeRestart("muffle_expectation")
   }
   handle_warning <- function(e) {
