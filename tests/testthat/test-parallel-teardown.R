@@ -1,4 +1,5 @@
 test_that("teardown error", {
+  skip_on_cran()
   skip_on_covr()
   withr::local_envvar(TESTTHAT_PARALLEL = "TRUE")
   err <- tryCatch(
