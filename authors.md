@@ -13,7 +13,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/r-lib/testthat/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/r-lib/testthat/blob/v3.3.1/inst/CITATION)
 
 Wickham H (2011). “testthat: Get Started with Testing.” *The R Journal*,
 **3**, 5–10. <https://journal.r-project.org/articles/RJ-2011-002/>.
