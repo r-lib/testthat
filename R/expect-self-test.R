@@ -44,17 +44,13 @@ capture_success_failure <- function(expr) {
 expect_success <- function(expr) {
   status <- capture_success_failure(expr)
 
-  expected <- "Expected exactly one success and no failures."
-  if (status$n_success != 1) {
-    actual <- sprintf("Actually succeeded %i times", status$n_success)
-    fail(c(expected, actual))
-  } else if (status$n_failure > 0) {
-    actual <- sprintf("Actually failed %i times", status$n_failure)
-    fail(c(expected, actual))
-  } else {
+  if (status$n_success == 1 && status$n_failure == 0) {
     pass()
+    return(invisible())
   }
-
+  expected <- "Expected exactly one success and no failures."
+  actual <- sprintf("Actually succeeded %i times and failed %i times.", status$n_success, status$n_failure)
+  fail(c(expected, actual))
   invisible()
 }
 
@@ -63,21 +59,19 @@ expect_success <- function(expr) {
 expect_failure <- function(expr, message = NULL, ...) {
   status <- capture_success_failure(expr)
 
-  expected <- "Expected exactly one failure and no successes."
-  if (status$n_failure != 1) {
-    actual <- sprintf("Actually failed %i times", status$n_failure)
-    fail(c(expected, actual))
-  } else if (status$n_success != 0) {
-    actual <- sprintf("Actually succeeded %i times", status$n_success)
-    fail(c(expected, actual))
-  } else {
+  if (status$n_failure == 1 && status$n_failure == 0) {
     if (is.null(message)) {
       pass()
     } else {
       act <- labelled_value(status$last_failure$message, "failure message")
       expect_match_(act, message, ..., title = "message")
     }
+    return(invisible())
   }
+
+  expected <- "Expected exactly one failure and no successes."
+  actual <- sprintf("Actually succeeded %i times and failed %i times.", status$n_success, status$n_failure)
+  fail(c(expected, actual))
   invisible()
 }
 
