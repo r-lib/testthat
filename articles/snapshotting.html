@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.3.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -440,7 +440,7 @@ useful, the snapshot will be different every time the test is run:</p>
 <span><span class="co">#&gt;   safe_write_lines(letters, path)</span></span>
 <span><span class="co">#&gt; Condition</span></span>
 <span><span class="co">#&gt;   Error in `safe_write_lines()`:</span></span>
-<span><span class="co">#&gt;   ! '/tmp/RtmpJAe21Z/file2a6d7e5cc451' already exists.</span></span>
+<span><span class="co">#&gt;   ! '/tmp/RtmpM2cA85/file263835434ce7' already exists.</span></span>
 <span><span class="co">#&gt;   i Set `overwrite = TRUE` to overwrite</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 1 success 🎊</span>.</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -454,8 +454,8 @@ useful, the snapshot will be different every time the test is run:</p>
 <span><span class="co">#&gt; <span style="color: #555555;">    safe_write_lines(letters, path)</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">  Condition</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">    Error in `safe_write_lines()`:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">-   ! '/tmp/RtmpJAe21Z/file2a6d7e5cc451' already exists.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">+   ! '/tmp/RtmpJAe21Z/file2a6d5710dac4' already exists.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">-   ! '/tmp/RtmpM2cA85/file263835434ce7' already exists.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">+   ! '/tmp/RtmpM2cA85/file263814e8d71a' already exists.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">    i Set `overwrite = TRUE` to overwrite</span></span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_accept("snapshotting.Rmd")` to accept the change.</span></span>
 <span><span class="co">#&gt; * Run `testthat::snapshot_review("snapshotting.Rmd")` to review the change.</span></span>

@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">3.3.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -191,7 +191,7 @@ and again we need to make up some inputs:</p>
 <span><span class="co">#&gt;   check_installed("testthat", "99.99.999")</span></span>
 <span><span class="co">#&gt; Condition</span></span>
 <span><span class="co">#&gt;   Error in `check_installed()`:</span></span>
-<span><span class="co">#&gt;   ! {testthat} version 3.3.0 is installed, but 99.99.999 is required.</span></span>
+<span><span class="co">#&gt;   ! {testthat} version 3.3.1 is installed, but 99.99.999 is required.</span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Test passed with 2 successes 🎊</span>.</span></span></code></pre></div>
 <p>Again, this is probably safe (since I’m unlikely to release 90+ new
 versions of testthat), but if you look at the snapshot message
@@ -353,7 +353,7 @@ function to mock.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">unix_time</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">unix_time</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1763054616</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1764133588</span></span></code></pre></div>
 <p>Now I’m going to create a function factory that makes it easy to
 compute how much time has elapsed since some fixed starting point:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -367,7 +367,7 @@ compute how much time has elapsed since some fixed starting point:</p>
 <span><span class="va">timer</span> <span class="op">&lt;-</span> <span class="fu">elapsed</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="fu">timer</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.5020041</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.5019891</span></span></code></pre></div>
 <p>Imagine trying to test this function without mocking! You’d probably
 think it’s not worth it. In fact, that’s what I thought originally, but
 I soon learned my lesson because I introduce bug because I’d forgotten
