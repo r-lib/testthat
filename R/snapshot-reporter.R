@@ -135,7 +135,7 @@ SnapshotReporter <- R6::R6Class(
       save_path <- paste0(c(self$file, variant, name), collapse = "/")
       if (save_path %in% self$snap_file_saved) {
         cli::cli_abort(
-          "Snapshot file names must be unique. {.arg name} has already been used.",
+          "Snapshot file names must be unique. {.val {name}} has already been used.",
           call = trace_env
         )
       }
