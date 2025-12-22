@@ -59,12 +59,13 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/r-lib/testthat/blob/v3.3.1/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/r-lib/testthat/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.3.1" id="testthat-331">testthat 3.3.1<a class="anchor" aria-label="anchor" href="#testthat-331"></a></h2><p class="text-muted">CRAN release: 2025-11-25</p>
-<ul><li>Fixed support for <code>shinytest2::AppDriver$expect_values()</code> screenshot snapshot failing on CI (<a href="https://github.com/r-lib/testthat/issues/2293" class="external-link">#2293</a>, <a href="https://github.com/r-lib/testthat/issues/2288" class="external-link">#2288</a>).</li>
+<ul><li><p>Fixed support for <code>shinytest2::AppDriver$expect_values()</code> screenshot snapshot failing on CI (<a href="https://github.com/r-lib/testthat/issues/2293" class="external-link">#2293</a>, <a href="https://github.com/r-lib/testthat/issues/2288" class="external-link">#2288</a>).</p></li>
+<li><p>testthat now emits OpenTelemetry traces for tests when tracing is enabled. Requires the otel and otelsdk packages (<a href="https://github.com/r-lib/testthat/issues/2282" class="external-link">#2282</a>).</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.3.0" id="testthat-330">testthat 3.3.0<a class="anchor" aria-label="anchor" href="#testthat-330"></a></h2><p class="text-muted">CRAN release: 2025-11-13</p>

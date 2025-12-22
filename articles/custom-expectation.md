@@ -265,10 +265,12 @@ expect_vector_length <- function(object, n) {
 
 ``` r
 expect_vector_length(mean, 1)
-#> Error: Expected `mean` to be a vector
+#> Error:
+#> ! Expected `mean` to be a vector
 #> Actual type: closure
 expect_vector_length(mtcars, 15)
-#> Error: Expected `mtcars` to have length 15.
+#> Error:
+#> ! Expected `mtcars` to have length 15.
 #> Actual length: 11.
 ```
 
@@ -315,12 +317,15 @@ x2 <- TestClass()
 x3 <- factor()
 
 expect_s3_class(x1, "integer")
-#> Error: Expected `x1` to be an object.
+#> Error:
+#> ! Expected `x1` to be an object.
 expect_s3_class(x2, "integer")
-#> Error: Expected `x2` to be an S3 object.
+#> Error:
+#> ! Expected `x2` to be an S3 object.
 #> Actual OO type: S4
 expect_s3_class(x3, "integer")
-#> Error: Expected `x3` to inherit from integer.
+#> Error:
+#> ! Expected `x3` to inherit from integer.
 #> Actual class: factor
 expect_s3_class(x3, "factor")
 ```

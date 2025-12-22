@@ -9,6 +9,10 @@ CRAN release: 2025-11-25
   ([\#2293](https://github.com/r-lib/testthat/issues/2293),
   [\#2288](https://github.com/r-lib/testthat/issues/2288)).
 
+- testthat now emits OpenTelemetry traces for tests when tracing is
+  enabled. Requires the otel and otelsdk packages
+  ([\#2282](https://github.com/r-lib/testthat/issues/2282)).
+
 ## testthat 3.3.0
 
 CRAN release: 2025-11-13
