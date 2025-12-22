@@ -38,7 +38,7 @@ test_that("otel instrumentation works with describe/it", {
   skip_if_not_installed("otelsdk")
 
   record <- with_otel_record({
-    with_reporter(SilentReporter$new(), {
+    with_reporter("silent", {
       describe("a feature", {
         it("passes", {
           expect_true(TRUE)
@@ -71,7 +71,7 @@ test_that("otel instrumentation works with nested test_that", {
   skip_if_not_installed("otelsdk")
 
   record <- with_otel_record({
-    with_reporter(SilentReporter$new(), {
+    with_reporter("silent", {
       test_that("outer test", {
         expect_true(TRUE)
         test_that("inner test fails", {
