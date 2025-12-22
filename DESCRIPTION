@@ -42,6 +42,8 @@ Suggests:
     digest (>= 0.6.33),
     gh,
     knitr,
+    otel,
+    otelsdk,
     rmarkdown,
     rstudioapi,
     S7,
