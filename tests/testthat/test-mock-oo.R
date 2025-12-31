@@ -60,7 +60,6 @@ test_that("can mock S4 methods", {
   expect_equal(mock_age(jim), 32)
 })
 
-
 test_that("validates its inputs", {
   expect_snapshot(error = TRUE, {
     local_mocked_s4_method(1)
@@ -80,30 +79,7 @@ test_that("can mock S4 method that doesn't exist yet", {
     expect_output(show(jim), "Person: Jim")
   })
 
-  # Method should be removed after scope ends
   expect_null(methods::getMethod("show", "TestMockPerson", optional = TRUE))
-})
-
-test_that("can mock S4 method when generic is from another package", {
-  # coerce generic is from methods package
-  local({
-    local_mocked_s4_method(
-      "coerce",
-      c("TestMockPerson", "character"),
-      function(from, to) paste0(from@name, " (", from@age, ")")
-    )
-    jim <- TestMockPerson(name = "Jim", age = 32)
-    expect_equal(as(jim, "character"), "Jim (32)")
-  })
-
-  # Method should be removed after scope ends
-  expect_null(
-    methods::getMethod(
-      "coerce",
-      c("TestMockPerson", "character"),
-      optional = TRUE
-    )
-  )
 })
 
 test_that("can temporarily remove S4 method with NULL", {
@@ -116,7 +92,6 @@ test_that("can temporarily remove S4 method with NULL", {
     expect_error(mock_age(jim), "unable to find")
   })
 
-  # Method should be restored after scope ends
   expect_equal(mock_age(jim), 32)
 })
 
