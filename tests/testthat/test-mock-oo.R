@@ -16,8 +16,35 @@ test_that("validates its inputs", {
     local_mocked_s3_method(1)
     local_mocked_s3_method("mean", 1)
     local_mocked_s3_method("mean", "bar", 1)
-    local_mocked_s3_method("mean", "bar", function() {})
   })
+})
+
+test_that("can mock S3 method that doesn't exist yet", {
+  x <- structure(list(), class = "test_mock_class")
+
+  local({
+    local_mocked_s3_method("length", "test_mock_class", function(x) 42)
+    expect_length(x, 42)
+  })
+
+  # Method should be removed after scope ends
+  expect_length(x, 0)
+})
+
+test_that("can temporarily remove S3 method with NULL", {
+  x <- structure(list(), class = "test_mock_class2")
+
+  local({
+    local_mocked_s3_method("length", "test_mock_class2", function(x) 42)
+    expect_length(x, 42)
+
+    # Now remove it
+    local_mocked_s3_method("length", "test_mock_class2", NULL)
+    expect_length(x, 0)
+  })
+
+  # Method should be removed after scope ends
+  expect_length(x, 0)
 })
 
 # S4 --------------------------------------------------------------------------
@@ -39,8 +66,58 @@ test_that("validates its inputs", {
     local_mocked_s4_method(1)
     local_mocked_s4_method("mean", 1)
     local_mocked_s4_method("mean", "bar", 1)
-    local_mocked_s4_method("mean", "bar", function() {})
+    local_mocked_s4_method("notAGeneric", "bar", function() {})
   })
+})
+
+test_that("can mock S4 method that doesn't exist yet", {
+  jim <- TestMockPerson(name = "Jim", age = 32)
+
+  local({
+    local_mocked_s4_method("show", "TestMockPerson", function(object) {
+      cat("Person:", object@name, "\n")
+    })
+    expect_output(show(jim), "Person: Jim")
+  })
+
+  # Method should be removed after scope ends
+  expect_null(methods::getMethod("show", "TestMockPerson", optional = TRUE))
+})
+
+test_that("can mock S4 method when generic is from another package", {
+  # coerce generic is from methods package
+  local({
+    local_mocked_s4_method(
+      "coerce",
+      c("TestMockPerson", "character"),
+      function(from, to) paste0(from@name, " (", from@age, ")")
+    )
+    jim <- TestMockPerson(name = "Jim", age = 32)
+    expect_equal(as(jim, "character"), "Jim (32)")
+  })
+
+  # Method should be removed after scope ends
+  expect_null(
+    methods::getMethod(
+      "coerce",
+      c("TestMockPerson", "character"),
+      optional = TRUE
+    )
+  )
+})
+
+test_that("can temporarily remove S4 method with NULL", {
+  jim <- TestMockPerson(name = "Jim", age = 32)
+  expect_equal(mock_age(jim), 32)
+
+  local({
+    local_mocked_s4_method("mock_age", "TestMockPerson", NULL)
+    # Method is removed, so this should error
+    expect_error(mock_age(jim), "unable to find")
+  })
+
+  # Method should be restored after scope ends
+  expect_equal(mock_age(jim), 32)
 })
 
 # R6 --------------------------------------------------------------------------

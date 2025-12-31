@@ -14,12 +14,7 @@
       local_mocked_s3_method("mean", "bar", 1)
     Condition
       Error in `local_mocked_s3_method()`:
-      ! `definition` must be a function, not the number 1.
-    Code
-      local_mocked_s3_method("mean", "bar", function() { })
-    Condition
-      Error in `local_mocked_s3_method()`:
-      ! Can't find existing S3 method `mean.bar()`.
+      ! `definition` must be a function or `NULL`, not the number 1.
 
 ---
 
@@ -37,12 +32,12 @@
       local_mocked_s4_method("mean", "bar", 1)
     Condition
       Error in `local_mocked_s4_method()`:
-      ! `definition` must be a function, not the number 1.
+      ! `definition` must be a function or `NULL`, not the number 1.
     Code
-      local_mocked_s4_method("mean", "bar", function() { })
+      local_mocked_s4_method("notAGeneric", "bar", function() { })
     Condition
       Error in `local_mocked_s4_method()`:
-      ! Can't find existing S4 method `mean(bar)`.
+      ! Can't find generic `notAGeneric()`.
 
 ---
 

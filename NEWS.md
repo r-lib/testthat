@@ -1,5 +1,6 @@
 # testthat 3.3.1
 
+* `local_mocked_s3_method()` and `local_mocked_s4_method()` can now mock methods that don't already exist, and can use `definition = NULL` to temporarily remove a method. `local_mocked_s4_method()` now also works when the generic is defined in another package (#2302).
 * Fixed support for `shinytest2::AppDriver$expect_values()` screenshot snapshot failing on CI (#2293, #2288).
 
 * testthat now emits OpenTelemetry traces for tests when tracing is enabled. Requires the otel and otelsdk packages (#2282).
