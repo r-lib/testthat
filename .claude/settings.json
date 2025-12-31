@@ -1,13 +1,21 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  
   "permissions": {
+    "$schema": "https://json.schemastore.org/claude-code-settings.json",
+    "defaultMode": "acceptEdits",  
     "allow": [
       "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
       "Bash(R:*)",
+      "Bash(Rscript:*)",
       "Bash(rm:*)",
-      "Bash(air format:*)",
-      "Edit(**)",
+      "Bash(air:*)",
+      "WebFetch(domain:github.com)"
     ],
-    "deny": []
+    "deny": [
+      "Read(.Renviron)", 
+      "Read(.env)"
+    ]
   }
 }
