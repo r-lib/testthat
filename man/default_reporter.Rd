@@ -2,29 +2,33 @@
 % Please edit documentation in R/reporter.R
 \name{default_reporter}
 \alias{default_reporter}
-\alias{default_parallel_reporter}
 \alias{default_compact_reporter}
 \alias{check_reporter}
-\title{Retrieve the default reporter}
+\title{Determine default reporters}
 \usage{
-default_reporter()
-
-default_parallel_reporter()
+default_reporter(parallel = FALSE)
 
 default_compact_reporter()
 
 check_reporter()
 }
-\description{
-The defaults are:
-\itemize{
-\item \link{ProgressReporter} for interactive, non-parallel; override with
-\code{testthat.default_reporter}
-\item \link{ParallelProgressReporter} for interactive, parallel packages;
-override with \code{testthat.default_parallel_reporter}
-\item \link{CompactProgressReporter} for single-file interactive; override with
-\code{testthat.default_compact_reporter}
-\item \link{CheckReporter} for R CMD check; override with \code{testthat.default_check_reporter}
+\arguments{
+\item{parallel}{If \code{TRUE}, return a reporter suitable for parallel testing.}
 }
+\description{
+\code{default_reporter()} returns the default reporter for \code{\link[=test_dir]{test_dir()}}.
+If the \code{CLAUDECODE} env var is set, it uses \link{LlmReporter}; otherwise if
+\code{parallel} is \code{TRUE}, \link{ParallelProgressReporter}, and if not,
+\link{ProgressReporter}. You can customize the parallel/non-parallel reporters
+by setting options \code{testthat.default_reporter} and
+\code{testthat.default_parallel_reporter}.
+
+\code{default_compact_reporter()} returns the default reporter for \code{\link[=test_file]{test_file()}}.
+It defaults to \link{CompactProgressReporter}, but you can override with the
+\code{testthat.default_compact_reporter} option.
+
+\code{check_reporter()} returns the default reporter for \code{\link[=test_package]{test_package()}}.
+It defaults to \link{CheckReporter}, but you can override with the
+\code{testthat.default_check_reporter} option.
 }
 \keyword{internal}

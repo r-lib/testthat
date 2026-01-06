@@ -1,5 +1,7 @@
 # testthat 3.3.1
 
+* `default_parallel_reporter()` is no longer exported; use `default_reporter(parallel = TRUE)` instead.
+* New `LlmReporter()` designed for LLMs to read. It's currently used automatically when `CLAUDECODE` is true and you can request it explicitly with `reporter = "llm"` (#2287).
 * Fixed support for `shinytest2::AppDriver$expect_values()` screenshot snapshot failing on CI (#2293, #2288).
 
 * testthat now emits OpenTelemetry traces for tests when tracing is enabled. Requires the otel and otelsdk packages (#2282).

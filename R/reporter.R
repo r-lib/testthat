@@ -117,27 +117,35 @@ Reporter <- R6::R6Class(
   )
 )
 
-#' Retrieve the default reporter
+#' Determine default reporters
 #'
-#' The defaults are:
-#' * [ProgressReporter] for interactive, non-parallel; override with
-#'   `testthat.default_reporter`
-#' * [ParallelProgressReporter] for interactive, parallel packages;
-#'   override with `testthat.default_parallel_reporter`
-#' * [CompactProgressReporter] for single-file interactive; override with
-#'   `testthat.default_compact_reporter`
-#' * [CheckReporter] for R CMD check; override with `testthat.default_check_reporter`
+#' @description
+#' `default_reporter()` returns the default reporter for [test_dir()].
+#' If the `CLAUDECODE` env var is set, it uses [LlmReporter]; otherwise if
+#' `parallel` is `TRUE`, [ParallelProgressReporter], and if not,
+#' [ProgressReporter]. You can customize the parallel/non-parallel reporters
+#' by setting options `testthat.default_reporter` and
+#' `testthat.default_parallel_reporter`.
 #'
+#' `default_compact_reporter()` returns the default reporter for [test_file()].
+#' It defaults to [CompactProgressReporter], but you can override with the
+#' `testthat.default_compact_reporter` option.
+#'
+#' `check_reporter()` returns the default reporter for [test_package()].
+#' It defaults to [CheckReporter], but you can override with the
+#' `testthat.default_check_reporter` option.
+#'
+#' @param parallel If `TRUE`, return a reporter suitable for parallel testing.
 #' @export
 #' @keywords internal
-default_reporter <- function() {
-  getOption("testthat.default_reporter", "Progress")
-}
-
-#' @export
-#' @rdname default_reporter
-default_parallel_reporter <- function() {
-  getOption("testthat.default_parallel_reporter", "ParallelProgress")
+default_reporter <- function(parallel = FALSE) {
+  if (nzchar(Sys.getenv("CLAUDECODE"))) {
+    "Llm"
+  } else if (parallel) {
+    getOption("testthat.default_parallel_reporter", "ParallelProgress")
+  } else {
+    getOption("testthat.default_reporter", "Progress")
+  }
 }
 
 #' @export

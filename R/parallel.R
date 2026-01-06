@@ -35,7 +35,7 @@ test_files_parallel <- function(
   test_package,
   test_paths,
   load_helpers = TRUE,
-  reporter = default_parallel_reporter(),
+  reporter = default_reporter(TRUE),
   env = NULL,
   stop_on_failure = FALSE,
   stop_on_warning = FALSE,
