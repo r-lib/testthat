@@ -353,7 +353,7 @@ function to mock.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">unix_time</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">unix_time</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1767736878</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1767741509</span></span></code></pre></div>
 <p>Now I’m going to create a function factory that makes it easy to
 compute how much time has elapsed since some fixed starting point:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -367,7 +367,7 @@ compute how much time has elapsed since some fixed starting point:</p>
 <span><span class="va">timer</span> <span class="op">&lt;-</span> <span class="fu">elapsed</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="fu">timer</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.5017884</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.5018544</span></span></code></pre></div>
 <p>Imagine trying to test this function without mocking! You’d probably
 think it’s not worth it. In fact, that’s what I thought originally, but
 I soon learned my lesson because I introduce bug because I’d forgotten
