@@ -13,6 +13,7 @@ Other reporters:
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},
 \code{\link{JunitReporter}},
+\code{\link{LlmReporter}},
 \code{\link{LocationReporter}},
 \code{\link{MinimalReporter}},
 \code{\link{MultiReporter}},

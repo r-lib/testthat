@@ -21,6 +21,7 @@ Other reporters:
 \code{\link{FailReporter}},
 \code{\link{JunitReporter}},
 \code{\link{ListReporter}},
+\code{\link{LlmReporter}},
 \code{\link{LocationReporter}},
 \code{\link{MinimalReporter}},
 \code{\link{MultiReporter}},
