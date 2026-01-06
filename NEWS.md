@@ -1,5 +1,6 @@
 # testthat 3.3.1
 
+* `expect_snapshot()` now reports the original error class for base errors, rather than `rlang_error` (#2286).
 * `expect_snapshot_file()` correctly reports file name if duplicated (@MichaelChirico, #2296).
 * Fixed support for `shinytest2::AppDriver$expect_values()` screenshot snapshot failing on CI (#2293, #2288).
 
