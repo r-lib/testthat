@@ -291,7 +291,7 @@ function to mock.
 ``` r
 unix_time <- function() unclass(Sys.time())
 unix_time()
-#> [1] 1767741509
+#> [1] 1767742310
 ```
 
 Now I’m going to create a function factory that makes it easy to compute
@@ -308,7 +308,7 @@ elapsed <- function() {
 timer <- elapsed()
 Sys.sleep(0.5)
 timer()
-#> [1] 0.5018544
+#> [1] 0.5019584
 ```
 
 Imagine trying to test this function without mocking! You’d probably
