@@ -28,7 +28,7 @@ LlmReporter <- R6::R6Class(
     add_result = function(context, test, result) {
       if (self$is_full()) {
         return()
-      }
+    }
 
       if (expectation_broken(result)) {
         self$n_fail <- self$n_fail + 1

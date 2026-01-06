@@ -79,3 +79,4 @@
     
     Maximum number of failures exceeded; quitting.
     i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 
+
