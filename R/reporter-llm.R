@@ -28,7 +28,7 @@ LlmReporter <- R6::R6Class(
     add_result = function(context, test, result) {
       if (self$is_full()) {
         return()
-    }
+      }
 
       if (expectation_broken(result)) {
         self$n_fail <- self$n_fail + 1
@@ -54,6 +54,7 @@ LlmReporter <- R6::R6Class(
 
       self$cat_line(header, " ", rule)
       self$cat_line(format(result))
+      self$cat_line()
     },
 
     end_context = function(context) {
@@ -67,7 +68,6 @@ LlmReporter <- R6::R6Class(
         return()
       }
 
-      self$cat_line()
       self$cat_line(paste_c(
         "[ ",
         c("FAIL ", self$n_fail, " | "),
