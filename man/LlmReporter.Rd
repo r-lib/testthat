@@ -5,8 +5,8 @@
 \title{Report test progress for LLMs}
 \description{
 \code{LlmReporter} is designed for use with Large Language Models (LLMs).
-It only reports problems (warnings, skips, errors, and failures) as they
-occur, only reporting passing tests at the end.
+It reports problems (warnings, skips, errors, and failures) as they
+occur and the total number of successes at the end.
 }
 \seealso{
 Other reporters: 

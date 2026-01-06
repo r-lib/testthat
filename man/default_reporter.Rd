@@ -24,7 +24,8 @@ by setting options \code{testthat.default_reporter} and
 \code{testthat.default_parallel_reporter}.
 
 \code{default_compact_reporter()} returns the default reporter for \code{\link[=test_file]{test_file()}}.
-It defaults to \link{CompactProgressReporter}, but you can override with the
+If the \code{CLAUDECODE} env var is set, it uses \link{LlmReporter}; otherwise it
+defaults to \link{CompactProgressReporter}. You can override with the
 \code{testthat.default_compact_reporter} option.
 
 \code{check_reporter()} returns the default reporter for \code{\link[=test_package]{test_package()}}.

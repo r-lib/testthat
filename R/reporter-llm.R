@@ -1,8 +1,8 @@
 #' Report test progress for LLMs
 #'
 #' `LlmReporter` is designed for use with Large Language Models (LLMs).
-#' It only reports problems (warnings, skips, errors, and failures) as they
-#' occur, only reporting passing tests at the end.
+#' It reports problems (warnings, skips, errors, and failures) as they
+#' occur and the total number of successes at the end.
 #'
 #' @export
 #' @family reporters
@@ -16,6 +16,7 @@ LlmReporter <- R6::R6Class(
         max_failures = max_failures,
         ...
       )
+      self$width <- 20
     },
 
     # No header
@@ -25,42 +26,34 @@ LlmReporter <- R6::R6Class(
     show_status = function(complete = FALSE, time = 0, pad = FALSE) {},
 
     add_result = function(context, test, result) {
-      # Stop immediately if we've hit max failures
       if (self$is_full()) {
         return()
       }
 
-      self$ctxt_n <- self$ctxt_n + 1L
-
       if (expectation_broken(result)) {
         self$n_fail <- self$n_fail + 1
-        self$ctxt_n_fail <- self$ctxt_n_fail + 1
-        self$ctxt_issues$push(result)
-        self$problems$push(result)
         self$report_issue(result)
       } else if (expectation_skip(result)) {
         self$n_skip <- self$n_skip + 1
-        self$ctxt_n_skip <- self$ctxt_n_skip + 1
-        self$skips$push(result)
         self$report_issue(result)
       } else if (expectation_warning(result)) {
         self$n_warn <- self$n_warn + 1
-        self$ctxt_n_warn <- self$ctxt_n_warn + 1
-        self$ctxt_issues$push(result)
         self$report_issue(result)
       } else {
         self$n_ok <- self$n_ok + 1
-        self$ctxt_n_ok <- self$ctxt_n_ok + 1
         # Do nothing for passing tests
       }
     },
 
     report_issue = function(result) {
       self$local_user_output()
-      withr::local_options(testthat.use_colours = FALSE)
 
-      self$cat_line(issue_summary(result, uppercase = TRUE))
-      self$cat_line()
+      type <- toupper(expectation_type(result))
+      header <- paste0(type, ": ", expectation_location(result))
+      rule <- strrep("-", max(50 - nchar(header), 10))
+
+      self$cat_line(header, " ", rule)
+      self$cat_line(format(result))
     },
 
     end_context = function(context) {
@@ -74,16 +67,13 @@ LlmReporter <- R6::R6Class(
         return()
       }
 
-      self$cat_line(paste0(
+      self$cat_line()
+      self$cat_line(paste_c(
         "[ ",
-        "FAIL ",
-        self$n_fail,
-        " | WARN ",
-        self$n_warn,
-        " | SKIP ",
-        self$n_skip,
-        " | PASS ",
-        self$n_ok,
+        c("FAIL ", self$n_fail, " | "),
+        c("WARN ", self$n_warn, " | "),
+        c("SKIP ", self$n_skip, " | "),
+        c("PASS ", self$n_ok),
         " ]"
       ))
     }
