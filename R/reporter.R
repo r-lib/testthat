@@ -128,7 +128,8 @@ Reporter <- R6::R6Class(
 #' `testthat.default_parallel_reporter`.
 #'
 #' `default_compact_reporter()` returns the default reporter for [test_file()].
-#' It defaults to [CompactProgressReporter], but you can override with the
+#' If the `CLAUDECODE` env var is set, it uses [LlmReporter]; otherwise it
+#' defaults to [CompactProgressReporter]. You can override with the
 #' `testthat.default_compact_reporter` option.
 #'
 #' `check_reporter()` returns the default reporter for [test_package()].
@@ -139,7 +140,7 @@ Reporter <- R6::R6Class(
 #' @export
 #' @keywords internal
 default_reporter <- function(parallel = FALSE) {
-  if (nzchar(Sys.getenv("CLAUDECODE"))) {
+  if (is_llm()) {
     "Llm"
   } else if (parallel) {
     getOption("testthat.default_parallel_reporter", "ParallelProgress")
@@ -151,8 +152,18 @@ default_reporter <- function(parallel = FALSE) {
 #' @export
 #' @rdname default_reporter
 default_compact_reporter <- function() {
-  getOption("testthat.default_compact_reporter", "CompactProgress")
+  if (is_llm()) {
+    "Llm"
+  } else {
+    getOption("testthat.default_compact_reporter", "CompactProgress")
+  }
 }
+
+is_llm <- function() {
+  # For now
+  nzchar(Sys.getenv("CLAUDECODE"))
+}
+
 
 #' @export
 #' @rdname default_reporter
