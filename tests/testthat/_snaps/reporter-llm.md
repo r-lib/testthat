@@ -73,20 +73,6 @@
     `expected`: TRUE 
     
     
-    FAILURE: 'reporters/fail-many.R:3:5' --------------
-    Expected FALSE to be TRUE.
-    Differences:
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    
-    FAILURE: 'reporters/fail-many.R:3:5' --------------
-    Expected FALSE to be TRUE.
-    Differences:
-    `actual`:   FALSE
-    `expected`: TRUE 
-    
-    
     
     Maximum number of failures exceeded; quitting.
     i Increase this number with (e.g.) `testthat::set_max_fails(Inf)` 

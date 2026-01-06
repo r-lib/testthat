@@ -13,7 +13,7 @@ test_that("reports only summary for all successes", {
 })
 
 test_that("fails after max_fail tests", {
-  withr::local_options(testthat.progress.max_fails = 5)
+  withr::local_options(testthat.progress.max_fails = 3)
   expect_snapshot_reporter(
     LlmReporter$new(),
     test_path(c("reporters/fail-many.R", "reporters/fail.R"))
