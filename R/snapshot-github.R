@@ -11,7 +11,7 @@
 #'
 #' @param repository Repository owner/name, e.g. `"r-lib/testthat"`.
 #' @param run_id Run ID, e.g. `"47905180716"`. You can find this in the action url.
-#' @param dest_dir Directory to download to. Defaults to the current directory.
+#' @param dest_dir Package root directory. Defaults to the current directory.
 #' @export
 snapshot_download_gh <- function(repository, run_id, dest_dir = ".") {
   check_string(repository)
