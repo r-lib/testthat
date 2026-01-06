@@ -19,7 +19,7 @@
 #' a <- 1:4
 #' show_failure(expect_true(length(a) == 3))
 #' show_failure(expect_equal(length(a), 3))
-#' 
+#'
 #' x <- c(TRUE, TRUE, FALSE, TRUE)
 #' show_failure(expect_true(all(x)))
 #' show_failure(expect_all_true(x))

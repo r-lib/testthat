@@ -74,7 +74,6 @@ failure_compare <- function(act, exp, operator) {
         actual_op
       )
     }
-
   } else {
     msg_act <- sprintf(
       "Actual comparison: \"%s\" %s \"%s\"",
