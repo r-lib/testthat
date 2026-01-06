@@ -7,7 +7,9 @@
 #' take the artifacts from.
 #'
 #' Note that you should not generally need to use this function manually;
-#' instead copy and paste from the hint emitted on GitHub.
+#' instead copy and paste from the hint emitted on GitHub. This hint is only
+#' emitted when running in a job named "R-CMD-check", since that's where the
+#' testthat artifact is typically uploaded.
 #'
 #' @param repository Repository owner/name, e.g. `"r-lib/testthat"`.
 #' @param run_id Run ID, e.g. `"47905180716"`. You can find this in the action url.

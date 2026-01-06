@@ -123,7 +123,7 @@ summary_line <- function(n_fail, n_warn, n_skip, n_pass) {
 snapshot_check_hint <- function() {
   intro <- "To review and process snapshots locally:"
 
-  if (on_gh()) {
+  if (on_gh() && Sys.getenv("GITHUB_JOB") == "R-CMD-check") {
     repository <- Sys.getenv("GITHUB_REPOSITORY")
     run_id <- Sys.getenv("GITHUB_RUN_ID")
 

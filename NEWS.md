@@ -1,5 +1,6 @@
 # testthat 3.3.1
 
+* The hint to use `snapshot_download_gh()` is now only emitted when running in a job named "R-CMD-check" (#2300).
 * `expect_snapshot_file()` correctly reports file name if duplicated (@MichaelChirico, #2296).
 * Fixed support for `shinytest2::AppDriver$expect_values()` screenshot snapshot failing on CI (#2293, #2288).
 
