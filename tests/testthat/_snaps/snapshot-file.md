@@ -4,7 +4,7 @@
       expect_snapshot_file(write_tmp_lines(r_version()), "version.txt", variant = r_version())
     Condition
       Error in `expect_snapshot_file()`:
-      ! Snapshot file names must be unique. `name` has already been used.
+      ! Snapshot file names must be unique. "version.txt" has already been used.
 
 # warns on first creation
 
