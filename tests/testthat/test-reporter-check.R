@@ -44,7 +44,8 @@ test_that("generates informative snapshot hints", {
   withr::local_envvar(
     GITHUB_ACTIONS = "true",
     GITHUB_REPOSITORY = "r-lib/testthat",
-    GITHUB_RUN_ID = "123"
+    GITHUB_RUN_ID = "123",
+    GITHUB_JOB = "R-CMD-check"
   )
   expect_snapshot(base::writeLines(snapshot_check_hint()))
 })
