@@ -14,15 +14,16 @@ local_mocked_s4_method(generic, signature, definition, frame = caller_env())
 
 \item{signature}{A character vector giving the signature of the method.}
 
-\item{definition}{A function providing the method definition.}
+\item{definition}{A function providing the method definition, or \code{NULL} to
+temporarily remove the method.}
 
 \item{frame}{Calling frame which determines the scope of the mock.
 Only needed when wrapping in another local helper.}
 }
 \description{
-These functions allow you to temporarily override S3 and S4 methods that
-already exist. It works by using \code{\link[=registerS3method]{registerS3method()}}/\code{\link[=setMethod]{setMethod()}} to
-temporarily replace the original definition.
+These functions temporarily override S3 or S4 methods. They can mock
+methods that don't already exist, or temporarily remove a method by setting
+\code{definition = NULL}.
 
 Learn more about mocking in \code{vignette("mocking")}.
 }
