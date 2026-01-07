@@ -4,6 +4,11 @@
 
 CRAN release: 2025-11-25
 
+- [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
+  now reports the original error class for base errors, rather than
+  `rlang_error`
+  ([\#2286](https://github.com/r-lib/testthat/issues/2286)).
+
 - [`expect_success()`](https://testthat.r-lib.org/reference/expect_success.md)
   and
   [`expect_failure()`](https://testthat.r-lib.org/reference/expect_success.md)
