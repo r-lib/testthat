@@ -26,6 +26,36 @@ capture_success_failure <- function(expr) {
   )
 }
 
+format_success_failure <- function(status, exp_n_success, exp_n_failure) {
+  pluralise <- function(n, singular, plural) {
+    paste(n, ngettext(n, singular, plural))
+  }
+
+  tick <- cli::col_green(cli::symbol$tick)
+  cross <- cli::col_red(cli::symbol$cross)
+
+  success_ok <- status$n_success == exp_n_success
+  failure_ok <- status$n_failure == exp_n_failure
+
+  c(
+    sprintf(
+      "Expected %s and %s.",
+      pluralise(exp_n_success, "success", "successes"),
+      pluralise(exp_n_failure, "failure", "failures")
+    ),
+    sprintf(
+      "%s Observed %s.",
+      if (success_ok) tick else cross,
+      pluralise(status$n_success, "success", "successes")
+    ),
+    sprintf(
+      "%s Observed %s.",
+      if (failure_ok) tick else cross,
+      pluralise(status$n_failure, "failure", "failures")
+    )
+  )
+}
+
 #' Test your custom expectations
 #'
 #' @description
@@ -48,9 +78,7 @@ expect_success <- function(expr) {
     pass()
     return(invisible())
   }
-  expected <- "Expected exactly one success and no failures."
-  actual <- sprintf("Actually succeeded %i times and failed %i times.", status$n_success, status$n_failure)
-  fail(c(expected, actual))
+  fail(format_success_failure(status, exp_n_success = 1, exp_n_failure = 0))
   invisible()
 }
 
@@ -59,7 +87,7 @@ expect_success <- function(expr) {
 expect_failure <- function(expr, message = NULL, ...) {
   status <- capture_success_failure(expr)
 
-  if (status$n_failure == 1 && status$n_failure == 0) {
+  if (status$n_failure == 1 && status$n_success == 0) {
     if (is.null(message)) {
       pass()
     } else {
@@ -69,9 +97,7 @@ expect_failure <- function(expr, message = NULL, ...) {
     return(invisible())
   }
 
-  expected <- "Expected exactly one failure and no successes."
-  actual <- sprintf("Actually succeeded %i times and failed %i times.", status$n_success, status$n_failure)
-  fail(c(expected, actual))
+  fail(format_success_failure(status, exp_n_success = 0, exp_n_failure = 1))
   invisible()
 }
 
