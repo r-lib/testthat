@@ -32,8 +32,6 @@ local_mocked_s3_method <- function(
   check_string(signature)
   check_function(definition, allow_null = TRUE)
 
-  generic_def <- get(generic, envir = frame)
-
   old <- utils::getS3method(generic, signature, optional = TRUE)
 
   # Set the new method, or a pass-through stub if removing
@@ -86,19 +84,19 @@ local_mocked_s4_method <- function(
     cli::cli_abort("Can't find generic {.fn {generic}}.")
   }
 
-  set_method <- function(def) {
+  set_method <- function(generic, signature, def) {
     env <- topenv(frame)
-    old <- methods::getMethod(generic_def, signature, optional = TRUE)
+    old <- methods::getMethod(generic, signature, optional = TRUE)
     if (is.null(def)) {
-      methods::removeMethod(generic_def, signature, env)
+      methods::removeMethod(generic, signature, env)
     } else {
-      suppressMessages(methods::setMethod(generic_def, signature, def, env))
+      suppressMessages(methods::setMethod(generic, signature, def, env))
     }
     old
   }
 
-  old <- set_method(definition)
-  withr::defer(set_method(old), frame)
+  old <- set_method(generic_def, signature, definition)
+  withr::defer(set_method(generic_def, signature, old), frame)
 
   invisible()
 }

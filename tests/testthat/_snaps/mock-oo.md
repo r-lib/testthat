@@ -15,6 +15,11 @@
     Condition
       Error in `local_mocked_s3_method()`:
       ! `definition` must be a function or `NULL`, not the number 1.
+    Code
+      local_mocked_s3_method("notAGeneric", "bar", function() { })
+    Condition
+      Error in `get()`:
+      ! object 'notAGeneric' not found
 
 ---
 

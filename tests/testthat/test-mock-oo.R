@@ -16,6 +16,7 @@ test_that("validates its inputs", {
     local_mocked_s3_method(1)
     local_mocked_s3_method("mean", 1)
     local_mocked_s3_method("mean", "bar", 1)
+    local_mocked_s3_method("notAGeneric", "bar", function() {})
   })
 })
 
@@ -33,18 +34,16 @@ test_that("can mock S3 method that doesn't exist yet", {
 
 test_that("can temporarily remove S3 method with NULL", {
   x <- structure(list(), class = "test_mock_class2")
+  local_mocked_s3_method("length", "test_mock_class2", function(x) 42)
 
   local({
-    local_mocked_s3_method("length", "test_mock_class2", function(x) 42)
-    expect_length(x, 42)
-
     # Now remove it
     local_mocked_s3_method("length", "test_mock_class2", NULL)
     expect_length(x, 0)
   })
 
-  # Method should be removed after scope ends
-  expect_length(x, 0)
+  # Method should be restored after scope ends
+  expect_length(x, 42)
 })
 
 # S4 --------------------------------------------------------------------------
