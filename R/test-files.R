@@ -149,7 +149,6 @@ test_files <- function(
   shuffle = FALSE,
   error_call = caller_env()
 ) {
-
   # Must keep these two blocks in sync
   if (parallel) {
     test_files_parallel(
