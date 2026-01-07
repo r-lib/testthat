@@ -169,6 +169,24 @@ test_that("errors and warnings are folded", {
 #   expect_snapshot(1 + 1)
 # })
 
+test_that("extracts original error class", {
+  catch_entraced <- function(code) {
+    tryCatch(
+      withCallingHandlers(code, error = function(cnd) rlang::entrace(cnd)),
+      error = function(cnd) cnd
+    )
+  }
+
+  cnd <- catch_entraced(stop("!", call. = FALSE))
+  expect_equal(error_class(cnd), "simpleError")
+
+  cnd <- catch_entraced(stop(errorCondition("!", class = "badError")))
+  expect_equal(error_class(cnd), "badError")
+
+  cnd <- catch_entraced(abort("!"))
+  expect_equal(error_class(cnd), "rlang_error")
+})
+
 test_that("hint is informative", {
   local_mocked_bindings(in_check_reporter = function() FALSE)
   withr::local_envvar(GITHUB_ACTIONS = "false", TESTTHAT_WD = NA)
