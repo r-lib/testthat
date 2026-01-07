@@ -9,8 +9,14 @@ Rscript -e "devtools::load_all(); code"
 # To run all tests
 Rscript -e "devtools::test()"
 
-# To run tests for R/{name.R}
-Rscript -e "devtools::test(filter = '{name}')"
+# To run all tests for files starting with {name}
+Rscript -e "devtools::test(filter = '^{name}')"
+
+# To run all tests for R/{name}.R
+Rscript -e "devtools::test_active_file('R/{name}.R')"
+
+# To run a single test "blah" for R/{name}.R
+Rscript -e "devtools::test_active_file('R/{name}.R', desc = 'blah')"
 
 # To document the package
 Rscript -e "devtools::document()"
@@ -41,8 +47,16 @@ air format .
 - Every user-facing function should be exported and have roxygen2 documentation.
 - Wrap roxygen comments at 80 characters.
 - Internal functions should not have roxygen documentation.
-- Whenever you add a new documentation topic, also add the topic to `_pkgdown.yml`. 
+- Whenever you add a new (non-internal) documentation topic, also add the topic to `_pkgdown.yml`. 
 - Use `pkgdown::check_pkgdown()` to check that all topics are included in the reference index.
+
+### `NEWS.md`
+
+- Every user-facing change should be given a bullet in `NEWS.md`. Do not add bullets for small documentation changes or internal refactorings.
+- Each bullet should briefly describes the change to the end user, and mention the related issue in parentheses.
+- A bullet can consist of multiple sentences but should not contain any new lines (i.e. don't wrap the bullet).
+- If the change is related to a function, put the name of the function early in the bullet.
+- Order bullets alphabetically by function name. Put all bullets that don't mention function names at the beginning.
 
 ### Writing
 
