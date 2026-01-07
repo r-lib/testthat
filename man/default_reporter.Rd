@@ -16,20 +16,23 @@ check_reporter()
 \item{parallel}{If \code{TRUE}, return a reporter suitable for parallel testing.}
 }
 \description{
-\code{default_reporter()} returns the default reporter for \code{\link[=test_dir]{test_dir()}}.
-If the \code{CLAUDECODE} env var is set, it uses \link{LlmReporter}; otherwise if
-\code{parallel} is \code{TRUE}, \link{ParallelProgressReporter}, and if not,
-\link{ProgressReporter}. You can customize the parallel/non-parallel reporters
-by setting options \code{testthat.default_reporter} and
-\code{testthat.default_parallel_reporter}.
-
-\code{default_compact_reporter()} returns the default reporter for \code{\link[=test_file]{test_file()}}.
-If the \code{CLAUDECODE} env var is set, it uses \link{LlmReporter}; otherwise it
-defaults to \link{CompactProgressReporter}. You can override with the
-\code{testthat.default_compact_reporter} option.
-
-\code{check_reporter()} returns the default reporter for \code{\link[=test_package]{test_package()}}.
-It defaults to \link{CheckReporter}, but you can override with the
+These three functions are used to determine the default reporters used
+for \code{test_dir()}, \code{test_file()}, and \code{test_package()}:
+\itemize{
+\item \code{default_reporter()} returns the default reporter for \code{\link[=test_dir]{test_dir()}}.
+If \code{parallel} is \code{TRUE}, it uses \link{ParallelProgressReporter}, which you
+can override with option \code{testthat.default_parallel_reporter}.
+If \code{parallel} is \code{FALSE}, it uses \link{ProgressReporter}, which you
+can override with option \code{testthat.default_reporter}.
+\item \code{default_compact_reporter()} returns the default reporter for
+\code{\link[=test_file]{test_file()}}. It defaults to \link{CompactProgressReporter}, which you can
+override with the \code{testthat.default_compact_reporter} option.
+\item \code{check_reporter()} returns the default reporter for \code{\link[=test_package]{test_package()}}.
+It defaults to \link{CheckReporter}, which you can override with the
 \code{testthat.default_check_reporter} option.
+}
+
+Both \code{default_reporter()} and \code{default_compact_reporter()} will use
+\link{LlmReporter} if it appears that the tests are being run by a coding agent.
 }
 \keyword{internal}

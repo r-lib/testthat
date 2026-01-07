@@ -19,3 +19,22 @@ test_that("fails after max_fail tests", {
     test_path(c("reporters/fail-many.R", "reporters/fail.R"))
   )
 })
+
+test_that("is_llm() detects known LLM agent environment variables", {
+  withr::local_envvar(
+    AGENT = NA,
+    CLAUDECODE = NA,
+    GEMINI_CLI = NA,
+    CURSOR_AGENT = NA
+  )
+  expect_false(is_llm())
+
+  local({
+    withr::local_envvar(AGENT = "1")
+    expect_true(is_llm())
+  })
+  local({
+    withr::local_envvar(CLAUDECODE = "1")
+    expect_true(is_llm())
+  })
+})

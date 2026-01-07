@@ -120,21 +120,25 @@ Reporter <- R6::R6Class(
 #' Determine default reporters
 #'
 #' @description
-#' `default_reporter()` returns the default reporter for [test_dir()].
-#' If the `CLAUDECODE` env var is set, it uses [LlmReporter]; otherwise if
-#' `parallel` is `TRUE`, [ParallelProgressReporter], and if not,
-#' [ProgressReporter]. You can customize the parallel/non-parallel reporters
-#' by setting options `testthat.default_reporter` and
-#' `testthat.default_parallel_reporter`.
+#' These three functions are used to determine the default reporters used
+#' for `test_dir()`, `test_file()`, and `test_package()`:
 #'
-#' `default_compact_reporter()` returns the default reporter for [test_file()].
-#' If the `CLAUDECODE` env var is set, it uses [LlmReporter]; otherwise it
-#' defaults to [CompactProgressReporter]. You can override with the
-#' `testthat.default_compact_reporter` option.
+#' * `default_reporter()` returns the default reporter for [test_dir()].
+#'   If `parallel` is `TRUE`, it uses [ParallelProgressReporter], which you
+#'   can override with option `testthat.default_parallel_reporter`.
+#'   If `parallel` is `FALSE`, it uses [ProgressReporter], which you
+#'   can override with option `testthat.default_reporter`.
 #'
-#' `check_reporter()` returns the default reporter for [test_package()].
-#' It defaults to [CheckReporter], but you can override with the
-#' `testthat.default_check_reporter` option.
+#' * `default_compact_reporter()` returns the default reporter for
+#'   [test_file()]. It defaults to [CompactProgressReporter], which you can
+#'   override with the `testthat.default_compact_reporter` option.
+#'
+#' * `check_reporter()` returns the default reporter for [test_package()].
+#'   It defaults to [CheckReporter], which you can override with the
+#'   `testthat.default_check_reporter` option.
+#'
+#' Both `default_reporter()` and `default_compact_reporter()` will use
+#' [LlmReporter] if it appears that the tests are being run by a coding agent.
 #'
 #' @param parallel If `TRUE`, return a reporter suitable for parallel testing.
 #' @export
@@ -158,12 +162,6 @@ default_compact_reporter <- function() {
     getOption("testthat.default_compact_reporter", "CompactProgress")
   }
 }
-
-is_llm <- function() {
-  # For now
-  nzchar(Sys.getenv("CLAUDECODE"))
-}
-
 
 #' @export
 #' @rdname default_reporter

@@ -67,7 +67,8 @@ test_dir <- function(
     cli::cli_abort("No test files found.")
   }
 
-  want_parallel <- find_parallel(path, load_package, package)
+  want_parallel <- find_parallel(path, load_package, package) &&
+    length(test_paths) > 1
 
   reporter <- find_reporter(reporter %||% default_reporter(want_parallel))
   parallel <- want_parallel && reporter$capabilities$parallel_support

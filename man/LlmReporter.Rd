@@ -7,6 +7,10 @@
 \code{LlmReporter} is designed for use with Large Language Models (LLMs).
 It reports problems (warnings, skips, errors, and failures) as they
 occur and the total number of successes at the end.
+
+\code{LlmReporter} is used by default when tests are run by a coding agent.
+Currently we detect Claude Code, Cursor, and Gemini CLI.
+If using another tool, configure it to set env var \code{AGENT=1}.
 }
 \seealso{
 Other reporters: 
