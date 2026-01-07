@@ -4,12 +4,16 @@ why, or to incorporate them into your local package. This function makes it
 easy, only requiring you to interactively select which job you want to
 take the artifacts from.
 Note that you should not generally need to use this function manually;
-instead copy and paste from the hint emitted on GitHub."><meta property="og:description" content="If your snapshots fail on GitHub, it can be a pain to figure out exactly
+instead copy and paste from the hint emitted on GitHub. This hint is only
+emitted when running in a job named &quot;R-CMD-check&quot;, since that's where the
+testthat artifact is typically uploaded."><meta property="og:description" content="If your snapshots fail on GitHub, it can be a pain to figure out exactly
 why, or to incorporate them into your local package. This function makes it
 easy, only requiring you to interactively select which job you want to
 take the artifacts from.
 Note that you should not generally need to use this function manually;
-instead copy and paste from the hint emitted on GitHub."><meta property="og:image" content="https://testthat.r-lib.org/logo.png"><script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script><script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script></head><body>
+instead copy and paste from the hint emitted on GitHub. This hint is only
+emitted when running in a job named &quot;R-CMD-check&quot;, since that's where the
+testthat artifact is typically uploaded."><meta property="og:image" content="https://testthat.r-lib.org/logo.png"><script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script><script defer data-domain="testthat.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script></head><body>
     <a href="#container" class="visually-hidden-focusable">Skip to content</a>
 
 
@@ -79,7 +83,9 @@ why, or to incorporate them into your local package. This function makes it
 easy, only requiring you to interactively select which job you want to
 take the artifacts from.</p>
 <p>Note that you should not generally need to use this function manually;
-instead copy and paste from the hint emitted on GitHub.</p>
+instead copy and paste from the hint emitted on GitHub. This hint is only
+emitted when running in a job named "R-CMD-check", since that's where the
+testthat artifact is typically uploaded.</p>
     </div>
 
     <div class="section level2">
@@ -100,7 +106,7 @@ instead copy and paste from the hint emitted on GitHub.</p>
 
 
 <dt id="arg-dest-dir">dest_dir<a class="anchor" aria-label="anchor" href="#arg-dest-dir"></a></dt>
-<dd><p>Directory to download to. Defaults to the current directory.</p></dd>
+<dd><p>Package root directory. Defaults to the current directory.</p></dd>
 
 </dl></div>
 

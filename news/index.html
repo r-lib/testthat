@@ -64,7 +64,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.3.1" id="testthat-331">testthat 3.3.1<a class="anchor" aria-label="anchor" href="#testthat-331"></a></h2><p class="text-muted">CRAN release: 2025-11-25</p>
-<ul><li><p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> correctly reports file name if duplicated (<a href="https://github.com/MichaelChirico" class="external-link">@MichaelChirico</a>, <a href="https://github.com/r-lib/testthat/issues/2296" class="external-link">#2296</a>).</p></li>
+<ul><li><p>The hint to use <code><a href="../reference/snapshot_download_gh.html">snapshot_download_gh()</a></code> is now only emitted when running in a job named “R-CMD-check” (<a href="https://github.com/r-lib/testthat/issues/2300" class="external-link">#2300</a>).</p></li>
+<li><p><code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> correctly reports file name if duplicated (<a href="https://github.com/MichaelChirico" class="external-link">@MichaelChirico</a>, <a href="https://github.com/r-lib/testthat/issues/2296" class="external-link">#2296</a>).</p></li>
 <li><p>Fixed support for <code>shinytest2::AppDriver$expect_values()</code> screenshot snapshot failing on CI (<a href="https://github.com/r-lib/testthat/issues/2293" class="external-link">#2293</a>, <a href="https://github.com/r-lib/testthat/issues/2288" class="external-link">#2288</a>).</p></li>
 <li><p>testthat now emits OpenTelemetry traces for tests when tracing is enabled. Requires the otel and otelsdk packages (<a href="https://github.com/r-lib/testthat/issues/2282" class="external-link">#2282</a>).</p></li>
 </ul></div>

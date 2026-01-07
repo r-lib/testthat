@@ -6,7 +6,9 @@ it easy, only requiring you to interactively select which job you want
 to take the artifacts from.
 
 Note that you should not generally need to use this function manually;
-instead copy and paste from the hint emitted on GitHub.
+instead copy and paste from the hint emitted on GitHub. This hint is
+only emitted when running in a job named "R-CMD-check", since that's
+where the testthat artifact is typically uploaded.
 
 ## Usage
 
@@ -26,4 +28,4 @@ snapshot_download_gh(repository, run_id, dest_dir = ".")
 
 - dest_dir:
 
-  Directory to download to. Defaults to the current directory.
+  Package root directory. Defaults to the current directory.
