@@ -31,12 +31,16 @@ test_that("expect_failure() generates a useful error messages", {
     fail()
     pass()
   }
+  expect_both_wrong <- function() {
+    pass()
+  }
   expect_failure_foo <- function() fail("foo")
 
   expect_snapshot_failure({
     expect_failure(expect_no_failure())
     expect_failure(expect_many_failures())
     expect_failure(expect_has_success())
+    expect_failure(expect_both_wrong())
     expect_failure(expect_failure_foo(), "bar")
   })
 })
@@ -76,11 +80,15 @@ test_that("expect_success() generates a useful error messages", {
     fail()
     pass()
   }
+  expect_both_wrong <- function() {
+    fail()
+  }
 
   expect_snapshot_failure({
     expect_success(expect_no_success())
     expect_success(expect_many_successes())
     expect_success(expect_has_failure())
+    expect_success(expect_both_wrong())
   })
 })
 
