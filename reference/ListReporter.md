@@ -11,6 +11,7 @@ Other reporters:
 [`DebugReporter`](https://testthat.r-lib.org/reference/DebugReporter.md),
 [`FailReporter`](https://testthat.r-lib.org/reference/FailReporter.md),
 [`JunitReporter`](https://testthat.r-lib.org/reference/JunitReporter.md),
+[`LlmReporter`](https://testthat.r-lib.org/reference/LlmReporter.md),
 [`LocationReporter`](https://testthat.r-lib.org/reference/LocationReporter.md),
 [`MinimalReporter`](https://testthat.r-lib.org/reference/MinimalReporter.md),
 [`MultiReporter`](https://testthat.r-lib.org/reference/MultiReporter.md),

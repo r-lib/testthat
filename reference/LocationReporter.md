@@ -12,6 +12,7 @@ Other reporters:
 [`FailReporter`](https://testthat.r-lib.org/reference/FailReporter.md),
 [`JunitReporter`](https://testthat.r-lib.org/reference/JunitReporter.md),
 [`ListReporter`](https://testthat.r-lib.org/reference/ListReporter.md),
+[`LlmReporter`](https://testthat.r-lib.org/reference/LlmReporter.md),
 [`MinimalReporter`](https://testthat.r-lib.org/reference/MinimalReporter.md),
 [`MultiReporter`](https://testthat.r-lib.org/reference/MultiReporter.md),
 [`ProgressReporter`](https://testthat.r-lib.org/reference/ProgressReporter.md),

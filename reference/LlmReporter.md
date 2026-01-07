@@ -1,7 +1,12 @@
-# Run multiple reporters at the same time
+# Report test progress for LLMs
 
-This reporter is useful to use several reporters at the same time, e.g.
-adding a custom reporter without removing the current one.
+`LlmReporter` is designed for use with Large Language Models (LLMs). It
+reports problems (warnings, skips, errors, and failures) as they occur
+and the total number of successes at the end.
+
+`LlmReporter` is used by default when tests are run by a coding agent.
+Currently we detect Claude Code, Cursor, and Gemini CLI. If using
+another tool, configure it to set env var `AGENT=1`.
 
 ## See also
 
@@ -11,9 +16,9 @@ Other reporters:
 [`FailReporter`](https://testthat.r-lib.org/reference/FailReporter.md),
 [`JunitReporter`](https://testthat.r-lib.org/reference/JunitReporter.md),
 [`ListReporter`](https://testthat.r-lib.org/reference/ListReporter.md),
-[`LlmReporter`](https://testthat.r-lib.org/reference/LlmReporter.md),
 [`LocationReporter`](https://testthat.r-lib.org/reference/LocationReporter.md),
 [`MinimalReporter`](https://testthat.r-lib.org/reference/MinimalReporter.md),
+[`MultiReporter`](https://testthat.r-lib.org/reference/MultiReporter.md),
 [`ProgressReporter`](https://testthat.r-lib.org/reference/ProgressReporter.md),
 [`RStudioReporter`](https://testthat.r-lib.org/reference/RStudioReporter.md),
 [`Reporter`](https://testthat.r-lib.org/reference/Reporter.md),

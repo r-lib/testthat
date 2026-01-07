@@ -4,6 +4,21 @@
 
 CRAN release: 2025-11-25
 
+- [`test_dir()`](https://testthat.r-lib.org/reference/test_dir.md) will
+  no longer run tests in parallel if only a single file is being tested
+  ([\#2305](https://github.com/r-lib/testthat/issues/2305)).
+
+- `default_parallel_reporter()` is no longer exported; use
+  `default_reporter(parallel = TRUE)` instead
+  ([\#2305](https://github.com/r-lib/testthat/issues/2305)).
+
+- New
+  [`LlmReporter()`](https://testthat.r-lib.org/reference/LlmReporter.md)
+  designed for LLMs to read. It’s currently used automatically inside
+  Claude code, cursor, and gemini cli, and you can set `AGENT=1` to use
+  with any coding agent
+  ([\#2287](https://github.com/r-lib/testthat/issues/2287)).
+
 - [`local_mocked_s3_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
   and
   [`local_mocked_s4_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)

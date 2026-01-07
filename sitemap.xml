@@ -21,6 +21,7 @@
 <url><loc>https://testthat.r-lib.org/reference/FailReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/JunitReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/ListReporter.html</loc></url>
+<url><loc>https://testthat.r-lib.org/reference/LlmReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/LocationReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/MinimalReporter.html</loc></url>
 <url><loc>https://testthat.r-lib.org/reference/MultiReporter.html</loc></url>

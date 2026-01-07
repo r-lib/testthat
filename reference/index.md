@@ -198,6 +198,9 @@
 - [`ListReporter`](https://testthat.r-lib.org/reference/ListReporter.md)
   : Capture test results and metadata
 
+- [`LlmReporter`](https://testthat.r-lib.org/reference/LlmReporter.md) :
+  Report test progress for LLMs
+
 - [`LocationReporter`](https://testthat.r-lib.org/reference/LocationReporter.md)
   : Test reporter: location
 
