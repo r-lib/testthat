@@ -4,6 +4,15 @@
 
 CRAN release: 2025-11-25
 
+- [`local_mocked_s3_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
+  and
+  [`local_mocked_s4_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
+  can now mock methods that don’t already exist, and can use
+  `definition = NULL` to temporarily remove a method.
+  [`local_mocked_s4_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
+  now also works when the generic is defined in another package
+  ([\#2302](https://github.com/r-lib/testthat/issues/2302)).
+
 - [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
   now reports the original error class for base errors, rather than
   `rlang_error`
