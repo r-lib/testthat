@@ -560,15 +560,16 @@ spinner <- function(frames, i) {
 
 issue_header <- function(x, pad = FALSE, location = TRUE) {
   type <- expectation_type(x)
-  label <- first_upper(type)
   if (has_colour()) {
-    label <- colourise(label, type)
+    type <- colourise(first_upper(type), type)
+  } else {
+    type <- first_upper(type)
   }
   if (pad) {
-    label <- strpad(label, 7)
+    type <- strpad(type, 7)
   }
 
-  paste0(label, if (location) expectation_location(x, " (", ")"), ": ", x$test)
+  paste0(type, if (location) expectation_location(x, " (", ")"), ": ", x$test)
 }
 
 issue_summary <- function(x, rule = FALSE, location = TRUE) {
