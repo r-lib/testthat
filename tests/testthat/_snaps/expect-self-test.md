@@ -4,20 +4,30 @@
       expect_failure(expect_no_failure())
     Condition
       Error:
-      ! Expected exactly one failure and no successes.
-      Actually failed 0 times
+      ! Expected 0 successes and 1 failure.
+      v Observed 0 successes.
+      x Observed 0 failures.
     Code
       expect_failure(expect_many_failures())
     Condition
       Error:
-      ! Expected exactly one failure and no successes.
-      Actually failed 2 times
+      ! Expected 0 successes and 1 failure.
+      v Observed 0 successes.
+      x Observed 2 failures.
     Code
       expect_failure(expect_has_success())
     Condition
       Error:
-      ! Expected exactly one failure and no successes.
-      Actually succeeded 1 times
+      ! Expected 0 successes and 1 failure.
+      x Observed 1 success.
+      v Observed 1 failure.
+    Code
+      expect_failure(expect_both_wrong())
+    Condition
+      Error:
+      ! Expected 0 successes and 1 failure.
+      x Observed 1 success.
+      x Observed 0 failures.
     Code
       expect_failure(expect_failure_foo(), "bar")
     Condition
@@ -52,20 +62,30 @@
       expect_success(expect_no_success())
     Condition
       Error:
-      ! Expected exactly one success and no failures.
-      Actually succeeded 0 times
+      ! Expected 1 success and 0 failures.
+      x Observed 0 successes.
+      v Observed 0 failures.
     Code
       expect_success(expect_many_successes())
     Condition
       Error:
-      ! Expected exactly one success and no failures.
-      Actually succeeded 2 times
+      ! Expected 1 success and 0 failures.
+      x Observed 2 successes.
+      v Observed 0 failures.
     Code
       expect_success(expect_has_failure())
     Condition
       Error:
-      ! Expected exactly one success and no failures.
-      Actually failed 1 times
+      ! Expected 1 success and 0 failures.
+      v Observed 1 success.
+      x Observed 1 failure.
+    Code
+      expect_success(expect_both_wrong())
+    Condition
+      Error:
+      ! Expected 1 success and 0 failures.
+      x Observed 0 successes.
+      x Observed 1 failure.
 
 # expect_no are deprecated
 
