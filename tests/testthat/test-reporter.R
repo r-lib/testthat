@@ -20,3 +20,21 @@ test_that("should not automatically skip in non-utf-8 locales", {
   withr::local_locale(LC_CTYPE = "C")
   expect_true(TRUE)
 })
+
+test_that("default_reporter() selects appropriate reporter", {
+  withr::local_envvar(CLAUDECODE = NA)
+  expect_equal(default_reporter(), "Progress")
+  expect_equal(default_reporter(parallel = TRUE), "ParallelProgress")
+
+  withr::local_envvar(CLAUDECODE = "1")
+  expect_equal(default_reporter(), "Llm")
+  expect_equal(default_reporter(parallel = TRUE), "Llm")
+})
+
+test_that("default_compact_reporter() selects appropriate reporter", {
+  withr::local_envvar(CLAUDECODE = NA)
+  expect_equal(default_compact_reporter(), "CompactProgress")
+
+  withr::local_envvar(CLAUDECODE = "1")
+  expect_equal(default_compact_reporter(), "Llm")
+})

@@ -117,33 +117,50 @@ Reporter <- R6::R6Class(
   )
 )
 
-#' Retrieve the default reporter
+#' Determine default reporters
 #'
-#' The defaults are:
-#' * [ProgressReporter] for interactive, non-parallel; override with
-#'   `testthat.default_reporter`
-#' * [ParallelProgressReporter] for interactive, parallel packages;
-#'   override with `testthat.default_parallel_reporter`
-#' * [CompactProgressReporter] for single-file interactive; override with
-#'   `testthat.default_compact_reporter`
-#' * [CheckReporter] for R CMD check; override with `testthat.default_check_reporter`
+#' @description
+#' These three functions are used to determine the default reporters used
+#' for `test_dir()`, `test_file()`, and `test_package()`:
 #'
+#' * `default_reporter()` returns the default reporter for [test_dir()].
+#'   If `parallel` is `TRUE`, it uses [ParallelProgressReporter], which you
+#'   can override with option `testthat.default_parallel_reporter`.
+#'   If `parallel` is `FALSE`, it uses [ProgressReporter], which you
+#'   can override with option `testthat.default_reporter`.
+#'
+#' * `default_compact_reporter()` returns the default reporter for
+#'   [test_file()]. It defaults to [CompactProgressReporter], which you can
+#'   override with the `testthat.default_compact_reporter` option.
+#'
+#' * `check_reporter()` returns the default reporter for [test_package()].
+#'   It defaults to [CheckReporter], which you can override with the
+#'   `testthat.default_check_reporter` option.
+#'
+#' Both `default_reporter()` and `default_compact_reporter()` will use
+#' [LlmReporter] if it appears that the tests are being run by a coding agent.
+#'
+#' @param parallel If `TRUE`, return a reporter suitable for parallel testing.
 #' @export
 #' @keywords internal
-default_reporter <- function() {
-  getOption("testthat.default_reporter", "Progress")
-}
-
-#' @export
-#' @rdname default_reporter
-default_parallel_reporter <- function() {
-  getOption("testthat.default_parallel_reporter", "ParallelProgress")
+default_reporter <- function(parallel = FALSE) {
+  if (is_llm()) {
+    "Llm"
+  } else if (parallel) {
+    getOption("testthat.default_parallel_reporter", "ParallelProgress")
+  } else {
+    getOption("testthat.default_reporter", "Progress")
+  }
 }
 
 #' @export
 #' @rdname default_reporter
 default_compact_reporter <- function() {
-  getOption("testthat.default_compact_reporter", "CompactProgress")
+  if (is_llm()) {
+    "Llm"
+  } else {
+    getOption("testthat.default_compact_reporter", "CompactProgress")
+  }
 }
 
 #' @export
