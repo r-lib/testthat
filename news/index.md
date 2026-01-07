@@ -4,6 +4,12 @@
 
 CRAN release: 2025-11-25
 
+- [`expect_success()`](https://testthat.r-lib.org/reference/expect_success.md)
+  and
+  [`expect_failure()`](https://testthat.r-lib.org/reference/expect_success.md)
+  are more clear about what the expectation actually did
+  ([\#2297](https://github.com/r-lib/testthat/issues/2297)).
+
 - The hint to use
   [`snapshot_download_gh()`](https://testthat.r-lib.org/reference/snapshot_download_gh.md)
   is now only emitted when running in a job named “R-CMD-check”
