@@ -185,11 +185,21 @@ snapshot_replay.condition <- function(
   }
 
   if (cnd_class) {
-    type <- paste0(type, " <", class(x)[[1]], ">")
+    type <- paste0(type, " <", error_class(x), ">")
   }
 
   c(snap_header(state, type), snapshot_lines(msg, transform))
 }
+
+error_class <- function(x) {
+  # If error was entraced from base R error, use original error class
+  # This is a little fragile because entrace() does not document this behaviour
+  if (inherits(x, "rlang_error") && !is.null(x$error)) {
+    x <- x$error
+  }
+  class(x)[[1]]
+}
+
 
 snapshot_lines <- function(x, transform = NULL) {
   x <- split_lines(x)
