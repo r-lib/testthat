@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.3.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.3.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -337,10 +337,12 @@ atomic vector or a list:</p>
 <span><span class="op">}</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">expect_vector_length</span><span class="op">(</span><span class="va">mean</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: Expected `mean` to be a vector</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Expected `mean` to be a vector</span></span>
 <span><span class="co">#&gt; Actual type: closure</span></span>
 <span><span class="fu">expect_vector_length</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fl">15</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: Expected `mtcars` to have length 15.</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Expected `mtcars` to have length 15.</span></span>
 <span><span class="co">#&gt; Actual length: 11.</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -385,12 +387,15 @@ correct OO family.</p>
 <span><span class="va">x3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x1</span>, <span class="st">"integer"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: Expected `x1` to be an object.</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Expected `x1` to be an object.</span></span>
 <span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x2</span>, <span class="st">"integer"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: Expected `x2` to be an S3 object.</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Expected `x2` to be an S3 object.</span></span>
 <span><span class="co">#&gt; Actual OO type: S4</span></span>
 <span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x3</span>, <span class="st">"integer"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: Expected `x3` to inherit from integer.</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Expected `x3` to inherit from integer.</span></span>
 <span><span class="co">#&gt; Actual class: factor</span></span>
 <span><span class="fu"><a href="../reference/inheritance-expectations.html">expect_s3_class</a></span><span class="op">(</span><span class="va">x3</span>, <span class="st">"factor"</span><span class="op">)</span></span></code></pre></div>
 <p>Note the variety of error messages. We always print what was

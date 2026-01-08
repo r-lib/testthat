@@ -1,9 +1,8 @@
 # Mock S3 and S4 methods
 
-These functions allow you to temporarily override S3 and S4 methods that
-already exist. It works by using
-[`registerS3method()`](https://rdrr.io/r/base/ns-internal.html)/`setMethod()`
-to temporarily replace the original definition.
+These functions temporarily override S3 or S4 methods. They can mock
+methods that don't already exist, or temporarily remove a method by
+setting `definition = NULL`.
 
 Learn more about mocking in
 [`vignette("mocking")`](https://testthat.r-lib.org/dev/articles/mocking.md).
@@ -28,7 +27,8 @@ local_mocked_s4_method(generic, signature, definition, frame = caller_env())
 
 - definition:
 
-  A function providing the method definition.
+  A function providing the method definition, or `NULL` to temporarily
+  remove the method.
 
 - frame:
 

@@ -7,8 +7,8 @@ framework For expert use only.
 
 ``` r
 local_snapshotter(
-  reporter = SnapshotReporter,
   snap_dir = "_snaps",
+  reporter = SnapshotReporter,
   cleanup = FALSE,
   desc = NULL,
   fail_on_new = NULL,

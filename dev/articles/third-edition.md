@@ -236,7 +236,8 @@ f2 <- ordered(letters[1:3], levels = letters[1:4])
 
 local_edition(2)
 expect_equal(f1, f2)
-#> Error: Expected `f1` to equal `f2`.
+#> Error:
+#> ! Expected `f1` to equal `f2`.
 #> Differences:
 #> Attributes: < Component "class": Lengths (1, 2) differ (string compare on first 1) >
 #> Attributes: < Component "class": 1 string mismatch >
@@ -244,7 +245,8 @@ expect_equal(f1, f2)
 
 local_edition(3)
 expect_equal(f1, f2)
-#> Error: Expected `f1` to equal `f2`.
+#> Error:
+#> ! Expected `f1` to equal `f2`.
 #> Differences:
 #> `levels(actual)`:   "a" "b" "c"    
 #> `levels(expected)`: "a" "b" "c" "d"
@@ -303,7 +305,8 @@ following changes are most likely to affect you:
 
   local_edition(3)
   expect_equal(dt1, dt2)
-  #> Error: Expected `dt1` to equal `dt2`.
+  #> Error:
+  #> ! Expected `dt1` to equal `dt2`.
   #> Differences:
   #> `attr(actual, 'tzone')`:   ""   
   #> `attr(expected, 'tzone')`: "UTC"

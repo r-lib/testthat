@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.3.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.3.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,30 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="testthat-development-version">testthat (development version)<a class="anchor" aria-label="anchor" href="#testthat-development-version"></a></h2>
-<ul><li>Fixed support for <code>shinytest2::AppDriver$expect_values()</code> screenshot snapshot failing on CI (<a href="https://github.com/r-lib/testthat/issues/2293" class="external-link">#2293</a>, <a href="https://github.com/r-lib/testthat/issues/2288" class="external-link">#2288</a>).</li>
+<ul><li>testthat now emits OpenTelemetry traces for tests when tracing is enabled. Requires the otel and otelsdk packages (<a href="https://github.com/r-lib/testthat/issues/2282" class="external-link">#2282</a>).</li>
+<li>
+<code>default_parallel_reporter()</code> is no longer exported; use <code>default_reporter(parallel = TRUE)</code> instead (<a href="https://github.com/r-lib/testthat/issues/2305" class="external-link">#2305</a>).</li>
+<li>
+<code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> once again reports the original error class for base errors, rather than <code>rlang_error</code> (<a href="https://github.com/r-lib/testthat/issues/2286" class="external-link">#2286</a>).</li>
+<li>
+<code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> once again works with shinytest2 on CI (<a href="https://github.com/r-lib/testthat/issues/2293" class="external-link">#2293</a>, <a href="https://github.com/r-lib/testthat/issues/2288" class="external-link">#2288</a>).</li>
+<li>
+<code><a href="../reference/expect_snapshot_file.html">expect_snapshot_file()</a></code> correctly reports file name if duplicated (<a href="https://github.com/MichaelChirico" class="external-link">@MichaelChirico</a>, <a href="https://github.com/r-lib/testthat/issues/2296" class="external-link">#2296</a>).</li>
+<li>
+<code><a href="../reference/expect_success.html">expect_success()</a></code> and <code><a href="../reference/expect_success.html">expect_failure()</a></code> now always report the observed number of successes and failures (<a href="https://github.com/r-lib/testthat/issues/2297" class="external-link">#2297</a>).</li>
+<li>
+<code><a href="../reference/LlmReporter.html">LlmReporter()</a></code> is a new reporter designed for use by LLM coding agents. It’s used automatically inside Claude Code, Cursor, and Gemini CLI, and you can set <code>AGENT=1</code> to use with any coding agent (<a href="https://github.com/r-lib/testthat/issues/2287" class="external-link">#2287</a>).</li>
+<li>
+<code><a href="../reference/local_mocked_s3_method.html">local_mocked_s3_method()</a></code> and <code><a href="../reference/local_mocked_s3_method.html">local_mocked_s4_method()</a></code> can now mock methods that don’t already exist, and can use <code>definition = NULL</code> to temporarily remove a method. <code><a href="../reference/local_mocked_s3_method.html">local_mocked_s4_method()</a></code> now also works when the generic is defined in another package (<a href="https://github.com/r-lib/testthat/issues/2302" class="external-link">#2302</a>).</li>
+<li>
+<code><a href="../reference/local_snapshotter.html">local_snapshotter()</a></code> restores <code>snap_dir</code> to be the first argument for compatibility with devtools 2.4.6 (<a href="https://github.com/r-lib/testthat/issues/2309" class="external-link">#2309</a>).</li>
+<li>
+<code><a href="../reference/test_dir.html">test_dir()</a></code> no longer runs tests in parallel if only a single file is being tested (<a href="https://github.com/r-lib/testthat/issues/2305" class="external-link">#2305</a>).</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="3.3.1" id="testthat-331">testthat 3.3.1<a class="anchor" aria-label="anchor" href="#testthat-331"></a></h2><p class="text-muted">CRAN release: 2025-11-25</p>
+<ul><li>
+<code><a href="../reference/expect_snapshot.html">expect_snapshot()</a></code> and friends only emit the <code><a href="../reference/snapshot_download_gh.html">snapshot_download_gh()</a></code> hint when running in a job named “R-CMD-check” (<a href="https://github.com/r-lib/testthat/issues/2300" class="external-link">#2300</a>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="3.3.0" id="testthat-330">testthat 3.3.0<a class="anchor" aria-label="anchor" href="#testthat-330"></a></h2><p class="text-muted">CRAN release: 2025-11-13</p>

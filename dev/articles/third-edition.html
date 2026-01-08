@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">testthat</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.3.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">3.3.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -285,7 +285,8 @@ unit tests.</p>
 <span></span>
 <span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">f2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: Expected `f1` to equal `f2`.</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Expected `f1` to equal `f2`.</span></span>
 <span><span class="co">#&gt; Differences:</span></span>
 <span><span class="co">#&gt; Attributes: &lt; Component "class": Lengths (1, 2) differ (string compare on first 1) &gt;</span></span>
 <span><span class="co">#&gt; Attributes: &lt; Component "class": 1 string mismatch &gt;</span></span>
@@ -293,7 +294,8 @@ unit tests.</p>
 <span></span>
 <span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">f2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: Expected `f1` to equal `f2`.</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Expected `f1` to equal `f2`.</span></span>
 <span><span class="co">#&gt; Differences:</span></span>
 <span><span class="co">#&gt; `levels(actual)`:   <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span>    </span></span>
 <span><span class="co">#&gt; `levels(expected)`: <span style="color: #555555;">"a"</span> <span style="color: #555555;">"b"</span> <span style="color: #555555;">"c"</span> <span style="color: #0000BB;">"d"</span></span></span></code></pre></div>
@@ -337,7 +339,8 @@ differences when one object had the current timezone set implicitly
 <span></span>
 <span><span class="fu"><a href="../reference/local_edition.html">local_edition</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/equality-expectations.html">expect_equal</a></span><span class="op">(</span><span class="va">dt1</span>, <span class="va">dt2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: Expected `dt1` to equal `dt2`.</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Expected `dt1` to equal `dt2`.</span></span>
 <span><span class="co">#&gt; Differences:</span></span>
 <span><span class="co">#&gt; `attr(actual, 'tzone')`:   <span style="color: #00BB00;">""</span>   </span></span>
 <span><span class="co">#&gt; `attr(expected, 'tzone')`: <span style="color: #00BB00;">"UTC"</span></span></span></code></pre></div>
