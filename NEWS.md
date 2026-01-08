@@ -1,4 +1,4 @@
-# testthat (development version)
+# testthat 3.3.2
 
 * testthat now emits OpenTelemetry traces for tests when tracing is enabled. Requires the otel and otelsdk packages (#2282).
 * `default_parallel_reporter()` is no longer exported; use `default_reporter(parallel = TRUE)` instead (#2305).
