@@ -77,6 +77,8 @@
 <li>
 <code><a href="../reference/expect_success.html">expect_success()</a></code> and <code><a href="../reference/expect_success.html">expect_failure()</a></code> are more clear about what the expectation actually did (<a href="https://github.com/r-lib/testthat/issues/2297" class="external-link">#2297</a>).</li>
 <li>
+<code><a href="../reference/local_snapshotter.html">local_snapshotter()</a></code> now returns to <code>snap_dir</code> as the first argument for compatibility with devtools 2.4.6.</li>
+<li>
 <code><a href="../reference/LlmReporter.html">LlmReporter()</a></code> is a new reporter designed for LLMs to read. It’s currently used automatically inside Claude Code, Cursor, and Gemini CLI, and you can set <code>AGENT=1</code> to use with any coding agent (<a href="https://github.com/r-lib/testthat/issues/2287" class="external-link">#2287</a>).</li>
 <li>
 <code><a href="../reference/local_mocked_s3_method.html">local_mocked_s3_method()</a></code> and <code><a href="../reference/local_mocked_s3_method.html">local_mocked_s4_method()</a></code> can now mock methods that don’t already exist, and can use <code>definition = NULL</code> to temporarily remove a method. <code><a href="../reference/local_mocked_s3_method.html">local_mocked_s4_method()</a></code> now also works when the generic is defined in another package (<a href="https://github.com/r-lib/testthat/issues/2302" class="external-link">#2302</a>).</li>

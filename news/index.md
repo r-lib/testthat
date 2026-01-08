@@ -32,6 +32,9 @@ CRAN release: 2025-11-25
   [`expect_failure()`](https://testthat.r-lib.org/reference/expect_success.md)
   are more clear about what the expectation actually did
   ([\#2297](https://github.com/r-lib/testthat/issues/2297)).
+- [`local_snapshotter()`](https://testthat.r-lib.org/reference/local_snapshotter.md)
+  now returns to `snap_dir` as the first argument for compatibility with
+  devtools 2.4.6.
 - [`LlmReporter()`](https://testthat.r-lib.org/reference/LlmReporter.md)
   is a new reporter designed for LLMs to read. It’s currently used
   automatically inside Claude Code, Cursor, and Gemini CLI, and you can
