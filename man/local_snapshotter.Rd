@@ -5,8 +5,8 @@
 \title{Instantiate local snapshotting context}
 \usage{
 local_snapshotter(
-  reporter = SnapshotReporter,
   snap_dir = "_snaps",
+  reporter = SnapshotReporter,
   cleanup = FALSE,
   desc = NULL,
   fail_on_new = NULL,

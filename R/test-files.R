@@ -318,7 +318,7 @@ test_files_reporter <- function(
     snap_base <- SnapshotReporter
   }
   snap <- local_snapshotter(
-    snap_base,
+    reporter = snap_base,
     fail_on_new = on_ci(),
     desc = desc,
     frame = frame
