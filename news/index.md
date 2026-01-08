@@ -1,13 +1,7 @@
 # Changelog
 
-## testthat 3.3.1
+## testthat (development version)
 
-CRAN release: 2025-11-25
-
-- Fixed support for `shinytest2::AppDriver$expect_values()` screenshot
-  snapshot failing on CI
-  ([\#2293](https://github.com/r-lib/testthat/issues/2293),
-  [\#2288](https://github.com/r-lib/testthat/issues/2288)).
 - testthat now emits OpenTelemetry traces for tests when tracing is
   enabled. Requires the otel and otelsdk packages
   ([\#2282](https://github.com/r-lib/testthat/issues/2282)).
@@ -15,8 +9,8 @@ CRAN release: 2025-11-25
   `default_reporter(parallel = TRUE)` instead
   ([\#2305](https://github.com/r-lib/testthat/issues/2305)).
 - [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
-  now reports the original error class for base errors, rather than
-  `rlang_error`
+  once again reports the original error class for base errors, rather
+  than `rlang_error`
   ([\#2286](https://github.com/r-lib/testthat/issues/2286)).
 - [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
   and friends only emit the
@@ -24,19 +18,20 @@ CRAN release: 2025-11-25
   hint when running in a job named “R-CMD-check”
   ([\#2300](https://github.com/r-lib/testthat/issues/2300)).
 - [`expect_snapshot_file()`](https://testthat.r-lib.org/reference/expect_snapshot_file.md)
+  once again works with shinytest2 on CI
+  ([\#2293](https://github.com/r-lib/testthat/issues/2293),
+  [\#2288](https://github.com/r-lib/testthat/issues/2288)).
+- [`expect_snapshot_file()`](https://testthat.r-lib.org/reference/expect_snapshot_file.md)
   correctly reports file name if duplicated
   ([@MichaelChirico](https://github.com/MichaelChirico),
   [\#2296](https://github.com/r-lib/testthat/issues/2296)).
 - [`expect_success()`](https://testthat.r-lib.org/reference/expect_success.md)
   and
   [`expect_failure()`](https://testthat.r-lib.org/reference/expect_success.md)
-  are more clear about what the expectation actually did
+  now always report the observed number of successes and failures
   ([\#2297](https://github.com/r-lib/testthat/issues/2297)).
-- [`local_snapshotter()`](https://testthat.r-lib.org/reference/local_snapshotter.md)
-  now returns to `snap_dir` as the first argument for compatibility with
-  devtools 2.4.6.
 - [`LlmReporter()`](https://testthat.r-lib.org/reference/LlmReporter.md)
-  is a new reporter designed for LLMs to read. It’s currently used
+  is a new reporter designed for use by LLM coding agents. It’s used
   automatically inside Claude Code, Cursor, and Gemini CLI, and you can
   set `AGENT=1` to use with any coding agent
   ([\#2287](https://github.com/r-lib/testthat/issues/2287)).
@@ -48,8 +43,12 @@ CRAN release: 2025-11-25
   [`local_mocked_s4_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
   now also works when the generic is defined in another package
   ([\#2302](https://github.com/r-lib/testthat/issues/2302)).
-- [`test_dir()`](https://testthat.r-lib.org/reference/test_dir.md) will
-  no longer run tests in parallel if only a single file is being tested
+- [`local_snapshotter()`](https://testthat.r-lib.org/reference/local_snapshotter.md)
+  restores `snap_dir` to be the first argument for compatibility with
+  devtools 2.4.6
+  ([\#2309](https://github.com/r-lib/testthat/issues/2309)).
+- [`test_dir()`](https://testthat.r-lib.org/reference/test_dir.md) no
+  longer runs tests in parallel if only a single file is being tested
   ([\#2305](https://github.com/r-lib/testthat/issues/2305)).
 
 ## testthat 3.3.0
