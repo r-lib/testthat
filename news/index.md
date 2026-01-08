@@ -4,21 +4,39 @@
 
 CRAN release: 2025-11-25
 
-- [`test_dir()`](https://testthat.r-lib.org/reference/test_dir.md) will
-  no longer run tests in parallel if only a single file is being tested
-  ([\#2305](https://github.com/r-lib/testthat/issues/2305)).
-
+- Fixed support for `shinytest2::AppDriver$expect_values()` screenshot
+  snapshot failing on CI
+  ([\#2293](https://github.com/r-lib/testthat/issues/2293),
+  [\#2288](https://github.com/r-lib/testthat/issues/2288)).
+- testthat now emits OpenTelemetry traces for tests when tracing is
+  enabled. Requires the otel and otelsdk packages
+  ([\#2282](https://github.com/r-lib/testthat/issues/2282)).
 - `default_parallel_reporter()` is no longer exported; use
   `default_reporter(parallel = TRUE)` instead
   ([\#2305](https://github.com/r-lib/testthat/issues/2305)).
-
-- New
-  [`LlmReporter()`](https://testthat.r-lib.org/reference/LlmReporter.md)
-  designed for LLMs to read. It’s currently used automatically inside
-  Claude code, cursor, and gemini cli, and you can set `AGENT=1` to use
-  with any coding agent
+- [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
+  now reports the original error class for base errors, rather than
+  `rlang_error`
+  ([\#2286](https://github.com/r-lib/testthat/issues/2286)).
+- [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
+  and friends only emit the
+  [`snapshot_download_gh()`](https://testthat.r-lib.org/reference/snapshot_download_gh.md)
+  hint when running in a job named “R-CMD-check”
+  ([\#2300](https://github.com/r-lib/testthat/issues/2300)).
+- [`expect_snapshot_file()`](https://testthat.r-lib.org/reference/expect_snapshot_file.md)
+  correctly reports file name if duplicated
+  ([@MichaelChirico](https://github.com/MichaelChirico),
+  [\#2296](https://github.com/r-lib/testthat/issues/2296)).
+- [`expect_success()`](https://testthat.r-lib.org/reference/expect_success.md)
+  and
+  [`expect_failure()`](https://testthat.r-lib.org/reference/expect_success.md)
+  are more clear about what the expectation actually did
+  ([\#2297](https://github.com/r-lib/testthat/issues/2297)).
+- [`LlmReporter()`](https://testthat.r-lib.org/reference/LlmReporter.md)
+  is a new reporter designed for LLMs to read. It’s currently used
+  automatically inside Claude Code, Cursor, and Gemini CLI, and you can
+  set `AGENT=1` to use with any coding agent
   ([\#2287](https://github.com/r-lib/testthat/issues/2287)).
-
 - [`local_mocked_s3_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
   and
   [`local_mocked_s4_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
@@ -27,36 +45,9 @@ CRAN release: 2025-11-25
   [`local_mocked_s4_method()`](https://testthat.r-lib.org/reference/local_mocked_s3_method.md)
   now also works when the generic is defined in another package
   ([\#2302](https://github.com/r-lib/testthat/issues/2302)).
-
-- [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
-  now reports the original error class for base errors, rather than
-  `rlang_error`
-  ([\#2286](https://github.com/r-lib/testthat/issues/2286)).
-
-- [`expect_success()`](https://testthat.r-lib.org/reference/expect_success.md)
-  and
-  [`expect_failure()`](https://testthat.r-lib.org/reference/expect_success.md)
-  are more clear about what the expectation actually did
-  ([\#2297](https://github.com/r-lib/testthat/issues/2297)).
-
-- The hint to use
-  [`snapshot_download_gh()`](https://testthat.r-lib.org/reference/snapshot_download_gh.md)
-  is now only emitted when running in a job named “R-CMD-check”
-  ([\#2300](https://github.com/r-lib/testthat/issues/2300)).
-
-- [`expect_snapshot_file()`](https://testthat.r-lib.org/reference/expect_snapshot_file.md)
-  correctly reports file name if duplicated
-  ([@MichaelChirico](https://github.com/MichaelChirico),
-  [\#2296](https://github.com/r-lib/testthat/issues/2296)).
-
-- Fixed support for `shinytest2::AppDriver$expect_values()` screenshot
-  snapshot failing on CI
-  ([\#2293](https://github.com/r-lib/testthat/issues/2293),
-  [\#2288](https://github.com/r-lib/testthat/issues/2288)).
-
-- testthat now emits OpenTelemetry traces for tests when tracing is
-  enabled. Requires the otel and otelsdk packages
-  ([\#2282](https://github.com/r-lib/testthat/issues/2282)).
+- [`test_dir()`](https://testthat.r-lib.org/reference/test_dir.md) will
+  no longer run tests in parallel if only a single file is being tested
+  ([\#2305](https://github.com/r-lib/testthat/issues/2305)).
 
 ## testthat 3.3.0
 
