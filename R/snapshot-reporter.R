@@ -231,8 +231,8 @@ get_snapshotter <- function() {
 #' @export
 #' @keywords internal
 local_snapshotter <- function(
-  reporter = SnapshotReporter,
   snap_dir = "_snaps",
+  reporter = SnapshotReporter,
   cleanup = FALSE,
   desc = NULL,
   fail_on_new = NULL,
