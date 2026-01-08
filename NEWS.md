@@ -3,7 +3,6 @@
 * testthat now emits OpenTelemetry traces for tests when tracing is enabled. Requires the otel and otelsdk packages (#2282).
 * `default_parallel_reporter()` is no longer exported; use `default_reporter(parallel = TRUE)` instead (#2305).
 * `expect_snapshot()` once again reports the original error class for base errors, rather than `rlang_error` (#2286).
-* `expect_snapshot()` and friends only emit the `snapshot_download_gh()` hint when running in a job named "R-CMD-check" (#2300).
 * `expect_snapshot_file()` once again works with shinytest2 on CI (#2293, #2288).
 * `expect_snapshot_file()` correctly reports file name if duplicated (@MichaelChirico, #2296).
 * `expect_success()` and `expect_failure()` now always report the observed number of successes and failures (#2297).
@@ -11,6 +10,10 @@
 * `local_mocked_s3_method()` and `local_mocked_s4_method()` can now mock methods that don't already exist, and can use `definition = NULL` to temporarily remove a method. `local_mocked_s4_method()` now also works when the generic is defined in another package (#2302).
 * `local_snapshotter()` restores `snap_dir` to be the first argument for compatibility with devtools 2.4.6 (#2309).
 * `test_dir()` no longer runs tests in parallel if only a single file is being tested (#2305).
+
+# testthat 3.3.1
+
+* `expect_snapshot()` and friends only emit the `snapshot_download_gh()` hint when running in a job named "R-CMD-check" (#2300).
 
 # testthat 3.3.0
 
