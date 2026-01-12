@@ -386,7 +386,7 @@ test_that("generates actionable error message", {
 #>   safe_write_lines(letters, path)
 #> Condition
 #>   Error in `safe_write_lines()`:
-#>   ! '/tmp/RtmpOSiWNq/file29733f649314' already exists.
+#>   ! '/tmp/RtmpsmHimx/file294116c786a' already exists.
 #>   i Set `overwrite = TRUE` to overwrite
 #> Test passed with 1 success 🎊.
 ```
@@ -402,8 +402,8 @@ test_that("generates actionable error message", {
 #>     safe_write_lines(letters, path)
 #>   Condition
 #>     Error in `safe_write_lines()`:
-#> -   ! '/tmp/RtmpOSiWNq/file29733f649314' already exists.
-#> +   ! '/tmp/RtmpOSiWNq/file29736160cdf2' already exists.
+#> -   ! '/tmp/RtmpsmHimx/file294116c786a' already exists.
+#> +   ! '/tmp/RtmpsmHimx/file29416a688e29' already exists.
 #>     i Set `overwrite = TRUE` to overwrite
 #> * Run `testthat::snapshot_accept("snapshotting.Rmd")` to accept the change.
 #> * Run `testthat::snapshot_review("snapshotting.Rmd")` to review the change.
