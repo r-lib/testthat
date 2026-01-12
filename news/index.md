@@ -1,6 +1,8 @@
 # Changelog
 
-## testthat (development version)
+## testthat 3.3.2
+
+CRAN release: 2026-01-11
 
 - testthat now emits OpenTelemetry traces for tests when tracing is
   enabled. Requires the otel and otelsdk packages
@@ -12,11 +14,6 @@
   once again reports the original error class for base errors, rather
   than `rlang_error`
   ([\#2286](https://github.com/r-lib/testthat/issues/2286)).
-- [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
-  and friends only emit the
-  [`snapshot_download_gh()`](https://testthat.r-lib.org/reference/snapshot_download_gh.md)
-  hint when running in a job named “R-CMD-check”
-  ([\#2300](https://github.com/r-lib/testthat/issues/2300)).
 - [`expect_snapshot_file()`](https://testthat.r-lib.org/reference/expect_snapshot_file.md)
   once again works with shinytest2 on CI
   ([\#2293](https://github.com/r-lib/testthat/issues/2293),
@@ -50,6 +47,16 @@
 - [`test_dir()`](https://testthat.r-lib.org/reference/test_dir.md) no
   longer runs tests in parallel if only a single file is being tested
   ([\#2305](https://github.com/r-lib/testthat/issues/2305)).
+
+## testthat 3.3.1
+
+CRAN release: 2025-11-25
+
+- [`expect_snapshot()`](https://testthat.r-lib.org/reference/expect_snapshot.md)
+  and friends only emit the
+  [`snapshot_download_gh()`](https://testthat.r-lib.org/reference/snapshot_download_gh.md)
+  hint when running in a job named “R-CMD-check”
+  ([\#2300](https://github.com/r-lib/testthat/issues/2300)).
 
 ## testthat 3.3.0
 
