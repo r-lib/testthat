@@ -60,17 +60,17 @@ run_cpp_tests <- function(package) {
     },
     error = function(e) {
       catch_error <- TRUE
-      reporter <- get_reporter()
-
-      the$test_expectations <- the$test_expectations + 1L
       context_start("Catch")
-      reporter$start_test(context = "Catch", test = "Catch")
-      reporter$add_result(
-        context = "Catch",
-        test = "Catch",
-        result = new_expectation("failure", e$message)
-      )
-      reporter$end_test(context = "Catch", test = "Catch")
+      with_description_push("Catch", {
+        get_reporter()$start_test(context = "Catch", test = "Catch")
+
+        exp_signal_broken(new_expectation(
+          "failure",
+          e$message
+        ))
+
+        get_reporter()$end_test(context = "Catch", test = "Catch")
+      })
     }
   )
 
@@ -91,86 +91,83 @@ run_cpp_tests <- function(package) {
     for (test in tests) {
       test_name <- xml2::xml_attr(test, "name")
 
-      result <- xml2::xml_find_first(test, "./OverallResults")
-      successes <- as.integer(xml2::xml_attr(result, "successes"))
+      with_description_push(test_name, {
+        get_reporter()$start_test(context = context_name, test = test_name)
 
-      get_reporter()$start_test(context = context_name, test = test_name)
+        result <- xml2::xml_find_first(test, "./OverallResults")
+        successes <- as.integer(xml2::xml_attr(result, "successes"))
+        for (i in seq_len(successes)) {
+          pass()
+        }
 
-      for (i in seq_len(successes)) {
-        the$test_expectations <- the$test_expectations + 1L
-        exp <- new_expectation("success", "")
-        exp$test <- test_name
-        get_reporter()$add_result(
-          context = context_name,
-          test = test_name,
-          result = exp
-        )
-      }
+        failures <- xml2::xml_find_all(test, "./Expression")
+        for (failure in failures) {
+          org <- xml2::xml_find_first(failure, "Original")
+          org_text <- xml2::xml_text(org, trim = TRUE)
 
-      failures <- xml2::xml_find_all(test, "./Expression")
-      for (failure in failures) {
-        org <- xml2::xml_find_first(failure, "Original")
-        org_text <- xml2::xml_text(org, trim = TRUE)
+          filename <- xml2::xml_attr(failure, "filename")
+          type <- xml2::xml_attr(failure, "type")
 
-        filename <- xml2::xml_attr(failure, "filename")
-        type <- xml2::xml_attr(failure, "type")
+          type_msg <- switch(
+            type,
+            "CATCH_CHECK_FALSE" = "isn't false.",
+            "CATCH_CHECK_THROWS" = "did not throw an exception.",
+            "CATCH_CHECK_THROWS_AS" = "threw an exception with unexpected type.",
+            "isn't true."
+          )
 
-        type_msg <- switch(
-          type,
-          "CATCH_CHECK_FALSE" = "isn't false.",
-          "CATCH_CHECK_THROWS" = "did not throw an exception.",
-          "CATCH_CHECK_THROWS_AS" = "threw an exception with unexpected type.",
-          "isn't true."
-        )
+          org_text <- paste(org_text, type_msg)
 
-        org_text <- paste(org_text, type_msg)
+          line <- xml2::xml_attr(failure, "line")
+          failure_srcref <- srcref(
+            srcfile(file.path("src", filename)),
+            c(line, line, 1, 1)
+          )
 
-        line <- xml2::xml_attr(failure, "line")
-        failure_srcref <- srcref(
-          srcfile(file.path("src", filename)),
-          c(line, line, 1, 1)
-        )
+          # Signal the failure as a condition (not an error) so we can report
+          # multiple failures without stopping, this use case prevents us from
+          # being able to use `fail()` outright, since `expectation()` will call
+          # `stop()` on failures. The expectation handler will catch our
+          # signaled `"failure"` and properly register it.
+          exp_signal_broken(new_expectation(
+            "failure",
+            org_text,
+            srcref = failure_srcref
+          ))
+        }
 
-        the$test_expectations <- the$test_expectations + 1L
-        exp <- new_expectation("failure", org_text, srcref = failure_srcref)
-        exp$test <- test_name
+        exceptions <- xml2::xml_find_all(test, "./Exception")
+        for (exception in exceptions) {
+          exception_text <- xml2::xml_text(exception, trim = TRUE)
+          filename <- xml2::xml_attr(exception, "filename")
+          line <- xml2::xml_attr(exception, "line")
 
-        get_reporter()$add_result(
-          context = context_name,
-          test = test_name,
-          result = exp
-        )
-      }
+          exception_srcref <- srcref(
+            srcfile(file.path("src", filename)),
+            c(line, line, 1, 1)
+          )
 
-      exceptions <- xml2::xml_find_all(test, "./Exception")
-      for (exception in exceptions) {
-        the$test_expectations <- the$test_expectations + 1L
-        exception_text <- xml2::xml_text(exception, trim = TRUE)
-        filename <- xml2::xml_attr(exception, "filename")
-        line <- xml2::xml_attr(exception, "line")
+          exp_signal_broken(new_expectation(
+            "error",
+            exception_text,
+            srcref = exception_srcref
+          ))
+        }
 
-        exception_srcref <- srcref(
-          srcfile(file.path("src", filename)),
-          c(line, line, 1, 1)
-        )
-
-        exp <- new_expectation(
-          "error",
-          exception_text,
-          srcref = exception_srcref
-        )
-        exp$test <- test_name
-
-        get_reporter()$add_result(
-          context = context_name,
-          test = test_name,
-          result = exp
-        )
-      }
-
-      get_reporter()$end_test(context = context_name, test = test_name)
+        get_reporter()$end_test(context = context_name, test = test_name)
+      })
     }
   }
+}
+
+# Like `exp_signal()`, but without `stop()`ing on "broken" expectations, i.e.
+# failures/errors as reported by `expectation_broken()`. This allows C++ tests
+# to report multiple failures without stopping.
+exp_signal_broken <- function(exp) {
+  withRestarts(
+    signalCondition(exp),
+    muffle_expectation = function(e) NULL
+  )
 }
 
 #' Use Catch for C++ unit testing
