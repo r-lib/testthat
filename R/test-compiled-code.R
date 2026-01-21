@@ -72,75 +72,110 @@ run_cpp_tests <- function(package) {
     return()
   }
 
-  report <- xml2::read_xml(paste(output, collapse = "\n"))
-
-  contexts <- xml2::xml_find_all(report, "//TestCase")
+  output <- paste(output, collapse = "\n")
+  contexts <- parse_catch_contexts(output)
 
   for (context in contexts) {
-    context_name <- sub(" [|][^|]+$", "", xml2::xml_attr(context, "name"))
-    context_start(context_name)
+    context_start(context$name)
 
-    tests <- xml2::xml_find_all(context, "./Section")
-
-    for (test in tests) {
-      test_description <- xml2::xml_attr(test, "name")
-
-      test_that(test_description, {
-        result <- xml2::xml_find_first(test, "./OverallResults")
-        successes <- as.integer(xml2::xml_attr(result, "successes"))
-        for (i in seq_len(successes)) {
+    for (test in context$tests) {
+      test_that(test$name, {
+        for (i in seq_len(test$n_successes)) {
           pass()
         }
-
-        failures <- xml2::xml_find_all(test, "./Expression")
-        for (failure in failures) {
-          org <- xml2::xml_find_first(failure, "Original")
-          org_text <- xml2::xml_text(org, trim = TRUE)
-
-          filename <- xml2::xml_attr(failure, "filename")
-          type <- xml2::xml_attr(failure, "type")
-
-          type_msg <- switch(
-            type,
-            "CATCH_CHECK_FALSE" = "isn't false.",
-            "CATCH_CHECK_THROWS" = "did not throw an exception.",
-            "CATCH_CHECK_THROWS_AS" = "threw an exception with unexpected type.",
-            "isn't true."
-          )
-
-          org_text <- paste(org_text, type_msg)
-
-          line <- xml2::xml_attr(failure, "line")
-          failure_srcref <- srcref(
-            srcfile(file.path("src", filename)),
-            c(line, line, 1, 1)
-          )
-
-          fail(org_text, srcref = failure_srcref)
+        for (failure in test$failures) {
+          fail(message = failure$message, srcref = failure$srcref)
         }
-
-        exceptions <- xml2::xml_find_all(test, "./Exception")
-        for (exception in exceptions) {
-          exception_text <- xml2::xml_text(exception, trim = TRUE)
-          filename <- xml2::xml_attr(exception, "filename")
-          line <- xml2::xml_attr(exception, "line")
-
-          exception_srcref <- srcref(
-            srcfile(file.path("src", filename)),
-            c(line, line, 1, 1)
-          )
-
+        for (exception in test$exceptions) {
           # There is no `fail()` equivalent for an error.
           # We could use `stop()`, but we want to pass through a `srcref`.
           expectation(
             type = "error",
-            message = exception_text,
-            srcref = exception_srcref
+            message = exception$message,
+            srcref = exception$srcref
           )
         }
       })
     }
   }
+}
+
+parse_catch_contexts <- function(text) {
+  xml <- xml2::read_xml(text)
+
+  contexts <- xml2::xml_find_all(xml, "//TestCase")
+  contexts <- map(contexts, parse_catch_context)
+
+  contexts
+}
+
+parse_catch_context <- function(context) {
+  name <- sub(" [|][^|]+$", "", xml2::xml_attr(context, "name"))
+  tests <- xml2::xml_find_all(context, "./Section")
+  tests <- map(tests, parse_catch_test)
+  list(name = name, tests = tests)
+}
+
+parse_catch_test <- function(test) {
+  name <- xml2::xml_attr(test, "name")
+
+  overall_results <- xml2::xml_find_first(test, "./OverallResults")
+  n_successes <- as.integer(xml2::xml_attr(overall_results, "successes"))
+
+  failures <- xml2::xml_find_all(test, "./Expression")
+  failures <- map(failures, parse_catch_failure)
+
+  exceptions <- xml2::xml_find_all(test, "./Exception")
+  exceptions <- map(exceptions, parse_catch_exception)
+
+  list(
+    name = name,
+    n_successes = n_successes,
+    failures = failures,
+    exceptions = exceptions
+  )
+}
+
+parse_catch_failure <- function(failure) {
+  type <- switch(
+    xml2::xml_attr(failure, "type"),
+    "CATCH_CHECK_FALSE" = "isn't false.",
+    "CATCH_CHECK_THROWS" = "did not throw an exception.",
+    "CATCH_CHECK_THROWS_AS" = "threw an exception with unexpected type.",
+    "isn't true."
+  )
+
+  message <- xml2::xml_find_first(failure, "Original")
+  message <- xml2::xml_text(message, trim = TRUE)
+  message <- paste(message, type)
+
+  filename <- xml2::xml_attr(failure, "filename")
+  line <- xml2::xml_attr(failure, "line")
+  srcref <- srcref(
+    srcfile(file.path("src", filename)),
+    c(line, line, 1, 1)
+  )
+
+  list(
+    message = message,
+    srcref = srcref
+  )
+}
+
+parse_catch_exception <- function(exception) {
+  message <- xml2::xml_text(exception, trim = TRUE)
+
+  filename <- xml2::xml_attr(exception, "filename")
+  line <- xml2::xml_attr(exception, "line")
+  srcref <- srcref(
+    srcfile(file.path("src", filename)),
+    c(line, line, 1, 1)
+  )
+
+  list(
+    message = message,
+    srcref = srcref
+  )
 }
 
 #' Use Catch for C++ unit testing
