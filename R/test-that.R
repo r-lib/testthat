@@ -233,8 +233,8 @@ test_code <- function(code, env, reporter = NULL, skip_on_empty = TRUE) {
 
 
 # Maintain a stack of descriptions
-with_description_push <- function(description, expr, frame = caller_env()) {
-  local_description_push(description = description, frame = frame)
+with_description_push <- function(description, expr) {
+  local_description_push(description = description)
   expr
 }
 local_description_push <- function(description, frame = caller_env()) {
