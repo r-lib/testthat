@@ -51,7 +51,8 @@ run_cpp_tests <- function(package) {
   output <- ""
   tests_passed <- TRUE
 
-  catch_error <- FALSE
+  catch_error <- NULL
+
   tryCatch(
     {
       output <- capture_output_lines(
@@ -59,18 +60,15 @@ run_cpp_tests <- function(package) {
       )
     },
     error = function(e) {
-      catch_error <- TRUE
-      context_start("Catch")
-      test_that("Catch", {
-        exp_signal_broken(new_expectation(
-          "failure",
-          e$message
-        ))
-      })
+      catch_error <- e
     }
   )
 
-  if (catch_error) {
+  if (!is.null(catch_error)) {
+    context_start("Catch")
+    test_that("Catch", {
+      fail(catch_error$message)
+    })
     return()
   }
 
@@ -118,16 +116,7 @@ run_cpp_tests <- function(package) {
             c(line, line, 1, 1)
           )
 
-          # Signal the failure as a condition (not an error) so we can report
-          # multiple failures without stopping, this use case prevents us from
-          # being able to use `fail()` outright, since `expectation()` will call
-          # `stop()` on failures. The expectation handler will catch our
-          # signaled `"failure"` and properly register it.
-          exp_signal_broken(new_expectation(
-            "failure",
-            org_text,
-            srcref = failure_srcref
-          ))
+          fail(org_text, srcref = failure_srcref)
         }
 
         exceptions <- xml2::xml_find_all(test, "./Exception")
@@ -141,25 +130,15 @@ run_cpp_tests <- function(package) {
             c(line, line, 1, 1)
           )
 
-          exp_signal_broken(new_expectation(
-            "error",
-            exception_text,
+          expectation(
+            type = "error",
+            message = exception_text,
             srcref = exception_srcref
-          ))
+          )
         }
       })
     }
   }
-}
-
-# Like `exp_signal()`, but without `stop()`ing on "broken" expectations, i.e.
-# failures/errors as reported by `expectation_broken()`. This allows C++ tests
-# to report multiple failures without stopping.
-exp_signal_broken <- function(exp) {
-  withRestarts(
-    signalCondition(exp),
-    muffle_expectation = function(e) NULL
-  )
 }
 
 #' Use Catch for C++ unit testing
