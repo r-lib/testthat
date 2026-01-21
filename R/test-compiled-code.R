@@ -49,14 +49,12 @@ run_cpp_tests <- function(package) {
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
   output <- ""
-  tests_passed <- TRUE
-
   catch_error <- NULL
 
   tryCatch(
     {
       output <- capture_output_lines(
-        tests_passed <- .Call(run_testthat_tests, TRUE)
+        .Call(run_testthat_tests, TRUE)
       )
     },
     error = function(e) {
