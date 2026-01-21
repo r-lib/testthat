@@ -1,5 +1,7 @@
 # testthat (development version)
 
+* `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
+
 # testthat 3.3.2
 
 * testthat now emits OpenTelemetry traces for tests when tracing is enabled. Requires the otel and otelsdk packages (#2282).
