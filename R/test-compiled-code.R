@@ -67,7 +67,7 @@ run_cpp_tests <- function(package) {
   if (!is.null(catch_error)) {
     context_start("Catch")
     test_that("Catch", {
-      fail(catch_error$message)
+      fail(conditionMessage(catch_error))
     })
     return()
   }
