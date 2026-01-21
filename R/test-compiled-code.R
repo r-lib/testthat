@@ -62,6 +62,7 @@ run_cpp_tests <- function(package) {
       catch_error <- TRUE
       reporter <- get_reporter()
 
+      the$test_expectations <- the$test_expectations + 1L
       context_start("Catch")
       reporter$start_test(context = "Catch", test = "Catch")
       reporter$add_result(
@@ -96,6 +97,7 @@ run_cpp_tests <- function(package) {
       get_reporter()$start_test(context = context_name, test = test_name)
 
       for (i in seq_len(successes)) {
+        the$test_expectations <- the$test_expectations + 1L
         exp <- new_expectation("success", "")
         exp$test <- test_name
         get_reporter()$add_result(
@@ -129,6 +131,7 @@ run_cpp_tests <- function(package) {
           c(line, line, 1, 1)
         )
 
+        the$test_expectations <- the$test_expectations + 1L
         exp <- new_expectation("failure", org_text, srcref = failure_srcref)
         exp$test <- test_name
 
@@ -141,6 +144,7 @@ run_cpp_tests <- function(package) {
 
       exceptions <- xml2::xml_find_all(test, "./Exception")
       for (exception in exceptions) {
+        the$test_expectations <- the$test_expectations + 1L
         exception_text <- xml2::xml_text(exception, trim = TRUE)
         filename <- xml2::xml_attr(exception, "filename")
         line <- xml2::xml_attr(exception, "line")
