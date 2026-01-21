@@ -49,7 +49,7 @@ Suggests:
     S7,
     shiny,
     usethis,
-    vctrs (>= 0.1.0),
+    vctrs (>= 0.7.0),
     xml2
 VignetteBuilder:
     knitr
