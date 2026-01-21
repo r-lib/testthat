@@ -48,6 +48,8 @@ run_cpp_tests <- function(package) {
 
   run_testthat_tests <- get_routine(package, "run_testthat_tests")
 
+  env <- caller_env()
+
   output <- ""
   tests_passed <- TRUE
 
@@ -61,16 +63,15 @@ run_cpp_tests <- function(package) {
     error = function(e) {
       catch_error <- TRUE
       context_start("Catch")
-      with_description_push("Catch", {
-        get_reporter()$start_test(context = "Catch", test = "Catch")
-
-        exp_signal_broken(new_expectation(
-          "failure",
-          e$message
-        ))
-
-        get_reporter()$end_test(context = "Catch", test = "Catch")
-      })
+      with_description_push(
+        "Catch",
+        test_code(env = env, {
+          exp_signal_broken(new_expectation(
+            "failure",
+            e$message
+          ))
+        })
+      )
     }
   )
 
@@ -91,71 +92,70 @@ run_cpp_tests <- function(package) {
     for (test in tests) {
       test_name <- xml2::xml_attr(test, "name")
 
-      with_description_push(test_name, {
-        get_reporter()$start_test(context = context_name, test = test_name)
+      with_description_push(
+        test_name,
+        test_code(env = env, {
+          result <- xml2::xml_find_first(test, "./OverallResults")
+          successes <- as.integer(xml2::xml_attr(result, "successes"))
+          for (i in seq_len(successes)) {
+            pass()
+          }
 
-        result <- xml2::xml_find_first(test, "./OverallResults")
-        successes <- as.integer(xml2::xml_attr(result, "successes"))
-        for (i in seq_len(successes)) {
-          pass()
-        }
+          failures <- xml2::xml_find_all(test, "./Expression")
+          for (failure in failures) {
+            org <- xml2::xml_find_first(failure, "Original")
+            org_text <- xml2::xml_text(org, trim = TRUE)
 
-        failures <- xml2::xml_find_all(test, "./Expression")
-        for (failure in failures) {
-          org <- xml2::xml_find_first(failure, "Original")
-          org_text <- xml2::xml_text(org, trim = TRUE)
+            filename <- xml2::xml_attr(failure, "filename")
+            type <- xml2::xml_attr(failure, "type")
 
-          filename <- xml2::xml_attr(failure, "filename")
-          type <- xml2::xml_attr(failure, "type")
+            type_msg <- switch(
+              type,
+              "CATCH_CHECK_FALSE" = "isn't false.",
+              "CATCH_CHECK_THROWS" = "did not throw an exception.",
+              "CATCH_CHECK_THROWS_AS" = "threw an exception with unexpected type.",
+              "isn't true."
+            )
 
-          type_msg <- switch(
-            type,
-            "CATCH_CHECK_FALSE" = "isn't false.",
-            "CATCH_CHECK_THROWS" = "did not throw an exception.",
-            "CATCH_CHECK_THROWS_AS" = "threw an exception with unexpected type.",
-            "isn't true."
-          )
+            org_text <- paste(org_text, type_msg)
 
-          org_text <- paste(org_text, type_msg)
+            line <- xml2::xml_attr(failure, "line")
+            failure_srcref <- srcref(
+              srcfile(file.path("src", filename)),
+              c(line, line, 1, 1)
+            )
 
-          line <- xml2::xml_attr(failure, "line")
-          failure_srcref <- srcref(
-            srcfile(file.path("src", filename)),
-            c(line, line, 1, 1)
-          )
+            # Signal the failure as a condition (not an error) so we can report
+            # multiple failures without stopping, this use case prevents us from
+            # being able to use `fail()` outright, since `expectation()` will call
+            # `stop()` on failures. The expectation handler will catch our
+            # signaled `"failure"` and properly register it.
+            exp_signal_broken(new_expectation(
+              "failure",
+              org_text,
+              srcref = failure_srcref
+            ))
+          }
 
-          # Signal the failure as a condition (not an error) so we can report
-          # multiple failures without stopping, this use case prevents us from
-          # being able to use `fail()` outright, since `expectation()` will call
-          # `stop()` on failures. The expectation handler will catch our
-          # signaled `"failure"` and properly register it.
-          exp_signal_broken(new_expectation(
-            "failure",
-            org_text,
-            srcref = failure_srcref
-          ))
-        }
+          exceptions <- xml2::xml_find_all(test, "./Exception")
+          for (exception in exceptions) {
+            exception_text <- xml2::xml_text(exception, trim = TRUE)
+            filename <- xml2::xml_attr(exception, "filename")
+            line <- xml2::xml_attr(exception, "line")
 
-        exceptions <- xml2::xml_find_all(test, "./Exception")
-        for (exception in exceptions) {
-          exception_text <- xml2::xml_text(exception, trim = TRUE)
-          filename <- xml2::xml_attr(exception, "filename")
-          line <- xml2::xml_attr(exception, "line")
+            exception_srcref <- srcref(
+              srcfile(file.path("src", filename)),
+              c(line, line, 1, 1)
+            )
 
-          exception_srcref <- srcref(
-            srcfile(file.path("src", filename)),
-            c(line, line, 1, 1)
-          )
-
-          exp_signal_broken(new_expectation(
-            "error",
-            exception_text,
-            srcref = exception_srcref
-          ))
-        }
-
-        get_reporter()$end_test(context = context_name, test = test_name)
-      })
+            exp_signal_broken(new_expectation(
+              "error",
+              exception_text,
+              srcref = exception_srcref
+            ))
+          }
+        })
+      )
     }
   }
 }
