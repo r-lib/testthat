@@ -60,7 +60,7 @@ run_cpp_tests <- function(package) {
       )
     },
     error = function(e) {
-      catch_error <- e
+      catch_error <<- e
     }
   )
 
