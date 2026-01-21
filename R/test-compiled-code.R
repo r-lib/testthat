@@ -130,6 +130,8 @@ run_cpp_tests <- function(package) {
             c(line, line, 1, 1)
           )
 
+          # There is no `fail()` equivalent for an error.
+          # We could use `stop()`, but we want to pass through a `srcref`.
           expectation(
             type = "error",
             message = exception_text,
