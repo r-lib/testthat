@@ -38,7 +38,7 @@
       ! Expected "actual" to have the same values as "expected".
       Actual: "actual"
       Expected: "expected"
-      Needs: "actual"
+      Extra: "actual"
       Absent: "expected"
 
 ---
@@ -50,7 +50,7 @@
       ! Expected `x` to have the same values as `y`.
       Actual: 1, 2
       Expected: 2
-      Needs: 1
+      Extra: 1
 
 ---
 
@@ -72,7 +72,7 @@
       ! Expected `x` to have the same values as `y`.
       Actual: 1, 2
       Expected: 2, 3
-      Needs: 1
+      Extra: 1
       Absent: 3
 
 ---
@@ -84,7 +84,7 @@
       ! Expected `x` to have the same values as `y`.
       Actual: "a", "a"
       Expected: "b", "b", "b"
-      Needs: "a"
+      Extra: "a"
       Absent: "b"
 
 ---
@@ -118,7 +118,7 @@
       ! Expected `x` to have the same names as `y`.
       Actual: "a", "b"
       Expected: "a"
-      Needs: "b"
+      Extra: "b"
 
 ---
 
