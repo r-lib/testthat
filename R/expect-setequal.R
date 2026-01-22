@@ -50,7 +50,7 @@ expect_setequal_ <- function(msg, act, exp, trace_env = caller_env()) {
     msg_act <- c(
       sprintf("Actual: %s", values(act$val)),
       sprintf("Expected: %s", values(exp$val)),
-      if (length(act_miss)) sprintf("Needs: %s", values(act_miss)),
+      if (length(act_miss)) sprintf("Extra: %s", values(act_miss)),
       if (length(exp_miss)) sprintf("Absent: %s", values(exp_miss))
     )
     fail(c(msg_exp, msg_act), trace_env = trace_env)
