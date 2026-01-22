@@ -2,6 +2,10 @@
 
 ## testthat (development version)
 
+- [`run_cpp_tests()`](https://testthat.r-lib.org/dev/reference/run_cpp_tests.md)
+  no longer accidentally reports that a test has been skipped
+  ([\#2315](https://github.com/r-lib/testthat/issues/2315)).
+
 ## testthat 3.3.2
 
 CRAN release: 2026-01-11
