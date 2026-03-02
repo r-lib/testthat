@@ -59,7 +59,7 @@ should only be run on R versions 4.1.0 and later.}
 
 \item{on_cran}{Pretend we're on CRAN (\code{TRUE}) or not (\code{FALSE}).}
 
-\item{frame}{Calling frame to tie change to; expect use only.}
+\item{frame}{Calling frame to tie change to; expert use only.}
 
 \item{os}{Character vector of one or more operating systems to skip on.
 Supported values are \code{"windows"}, \code{"mac"}, \code{"linux"}, \code{"solaris"},
