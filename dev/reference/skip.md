@@ -76,7 +76,7 @@ skip_if_translated(msgid = "'%s' not found")
 
 - frame:
 
-  Calling frame to tie change to; expect use only.
+  Calling frame to tie change to; expert use only.
 
 - os:
 
