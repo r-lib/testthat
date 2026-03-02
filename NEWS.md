@@ -1,6 +1,7 @@
 # testthat (development version)
 
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
+* `expect_setequal()` uses better wording in the results (@mcol, #2310).
 
 # testthat 3.3.2
 

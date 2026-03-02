@@ -37,7 +37,7 @@
       ! Expected `x2` to have names "a".
       Actual: "a", "b"
       Expected: "a"
-      Needs: "b"
+      Extra: "b"
 
 ---
 
@@ -48,7 +48,7 @@
       ! Expected `x1` to have names "b".
       Actual: "a"
       Expected: "b"
-      Needs: "a"
+      Extra: "a"
       Absent: "b"
 
 ---
