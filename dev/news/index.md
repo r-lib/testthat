@@ -5,6 +5,9 @@
 - [`run_cpp_tests()`](https://testthat.r-lib.org/dev/reference/run_cpp_tests.md)
   no longer accidentally reports that a test has been skipped
   ([\#2315](https://github.com/r-lib/testthat/issues/2315)).
+- [`expect_setequal()`](https://testthat.r-lib.org/dev/reference/expect_setequal.md)
+  uses better wording in the results ([@mcol](https://github.com/mcol),
+  [\#2310](https://github.com/r-lib/testthat/issues/2310)).
 
 ## testthat 3.3.2
 

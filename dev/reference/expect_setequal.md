@@ -64,7 +64,7 @@ show_failure(expect_mapequal(x, list(a = 1)))
 #> Expected `x` to have the same names as `list(a = 1)`.
 #> Actual: "b", "a"
 #> Expected: "a"
-#> Needs: "b"
+#> Extra: "b"
 show_failure(expect_mapequal(x, list(a = 1, b = "x")))
 #> Failed expectation:
 #> Expected `x` to contain the same values as `list(a = 1, b = "x")`.
