@@ -209,10 +209,9 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
 
     # Also match basename to handle variant snapshots (e.g. "variant/html.md")
     out <- out[
-      out$name %in% files |
-      basename(out$name) %in% files |
-      out$test %in% dirs,
-      , drop = FALSE
+      out$name %in% files | basename(out$name) %in% files | out$test %in% dirs,
+      ,
+      drop = FALSE
     ]
   }
 
