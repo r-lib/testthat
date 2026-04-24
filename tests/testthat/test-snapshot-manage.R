@@ -79,10 +79,37 @@ test_that("can work with variants", {
   expect_snapshot(snapshot_accept(path = path))
   expect_equal(dir(file.path(path, "_snaps", "foo")), "a.md")
 
-  # Can accept specified
+  # Can accept specified with fully qualified variant/name
   path <- local_snapshot_dir(c("foo/a.md", "foo/a.new.md"))
   expect_snapshot(snapshot_accept("foo/a", path = path))
   expect_equal(dir(file.path(path, "_snaps", "foo")), "a.md")
+
+  # Can accept by test file name alone (#2325)
+  path <- local_snapshot_dir(c("foo/a.md", "foo/a.new.md"))
+  suppressMessages(snapshot_accept("a", path = path))
+  expect_equal(dir(file.path(path, "_snaps", "foo")), "a.md")
+
+  # Can accept by test file name when multiple variants exist (#2325)
+  path <- local_snapshot_dir(c(
+    "variant1/a.md", "variant1/a.new.md",
+    "variant2/a.md", "variant2/a.new.md"
+  ))
+  suppressMessages(snapshot_accept("a", path = path))
+  expect_equal(
+    dir(file.path(path, "_snaps"), recursive = TRUE),
+    c("variant1/a.md", "variant2/a.md")
+  )
+
+  # Filtering by test name doesn't affect other test files (#2325)
+  path <- local_snapshot_dir(c(
+    "foo/a.md", "foo/a.new.md",
+    "foo/b.md", "foo/b.new.md"
+  ))
+  suppressMessages(snapshot_accept("a", path = path))
+  expect_equal(
+    dir(file.path(path, "_snaps"), recursive = TRUE),
+    c("foo/a.md", "foo/b.md", "foo/b.new.md")
+  )
 })
 
 test_that("snapshot_reject deletes .new files", {
