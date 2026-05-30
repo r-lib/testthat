@@ -23,6 +23,7 @@ Other reporters:
 \code{\link{RStudioReporter}},
 \code{\link{Reporter}},
 \code{\link{SlowReporter}},
+\code{\link{SonarqubeReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},

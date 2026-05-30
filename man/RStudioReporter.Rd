@@ -22,6 +22,7 @@ Other reporters:
 \code{\link{Reporter}},
 \code{\link{SilentReporter}},
 \code{\link{SlowReporter}},
+\code{\link{SonarqubeReporter}},
 \code{\link{StopReporter}},
 \code{\link{SummaryReporter}},
 \code{\link{TapReporter}},
