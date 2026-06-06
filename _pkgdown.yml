@@ -21,6 +21,8 @@ reference:
 - title: Basics
   contents:
   - test_that
+  - describe
+  - it
   - expect_equal
   - expect_error
   - expect_true
