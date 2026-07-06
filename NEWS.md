@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `snapshot_accept()`, `snapshot_reject()`, and `snapshot_review()` now correctly
+  find changed snapshots in variant subdirectories when filtering by test file
+  name (#2325).
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
 * `expect_setequal()` uses better wording in the results (@mcol, #2310).
 

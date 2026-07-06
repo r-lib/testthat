@@ -207,7 +207,12 @@ snapshot_meta <- function(files = NULL, path = "tests/testthat") {
     # Match regardless of whether user include .md or not
     files <- c(files, paste0(files, ".md"))
 
-    out <- out[out$name %in% files | out$test %in% dirs, , drop = FALSE]
+    # Also match basename to handle variant snapshots (e.g. "variant/html.md")
+    out <- out[
+      out$name %in% files | basename(out$name) %in% files | out$test %in% dirs,
+      ,
+      drop = FALSE
+    ]
   }
 
   out
