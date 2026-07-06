@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/Source_Code_Pro-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
@@ -354,7 +354,7 @@ function to mock.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">unix_time</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">unix_time</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1772473256</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1783305147</span></span></code></pre></div>
 <p>Now I’m going to create a function factory that makes it easy to
 compute how much time has elapsed since some fixed starting point:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -368,7 +368,7 @@ compute how much time has elapsed since some fixed starting point:</p>
 <span><span class="va">timer</span> <span class="op">&lt;-</span> <span class="fu">elapsed</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="fu">timer</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.501888</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.5018625</span></span></code></pre></div>
 <p>Imagine trying to test this function without mocking! You’d probably
 think it’s not worth it. In fact, that’s what I thought originally, but
 I soon learned my lesson because I introduce bug because I’d forgotten

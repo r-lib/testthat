@@ -72,6 +72,7 @@ Here’s a `setup.R` example from the reprex package, where we turn off
 clipboard and HTML preview functionality during testing:
 
 ``` r
+
 op <- options(reprex.clipboard = FALSE, reprex.html_preview = FALSE)
 
 withr::defer(options(op), teardown_env())
@@ -85,6 +86,7 @@ and pass
 as the `.local_envir`:
 
 ``` r
+
 withr::local_options(
   list(reprex.clipboard = FALSE, reprex.html_preview = FALSE),
   .local_envir = teardown_env()

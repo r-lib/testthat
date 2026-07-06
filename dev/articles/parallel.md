@@ -2,8 +2,8 @@
 
 ## Setup
 
-To enable parallel testing, you must first be using the 3rd
-edition[¹](#fn1). Then add the following line to the `DESCRIPTION`:
+To enable parallel testing, you must first be using the 3rd edition[^1].
+Then add the following line to the `DESCRIPTION`:
 
     Config/testthat/parallel: true
 
@@ -20,8 +20,8 @@ and then add something like the following:
 
 Tests are run in alphabetical order by default, but you can often
 improve performance by starting the slowest tests first. Specify these
-tests by supplying a comma separated list of glob patterns[²](#fn2) to
-the `Config/testthat/start-first` field in your `DESCRIPTION`, e.g.:
+tests by supplying a comma separated list of glob patterns[^2] to the
+`Config/testthat/start-first` field in your `DESCRIPTION`, e.g.:
 
     Config/testthat/start-first: watcher, parallel*
 
@@ -156,6 +156,7 @@ To support parallel tests, a reporter must set
 method:
 
 ``` r
+
 ...
 initialize = function(...) {
   super$initialize(...)
@@ -190,6 +191,7 @@ A reporter declares parallel update support by setting
 `self$capabilities$parallel_updates` to `TRUE`:
 
 ``` r
+
 ...
 initialize = function(...) {
   super$initialize(...)
@@ -216,11 +218,9 @@ regularly, even if it does not receive any messages from the subprocess.
 The `$update()` method may implement a spinner to let the user know that
 the tests are running.
 
-------------------------------------------------------------------------
-
-1.  See
+[^1]: See
     [`vignette("third-edition")`](https://testthat.r-lib.org/dev/articles/third-edition.md)
     for details.
 
-2.  See [`?utils::glob2rx`](https://rdrr.io/r/utils/glob2rx.html) for
+[^2]: See [`?utils::glob2rx`](https://rdrr.io/r/utils/glob2rx.html) for
     details

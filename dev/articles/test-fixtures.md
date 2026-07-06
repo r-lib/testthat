@@ -43,6 +43,7 @@ tools, then learn about the underlying theory, discuss exactly what a
 test fixture is, and finish with a few examples.
 
 ``` r
+
 library(testthat)
 ```
 
@@ -69,6 +70,7 @@ example, imagine you’re testing base R code that rounds numbers to a
 fixed number of places when printing. You could write code like this:
 
 ``` r
+
 test_that("print() respects digits option", {
   x <- 1.23456789
 
@@ -93,6 +95,7 @@ always have an `env` argument that defaults to
 pass to the `.local_envir` argument of `local_()`:
 
 ``` r
+
 local_digits <- function(sig_digits, env = parent.frame()) {
   withr::local_options(digits = sig_digits, .local_envir = env)
 
@@ -109,6 +112,7 @@ how `local_` functions work. We’ll motivate the discussion with a
 significant digits by adjusting an R option:
 
 ``` r
+
 sloppy <- function(x, sig_digits) {
   options(digits = sig_digits)
   print(x)
@@ -125,7 +129,7 @@ pi
 Notice how `pi` prints differently before and after the call to
 `sloppy()`. Calling `sloppy()` has a side effect: it changes the
 `digits` option globally, not just within its own scope. This is what we
-want to avoid[¹](#fn1).
+want to avoid[^1].
 
 ### `on.exit()`
 
@@ -142,6 +146,7 @@ up.
 We can use this idea to turn `sloppy()` into `neat()`:
 
 ``` r
+
 neat <- function(x, sig_digits) {
   op <- options(digits = sig_digits)
   on.exit(options(op), add = TRUE, after = FALSE)
@@ -165,6 +170,7 @@ that value to restore the previous options.
 [`on.exit()`](https://rdrr.io/r/base/on.exit.html) also works in tests:
 
 ``` r
+
 test_that("can print one digit of pi", {
   op <- options(digits = 1)
   on.exit(options(op), add = TRUE, after = FALSE)
@@ -193,6 +199,7 @@ There are three main drawbacks to
   cleanup code will never be run:
 
   ``` r
+
   op <- options(digits = 1)
   on.exit(options(op), add = TRUE, after = FALSE)
   ```
@@ -216,6 +223,7 @@ resolves the main drawbacks of
 behavior we want by default; no extra arguments needed:
 
 ``` r
+
 neat <- function(x, sig_digits) {
   op <- options(digits = sig_digits)
   withr::defer(options(op))
@@ -229,6 +237,7 @@ call `deferred_run()` explicitly to execute the deferred events. You can
 also clear them, without running, with `deferred_clear()`.
 
 ``` r
+
 withr::defer(print("hi"))
 #> Setting deferred event(s) on global environment.
 #>   * Execute (and clear) with `deferred_run()`.
@@ -251,6 +260,7 @@ to automate this? Unfortunately, we can’t write a helper with
 [`on.exit()`](https://rdrr.io/r/base/on.exit.html):
 
 ``` r
+
 local_digits <- function(sig_digits) {
   op <- options(digits = sig_digits)
   on.exit(options(op), add = TRUE, after = FALSE)
@@ -277,6 +287,7 @@ always have an `env` argument that defaults to
 pass to the second argument of `defer()`:
 
 ``` r
+
 local_digits <- function(sig_digits, env = parent.frame()) {
   op <- options(digits = sig_digits)
   withr::defer(options(op), env)
@@ -290,6 +301,7 @@ Just like [`on.exit()`](https://rdrr.io/r/base/on.exit.html) and
 `defer()`, our helper also works within tests:
 
 ``` r
+
 test_that("withr lets us write custom helpers for local state manipulation", {
   local_digits(1)
   expect_output(print(exp(1)), "3")
@@ -311,6 +323,7 @@ is that you can also use the
 scope their effect to a smaller part of the test:
 
 ``` r
+
 test_that("local_options() only affects a minimal amount of code", {
   withr::local_options(x = 1)
   expect_equal(getOption("x"), 1)
@@ -339,6 +352,7 @@ message if the `verbose` option is `TRUE`. How would you test that
 setting the option does indeed silence the message?
 
 ``` r
+
 message2 <- function(...) {
   if (!isTRUE(getOption("verbose"))) {
     return()
@@ -352,6 +366,7 @@ argument to the function. For example, we could refactor `message2()` to
 make the verbosity an explicit argument:
 
 ``` r
+
 message3 <- function(..., verbose = getOption("verbose")) {
   if (!isTRUE(verbose)) {
     return()
@@ -380,6 +395,7 @@ could use
 as a test fixture to test `message2()`:
 
 ``` r
+
 test_that("message2() output depends on verbose option", {
   withr::local_options(verbose = TRUE)
   expect_message(message2("Hi!"))
@@ -408,6 +424,7 @@ To solve this problem we create a test fixture, which we place in
 interactive experimentation:
 
 ``` r
+
 local_create_package <- function(dir = file_temp(), env = parent.frame()) {
   old_project <- proj_get_()
   
@@ -444,6 +461,7 @@ directly or indirectly. So it’s very convenient that
 poof! — the package is gone.
 
 ``` r
+
 test_that("use_roxygen_md() adds DESCRIPTION fields", {
   pkg <- local_create_package()
   use_roxygen_md()
@@ -486,6 +504,7 @@ can use the special
 [`teardown_env()`](https://testthat.r-lib.org/dev/reference/teardown_env.md):
 
 ``` r
+
 # Run before any test
 write.csv(mtcars, "mtcars.csv")
 
@@ -514,7 +533,5 @@ A collection of miscellaneous problems that don’t fit elsewhere:
   `dir <- create_local_package()`, you shouldn’t return `dir`, because
   after the function returns, the directory will no longer exist.
 
-------------------------------------------------------------------------
-
-1.  Don’t worry, I’m restoring global state (specifically, the `digits`
-    option) behind the scenes here.
+[^1]: Don’t worry, I’m restoring global state (specifically, the
+    `digits` option) behind the scenes here.

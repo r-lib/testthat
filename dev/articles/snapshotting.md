@@ -28,6 +28,7 @@ are inspired primarily by
 of very useful discussions with Joe Cheng.
 
 ``` r
+
 library(testthat)
 ```
 
@@ -38,6 +39,7 @@ generates HTML bullets. It can optionally include an `id` attribute,
 which allows you to construct a link directly to that list.
 
 ``` r
+
 bullets <- function(text, id = NULL) {
   paste0(
     "<ul", if (!is.null(id)) paste0(" id=\"", id, "\""), ">\n", 
@@ -57,6 +59,7 @@ re-read the test in the future, all that escaping makes it hard to tell
 exactly what it’s supposed to return.
 
 ``` r
+
 test_that("bullets", {
   expect_equal(bullets("a"), "<ul>\n  <li>a</li>\n</ul>\n")
   expect_equal(bullets("a", id = "x"), "<ul id=\"x\">\n  <li>a</li>\n</ul>\n")
@@ -79,6 +82,7 @@ changes to our code:
 This yields the following test:
 
 ``` r
+
 test_that("bullets", {
   expect_snapshot(cat(bullets("a")))
   expect_snapshot(cat(bullets("a", "b")))
@@ -113,6 +117,7 @@ markdown file, which I’ll explain shortly.
 If you run the test again, it’ll succeed:
 
 ``` r
+
 test_that("bullets", {
   expect_snapshot(cat(bullets("a")))
   expect_snapshot(cat(bullets("a", "b")))
@@ -124,6 +129,7 @@ But if you change the underlying code, say to tweak the indenting, the
 test will fail:
 
 ``` r
+
 bullets <- function(text, id = NULL) {
   paste0(
     "<ul", if (!is.null(id)) paste0(" id=\"", id, "\""), ">\n", 
@@ -219,6 +225,7 @@ difficult because
 will fail if there’s an error:
 
 ``` r
+
 test_that("you can't add a number and a letter", {
   expect_snapshot(1 + "a")
 })
@@ -233,6 +240,7 @@ broken code. To deliberately snapshot an error, you’ll have to
 specifically request it with `error = TRUE`:
 
 ``` r
+
 test_that("you can't add a number and a letter", {
   expect_snapshot(1 + "a", error = TRUE)
 })
@@ -250,6 +258,7 @@ When the code gets longer, I like to put `error = TRUE` up front so it’s
 a little more obvious:
 
 ``` r
+
 test_that("you can't add weird things", {
   expect_snapshot(error = TRUE, {
     1 + "a"
@@ -291,6 +300,7 @@ realistic example illustrating how you might test `check_unnamed()`, a
 function that ensures all arguments in `...` are unnamed.
 
 ``` r
+
 check_unnamed <- function(..., call = parent.frame()) {
   names <- ...names()
   has_name <- names != ""
@@ -360,6 +370,7 @@ time. For example, consider this “safe” version of
 you to explicitly opt in to overwriting an existing file:
 
 ``` r
+
 safe_write_lines <- function(lines, path, overwrite = FALSE) {
   if (file.exists(path) && !overwrite) {
     cli::cli_abort(c(
@@ -376,6 +387,7 @@ If you use a snapshot test to confirm that the error message is useful,
 the snapshot will be different every time the test is run:
 
 ``` r
+
 test_that("generates actionable error message", {
   path <- withr::local_tempfile(lines = "")
   expect_snapshot(safe_write_lines(letters, path), error = TRUE)
@@ -386,12 +398,13 @@ test_that("generates actionable error message", {
 #>   safe_write_lines(letters, path)
 #> Condition
 #>   Error in `safe_write_lines()`:
-#>   ! '/tmp/Rtmpb6fJbv/file286c40d5a32d' already exists.
+#>   ! '/tmp/RtmpUdwX9N/file290b3e370237' already exists.
 #>   i Set `overwrite = TRUE` to overwrite
 #> Test passed with 1 success 🎊.
 ```
 
 ``` r
+
 test_that("generates actionable error message", {
   path <- withr::local_tempfile(lines = "")
   expect_snapshot(safe_write_lines(letters, path), error = TRUE)
@@ -402,8 +415,8 @@ test_that("generates actionable error message", {
 #>     safe_write_lines(letters, path)
 #>   Condition
 #>     Error in `safe_write_lines()`:
-#> -   ! '/tmp/Rtmpb6fJbv/file286c40d5a32d' already exists.
-#> +   ! '/tmp/Rtmpb6fJbv/file286c10005329' already exists.
+#> -   ! '/tmp/RtmpUdwX9N/file290b3e370237' already exists.
+#> +   ! '/tmp/RtmpUdwX9N/file290b58b05cbb' already exists.
 #>     i Set `overwrite = TRUE` to overwrite
 #> * Run `testthat::snapshot_accept("snapshotting.Rmd")` to accept the change.
 #> * Run `testthat::snapshot_review("snapshotting.Rmd")` to review the change.
@@ -415,6 +428,7 @@ One way to fix this problem is to use the `transform` argument to
 replace the temporary path with a fixed value:
 
 ``` r
+
 test_that("generates actionable error message", {
   path <- withr::local_tempfile(lines = "")
   expect_snapshot(
@@ -471,6 +485,7 @@ instead. It offers a number of serialization approaches that provide a
 tradeoff between accuracy and human readability.
 
 ``` r
+
 test_that("can snapshot a simple list", {
   x <- list(a = list(1, 5, 10), b = list("elephant", "banana"))
   expect_snapshot_value(x)

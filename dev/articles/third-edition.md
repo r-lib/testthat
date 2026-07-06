@@ -19,6 +19,7 @@ If you have a problem that this vignette doesn’t cover, please let me
 know, as it’s likely that the problem also affects others.
 
 ``` r
+
 library(testthat)
 local_edition(3)
 ```
@@ -36,6 +37,7 @@ You can also control the edition used for individual tests with
 [`testthat::local_edition()`](https://testthat.r-lib.org/dev/reference/local_edition.md):
 
 ``` r
+
 test_that("I can use the 3rd edition", {
   local_edition(3)
   expect_true(TRUE)
@@ -49,6 +51,7 @@ to the old behaviour, giving you some breathing room to figure out the
 underlying issue.
 
 ``` r
+
 test_that("I want to use the 2nd edition", {
   local_edition(2)
   expect_true(TRUE)
@@ -143,6 +146,7 @@ swallows all warnings regardless of whether or not they match the
 `regexp` or `class`:
 
 ``` r
+
 f <- function() {
   warning("First warning")
   warning("Second warning")
@@ -158,6 +162,7 @@ In the third edition,
 captures at most one warning so the others will bubble up:
 
 ``` r
+
 local_edition(3)
 expect_warning(f(), "First")
 #> Warning in f(): Second warning
@@ -169,6 +174,7 @@ silence them all with
 [`suppressWarnings()`](https://rdrr.io/r/base/warning.html):
 
 ``` r
+
 f() |> 
   expect_warning("First") |> 
   expect_warning("Second") |> 
@@ -182,6 +188,7 @@ f() |>
 Alternatively, you might want to capture them all in a snapshot test:
 
 ``` r
+
 test_that("f() produces expected outputs/messages/warnings", {
   expect_snapshot(f())  
 })
@@ -231,6 +238,7 @@ between a pair of R objects, and it’s designed specifically to help you
 figure out what’s gone wrong in your unit tests.
 
 ``` r
+
 f1 <- factor(letters[1:3])
 f2 <- ordered(letters[1:3], levels = letters[1:4])
 
@@ -296,6 +304,7 @@ following changes are most likely to affect you:
   explicitly:
 
   ``` r
+
   dt1 <- dt2 <- ISOdatetime(2020, 1, 2, 3, 4, 0)
   attr(dt1, "tzone") <- ""
   attr(dt2, "tzone") <- Sys.timezone()

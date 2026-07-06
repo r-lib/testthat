@@ -143,5 +143,5 @@ test_that("skip example", {
 })
 #> ── Skip: skip example ─────────────────────────────────────────────────
 #> Reason: skip
-#> Test passed with 1 success 🌈.
+#> Test passed with 1 success 🥳.
 ```

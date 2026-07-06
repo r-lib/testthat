@@ -36,6 +36,7 @@ advice and concrete examples.
 ## Installation
 
 ``` r
+
 # Install the released version from CRAN
 install.packages("testthat")
 

@@ -117,6 +117,7 @@ files being deleted in this case, you can call
 ## Examples
 
 ``` r
+
 # To use expect_snapshot_file() you'll typically need to start by writing
 # a helper function that creates a file from your code, returning a path
 save_png <- function(code, width = 400, height = 400) {
@@ -129,7 +130,7 @@ save_png <- function(code, width = 400, height = 400) {
 }
 path <- save_png(plot(1:5))
 path
-#> [1] "/tmp/Rtmppat1Xr/file1b152d3ed099.png"
+#> [1] "/tmp/Rtmph8x9Ll/file1b9a6901dfda.png"
 
 if (FALSE) { # \dontrun{
 expect_snapshot_file(save_png(hist(mtcars$mpg)), "plot.png")

@@ -23,6 +23,7 @@ away with a simpler wrapper. If you’re just customising an existing
 expectation by changing some defaults, you’re fine:
 
 ``` r
+
 expect_df <- function(tbl) {
   expect_s3_class(tbl, "data.frame")
 }
@@ -32,6 +33,7 @@ If you’re combining multiple expectations, you can introduce a subtle
 problem. For example, take this expectation from tidytext:
 
 ``` r
+
 # from tidytext
 expect_nrow <- function(tbl, n) {
   expect_s3_class(tbl, "data.frame")
@@ -42,6 +44,7 @@ expect_nrow <- function(tbl, n) {
 If we use it in a test you can see there’s an issue:
 
 ``` r
+
 test_that("success", {
   expect_nrow(mtcars, 32)
 })
@@ -105,6 +108,7 @@ An expectation has four main parts, as illustrated by
 [`expect_length()`](https://testthat.r-lib.org/dev/reference/expect_length.md):
 
 ``` r
+
 expect_length <- function(object, n) {  
   # 1. Capture object and label
   act <- quasi_label(rlang::enquo(object))
@@ -158,6 +162,7 @@ side-effects (triggering a failure), and returning the value allows
 expectations to be piped together:
 
 ``` r
+
 test_that("mtcars is a 13 row data frame", {
   mtcars |>
     expect_type("list") |>
@@ -191,6 +196,7 @@ single failure. If it doesn’t, the end user is going to get confusing
 results in their test suite reports.
 
 ``` r
+
 test_that("expect_length works as expected", {
   x <- 1:10
   expect_success(expect_length(x, 10))
@@ -230,6 +236,7 @@ you can imagine not wanting code like the following to succeed, because
 it’s likely that the user passed the wrong object to the test.
 
 ``` r
+
 expect_length(mean, 1)
 ```
 
@@ -237,6 +244,7 @@ To do this we’ll add an extra check that the input is either an atomic
 vector or a list:
 
 ``` r
+
 expect_vector_length <- function(object, n) {  
   act <- quasi_label(rlang::enquo(object))
 
@@ -264,6 +272,7 @@ expect_vector_length <- function(object, n) {
 ```
 
 ``` r
+
 expect_vector_length(mean, 1)
 #> Error:
 #> ! Expected `mean` to be a vector
@@ -283,6 +292,7 @@ class matches, you probably want to check that the object is from the
 correct OO family.
 
 ``` r
+
 expect_s3_class <- function(object, class) {
   if (!rlang::is_string(class)) {
     rlang::abort("`class` must be a string.")
@@ -311,6 +321,7 @@ expect_s3_class <- function(object, class) {
 ```
 
 ``` r
+
 x1 <- 1:10
 TestClass <- methods::setClass("Test", contains = "integer")
 x2 <- TestClass()
@@ -348,6 +359,7 @@ of all arguments that affect the operation and error if they’re not what
 you expect.
 
 ``` r
+
 expect_s3_class(x1, 1)
 #> Error in `expect_s3_class()`:
 #> ! `class` must be a string.
@@ -367,6 +379,7 @@ straightforward: we also allow `class` to be `NULL` and then only verify
 inheritance when non-`NULL`.
 
 ``` r
+
 expect_s3_object <- function(object, class = NULL) {
   if (!rlang::is_string(class) && is.null(class)) {
     rlang::abort("`class` must be a string or NULL.")
@@ -417,6 +430,7 @@ But when you introduce a helper, you’ll need to explicitly pass it
 along:
 
 ``` r
+
 expect_length_ <- function(act, n, trace_env = caller_env()) {
   act_n <- length(act$val)
   if (act_n != n) {

@@ -49,6 +49,7 @@ directory of your package, with a format similar to R code tested with
 `testthat`. Here's a simple example of a unit test written with
 `testthat` + Catch:
 
+
     context("C++ Unit Test") {
       test_that("two plus two is four") {
         int result = 2 + 2;
@@ -69,14 +70,14 @@ prefix – see
 for a full list. `testthat` provides the following wrappers, to conform
 with `testthat`'s R interface:
 
-|                   |                         |                                                                                |
-|-------------------|-------------------------|--------------------------------------------------------------------------------|
-| **Function**      | **Catch**               | **Description**                                                                |
-| `context`         | `CATCH_TEST_CASE`       | The context of a set of tests.                                                 |
-| `test_that`       | `CATCH_SECTION`         | A test section.                                                                |
-| `expect_true`     | `CATCH_CHECK`           | Test that an expression evaluates to `TRUE`.                                   |
-| `expect_false`    | `CATCH_CHECK_FALSE`     | Test that an expression evaluates to `FALSE`.                                  |
-| `expect_error`    | `CATCH_CHECK_THROWS`    | Test that evaluation of an expression throws an exception.                     |
+|  |  |  |
+|----|----|----|
+| **Function** | **Catch** | **Description** |
+| `context` | `CATCH_TEST_CASE` | The context of a set of tests. |
+| `test_that` | `CATCH_SECTION` | A test section. |
+| `expect_true` | `CATCH_CHECK` | Test that an expression evaluates to `TRUE`. |
+| `expect_false` | `CATCH_CHECK_FALSE` | Test that an expression evaluates to `FALSE`. |
+| `expect_error` | `CATCH_CHECK_THROWS` | Test that evaluation of an expression throws an exception. |
 | `expect_error_as` | `CATCH_CHECK_THROWS_AS` | Test that evaluation of an expression throws an exception of a specific class. |
 
 In general, you should prefer using the `testthat` wrappers, as
@@ -91,6 +92,7 @@ If you've opted to disable dynamic symbol lookup in your package, then
 you'll need to explicitly export a symbol in your package that
 `testthat` can use to run your unit tests. `testthat` will look for a
 routine with one of the names:
+
 
         C_run_testthat_tests
         c_run_testthat_tests
@@ -128,6 +130,7 @@ in the **Writing R Extensions** manual for more information.
 If you'd like to write your own Catch test runner, you can instead use
 the `testthat::catchSession()` object in a file with the form:
 
+
     #define TESTTHAT_TEST_RUNNER
     #include <testthat.h>
 
@@ -146,6 +149,7 @@ If you'd like to use the C++ unit testing facilities provided by Catch,
 but would prefer not to use the regular `testthat` R testing
 infrastructure, you can manually run the unit tests by inserting a call
 to:
+
 
     .Call("run_testthat_tests", PACKAGE = <pkgName>)
 

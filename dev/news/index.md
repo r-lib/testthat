@@ -241,7 +241,7 @@ CRAN release: 2025-11-13
   tell where a very slow test might be hanging
   ([\#1464](https://github.com/r-lib/testthat/issues/1464)).
 - Fixed an issue preventing compilation from succeeding due to
-  deprecation / removal of `std::uncaught_exception()` (2,
+  deprecation / removal of `std::uncaught_exception()` (1,
   [\#2047](https://github.com/r-lib/testthat/issues/2047)).
 - [`expect_lt()`](https://testthat.r-lib.org/dev/reference/comparison-expectations.md),
   [`expect_gt()`](https://testthat.r-lib.org/dev/reference/comparison-expectations.md),
@@ -356,7 +356,7 @@ CRAN release: 2025-01-13
 
 - Fixed an issue where calling
   [`skip()`](https://testthat.r-lib.org/dev/reference/skip.md) outside
-  of an active test could cause an unexpected error (2,
+  of an active test could cause an unexpected error (1,
   [\#2039](https://github.com/r-lib/testthat/issues/2039)).
 
 ## testthat 3.2.2
@@ -405,7 +405,7 @@ CRAN release: 2024-12-10
   [\#1900](https://github.com/r-lib/testthat/issues/1900)), and errors
   when called from a
   [`test_that()`](https://testthat.r-lib.org/dev/reference/test_that.md)
-  that has an empty description (2,
+  that has an empty description (1,
   [\#1980](https://github.com/r-lib/testthat/issues/1980)).
 
 - [`expect_true()`](https://testthat.r-lib.org/dev/reference/logical-expectations.md)
@@ -722,7 +722,7 @@ CRAN release: 2022-10-08
 - Fixed an issue that could prevent compilation of Catch unit tests with
   LLVM 15. In the interim, packages needing a local workaround can set
   `PKG_CPPFLAGS = -DCATCH_CONFIG_CPP11_NO_SHUFFLE` in their
-  `src/Makevars`. (2,
+  `src/Makevars`. (1,
   [\#1687](https://github.com/r-lib/testthat/issues/1687))
 
 - Improve way
@@ -2060,6 +2060,7 @@ in a for loop.
 For example take this test:
 
 ``` r
+
 f <- function(i) if (i > 3) i * 9 else i * 10
 
 for (i in 1:5) {
@@ -2072,6 +2073,7 @@ When it fails, you’ll see the message
 because you don’t know which iteration caused the problem!
 
 ``` r
+
 for (i in 1:5) {
   expect_equal(f(!!i), !!(i * 10))
 }
@@ -2115,6 +2117,7 @@ At this time you can not unquote quosures.)
   inline the function into your own package:
 
   ``` r
+
   is_testing <- function() {
     identical(Sys.getenv("TESTTHAT"), "true")
   }
@@ -2355,15 +2358,15 @@ CRAN release: 2016-04-21
 
 - Properly scoped use + compilation of C++ unit testing code using Catch
   to `gcc` and `clang` only, as Catch includes code that does not
-  strictly conform to the C++98 standard. (2)
+  strictly conform to the C++98 standard. (1)
 
 - Fixed an out-of-bounds memory access when routing Catch output through
-  `Rprintf()`. (2)
+  `Rprintf()`. (1)
 
 - Ensure that unit tests run on R-oldrel (remove use of
   [`dir.exists()`](https://rdrr.io/r/base/files2.html)).
 
-  2.  
+  1.  
 
 - Improved overriding of calls to `exit()` within Catch, to ensure
   compatibility with GCC 6.0. ([@krlmlr](https://github.com/krlmlr))
@@ -2413,6 +2416,7 @@ One useful change is that most expectations invisibly return the input
 magrittr:
 
 ``` r
+
 factor("a") %>%
   expect_type("integer") %>%
   expect_s3_class("factor") %>%
@@ -2642,7 +2646,7 @@ There are two main changes:
   [@krlmlr](https://github.com/krlmlr)).
 
 - Added [Catch](https://github.com/catchorg/Catch2) v1.2.1 for unit
-  testing of C++ code. See `?use_catch()` for more details. (2)
+  testing of C++ code. See `?use_catch()` for more details. (1)
 
 ## testthat 0.11.0
 
@@ -2708,7 +2712,7 @@ CRAN release: 2015-10-14
 
 - Added
   [`skip_on_os()`](https://testthat.r-lib.org/dev/reference/skip.md), to
-  skip tests on specified operating systems (2).
+  skip tests on specified operating systems (1).
 
 - Skip test that depends on `devtools` if it is not installed
   ([\#247](https://github.com/r-lib/testthat/issues/247),

@@ -42,6 +42,7 @@ argument that you can use to enforce a version constraint. A simple base
 R implementation might look something like this:
 
 ``` r
+
 check_installed <- function(pkg, min_version = NULL) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
     stop(sprintf("{%s} is not installed.", pkg))
@@ -69,6 +70,7 @@ come up with a package we know is installed and a package we know isn’t
 installed:
 
 ``` r
+
 test_that("check_installed() checks package is installed", {
   expect_no_error(check_installed("testthat"))
   expect_snapshot(check_installed("doesntexist"), error = TRUE)
@@ -94,6 +96,7 @@ Next we want to check the case where we specify a minimum version, and
 again we need to make up some inputs:
 
 ``` r
+
 test_that("check_installed() checks minimum version", {
   expect_no_error(check_installed("testthat", "1.0.0"))
   expect_snapshot(check_installed("testthat", "99.99.999"), error = TRUE)
@@ -116,6 +119,7 @@ we’ll have to update the snapshot. We could use the `transform` argument
 to fix this:
 
 ``` r
+
 test_that("check_installed() checks minimum version", {
   expect_no_error(check_installed("testthat", "1.0.0"))
   expect_snapshot(
@@ -147,6 +151,7 @@ functions, so we need to make bindings in our package namespace so we
 can mock them (we’ll come back to why later).
 
 ``` r
+
 requireNamespace <- NULL
 packageVersion <- NULL
 ```
@@ -159,6 +164,7 @@ installed). Now the test is completely self-contained and doesn’t depend
 on what packages happen to be installed.
 
 ``` r
+
 test_that("check_installed() checks package is installed", {
   local_mocked_bindings(requireNamespace = function(...) TRUE)
   expect_no_error(check_installed("package-name"))
@@ -184,6 +190,7 @@ always return version 2.0.0. This again ensures our test is independent
 of system state.
 
 ``` r
+
 test_that("check_installed() checks minimum version", {
   local_mocked_bindings(
     requireNamespace = function(...) TRUE,
@@ -231,6 +238,7 @@ running on a different operating system. This yields the following test,
 where we using mocking to pretend that we’re always on Windows:
 
 ``` r
+
 test_that("can skip on multiple oses", {
   local_mocked_bindings(system_os = function() "windows")
 
@@ -255,6 +263,7 @@ function](https://github.com/r-lib/usethis/blob/main/tests/testthat/test-release
 use mocks like this:
 
 ``` r
+
 local_mocked_bindings(
   get_revdeps = function() character(),
   gh_milestone_number = function(...) NA
@@ -290,15 +299,17 @@ make some computations simpler later as well as providing a convenient
 function to mock.
 
 ``` r
+
 unix_time <- function() unclass(Sys.time())
 unix_time()
-#> [1] 1772473256
+#> [1] 1783305147
 ```
 
 Now I’m going to create a function factory that makes it easy to compute
 how much time has elapsed since some fixed starting point:
 
 ``` r
+
 elapsed <- function() {
   start <- unix_time()
   function() {
@@ -309,7 +320,7 @@ elapsed <- function() {
 timer <- elapsed()
 Sys.sleep(0.5)
 timer()
-#> [1] 0.501888
+#> [1] 0.5018625
 ```
 
 Imagine trying to test this function without mocking! You’d probably
@@ -322,6 +333,7 @@ so that it returns the value of a variable I control. Now I can write a
 reliable test:
 
 ``` r
+
 test_that("elapsed() measures elapsed time", {
   time <- 1
   local_mocked_bindings(unix_time = function() time)
@@ -350,6 +362,7 @@ environment](https://adv-r.hadley.nz/environments.html#special-environments).
 You can implement the basic idea using base R code like this:
 
 ``` r
+
 old <- getFromNamespace("my_function", "mypackage")
 assignInNamespace("my_function", new, "mypackage")
 

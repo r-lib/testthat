@@ -5,4 +5,4 @@ to see their documentation.
 
 - magrittr:
 
-  `%>%`
+  [`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)

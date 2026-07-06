@@ -62,10 +62,33 @@ expect_no_match(
   :   logical. if `FALSE`, the pattern matching is *case sensitive* and
       if `TRUE`, case is ignored during matching.
 
+  `value`
+
+  :   logical. If `FALSE`, a vector containing the (`integer`) indices
+      of the matches determined by `grep` is returned, and if `TRUE`, a
+      vector containing the matching elements themselves is returned.
+
   `useBytes`
 
   :   logical. If `TRUE` the matching is done byte-by-byte rather than
       character-by-character. See ‘Details’.
+
+  `invert`
+
+  :   logical. If `TRUE` return indices or values for elements that do
+      *not* match.
+
+  `replacement`
+
+  :   a replacement for the matched pattern in `sub` and `gsub`. Coerced
+      to character if possible. For `fixed = FALSE` this can include
+      backreferences `"\1"` to `"\9"` to parenthesized subexpressions of
+      `pattern`. For `perl = TRUE` only, it can also contain `"\U"` or
+      `"\L"` to convert the rest of the replacement to upper or lower
+      case and `"\E"` to end case conversion. If a character vector of
+      length 2 or more is supplied, the first element is used with a
+      warning. If `NA`, all elements in the result corresponding to
+      matches will be set to `NA`.
 
 - all:
 

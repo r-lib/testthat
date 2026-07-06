@@ -22,6 +22,7 @@ execution in undesired environments. The most common scenarios are:
   when a package is not available on some operating systems.
 
 ``` r
+
 library(testthat)
 ```
 
@@ -59,6 +60,7 @@ You can implement your own using skips
 [`skip_if_not()`](https://testthat.r-lib.org/dev/reference/skip.md):
 
 ``` r
+
 # Only run test if a token file is available
 skip_if_not(file.exists("secure-token.json"))
 
@@ -93,6 +95,7 @@ function. This function should start with `skip_` and live in a
 `tests/testthat/helper-{something}.R` file:
 
 ``` r
+
 skip_if_dangerous <- function() {
   if (!identical(Sys.getenv("DANGER"), "")) {
     skip("Not run in dangerous environments.")
@@ -111,6 +114,7 @@ into a package function. For example, take a look at
 which absolutely cannot work if the Pandoc tool is unavailable:
 
 ``` r
+
 convert_markdown_to_html <- function(in_path, out_path, ...) {
   if (rmarkdown::pandoc_available("2.0")) {
     from <- "markdown+gfm_auto_identifiers-citations+emoji+autolink_bare_uris"
@@ -139,6 +143,7 @@ pkgdown includes a copy of
 [`testthat::is_testing()`](https://testthat.r-lib.org/dev/reference/is_testing.md):
 
 ``` r
+
 is_testing <- function() {
   identical(Sys.getenv("TESTTHAT"), "true")
 }

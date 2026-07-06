@@ -82,5 +82,5 @@ describe("math library", {
 })
 #> ── Skip: math library / division() / can handle division by 0 ─────────
 #> Reason: empty test
-#> Test passed with 2 successes 😀.
+#> Test passed with 2 successes 🥇.
 ```

@@ -48,6 +48,7 @@ Here’s a simple example showing how you might test the basic operation
 of a function that rolls a die:
 
 ``` r
+
 dice <- function() {
   sample(6, 1)
 }
@@ -67,6 +68,7 @@ Alternatively, you might want to mock
 the function to eliminate randomness.
 
 ``` r
+
 roll_three <- function() {
   sum(dice(), dice(), dice())
 }
@@ -75,7 +77,7 @@ test_that("three dice adds values of individual calls", {
   local_mocked_bindings(dice = mock_output_sequence(1, 2, 3))
   expect_equal(roll_three(), 6)
 })
-#> Test passed with 1 success 🌈.
+#> Test passed with 1 success 🎊.
 ```
 
 When should you set the seed and when should you use mocking? As a
@@ -134,6 +136,7 @@ written the following function that asks the user if they want to
 continue:
 
 ``` r
+
 continue <- function(prompt) {
   cat(prompt, "\n", sep = "")
 
@@ -154,6 +157,7 @@ You could test its behavior by mocking
 snapshot test:
 
 ``` r
+
 test_that("user must respond y or n", {
   mock_readline <- local({
     i <- 0
@@ -179,7 +183,7 @@ test_that("user must respond y or n", {
 #>   Do you want to continue? (y/n) x
 #>   ! You must enter y or n
 #>   Do you want to continue? (y/n) y
-#> Test passed with 2 successes 🎊.
+#> Test passed with 2 successes 🌈.
 ```
 
 If you don’t care about reproducing the output of `continue()` and just
@@ -193,6 +197,7 @@ might use it to test
 [`readline()`](https://rdrr.io/r/base/readline.html):
 
 ``` r
+
 f <- mock_output_sequence(1, 12, 123)
 f()
 #> [1] 1
@@ -205,13 +210,14 @@ f()
 And
 
 ``` r
+
 test_that("user must respond y or n", {
   local_mocked_bindings(readline = mock_output_sequence("x", "y"))
   expect_true(continue("This is dangerous"))
 })
 #> This is dangerous
 #> ! You must enter y or n
-#> Test passed with 1 success 😀.
+#> Test passed with 1 success 🎊.
 ```
 
 If you were testing the behavior of some function that uses
@@ -223,6 +229,7 @@ we mock `continue()` to return either `TRUE` or `FALSE` without any user
 messaging.
 
 ``` r
+
 save_file <- function(path, data) {
   if (file.exists(path)) {
     if (!continue("`path` already exists")) {
