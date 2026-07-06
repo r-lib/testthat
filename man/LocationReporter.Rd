@@ -9,7 +9,7 @@ This is useful if you're trying to figure out the source of a segfault,
 or you want to figure out which code triggers a C/C++ breakpoint
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

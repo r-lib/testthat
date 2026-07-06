@@ -127,7 +127,7 @@ or an user input to \code{readline()}, you can use \code{\link[=mock_output_sequ
 }
 
 \seealso{
-Other mocking: 
-\code{\link{mock_output_sequence}()}
+Other mocking:
+\code{\link[=mock_output_sequence]{mock_output_sequence()}}
 }
 \concept{mocking}

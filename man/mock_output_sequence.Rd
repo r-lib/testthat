@@ -40,7 +40,7 @@ recycled_mocked_sequence()
 recycled_mocked_sequence()
 }
 \seealso{
-Other mocking: 
-\code{\link{local_mocked_bindings}()}
+Other mocking:
+\code{\link[=local_mocked_bindings]{local_mocked_bindings()}}
 }
 \concept{mocking}

@@ -15,7 +15,7 @@ As an additional benefit, this reporter will praise you from time-to-time
 if all your tests pass.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

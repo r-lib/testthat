@@ -8,7 +8,7 @@ This reporter is useful to use several reporters at the same time, e.g.
 adding a custom reporter without removing the current one.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

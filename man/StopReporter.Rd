@@ -9,7 +9,7 @@ It responds by displaying a summary of the number of successes and failures
 and \code{\link[=stop]{stop()}}ping on if there are any failures.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

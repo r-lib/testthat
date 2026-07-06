@@ -9,7 +9,7 @@ best combined with another reporter, such as the
 \link{SummaryReporter}.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{JunitReporter}},

@@ -9,7 +9,7 @@ For more information about Teamcity messages, see
 http://confluence.jetbrains.com/display/TCD7/Build+Script+Interaction+with+TeamCity
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

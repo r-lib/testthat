@@ -10,7 +10,7 @@ an error.  If you want to find out what the failures and errors actually
 were, you'll need to run a more informative test reporter.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

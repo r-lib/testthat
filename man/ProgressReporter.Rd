@@ -19,7 +19,7 @@ designed for use with single files. It's the default reporter for
 \code{\link[=test_file]{test_file()}}.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

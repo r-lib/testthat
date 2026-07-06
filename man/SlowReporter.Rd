@@ -18,26 +18,7 @@ The easiest way to run it over your package is with
 \code{devtools::test(reporter = "slow")}.
 }
 \seealso{
-Other reporters: 
-\code{\link{CheckReporter}},
-\code{\link{DebugReporter}},
-\code{\link{FailReporter}},
-\code{\link{JunitReporter}},
-\code{\link{ListReporter}},
-\code{\link{LlmReporter}},
-\code{\link{LocationReporter}},
-\code{\link{MinimalReporter}},
-\code{\link{MultiReporter}},
-\code{\link{ProgressReporter}},
-\code{\link{RStudioReporter}},
-\code{\link{Reporter}},
-\code{\link{SilentReporter}},
-\code{\link{StopReporter}},
-\code{\link{SummaryReporter}},
-\code{\link{TapReporter}},
-\code{\link{TeamcityReporter}}
-
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

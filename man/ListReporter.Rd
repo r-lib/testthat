@@ -8,7 +8,7 @@ This reporter gathers all results, adding additional information such as
 test elapsed time, and test filename if available. Very useful for reporting.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

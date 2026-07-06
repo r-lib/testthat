@@ -9,7 +9,7 @@ a simple text-based interface between testing modules in a test harness.
 For more information about TAP, see http://testanything.org
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

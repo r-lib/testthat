@@ -28,7 +28,7 @@ but doesn't check for a specific value.
 }}
 
 \item{...}{
-  Arguments passed on to \code{\link[=expect_match]{expect_match}}
+  Arguments passed on to \code{\link{expect_match}}
   \describe{
     \item{\code{all}}{Should all elements of actual value match \code{regexp} (TRUE),
 or does only one need to match (FALSE).}
@@ -64,16 +64,16 @@ expect_output(str(mtcars), "11 VARIABLES", ignore.case = TRUE)
 expect_output(str(mtcars), "$ mpg", fixed = TRUE)
 }
 \seealso{
-Other expectations: 
+Other expectations:
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},
-\code{\link{expect_error}()},
-\code{\link{expect_length}()},
-\code{\link{expect_match}()},
-\code{\link{expect_named}()},
-\code{\link{expect_null}()},
-\code{\link{expect_reference}()},
-\code{\link{expect_silent}()},
+\code{\link[=expect_error]{expect_error()}},
+\code{\link[=expect_length]{expect_length()}},
+\code{\link[=expect_match]{expect_match()}},
+\code{\link[=expect_named]{expect_named()}},
+\code{\link[=expect_null]{expect_null()}},
+\code{\link[=expect_reference]{expect_reference()}},
+\code{\link[=expect_silent]{expect_silent()}},
 \code{\link{inheritance-expectations}},
 \code{\link{logical-expectations}}
 }

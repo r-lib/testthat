@@ -43,7 +43,7 @@ optionally followed by "_" or "-" and an upper case two letter
 want to run it yourself if you want to replicate test results interactively.
 If run inside a function, the effects are automatically reversed when the
 function exits; if running in the global environment, use
-\code{\link[withr:defer]{withr::deferred_run()}} to undo.
+\code{\link[withr:deferred_run]{withr::deferred_run()}} to undo.
 
 \code{local_reproducible_output()} is run automatically by \code{test_that()} in the
 3rd edition. You might want to call it to override the the default settings

@@ -13,7 +13,7 @@ Currently we detect Claude Code, Cursor, and Gemini CLI.
 If using another tool, configure it to set env var \code{AGENT=1}.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

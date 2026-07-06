@@ -9,7 +9,7 @@ This is helpful for programmatically inspecting errors after a test run.
 You can retrieve the results with \verb{$expectations()}.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

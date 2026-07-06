@@ -8,7 +8,7 @@ This reporter will call a modified version of \code{\link[=recover]{recover()}} 
 broken expectations.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{FailReporter}},
 \code{\link{JunitReporter}},

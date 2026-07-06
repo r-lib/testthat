@@ -8,7 +8,7 @@ This reporter is designed for output to RStudio. It produces results in
 any easily parsed form.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

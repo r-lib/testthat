@@ -31,16 +31,16 @@ expect_silent(f())
 }
 }
 \seealso{
-Other expectations: 
+Other expectations:
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},
-\code{\link{expect_error}()},
-\code{\link{expect_length}()},
-\code{\link{expect_match}()},
-\code{\link{expect_named}()},
-\code{\link{expect_null}()},
-\code{\link{expect_output}()},
-\code{\link{expect_reference}()},
+\code{\link[=expect_error]{expect_error()}},
+\code{\link[=expect_length]{expect_length()}},
+\code{\link[=expect_match]{expect_match()}},
+\code{\link[=expect_named]{expect_named()}},
+\code{\link[=expect_null]{expect_null()}},
+\code{\link[=expect_output]{expect_output()}},
+\code{\link[=expect_reference]{expect_reference()}},
 \code{\link{inheritance-expectations}},
 \code{\link{logical-expectations}}
 }

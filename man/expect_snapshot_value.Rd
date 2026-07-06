@@ -18,10 +18,10 @@ expect_snapshot_value(
 
 \item{style}{Serialization style to use:
 \itemize{
-\item \code{json} uses \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} and \code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}. This
+\item \code{json} uses \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} and \code{\link[jsonlite:toJSON]{jsonlite::toJSON()}}. This
 produces the simplest output but only works for relatively simple
 objects.
-\item \code{json2} uses \code{\link[jsonlite:serializeJSON]{jsonlite::serializeJSON()}} and \code{\link[jsonlite:serializeJSON]{jsonlite::unserializeJSON()}}
+\item \code{json2} uses \code{\link[jsonlite:serializeJSON]{jsonlite::serializeJSON()}} and \code{\link[jsonlite:unserializeJSON]{jsonlite::unserializeJSON()}}
 which are more verbose but work for a wider range of type.
 \item \code{deparse} uses \code{\link[=deparse]{deparse()}}, which generates a depiction of the object
 using R code.

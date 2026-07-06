@@ -8,7 +8,7 @@
 report is designed to ensure that you see something useful there.
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},
 \code{\link{JunitReporter}},

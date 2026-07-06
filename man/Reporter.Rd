@@ -24,7 +24,7 @@ test_file(path)
 test_file(path, reporter = "minimal")
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},

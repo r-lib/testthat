@@ -21,7 +21,7 @@ References for the jUnit XML format:
 \url{https://github.com/testmoapp/junitxml}
 }
 \seealso{
-Other reporters: 
+Other reporters:
 \code{\link{CheckReporter}},
 \code{\link{DebugReporter}},
 \code{\link{FailReporter}},
