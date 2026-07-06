@@ -43,7 +43,7 @@ expect_length <- function(object, n) {
 #' @rdname expect_length
 #' @param ... Not used; used to force naming of other arguments.
 #' @export
-expect_shape = function(object, ..., nrow, ncol, dim) {
+expect_shape <- function(object, ..., nrow, ncol, dim) {
   check_dots_empty()
   check_exclusive(nrow, ncol, dim)
   act <- quasi_label(enquo(object))
