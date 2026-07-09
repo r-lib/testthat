@@ -5,7 +5,9 @@ Authors@R: c(
     person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
     person("Posit Software, PBC", role = c("cph", "fnd")),
     person("R Core team", role = "ctb",
-           comment = "Implementation of utils::recover()")
+           comment = "Implementation of utils::recover()"),
+    person("Mauricio", "Vargas Sepulveda", role = "ctb",
+           comment = "Compatibility with C++23 standard")
   )
 Description: Software testing is important, but, in part because it is
     frustrating and boring, many of us avoid it. 'testthat' is a testing
