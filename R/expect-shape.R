@@ -48,7 +48,7 @@ expect_shape <- function(object, ..., nrow, ncol, dim) {
   check_exclusive(nrow, ncol, dim)
   act <- quasi_label(enquo(object))
 
-  dim_object <- base::dim(object)
+  dim_object <- base::dim(act$val)
   if (is.null(dim_object)) {
     fail(sprintf("Expected %s to have dimensions.", act$lab))
   } else if (!missing(nrow)) {
