@@ -13,7 +13,7 @@ describe("describe", {
   })
 })
 
-test_that("can write snaphot tests", {
+test_that("can write snapshot tests", {
   local_description_set()
 
   describe("snapshot tests in describe", {

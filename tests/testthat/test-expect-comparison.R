@@ -20,7 +20,7 @@ test_that("useful output when difference is zero", {
   expect_snapshot_failure(expect_lt(x, 100))
 })
 
-test_that("useful output when differnce is large", {
+test_that("useful output when difference is large", {
   x <- 100
   expect_snapshot_failure(expect_lt(x, 0.001))
 })
