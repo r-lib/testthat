@@ -120,3 +120,16 @@ test_that("checks inputs arguments, ", {
     expect_shape(array(1), dim = "x")
   })
 })
+
+test_that("evaluates object only once", {
+  i <- 0L
+  expect_success(expect_shape({ i <- i + 1L; matrix(nrow = 2, ncol = 2) }, dim = c(2L, 2L)))
+  expect_identical(i, 1L)
+
+  foo = function() { warning("test"); matrix(nrow = 2L, ncol = 2L) }
+  foo() |>
+    expect_shape(dim = c(2L, 2L)) |>
+    expect_warning("test") |>
+    expect_no_warning() # only one warning is emitted
+})
+
