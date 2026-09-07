@@ -240,8 +240,10 @@ export(with_mocked_bindings)
 export(with_reporter)
 import(rlang)
 importFrom(R6,R6Class)
-importFrom(brio,readLines)
-importFrom(brio,writeLines)
+importFrom(brio,
+  readLines,
+  writeLines
+)
 importFrom(lifecycle,deprecated)
 importFrom(magrittr,"%>%")
 importFrom(methods,new)

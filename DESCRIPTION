@@ -59,4 +59,4 @@ Config/testthat/parallel: true
 Config/testthat/start-first: watcher, parallel*
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
