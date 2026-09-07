@@ -130,7 +130,7 @@ save_png <- function(code, width = 400, height = 400) {
 }
 path <- save_png(plot(1:5))
 path
-#> [1] "/tmp/RtmpFpuD71/file1af24fd5bb90.png"
+#> [1] "/tmp/RtmptHPFiD/file19e982f6d1a.png"
 
 if (FALSE) { # \dontrun{
 expect_snapshot_file(save_png(hist(mtcars$mpg)), "plot.png")
