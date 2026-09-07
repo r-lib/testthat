@@ -1,5 +1,5 @@
 pandoc: 3.8.3
-pkgdown: 2.2.0
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   challenging-tests: challenging-tests.html
@@ -11,7 +11,7 @@ articles:
   special-files: special-files.html
   test-fixtures: test-fixtures.html
   third-edition: third-edition.html
-last_built: 2026-07-06T02:35Z
+last_built: 2026-09-07T13:29Z
 urls:
   reference: https://testthat.r-lib.org/reference
   article: https://testthat.r-lib.org/articles

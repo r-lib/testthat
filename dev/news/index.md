@@ -8,6 +8,10 @@
 - [`expect_setequal()`](https://testthat.r-lib.org/dev/reference/expect_setequal.md)
   uses better wording in the results ([@mcol](https://github.com/mcol),
   [\#2310](https://github.com/r-lib/testthat/issues/2310)).
+- [`expect_shape()`](https://testthat.r-lib.org/dev/reference/expect_length.md)
+  evaluates `object` only once
+  ([@michaelchirico](https://github.com/michaelchirico),
+  [\#2345](https://github.com/r-lib/testthat/issues/2345)).
 
 ## testthat 3.3.2
 
