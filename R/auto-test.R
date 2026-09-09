@@ -53,7 +53,13 @@ auto_test <- function(
     } else if (length(tests) > 0) {
       # If test changes, rerun just that test
       cat("Rerunning tests: ", paste0(basename(tests), collapse = ", "), "\n")
-      test_files(tests, env = env, reporter = reporter$clone(deep = TRUE))
+      test_files(
+        test_dir = test_path,
+        test_package = NULL,
+        test_paths = tests,
+        env = env,
+        reporter = reporter$clone(deep = TRUE)
+      )
     }
 
     TRUE
