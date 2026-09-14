@@ -69,7 +69,7 @@ inline int rand() { return 42; }
 inline void exit(int) throw() {}
 
 }
-# include "vendor/catch.h"
+# include "vendor/catch.hpp"
 
 // Implement an output stream that avoids writing to stdout / stderr.
 extern "C" void Rprintf(const char*, ...);
@@ -153,6 +153,13 @@ inline std::ostream& cout()
 
 TESTTHAT_ATTRIBUTE_HIDDEN
 inline std::ostream& cerr()
+{
+  static testthat::r_ostream instance;
+  return instance;
+}
+
+TESTTHAT_ATTRIBUTE_HIDDEN
+inline std::ostream& clog()
 {
   static testthat::r_ostream instance;
   return instance;
