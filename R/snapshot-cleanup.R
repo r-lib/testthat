@@ -59,11 +59,11 @@ snapshot_expected <- function(
   is_variant <- dir_contains(snap_dirs, c(snaps, snap_files_seen))
   variants <- basename(snap_dirs[is_variant])
 
-  snap_files_seen_new <- paste0(
-    tools::file_path_sans_ext(snap_files_seen),
-    ".new.",
-    tools::file_ext(snap_files_seen)
-  )
+  # Must use the same dir/name/ext splitting convention as new_name(), which
+  # splits on the first dot rather than the last, so that a snapshot file
+  # like "tc12.2_image_annotate.html" is expected as
+  # "tc12.new.2_image_annotate.html", matching what's actually created.
+  snap_files_seen_new <- new_name(snap_files_seen)
 
   sort(c(
     snaps,

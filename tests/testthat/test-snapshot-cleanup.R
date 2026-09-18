@@ -61,3 +61,14 @@ test_that("detects individual snapshots files to remove", {
     c("a/a2", "b/b1")
   )
 })
+
+test_that("preserves .new files for snapshot names with multiple dots (#2326)", {
+  dir <- local_snap_dir(c(
+    "a/tc12.2_image_annotate.html",
+    "a/tc12.new.2_image_annotate.html"
+  ))
+  expect_equal(
+    snapshot_outdated(dir, character(), "a/tc12.2_image_annotate.html"),
+    character()
+  )
+})
