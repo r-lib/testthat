@@ -26,6 +26,14 @@ test_that("always shows summary", {
   expect_false(file.exists(test_path("testthat-problems.rds")))
 })
 
+test_that("doesn't write rds when TESTTHAT_PROBLEMS is false", {
+  withr::defer(unlink(test_path("testthat-problems.rds")))
+  withr::local_envvar(TESTTHAT_PROBLEMS = "false")
+
+  expect_snapshot_reporter(CheckReporter$new())
+  expect_false(file.exists(test_path("testthat-problems.rds")))
+})
+
 test_that("shows warnings when not on CRAN", {
   withr::defer(unlink(test_path("testthat-problems.rds")))
 

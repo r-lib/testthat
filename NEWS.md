@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `CheckReporter` no longer writes `testthat-problems.rds` when `TESTTHAT_PROBLEMS` is set to false (#2311).
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
 * `expect_setequal()` uses better wording in the results (@mcol, #2310).
 * `expect_shape()` evaluates `object` only once (@michaelchirico, #2345).
