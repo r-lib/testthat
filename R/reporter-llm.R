@@ -87,8 +87,10 @@ LlmReporter <- R6::R6Class(
   )
 )
 
+# Make sure to also update devtools::is_llm() when you update this
 is_llm <- function() {
-  nzchar(Sys.getenv("AGENT")) ||
+  isTRUE(getOption("posit_assistant")) ||
+    nzchar(Sys.getenv("AGENT")) ||
     nzchar(Sys.getenv("CLAUDECODE")) ||
     nzchar(Sys.getenv("GEMINI_CLI")) ||
     nzchar(Sys.getenv("CURSOR_AGENT"))
