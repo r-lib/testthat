@@ -5,7 +5,7 @@ reports problems (warnings, skips, errors, and failures) as they occur
 and the total number of successes at the end.
 
 `LlmReporter` is used by default when tests are run by a coding agent.
-Currently we detect Claude Code, Cursor, and Gemini CLI. If using
+Currently we detect Claude Code, Codex, Cursor, and Gemini CLI. If using
 another tool, configure it to set env var `AGENT=1`.
 
 ## See also
