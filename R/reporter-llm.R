@@ -6,7 +6,8 @@
 #' occur and the total number of successes at the end.
 #'
 #' `LlmReporter` is used by default when tests are run by a coding agent.
-#' Currently we detect Claude Code, Codex, Cursor, and Gemini CLI.
+#' Currently we detect Posit Assistant (via `getOption("posit_assistant")`),
+#' Claude Code, Codex, Cursor, and Gemini CLI (via env vars).
 #' If using another tool, configure it to set env var `AGENT=1`.
 #'
 #' @export
