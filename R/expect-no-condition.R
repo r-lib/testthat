@@ -84,14 +84,30 @@ expect_no_ <- function(
 
   first_match <- NULL
   capture <- function(code) {
+    # Give the handler a known frame to anchor the backtrace on. Setting
+    # rlang_trace_top_env here means traces captured by abort() while
+    # evaluating `code` are trimmed at this frame at capture time.
+    run_code <- function() {
+      local_options(rlang_trace_top_env = current_env())
+      code
+    }
+
     withRestarts(
       withCallingHandlers(
-        code,
+        run_code(),
         condition = function(cnd) {
           if (!is.null(first_match) || !matcher(cnd)) {
             return()
           }
 
+          if (can_entrace(cnd)) {
+            # Forcing `code` creates quasi_capture()'s eval_bare() frame
+            # directly after run_code(); use it as the top of the trace.
+            n <- sys.nframe()
+            is_run_code <- function(j) identical(sys.function(j), run_code)
+            i <- detect_index(seq_len(n - 1), is_run_code, .right = TRUE)
+            cnd <- cnd_entrace(cnd, top = sys.frame(i + 1))
+          }
           first_match <<- cnd
           cnd_muffle(cnd)
 
@@ -119,7 +135,13 @@ expect_no_ <- function(
       "."
     )
     msg_act <- actual_condition(first_match)
-    fail(c(msg_exp, msg_act), trace_env = trace_env)
+    # Access error fields with `[[` rather than `$` because the
+    # `$.Throwable` from the rJava package throws with unknown fields
+    fail(
+      c(msg_exp, msg_act),
+      trace = first_match[["trace"]],
+      trace_env = trace_env
+    )
   } else {
     pass()
   }
