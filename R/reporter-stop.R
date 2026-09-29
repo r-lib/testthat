@@ -67,10 +67,12 @@ StopReporter <- R6::R6Class(
       }
 
       if (self$n_fail > 0) {
-        cli::cli_abort(
-          "Test failed with {self$n_fail} failure{?s} and {self$n_success} success{?es}.",
-          call = NULL
+        # Use stop() rather than cli_abort() so the error doesn't print a
+        # backtrace of testthat's own reporting machinery
+        msg <- cli::format_message(
+          "Test failed with {self$n_fail} failure{?s} and {self$n_success} success{?es}."
         )
+        stop(msg, call. = FALSE)
       }
     }
   )
