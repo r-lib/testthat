@@ -6,7 +6,8 @@
 #' occur and the total number of successes at the end.
 #'
 #' `LlmReporter` is used by default when tests are run by a coding agent.
-#' Currently we detect Claude Code, Codex, Cursor, and Gemini CLI.
+#' Currently we detect Posit Assistant (via `getOption("posit_assistant")`),
+#' Claude Code, Codex, Cursor, and Gemini CLI (via env vars).
 #' If using another tool, configure it to set env var `AGENT=1`.
 #'
 #' @export
@@ -87,8 +88,10 @@ LlmReporter <- R6::R6Class(
   )
 )
 
+# Make sure to also update devtools::is_llm() when you update this
 is_llm <- function() {
-  nzchar(Sys.getenv("AGENT")) ||
+  isTRUE(getOption("posit_assistant")) ||
+    nzchar(Sys.getenv("AGENT")) ||
     nzchar(Sys.getenv("CLAUDECODE")) ||
     nzchar(Sys.getenv("GEMINI_CLI")) ||
     nzchar(Sys.getenv("CURSOR_AGENT")) ||
