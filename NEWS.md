@@ -3,6 +3,7 @@
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
 * `expect_setequal()` uses better wording in the results (@mcol, #2310).
 * `expect_shape()` evaluates `object` only once (@michaelchirico, #2345).
+* `expect_snapshot_file()` no longer deletes the `.new` file as an "unused" snapshot when the snapshot name contains more than one dot (#2326).
 
 # testthat 3.3.2
 
