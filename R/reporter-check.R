@@ -68,7 +68,9 @@ CheckReporter <- R6::R6Class(
 
       if (self$problems$size() > 0) {
         problems <- self$problems$as_list()
-        saveRDS(problems, "testthat-problems.rds", version = 2)
+        if (!env_var_is_false("TESTTHAT_PROBLEMS")) {
+          saveRDS(problems, "testthat-problems.rds", version = 2)
+        }
 
         self$rule("Failed tests", line = 2)
         self$cat_line(map_chr(problems, issue_summary, rule = TRUE))
