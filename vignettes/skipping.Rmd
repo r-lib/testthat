@@ -63,7 +63,7 @@ skip_if_not(file.exists("secure-token.json"))
 skip_if_not(capabilities("profmem"))
 
 # Only run if we've opted-in to slow tests with an env var
-skip_if(Sys.getenv("RUN_SLOW_TESTS") == "true")
+skip_if(Sys.getenv("RUN_SLOW_TESTS") != "true")
 ```
 
 All reporters show which tests are skipped.
