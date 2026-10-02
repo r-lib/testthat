@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `expect_no_error()` failures now include a backtrace (#2334).
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
 * `expect_setequal()` uses better wording in the results (@mcol, #2310).
 * `expect_shape()` evaluates `object` only once (@michaelchirico, #2345).

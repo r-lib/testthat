@@ -32,6 +32,22 @@ test_that("expect_no_* don't emit success when they fail", {
   expect_snapshot_failure(expect_no_error(stop("!")))
 })
 
+test_that("expect_no_error failures include a backtrace (#2334)", {
+  f <- function() g()
+  g <- function() stop("boom")
+
+  cnd <- catch_cnd(expect_no_error(f()), classes = "expectation_failure")
+  expect_false(is.null(cnd$trace))
+  # testthat's capture machinery is trimmed from the backtrace
+  expect_equal(trace_length(cnd$trace), 2)
+
+  # including for rlang errors, which carry their own backtrace
+  # (eval frame -> f() -> g() -> abort(), matching rlang's usual trace)
+  g <- function() abort("boom")
+  cnd <- catch_cnd(expect_no_error(f()), classes = "expectation_failure")
+  expect_equal(trace_length(cnd$trace), 4)
+})
+
 test_that("capture correct trace_env (#1994)", {
   status <- capture_success_failure(
     expect_warning(expect_error(stop("oops")))
