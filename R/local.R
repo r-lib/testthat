@@ -150,12 +150,15 @@ local_reporter_output <- function(.env = parent.frame()) {
 }
 
 waldo_compare <- function(x, y, ..., x_arg = "x", y_arg = "y") {
+  diff <- waldo::compare(x, y, ..., x_arg = x_arg, y_arg = y_arg)
+  if (length(diff) == 0 || is_snapshot()) {
+    return(diff)
+  }
+
   # Need to very carefully isolate this change to this function - can not set
   # in expectation functions because part of expectation handling bubbles
   # up through calling handlers, which are run before on.exit()
-  if (!is_snapshot()) {
-    local_reporter_output()
-  }
+  local_reporter_output()
   waldo::compare(x, y, ..., x_arg = x_arg, y_arg = y_arg)
 }
 
