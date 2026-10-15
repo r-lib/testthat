@@ -1,5 +1,8 @@
 # testthat (development version)
 
+* `auto_test()` now reruns individual test files correctly. The watcher called
+  `test_files()` without its required `test_package` and `test_paths`
+  arguments, so every test-file-only change errored instead of rerunning.
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
 * `expect_setequal()` uses better wording in the results (@mcol, #2310).
 * `expect_shape()` evaluates `object` only once (@michaelchirico, #2345).
