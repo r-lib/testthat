@@ -288,7 +288,10 @@ queue_process_setup <- function(
 
 queue_task <- function(path, shuffle = FALSE) {
   withr::local_envvar("TESTTHAT_IS_PARALLEL" = "true")
-  snapshotter <- SubprocessSnapshotReporter$new(snap_dir = "_snaps")
+  snapshotter <- SubprocessSnapshotReporter$new(
+    snap_dir = "_snaps",
+    shuffle = shuffle
+  )
   withr::local_options(testthat.snapshotter = snapshotter)
   reporters <- list(
     SubprocessReporter$new(),

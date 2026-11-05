@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `test_dir()`, `test_local()` and friends with `shuffle = TRUE` no longer rewrite snapshot files in the shuffled order when every snapshot matches. Existing snapshots keep their order, and new ones are added at the end (@pedrobtz, #2364).
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
 * `expect_setequal()` uses better wording in the results (@mcol, #2310).
 * `expect_shape()` evaluates `object` only once (@michaelchirico, #2345).

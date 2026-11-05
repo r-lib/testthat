@@ -216,3 +216,54 @@ test_that("can filter with desc", {
 
   expect_equal(snaps_all, snaps_filtered)
 })
+
+test_that("shuffled tests keep the existing snapshot order (#2364)", {
+  path <- withr::local_tempdir()
+
+  record <- function(tests, shuffle = FALSE) {
+    snapper <- local_test_snapshotter(snap_dir = path, shuffle = shuffle)
+    snapper$start_file("snapshot")
+    for (test in tests) {
+      snapper$start_test(test = test)
+      expect_snapshot_output(cat(test), cran = TRUE)
+      snapper$end_test()
+    }
+    snapper$end_file()
+    readLines(file.path(path, "snapshot.md"))
+  }
+  headings <- function(lines) grep("^# ", lines, value = TRUE)
+
+  suppressWarnings(snaps <- record(c("x", "y", "z")))
+
+  # Every snapshot matches, so the file is unchanged
+  expect_equal(record(c("z", "x", "y"), shuffle = TRUE), snaps)
+
+  # A deleted test is dropped, and a new one goes at the end
+  suppressWarnings(snaps <- record(c("w", "z", "x"), shuffle = TRUE))
+  expect_equal(headings(snaps), c("# x", "# z", "# w"))
+})
+
+test_that("test_dir(shuffle = TRUE) doesn't rewrite matching snapshots", {
+  dir <- withr::local_tempdir()
+  writeLines(
+    c(
+      "local_edition(3)",
+      'test_that("a", expect_snapshot(1))',
+      'test_that("b", expect_snapshot(2))',
+      'test_that("c", expect_snapshot(3))'
+    ),
+    file.path(dir, "test-order.R")
+  )
+  withr::local_envvar(NOT_CRAN = "true", CI = "false")
+  snap <- file.path(dir, "_snaps", "order.md")
+
+  suppressWarnings(test_dir(dir, reporter = "silent", stop_on_failure = FALSE))
+  before <- readLines(snap)
+
+  withr::local_seed(1)
+  results <- as.data.frame(
+    test_dir(dir, shuffle = TRUE, reporter = "silent", stop_on_failure = FALSE)
+  )
+  expect_equal(sum(results$failed), 0)
+  expect_equal(readLines(snap), before)
+})

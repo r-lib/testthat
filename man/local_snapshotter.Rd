@@ -10,6 +10,7 @@ local_snapshotter(
   cleanup = FALSE,
   desc = NULL,
   fail_on_new = NULL,
+  shuffle = FALSE,
   frame = caller_env()
 )
 }
