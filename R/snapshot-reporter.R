@@ -11,6 +11,7 @@ SnapshotReporter <- R6::R6Class(
     variants_changed = FALSE,
     fail_on_new = NULL,
     desc = NULL,
+    shuffle = FALSE,
 
     old_snaps = NULL,
     cur_snaps = NULL,
@@ -19,11 +20,13 @@ SnapshotReporter <- R6::R6Class(
     initialize = function(
       snap_dir = "_snaps",
       fail_on_new = NULL,
-      desc = NULL
+      desc = NULL,
+      shuffle = FALSE
     ) {
       self$snap_dir <- normalizePath(snap_dir, mustWork = FALSE)
       self$fail_on_new <- fail_on_new
       self$desc <- desc
+      self$shuffle <- shuffle
     },
 
     start_file = function(path, test = NULL) {
@@ -51,6 +54,16 @@ SnapshotReporter <- R6::R6Class(
           snaps[[variant]][matches] <- rep(list(NULL), sum(matches))
         }
         self$cur_snaps$snaps <- snaps
+      } else if (self$shuffle) {
+        # When tests run in random order, reserve a slot for each existing
+        # snapshot so they're written in their old order, rather than the
+        # order the tests happened to run in (#2364). New snapshots are
+        # appended, and slots that stay empty are dropped when writing.
+        snaps <- self$old_snaps$snaps
+        for (variant in names(snaps)) {
+          snaps[[variant]][] <- list(NULL)
+        }
+        self$cur_snaps$snaps[names(snaps)] <- snaps
       }
 
       if (!is.null(test)) {
@@ -236,12 +249,14 @@ local_snapshotter <- function(
   cleanup = FALSE,
   desc = NULL,
   fail_on_new = NULL,
+  shuffle = FALSE,
   frame = caller_env()
 ) {
   reporter <- reporter$new(
     snap_dir = snap_dir,
     fail_on_new = fail_on_new,
-    desc = desc
+    desc = desc,
+    shuffle = shuffle
   )
   withr::local_options("testthat.snapshotter" = reporter, .local_envir = frame)
 
@@ -251,6 +266,7 @@ local_snapshotter <- function(
 local_test_snapshotter <- function(
   snap_dir = NULL,
   desc = NULL,
+  shuffle = FALSE,
   frame = caller_env()
 ) {
   snap_dir <- snap_dir %||% withr::local_tempdir(.local_envir = frame)
@@ -258,6 +274,7 @@ local_test_snapshotter <- function(
     snap_dir = snap_dir,
     desc = desc,
     fail_on_new = FALSE,
+    shuffle = shuffle,
     frame = frame
   )
 }

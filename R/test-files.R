@@ -203,7 +203,12 @@ test_files_serial <- function(
   local_testing_env(env)
 
   test_files_setup_state(test_dir, test_package, load_helpers, env)
-  reporters <- test_files_reporter(reporter, "serial", desc = desc)
+  reporters <- test_files_reporter(
+    reporter,
+    "serial",
+    desc = desc,
+    shuffle = shuffle
+  )
 
   with_reporter(
     reporters$multi,
@@ -301,6 +306,7 @@ test_files_reporter <- function(
   reporter,
   mode = c("serial", "parallel"),
   desc = NULL,
+  shuffle = FALSE,
   frame = caller_env()
 ) {
   mode <- arg_match(mode)
@@ -321,6 +327,7 @@ test_files_reporter <- function(
     reporter = snap_base,
     fail_on_new = on_ci(),
     desc = desc,
+    shuffle = shuffle,
     frame = frame
   )
 
