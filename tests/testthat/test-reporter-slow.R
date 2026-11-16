@@ -18,6 +18,9 @@ test_that("produces useful output", {
       show_all <- SlowReporter$new(min_time = 0)
       with_reporter(show_all, n_tests(12))
     },
-    transform = \(x) gsub("\\d.\\d\\ds] : run \\d\\d?", "-.--s] : run --", x),
+    transform = \(x) {
+      x <- gsub("\\d.\\d\\ds] : run \\d\\d?", "-.--s] : run --", x)
+      gsub("(tests: +)\\d.\\d\\ds", "\\1-.--s", x)
+    }
   )
 })
