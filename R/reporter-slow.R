@@ -82,7 +82,7 @@ SlowReporter <- R6::R6Class(
       }
 
       # Sort by time descending for summary
-      slowest <- self$test_timings[order(all_times, decreasing = TRUE)]
+      slowest <- self$test_timings[order(all_times[is_slow], decreasing = TRUE)]
 
       self$cat_line()
       self$rule(cli::style_bold("Slowest tests:"), line = 1)
