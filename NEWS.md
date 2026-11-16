@@ -3,6 +3,7 @@
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
 * `expect_setequal()` uses better wording in the results (@mcol, #2310).
 * `expect_shape()` evaluates `object` only once (@michaelchirico, #2345).
+* `SlowReporter()` outputs the correct number of additional slow tests after the slowest 10 when there are more than 10 slow tests overall (@mcol, #2370).
 
 # testthat 3.3.2
 

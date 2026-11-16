@@ -1,9 +1,11 @@
-# multiplication works
+# produces useful output
 
     Code
       show_all <- SlowReporter$new(min_time = 0)
       with_reporter(show_all, n_tests(10))
     Output
+      Slow tests (showing tests >= 0s)
+      
       [-.--s] : run 1
       [-.--s] : run 2
       [-.--s] : run 3
@@ -18,4 +20,43 @@
       == Summary =====================================================================
       All tests:  -.--s
       Slow tests: -.--s
+
+---
+
+    Code
+      show_all <- SlowReporter$new(min_time = 0)
+      with_reporter(show_all, n_tests(12))
+    Output
+      Slow tests (showing tests >= 0s)
+      
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      
+      == Summary =====================================================================
+      All tests:  -.--s
+      Slow tests: -.--s
+      
+      -- Slowest tests: --------------------------------------------------------------
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      [-.--s] : run --
+      ... and 2 more slow tests
+      
 
