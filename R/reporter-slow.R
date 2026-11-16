@@ -3,7 +3,7 @@
 #' @description
 #' `SlowReporter` is designed to identify slow tests. It reports the
 #' execution time for each test and can optionally filter out tests that
-#' run faster than a specified threshold (default: 1 second). This reporter
+#' run faster than a specified threshold (default: 0.5 seconds). This reporter
 #' is useful for performance optimization and identifying tests that may
 #' benefit from optimization or parallelization.
 #'
@@ -19,6 +19,8 @@ SlowReporter <- R6::R6Class(
     current_file = NULL,
 
     initialize = function(min_time = 0.5, ...) {
+      check_number_decimal(min_time, min = 0)
+
       super$initialize(...)
       self$min_time <- min_time
       self$test_timings <- list()
@@ -100,7 +102,7 @@ SlowReporter <- R6::R6Class(
     },
     show_timing = function(timing) {
       time <- sprintf("%.2fs", timing$time)
-      self$cat_line("[", time, "] ", time, " ", timing$file, ": ", timing$test)
+      self$cat_line("[", time, "] ", timing$file, ": ", timing$test)
     }
   )
 )
