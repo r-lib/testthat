@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* `test_dir()` reports test errors followed by other results, such as cleanup warnings (#2369).
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
 * `expect_setequal()` uses better wording in the results (@mcol, #2310).
 * `expect_shape()` evaluates `object` only once (@michaelchirico, #2345).

@@ -40,6 +40,37 @@ test_that("can control if failures generate errors", {
   expect_no_error(test_error(stop_on_failure = FALSE))
 })
 
+test_that("test errors remain failures after cleanup warnings", {
+  path <- withr::local_tempdir()
+  writeLines(
+    c(
+      'test_that("error followed by a warning", {',
+      '  on.exit(warning("cleanup warns"))',
+      "  expect_true(TRUE)",
+      '  stop("boom")',
+      "})"
+    ),
+    file.path(path, "test-cleanup.R")
+  )
+
+  expect_error(
+    test_dir(path, reporter = "silent"),
+    "Test failures.",
+    fixed = TRUE
+  )
+
+  results <- test_dir(path, reporter = "silent", stop_on_failure = FALSE)
+  summary <- as.data.frame(results)
+  expect_true(summary$error)
+  expect_equal(summary$failed, 0L)
+  expect_equal(summary$warning, 1L)
+  expect_equal(summary$nb, 2L)
+  expect_equal(
+    map_chr(summary$result[[1]], expectation_type),
+    c("success", "warning")
+  )
+})
+
 test_that("can control if warnings errors", {
   withr::local_envvar(TESTTHAT_PARALLEL = "FALSE")
   test_warning <- function(...) {
