@@ -57,12 +57,12 @@ within a function or for loop. See \link{quasi_label} for more details.}
 
 \item{regexp}{Regular expression to test against.
 \itemize{
-\item A character vector giving a regular expression that must match the
-error message.
-\item If \code{NULL}, the default, asserts that there should be an error,
-but doesn't test for a specific value.
-\item If \code{NA}, asserts that there should be no errors, but we now recommend
-using \code{\link[=expect_no_error]{expect_no_error()}} and friends instead.
+\item A single character string giving a regular expression that must match
+the condition message. Use a pattern such as \code{"foo|bar"} to match
+either alternative.
+\item \code{NULL} (the default) accepts any message for the expected condition.
+\item \code{NA} checks for the absence of the expected condition. Prefer
+\code{\link[=expect_no_error]{expect_no_error()}} and friends for this check.
 }
 
 Note that you should only use \code{message} with errors/warnings/messages

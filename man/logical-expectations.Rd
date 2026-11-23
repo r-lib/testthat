@@ -40,11 +40,15 @@ a <- 1:4
 show_failure(expect_true(length(a) == 3))
 show_failure(expect_equal(length(a), 3))
 
+# For a logical vector, expect_all_true() identifies the failing elements.
 x <- c(TRUE, TRUE, FALSE, TRUE)
 show_failure(expect_true(all(x)))
 show_failure(expect_all_true(x))
 }
 \seealso{
+\code{\link[=expect_all_true]{expect_all_true()}} and \code{\link[=expect_all_false]{expect_all_false()}} check every element of
+a nonempty logical vector and report which elements differ.
+
 Other expectations:
 \code{\link{comparison-expectations}},
 \code{\link{equality-expectations}},
