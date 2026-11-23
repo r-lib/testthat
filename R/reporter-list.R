@@ -184,27 +184,10 @@ as.data.frame.testthat_results <- function(x, ...) {
 }
 
 summarize_one_test_results <- function(test) {
-  test_results <- test$results
-  nb_tests <- length(test_results)
-
-  nb_failed <- nb_skipped <- nb_warning <- nb_passed <- 0L
-  error <- FALSE
-
-  if (nb_tests > 0) {
-    # error reports should be handled differently.
-    # They may not correspond to an expect_that() test so remove them
-    last_test <- test_results[[nb_tests]]
-    error <- expectation_error(last_test)
-    if (error) {
-      test_results <- test_results[-nb_tests]
-      nb_tests <- length(test_results)
-    }
-
-    nb_passed <- sum(map_lgl(test_results, expectation_success))
-    nb_skipped <- sum(map_lgl(test_results, expectation_skip))
-    nb_failed <- sum(map_lgl(test_results, expectation_failure))
-    nb_warning <- sum(map_lgl(test_results, expectation_warning))
-  }
+  types <- map_chr(test$results, expectation_type)
+  errors <- types == "error"
+  # Errors may be followed by results from exit handlers.
+  test_results <- test$results[!errors]
 
   context <- if (length(test$context) > 0) test$context else ""
 
@@ -212,11 +195,11 @@ summarize_one_test_results <- function(test) {
     file = test$file,
     context = context,
     test = test$test,
-    nb = nb_tests,
-    failed = nb_failed,
-    skipped = as.logical(nb_skipped),
-    error = error,
-    warning = nb_warning,
+    nb = length(test_results),
+    failed = sum(types == "failure"),
+    skipped = any(types == "skip"),
+    error = any(errors),
+    warning = sum(types == "warning"),
     user = test$user,
     system = test$system,
     real = test$real,
@@ -224,7 +207,7 @@ summarize_one_test_results <- function(test) {
   )
 
   # Added at end for backward compatibility
-  res$passed <- nb_passed
+  res$passed <- sum(types == "success")
 
   # Cannot easily add list columns in data.frame()
   res$result <- list(test_results)
