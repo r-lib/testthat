@@ -1,5 +1,6 @@
 # testthat (development version)
 
+* Snapshot hints point to the test directory when a test changes its working directory (#2335).
 * `run_cpp_tests()` no longer accidentally reports that a test has been skipped (#2315).
 * `expect_setequal()` uses better wording in the results (@mcol, #2310).
 * `expect_shape()` evaluates `object` only once (@michaelchirico, #2345).

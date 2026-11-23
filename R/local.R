@@ -186,6 +186,7 @@ local_test_directory <- function(path, package = NULL, .env = parent.frame()) {
     TESTTHAT = "true",
     TESTTHAT_PKG = package,
     TESTTHAT_WD = wd,
+    TESTTHAT_DIR = getwd(),
     .local_envir = .env
   )
 }

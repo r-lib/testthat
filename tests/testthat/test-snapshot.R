@@ -208,6 +208,40 @@ test_that("hint includes path when WD is different", {
   )
 })
 
+test_that("snapshot hints keep the test directory after a working directory change", {
+  local_mocked_bindings(in_check_reporter = function() FALSE)
+  local_on_cran(FALSE)
+  withr::local_envvar(CI = "false", TESTTHAT_PARALLEL = "false")
+  withr::local_dir(withr::local_tempdir())
+  dir.create("other-tests")
+
+  write_test <- function(value) {
+    writeLines(
+      c(
+        'test_that("snapshot from a different directory", {',
+        "  local_edition(3)",
+        "  withr::local_dir(withr::local_tempdir())",
+        sprintf('  expect_snapshot(cat("%s"))', value),
+        "})"
+      ),
+      "other-tests/test-hint.R"
+    )
+  }
+
+  write_test("before")
+  test_dir("other-tests", reporter = "silent")
+  write_test("after")
+  result <- test_dir(
+    "other-tests",
+    reporter = "silent",
+    stop_on_failure = FALSE
+  )
+
+  message <- result[[1]]$results[[1]]$message
+  expect_match(message, 'snapshot_accept("hint", "other-tests")', fixed = TRUE)
+  expect_match(message, 'snapshot_review("hint", "other-tests")', fixed = TRUE)
+})
+
 test_that("expect_snapshot requires a non-empty test label", {
   local_description_set()
   local_on_cran(FALSE)

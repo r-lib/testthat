@@ -427,25 +427,33 @@ snapshot_hint <- function(id, show_accept = TRUE, reset_output = TRUE) {
   structure(out, class = "testthat_hint")
 }
 
-# Include path argument if we're in a different working directory
+# Include a path when the test directory differs from the default.
 snapshot_hint_path <- function() {
   wd <- Sys.getenv("TESTTHAT_WD", unset = "")
-  if (wd == "") {
+  test_dir <- Sys.getenv("TESTTHAT_DIR", unset = "")
+  if (wd == "" || test_dir == "") {
     return()
   }
 
-  test_path <- file.path(wd, "tests/testthat")
-  if (test_path == getwd()) {
+  wd <- normalizePath(wd, winslash = "/", mustWork = FALSE)
+  test_dir <- normalizePath(test_dir, winslash = "/", mustWork = FALSE)
+  default <- normalizePath(
+    file.path(wd, "tests", "testthat"),
+    winslash = "/",
+    mustWork = FALSE
+  )
+  if (default == test_dir) {
     return()
   }
+  if (wd == test_dir) {
+    return(".")
+  }
 
-  old <- normalizePath(wd)
-  new <- normalizePath(getwd())
-
-  if (startsWith(new, old)) {
-    substr(new, nchar(old) + 2, nchar(new))
+  prefix <- sub("/?$", "/", wd)
+  if (startsWith(test_dir, prefix)) {
+    substring(test_dir, nchar(prefix) + 1L)
   } else {
-    new
+    test_dir
   }
 }
 
