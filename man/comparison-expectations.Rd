@@ -26,18 +26,28 @@ use only.}
 These functions compare values of comparable data types, such as numbers,
 dates, and times.
 }
+\details{
+\itemize{
+\item \code{expect_lt()} checks that \code{object} is less than \code{expected}.
+\item \code{expect_lte()} checks that \code{object} is less than or equal to \code{expected}.
+\item \code{expect_gt()} checks that \code{object} is greater than \code{expected}.
+\item \code{expect_gte()} checks that \code{object} is greater than or equal to \code{expected}.
+}
+}
 \examples{
 a <- 9
 expect_lt(a, 10)
+expect_lte(10, 10)
 
 \dontrun{
-expect_lt(11, 10)
+expect_lt(10, 10)
 }
 
 a <- 11
 expect_gt(a, 10)
+expect_gte(10, 10)
 \dontrun{
-expect_gt(9, 10)
+expect_gt(10, 10)
 }
 }
 \seealso{
