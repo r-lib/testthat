@@ -3,21 +3,28 @@
 #' These functions compare values of comparable data types, such as numbers,
 #' dates, and times.
 #'
+#' * `expect_lt()` checks that `object` is less than `expected`.
+#' * `expect_lte()` checks that `object` is less than or equal to `expected`.
+#' * `expect_gt()` checks that `object` is greater than `expected`.
+#' * `expect_gte()` checks that `object` is greater than or equal to `expected`.
+#'
 #' @inheritParams expect_equal
 #' @param object,expected A value to compare and its expected bound.
 #' @family expectations
 #' @examples
 #' a <- 9
 #' expect_lt(a, 10)
+#' expect_lte(10, 10)
 #'
 #' \dontrun{
-#' expect_lt(11, 10)
+#' expect_lt(10, 10)
 #' }
 #'
 #' a <- 11
 #' expect_gt(a, 10)
+#' expect_gte(10, 10)
 #' \dontrun{
-#' expect_gt(9, 10)
+#' expect_gt(10, 10)
 #' }
 #' @name comparison-expectations
 NULL
