@@ -9,6 +9,8 @@
 #'
 #' @inheritParams expect_that
 #' @family expectations
+#' @seealso [expect_all_true()] and [expect_all_false()] check every element of
+#'   a nonempty logical vector and report which elements differ.
 #' @examples
 #' expect_true(2 == 2)
 #' # Failed expectations will throw an error
@@ -20,6 +22,7 @@
 #' show_failure(expect_true(length(a) == 3))
 #' show_failure(expect_equal(length(a), 3))
 #'
+#' # For a logical vector, expect_all_true() identifies the failing elements.
 #' x <- c(TRUE, TRUE, FALSE, TRUE)
 #' show_failure(expect_true(all(x)))
 #' show_failure(expect_all_true(x))
